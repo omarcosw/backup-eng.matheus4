@@ -1,0 +1,889 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_user": {
+      "main": [
+        [
+          {
+            "node": "encontrou_user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "encontrou_user": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_cadastro",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insere_lead_na_tabela_users",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insere_lead_na_tabela_users": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_cadastro": {
+      "main": [
+        [
+          {
+            "node": "insert_pesquisa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_user1": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_cadastro",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_user1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Verificar na audiência",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verificar na audiência": {
+      "main": [
+        [
+          {
+            "node": "Contato existe?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Contato existe?": {
+      "main": [
+        [
+          {
+            "node": "Envia Fluxo - cliente",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Cadastrar contato",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cadastrar contato": {
+      "main": [
+        [
+          {
+            "node": "Envia Fluxo - cliente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insert_pesquisa": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_user2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL": {
+      "main": [
+        [
+          {
+            "node": "grupo_lista",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_user2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-21T16:12:12.188Z",
+  "id": "bMquDP8dB9JsJNls",
+  "meta": null,
+  "name": "🟠 Fluxo do Typebot REFORMAR - [CADASTRO] [PEC0325]",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "contato-comercial",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        340,
+        -140
+      ],
+      "id": "d1ade36f-2c9c-4b62-a95c-0faba3f79711",
+      "name": "Webhook",
+      "webhookId": "32ed8256-56c3-4134-a7c3-34d1788412a0"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtém os dados de entrada\nconst inputData = $input.item.json;\n\n// Remove todos os caracteres que não sejam números do telefone\ninputData.body.TELEFONE = inputData.body.TELEFONE.replace(/\\D/g, \"\");\n\n// Retorna os dados modificados\nreturn [inputData];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        620,
+        -140
+      ],
+      "id": "6e42378e-b8a1-4fb8-8f20-c4b0c4705127",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "telefone",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"telefone\"] }}"
+            }
+          ]
+        },
+        "combineConditions": "OR",
+        "options": {}
+      },
+      "id": "041a3b7d-410c-4987-a3d3-7ea9bcb41baf",
+      "name": "pesquisa_user",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        100,
+        320
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"pesquisa_user\"].json[\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "51122eb9-953e-4581-80e5-8a19ed2dad34",
+      "name": "encontrou_user",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        260,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "data_de_entrada",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $node[\"Edit Fields1\"].json[\"telefone\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "detailedOutput": true
+        }
+      },
+      "id": "dbf24f85-b940-4541-bdb6-ac60b86a145b",
+      "name": "insere_lead_na_tabela_users",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        500,
+        500
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "cadastros",
+          "mode": "list",
+          "cachedResultName": "cadastros"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "id_user",
+              "value": "={{ $json[\"id\"] }}"
+            },
+            {
+              "column": "evento",
+              "value": "Captação | PEC0325"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "de26f5d7-4d0a-432a-823a-1b08d00f89e7",
+      "name": "pesquisa_cadastro",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1400,
+        300
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "pesquisas",
+          "mode": "list",
+          "cachedResultName": "pesquisas"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "id_user",
+              "value": "={{ $node[\"pesquisa_user\"].json && $node[\"pesquisa_user\"].json.id ? $node[\"pesquisa_user\"].json[\"id\"] : ($node[\"pesquisa_user1\"].json && $node[\"pesquisa_user1\"].json.id ? $node[\"pesquisa_user1\"].json[\"id\"] : null) }}\n"
+            },
+            {
+              "column": "id_cadastro",
+              "value": "={{ $json[\"id\"] }}"
+            },
+            {
+              "column": "pergunta1",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"body\"][\"CONSTRUIR OU REFORMAR\"] }}"
+            },
+            {
+              "column": "pergunta2",
+              "value": "={{ $node[\"Code\"].json[\"body\"][\"SEEDING PARA O SCI\"] }}"
+            },
+            {
+              "column": "pergunta3",
+              "value": "={{ $node[\"Code\"].json[\"body\"][\"TELEFONE\"] }}"
+            },
+            {
+              "column": "data_pesquisa",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "nome_pesquisa",
+              "value": "[CADASTRO] [PEC0325] [TYPEBOT] [REFORMAR]"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "dd688180-6862-49f5-b8a8-b3ac7cf21f5d",
+      "name": "insert_pesquisa",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1660,
+        300
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "telefone",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"telefone\"] }}"
+            }
+          ]
+        },
+        "combineConditions": "OR",
+        "options": {}
+      },
+      "id": "091c69ca-2195-4df8-ad0d-0785221618f6",
+      "name": "pesquisa_user1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        840,
+        500
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# CADASTRA PESQUISA NO BANCO DE DADOS",
+        "height": 570,
+        "width": 1737
+      },
+      "id": "275fc488-f933-49ce-88ec-532a537f612e",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        660,
+        500
+      ],
+      "id": "6ab58b7a-84cb-493b-8591-ec2a3284c785",
+      "name": "Wait",
+      "webhookId": "e0505973-eb6b-49ef-b5ea-24592e6a6f00"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "56a816d6-de4d-4a29-b59d-09fb7db8a6b2",
+              "name": "telefone",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"body\"][\"TELEFONE\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        920,
+        -140
+      ],
+      "id": "d91c95e8-8803-4293-9017-6b42b670f718",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c53e209f-3f99-47cf-ac2c-48e2744c2567",
+              "name": "nome",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_user2\"].json[\"nome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "6a122e24-9278-4fa5-aba6-ea01b413ed09",
+              "name": "telefone",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_user2\"].json[\"telefone\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "af5246e1-afa0-4fc2-9a07-cf21cfc43f0b",
+              "name": "data",
+              "value": "={{ $now }}",
+              "type": "string"
+            },
+            {
+              "id": "00fa81b1-b695-4099-973d-712c2f2a2a99",
+              "name": "sobrenome",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_user2\"].json[\"sobrenome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "0c83ee64-1365-49df-a8eb-687fc8742541",
+              "name": "API-KEY",
+              "value": "022ecaba-f9b1-446f-9d6e-a4228181ff46",
+              "type": "string"
+            },
+            {
+              "id": "2c4db274-2402-4867-9104-0a449463eb32",
+              "name": "email",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_user2\"].json[\"email\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fd256683-ecb3-4571-9e21-996626565f5f",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1780,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/+{{ $json[\"telefone\"] }}/",
+        "options": {},
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $json[\"API-KEY\"] }}"
+            }
+          ]
+        }
+      },
+      "name": "Verificar na audiência",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        2000,
+        560
+      ],
+      "id": "84e3e8f3-f7b0-4422-b43e-0c992fa977ba",
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json[\"id\"]}}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "name": "Contato existe?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        2180,
+        560
+      ],
+      "id": "d8ea936e-8502-4088-b20a-3e897fd7f3dd"
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "phone",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"telefone\"] }}"
+            },
+            {
+              "name": "first_name",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_user2\"].json[\"nome\"] }}"
+            },
+            {
+              "name": "last_name",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"sobrenome\"] ? $node[\"Edit Fields2\"].json[\"sobrenome\"] : \".\" }}"
+            }
+          ]
+        },
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"API-KEY\"] }}"
+            }
+          ]
+        }
+      },
+      "name": "Cadastrar contato",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        2380,
+        640
+      ],
+      "id": "53b94598-009f-4f69-936f-f91a4df9984f",
+      "executeOnce": true,
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/{{ $node[\"Verificar na audiência\"].json[\"id\"] || $node[\"Cadastrar contato\"].json[\"id\"] }}/send_flow/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"API-KEY\"] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "flow",
+              "value": "6852475"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "48f4d799-4ebc-4dee-a7bc-6bfd3e24cc18",
+      "name": "Envia Fluxo - cliente",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        2580,
+        540
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "id",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_user\"].json[\"id\"] || $item(\"0\").$node[\"pesquisa_user1\"].json[\"id\"] }}"
+            }
+          ]
+        },
+        "combineConditions": "OR",
+        "options": {}
+      },
+      "id": "50a203ff-aca3-407e-8bef-a09e219591af",
+      "name": "pesquisa_user2",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        2000,
+        300
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ce14e610-05e1-47e4-968f-0833b7bafa08",
+              "leftValue": "={{ $json[\"nome_grupo\"] }}",
+              "rightValue": "Imersão da Construção",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1140,
+        -500
+      ],
+      "id": "4d2e1852-9bd7-489e-a5a8-2117c39d187c",
+      "name": "grupo_lista",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "leads_nos_grupos",
+          "mode": "list",
+          "cachedResultName": "leads_nos_grupos"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "numero",
+              "value": "={{ $json[\"telefone\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        900,
+        -500
+      ],
+      "id": "fa3f38f8-dbb6-4f49-879c-718fe0a2fed2",
+      "name": "MySQL",
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "amount": 20,
+        "unit": "minutes"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1840,
+        200
+      ],
+      "id": "9784e92a-9598-45c9-8aa1-a8a596dfb381",
+      "name": "Wait1",
+      "webhookId": "5dd8dda8-7546-4468-939f-aa25cbf341cd"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.engenheiromatheus.com",
+            "user-agent": "node",
+            "content-length": "138",
+            "accept": "*/*",
+            "accept-encoding": "br, gzip, deflate",
+            "accept-language": "*",
+            "baggage": "sentry-environment=production,sentry-release=ce163b448be61ef3ac36d534e476c72d63d5e32b,sentry-public_key=e5dde145dc9f6d7a3a558ee8ee1ab3a5,sentry-trace_id=2581ac84c8b85f1e1cf023e363e1096f,sentry-transaction=POST%20%2Fapi%2F%5B...trpc%5D,sentry-sampled=true,sentry-sample_rand=0.26152864000072906,sentry-sample_rate=1",
+            "content-type": "application/json",
+            "sec-fetch-mode": "cors",
+            "sentry-trace": "2581ac84c8b85f1e1cf023e363e1096f-f694eb4deee544a7-1",
+            "x-forwarded-for": "18.169.53.249",
+            "x-forwarded-host": "webhook.engenheiromatheus.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "7e5b8bef7460",
+            "x-real-ip": "18.169.53.249",
+            "x-vercel-id": "gru1::bt984-1742847678558-281f56c5c94b"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "submittedAt": "2025-03-24T20:21:18.755Z",
+            "CONSTRUIR OU REFORMAR": "Quero REFORMAR",
+            "SEEDING PARA O SCI": "Sim",
+            "TELEFONE": "+55 43 9120-8818‬"
+          },
+          "webhookUrl": "https://webhook.engenheiromatheus.com/webhook/contato-comercial",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-03-19T04:46:33.880Z",
+      "updatedAt": "2025-03-19T04:46:33.880Z",
+      "id": "PxviFA6iloeaurvs",
+      "name": "[CADASTRO] [PEC0325]"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-03-29T18:22:56.864Z",
+  "versionId": "fc98b26e-e3a9-4559-b1e1-db254369633c"
+}
