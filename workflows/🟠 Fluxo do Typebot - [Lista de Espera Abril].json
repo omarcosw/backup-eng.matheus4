@@ -1,0 +1,1469 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL": {
+      "main": [
+        [
+          {
+            "node": "grupo_lista",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_user",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "MySQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Verificar na audiência",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "grupo_lista": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_user": {
+      "main": [
+        [
+          {
+            "node": "encontrou_user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "encontrou_user": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_cadastro",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insere_lead_na_tabela_users",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insere_lead_na_tabela_users": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_user1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_cadastro": {
+      "main": [
+        [
+          {
+            "node": "insert_pesquisa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insert_pesquisa": {
+      "main": [
+        []
+      ]
+    },
+    "pesquisa_user1": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_cadastro",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "MySQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verificar na audiência": {
+      "main": [
+        [
+          {
+            "node": "Contato existe?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Contato existe?": {
+      "main": [
+        [
+          {
+            "node": "campo_sobre_medo1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Cadastrar contato",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cadastrar contato": {
+      "main": [
+        [
+          {
+            "node": "campo_sobre_medo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "campo_sobre_medo": {
+      "main": [
+        [
+          {
+            "node": "campo_valor_da_obra",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "campo_valor_da_obra": {
+      "main": [
+        [
+          {
+            "node": "Envia Fluxo - cliente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "campo_sobre_medo1": {
+      "main": [
+        [
+          {
+            "node": "campo_valor_da_obra1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "campo_valor_da_obra1": {
+      "main": [
+        [
+          {
+            "node": "Envia Fluxo - cliente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Verificar na audiência1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verificar na audiência1": {
+      "main": [
+        [
+          {
+            "node": "Contato existe?1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Contato existe?1": {
+      "main": [
+        [
+          {
+            "node": "campo_sobre_medo3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Cadastrar contato1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cadastrar contato1": {
+      "main": [
+        [
+          {
+            "node": "campo_sobre_medo2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "campo_sobre_medo2": {
+      "main": [
+        [
+          {
+            "node": "campo_valor_da_obra2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "campo_valor_da_obra2": {
+      "main": [
+        [
+          {
+            "node": "Envia Fluxo - cliente1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "campo_sobre_medo3": {
+      "main": [
+        [
+          {
+            "node": "campo_valor_da_obra3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "campo_valor_da_obra3": {
+      "main": [
+        [
+          {
+            "node": "Envia Fluxo - cliente1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-24T17:29:17.121Z",
+  "id": "m4DG4m5vmd54vWOW",
+  "meta": null,
+  "name": "🟠 Fluxo do Typebot - [Lista de Espera Abril]",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "eddedc59-b769-4ea1-9077-d8fc406208b6",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "0bbe78fc-9930-40b5-8621-fdc72a25a625",
+      "name": "Webhook",
+      "webhookId": "eddedc59-b769-4ea1-9077-d8fc406208b6"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "leads_nos_grupos",
+          "mode": "list",
+          "cachedResultName": "leads_nos_grupos"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "numero",
+              "value": "={{ $json[\"telefone\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        660,
+        0
+      ],
+      "id": "008e7c1d-18f8-44e8-9b3d-4e73b3efd302",
+      "name": "MySQL",
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst resultados = [];\n\nfor (const item of items) {\n  const body = item.json.body;\n  let telefone = body[\"Nome e Telefone (1)\"];\n  const nomeCompleto = body[\"Nome e Telefone\"];\n\n  if (telefone) {\n    if (!telefone.startsWith(\"55\")) {\n      telefone = \"55\" + telefone;\n    }\n  }\n\n  if (nomeCompleto) {\n    const partesNome = nomeCompleto.trim().split(\" \");\n    const nome = partesNome[0];\n    const sobrenome = partesNome.slice(1).join(\" \");\n\n    resultados.push({\n      nome: nome,\n      sobrenome: sobrenome,\n      telefone: telefone,\n    });\n  } else {\n    resultados.push({ telefone: telefone });\n  }\n}\n\nreturn resultados;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "3e854143-94ca-4534-815c-3dd388101a11",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ce14e610-05e1-47e4-968f-0833b7bafa08",
+              "leftValue": "={{ $json[\"nome_grupo\"] }}",
+              "rightValue": "[PEC] LISTA DE ESPERA - ABRIL/25",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        900,
+        0
+      ],
+      "id": "4e1632a4-b8ab-4d41-be5c-7809dad5b72b",
+      "name": "grupo_lista",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c53e209f-3f99-47cf-ac2c-48e2744c2567",
+              "name": "nome",
+              "value": "={{ $node[\"Code\"].json[\"nome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "6a122e24-9278-4fa5-aba6-ea01b413ed09",
+              "name": "telefone",
+              "value": "={{ $node[\"Code\"].json[\"telefone\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "af5246e1-afa0-4fc2-9a07-cf21cfc43f0b",
+              "name": "data",
+              "value": "={{ $now }}",
+              "type": "string"
+            },
+            {
+              "id": "00fa81b1-b695-4099-973d-712c2f2a2a99",
+              "name": "sobrenome",
+              "value": "={{ $node[\"Code\"].json[\"sobrenome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "5c805b4d-3a0b-4b75-8046-90cf3473a9ae",
+              "name": "RESPOSTA DA PESQUISA SOBRE O MEDO",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"Group #3\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "81748ada-13d0-4cf6-b07a-a91e125243ea",
+              "name": "RESPOSTA SOBRE O VALOR DA OBRA",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"Group #2\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "0c83ee64-1365-49df-a8eb-687fc8742541",
+              "name": "API-KEY",
+              "value": "5a0e47da-df8c-4f73-87e2-2a72993b790c",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6a699378-f558-4a57-831d-03d0bb5e683a",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1500,
+        -200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "telefone",
+              "value": "={{ $json[\"telefone\"] }}"
+            }
+          ]
+        },
+        "combineConditions": "OR",
+        "options": {}
+      },
+      "id": "818fafbe-a33e-490f-a46f-ecbb7f1f7c73",
+      "name": "pesquisa_user",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        -460,
+        460
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"pesquisa_user\"].json[\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "8167a6c0-5ffe-4199-8895-fc7b870ece56",
+      "name": "encontrou_user",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -300,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "data_de_entrada",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "nome",
+              "value": "={{ $node[\"Code\"].json[\"nome\"] }}"
+            },
+            {
+              "column": "sobrenome",
+              "value": "={{ $node[\"Code\"].json[\"sobrenome\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $node[\"Code\"].json[\"telefone\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "detailedOutput": true
+        }
+      },
+      "id": "95d2e505-6e8e-44bf-b0b3-39c5f58f4fb6",
+      "name": "insere_lead_na_tabela_users",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        -60,
+        640
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "cadastros",
+          "mode": "list",
+          "cachedResultName": "cadastros"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "id_user",
+              "value": "={{ $json[\"id\"] }}"
+            },
+            {
+              "column": "evento",
+              "value": "Lista de Espera | PEC - Abril25\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bd0f56db-c2fd-431d-a6a3-4dbe9ed5032f",
+      "name": "pesquisa_cadastro",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        620,
+        440
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "pesquisas",
+          "mode": "list",
+          "cachedResultName": "pesquisas"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "id_user",
+              "value": "={{ $node[\"pesquisa_user\"].json && $node[\"pesquisa_user\"].json.id ? $node[\"pesquisa_user\"].json[\"id\"] : ($node[\"pesquisa_user1\"].json && $node[\"pesquisa_user1\"].json.id ? $node[\"pesquisa_user1\"].json[\"id\"] : null) }}\n"
+            },
+            {
+              "column": "id_cadastro",
+              "value": "={{ $json[\"id\"] }}"
+            },
+            {
+              "column": "pergunta1",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"Group #1\"] }}"
+            },
+            {
+              "column": "pergunta2",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"Group #2\"] }}"
+            },
+            {
+              "column": "pergunta3",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"Group #3\"] }}"
+            },
+            {
+              "column": "pergunta4",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"Group #4\"] }}"
+            },
+            {
+              "column": "pergunta5",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"Group #5\"] }}"
+            },
+            {
+              "column": "data_pesquisa",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "nome_pesquisa",
+              "value": "Lista de Espera | PEC - Abril25"
+            },
+            {
+              "column": "pergunta6",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"Group #5 (1)\"] }}"
+            },
+            {
+              "column": "pergunta7",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"Group #5 (2)\"] }}"
+            },
+            {
+              "column": "pergunta8",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"Group #5 (3)\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3deba0e2-90a9-4fa9-81c1-c97c1e1ca3ef",
+      "name": "insert_pesquisa",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        880,
+        440
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "telefone",
+              "value": "={{ $json[\"telefone\"] }}"
+            }
+          ]
+        },
+        "combineConditions": "OR",
+        "options": {}
+      },
+      "id": "4c3534fd-a1be-4aae-a5b3-713d10730fad",
+      "name": "pesquisa_user1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        180,
+        640
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# FLUXO MSG 1 (ENTROU)",
+        "height": 567,
+        "width": 2313,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1180,
+        -400
+      ],
+      "typeVersion": 1,
+      "id": "df2dbcbf-2718-4f70-a60c-e3de7542dac5",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "content": "# FLUXO MSG 2 (Ñ ENTROU)",
+        "height": 567,
+        "width": 2313,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1180,
+        280
+      ],
+      "typeVersion": 1,
+      "id": "95bd517a-6678-483c-aecc-daa43e18b8ba",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "# CADASTRA PESQUISA NO BANCO DE DADOS",
+        "height": 570,
+        "width": 1737
+      },
+      "id": "ae69a9f2-12a6-4ca7-8da4-f3b953099a85",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -600,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 10,
+        "unit": "minutes"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        440,
+        -160
+      ],
+      "id": "af5aff65-a960-4ad8-a0ee-c2d81a7d5869",
+      "name": "Wait",
+      "webhookId": "46e035ba-b7f1-46d1-9061-b9b128d57f43"
+    },
+    {
+      "parameters": {
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/+{{ $json[\"telefone\"] }}/",
+        "options": {},
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $json[\"API-KEY\"] }}"
+            }
+          ]
+        }
+      },
+      "name": "Verificar na audiência",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        1700,
+        -200
+      ],
+      "id": "23dbcfdf-417e-49ab-9677-dcb1790cd378",
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json[\"id\"]}}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "name": "Contato existe?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1880,
+        -200
+      ],
+      "id": "7eeea220-de4a-403d-a40a-6664bec34a5d"
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "phone",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"telefone\"] }}"
+            },
+            {
+              "name": "first_name",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"nome\"] }}"
+            },
+            {
+              "name": "last_name",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"sobrenome\"] ? $node[\"Edit Fields2\"].json[\"sobrenome\"] : \".\" }}"
+            }
+          ]
+        },
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"API-KEY\"] }}"
+            }
+          ]
+        }
+      },
+      "name": "Cadastrar contato",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        2080,
+        -120
+      ],
+      "id": "bd634bab-8c3a-4bd7-8091-14d2101cad83",
+      "executeOnce": true,
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/custom_fields/",
+        "options": {},
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "API-KEY",
+              "value": "=5a0e47da-df8c-4f73-87e2-2a72993b790c"
+            }
+          ]
+        }
+      },
+      "name": "ID",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        1260,
+        680
+      ],
+      "id": "092404fc-73d1-434f-911d-75db017f9c6b",
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/{{ $json[\"id\"] }}/custom_fields/3628783/",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "value",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"RESPOSTA DA PESQUISA SOBRE O MEDO\"] }}"
+            }
+          ]
+        },
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"API-KEY\"] }}"
+            }
+          ]
+        }
+      },
+      "name": "campo_sobre_medo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        2260,
+        -120
+      ],
+      "id": "b61ced07-07c7-400e-844d-e299abfbfbcb",
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/{{ $node[\"Cadastrar contato\"].json[\"id\"] }}/custom_fields/3628782/",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "value",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"RESPOSTA SOBRE O VALOR DA OBRA\"] }}"
+            }
+          ]
+        },
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"API-KEY\"] }}"
+            }
+          ]
+        }
+      },
+      "name": "campo_valor_da_obra",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        2460,
+        -120
+      ],
+      "id": "a482e5dd-55a4-44eb-96c7-7b60752c5a23",
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/{{ $json[\"id\"] }}/custom_fields/3628783/",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "value",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"RESPOSTA DA PESQUISA SOBRE O MEDO\"] }}"
+            }
+          ]
+        },
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"API-KEY\"] }}"
+            }
+          ]
+        }
+      },
+      "name": "campo_sobre_medo1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        2080,
+        -300
+      ],
+      "id": "8c2e270f-2023-489f-8fb1-5eeba5028b67",
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/{{ $node[\"Verificar na audiência\"].json[\"id\"] }}/custom_fields/3628782/",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "value",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"RESPOSTA SOBRE O VALOR DA OBRA\"] }}"
+            }
+          ]
+        },
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"API-KEY\"] }}"
+            }
+          ]
+        }
+      },
+      "name": "campo_valor_da_obra1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        2280,
+        -300
+      ],
+      "id": "538e8506-1704-4ed4-94fc-70424842dd55",
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/{{ $node[\"Verificar na audiência\"].json[\"id\"] || $node[\"Cadastrar contato\"].json[\"id\"] }}/send_flow/\n\n\n",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"API-KEY\"] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "flow",
+              "value": "6542812"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ac3fd5d7-e666-49c8-890f-56a60d26fbd6",
+      "name": "Envia Fluxo - cliente",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        2660,
+        -300
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c53e209f-3f99-47cf-ac2c-48e2744c2567",
+              "name": "nome",
+              "value": "={{ $node[\"Code\"].json[\"nome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "6a122e24-9278-4fa5-aba6-ea01b413ed09",
+              "name": "telefone",
+              "value": "={{ $node[\"Code\"].json[\"telefone\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "af5246e1-afa0-4fc2-9a07-cf21cfc43f0b",
+              "name": "data",
+              "value": "={{ $now }}",
+              "type": "string"
+            },
+            {
+              "id": "00fa81b1-b695-4099-973d-712c2f2a2a99",
+              "name": "sobrenome",
+              "value": "={{ $node[\"Code\"].json[\"sobrenome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "5c805b4d-3a0b-4b75-8046-90cf3473a9ae",
+              "name": "RESPOSTA DA PESQUISA SOBRE O MEDO",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"Group #3\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "81748ada-13d0-4cf6-b07a-a91e125243ea",
+              "name": "RESPOSTA SOBRE O VALOR DA OBRA",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"Group #2\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "0c83ee64-1365-49df-a8eb-687fc8742541",
+              "name": "API-KEY",
+              "value": "5a0e47da-df8c-4f73-87e2-2a72993b790c",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4c868745-db2b-4e6b-bbaa-8dda53f4ee08",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1480,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/+{{ $json[\"telefone\"] }}/",
+        "options": {},
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $json[\"API-KEY\"] }}"
+            }
+          ]
+        }
+      },
+      "name": "Verificar na audiência1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        1660,
+        480
+      ],
+      "id": "2a9a3cde-8f4c-43f4-a040-7ed5f6a661fe",
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json[\"id\"]}}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "name": "Contato existe?1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1840,
+        480
+      ],
+      "id": "d304d02e-422e-4fae-814f-8fa2de9b2380"
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "phone",
+              "value": "={{ $node[\"Edit Fields\"].json[\"telefone\"] }}"
+            },
+            {
+              "name": "first_name",
+              "value": "={{ $node[\"Edit Fields\"].json[\"nome\"] }}"
+            },
+            {
+              "name": "last_name",
+              "value": "={{ $node[\"Edit Fields\"].json[\"sobrenome\"] ? $node[\"Edit Fields\"].json[\"sobrenome\"] : \".\" }}"
+            }
+          ]
+        },
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $node[\"Edit Fields\"].json[\"API-KEY\"] }}"
+            }
+          ]
+        }
+      },
+      "name": "Cadastrar contato1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        2040,
+        560
+      ],
+      "id": "fe12eba4-59d1-4e20-a159-c00e0eaab77c",
+      "executeOnce": true,
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/{{ $json[\"id\"] }}/custom_fields/3628783/",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "value",
+              "value": "={{ $node[\"Edit Fields\"].json[\"RESPOSTA DA PESQUISA SOBRE O MEDO\"] }}"
+            }
+          ]
+        },
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $node[\"Edit Fields\"].json[\"API-KEY\"] }}"
+            }
+          ]
+        }
+      },
+      "name": "campo_sobre_medo2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        2220,
+        560
+      ],
+      "id": "58eaa377-e2cd-4462-816b-ff6712fe9b5a",
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/{{ $node[\"Cadastrar contato1\"].json[\"id\"] }}/custom_fields/3628782/",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "value",
+              "value": "={{ $node[\"Edit Fields\"].json[\"RESPOSTA SOBRE O VALOR DA OBRA\"] }}"
+            }
+          ]
+        },
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $node[\"Edit Fields\"].json[\"API-KEY\"] }}"
+            }
+          ]
+        }
+      },
+      "name": "campo_valor_da_obra2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        2420,
+        560
+      ],
+      "id": "18ad4020-8e9d-433e-99e2-fe05a4028381",
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/{{ $json[\"id\"] }}/custom_fields/3628783/",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "value",
+              "value": "={{ $node[\"Edit Fields\"].json[\"RESPOSTA DA PESQUISA SOBRE O MEDO\"] }}"
+            }
+          ]
+        },
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $node[\"Edit Fields\"].json[\"API-KEY\"] }}"
+            }
+          ]
+        }
+      },
+      "name": "campo_sobre_medo3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        2040,
+        380
+      ],
+      "id": "12ef3b66-1f86-4459-9ec2-dcb2f1acd454",
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/{{ $node[\"Verificar na audiência1\"].json[\"id\"] }}/custom_fields/3628782/",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "value",
+              "value": "={{ $node[\"Edit Fields\"].json[\"RESPOSTA SOBRE O VALOR DA OBRA\"] }}"
+            }
+          ]
+        },
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $node[\"Edit Fields\"].json[\"API-KEY\"] }}"
+            }
+          ]
+        }
+      },
+      "name": "campo_valor_da_obra3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        2240,
+        380
+      ],
+      "id": "82b436f0-5e09-4077-a47c-fc536c70bb20",
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/{{ $node[\"Verificar na audiência1\"].json[\"id\"] || $node[\"Cadastrar contato1\"].json[\"id\"] }}/send_flow/\n\n\n",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $node[\"Edit Fields\"].json[\"API-KEY\"] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "flow",
+              "value": "6546161"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "dcc902ae-96d3-4aea-88be-a3c443d6cf8a",
+      "name": "Envia Fluxo - cliente1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        2620,
+        380
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "continueOnFail": true
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.engenheiromatheus.com",
+            "user-agent": "node",
+            "content-length": "340",
+            "accept": "*/*",
+            "accept-encoding": "br, gzip, deflate",
+            "accept-language": "*",
+            "baggage": "sentry-environment=production,sentry-release=8ad53debef16c49067528ac668468b4df80ea56e,sentry-public_key=e5dde145dc9f6d7a3a558ee8ee1ab3a5,sentry-trace_id=55bd0ed292c31a2c5fdf8f31ef8cb845,sentry-transaction=POST%20%2Fapi%2F%5B...trpc%5D,sentry-sampled=true,sentry-sample_rand=0.5440227068438408,sentry-sample_rate=1",
+            "content-type": "application/json",
+            "sec-fetch-mode": "cors",
+            "sentry-trace": "55bd0ed292c31a2c5fdf8f31ef8cb845-6e2a1145359f8a1e-1",
+            "x-forwarded-for": "18.169.127.123",
+            "x-forwarded-host": "webhook.engenheiromatheus.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "7e5b8bef7460",
+            "x-real-ip": "18.169.127.123",
+            "x-vercel-id": "gru1::9tqhh-1740420578729-cc6b8923835b"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "submittedAt": "2025-02-24T18:09:38.849Z",
+            "Nome e Telefone": "Marcos ",
+            "Nome e Telefone (1)": "27998210071",
+            "Group #1": "Ainda vou comprar um terreno",
+            "Group #2": "entre 300 e 500 mil reais",
+            "Group #3": "Contratar mão de obra errada",
+            "Group #4": "Sim",
+            "Group #5": "12131",
+            "Group #5 (1)": "123131",
+            "Group #5 (2)": "1321312",
+            "Group #5 (3)": "1321231"
+          },
+          "webhookUrl": "https://webhook.engenheiromatheus.com/webhook/eddedc59-b769-4ea1-9077-d8fc406208b6",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-02-25T05:25:07.739Z",
+      "updatedAt": "2025-02-25T05:25:07.739Z",
+      "id": "FXMPnK1YxoMBjtRs",
+      "name": "[Lista de Espera Abril]"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-26T19:59:07.944Z",
+  "versionId": "a225828b-daf6-4434-8e9f-bead5825c41b"
+}
