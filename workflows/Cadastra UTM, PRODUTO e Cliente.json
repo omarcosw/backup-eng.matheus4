@@ -1,0 +1,1046 @@
+{
+  "active": false,
+  "connections": {
+    "cliente": {
+      "main": [
+        [
+          {
+            "node": "cadastra cliente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "utm": {
+      "main": [
+        [
+          {
+            "node": "cadastra utm",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "produto": {
+      "main": [
+        [
+          {
+            "node": "cadastra produto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cadastra produto": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cadastra utm": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cadastra cliente": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cadastra cliente1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "user": {
+      "main": [
+        [
+          {
+            "node": "cadastra cliente1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "campanha": {
+      "main": [
+        [
+          {
+            "node": "cadastra CAMPANHA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "grupo": {
+      "main": [
+        [
+          {
+            "node": "cadastra grupo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cadastra CAMPANHA": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cadastra grupo": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-04T10:58:39.141Z",
+  "id": "TsIuOuwbWjiErkfW",
+  "meta": null,
+  "name": "Cadastra UTM, PRODUTO e Cliente",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "cliente",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        20
+      ],
+      "id": "7f2a5e99-c13f-4a88-b2ee-c9be820a6113",
+      "name": "cliente",
+      "webhookId": "0aed1e56-62d6-45b4-a9f9-117aaffd62e3"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "utm",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        180
+      ],
+      "id": "34d5e0c2-49aa-4add-8642-37d97718e6ca",
+      "name": "utm",
+      "webhookId": "0aed1e56-62d6-45b4-a9f9-117aaffd62e3"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "produto",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        340
+      ],
+      "id": "eb856f09-a2e3-4dfa-a887-47b36f23e819",
+      "name": "produto",
+      "webhookId": "0aed1e56-62d6-45b4-a9f9-117aaffd62e3"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "payment_gateway",
+          "mode": "list",
+          "cachedResultName": "payment_gateway"
+        },
+        "table": {
+          "__rl": true,
+          "value": "clients",
+          "mode": "list",
+          "cachedResultName": "clients"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "country": "={{ $json.body.country }}",
+            "created_at": "={{ $now }}",
+            "zip_code": "={{ $json.body.zip_code }}",
+            "state": "={{ $json.body.state.slice(0,2) }}",
+            "city": "={{ $json.body.city }}",
+            "address": "={{ $json.body.address }}",
+            "cpf_cnpj": "={{ $json.body.cpf_cnpj }}",
+            "phone": "={{ $json.body.phone }}",
+            "email": "={{ $json.body.email }}",
+            "last_name": "={{ $json.body.last_name }}",
+            "first_name": "={{ $json.body.first_name }}",
+            "ig_username": "={{ $json.body.instagram }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "client_id",
+              "displayName": "client_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "first_name",
+              "displayName": "first_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "last_name",
+              "displayName": "last_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cpf_cnpj",
+              "displayName": "cpf_cnpj",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "address",
+              "displayName": "address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "city",
+              "displayName": "city",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "state",
+              "displayName": "state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "zip_code",
+              "displayName": "zip_code",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "country",
+              "displayName": "country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "updated_at",
+              "displayName": "updated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "ig_username",
+              "displayName": "ig_username",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        220,
+        20
+      ],
+      "id": "695cb9ee-9224-423e-be26-bc670c00aa31",
+      "name": "cadastra cliente",
+      "credentials": {
+        "postgres": {
+          "id": "t9WQc0QxKJ6DIrC9",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "payment_gateway",
+          "mode": "list",
+          "cachedResultName": "payment_gateway"
+        },
+        "table": {
+          "__rl": true,
+          "value": "utm",
+          "mode": "list",
+          "cachedResultName": "utm"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "created_at": "={{ $now }}",
+            "utm_source": "={{ $json.body.utm_source }}",
+            "utm_campaign": "={{ $json.body.utm_campaign }}",
+            "utm_medium": "={{ $json.body.utm_medium }}",
+            "utm_content": "={{ $json.body.utm_content }}",
+            "utm_term": "={{ $json.body.utm_term }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "utm_id",
+              "displayName": "utm_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "updated_at",
+              "displayName": "updated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        220,
+        180
+      ],
+      "id": "53ae73ab-a4be-4682-90f0-1450c867ef6b",
+      "name": "cadastra utm",
+      "credentials": {
+        "postgres": {
+          "id": "t9WQc0QxKJ6DIrC9",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "payment_gateway",
+          "mode": "list",
+          "cachedResultName": "payment_gateway"
+        },
+        "table": {
+          "__rl": true,
+          "value": "products",
+          "mode": "list",
+          "cachedResultName": "products"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "created_at": "={{ $now }}",
+            "product_name": "={{ $json.body.produto }}",
+            "offer_code": "={{ $json.body['codigo da oferta'] }}",
+            "product_category": "={{ $json.body.ingresso }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "product_id",
+              "displayName": "product_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "product_name",
+              "displayName": "product_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "offer_code",
+              "displayName": "offer_code",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "updated_at",
+              "displayName": "updated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "product_category",
+              "displayName": "product_category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {
+          "replaceEmptyStrings": true
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        220,
+        340
+      ],
+      "id": "36e50905-894a-4711-b8bd-8d45f568d901",
+      "name": "cadastra produto",
+      "credentials": {
+        "postgres": {
+          "id": "t9WQc0QxKJ6DIrC9",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"client_id\": \"{{ $json.client_id }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        460,
+        20
+      ],
+      "id": "e98a9072-6fb6-462c-a7bb-5f0e0366f510",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"product_id\": \"{{ $json.product_id }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        460,
+        340
+      ],
+      "id": "2b5e5c0d-313c-413b-a5b9-b3de0ceeb514",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"utm_id\": \"{{ $json.utm_id }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        460,
+        180
+      ],
+      "id": "5eea48b8-a95c-47e5-a1d4-8e1a006edfe3",
+      "name": "Respond to Webhook2"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "sendflow",
+          "mode": "list",
+          "cachedResultName": "sendflow"
+        },
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "phone_number": "={{ $json.body.phone_number }}",
+            "joined_at": "={{ $json.body.joined }}",
+            "created_at": "={{ $now }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "user_id",
+              "displayName": "user_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "phone_number",
+              "displayName": "phone_number",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "joined_at",
+              "displayName": "joined_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "updated_at",
+              "displayName": "updated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        220,
+        540
+      ],
+      "id": "387b8132-7eeb-4a2b-8137-e307d3fde291",
+      "name": "cadastra cliente1",
+      "credentials": {
+        "postgres": {
+          "id": "t9WQc0QxKJ6DIrC9",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"user_id\": \"{{ $json.user_id }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        460,
+        540
+      ],
+      "id": "e218bc63-f23a-4306-8e7b-cd9ec8a8474e",
+      "name": "Respond to Webhook3"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"group_id\": \"{{ $json.group_id }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        460,
+        860
+      ],
+      "id": "90942015-67cb-4b86-923b-432509f176b0",
+      "name": "Respond to Webhook4"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"campaign_id\": \"{{ $json.campaign_id }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        460,
+        700
+      ],
+      "id": "fe4760a6-6e12-4b74-8cdf-6dacc2bd6861",
+      "name": "Respond to Webhook5"
+    },
+    {
+      "parameters": {
+        "content": "## SENDFLOW LANÇAMENTO\n",
+        "height": 520,
+        "width": 800,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -120,
+        500
+      ],
+      "id": "98ad873f-7600-475a-88d9-61521a5de0a3",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## PAYMENT GATEWAY\n",
+        "height": 520,
+        "width": 800,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -120,
+        -40
+      ],
+      "id": "d5a7ad12-183a-4370-8205-adae50121d21",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "usuario",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        540
+      ],
+      "id": "a1a892ee-d353-4f71-a6fe-7bee987fa987",
+      "name": "user",
+      "webhookId": "0aed1e56-62d6-45b4-a9f9-117aaffd62e3"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "campaign",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        700
+      ],
+      "id": "30d6aef9-703d-44ae-b699-e26145d97887",
+      "name": "campanha",
+      "webhookId": "0aed1e56-62d6-45b4-a9f9-117aaffd62e3"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "group",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        860
+      ],
+      "id": "afea8876-f9f7-47be-a2bd-6e3510d89705",
+      "name": "grupo",
+      "webhookId": "0aed1e56-62d6-45b4-a9f9-117aaffd62e3"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "sendflow",
+          "mode": "list",
+          "cachedResultName": "sendflow"
+        },
+        "table": {
+          "__rl": true,
+          "value": "campaigns",
+          "mode": "list",
+          "cachedResultName": "campaigns"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "campaign_name": "={{ $json.body.campaign_name }}",
+            "campaign": "={{ $json.body.campaign_id }}",
+            "created_at": "={{ $now }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "campaign_id",
+              "displayName": "campaign_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "campaign_name",
+              "displayName": "campaign_name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "updated_at",
+              "displayName": "updated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "campaign",
+              "displayName": "campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        220,
+        700
+      ],
+      "id": "814cf1de-2a04-43d0-9e77-072b995141f0",
+      "name": "cadastra CAMPANHA",
+      "credentials": {
+        "postgres": {
+          "id": "t9WQc0QxKJ6DIrC9",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "sendflow",
+          "mode": "list",
+          "cachedResultName": "sendflow"
+        },
+        "table": {
+          "__rl": true,
+          "value": "groups",
+          "mode": "list",
+          "cachedResultName": "groups"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "group_name": "={{ $json.body.nome_grupo }}",
+            "campaign_id": "={{ $json.body.id_campanha }}",
+            "created_at": "={{ $now }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "group_id",
+              "displayName": "group_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "group_name",
+              "displayName": "group_name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "campaign_id",
+              "displayName": "campaign_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "updated_at",
+              "displayName": "updated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ]
+        },
+        "options": {
+          "replaceEmptyStrings": true
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        220,
+        860
+      ],
+      "id": "778dab84-20c5-49de-9f3d-731dd7b8ed6d",
+      "name": "cadastra grupo",
+      "credentials": {
+        "postgres": {
+          "id": "t9WQc0QxKJ6DIrC9",
+          "name": "Postgres account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 6,
+  "updatedAt": "2025-02-20T03:25:50.940Z",
+  "versionId": "750d27c8-c53c-4070-b920-e7157495c95c"
+}
