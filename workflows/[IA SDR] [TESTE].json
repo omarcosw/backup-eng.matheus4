@@ -1,0 +1,209 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "setData",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-14T18:54:44.130Z",
+  "id": "yprjiv2dmoZtDuOJ",
+  "meta": null,
+  "name": "[IA SDR] [TESTE]",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "iasdr-teste",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -300,
+        -20
+      ],
+      "id": "440e4dc8-7413-4af6-b4ab-f337c175aefa",
+      "name": "Webhook",
+      "webhookId": "97720e1c-d66b-4792-858e-55755274d749"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fe683e57-fdb6-4d0c-8438-ff2aa7a39e41",
+              "name": "cliente.nome",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"pushName\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "ba542bfb-ee9d-4da4-885c-a99c4842b07c",
+              "name": "cliente.telefone",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"key\"][\"remoteJid\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "cf22e4c1-dfe6-4bf2-a3cd-f1b42bc9db1f",
+              "name": "wpp.instancia",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"instanceId\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "858b3a9d-69ec-44aa-9b0a-a3860076b76b",
+              "name": "wpp.apikey",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"apikey\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "43431ed0-3caa-4339-8a27-ed64911b7e6f",
+              "name": "wpp.url",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"server_url\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "df7bb272-90a7-4fe6-ba2b-04e727329700",
+              "name": "empresa.nome",
+              "value": "Projeto Eu Construtor",
+              "type": "string"
+            },
+            {
+              "id": "7574eb32-d32e-45be-9bd4-01608b872afa",
+              "name": "empresa.docid",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "8a09b503-8e32-4d5b-97e4-04af4113e633",
+              "name": "conteudo.tipo.mensagem",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"messageType\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "452112ca-2aa5-486b-8e95-04764e1a55cf",
+              "name": "conteudo.mensagem",
+              "value": "={{ \n  $json.body?.content || \n\n  $json.body?.data?.message?.extendedTextMessage?.text || \n  $json.body?.data?.message?.imageMessage?.caption || \n  $json.body?.data?.message?.conversation || \n  $json?.message?.text || \n  $json?.message?.caption || \n  null \n}}",
+              "type": "string"
+            },
+            {
+              "id": "590478a7-710f-47cf-a997-e0269ea01791",
+              "name": "conteudo.idMensagem",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"key\"][\"id\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "40aabbba-9a3b-4e7f-a7d2-e082dfe2d18b",
+              "name": "config.digitando",
+              "value": 1500,
+              "type": "number"
+            },
+            {
+              "id": "fa49c05b-2b48-4f0a-a444-0b28d1540c38",
+              "name": "config.deboucheTime",
+              "value": "4",
+              "type": "string"
+            },
+            {
+              "id": "11dc2334-d29f-42df-bd44-0cff383bbcc1",
+              "name": "config.linkPreview",
+              "value": false,
+              "type": "boolean"
+            },
+            {
+              "id": "df39e960-1656-46b2-a2fb-ff83055230c3",
+              "name": "config.fromMe",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"key\"][\"fromMe\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -80,
+        -20
+      ],
+      "id": "326c8dbf-a6f2-4f9b-963b-d20055b28e50",
+      "name": "setData"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.engenheiromatheus.com",
+            "user-agent": "axios/1.7.9",
+            "content-length": "950",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.18.0.1",
+            "x-forwarded-host": "webhook.engenheiromatheus.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "7e5b8bef7460",
+            "x-real-ip": "172.18.0.1"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "messages.upsert",
+            "instance": "AUTHP4",
+            "data": {
+              "key": {
+                "remoteJid": "5527998210071@s.whatsapp.net",
+                "fromMe": false,
+                "id": "3EB0CEBE8BF6CE2C9CFA6D"
+              },
+              "pushName": "Marcos Santana",
+              "status": "DELIVERY_ACK",
+              "message": {
+                "conversation": "Oi",
+                "messageContextInfo": {
+                  "deviceListMetadata": {
+                    "senderKeyHash": "WtmisaGoYEfBkw==",
+                    "senderTimestamp": "1741180701",
+                    "senderAccountType": "E2EE",
+                    "receiverAccountType": "E2EE",
+                    "recipientKeyHash": "EfAZpXPiJYI/MA==",
+                    "recipientTimestamp": "1741841788"
+                  },
+                  "deviceListMetadataVersion": 2,
+                  "messageSecret": "ETvgYpMAdIn+iRfdALKUyfsCG8PAXl+8pDuMTrazjCs="
+                }
+              },
+              "messageType": "conversation",
+              "messageTimestamp": 1742233150,
+              "instanceId": "666c18d1-3db9-48f3-9049-c3761f0788f8",
+              "source": "web"
+            },
+            "destination": "https://webhook.engenheiromatheus.com/webhook/iasdr-teste",
+            "date_time": "2025-03-17T14:39:10.669Z",
+            "sender": "5515991266755@s.whatsapp.net",
+            "server_url": "https://evolution.engenheiromatheus.com",
+            "apikey": "81A8E8BCA3EB-4DCD-ABE8-8404D069DEFA"
+          },
+          "webhookUrl": "https://webhook.engenheiromatheus.com/webhook/iasdr-teste",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-03-27T17:06:13.709Z",
+  "versionId": "4de3ccb2-ba0a-447a-bc5f-ebedb0e9a4e5"
+}
