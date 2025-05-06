@@ -1,0 +1,464 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insert_pesquisa": {
+      "main": [
+        []
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "insert_pesquisa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-21T18:58:03.989Z",
+  "id": "uaXz4B4F6ZPDN86d",
+  "meta": null,
+  "name": "🟠 Fluxo do Typeform - [CADASTRO] [PEC0325]",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "typeform-pec0325",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -220,
+        0
+      ],
+      "id": "59969386-de2f-4797-96f9-4cb165413f53",
+      "name": "Webhook",
+      "webhookId": "be4957b8-ead3-4b5c-a0dd-1efec9c85011"
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "pesquisas",
+          "mode": "list",
+          "cachedResultName": "pesquisas"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "pergunta1",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"Você quer *Construir* ou *Reformar*?\"] }}"
+            },
+            {
+              "column": "pergunta2",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"Você já tem o seu *terreno/lote*?\"] }}"
+            },
+            {
+              "column": "pergunta3",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"E você pretende começar a obra dentro dos próximos 12 meses?\"] }}"
+            },
+            {
+              "column": "pergunta4",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"Em qual fase da construção você está hoje?\"] }}"
+            },
+            {
+              "column": "pergunta5",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"Sem contar com o valor do terreno, *quanto você pretende investir na sua obra?\"] }}"
+            },
+            {
+              "column": "data_pesquisa",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "nome_pesquisa",
+              "value": "[CADASTRO] [PEC0325] [TYPEFORM]"
+            },
+            {
+              "column": "pergunta6",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"E qual a *sua maior preocupação* quando pensa na obra?\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c4598f85-58a3-4ce4-a64f-8c39de7e56cd",
+      "name": "insert_pesquisa",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        740,
+        0
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3f72da54-e36e-4206-a5b6-14b5d606a02b",
+              "name": "Você quer *Construir* ou *Reformar*?",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"form_response\"][\"answers\"][\"0\"][\"choice\"][\"label\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "7d1a7640-3b2b-4177-9372-cddc197cfb49",
+              "name": "Você já tem o seu *terreno/lote*?",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"form_response\"][\"answers\"][\"1\"][\"choice\"][\"label\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "75cc62d4-ec8e-440a-9691-3d80ba5663b3",
+              "name": "E você pretende começar a obra dentro dos próximos 12 meses?",
+              "value": "Sim",
+              "type": "string"
+            },
+            {
+              "id": "7d12ef44-d471-4149-af49-ef8489c36efb",
+              "name": "Em qual fase da construção você está hoje?",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"form_response\"][\"answers\"][\"3\"][\"choice\"][\"label\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "3552196a-047d-4058-8838-a293d8be734c",
+              "name": "Sem contar com o valor do terreno, *quanto você pretende investir na sua obra?",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"form_response\"][\"answers\"][\"4\"][\"choice\"][\"label\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "6930b45e-6fbf-48d0-872d-a32823dfb413",
+              "name": "E qual a *sua maior preocupação* quando pensa na obra?",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"form_response\"][\"answers\"][\"5\"][\"choice\"][\"label\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        360,
+        0
+      ],
+      "id": "1174bf2c-6143-4e0e-8321-d09de35120d0",
+      "name": "Edit Fields1"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.engenheiromatheus.com",
+            "user-agent": "Typeform Webhooks",
+            "content-length": "5242",
+            "accept-encoding": "gzip",
+            "content-type": "application/json",
+            "traceparent": "00-0903b28b6e96521c656086d96f50c5d2-d766a0b8396172c4-01",
+            "x-forwarded-for": "18.204.78.134",
+            "x-forwarded-host": "webhook.engenheiromatheus.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "7e5b8bef7460",
+            "x-real-ip": "18.204.78.134"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event_id": "01JPXRQE7ZHTEEC16VATQZZ2Q9",
+            "event_type": "form_response",
+            "form_response": {
+              "form_id": "yMAMTHk8",
+              "token": "le692wgzxehtxeodatle692wsfyikir9",
+              "landed_at": "2025-03-22T01:50:40Z",
+              "submitted_at": "2025-03-22T01:50:51Z",
+              "definition": {
+                "id": "yMAMTHk8",
+                "title": "Imersão da Construção: Pesquisa do Aluno",
+                "fields": [
+                  {
+                    "id": "e2mb85vA1GYu",
+                    "ref": "dc13e4c1-b6e4-4a1f-a4c2-b156168a113a",
+                    "type": "multiple_choice",
+                    "title": "Você quer *Construir* ou *Reformar*?",
+                    "properties": {},
+                    "choices": [
+                      {
+                        "id": "a348Cu8kCaRq",
+                        "ref": "c2a193b5-3dad-4afd-9f5c-2785522334c8",
+                        "label": "Quero *CONSTRUIR*"
+                      },
+                      {
+                        "id": "lRmlsEGO7cuv",
+                        "ref": "714f2f07-5c0e-4e74-97f6-83fe7daaf6c9",
+                        "label": "Quero *REFORMAR*"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "eScRXePHXaoO",
+                    "ref": "b109f21b-0b5f-4f01-aa55-1c395417b4d0",
+                    "type": "multiple_choice",
+                    "title": "Você já tem o seu *terreno/lote*?",
+                    "properties": {},
+                    "choices": [
+                      {
+                        "id": "RHGXXzbkLEFk",
+                        "ref": "85008bd7-f7e8-4162-b4c4-e8cbca2b2f67",
+                        "label": "*Sim*, já tenho o terreno para construir!"
+                      },
+                      {
+                        "id": "a6zsaF0VWDKu",
+                        "ref": "afe240a2-cd2d-4cf6-9e87-0600e03bed79",
+                        "label": "*Não*, ainda vou comprar"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "10AvbELYVlZA",
+                    "ref": "b189c165-7e27-412b-ae40-fd5f8bb9ec10",
+                    "type": "yes_no",
+                    "title": "*E você pretende começar a obra dentro dos próximos 12 meses?*",
+                    "properties": {}
+                  },
+                  {
+                    "id": "H3AAzFL01CLn",
+                    "ref": "2e93a3da-d3c3-4103-b9ea-ba01ef564e4d",
+                    "type": "multiple_choice",
+                    "title": "*Em qual fase da construção você está hoje?*",
+                    "properties": {},
+                    "choices": [
+                      {
+                        "id": "nr5vYhNUgvrY",
+                        "ref": "3bb3b658-758b-474a-950d-5f13c36207a7",
+                        "label": "Começarei os projetos em breve"
+                      },
+                      {
+                        "id": "AaSfM3CKk8SI",
+                        "ref": "5bfff9a8-de20-4a81-bc5b-d8777e64d957",
+                        "label": "Já tenho os projetos e iniciarei a obra"
+                      },
+                      {
+                        "id": "mVlzzmA3RYEf",
+                        "ref": "a0ba82b3-4daa-4648-9c62-4adfce904ca9",
+                        "label": "Estou com a obra em andamento"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "3NnPmjJXEGzz",
+                    "ref": "6fa2ad97-4f57-4b44-a65c-d056cb6e6709",
+                    "type": "multiple_choice",
+                    "title": "Sem contar com o valor do terreno, *quanto você pretende investir na sua obra?*",
+                    "properties": {},
+                    "choices": [
+                      {
+                        "id": "0MfUDj8SN7ZQ",
+                        "ref": "c9dbcf1c-524e-48ea-9e5a-de18e308ea48",
+                        "label": "entre *100 e 200 mil* reais"
+                      },
+                      {
+                        "id": "nIhPivPliypz",
+                        "ref": "67725a7a-7f1e-4790-b226-3a5a4757dbb2",
+                        "label": "entre *300 e 500 mil* reais"
+                      },
+                      {
+                        "id": "57X9CncwxtDK",
+                        "ref": "20e96b95-a166-4b32-afde-24021bf1cfc2",
+                        "label": "entre *500 mil e 1 milhão* de reais"
+                      },
+                      {
+                        "id": "18gN3nlXiuPs",
+                        "ref": "365619f3-d372-47f2-9cc1-a520e340ca97",
+                        "label": "entre *1 milhão e 2 milhões* de reais"
+                      },
+                      {
+                        "id": "Jwa1AcxdoJjE",
+                        "ref": "89e0968a-c160-45c3-ada0-754c89e533a7",
+                        "label": "*mais de 2 milhões *de reais"
+                      },
+                      {
+                        "id": "9VnPW9Ki92jq",
+                        "ref": "93429399-964b-4d68-b027-bca8a2834b65",
+                        "label": "Ainda não tenho noção..."
+                      }
+                    ]
+                  },
+                  {
+                    "id": "rl8mtkR5QVSE",
+                    "ref": "df11f144-f62c-48ac-accc-d972a7f01269",
+                    "type": "multiple_choice",
+                    "title": "E qual a *sua maior preocupação* quando pensa na obra?",
+                    "properties": {},
+                    "choices": [
+                      {
+                        "id": "iJsY3Otu3Maq",
+                        "ref": "1b68c2f4-9ba3-4b27-8510-17bf8829e66b",
+                        "label": "Gastar mais do que o planejado"
+                      },
+                      {
+                        "id": "CxhKlldUJKVr",
+                        "ref": "0759e365-9261-4598-b3ee-f722ce72dc1a",
+                        "label": "Não acabar a obra dentro do prazo"
+                      },
+                      {
+                        "id": "O1hIXGoiuUOy",
+                        "ref": "6bf96e4a-fd73-4ca9-a07d-09adc2c8bc27",
+                        "label": "Contratar mão de obra errada"
+                      },
+                      {
+                        "id": "7tyrTMueURnG",
+                        "ref": "9d84095f-86b0-47b9-be7f-a868dd33a5e2",
+                        "label": "Não conhecer os processos e ser enganado(a)"
+                      }
+                    ]
+                  }
+                ],
+                "endings": [
+                  {
+                    "id": "KdNxYzXMncOu",
+                    "ref": "2ab54d76-6050-4db8-9811-e2c099a5dde6",
+                    "title": "Seu presente está LIBERADO!\n\n*Basta apertar no botão aqui embaixo para acessar a AULA ESPECIAL sobre *_*CRONOGRAMA DE OBRAS*_*.*",
+                    "type": "thankyou_screen",
+                    "properties": {
+                      "description": "_Caso precise de alguma ajuda, basta chamar o time de Construtores de Sonhos no Whatsapp._\n\n*Aperte no botão para assistir 👇🏻*",
+                      "button_text": "ASSISTIR A AULA ESPECIAL",
+                      "show_button": true,
+                      "share_icons": false,
+                      "button_mode": "redirect",
+                      "redirect_url": "https://engenheiromatheus.com/imersao-aula-especial"
+                    }
+                  }
+                ]
+              },
+              "answers": [
+                {
+                  "type": "choice",
+                  "choice": {
+                    "id": "a348Cu8kCaRq",
+                    "label": "Quero *CONSTRUIR*",
+                    "ref": "c2a193b5-3dad-4afd-9f5c-2785522334c8"
+                  },
+                  "field": {
+                    "id": "e2mb85vA1GYu",
+                    "type": "multiple_choice",
+                    "ref": "dc13e4c1-b6e4-4a1f-a4c2-b156168a113a"
+                  }
+                },
+                {
+                  "type": "choice",
+                  "choice": {
+                    "id": "RHGXXzbkLEFk",
+                    "label": "*Sim*, já tenho o terreno para construir!",
+                    "ref": "85008bd7-f7e8-4162-b4c4-e8cbca2b2f67"
+                  },
+                  "field": {
+                    "id": "eScRXePHXaoO",
+                    "type": "multiple_choice",
+                    "ref": "b109f21b-0b5f-4f01-aa55-1c395417b4d0"
+                  }
+                },
+                {
+                  "type": "boolean",
+                  "boolean": true,
+                  "field": {
+                    "id": "10AvbELYVlZA",
+                    "type": "yes_no",
+                    "ref": "b189c165-7e27-412b-ae40-fd5f8bb9ec10"
+                  }
+                },
+                {
+                  "type": "choice",
+                  "choice": {
+                    "id": "AaSfM3CKk8SI",
+                    "label": "Já tenho os projetos e iniciarei a obra",
+                    "ref": "5bfff9a8-de20-4a81-bc5b-d8777e64d957"
+                  },
+                  "field": {
+                    "id": "H3AAzFL01CLn",
+                    "type": "multiple_choice",
+                    "ref": "2e93a3da-d3c3-4103-b9ea-ba01ef564e4d"
+                  }
+                },
+                {
+                  "type": "choice",
+                  "choice": {
+                    "id": "nIhPivPliypz",
+                    "label": "entre *300 e 500 mil* reais",
+                    "ref": "67725a7a-7f1e-4790-b226-3a5a4757dbb2"
+                  },
+                  "field": {
+                    "id": "3NnPmjJXEGzz",
+                    "type": "multiple_choice",
+                    "ref": "6fa2ad97-4f57-4b44-a65c-d056cb6e6709"
+                  }
+                },
+                {
+                  "type": "choice",
+                  "choice": {
+                    "id": "CxhKlldUJKVr",
+                    "label": "Não acabar a obra dentro do prazo",
+                    "ref": "0759e365-9261-4598-b3ee-f722ce72dc1a"
+                  },
+                  "field": {
+                    "id": "rl8mtkR5QVSE",
+                    "type": "multiple_choice",
+                    "ref": "df11f144-f62c-48ac-accc-d972a7f01269"
+                  }
+                }
+              ],
+              "ending": {
+                "id": "KdNxYzXMncOu",
+                "ref": "2ab54d76-6050-4db8-9811-e2c099a5dde6"
+              }
+            }
+          },
+          "webhookUrl": "https://webhook.engenheiromatheus.com/webhook/typeform-pec0325",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2025-03-19T04:46:33.880Z",
+      "updatedAt": "2025-03-19T04:46:33.880Z",
+      "id": "PxviFA6iloeaurvs",
+      "name": "[CADASTRO] [PEC0325]"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-03-25T03:50:57.220Z",
+  "versionId": "7ca8e30c-f872-4d76-80d1-cc62992e8f3b"
+}
