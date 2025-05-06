@@ -1,0 +1,390 @@
+{
+  "active": true,
+  "connections": {
+    "Gatilho Diário 7 AM": {
+      "main": [
+        [
+          {
+            "node": "Buscar Emails - Últimas 24 horas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buscar Emails - Últimas 24 horas": {
+      "main": [
+        [
+          {
+            "node": "Organizar Emails",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Organizar Emails": {
+      "main": [
+        [
+          {
+            "node": "Resumir Emails com Open AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resumir Emails com Open AI": {
+      "main": [
+        [
+          {
+            "node": "Enviar Resumo de Emails",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-12T05:03:16.155Z",
+  "id": "NCfTqpcAjOqz6D29",
+  "meta": null,
+  "name": "🤖 [RESUMO DE EMAILS] [MARCOS]",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## AGENDAR EVENTO TODAS AS MANHÃS",
+        "height": 434,
+        "width": 508,
+        "color": 6
+      },
+      "id": "5877e9f9-113b-4cd9-8a56-49e110fb31d9",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -740,
+        460
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## BUSCAR TODOS OS EMAILS",
+        "height": 513,
+        "width": 433,
+        "color": 6
+      },
+      "id": "0f573f42-3c01-49fa-87cd-142681a35770",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -200,
+        460
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## AGREGAR DADOS DOS EMAILS",
+        "height": 426,
+        "width": 447,
+        "color": 6
+      },
+      "id": "cbbf049e-f240-42f2-ae17-807e128f7c08",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        280,
+        460
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## ENVIAR RESUMO DOS EMAILS E AÇÕES",
+        "height": 600,
+        "width": 573,
+        "color": 6
+      },
+      "id": "90c74cef-45d2-45a3-a7fa-42e7b9dcecd1",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1380,
+        460
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## AGENTE DE IA",
+        "height": 426,
+        "width": 447,
+        "color": 4
+      },
+      "id": "e29e7e57-a843-4017-b059-a0614668ac1a",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        800,
+        460
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "- Inicia o fluxo de trabalho todos os dias às 7h.\n- Ajuste a hora se desejar que o fluxo de trabalho seja executado em um horário diferente.",
+        "height": 100,
+        "width": 400,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -720,
+        720
+      ],
+      "typeVersion": 1,
+      "id": "1a702b16-6bc3-4650-bcaf-84ab8395bca8",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "content": "- Busca todos os e-mails recebidos nas últimas 24 horas do endereço de e-mail",
+        "height": 80,
+        "width": 340,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -180,
+        780
+      ],
+      "typeVersion": 1,
+      "id": "7f2609f7-7e4d-4722-9a2c-32943ec48192",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 7
+            }
+          ]
+        }
+      },
+      "id": "ea5bc445-3da6-4cd4-aafa-956a6d7bbd0a",
+      "name": "Gatilho Diário 7 AM",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        -540,
+        560
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "returnAll": true,
+        "filters": {
+          "q": "={{ \n  (() => {\n    const yesterday = new Date();\n    yesterday.setDate(yesterday.getDate() - 1);\n    return `SEU EMAIL AQUI after:${yesterday.getFullYear()}/${(yesterday.getMonth() + 1).toString().padStart(2, '0')}/${yesterday.getDate().toString().padStart(2, '0')}`;\n  })()\n}}"
+        }
+      },
+      "id": "76d22642-5f94-4098-8c6c-cbe22fd44981",
+      "name": "Buscar Emails - Últimas 24 horas",
+      "type": "n8n-nodes-base.gmail",
+      "position": [
+        -20,
+        560
+      ],
+      "webhookId": "20f1d11d-8a69-43f3-9323-33eaf1b3b600",
+      "typeVersion": 2.1,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "Oke1a0chUjOyTBep",
+          "name": "Gmail - marcosvini.daroch@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "include": "specifiedFields",
+        "fieldsToInclude": "id, From, To, CC, snippet",
+        "options": {}
+      },
+      "id": "7a3c9ea3-b447-4df8-8104-db878cc2a6e6",
+      "name": "Organizar Emails",
+      "type": "n8n-nodes-base.aggregate",
+      "position": [
+        440,
+        560
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Leia este resumo por e-mail e identifique todos os detalhes principais mencionados, quaisquer problemas específicos a serem observados e itens de ação.\nQuero todas as respostas em pt-br\nUse este formato para saída\n{\n  \"summary_of_emails\": [\n    \"Point 1\",\n    \"Point 2\",\n    \"Point 3\"\n  ],\n  \"actions\": [\n    {\n      \"name\": \"Name 1\",\n      \"action\": \"Action 1\"\n    },\n    {\n      \"name\": \"Name 1\",\n      \"action\": \"Action 2\"\n    },\n    {\n      \"name\": \"Name 2\",\n      \"action\": \"Action 3\"\n    }\n  ]\n}\n\nInput Data:\n\n {{ $json.data.toJsonString() }}\n\n"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "id": "2a2345b2-48e3-4507-b6ad-8827bb5a76fd",
+      "name": "Resumir Emails com Open AI",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "position": [
+        900,
+        560
+      ],
+      "typeVersion": 1.7,
+      "credentials": {
+        "openAiApi": {
+          "id": "TJb8CFfEt4SRVUHE",
+          "name": "OpenAi - rec. de vendas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "marcosvini.daroch@gmail.com",
+        "subject": "=AUTHP4 Agente - {{ new Date(new Date().setDate(new Date().getDate() - 1)).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) }}-00:00 to {{ new Date(new Date().setDate(new Date().getDate())).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) }}-07:00AM",
+        "message": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Resumo do Email - marcosvini.daroch@gmail.com</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            margin: 0;\n            padding: 0;\n            background-color: #f9f9f9;\n            color: #333;\n            line-height: 1.6;\n        }\n        .email-container {\n            max-width: 600px;\n            margin: 20px auto;\n            background: #ffffff;\n            border: 1px solid #ddd;\n            border-radius: 10px;\n            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n        }\n        .email-header {\n            background-color: #0073e6;\n            color: #fff;\n            padding: 20px;\n            text-align: center;\n            border-top-left-radius: 10px;\n            border-top-right-radius: 10px;\n        }\n        .email-header h1 {\n            margin: 0;\n            font-size: 24px;\n        }\n        .email-content {\n            padding: 20px;\n        }\n        .section-title {\n            font-size: 20px;\n            color: #0073e6;\n            margin-bottom: 10px;\n        }\n        ul {\n            list-style: none;\n            padding: 0;\n        }\n        ul li {\n            margin: 10px 0;\n            padding: 10px;\n            background: #f4f4f4;\n            border-left: 4px solid #0073e6;\n            border-radius: 5px;\n        }\n        .action-item {\n            font-weight: bold;\n            margin: 5px 0;\n        }\n        .action-detail {\n            margin-left: 10px;\n        }\n        .email-footer {\n            background-color: #0073e6;\n            color: #fff;\n            text-align: center;\n            padding: 10px;\n            font-size: 14px;\n            border-bottom-left-radius: 10px;\n            border-bottom-right-radius: 10px;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"email-container\">\n        <div class=\"email-header\">\n            <h1>Resumo dos Emails</h1>\n        </div>\n        <div class=\"email-content\">\n            <div>\n                <h2 class=\"section-title\">Resumo dos Emails:</h2>\n                <ul>\n                    {{ $json.message.content.summary_of_emails.map(email => `<li>${email}</li>`).join('') }}\n                </ul>\n            </div>\n            <div>\n                <h2 class=\"section-title\">Ações:</h2>\n                <ul>\n                    {{ $json.message.content.actions.map(action => `\n                        <li>\n                            <span class=\"action-item\">${action.name}:</span>\n                            <span class=\"action-detail\">${action.action}</span>\n                        </li>\n                    `).join('') }}\n                </ul>\n            </div>\n        </div>\n        <div class=\"email-footer\">\n            <p>Gerado por Agente de IA Resumo de Emails <br /> Uma produção de @marcostsant\n        </div>\n    </div>\n</body>\n</html>",
+        "options": {
+          "appendAttribution": false,
+          "ccList": "",
+          "replyToSenderOnly": false
+        }
+      },
+      "id": "288c4649-7734-4648-ab81-b80473226616",
+      "name": "Enviar Resumo de Emails",
+      "type": "n8n-nodes-base.gmail",
+      "position": [
+        1540,
+        560
+      ],
+      "webhookId": "83f2aeb9-7b6c-4336-b5ed-8acfcd259850",
+      "typeVersion": 2.1,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "Oke1a0chUjOyTBep",
+          "name": "Gmail - marcosvini.daroch@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "Organiza os dados de e-mail obtidos, extraindo campos como remetente, destinatário, CC e um snippet de visualização.",
+        "height": 100,
+        "width": 400,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        300,
+        760
+      ],
+      "typeVersion": 1,
+      "id": "d73f8eba-129c-45b8-9cf7-20b9c046c5b5",
+      "name": "Sticky Note10"
+    },
+    {
+      "parameters": {
+        "content": "- Agente de IA para resumir os emails para envio. Altere o PROMPT se necessário.",
+        "height": 80,
+        "width": 340,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        840,
+        780
+      ],
+      "typeVersion": 1,
+      "id": "1fe23376-0e37-4537-8143-1077fbf89700",
+      "name": "Sticky Note11"
+    },
+    {
+      "parameters": {
+        "content": "- Envia o relatório resumido por e-mail aos destinatários com um layout HTML estilizado.\n- Atualize os campos “sendTo” e “ccList” com os endereços de e-mail dos seus destinatários.\n- Altere no HTML onde diz \"SEU EMAIL AQUI\"",
+        "height": 140,
+        "width": 400,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1420,
+        740
+      ],
+      "typeVersion": 1,
+      "id": "439fc4b7-406b-406f-854e-2c1d84914b6c",
+      "name": "Sticky Note12"
+    },
+    {
+      "parameters": {
+        "content": "- O CAMPO \"CCLIST\" É OPCIONAL\n- ALTERE TODOS OS CAMPOS DE EMAIL, VERIFIQUE CORRETAMENTE ESTE PASSO EM TODOS OS CAMPOS. PROCURE POR \"SEU EMAIL AQUI\"\n- CUIDADO PARA NÃO ALTERAR OS ESPAÇOS ANTES E DEPOIS DAS MUDANÇAS",
+        "height": 140,
+        "width": 480
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1420,
+        900
+      ],
+      "typeVersion": 1,
+      "id": "60990ddd-291c-4ea1-ae9e-91789c03be76",
+      "name": "Sticky Note13"
+    },
+    {
+      "parameters": {
+        "content": "- altere seu email no código do nó\n- Mantenha o espaço depois do email e a aspa única que vem antes",
+        "height": 80,
+        "width": 340
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -180,
+        880
+      ],
+      "typeVersion": 1,
+      "id": "8a0c2bd8-ed69-4e65-b932-3131fea4e3f8",
+      "name": "Sticky Note15"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Gatilho Diário 7 AM": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2025-03-12T05:15:29.126Z",
+      "updatedAt": "2025-03-12T05:15:29.126Z",
+      "id": "k9J2r5XFkaTZiHcS",
+      "name": "Estudos"
+    },
+    {
+      "createdAt": "2025-03-12T05:15:23.307Z",
+      "updatedAt": "2025-03-12T05:15:23.307Z",
+      "id": "HVN3TiHmJKiq4g4V",
+      "name": "Marcos"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-03-12T05:15:35.941Z",
+  "versionId": "82726cc6-a65c-4b6d-996b-ffeaddc7ef71"
+}
