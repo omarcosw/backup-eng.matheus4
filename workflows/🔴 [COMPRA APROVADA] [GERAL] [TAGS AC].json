@@ -1,0 +1,1430 @@
+{
+  "active": true,
+  "connections": {
+    "dados_da_compra": {
+      "main": [
+        [
+          {
+            "node": "entra_na_fila_compra_aprovada1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "trata_dados": {
+      "main": [
+        [
+          {
+            "node": "dados_da_compra",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chega_da_fila": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Listar Campos Personalizados de Contatos da Conta": {
+      "main": [
+        [
+          {
+            "node": "Listar Tags da Conta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Listar Campos Personalizados de Contatos da Conta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "atualiza_contato_no_ac2": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Stop and Error2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "atualiza_contato_no_ac2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "cria_contato_no_ac2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cria_contato_no_ac2": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Stop and Error3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "tag_compra_aprovada",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "tag_compra_aprovada1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "tag_compra_aprovada2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "tag_compra_aprovada3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "tag_compra_aprovada4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "tag_compra_aprovada5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "tag_compra_aprovada6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "tag_compra_aprovada7",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "tag_compra_aprovada12",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "tag_compra_aprovada9",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "tag_compra_aprovada10",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "tag_compra_aprovada11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "compra_aprovada": {
+      "main": [
+        [
+          {
+            "node": "trata_dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-05T19:19:04.996Z",
+  "id": "0wlRA2fqubpVbR3g",
+  "meta": null,
+  "name": "🔴 [COMPRA APROVADA] [GERAL] [TAGS AC]",
+  "nodes": [
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "nome",
+              "value": "={{ $json[\"nome\"] }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $json[\"email\"] }}"
+            },
+            {
+              "name": "cpf/cnpj",
+              "value": "={{ $node[\"compra_aprovada\"].json[\"body\"][\"data\"][\"buyer\"][\"document\"] }}"
+            },
+            {
+              "name": "nome_produto",
+              "value": "={{ $json[\"produto\"][\"nome\"] }}"
+            },
+            {
+              "name": "transaction_id",
+              "value": "={{ $json[\"compra\"][\"transaction_id\"] }}"
+            },
+            {
+              "name": "product_id",
+              "value": "={{ $json[\"produto\"][\"id\"] }}"
+            },
+            {
+              "name": "preco",
+              "value": "={{ $json[\"compra\"][\"preco_total\"] }}"
+            },
+            {
+              "name": "gateway_comission",
+              "value": "={{ $json[\"comissoes\"][\"0\"][\"valor\"] }}"
+            },
+            {
+              "name": "currency",
+              "value": "={{ $json[\"comissoes\"][\"0\"][\"moeda\"] }}"
+            },
+            {
+              "name": "payment_method",
+              "value": "={{ $json[\"pagamento\"][\"metodo\"] }}"
+            },
+            {
+              "name": "trans_status",
+              "value": "={{ $json[\"compra\"][\"status\"] }}"
+            },
+            {
+              "name": "data_compra",
+              "value": "={{ $now.format('yyyy-MM-dd HH:mm') }}"
+            },
+            {
+              "name": "parcelas",
+              "value": "={{ $json[\"pagamento\"][\"parcelas\"] }}"
+            },
+            {
+              "name": "cep",
+              "value": "={{ $node[\"compra_aprovada\"].json[\"body\"][\"data\"][\"buyer\"][\"address\"][\"zipcode\"] }}"
+            },
+            {
+              "name": "utm_source",
+              "value": "={{ $node[\"trata_dados\"].json[\"utm_source\"] }}"
+            },
+            {
+              "name": "utm_campaign",
+              "value": "={{ $node[\"trata_dados\"].json[\"utm_campaign\"] }}"
+            },
+            {
+              "name": "utm_medium",
+              "value": "={{ $node[\"trata_dados\"].json[\"utm_medium\"] }}"
+            },
+            {
+              "name": "utm_content",
+              "value": "={{ $node[\"trata_dados\"].json[\"utm_content\"] }}"
+            },
+            {
+              "name": "utm_term",
+              "value": "={{ $node[\"trata_dados\"].json[\"utm_content\"] }}"
+            },
+            {
+              "name": "telefone",
+              "value": "={{ $json[\"telefone\"] }}"
+            },
+            {
+              "name": "subscription_code",
+              "value": "={{ $json[\"produto\"][\"ucode\"] }}"
+            },
+            {
+              "name": "sobrenome",
+              "value": "={{ $json[\"sobrenome\"] }}"
+            },
+            {
+              "name": "comissao_produtor",
+              "value": "={{ $json[\"comissoes\"][\"1\"][\"valor\"] }}"
+            },
+            {
+              "name": "oferta",
+              "value": "={{ $node[\"compra_aprovada\"].json[\"body\"][\"data\"][\"purchase\"][\"offer\"][\"code\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8c1bc32f-40f7-45f8-81a1-202566d75c68",
+      "name": "dados_da_compra",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        800,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Pegando os dados do body do webhook\nconst data = $json[\"body\"][\"data\"];\n\n// Função para formatar o email em letras minúsculas\nconst email = data.buyer.email.toLowerCase();\n\n// Função para separar o nome e sobrenome\nconst nomeCompleto = data.buyer.name.split(\" \");\nconst nome = nomeCompleto[0]; // Primeiro nome\nconst sobrenome = nomeCompleto.slice(1).join(\" \"); // O restante é o sobrenome\n\n// Função para remover espaços e caracteres do número de telefone, deixando apenas os números\nlet phoneNumber = data.buyer.checkout_phone.replace(/\\D/g, '');\n\n// Adicionando \"55\" na frente do telefone, caso não tenha\nif (!phoneNumber.startsWith(\"55\")) {\n    phoneNumber = \"55\" + phoneNumber;\n}\n\n// Dados da compra\nconst produtoNome = data.product.name;\nconst produtoId = data.product.id;\nconst produtoUcode = data.product.ucode;\nconst preçoTotal = data.purchase.price.value;\nconst statusCompra = data.purchase.status;\nconst transactionId = data.purchase.transaction;\n\n// Dados do pagamento\nconst metodoPagamento = data.purchase.payment.type;\nconst numeroParcelas = data.purchase.payment.installments_number;\n\n// Dados do endereço do comprador\nconst endereco = data.buyer.address;\nconst enderecoCompleto = `${endereco.address}, ${endereco.number} - ${endereco.neighborhood}, ${endereco.city} - ${endereco.state}, ${endereco.zipcode}`;\n\n// Dados das comissões\nconst comissoes = data.commissions.map(commission => ({\n    fonte: commission.source,\n    valor: commission.value,\n    moeda: commission.currency_value\n}));\n\n// Dados do produtor\nconst produtorNome = data.producer.name;\n\n// UTM's\nconst utm_source = data.utm_source || '';\nconst utm_campaign = data.utm_campaign || '';\nconst utm_medium = data.utm_medium || '';\nconst utm_content = data.utm_content || '';\nconst utm_term = data.utm_term || '';\n\n// Retornando todos os dados organizados\nreturn {\n  email: email,\n  nome: nome,\n  sobrenome: sobrenome,\n  telefone: phoneNumber,\n  produto: {\n    nome: produtoNome,\n    id: produtoId,\n    ucode: produtoUcode\n  },\n  compra: {\n    preco_total: preçoTotal,\n    status: statusCompra,\n    transaction_id: transactionId\n  },\n  pagamento: {\n    metodo: metodoPagamento,\n    parcelas: numeroParcelas\n  },\n  endereco: enderecoCompleto,\n  comissoes: comissoes,\n  produtor: produtorNome,\n  utm_source: utm_source,\n  utm_campaign: utm_campaign,\n  utm_medium: utm_medium,\n  utm_content: utm_content,\n  utm_term: utm_term\n};\n"
+      },
+      "id": "9bf9e04b-6829-427d-b1c5-463556534115",
+      "name": "trata_dados",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        580,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "queue": "[COMPRA APROVADA] [PEC GERAL] 1",
+        "options": {
+          "arguments": {
+            "argument": [
+              {
+                "key": "x-queue-type",
+                "value": "quorum"
+              }
+            ]
+          },
+          "acknowledge": "executionFinishesSuccessfully",
+          "jsonParseBody": "={{ true }}",
+          "parallelMessages": 3
+        }
+      },
+      "id": "78b1b66a-abd7-462f-b77d-d7b13ee60181",
+      "name": "chega_da_fila",
+      "type": "n8n-nodes-base.rabbitmqTrigger",
+      "typeVersion": 1,
+      "position": [
+        380,
+        580
+      ],
+      "credentials": {
+        "rabbitmq": {
+          "id": "DG2PMHOSIQ0AOSwK",
+          "name": "RabbitMQ account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://{{ $node[\"Set\"].json[\"url_api_activecampaign\"] }}.api-us1.com/api/3/tags?limit=1000&search={{ $node[\"Set\"].json[\"tag_procurada\"] }}",
+        "options": {},
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "Api-Token",
+              "value": "={{ $node[\"Set\"].json[\"Api-Token\"] }}"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        }
+      },
+      "name": "Listar Tags da Conta",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        780,
+        400
+      ],
+      "id": "e08ae335-f076-409d-8999-77c5c37432f3"
+    },
+    {
+      "parameters": {
+        "content": "# PARTE 2",
+        "height": 850,
+        "width": 3137
+      },
+      "id": "d2a336ef-8fb7-421d-b305-6bf3e240c96f",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        220,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://{{ $json[\"url_api_activecampaign\"] }}.api-us1.com/api/3/fields?limit=1000",
+        "options": {},
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "Api-Token",
+              "value": "={{ $node[\"Set\"].json[\"Api-Token\"] }}"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        }
+      },
+      "name": "Listar Campos Personalizados de Contatos da Conta",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        580,
+        400
+      ],
+      "id": "1d0a0fe5-a8bd-45f6-a40c-67dd4f156563"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "Api-Token",
+              "value": "3696e725bdca0e3ce53536c4ba23c8ecee77def78a7a229c5a44780b59bc088e2be9edb5"
+            },
+            {
+              "name": "url_api_activecampaign",
+              "value": "infomakers98413"
+            },
+            {
+              "name": "tag_procurada",
+              "value": "compra aprovada"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "631b5db7-ffcd-44ef-9123-f9e7b10c67ff",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        380,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "279",
+        "contactId": "={{ $json[\"id\"] }}"
+      },
+      "id": "7ef11071-d5c3-48b8-aded-14f99b7ed0f0",
+      "name": "tag_compra_aprovada",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        2160,
+        380
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign - eng. matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://pertengenharia65979.api-us1.com/api/3/contacts",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Api-Token",
+              "value": "b419d201280255cfb5949e0ba2a37254603f256450715cb36ea5a74ecae2b608669123f9"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9b125b38-eb90-4b82-a89c-a8234e482f55",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        580,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "errorMessage": "An error ocurred!"
+      },
+      "id": "02b95ce7-9e92-43c2-8f80-3b4a062f344d",
+      "name": "Stop and Error3",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        1480,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "errorMessage": "An error ocurred!"
+      },
+      "id": "6dca41a0-1e1d-4d89-a6aa-8851e268c6c7",
+      "name": "Stop and Error2",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        1480,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "contactId": "={{ $json[\"contacts\"][\"0\"][\"id\"] }}",
+        "updateFields": {
+          "email": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}",
+          "firstName": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome\"] }}",
+          "lastName": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"sobrenome\"] }}",
+          "phone": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"telefone\"] }}"
+        }
+      },
+      "id": "e8bfd05c-de3a-44ac-af4c-122b33eeb23b",
+      "name": "atualiza_contato_no_ac2",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        440
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign - eng. matheus"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "2130aa22-e19a-4662-8a2e-b43d36facf6d",
+              "leftValue": "={{ $json[\"contacts\"][\"0\"][\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "9c06d85b-f2c7-494e-b746-a3e51919b569",
+      "name": "If2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        820,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "email": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}",
+        "updateIfExists": true,
+        "additionalFields": {
+          "firstName": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome\"] }}",
+          "lastName": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"sobrenome\"] }}",
+          "phone": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"telefone\"] }}"
+        }
+      },
+      "id": "64a885f4-ac64-425f-a3b1-1659f1e23c7e",
+      "name": "cria_contato_no_ac2",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        720
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign - eng. matheus"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "content": "# PARTE 1",
+        "height": 347,
+        "width": 1133,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        220,
+        -180
+      ],
+      "typeVersion": 1,
+      "id": "e3c97e30-9fb2-463f-84e7-9020a38ec920",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome_produto\"] }}",
+                    "rightValue": "Imersão Atômica",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Imersão Atômica"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c94c0de4-f8aa-40fc-b15a-56423fe7a3ad",
+                    "leftValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome_produto\"] }}",
+                    "rightValue": "ATOMIC",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "ATOMIC"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9da6184e-ec63-4c55-b4ea-48be5b6aa884",
+                    "leftValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome_produto\"] }}",
+                    "rightValue": "Clube PEC",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Clube PEC"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "5eb19d8c-b688-4910-aedb-701afb7ea537",
+                    "leftValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome_produto\"] }}",
+                    "rightValue": "Imersão Presencial - Obra Acelerada",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Imersão Presencial - Obra Acelerada"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "ee1e1913-a773-4a2d-a896-0d2981ff5ba5",
+                    "leftValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome_produto\"] }}",
+                    "rightValue": "Instagram Atômico",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Instagram Atômico"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "cf1e21bd-709a-408c-a2da-c18fdb8add69",
+                    "leftValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome_produto\"] }}",
+                    "rightValue": "Mastermind CONSILIUM",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Mastermind CONSILIUM"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "e13b9a0e-9d05-481c-b6e7-d4b94c1e21d7",
+                    "leftValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome_produto\"] }}",
+                    "rightValue": "Obra passo-a-passo",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Obra passo-a-passo"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "df4b880e-4c2c-450a-9028-461f164a502c",
+                    "leftValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome_produto\"] }}",
+                    "rightValue": "Planner da Construção",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Planner da Construção"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "44b5777c-ca9d-4c86-a149-e6f115ce5517",
+                    "leftValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome_produto\"] }}",
+                    "rightValue": "Projeto Eu Construtor",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Projeto Eu Construtor"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "e8653982-5662-4a4b-b05c-f647b4d2d032",
+                    "leftValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome_produto\"] }}",
+                    "rightValue": "Raio-x da Casa Matriz",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Raio-x da Casa Matriz"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "95e5513f-f09f-4797-9850-76f07549a59c",
+                    "leftValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome_produto\"] }}",
+                    "rightValue": "Segredo das Casas Incríveis",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Segredo das Casas Incríveis"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "1a32a839-0e03-415a-b60a-1332ac6ea7e7",
+                    "leftValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome_produto\"] }}",
+                    "rightValue": "Tutores da Construção no WhatsApp",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Tutores da Construção no WhatsApp"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1740,
+        380
+      ],
+      "id": "f851cede-113e-45e0-9255-ab1b12b6aac2",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "280",
+        "contactId": "={{ $json[\"id\"] }}"
+      },
+      "id": "191cb13b-7140-4e71-aa54-4cc47d09b064",
+      "name": "tag_compra_aprovada1",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        2440,
+        380
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign - eng. matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "281",
+        "contactId": "={{ $json[\"id\"] }}"
+      },
+      "id": "b7526b27-a1e6-4e95-8849-0d2a5cf405e4",
+      "name": "tag_compra_aprovada2",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        2760,
+        380
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign - eng. matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "282",
+        "contactId": "={{ $json[\"id\"] }}"
+      },
+      "id": "10cd285f-7f43-4a97-b3ac-fbe01ac0045a",
+      "name": "tag_compra_aprovada3",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        3060,
+        380
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign - eng. matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "283",
+        "contactId": "={{ $json[\"id\"] }}"
+      },
+      "id": "e0c96ff6-4b11-4fa2-8af9-491b35c6ecbe",
+      "name": "tag_compra_aprovada4",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        2160,
+        560
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign - eng. matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "284",
+        "contactId": "={{ $json[\"id\"] }}"
+      },
+      "id": "43b46c0b-f9ad-483d-a338-a4a20cc87b69",
+      "name": "tag_compra_aprovada5",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        2440,
+        560
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign - eng. matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "285",
+        "contactId": "={{ $json[\"id\"] }}"
+      },
+      "id": "f9a0f1cf-04d3-453a-9ebf-09fcfdadb21f",
+      "name": "tag_compra_aprovada6",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        2760,
+        560
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign - eng. matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "286",
+        "contactId": "={{ $json[\"id\"] }}"
+      },
+      "id": "d9d8d974-9364-4180-9da0-ac119cf398a2",
+      "name": "tag_compra_aprovada7",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        3060,
+        560
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign - eng. matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "288",
+        "contactId": "={{ $json[\"id\"] }}"
+      },
+      "id": "d0062987-2dc5-4c5f-b572-f248a1773c88",
+      "name": "tag_compra_aprovada9",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        2440,
+        740
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign - eng. matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "289",
+        "contactId": "={{ $json[\"id\"] }}"
+      },
+      "id": "fdf8512d-978c-46ac-a2db-0dfc54c4ce3a",
+      "name": "tag_compra_aprovada10",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        2740,
+        740
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign - eng. matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "290",
+        "contactId": "={{ $json[\"id\"] }}"
+      },
+      "id": "89a7cc6b-db56-4aaf-8548-8640ef086369",
+      "name": "tag_compra_aprovada11",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        3060,
+        740
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign - eng. matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "queue": "[COMPRA APROVADA] [PEC GERAL] 1",
+        "options": {
+          "arguments": {
+            "argument": [
+              {
+                "key": "x-queue-type",
+                "value": "quorum"
+              }
+            ]
+          },
+          "durable": true
+        }
+      },
+      "id": "d6608b2b-d7e5-458d-993f-d528377cafb7",
+      "name": "entra_na_fila_compra_aprovada1",
+      "type": "n8n-nodes-base.rabbitmq",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        -60
+      ],
+      "credentials": {
+        "rabbitmq": {
+          "id": "DG2PMHOSIQ0AOSwK",
+          "name": "RabbitMQ account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "287",
+        "contactId": "={{ $json[\"id\"] }}"
+      },
+      "id": "db3dfc21-2a91-42ba-b374-5dfbfc76bc52",
+      "name": "tag_compra_aprovada12",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        2160,
+        700
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign - eng. matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "336ffcc7-561b-4581-8f18-3e64153932c3",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        320,
+        -60
+      ],
+      "id": "6b2642c8-2215-4518-9494-44fcf44bcc17",
+      "name": "compra_aprovada",
+      "webhookId": "3222edac-864a-44ba-a5a0-0ff4fd4e2ed6"
+    }
+  ],
+  "pinData": {
+    "chega_da_fila": [
+      {
+        "json": {
+          "fields": {
+            "consumerTag": "amq.ctag-FWA6cOyLYJjeb8eii5NFOw",
+            "deliveryTag": 1,
+            "redelivered": false,
+            "exchange": "",
+            "routingKey": "[COMPRA APROVADA] [PEC GERAL]"
+          },
+          "properties": {
+            "headers": {}
+          },
+          "content": {
+            "nome": "Juliano",
+            "email": "juliano_fabricio@yahoo.com.br",
+            "cpf/cnpj": "29201753861",
+            "nome_produto": "Imersão Atômica",
+            "transaction_id": "HP2438614899",
+            "product_id": 4561690,
+            "preco": 97,
+            "oferta": "9vab7gp7",
+            "gateway_comission": 7.21,
+            "currency": "BRL",
+            "payment_method": "PIX",
+            "trans_status": "APPROVED",
+            "data_compra": "2024-10-07T17:09:42.000Z",
+            "data_garantia": "2024-10-07T17:07:06.000Z",
+            "parcelas": 1,
+            "cep": "85601090",
+            "utm_source": "instagram",
+            "utm_campaign": "IA1024",
+            "utm_medium": "bio",
+            "utm_content": "matheus",
+            "utm_term": "matheus",
+            "telefone": "5546991361900",
+            "sobrenome": "Alarcon Fabrício",
+            "comissao_produtor": 87.3
+          }
+        }
+      }
+    ],
+    "compra_aprovada": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.engenheiromatheus.com",
+            "user-agent": "Jodd HTTP",
+            "content-length": "1830",
+            "content-type": "application/json",
+            "x-forwarded-for": "54.156.74.230",
+            "x-forwarded-host": "webhook.engenheiromatheus.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "7e5b8bef7460",
+            "x-hotmart-hottok": "1NQDYfnDlDPt8NTrIqBEZoL7VuqOo17defb61a-1f64-4ad4-8be0-2f387f6f0ce2",
+            "x-real-ip": "54.156.74.230",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "data": {
+              "product": {
+                "has_co_production": false,
+                "name": "Projeto Eu Construtor",
+                "id": 2885409,
+                "ucode": "ca89e225-0a5a-4905-9d34-4d4df822f272"
+              },
+              "commissions": [
+                {
+                  "currency_value": "BRL",
+                  "source": "MARKETPLACE",
+                  "value": 0.2
+                },
+                {
+                  "currency_value": "BRL",
+                  "source": "PRODUCER",
+                  "value": 0
+                }
+              ],
+              "purchase": {
+                "original_offer_price": {
+                  "currency_value": "BRL",
+                  "value": 1
+                },
+                "subscription_anticipation_purchase": false,
+                "checkout_country": {
+                  "iso": "BR",
+                  "name": "Brasil"
+                },
+                "order_bump": {
+                  "is_order_bump": false
+                },
+                "approved_date": 1741202422000,
+                "offer": {
+                  "code": "2h2caqo1"
+                },
+                "order_date": 1741202347000,
+                "price": {
+                  "currency_value": "BRL",
+                  "value": 1
+                },
+                "payment": {
+                  "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2FQv4dCWLKTq26NvKiAjceCw5204000053039865802BR5902HT6009SAO+PAULO62070503***6304A044",
+                  "pix_expiration_date": 1741375147000,
+                  "installments_number": 1,
+                  "type": "PIX",
+                  "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/Qv4dCWLKTq26NvKiAjceCw5204000053039865802BR5902HT6009SAO PAULO62070503***6304A044"
+                },
+                "full_price": {
+                  "currency_value": "BRL",
+                  "value": 1
+                },
+                "invoice_by": "HOTMART",
+                "transaction": "HP2079762588",
+                "status": "APPROVED"
+              },
+              "affiliates": [
+                {
+                  "affiliate_code": "U93090861G",
+                  "name": "46.963.460 VANESSA BARBOSA DE ALMEIDA"
+                }
+              ],
+              "producer": {
+                "name": "Plest Empreendimentos Digitais e Marketing Spe Ltda"
+              },
+              "buyer": {
+                "address": {
+                  "zipcode": "86058306",
+                  "country": "Brasil",
+                  "number": "42",
+                  "address": "Rua Maria Ciste Zequim",
+                  "city": "Londrina",
+                  "state": "PR",
+                  "neighborhood": "Esperança",
+                  "country_iso": "BR"
+                },
+                "document": "88162575200",
+                "name": "João Victor Rodrigues ",
+                "checkout_phone": "43991208818",
+                "email": "eu@victorodrigues.com"
+              }
+            },
+            "id": "6db736be-b90f-4097-ada2-34fc4e24a9de",
+            "creation_date": 1741202425557,
+            "event": "PURCHASE_APPROVED",
+            "version": "2.0.0"
+          },
+          "webhookUrl": "https://webhook.engenheiromatheus.com/webhook/336ffcc7-561b-4581-8f18-3e64153932c3",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2025-03-05T19:25:01.816Z",
+  "versionId": "099e2468-db8d-42dd-9950-aa6a5671c2fa"
+}
