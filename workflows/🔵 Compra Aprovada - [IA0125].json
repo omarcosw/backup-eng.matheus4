@@ -1,0 +1,2811 @@
+{
+  "active": false,
+  "connections": {
+    "chega_da_fila": {
+      "main": [
+        []
+      ]
+    },
+    "Listar Campos Personalizados de Contatos da Conta": {
+      "main": [
+        [
+          {
+            "node": "Listar Tags da Conta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Listar Campos Personalizados de Contatos da Conta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "tag_compra_aprovada": {
+      "main": [
+        [
+          {
+            "node": "aguarda 2seg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "search_id_manychat_by_phone": {
+      "main": [
+        [
+          {
+            "node": "existe no manychat?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cria_contato_manychat": {
+      "main": [
+        [
+          {
+            "node": "send_message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "atualiza_contato_manychat": {
+      "main": [
+        [
+          {
+            "node": "send_message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "existe no manychat?": {
+      "main": [
+        [
+          {
+            "node": "cria_contato_manychat",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "atualiza_contato_manychat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "envia_fluxo_boas_vindas1": {
+      "main": [
+        [
+          {
+            "node": "fim1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "nao_encontrou_telefone1": {
+      "main": [
+        [
+          {
+            "node": "cria_contato_manychat2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "atualiza_contato_manychat2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "atualiza_contato_manychat2": {
+      "main": [
+        [
+          {
+            "node": "envia_fluxo_boas_vindas1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "procura_id_manychat_pelo_telefone1": {
+      "main": [
+        [
+          {
+            "node": "nao_encontrou_telefone1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verifica_whatsapp1": {
+      "main": [
+        [
+          {
+            "node": "Stop and Error2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "envia_fluxo_boas_vindas1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cria_contato_manychat2": {
+      "main": [
+        [
+          {
+            "node": "verifica_whatsapp1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "trata_dados": {
+      "main": [
+        [
+          {
+            "node": "dados_da_compra2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "dados_da_compra2": {
+      "main": [
+        [
+          {
+            "node": "entra_na_fila_compra_aprovada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "trata_dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "atualiza_contato_no_ac2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "cria_contato_no_ac2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cria_contato_no_ac2": {
+      "main": [
+        [
+          {
+            "node": "tag_compra_aprovada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "atualiza_contato_no_ac2": {
+      "main": [
+        [
+          {
+            "node": "tag_compra_aprovada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "qual ingresso": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica se a UTM existe1": {
+      "main": [
+        [
+          {
+            "node": "junta id utm",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "cadastra utm",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca produto": {
+      "main": [
+        [
+          {
+            "node": "Verifica se o produto já é cadastrado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca utm": {
+      "main": [
+        [
+          {
+            "node": "Verifica se a UTM existe1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica se o produto já é cadastrado": {
+      "main": [
+        [
+          {
+            "node": "junta id product",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "cadastra produto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca cliente1": {
+      "main": [
+        [
+          {
+            "node": "verifica se cliente existe",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cadastra utm": {
+      "main": [
+        [
+          {
+            "node": "busca id utm",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cadastra produto": {
+      "main": [
+        [
+          {
+            "node": "busca id product",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cadastra produto1": {
+      "main": [
+        [
+          {
+            "node": "busca id client",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verifica se cliente existe": {
+      "main": [
+        [
+          {
+            "node": "atualiza cliente",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "cadastra produto1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca id utm": {
+      "main": [
+        [
+          {
+            "node": "junta id utm",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "junta id utm": {
+      "main": [
+        [
+          {
+            "node": "aguarda 2Seg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca id product": {
+      "main": [
+        [
+          {
+            "node": "junta id product",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca id client": {
+      "main": [
+        [
+          {
+            "node": "junta id client",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "junta id product": {
+      "main": [
+        [
+          {
+            "node": "Aguarda 2Seg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "junta id client": {
+      "main": [
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait3": {
+      "main": [
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "aguarda 2seg": {
+      "main": [
+        [
+          {
+            "node": "busca utm",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aguarda 2Seg": {
+      "main": [
+        [
+          {
+            "node": "busca cliente1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "aguarda 2Seg": {
+      "main": [
+        [
+          {
+            "node": "busca produto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "atualiza cliente": {
+      "main": [
+        [
+          {
+            "node": "junta id client",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-03T01:03:14.720Z",
+  "id": "t9daUwmu9lfDKad1",
+  "meta": null,
+  "name": "🔵 Compra Aprovada - [IA0125]",
+  "nodes": [
+    {
+      "parameters": {
+        "queue": "[COMPRA APROVADA] [IA0125]",
+        "options": {
+          "arguments": {
+            "argument": [
+              {
+                "key": "x-queue-type",
+                "value": "quorum"
+              }
+            ]
+          },
+          "acknowledge": "executionFinishesSuccessfully",
+          "jsonParseBody": "={{ true }}",
+          "parallelMessages": 3
+        }
+      },
+      "id": "b1ad2051-89f4-4666-b2fe-6059c3739008",
+      "name": "chega_da_fila",
+      "type": "n8n-nodes-base.rabbitmqTrigger",
+      "typeVersion": 1,
+      "position": [
+        -660,
+        1360
+      ],
+      "credentials": {
+        "rabbitmq": {
+          "id": "DG2PMHOSIQ0AOSwK",
+          "name": "RabbitMQ account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://{{ $node[\"Set\"].json[\"url_api_activecampaign\"] }}.api-us1.com/api/3/tags?limit=1000&search={{ $node[\"Set\"].json[\"tag_procurada\"] }}",
+        "options": {},
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "Api-Token",
+              "value": "={{ $node[\"Set\"].json[\"Api-Token\"] }}"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        }
+      },
+      "name": "Listar Tags da Conta",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        580,
+        320
+      ],
+      "id": "5d40fb0c-2170-428e-ac6d-5c926c5b6554"
+    },
+    {
+      "parameters": {
+        "content": "## Para consulta\n \nUtilize os Nodes Abaixo para consultar os IDs dos Campos e Tags no ActiveCampaign",
+        "height": 407.6377565498652,
+        "width": 747.0856205721786
+      },
+      "id": "0a5556c5-b205-4d5e-ab1f-186a3c42d966",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        80,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://{{ $json[\"url_api_activecampaign\"] }}.api-us1.com/api/3/fields?limit=1000",
+        "options": {},
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "Api-Token",
+              "value": "={{ $node[\"Set\"].json[\"Api-Token\"] }}"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        }
+      },
+      "name": "Listar Campos Personalizados de Contatos da Conta",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        380,
+        320
+      ],
+      "id": "dee38bcd-b851-4c1b-945b-67a301639447"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "Api-Token",
+              "value": "b419d201280255cfb5949e0ba2a37254603f256450715cb36ea5a74ecae2b608669123f9"
+            },
+            {
+              "name": "url_api_activecampaign",
+              "value": "pertengenharia65979"
+            },
+            {
+              "name": "tag_procurada",
+              "value": "compra aprovada"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cd1c2360-42a5-484a-a9a1-a816deac5882",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        180,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "247",
+        "contactId": "={{ $json[\"id\"] }}"
+      },
+      "id": "cbfa29df-90a2-4aff-b849-a5c207c087e0",
+      "name": "tag_compra_aprovada",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        300,
+        1380
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://pertengenharia65979.api-us1.com/api/3/contacts",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"E-mail do Cliente\"] }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Api-Token",
+              "value": "b419d201280255cfb5949e0ba2a37254603f256450715cb36ea5a74ecae2b608669123f9"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "3e0860e5-f5c6-46cd-a7f4-bd92f9f4add7",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -300,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.manychat.com/fb/subscriber/findBySystemField",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Telefone do Cliente\"] }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer 522428:bf33faa042c21594be282375af4cef12"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ca8a871b-e418-4068-8b20-0c2102d3442d",
+      "name": "search_id_manychat_by_phone",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1600,
+        4060
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.manychat.com/fb/subscriber/createSubscriber",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "authorization",
+              "value": "Bearer 522428:bf33faa042c21594be282375af4cef12"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "first_name",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Firts_name\"] }}"
+            },
+            {
+              "name": "last_name",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Last_name\"] }}"
+            },
+            {
+              "name": "has_opt_in_sms",
+              "value": "true"
+            },
+            {
+              "name": "has_opt_in_email",
+              "value": "true"
+            },
+            {
+              "name": "consent_phrase",
+              "value": "Olá, aqui é da Automagic Bots. Posso ter seu contato?"
+            },
+            {
+              "name": "whatsapp_phone",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Telefone do Cliente\"] }}"
+            },
+            {
+              "name": "phone",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Telefone do Cliente\"] }}"
+            },
+            {
+              "name": "Email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"E-mail do Cliente\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b0c7c7e1-7030-456c-9378-342bea723ae0",
+      "name": "cria_contato_manychat",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2040,
+        3940
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.manychat.com/fb/subscriber/updateSubscriber",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "authorization",
+              "value": "Bearer 522428:bf33faa042c21594be282375af4cef12"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "first_name",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Telefone do Cliente\"] }}"
+            },
+            {
+              "name": "last_name",
+              "value": "."
+            },
+            {
+              "name": "has_opt_in_sms",
+              "value": "true"
+            },
+            {
+              "name": "has_opt_in_email",
+              "value": "true"
+            },
+            {
+              "name": "consent_phrase",
+              "value": "Olá, aqui é da Bilhon. Posso ter seu contato?"
+            },
+            {
+              "name": "whatsapp_phone",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Telefone do Cliente\"] }}"
+            },
+            {
+              "name": "phone",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Telefone do Cliente\"] }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"E-mail do Cliente\"] }}"
+            },
+            {
+              "name": "subscriber_id",
+              "value": "={{ $json[\"data\"][\"id\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "55e15979-e950-4b5b-bd63-6396a3ebb972",
+      "name": "atualiza_contato_manychat",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2040,
+        4180
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $node[\"search_id_manychat_by_phone\"].json[\"data\"] }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "e6a707fd-42a2-4860-9259-17ed41ce8d92",
+      "name": "existe no manychat?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1820,
+        4060
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.manychat.com/fb/sending/sendFlow",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "authorization",
+              "value": "Bearer 522428:bf33faa042c21594be282375af4cef12"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "flow_ns",
+              "value": "content20240906140059_806160"
+            },
+            {
+              "name": "subscriber_id",
+              "value": "={{ $json[\"data\"][\"id\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d55674f4-e1b5-4ec4-843b-063523d47210",
+      "name": "send_message",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2340,
+        4080
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.manychat.com/fb/sending/sendFlow",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "authorization",
+              "value": "=Bearer 522428:bf33faa042c21594be282375af4cef12"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "flow_ns",
+              "value": "=content20240906140059_806160"
+            },
+            {
+              "name": "subscriber_id",
+              "value": "={{ $json[\"data\"][\"id\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "80c110fe-0ef5-4dfa-98ac-1217788a46c2",
+      "name": "envia_fluxo_boas_vindas1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1020,
+        3220
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $node[\"procura_id_manychat_pelo_telefone1\"].json[\"data\"] }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "91f31a89-3535-40b3-9d0e-00ccb6fbf16b",
+      "name": "nao_encontrou_telefone1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        60,
+        3040
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.manychat.com/fb/subscriber/updateSubscriber",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "authorization",
+              "value": "=Bearer 522428:bf33faa042c21594be282375af4cef12"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "first_name",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Firts_name\"] }}"
+            },
+            {
+              "name": "last_name",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Last_name\"] }}"
+            },
+            {
+              "name": "has_opt_in_sms",
+              "value": "true"
+            },
+            {
+              "name": "has_opt_in_email",
+              "value": "true"
+            },
+            {
+              "name": "consent_phrase",
+              "value": "Olá, aqui é o Matheus. Posso ter seu contato?"
+            },
+            {
+              "name": "whatsapp_phone",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Telefone do Cliente\"] }}"
+            },
+            {
+              "name": "phone",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Telefone do Cliente\"] }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"E-mail do Cliente\"] }}"
+            },
+            {
+              "name": "subscriber_id",
+              "value": "={{ $json[\"data\"][\"id\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "66161a2d-d421-4888-8db0-a91947ccee40",
+      "name": "atualiza_contato_manychat2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        340,
+        3300
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "errorMessage": "An error ocurred!"
+      },
+      "id": "a13e0311-3ea3-48be-8104-da35e1fce67d",
+      "name": "Stop and Error2",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        840,
+        2980
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "04153067-a758-4565-8ca5-4d740880f2e3",
+      "name": "fim1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        3000
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.manychat.com/fb/subscriber/findByCustomField",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "field_id",
+              "value": "=11749335"
+            },
+            {
+              "name": "field_value",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Telefone do Cliente\"] }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer 522428:bf33faa042c21594be282375af4cef12"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d2cf478f-1d45-449e-adf4-7edce887f2f9",
+      "name": "procura_id_manychat_pelo_telefone1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1300,
+        3420
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "0b43ebf2-3b3b-4851-b3ff-a91252309dfd",
+              "leftValue": "={{ $node[\"cria_contato_manychat2\"].json[\"error\"][\"message\"] }}",
+              "rightValue": "The input value is not a valid WhatsApp ID",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "c8f9b4dd-e678-432f-87a6-35e9b1cdd6ec",
+      "name": "verifica_whatsapp1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        540,
+        3080
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.manychat.com/fb/subscriber/createSubscriber",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "authorization",
+              "value": "=Bearer 522428:bf33faa042c21594be282375af4cef12"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "first_name",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Firts_name\"] }}"
+            },
+            {
+              "name": "last_name",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Last_name\"] }}"
+            },
+            {
+              "name": "has_opt_in_sms",
+              "value": "true"
+            },
+            {
+              "name": "has_opt_in_email",
+              "value": "true"
+            },
+            {
+              "name": "consent_phrase",
+              "value": "Olá, aqui é o Matheus. Posso ter seu contato?"
+            },
+            {
+              "name": "phone",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Telefone do Cliente\"] }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"E-mail do Cliente\"] }}"
+            },
+            {
+              "name": "whatsapp_phone",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Telefone do Cliente\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1063d8a7-5cfe-4b54-b320-22a9d59cbc57",
+      "name": "cria_contato_manychat2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        340,
+        3080
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "queue": "[COMPRA APROVADA] [IA0125]",
+        "options": {
+          "arguments": {
+            "argument": [
+              {
+                "key": "x-queue-type",
+                "value": "quorum"
+              }
+            ]
+          },
+          "durable": true
+        }
+      },
+      "id": "419163ba-e0f5-4d48-8d9a-8f5429b46e5a",
+      "name": "entra_na_fila_compra_aprovada",
+      "type": "n8n-nodes-base.rabbitmq",
+      "typeVersion": 1,
+      "position": [
+        660,
+        -80
+      ],
+      "credentials": {
+        "rabbitmq": {
+          "id": "DG2PMHOSIQ0AOSwK",
+          "name": "RabbitMQ account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Input do webhook\nconst data = $json[\"body\"][\"data\"];\n\n// Função para formatar o email em minúsculo\nconst email = data.buyer.email ? data.buyer.email.toLowerCase() : \"\";\n\n// Função para separar nome e sobrenome\nconst fullName = data.buyer.name ? data.buyer.name.trim().split(\" \") : [\"\"];\n\n// Separar o nome e sobrenome\nconst firstName = fullName[0];\nconst lastName = fullName.length > 1 ? fullName.slice(1).join(\" \") : \"\";\n\n// Função para formatar o telefone\nlet phone = data.buyer.checkout_phone ? data.buyer.checkout_phone : \"\";\nif (phone && !phone.startsWith(\"55\")) {\n  phone = \"55\" + phone;\n}\n\n// Função para extrair e organizar as UTM's do campo \"sck\"\nconst sck = data.purchase.origin && data.purchase.origin.sck ? data.purchase.origin.sck : \"\";\n\nfunction extractUtm(sck) {\n  // Se a string \"sck\" estiver vazia, retornar valores em branco\n  if (!sck) {\n    return {\n      utm_source: \"\",\n      utm_campaign: \"\",\n      utm_medium: \"\",\n      utm_content: \"\",\n      utm_term: \"\"\n    };\n  }\n\n  // Dividir a string \"sck\" em partes separadas por \"-\"\n  const parts = sck.split(\"-\");\n\n  // Remover qualquer item que esteja vazio ou não relevante\n  const filteredParts = parts.filter(part => part.trim() !== \"\");\n\n  // Verificar se há UTM's suficientes na string\n  if (filteredParts.length >= 5) {\n    const utm_source = filteredParts[0];\n    const utm_campaign = filteredParts[1];\n    const utm_medium = filteredParts[2];\n    const utm_content = filteredParts[3];\n    const utm_term = filteredParts[4];\n\n    return {\n      utm_source: utm_source,\n      utm_campaign: utm_campaign,\n      utm_medium: utm_medium,\n      utm_content: utm_content,\n      utm_term: utm_term\n    };\n  } else {\n    // Caso não haja informações suficientes, retorna valores vazios\n    return {\n      utm_source: \"\",\n      utm_campaign: \"\",\n      utm_medium: \"\",\n      utm_content: \"\",\n      utm_term: \"\"\n    };\n  }\n}\n\n// Extrair e organizar as UTM's do campo \"sck\"\nconst utmData = extractUtm(sck);\n\n// Outras informações do webhook\nconst productName = data.product && data.product.name ? data.product.name : \"\";\nconst productId = data.product && data.product.id ? data.product.id : \"\";\nconst transactionId = data.purchase && data.purchase.transaction ? data.purchase.transaction : \"\";\nconst purchaseStatus = data.purchase && data.purchase.status ? data.purchase.status : \"\";\nconst purchasePrice = data.purchase.price && data.purchase.price.value ? data.purchase.price.value : \"\";\nconst currency = data.purchase.price && data.purchase.price.currency_value ? data.purchase.price.currency_value : \"\";\nconst paymentType = data.purchase.payment && data.purchase.payment.type ? data.purchase.payment.type : \"\";\nconst installments = data.purchase.payment && data.purchase.payment.installments_number ? data.purchase.payment.installments_number : \"\";\nconst approvedDate = data.purchase && data.purchase.approved_date ? new Date(data.purchase.approved_date).toISOString() : \"\";\nconst orderDate = data.purchase && data.purchase.order_date ? new Date(data.purchase.order_date).toISOString() : \"\";\n\n// Dados de endereço\nconst address = data.buyer.address || {};\nconst zipcode = address.zipcode || \"\";\nconst country = address.country || \"\";\nconst street = address.address || \"\";\nconst city = address.city || \"\";\nconst state = address.state || \"\";\nconst neighborhood = address.neighborhood || \"\";\nconst complement = address.complement || \"\";\nconst countryIso = address.country_iso || \"\";\n\n// Endereço completo formatado\nconst fullAddress = `${street}, ${neighborhood}, ${complement ? complement + \", \" : \"\"}${city} - ${state}, ${zipcode}, ${country}`.trim();\n\n// Saída completa formatada\nreturn {\n  email: email,\n  firstName: firstName,\n  lastName: lastName,\n  phone: phone,\n  productName: productName,\n  productId: productId,\n  transactionId: transactionId,\n  purchaseStatus: purchaseStatus,\n  purchasePrice: purchasePrice,\n  currency: currency,\n  paymentType: paymentType,\n  installments: installments,\n  approvedDate: approvedDate,\n  orderDate: orderDate,\n  utm_source: utmData.utm_source,\n  utm_campaign: utmData.utm_campaign,\n  utm_medium: utmData.utm_medium,\n  utm_content: utmData.utm_content,\n  utm_term: utmData.utm_term,\n  zipcode: zipcode,\n  country: country,\n  street: street,\n  city: city,\n  state: state,\n  neighborhood: neighborhood,\n  complement: complement,\n  countryIso: countryIso,\n  fullAddress: fullAddress\n};"
+      },
+      "id": "2bdc72c7-9b75-4ba3-a15a-da22391e2fd8",
+      "name": "trata_dados",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        280,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Nome do Cliente",
+              "value": "={{ $json[\"firstName\"] }}"
+            },
+            {
+              "name": "E-mail do Cliente",
+              "value": "={{ $json[\"email\"] }}"
+            },
+            {
+              "name": "cpf/cnpj",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"data\"][\"buyer\"][\"document\"] }}"
+            },
+            {
+              "name": "nome_produto",
+              "value": "={{ $json[\"productName\"] }}"
+            },
+            {
+              "name": "transaction_id",
+              "value": "={{ $json[\"transactionId\"] }}"
+            },
+            {
+              "name": "product_id",
+              "value": "={{ $json[\"productId\"] }}"
+            },
+            {
+              "name": "value",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"data\"][\"purchase\"][\"original_offer_price\"][\"value\"] }}"
+            },
+            {
+              "name": "offer_code",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"data\"][\"purchase\"][\"offer\"][\"code\"] }}"
+            },
+            {
+              "name": "gateway_comission",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"data\"][\"commissions\"][\"0\"][\"value\"] }}"
+            },
+            {
+              "name": "currency",
+              "value": "={{ $json[\"currency\"] }}"
+            },
+            {
+              "name": "payment_method",
+              "value": "={{ $json[\"paymentType\"] }}"
+            },
+            {
+              "name": "trans_status",
+              "value": "={{ $json[\"purchaseStatus\"] }}"
+            },
+            {
+              "name": "conversion_date",
+              "value": "={{ $json[\"approvedDate\"] }}"
+            },
+            {
+              "name": "installments",
+              "value": "={{ $json[\"installments\"] }}"
+            },
+            {
+              "name": "cep",
+              "value": "={{ $json[\"zipcode\"] }}"
+            },
+            {
+              "name": "utm_source",
+              "value": "={{ $json[\"utm_source\"] }}"
+            },
+            {
+              "name": "utm_campaign",
+              "value": "={{ $json[\"utm_campaign\"] }}"
+            },
+            {
+              "name": "utm_medium",
+              "value": "={{ $json[\"utm_medium\"] }}"
+            },
+            {
+              "name": "utm_content",
+              "value": "={{ $json[\"utm_content\"] }}"
+            },
+            {
+              "name": "utm_term",
+              "value": "={{ $json[\"utm_term\"] }}"
+            },
+            {
+              "name": "Telefone do Cliente",
+              "value": "={{ $json[\"phone\"] }}"
+            },
+            {
+              "name": "subscription_code"
+            },
+            {
+              "name": "Firts_name",
+              "value": "={{ $json[\"firstName\"] }}"
+            },
+            {
+              "name": "Last_name",
+              "value": "={{ $json[\"lastName\"] }}"
+            },
+            {
+              "name": "Endereço Completo",
+              "value": "={{ $json[\"fullAddress\"] }}"
+            },
+            {
+              "name": "Cidade",
+              "value": "={{ $json[\"city\"] }}"
+            },
+            {
+              "name": "Estado",
+              "value": "={{ $json[\"state\"] }}"
+            },
+            {
+              "name": "Endereço",
+              "value": "={{ $json[\"street\"] }}"
+            },
+            {
+              "name": "Bairro",
+              "value": "={{ $json[\"neighborhood\"] }}"
+            },
+            {
+              "name": "Número",
+              "value": "={{ $json[\"complement\"] }}"
+            },
+            {
+              "name": "País",
+              "value": "={{ $json[\"country\"] }}"
+            },
+            {
+              "name": "comissão_time",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"data\"][\"commissions\"][\"1\"][\"value\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "717af5a0-bc25-4282-95c9-43c24a9302e6",
+      "name": "dados_da_compra2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        460,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ia0125",
+        "options": {}
+      },
+      "id": "ecccde57-e907-4a7f-a9d6-38c69c5f21d2",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        80,
+        -80
+      ],
+      "webhookId": "c1415ff7-6c00-4398-b405-b3f0a2e4db0e"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "2130aa22-e19a-4662-8a2e-b43d36facf6d",
+              "leftValue": "={{ $json[\"contacts\"][\"0\"][\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "7e364cd3-94df-4324-856c-4475f1ad8347",
+      "name": "If2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -100,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "contactId": "={{ $json[\"contacts\"][\"0\"][\"id\"] }}",
+        "updateFields": {
+          "fieldValues": {
+            "property": [
+              {
+                "field": "=399",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_source\"] }}"
+              },
+              {
+                "field": "=400",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_campaign\"] }}"
+              },
+              {
+                "field": "=401",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_term\"] }}"
+              },
+              {
+                "field": "=402",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_medium\"] }}"
+              },
+              {
+                "field": "=403",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_content\"] }}"
+              },
+              {
+                "field": "=404",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"conversion_date\"] }}"
+              },
+              {
+                "field": "=407",
+                "value": "={{ $('qual ingresso').item.json.content.ingresso }}"
+              }
+            ]
+          },
+          "email": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"E-mail do Cliente\"] }}",
+          "firstName": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Firts_name\"] }}",
+          "lastName": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Last_name\"] }}",
+          "phone": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Telefone do Cliente\"] }}"
+        }
+      },
+      "id": "27c4aff8-dcd5-4e7c-aeb0-f35d4ddd7d6a",
+      "name": "atualiza_contato_no_ac2",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        80,
+        1240
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "email": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"E-mail do Cliente\"] }}",
+        "updateIfExists": true,
+        "additionalFields": {
+          "fieldValues": {
+            "property": [
+              {
+                "field": "=399",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_source\"] }}"
+              },
+              {
+                "field": "=400",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_campaign\"] }}"
+              },
+              {
+                "field": "=401",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_term\"] }}"
+              },
+              {
+                "field": "=402",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_medium\"] }}"
+              },
+              {
+                "field": "=403",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_content\"] }}"
+              },
+              {
+                "field": "=404",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"conversion_date\"] }}"
+              },
+              {
+                "field": "=407",
+                "value": "={{ $('qual ingresso').item.json.content.ingresso }}"
+              }
+            ]
+          },
+          "firstName": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Firts_name\"] }}",
+          "lastName": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Last_name\"] }}",
+          "phone": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Telefone do Cliente\"] }}"
+        }
+      },
+      "id": "deeabc62-c55b-4820-bf5a-936a7d8190e8",
+      "name": "cria_contato_no_ac2",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        80,
+        1480
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Processo Inicial do CRM para compradores do ingressos",
+        "height": 580,
+        "width": 1240,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -720,
+        1200
+      ],
+      "id": "18272aba-7b6b-4db0-955a-ed269b5914d6",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "18ab0f03-07ed-483a-90ba-3c19afa5ec75",
+              "leftValue": "={{ $json.utm_id.toString() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        880,
+        1380
+      ],
+      "id": "96e90587-62ca-4be6-b692-d44517da0d61",
+      "name": "Verifica se a UTM existe1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "18ab0f03-07ed-483a-90ba-3c19afa5ec75",
+              "leftValue": "={{ $json.product_id.toString() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1700,
+        1400
+      ],
+      "id": "887e3533-e481-46be-9873-dd37721ff1eb",
+      "name": "Verifica se o produto já é cadastrado"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obter o JSON original do fluxo anterior\nlet originalData = $json; // Captura o JSON recebido\n\n// Verifica se o originalData é um array\nif (Array.isArray(originalData)) {\n  // Se for um array, itera e adiciona o campo \"ingresso\"\n  originalData = originalData.map(item => {\n    // Obter o código da oferta (offer_code) do conteúdo\n    let offerCode = item.content.offer_code;\n\n    // Adicionar o campo \"ingresso\" ao conteúdo com base no código da oferta\n    if (offerCode === \"z33tispk\") {\n      item.content.ingresso = \"Ingresso Premium\";\n    } else if (offerCode === \"kowddkf6\") {\n      item.content.ingresso = \"Ingresso VIP\";\n    } else {\n      item.content.ingresso = \"Ingresso Regular\"; // Caso padrão\n    }\n\n    // Retornar o item modificado\n    return item;\n  });\n} else {\n  // Se não for um array, trata como um único objeto\n  let offerCode = originalData.content.offer_code;\n\n  // Adicionar o campo \"ingresso\" ao conteúdo com base no código da oferta\n  if (offerCode === \"z33tispk\") {\n    originalData.content.ingresso = \"Ingresso Premium\";\n  } else if (offerCode === \"kowddkf6\") {\n    originalData.content.ingresso = \"Ingresso VIP\";\n  } else {\n    originalData.content.ingresso = \"Ingresso Regular\"; // Caso padrão\n  }\n}\n\n// Retornar o JSON atualizado\nreturn Array.isArray(originalData) ? originalData : [originalData];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -480,
+        1360
+      ],
+      "id": "df8ff086-063f-489d-8a0b-648e19d631b6",
+      "name": "qual ingresso"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "payment_gateway",
+          "mode": "list",
+          "cachedResultName": "payment_gateway"
+        },
+        "table": {
+          "__rl": true,
+          "value": "events",
+          "mode": "list",
+          "cachedResultName": "events"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "product_id": "={{ $('junta id product').item.json.product_id }}",
+            "value": "={{ $('chega_da_fila').item.json.content.value }}",
+            "gateway_commission": "={{ $('chega_da_fila').item.json.content.gateway_comission }}",
+            "installments": "={{ $('chega_da_fila').item.json.content.installments }}",
+            "client_id": "={{ $json.client_id }}",
+            "utm_id": "={{ $('junta id utm').item.json.utm_id }}",
+            "commission_time": "={{ $('chega_da_fila').item.json.content['comissão_time'] }}",
+            "consumer_tag": "payment_service_consumer",
+            "exchange": "={{ $('chega_da_fila').item.json.fields.exchange }}",
+            "routing_key": "={{ $('chega_da_fila').item.json.fields.routingKey }}",
+            "transaction_id": "={{ $('chega_da_fila').item.json.content.transaction_id }}",
+            "currency": "={{ $('chega_da_fila').item.json.content.currency }}",
+            "payment_method": "={{ $('chega_da_fila').item.json.content.payment_method }}",
+            "transaction_status": "={{ $('chega_da_fila').item.json.content.trans_status }}",
+            "conversion_date": "={{ $('chega_da_fila').item.json.content.conversion_date }}",
+            "subscription_code": "={{ $('chega_da_fila').item.json.content.subscription_code }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "event_id",
+              "displayName": "event_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "consumer_tag",
+              "displayName": "consumer_tag",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "delivery_tag",
+              "displayName": "delivery_tag",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "redelivered",
+              "displayName": "redelivered",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "exchange",
+              "displayName": "exchange",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "routing_key",
+              "displayName": "routing_key",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "transaction_id",
+              "displayName": "transaction_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "product_id",
+              "displayName": "product_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "value",
+              "displayName": "value",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "gateway_commission",
+              "displayName": "gateway_commission",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "currency",
+              "displayName": "currency",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "payment_method",
+              "displayName": "payment_method",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "transaction_status",
+              "displayName": "transaction_status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "conversion_date",
+              "displayName": "conversion_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "installments",
+              "displayName": "installments",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "subscription_code",
+              "displayName": "subscription_code",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "client_id",
+              "displayName": "client_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_id",
+              "displayName": "utm_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "commission_time",
+              "displayName": "commission_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "updated_at",
+              "displayName": "updated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        3100,
+        1620
+      ],
+      "id": "9f04d06d-b23d-4b96-8313-281bf089d027",
+      "name": "Postgres2",
+      "credentials": {
+        "postgres": {
+          "id": "t9WQc0QxKJ6DIrC9",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "payment_gateway",
+          "mode": "list",
+          "cachedResultName": "payment_gateway"
+        },
+        "table": {
+          "__rl": true,
+          "value": "clients",
+          "mode": "list",
+          "cachedResultName": "clients"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "email",
+              "value": "={{ $('qual ingresso').item.json.content['E-mail do Cliente'] }}"
+            },
+            {
+              "column": "phone",
+              "value": "={{ $('qual ingresso').item.json.content['Telefone do Cliente'] }}"
+            },
+            {
+              "column": "cpf_cnpj",
+              "value": "={{ $('qual ingresso').item.json.content['cpf/cnpj'] }}"
+            }
+          ]
+        },
+        "combineConditions": "OR",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        2340,
+        1400
+      ],
+      "id": "9f772f31-04cb-4322-a430-85fe73b0af6c",
+      "name": "busca cliente1",
+      "executeOnce": true,
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "t9WQc0QxKJ6DIrC9",
+          "name": "Postgres account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "payment_gateway",
+          "mode": "list",
+          "cachedResultName": "payment_gateway"
+        },
+        "table": {
+          "__rl": true,
+          "value": "products",
+          "mode": "list",
+          "cachedResultName": "products"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "offer_code",
+              "value": "={{ $('chega_da_fila').item.json.content.offer_code }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1520,
+        1400
+      ],
+      "id": "986c3227-26bb-47dc-8c24-a8b442d3922a",
+      "name": "busca produto",
+      "executeOnce": true,
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "t9WQc0QxKJ6DIrC9",
+          "name": "Postgres account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "payment_gateway",
+          "mode": "list",
+          "cachedResultName": "payment_gateway"
+        },
+        "table": {
+          "__rl": true,
+          "value": "utm",
+          "mode": "list",
+          "cachedResultName": "utm"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "utm_source",
+              "value": "={{ $('chega_da_fila').item.json.content.utm_source }}"
+            },
+            {
+              "column": "utm_campaign",
+              "value": "={{ $('chega_da_fila').item.json.content.utm_campaign }}"
+            },
+            {
+              "column": "utm_medium",
+              "value": "={{ $('chega_da_fila').item.json.content.utm_medium }}"
+            },
+            {
+              "column": "utm_content",
+              "value": "={{ $('chega_da_fila').item.json.content.utm_content }}"
+            },
+            {
+              "column": "utm_term",
+              "value": "={{ $('chega_da_fila').item.json.content.utm_term }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        720,
+        1380
+      ],
+      "id": "8701a6ce-c132-4dc4-a391-72c7230fe837",
+      "name": "busca utm",
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "credentials": {
+        "postgres": {
+          "id": "t9WQc0QxKJ6DIrC9",
+          "name": "Postgres account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://webhook.engenheiromatheus.com/webhook/utm",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "utm_source",
+              "value": "={{ $('qual ingresso').item.json.content.utm_source }}"
+            },
+            {
+              "name": "utm_campaign",
+              "value": "={{ $('qual ingresso').item.json.content.utm_campaign }}"
+            },
+            {
+              "name": "utm_medium",
+              "value": "={{ $('qual ingresso').item.json.content.utm_medium }}"
+            },
+            {
+              "name": "utm_content",
+              "value": "={{ $('qual ingresso').item.json.content.utm_content }}"
+            },
+            {
+              "name": "utm_term",
+              "value": "={{ $('qual ingresso').item.json.content.utm_term }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        720,
+        1620
+      ],
+      "id": "1d850992-5e26-4fa8-a378-402f8c7336a6",
+      "name": "cadastra utm",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://webhook.engenheiromatheus.com/webhook/produto",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "codigo da oferta",
+              "value": "={{ $('chega_da_fila').item.json.content.offer_code }}"
+            },
+            {
+              "name": "produto",
+              "value": "={{ $('chega_da_fila').item.json.content.nome_produto }}"
+            },
+            {
+              "name": "ingresso",
+              "value": "={{ $('qual ingresso').item.json.content.ingresso }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1520,
+        1620
+      ],
+      "id": "4c9291c1-2fae-440f-abd2-4676f850922b",
+      "name": "cadastra produto",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://webhook.engenheiromatheus.com/webhook/cliente",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "first_name",
+              "value": "={{ $('chega_da_fila').item.json.content.Firts_name }}"
+            },
+            {
+              "name": "last_name",
+              "value": "={{ $('chega_da_fila').item.json.content.Last_name }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $('chega_da_fila').item.json.content['E-mail do Cliente'] }}"
+            },
+            {
+              "name": "phone",
+              "value": "={{ $('chega_da_fila').item.json.content['Telefone do Cliente'] }}"
+            },
+            {
+              "name": "cpf_cnpj",
+              "value": "={{ $('chega_da_fila').item.json.content['cpf/cnpj'] }}"
+            },
+            {
+              "name": "address",
+              "value": "={{ $('chega_da_fila').item.json.content['Endereço Completo'] }}"
+            },
+            {
+              "name": "city",
+              "value": "={{ $('chega_da_fila').item.json.content.Cidade }}"
+            },
+            {
+              "name": "state",
+              "value": "={{ $('chega_da_fila').item.json.content.Estado }}"
+            },
+            {
+              "name": "zip_code",
+              "value": "={{ $('chega_da_fila').item.json.content.cep }}"
+            },
+            {
+              "name": "country",
+              "value": "={{ $('chega_da_fila').item.json.content['País'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2340,
+        1620
+      ],
+      "id": "55f40be5-f447-4c4b-bbd6-f3beedbccea9",
+      "name": "cadastra produto1",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "18ab0f03-07ed-483a-90ba-3c19afa5ec75",
+              "leftValue": "={{ $json.client_id.toString() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2520,
+        1400
+      ],
+      "id": "68b3cd0c-bd56-48ac-aff2-e80a2fa88ce7",
+      "name": "verifica se cliente existe"
+    },
+    {
+      "parameters": {
+        "content": "## Verifica se a UTM já existe",
+        "height": 480,
+        "width": 640,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        660,
+        1300
+      ],
+      "id": "fc8b106f-d4a2-488b-934b-40f28b8900eb",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Inteligência de dados",
+        "height": 80,
+        "width": 2240,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        660,
+        1200
+      ],
+      "id": "2713393b-f43d-4568-a127-93f42dd5cefa",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e8126eee-5973-4ad9-a317-945e5effdaf9",
+              "name": "utm_id",
+              "value": "={{ $json.utm_id.toString() }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        900,
+        1620
+      ],
+      "id": "8e3b9625-eced-4939-99c9-998a95581ccd",
+      "name": "busca id utm"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2b86cf24-c943-41d7-a33b-fc0c8890d2e0",
+              "name": "utm_id",
+              "value": "={{ $json.utm_id.toString() }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1160,
+        1520
+      ],
+      "id": "7e02f7d8-6570-4ffd-b012-a5c124d3d2f0",
+      "name": "junta id utm"
+    },
+    {
+      "parameters": {
+        "content": "## Verifica se a produto já existe",
+        "height": 480,
+        "width": 640,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        1300
+      ],
+      "id": "a524c09d-7d56-4c39-994c-8b07c79f7e5d",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e8126eee-5973-4ad9-a317-945e5effdaf9",
+              "name": "product_id",
+              "value": "={{ $json.product_id.toString() }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1700,
+        1620
+      ],
+      "id": "fef36d80-779b-4361-8806-1a4a2d099cd9",
+      "name": "busca id product"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2b86cf24-c943-41d7-a33b-fc0c8890d2e0",
+              "name": "product_id",
+              "value": "={{ $json.product_id.toString() }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1960,
+        1520
+      ],
+      "id": "9170b37e-06b8-4bce-827f-1d126919db64",
+      "name": "junta id product"
+    },
+    {
+      "parameters": {
+        "content": "## Verifica se a cliente já existe",
+        "height": 480,
+        "width": 640,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2260,
+        1300
+      ],
+      "id": "2ecca11c-bfcd-42ad-a6be-b2230f21b4ba",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e8126eee-5973-4ad9-a317-945e5effdaf9",
+              "name": "client_id",
+              "value": "={{ $json.client_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2520,
+        1620
+      ],
+      "id": "f3ea549b-036b-4158-870c-5f3c2c9a7e20",
+      "name": "busca id client"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2b86cf24-c943-41d7-a33b-fc0c8890d2e0",
+              "name": "client_id",
+              "value": "={{ $json.client_id }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2700,
+        1620
+      ],
+      "id": "432c281f-614c-4a56-be23-c36c775bc6fa",
+      "name": "junta id client"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2920,
+        1620
+      ],
+      "id": "94be81c5-749d-48d3-b3fa-5c4b3fb087cd",
+      "name": "Wait3",
+      "webhookId": "157d7b1c-53ce-4566-a8ca-7d71e6dbe4f0"
+    },
+    {
+      "parameters": {
+        "content": "## Registra Evento",
+        "height": 200,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3060,
+        1580
+      ],
+      "typeVersion": 1,
+      "id": "b828ba0e-0606-4aaa-8c77-4cab8d13a336",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        540,
+        1380
+      ],
+      "id": "da437901-10e1-4c62-af0f-362119bb4752",
+      "name": "aguarda 2seg",
+      "webhookId": "157d7b1c-53ce-4566-a8ca-7d71e6dbe4f0"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2140,
+        1520
+      ],
+      "id": "daa9c84a-af2f-41ea-9a96-28eb50772b2b",
+      "name": "Aguarda 2Seg",
+      "webhookId": "157d7b1c-53ce-4566-a8ca-7d71e6dbe4f0"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1320,
+        1520
+      ],
+      "id": "eabca7f5-8e84-492c-bfe9-7e357fd52f7d",
+      "name": "aguarda 2Seg",
+      "webhookId": "157d7b1c-53ce-4566-a8ca-7d71e6dbe4f0"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "value": "payment_gateway",
+          "mode": "list",
+          "cachedResultName": "payment_gateway"
+        },
+        "table": {
+          "__rl": true,
+          "value": "clients",
+          "mode": "list",
+          "cachedResultName": "clients"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "client_id": "={{ $json.client_id.toString() }}",
+            "first_name": "={{ $('chega_da_fila').item.json.content.Firts_name }}",
+            "last_name": "={{ $('chega_da_fila').item.json.content.Last_name }}",
+            "email": "={{ $('chega_da_fila').item.json.content['E-mail do Cliente'] }}",
+            "phone": "={{ $('chega_da_fila').item.json.content['Telefone do Cliente'] }}",
+            "cpf_cnpj": "={{ $('chega_da_fila').item.json.content['cpf/cnpj'] }}",
+            "address": "={{ $('chega_da_fila').item.json.content['Endereço Completo'] }}",
+            "city": "={{ $('chega_da_fila').item.json.content.Cidade }}",
+            "state": "={{ $('chega_da_fila').item.json.content.Estado }}",
+            "zip_code": "={{ $('chega_da_fila').item.json.content.cep }}",
+            "country": "={{ $('chega_da_fila').item.json.content['País'] }}"
+          },
+          "matchingColumns": [
+            "client_id"
+          ],
+          "schema": [
+            {
+              "id": "client_id",
+              "displayName": "client_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "first_name",
+              "displayName": "first_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "last_name",
+              "displayName": "last_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cpf_cnpj",
+              "displayName": "cpf_cnpj",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "address",
+              "displayName": "address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "city",
+              "displayName": "city",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "state",
+              "displayName": "state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "zip_code",
+              "displayName": "zip_code",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "country",
+              "displayName": "country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "updated_at",
+              "displayName": "updated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        2700,
+        1400
+      ],
+      "id": "7e5da3ac-e015-46b6-b16d-8be20b2877e1",
+      "name": "atualiza cliente",
+      "credentials": {
+        "postgres": {
+          "id": "t9WQc0QxKJ6DIrC9",
+          "name": "Postgres account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook-engmatheus.authpro.com.br",
+            "user-agent": "Jodd HTTP",
+            "content-length": "1844",
+            "content-type": "application/json",
+            "x-forwarded-for": "3.235.191.193",
+            "x-forwarded-host": "webhook-engmatheus.authpro.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "2b543719ae15",
+            "x-hotmart-hottok": "1NQDYfnDlDPt8NTrIqBEZoL7VuqOo17defb61a-1f64-4ad4-8be0-2f387f6f0ce2",
+            "x-real-ip": "3.235.191.193",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "data": {
+              "product": {
+                "has_co_production": false,
+                "name": "Imersão Atômica",
+                "id": 4561690,
+                "ucode": "4c5f4c08-590c-4531-bac8-855c9eafff89"
+              },
+              "commissions": [
+                {
+                  "currency_value": "BRL",
+                  "source": "MARKETPLACE",
+                  "value": 7.21
+                },
+                {
+                  "currency_value": "BRL",
+                  "source": "PRODUCER",
+                  "value": 87.3
+                }
+              ],
+              "purchase": {
+                "original_offer_price": {
+                  "currency_value": "BRL",
+                  "value": 97
+                },
+                "subscription_anticipation_purchase": false,
+                "checkout_country": {
+                  "iso": "BR",
+                  "name": "Brasil"
+                },
+                "origin": {
+                  "sck": "instagram-IA1024-bio-matheus-bio-org"
+                },
+                "order_bump": {
+                  "is_order_bump": false
+                },
+                "approved_date": 1728320982000,
+                "offer": {
+                  "code": "9vab7gp7"
+                },
+                "order_date": 1728320826000,
+                "price": {
+                  "currency_value": "BRL",
+                  "value": 97
+                },
+                "payment": {
+                  "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2Fq9Dg7_FaSIOmFMM95BiveA5204000053039865802BR5902HT6009SAO+PAULO62070503***6304B37A",
+                  "pix_expiration_date": 1728493626000,
+                  "installments_number": 1,
+                  "type": "PIX",
+                  "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/q9Dg7_FaSIOmFMM95BiveA5204000053039865802BR5902HT6009SAO PAULO62070503***6304B37A"
+                },
+                "full_price": {
+                  "currency_value": "BRL",
+                  "value": 97
+                },
+                "invoice_by": "HOTMART",
+                "transaction": "HP2438614899",
+                "status": "APPROVED"
+              },
+              "affiliates": [
+                {
+                  "affiliate_code": "",
+                  "name": ""
+                }
+              ],
+              "producer": {
+                "name": "Plest Empreendimentos Digitais e Marketing Spe Ltda"
+              },
+              "buyer": {
+                "address": {
+                  "zipcode": "85601090",
+                  "country": "Brasil",
+                  "address": "Rua Antônio Carneiro Neto",
+                  "city": "Francisco Beltrão ",
+                  "state": "PR",
+                  "neighborhood": "Alvorada",
+                  "complement": "Apto 403",
+                  "country_iso": "BR"
+                },
+                "document": "29201753861",
+                "name": "Juliano Alarcon Fabrício ",
+                "checkout_phone": "46991361900",
+                "email": "juliano_fabricio@yahoo.com.br"
+              }
+            },
+            "id": "da7286ce-f42c-4127-8bce-bf8277d3b49c",
+            "creation_date": 1728320985247,
+            "event": "PURCHASE_APPROVED",
+            "version": "2.0.0"
+          },
+          "webhookUrl": "https://webhook-engmatheus.authpro.com.br/webhook/imersao-atomica-ca",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-01-03T01:02:24.647Z",
+      "updatedAt": "2025-01-03T01:02:24.647Z",
+      "id": "EjPSWwhGI6ssVlom",
+      "name": "Imersão Atômica"
+    }
+  ],
+  "triggerCount": 2,
+  "updatedAt": "2025-03-03T20:14:41.931Z",
+  "versionId": "f1f401b5-98dd-454c-8c86-322f2a474bbf"
+}
