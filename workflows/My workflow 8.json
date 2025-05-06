@@ -1,0 +1,319 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        []
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "insert_pesquisa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insert_pesquisa": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-09T18:12:12.416Z",
+  "id": "MHzDruGwLxnlGN2t",
+  "meta": null,
+  "name": "My workflow 8",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "ad65da2c-8335-425a-bddf-72b12befd750",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1z8KTR-aZ5nmy1XDqT99IiirKmQjJhfq6r8I9cQ4dqxE/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1z8KTR-aZ5nmy1XDqT99IiirKmQjJhfq6r8I9cQ4dqxE/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        220,
+        0
+      ],
+      "id": "9341b8a5-0cda-43b4-86c8-72028ad75762",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "xYJkSCz0e2nP7wEP",
+          "name": "marcosvlogs12@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        440,
+        0
+      ],
+      "id": "1c3a8020-010c-4811-a10d-032dbb3a0f77",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "name": "Replace Me",
+      "typeVersion": 1,
+      "position": [
+        720,
+        -220
+      ],
+      "id": "8dc3a49f-2626-4eac-acbc-082edf4ebbc7"
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "pesquisas",
+          "mode": "list",
+          "cachedResultName": "pesquisas"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "pergunta1",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta1\"] }}"
+            },
+            {
+              "column": "pergunta2",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta2\"] }}"
+            },
+            {
+              "column": "data_pesquisa",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "nome_pesquisa",
+              "value": "[CADASTRO] [PEC0325] [TYPEFORM]"
+            },
+            {
+              "column": "pergunta3",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta3\"] }}"
+            },
+            {
+              "column": "pergunta4",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta4\"] }}"
+            },
+            {
+              "column": "pergunta5",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta5\"] }}"
+            },
+            {
+              "column": "pergunta6",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta6\"] }}"
+            },
+            {
+              "column": "pergunta7",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta7\"] }}"
+            },
+            {
+              "column": "pergunta8",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta8\"] }}"
+            },
+            {
+              "column": "pergunta9",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta9\"] }}"
+            },
+            {
+              "column": "pergunta10",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta10\"] }}"
+            },
+            {
+              "column": "pergunta11",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta11\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ff72b376-e1ab-47db-b2a3-fdcfcefc789e",
+      "name": "insert_pesquisa",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1140,
+        340
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "56a816d6-de4d-4a29-b59d-09fb7db8a6b2",
+              "name": "pergunta1",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"pergunta1\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "31f71641-7a32-4a23-b6e5-0c03c4acea96",
+              "name": "pergunta2",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"pergunta2\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "e4cfed4f-d3a0-4731-a313-96c8af5b2b15",
+              "name": "pergunta3",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"pergunta3\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "dfd5d3a5-6eb0-4bed-b278-53fe50078847",
+              "name": "pergunta4",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"pergunta4\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "0f7eee72-f27b-4b71-aaaf-d101fb865995",
+              "name": "pergunta5",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"pergunta5\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "156d7d37-d86c-46d8-a3df-10e9736b3821",
+              "name": "pergunta6",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"pergunta6\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "e3e689ec-cf5d-4bb7-8ace-3f405c5648c1",
+              "name": "pergunta7",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"pergunta7\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "755da001-e50c-4d56-ab31-d123917d4ce2",
+              "name": "pergunta8",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"pergunta8\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "a8399493-58b2-4036-8601-05f9216cdaf9",
+              "name": "pergunta9",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"pergunta9\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "0d97a39d-f6e2-46ba-9767-1d4fdf660cd1",
+              "name": "pergunta10",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"pergunta10\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "f959e7ae-e3f0-4ada-9061-9a41b68f7460",
+              "name": "pergunta11",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"Pergunta11\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        860,
+        320
+      ],
+      "id": "568bcb0a-852b-4d55-b0b6-b41ed5eb0191",
+      "name": "Edit Fields1"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-04-09T18:16:58.879Z",
+  "versionId": "425402ba-92be-4c34-bcb0-04282de46387"
+}
