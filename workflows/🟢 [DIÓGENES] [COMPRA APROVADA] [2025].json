@@ -1,0 +1,2772 @@
+{
+  "active": true,
+  "connections": {
+    "dados_da_compra": {
+      "main": [
+        [
+          {
+            "node": "entra_na_fila_compra_aprovada1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "trata_dados": {
+      "main": [
+        [
+          {
+            "node": "dados_da_compra",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "trata_dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Listar Campos Personalizados de Contatos da Conta": {
+      "main": [
+        [
+          {
+            "node": "Listar Tags da Conta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Listar Campos Personalizados de Contatos da Conta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_user": {
+      "main": [
+        [
+          {
+            "node": "encontrou_user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "encontrou_user": {
+      "main": [
+        [
+          {
+            "node": "email_igual",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insere_lead_na_tabela_users",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "email_igual": {
+      "main": [
+        [
+          {
+            "node": "telefone_igual",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insere_email_na_tabela_emails",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insere_email_na_tabela_emails": {
+      "main": [
+        [
+          {
+            "node": "telefone_igual",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "telefone_igual": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_produto2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insere_telefone_na_tabela_telefones",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insere_telefone_na_tabela_telefones": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_produto2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chega_da_fila": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insere_lead_na_tabela_users": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_user1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_produto1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_conversao1": {
+      "main": [
+        [
+          {
+            "node": "encontrou_conversao1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "encontrou_conversao1": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insere_conversao_na_tabela_conversoes1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "encontrou_produto1": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_conversao1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insere_produto_na_tabela_produtos1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insere_produto_na_tabela_produtos1": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_produto2": {
+      "main": [
+        [
+          {
+            "node": "encontrou_produto1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_user1": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_produto2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_produto1": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_conversao1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insere_conversao_na_tabela_conversoes1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Verificar na audiência",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verificar na audiência": {
+      "main": [
+        [
+          {
+            "node": "Contato existe?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Contato existe?": {
+      "main": [
+        [
+          {
+            "node": "Envia Fluxo - cliente",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Cadastrar contato",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cadastrar contato": {
+      "main": [
+        [
+          {
+            "node": "Envia Fluxo - cliente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chega_da_fila1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "entra_na_fila_compra_aprovada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia Fluxo - cliente": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_id": {
+      "main": [
+        [
+          {
+            "node": "insere_mensagem_na_tabela",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "MySQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        []
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Verificar na audiência1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verificar na audiência1": {
+      "main": [
+        [
+          {
+            "node": "Contato existe?1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Contato existe?1": {
+      "main": [
+        [
+          {
+            "node": "Envia Fluxo - cliente1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Cadastrar contato1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cadastrar contato1": {
+      "main": [
+        [
+          {
+            "node": "Envia Fluxo - cliente1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia Fluxo - cliente1": {
+      "main": [
+        [
+          {
+            "node": "Date & Time2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time2": {
+      "main": [
+        [
+          {
+            "node": "Date & Time3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time3": {
+      "main": [
+        [
+          {
+            "node": "MySQL1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-03T19:20:55.880Z",
+  "id": "hsPRJM14aUpE7Nnq",
+  "meta": null,
+  "name": "🟢 [DIÓGENES] [COMPRA APROVADA] [2025]",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "70705c10-81db-4d5c-b75c-cdaa37d192f6",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "b58945f0-8108-4fa2-8020-d70c4e3ddc72",
+      "name": "Webhook",
+      "webhookId": "70705c10-81db-4d5c-b75c-cdaa37d192f6"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "nome",
+              "value": "={{ $json[\"nome\"] }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $json[\"email\"] }}"
+            },
+            {
+              "name": "cpf/cnpj",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"data\"][\"buyer\"][\"document\"] }}"
+            },
+            {
+              "name": "nome_produto",
+              "value": "={{ $json[\"produto\"][\"nome\"] }}"
+            },
+            {
+              "name": "transaction_id",
+              "value": "={{ $json[\"compra\"][\"transaction_id\"] }}"
+            },
+            {
+              "name": "product_id",
+              "value": "={{ $json[\"produto\"][\"id\"] }}"
+            },
+            {
+              "name": "preco",
+              "value": "={{ $json[\"compra\"][\"preco_total\"] }}"
+            },
+            {
+              "name": "gateway_comission",
+              "value": "={{ $json[\"comissoes\"][\"0\"][\"valor\"] }}"
+            },
+            {
+              "name": "currency",
+              "value": "={{ $json[\"comissoes\"][\"0\"][\"moeda\"] }}"
+            },
+            {
+              "name": "payment_method",
+              "value": "={{ $json[\"pagamento\"][\"metodo\"] }}"
+            },
+            {
+              "name": "trans_status",
+              "value": "={{ $json[\"compra\"][\"status\"] }}"
+            },
+            {
+              "name": "data_compra",
+              "value": "={{ $now.format('yyyy-MM-dd HH:mm') }}"
+            },
+            {
+              "name": "parcelas",
+              "value": "={{ $json[\"pagamento\"][\"parcelas\"] }}"
+            },
+            {
+              "name": "cep",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"data\"][\"buyer\"][\"address\"][\"zipcode\"] }}"
+            },
+            {
+              "name": "utm_source",
+              "value": "={{ $node[\"trata_dados\"].json[\"utm_source\"] }}"
+            },
+            {
+              "name": "utm_campaign",
+              "value": "={{ $node[\"trata_dados\"].json[\"utm_campaign\"] }}"
+            },
+            {
+              "name": "utm_medium",
+              "value": "={{ $node[\"trata_dados\"].json[\"utm_medium\"] }}"
+            },
+            {
+              "name": "utm_content",
+              "value": "={{ $node[\"trata_dados\"].json[\"utm_content\"] }}"
+            },
+            {
+              "name": "utm_term",
+              "value": "={{ $node[\"trata_dados\"].json[\"utm_content\"] }}"
+            },
+            {
+              "name": "telefone",
+              "value": "={{ $json[\"telefone\"] }}"
+            },
+            {
+              "name": "subscription_code",
+              "value": "={{ $json[\"produto\"][\"ucode\"] }}"
+            },
+            {
+              "name": "sobrenome",
+              "value": "={{ $json[\"sobrenome\"] }}"
+            },
+            {
+              "name": "comissao_produtor",
+              "value": "={{ $json[\"comissoes\"][\"1\"][\"valor\"] }}"
+            },
+            {
+              "name": "oferta",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"data\"][\"purchase\"][\"offer\"][\"code\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "be879cdf-edad-4e40-8d54-abb4cda5baa9",
+      "name": "dados_da_compra",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        420,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "queue": "[DIOGENES] [COMPRA APROVADA] [2025]",
+        "options": {
+          "arguments": {
+            "argument": [
+              {
+                "key": "x-queue-type",
+                "value": "quorum"
+              }
+            ]
+          },
+          "durable": true
+        }
+      },
+      "id": "15736fde-f8f7-44a6-827e-9e7ec83cac9b",
+      "name": "entra_na_fila_compra_aprovada1",
+      "type": "n8n-nodes-base.rabbitmq",
+      "typeVersion": 1,
+      "position": [
+        640,
+        0
+      ],
+      "credentials": {
+        "rabbitmq": {
+          "id": "DG2PMHOSIQ0AOSwK",
+          "name": "RabbitMQ account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Pegando os dados do body do webhook\nconst data = $json[\"body\"][\"data\"];\n\n// Função para formatar o email em letras minúsculas\nconst email = data.buyer.email.toLowerCase();\n\n// Função para separar o nome e sobrenome\nconst nomeCompleto = data.buyer.name.split(\" \");\nconst nome = nomeCompleto[0]; // Primeiro nome\nconst sobrenome = nomeCompleto.slice(1).join(\" \"); // O restante é o sobrenome\n\n// Função para remover espaços e caracteres do número de telefone, deixando apenas os números\nlet phoneNumber = data.buyer.checkout_phone.replace(/\\D/g, '');\n\n// Adicionando \"55\" na frente do telefone, caso não tenha\nif (!phoneNumber.startsWith(\"55\")) {\n    phoneNumber = \"55\" + phoneNumber;\n}\n\n// Dados da compra\nconst produtoNome = data.product.name;\nconst produtoId = data.product.id;\nconst produtoUcode = data.product.ucode;\nconst preçoTotal = data.purchase.price.value;\nconst statusCompra = data.purchase.status;\nconst transactionId = data.purchase.transaction;\n\n// Dados do pagamento\nconst metodoPagamento = data.purchase.payment.type;\nconst numeroParcelas = data.purchase.payment.installments_number;\n\n// Dados do endereço do comprador\nconst endereco = data.buyer.address;\nconst enderecoCompleto = `${endereco.address}, ${endereco.number} - ${endereco.neighborhood}, ${endereco.city} - ${endereco.state}, ${endereco.zipcode}`;\n\n// Dados das comissões\nconst comissoes = data.commissions.map(commission => ({\n    fonte: commission.source,\n    valor: commission.value,\n    moeda: commission.currency_value\n}));\n\n// Dados do produtor\nconst produtorNome = data.producer.name;\n\n// UTM's\nconst utm_source = data.utm_source || '';\nconst utm_campaign = data.utm_campaign || '';\nconst utm_medium = data.utm_medium || '';\nconst utm_content = data.utm_content || '';\nconst utm_term = data.utm_term || '';\n\n// Retornando todos os dados organizados\nreturn {\n  email: email,\n  nome: nome,\n  sobrenome: sobrenome,\n  telefone: phoneNumber,\n  produto: {\n    nome: produtoNome,\n    id: produtoId,\n    ucode: produtoUcode\n  },\n  compra: {\n    preco_total: preçoTotal,\n    status: statusCompra,\n    transaction_id: transactionId\n  },\n  pagamento: {\n    metodo: metodoPagamento,\n    parcelas: numeroParcelas\n  },\n  endereco: enderecoCompleto,\n  comissoes: comissoes,\n  produtor: produtorNome,\n  utm_source: utm_source,\n  utm_campaign: utm_campaign,\n  utm_medium: utm_medium,\n  utm_content: utm_content,\n  utm_term: utm_term\n};\n"
+      },
+      "id": "a663ac10-9c3b-4cbe-a54f-58c34a92734f",
+      "name": "trata_dados",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        200,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# PARTE 1",
+        "height": 347,
+        "width": 1133,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -160,
+        -120
+      ],
+      "typeVersion": 1,
+      "id": "e5278b04-1bb2-43f7-a66a-669aac30677d",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "queue": "[DIOGENES] [COMPRA APROVADA] [2025]",
+        "options": {
+          "arguments": {
+            "argument": [
+              {
+                "key": "x-queue-type",
+                "value": "quorum"
+              }
+            ]
+          },
+          "acknowledge": "executionFinishesSuccessfully",
+          "jsonParseBody": "={{ true }}",
+          "parallelMessages": 3
+        }
+      },
+      "id": "4eb27a2c-49c7-405f-bb00-ef20bcd56a14",
+      "name": "chega_da_fila",
+      "type": "n8n-nodes-base.rabbitmqTrigger",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        1120
+      ],
+      "credentials": {
+        "rabbitmq": {
+          "id": "DG2PMHOSIQ0AOSwK",
+          "name": "RabbitMQ account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://{{ $node[\"Set\"].json[\"url_api_activecampaign\"] }}.api-us1.com/api/3/tags?limit=1000&search={{ $node[\"Set\"].json[\"tag_procurada\"] }}",
+        "options": {},
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "Api-Token",
+              "value": "={{ $node[\"Set\"].json[\"Api-Token\"] }}"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        }
+      },
+      "name": "Listar Tags da Conta",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        340,
+        460
+      ],
+      "id": "cc888505-7748-4f48-b83f-a60c59a67ef9"
+    },
+    {
+      "parameters": {
+        "content": "## Para consulta\n \nUtilize os Nodes Abaixo para consultar os IDs dos Campos e Tags no ActiveCampaign",
+        "height": 407.6377565498652,
+        "width": 747.0856205721786
+      },
+      "id": "dd583748-76e5-491e-81f8-879894036bf7",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://{{ $json[\"url_api_activecampaign\"] }}.api-us1.com/api/3/fields?limit=1000",
+        "options": {},
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "Api-Token",
+              "value": "={{ $node[\"Set\"].json[\"Api-Token\"] }}"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        }
+      },
+      "name": "Listar Campos Personalizados de Contatos da Conta",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        140,
+        460
+      ],
+      "id": "e337d622-856c-41d4-b6cf-b754f3c696f9"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "Api-Token",
+              "value": "3696e725bdca0e3ce53536c4ba23c8ecee77def78a7a229c5a44780b59bc088e2be9edb5"
+            },
+            {
+              "name": "url_api_activecampaign",
+              "value": "infomakers98413"
+            },
+            {
+              "name": "tag_procurada",
+              "value": "compra aprovada"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "abedf8a6-3d24-4285-bbc9-47262164ba88",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -60,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"telefone\"] }}"
+            }
+          ]
+        },
+        "combineConditions": "OR",
+        "options": {}
+      },
+      "id": "d27902af-7373-468a-ac6b-2f0709384af6",
+      "name": "pesquisa_user",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        200,
+        1120
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"pesquisa_user\"].json[\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "0987ffaf-76d8-47cd-a4fd-9bbfdd03f66e",
+      "name": "encontrou_user",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        440,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"pesquisa_user\"].json[\"email\"] }}",
+              "rightValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "46b9a5b6-ddae-4d2c-8dd9-91895197a6fa",
+      "name": "email_igual",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        740,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "id",
+              "value": "={{ $node[\"pesquisa_user\"].json[\"id\"] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "replaceEmptyStrings": true,
+          "detailedOutput": true,
+          "skipOnConflict": true
+        }
+      },
+      "id": "d6240e5d-ee65-43d8-b346-0c34d76fab09",
+      "name": "insere_email_na_tabela_emails",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        980,
+        960
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"pesquisa_user\"].json[\"telefone\"] }}",
+              "rightValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"telefone\"] }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "83b37c5d-0e04-4702-9cad-e4c346e04e50",
+      "name": "telefone_igual",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1180,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "id",
+              "value": "={{ $node[\"pesquisa_user\"].json[\"id\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"telefone\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "replaceEmptyStrings": true,
+          "detailedOutput": true,
+          "skipOnConflict": true
+        }
+      },
+      "id": "1de29be0-180d-4cf7-add1-951f45481fc8",
+      "name": "insere_telefone_na_tabela_telefones",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1220,
+        1100
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "data_de_entrada",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "nome",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome\"].split(' ')[0] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"telefone\"] }}"
+            },
+            {
+              "column": "sobrenome",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"sobrenome\"].split(' ').slice(1).join(\" \") }}"
+            }
+          ]
+        },
+        "options": {
+          "detailedOutput": true
+        }
+      },
+      "id": "f1e26f73-dc88-47f2-b5fc-ed023ac03047",
+      "name": "insere_lead_na_tabela_users",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        720,
+        1300
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"telefone\"] }}"
+            }
+          ]
+        },
+        "combineConditions": "OR",
+        "options": {}
+      },
+      "id": "5a1b0a83-054b-4f44-be83-a8d2df1efc7b",
+      "name": "pesquisa_user1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1120,
+        1300
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        920,
+        1300
+      ],
+      "id": "f1eb7442-be66-4e6a-b14e-64cf85290710",
+      "name": "Wait",
+      "webhookId": "87a20786-a797-40d1-9feb-91a95daaaa65"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2580,
+        1160
+      ],
+      "id": "489ff179-b311-44af-a7b6-67d62a08b67a",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1740,
+        1520
+      ],
+      "id": "19e0106a-42f5-40ed-b880-760349be62f1",
+      "name": "Wait1",
+      "webhookId": "cea42bb7-bd37-4be5-98e0-7c46249b477b"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "conversoes",
+          "mode": "list",
+          "cachedResultName": "conversoes"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "id_transacao",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"transaction_id\"] }}"
+            },
+            {
+              "column": "nome_produto",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome_produto\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "334717dd-4dee-4e08-a9f8-78e6690f2188",
+      "name": "pesquisa_conversao1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        2140,
+        1260
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"pesquisa_conversao1\"].json[\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "a7c39671-fc0f-4767-a529-f0f2767fc1b9",
+              "leftValue": "={{ $json[\"id_transacao\"] }}",
+              "rightValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"transaction_id\"] }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "97da0782-0ec0-4678-8a8a-919e988bc22b",
+      "name": "encontrou_conversao1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2340,
+        1260
+      ]
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "conversoes",
+          "mode": "list",
+          "cachedResultName": "conversoes"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "id_user",
+              "value": "={{$node[\"pesquisa_user\"].json[\"id\"] || $node[\"pesquisa_user1\"].json[\"id\"]}}"
+            },
+            {
+              "column": "produto",
+              "value": "={{   $node[\"insere_produto_na_tabela_produtos1\"].runIndex >= 0 ? $node[\"insere_produto_na_tabela_produtos1\"].json[\"data\"][\"insertId\"] : $node[\"pesquisa_produto2\"].runIndex >= 0 ? $node[\"pesquisa_produto2\"].json[\"id\"] : null }}"
+            },
+            {
+              "column": "valor",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"preco\"] }}"
+            },
+            {
+              "column": "parcelas",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"parcelas\"] }}"
+            },
+            {
+              "column": "oferta",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"oferta\"] }}"
+            },
+            {
+              "column": "id_transacao",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"transaction_id\"] }}"
+            },
+            {
+              "column": "comissao_gateway",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"gateway_comission\"] }}"
+            },
+            {
+              "column": "moeda",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"currency\"] }}"
+            },
+            {
+              "column": "forma_de_pagamento",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"payment_method\"] }}"
+            },
+            {
+              "column": "status_da_compra",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"trans_status\"] }}"
+            },
+            {
+              "column": "data_garantia",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"data_garantia\"] }}"
+            },
+            {
+              "column": "data_conversao",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"data_compra\"] }}"
+            },
+            {
+              "column": "utm_source",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_source\"] }}"
+            },
+            {
+              "column": "utm_campaign",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_campaign\"] }}"
+            },
+            {
+              "column": "utm_term",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_term\"] }}"
+            },
+            {
+              "column": "utm_medium",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_medium\"] }}"
+            },
+            {
+              "column": "utm_content",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_content\"] }}"
+            },
+            {
+              "column": "documento",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"cpf/cnpj\"] }}"
+            },
+            {
+              "column": "nome_produto",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome_produto\"] }}"
+            },
+            {
+              "column": "nome",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome\"] }}"
+            },
+            {
+              "column": "sobrenome",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"sobrenome\"] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"telefone\"] }}"
+            },
+            {
+              "column": "comissao_time",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"comissao_produtor\"] }}"
+            },
+            {
+              "column": "id_produto",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"product_id\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "detailedOutput": true
+        }
+      },
+      "id": "07758280-9eea-4e8c-895d-8a6d53284564",
+      "name": "insere_conversao_na_tabela_conversoes1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        2580,
+        1380
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"pesquisa_produto2\"].json[\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "7644c557-7b33-4ed7-87f9-cc5f1baf825e",
+      "name": "encontrou_produto1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1760,
+        1260
+      ]
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "produtos",
+          "mode": "list",
+          "cachedResultName": "produtos"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "nome",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome_produto\"] }}"
+            },
+            {
+              "column": "id_checkout",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"product_id\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "detailedOutput": true
+        }
+      },
+      "id": "17d0995b-f54a-47bd-a23d-8c488dda494c",
+      "name": "insere_produto_na_tabela_produtos1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1560,
+        1520
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "produtos",
+          "mode": "list",
+          "cachedResultName": "produtos"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "id_checkout",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"product_id\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c31b6945-6669-4bda-82aa-deb48efbb918",
+      "name": "pesquisa_produto2",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1540,
+        1260
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "produtos",
+          "mode": "list",
+          "cachedResultName": "produtos"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "id_checkout",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"product_id\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "68e11c72-eeba-4ec5-b5eb-581d99169b7b",
+      "name": "pesquisa_produto1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1940,
+        1520
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Para consulta\n \nUtilize os Nodes Abaixo para consultar os IDs dos Campos e Tags no ActiveCampaign",
+        "height": 1028,
+        "width": 3487
+      },
+      "id": "13ac7ea3-1616-4c12-9010-c20db03a3918",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        740
+      ]
+    },
+    {
+      "parameters": {
+        "queue": "[DIOGENES] [COMPRA APROVADA] [2025] [M1]",
+        "options": {
+          "arguments": {
+            "argument": [
+              {
+                "key": "x-queue-type",
+                "value": "quorum"
+              }
+            ]
+          },
+          "durable": true
+        }
+      },
+      "id": "5004ef6e-4e39-49ae-af4d-bf0a1ca115eb",
+      "name": "entra_na_fila_compra_aprovada",
+      "type": "n8n-nodes-base.rabbitmq",
+      "typeVersion": 1,
+      "position": [
+        3060,
+        1380
+      ],
+      "credentials": {
+        "rabbitmq": {
+          "id": "DG2PMHOSIQ0AOSwK",
+          "name": "RabbitMQ account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# PARTE 1 - mensagem no wpp do cliente",
+        "height": 767,
+        "width": 3213,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3400,
+        180
+      ],
+      "typeVersion": 1,
+      "id": "8a21085b-0a72-4214-bb3b-273aa4c0089c",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "queue": "[DIOGENES] [COMPRA APROVADA] [2025] [M1]",
+        "options": {
+          "arguments": {
+            "argument": [
+              {
+                "key": "x-queue-type",
+                "value": "quorum"
+              }
+            ]
+          },
+          "acknowledge": "executionFinishesSuccessfully",
+          "jsonParseBody": "={{ true }}",
+          "parallelMessages": 3
+        }
+      },
+      "id": "7c1c077d-ee55-46f3-8a05-8c855ecff494",
+      "name": "chega_da_fila1",
+      "type": "n8n-nodes-base.rabbitmqTrigger",
+      "typeVersion": 1,
+      "position": [
+        3500,
+        560
+      ],
+      "credentials": {
+        "rabbitmq": {
+          "id": "DG2PMHOSIQ0AOSwK",
+          "name": "RabbitMQ account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c53e209f-3f99-47cf-ac2c-48e2744c2567",
+              "name": "nome",
+              "value": "={{ $json[\"content\"][\"Nome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "6a122e24-9278-4fa5-aba6-ea01b413ed09",
+              "name": "telefone",
+              "value": "={{ $json[\"content\"][\"Telefone\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "af5246e1-afa0-4fc2-9a07-cf21cfc43f0b",
+              "name": "data",
+              "value": "={{ $now }}",
+              "type": "string"
+            },
+            {
+              "id": "00fa81b1-b695-4099-973d-712c2f2a2a99",
+              "name": "sobrenome",
+              "value": "={{ $json[\"content\"][\"Sobrenome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "0c83ee64-1365-49df-a8eb-687fc8742541",
+              "name": "API-KEY",
+              "value": "5a0e47da-df8c-4f73-87e2-2a72993b790c",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c73a1935-78b4-4cd1-b6c3-59518241de84",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3740,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/+{{ $json[\"telefone\"] }}/",
+        "options": {},
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $json[\"API-KEY\"] }}"
+            }
+          ]
+        }
+      },
+      "name": "Verificar na audiência",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        3940,
+        560
+      ],
+      "id": "d623b75c-3457-425c-8fcd-34abfa7eb411",
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json[\"id\"]}}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "name": "Contato existe?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        4120,
+        560
+      ],
+      "id": "36693178-b546-4f16-8141-2ac8dcf3a1ea"
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "phone",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"telefone\"] }}"
+            },
+            {
+              "name": "first_name",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"nome\"] }}"
+            },
+            {
+              "name": "last_name",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"sobrenome\"] ? $node[\"Edit Fields2\"].json[\"sobrenome\"] : \".\" }}"
+            }
+          ]
+        },
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"API-KEY\"] }}"
+            }
+          ]
+        }
+      },
+      "name": "Cadastrar contato",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        4320,
+        640
+      ],
+      "id": "f9375169-b496-4187-a1c7-4ec8dec116dc",
+      "executeOnce": true,
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/{{ $node[\"Verificar na audiência\"].json[\"id\"] || $node[\"Cadastrar contato\"].json[\"id\"] }}/send_flow/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $node[\"Edit Fields2\"].json[\"API-KEY\"] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "flow",
+              "value": "6572020"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "59f13a81-6596-4f62-a167-0feac5aebc20",
+      "name": "Envia Fluxo - cliente",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        4520,
+        540
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "97b2e3ac-aa47-46e9-a184-78ddd2d23b78",
+              "name": "Nome",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "b68b12ac-a3f8-419e-a116-2183bce0ab43",
+              "name": "Sobrenome",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"sobrenome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "1c82e4c3-8ca1-4094-ab6e-1d4d24a77392",
+              "name": "Telefone",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"telefone\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "f41ee655-d4de-4f79-a6bc-ba429fe35ab4",
+              "name": "Email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "ab0a2d09-fd5a-4887-8824-d993959cc7b6",
+              "name": "Produto",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome_produto\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2800,
+        1380
+      ],
+      "id": "f70e2fcb-47aa-499b-af06-a6c2fde139e9",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        4740,
+        540
+      ],
+      "id": "bf8e89f8-48b1-4a8a-9659-524d8f68232f",
+      "name": "Wait2",
+      "webhookId": "aaf2772a-ac8d-4c5e-ba43-58cf181e00f3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c53e209f-3f99-47cf-ac2c-48e2744c2567",
+              "name": "nome",
+              "value": "={{ $node[\"chega_da_fila1\"].json[\"content\"][\"Nome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "6a122e24-9278-4fa5-aba6-ea01b413ed09",
+              "name": "telefone",
+              "value": "={{ $node[\"chega_da_fila1\"].json[\"content\"][\"Telefone\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "af5246e1-afa0-4fc2-9a07-cf21cfc43f0b",
+              "name": "data_mensagem_1",
+              "value": "={{ $json[\"one_day_formated\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "00fa81b1-b695-4099-973d-712c2f2a2a99",
+              "name": "sobrenome",
+              "value": "={{ $node[\"chega_da_fila1\"].json[\"content\"][\"Sobrenome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "97a09c95-a375-4b84-8ca6-f31c86474683",
+              "name": "email",
+              "value": "={{ $node[\"chega_da_fila1\"].json[\"content\"][\"Email\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "f3b81264-00fb-4cdc-8b65-e0b4e1aea968",
+              "name": "produto",
+              "value": "={{ $node[\"chega_da_fila1\"].json[\"content\"][\"Produto\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1c73d6f3-3697-420d-9282-f4b43cf0cc07",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5380,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "addToDate",
+        "magnitude": "={{ $now.format('yyyy-MM-dd') }}",
+        "duration": 1,
+        "outputFieldName": "new_date_one",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        4960,
+        540
+      ],
+      "id": "915e06ab-6895-40e8-a84a-b8777f1d0474",
+      "name": "Date & Time"
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json[\"new_date_one\"] }}",
+        "format": "custom",
+        "customFormat": "yyyy-MM-dd",
+        "outputFieldName": "one_day_formated",
+        "options": {
+          "timezone": true
+        }
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        5160,
+        540
+      ],
+      "id": "f1a541ab-7731-4884-8ca4-3f4964dfe9cf",
+      "name": "Date & Time1"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "email",
+              "value": "={{ $json[\"email\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $json[\"telefone\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        5600,
+        540
+      ],
+      "id": "41a88d91-da00-4efe-adae-aa2a814c880b",
+      "name": "pesquisa_id",
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "table": {
+          "__rl": true,
+          "value": "mensagens_agendadas",
+          "mode": "list",
+          "cachedResultName": "mensagens_agendadas"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "id_user",
+        "valueToMatchOn": "={{ $json[\"id\"] }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "nome",
+              "value": "={{ $node[\"Edit Fields3\"].json[\"nome\"] }}"
+            },
+            {
+              "column": "sobrenome",
+              "value": "={{ $node[\"Edit Fields3\"].json[\"sobrenome\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $node[\"Edit Fields3\"].json[\"telefone\"] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $node[\"Edit Fields3\"].json[\"email\"] }}"
+            },
+            {
+              "column": "data_2",
+              "value": "={{ $node[\"Edit Fields3\"].json[\"data_mensagem_1\"] }}"
+            },
+            {
+              "column": "produto",
+              "value": "={{ $node[\"Edit Fields3\"].json[\"produto\"] }}"
+            },
+            {
+              "column": "mensagem",
+              "value": "Mensagem de Compra Aprovada [1]"
+            },
+            {
+              "column": "evento",
+              "value": "Compra Aprovada - DIOGENES"
+            },
+            {
+              "column": "enviada",
+              "value": "1"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        5820,
+        540
+      ],
+      "id": "0120006b-7d2b-46ca-85b1-8189cca2ef1e",
+      "name": "insere_mensagem_na_tabela",
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 10
+            }
+          ]
+        }
+      },
+      "id": "7283ceae-3801-4f32-b269-0ccb527901a1",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        3520,
+        1320
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# PARTE 2 - mensagem no wpp do cliente",
+        "height": 767,
+        "width": 3213,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3400,
+        1000
+      ],
+      "typeVersion": 1,
+      "id": "6ba4f10a-5645-4290-bac1-f5d30496d228",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "mensagens_agendadas",
+          "mode": "list",
+          "cachedResultName": "mensagens_agendadas"
+        },
+        "returnAll": true,
+        "where": {
+          "values": [
+            {
+              "column": "enviada",
+              "value": "1"
+            },
+            {
+              "column": "enviada_2",
+              "value": "0"
+            },
+            {
+              "column": "evento",
+              "value": "Compra Aprovada - DIOGENES"
+            },
+            {
+              "column": "mensagem",
+              "value": "Mensagem de Compra Aprovada [1]"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        3740,
+        1320
+      ],
+      "id": "a49eb6f7-dd42-4429-8c9d-dc5236b9e3d5",
+      "name": "MySQL",
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "2772e017-4d6f-43ca-a430-675136d99f2d",
+              "leftValue": "={{ $json[\"data_2\"].split(\" \")[0] }}",
+              "rightValue": "={{ $now.toString().split(\".\")[0].split(\":\")[0].split(\"T\")[0] }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "1fb719fc-0981-4102-893a-475b8968ccdc",
+      "name": "If4",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        3960,
+        1320
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "07832f06-a885-484f-87ff-c233d883379a",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        4240,
+        1240
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "ad4e326d-22e3-4fa7-b325-cef5fbe6b383",
+      "name": "Replace Me",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        4440,
+        1460
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c53e209f-3f99-47cf-ac2c-48e2744c2567",
+              "name": "nome",
+              "value": "={{ $json[\"nome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "6a122e24-9278-4fa5-aba6-ea01b413ed09",
+              "name": "telefone",
+              "value": "={{ $json[\"telefone\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "af5246e1-afa0-4fc2-9a07-cf21cfc43f0b",
+              "name": "data",
+              "value": "={{ $now }}",
+              "type": "string"
+            },
+            {
+              "id": "00fa81b1-b695-4099-973d-712c2f2a2a99",
+              "name": "sobrenome",
+              "value": "={{ $json[\"sobrenome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "0c83ee64-1365-49df-a8eb-687fc8742541",
+              "name": "API-KEY",
+              "value": "5a0e47da-df8c-4f73-87e2-2a72993b790c",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f8311053-162e-407f-86e1-3161dbc34b09",
+      "name": "Edit Fields4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4500,
+        1260
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/+{{ $json[\"telefone\"] }}/",
+        "options": {},
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $json[\"API-KEY\"] }}"
+            }
+          ]
+        }
+      },
+      "name": "Verificar na audiência1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        4700,
+        1260
+      ],
+      "id": "8d83caaa-8eae-4384-a4ba-e7f011057dab",
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json[\"id\"]}}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "name": "Contato existe?1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        4880,
+        1260
+      ],
+      "id": "da8cd3c4-5c8c-4ebb-8f77-3384e8fcb62b"
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "phone",
+              "value": "={{ $node[\"Edit Fields4\"].json[\"telefone\"] }}"
+            },
+            {
+              "name": "first_name",
+              "value": "={{ $node[\"Edit Fields4\"].json[\"nome\"] }}"
+            },
+            {
+              "name": "last_name",
+              "value": "={{ $node[\"Edit Fields4\"].json[\"sobrenome\"] ? $node[\"Edit Fields4\"].json[\"sobrenome\"] : \".\" }}"
+            }
+          ]
+        },
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $node[\"Edit Fields4\"].json[\"API-KEY\"] }}"
+            }
+          ]
+        }
+      },
+      "name": "Cadastrar contato1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        5080,
+        1340
+      ],
+      "id": "d804dcd2-8cbe-4584-8dc2-b3b63c5cab90",
+      "executeOnce": true,
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/{{ $node[\"Verificar na audiência1\"].json[\"id\"] || $node[\"Cadastrar contato1\"].json[\"id\"] }}/send_flow/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "API-KEY",
+              "value": "={{ $node[\"Edit Fields4\"].json[\"API-KEY\"] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "flow",
+              "value": "6569288"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d211d31a-594a-41c6-8295-05193383d392",
+      "name": "Envia Fluxo - cliente1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        5280,
+        1240
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "table": {
+          "__rl": true,
+          "value": "mensagens_agendadas",
+          "mode": "list",
+          "cachedResultName": "mensagens_agendadas"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "id",
+        "valueToMatchOn": "={{ $node[\"MySQL\"].json[\"id\"] }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "enviada_2",
+              "value": "1"
+            },
+            {
+              "column": "data_3",
+              "value": "={{ $json[\"one_day_formated\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        5900,
+        1240
+      ],
+      "id": "7c0fabeb-ddc0-4cd7-97bf-9530e2dfcd89",
+      "name": "MySQL1",
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "addToDate",
+        "magnitude": "={{ $now.format('yyyy-MM-dd') }}",
+        "duration": 2,
+        "outputFieldName": "new_date_one",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        5520,
+        1240
+      ],
+      "id": "27622611-010e-4387-8ba7-4c7bb8e58a9c",
+      "name": "Date & Time2"
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json[\"new_date_one\"] }}",
+        "format": "custom",
+        "customFormat": "yyyy-MM-dd",
+        "outputFieldName": "one_day_formated",
+        "options": {
+          "timezone": true
+        }
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        5700,
+        1240
+      ],
+      "id": "5e02b8d0-230c-4b42-98e9-c7614b4b6c52",
+      "name": "Date & Time3"
+    }
+  ],
+  "pinData": {
+    "chega_da_fila": [
+      {
+        "json": {
+          "fields": {
+            "consumerTag": "amq.ctag-FWA6cOyLYJjeb8eii5NFOw",
+            "deliveryTag": 1,
+            "redelivered": false,
+            "exchange": "",
+            "routingKey": "[COMPRA APROVADA] [PEC GERAL]"
+          },
+          "properties": {
+            "headers": {}
+          },
+          "content": {
+            "nome": "Juliano",
+            "email": "juliano_fabricio@yahoo.com.br",
+            "cpf/cnpj": "29201753861",
+            "nome_produto": "Imersão Atômica",
+            "transaction_id": "HP2438614899",
+            "product_id": 4561690,
+            "preco": 97,
+            "oferta": "9vab7gp7",
+            "gateway_comission": 7.21,
+            "currency": "BRL",
+            "payment_method": "PIX",
+            "trans_status": "APPROVED",
+            "data_compra": "2024-10-07T17:09:42.000Z",
+            "data_garantia": "2024-10-07T17:07:06.000Z",
+            "parcelas": 1,
+            "cep": "85601090",
+            "utm_source": "instagram",
+            "utm_campaign": "IA1024",
+            "utm_medium": "bio",
+            "utm_content": "matheus",
+            "utm_term": "matheus",
+            "telefone": "5546991361900",
+            "sobrenome": "Alarcon Fabrício",
+            "comissao_produtor": 87.3
+          }
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.engenheiromatheus.com",
+            "user-agent": "Jodd HTTP",
+            "content-length": "1814",
+            "content-type": "application/json",
+            "x-forwarded-for": "44.222.113.107",
+            "x-forwarded-host": "webhook.engenheiromatheus.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "7e5b8bef7460",
+            "x-hotmart-hottok": "1NQDYfnDlDPt8NTrIqBEZoL7VuqOo17defb61a-1f64-4ad4-8be0-2f387f6f0ce2",
+            "x-real-ip": "44.222.113.107",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "data": {
+              "product": {
+                "support_email": "suporte@engenheiromatheus.com",
+                "has_co_production": true,
+                "name": "Tutores da Construção no WhatsApp",
+                "warranty_date": "2025-03-28T00:00:00Z",
+                "id": 5031535,
+                "ucode": "bb9c5f15-1b61-4255-a8c2-d97598cd38e6"
+              },
+              "commissions": [
+                {
+                  "currency_value": "BRL",
+                  "source": "MARKETPLACE",
+                  "value": 0
+                },
+                {
+                  "currency_value": "BRL",
+                  "source": "PRODUCER",
+                  "value": 0
+                }
+              ],
+              "purchase": {
+                "original_offer_price": {
+                  "currency_value": "BRL",
+                  "value": 0
+                },
+                "recurrence_number": 1,
+                "subscription_anticipation_purchase": false,
+                "checkout_country": {
+                  "iso": "BR",
+                  "name": "Brasil"
+                },
+                "order_bump": {
+                  "is_order_bump": false
+                },
+                "approved_date": 1742572733000,
+                "offer": {
+                  "code": "8omle5zs"
+                },
+                "is_funnel": false,
+                "order_date": 1742572734000,
+                "date_next_charge": 1745150400000,
+                "price": {
+                  "currency_value": "BRL",
+                  "value": 0
+                },
+                "payment": {
+                  "installments_number": 1,
+                  "type": "PIX"
+                },
+                "full_price": {
+                  "currency_value": "BRL",
+                  "value": 0
+                },
+                "business_model": "I",
+                "invoice_by": "HOTMART",
+                "transaction": "HP1142474276",
+                "status": "APPROVED"
+              },
+              "affiliates": [
+                {
+                  "affiliate_code": "",
+                  "name": ""
+                }
+              ],
+              "producer": {
+                "legal_nature": "Pessoa Jurídica",
+                "document": "50221675000139",
+                "name": "Plest Empreendimentos Digitais e Marketing Spe Ltda"
+              },
+              "subscription": {
+                "subscriber": {
+                  "code": "ICIESFQR"
+                },
+                "plan": {
+                  "name": "Mensal",
+                  "id": 1019429
+                },
+                "status": "ACTIVE"
+              },
+              "buyer": {
+                "checkout_phone_code": "31",
+                "address": {
+                  "zipcode": "31255674",
+                  "country": "Brasil",
+                  "number": "426",
+                  "address": "Rua Izabel Bueno",
+                  "city": "Belo Horizonte",
+                  "state": "MG",
+                  "neighborhood": "Santa Rosa",
+                  "complement": "Apto 301",
+                  "country_iso": "BR"
+                },
+                "document": "01551249600",
+                "name": "CHRISTIANE APARECIDA SANTOS MOREIRA",
+                "last_name": "MOREIRA",
+                "checkout_phone": "31986667532",
+                "first_name": "CHRISTIANE",
+                "email": "chrisasmoreira@gmail.com",
+                "document_type": "CPF"
+              }
+            },
+            "id": "5a4e6371-840a-4186-bc7f-dcbf03805b7d",
+            "creation_date": 1742572738775,
+            "event": "PURCHASE_APPROVED",
+            "version": "2.0.0"
+          },
+          "webhookUrl": "https://webhook.engenheiromatheus.com/webhook/70705c10-81db-4d5c-b75c-cdaa37d192f6",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "chega_da_fila1": [
+      {
+        "json": {
+          "fields": {
+            "consumerTag": "amq.ctag-0D1vEhtB0quDr8ktXhjrCA",
+            "deliveryTag": 1,
+            "redelivered": false,
+            "exchange": "",
+            "routingKey": "[COMPRA APROVADA] [PEC] [2025] [M1]"
+          },
+          "properties": {
+            "headers": {}
+          },
+          "content": {
+            "Nome": "Juliano",
+            "Sobrenome": "Alarcon Fabrício",
+            "Telefone": "5546991361900",
+            "Email": "juliano_fabricio@yahoo.com.br",
+            "Produto": "Imersão Atômica"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    },
+    "node:Schedule Trigger1": {
+      "recurrenceRules": []
+    },
+    "node:Schedule Trigger2": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2025-03-03T19:20:55.024Z",
+      "updatedAt": "2025-03-03T19:20:55.024Z",
+      "id": "mtFaN64RgkId5uXw",
+      "name": "DIÓGENES"
+    }
+  ],
+  "triggerCount": 4,
+  "updatedAt": "2025-03-21T16:25:48.844Z",
+  "versionId": "902025ba-3a5e-4055-82c6-ab9894b88dc4"
+}
