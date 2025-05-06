@@ -1,0 +1,316 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "entra_na_fila_compra_aprovada1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-21T06:44:29.992Z",
+  "id": "IpKgStSSIOLoZsR8",
+  "meta": null,
+  "name": "🔴 [TODOS EVENTOS] [HOTMART]",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "412589ba-2faf-4e3f-82f5-173d73a7305d",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "59e21483-6755-48aa-9d94-c6168879456d",
+      "name": "Webhook",
+      "webhookId": "412589ba-2faf-4e3f-82f5-173d73a7305d"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json[\"body\"][\"event\"] }}",
+                    "rightValue": "PURCHASE_APPROVED",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Compra Aprovada"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "cabfa1e9-c8c0-443c-b167-2872992aab93",
+                    "leftValue": "={{ $json[\"body\"][\"event\"] }}",
+                    "rightValue": "PURCHASE_OUT_OF_SHOPPING_CART",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Carrinho Abandonado"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "17ba33e8-5389-4787-8478-39cc0799552a",
+                    "leftValue": "={{ $json[\"body\"][\"event\"] }}",
+                    "rightValue": "PURCHASE_REFUNDED",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Compra Reembolsada"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "d5c92c95-915d-4d78-8cd9-69d383d8c900",
+                    "leftValue": "={{ $json[\"body\"][\"event\"] }}",
+                    "rightValue": "PURCHASE_EXPIRED",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Compra Expirada"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        220,
+        -20
+      ],
+      "id": "0b9833f1-5592-4612-9475-5134e2641c8d",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "queue": "[COMPRA APROVADA] [PEC GERAL] - P1",
+        "options": {
+          "arguments": {
+            "argument": [
+              {
+                "key": "x-queue-type",
+                "value": "quorum"
+              }
+            ]
+          },
+          "durable": true
+        }
+      },
+      "id": "e14eecd6-fc3a-495b-b3b0-80bd9775a556",
+      "name": "entra_na_fila_compra_aprovada1",
+      "type": "n8n-nodes-base.rabbitmq",
+      "typeVersion": 1,
+      "position": [
+        600,
+        -340
+      ],
+      "credentials": {
+        "rabbitmq": {
+          "id": "DG2PMHOSIQ0AOSwK",
+          "name": "RabbitMQ account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.engenheiromatheus.com",
+            "user-agent": "Jodd HTTP",
+            "content-length": "1316",
+            "content-type": "application/json",
+            "x-forwarded-for": "44.220.173.17",
+            "x-forwarded-host": "webhook.engenheiromatheus.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "7e5b8bef7460",
+            "x-hotmart-hottok": "1NQDYfnDlDPt8NTrIqBEZoL7VuqOo17defb61a-1f64-4ad4-8be0-2f387f6f0ce2",
+            "x-real-ip": "44.220.173.17",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "data": {
+              "product": {
+                "has_co_production": false,
+                "name": "Produto test postback2",
+                "id": 0,
+                "ucode": "fb056612-bcc6-4217-9e6d-2a5d1110ac2f"
+              },
+              "commissions": [
+                {
+                  "currency_value": "BRL",
+                  "source": "MARKETPLACE",
+                  "value": 149.5
+                },
+                {
+                  "currency_value": "BRL",
+                  "source": "PRODUCER",
+                  "value": 1350.5
+                }
+              ],
+              "purchase": {
+                "offer": {
+                  "code": "test"
+                },
+                "order_date": 1511783344000,
+                "original_offer_price": {
+                  "currency_value": "BRL",
+                  "value": 1500
+                },
+                "price": {
+                  "currency_value": "BRL",
+                  "value": 1500
+                },
+                "checkout_country": {
+                  "iso": "BR",
+                  "name": "Brasil"
+                },
+                "sckPaymentLink": "sckPaymentLinkTest",
+                "order_bump": {
+                  "parent_purchase_transaction": "HP02316330308193",
+                  "is_order_bump": true
+                },
+                "payment": {
+                  "installments_number": 12,
+                  "type": "CREDIT_CARD"
+                },
+                "approved_date": 1511783346000,
+                "full_price": {
+                  "currency_value": "BRL",
+                  "value": 1500
+                },
+                "transaction": "HP16015479281022",
+                "status": "APPROVED"
+              },
+              "affiliates": [
+                {
+                  "affiliate_code": "Q58388177J",
+                  "name": "Affiliate name"
+                }
+              ],
+              "producer": {
+                "name": "Producer Test Name"
+              },
+              "subscription": {
+                "subscriber": {
+                  "code": "I9OT62C3"
+                },
+                "plan": {
+                  "name": "plano de teste",
+                  "id": 123
+                },
+                "status": "ACTIVE"
+              },
+              "buyer": {
+                "address": {
+                  "country": "Brasil",
+                  "country_iso": "BR"
+                },
+                "name": "Teste Comprador",
+                "checkout_phone": "99999999900",
+                "email": "testeComprador271101postman15@example.com"
+              }
+            },
+            "id": "a3f4a5be-b4c4-4d83-91e1-c0d7d303cd29",
+            "creation_date": 1740120279267,
+            "event": "PURCHASE_APPROVED",
+            "version": "2.0.0"
+          },
+          "webhookUrl": "https://webhook.engenheiromatheus.com/webhook/412589ba-2faf-4e3f-82f5-173d73a7305d",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-03-03T20:07:59.609Z",
+  "versionId": "6c52843c-048d-4084-b051-f6b871e93b6d"
+}
