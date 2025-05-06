@@ -1,0 +1,1965 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "trata_dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "trata_dados": {
+      "main": [
+        [
+          {
+            "node": "dados_da_compra2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "dados_da_compra2": {
+      "main": [
+        [
+          {
+            "node": "entra_na_fila_compra_aprovada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cria_contato_no_ac1": {
+      "main": [
+        [
+          {
+            "node": "tag_compra_aprovada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "atualiza_contato_no_ac1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "cria_contato_no_ac1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Listar Campos Personalizados de Contatos da Conta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Listar Campos Personalizados de Contatos da Conta": {
+      "main": [
+        [
+          {
+            "node": "Listar Tags da Conta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chega_da_fila": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "atualiza_contato_no_ac1": {
+      "main": [
+        [
+          {
+            "node": "tag_compra_aprovada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "tag_compra_aprovada": {
+      "main": [
+        [
+          {
+            "node": "busca utm",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica se a UTM existe1": {
+      "main": [
+        [
+          {
+            "node": "junta id utm",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "cadastra utm",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica se o produto já é cadastrado": {
+      "main": [
+        [
+          {
+            "node": "junta id product",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "cadastra produto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca cliente1": {
+      "main": [
+        [
+          {
+            "node": "verifica se cliente existe",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca produto": {
+      "main": [
+        [
+          {
+            "node": "Verifica se o produto já é cadastrado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca utm": {
+      "main": [
+        [
+          {
+            "node": "Verifica se a UTM existe1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cadastra utm": {
+      "main": [
+        [
+          {
+            "node": "busca id utm",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cadastra produto": {
+      "main": [
+        [
+          {
+            "node": "busca id product",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cadastra produto1": {
+      "main": [
+        [
+          {
+            "node": "busca id client",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verifica se cliente existe": {
+      "main": [
+        [
+          {
+            "node": "atualiza cliente",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "cadastra produto1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca id utm": {
+      "main": [
+        [
+          {
+            "node": "junta id utm",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "junta id utm": {
+      "main": [
+        [
+          {
+            "node": "aguarda 2Seg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca id product": {
+      "main": [
+        [
+          {
+            "node": "junta id product",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "junta id product": {
+      "main": [
+        [
+          {
+            "node": "Aguarda 2Seg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca id client": {
+      "main": [
+        [
+          {
+            "node": "junta id client",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "junta id client": {
+      "main": [
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait3": {
+      "main": [
+        [
+          {
+            "node": "registra cadastro",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aguarda 2Seg": {
+      "main": [
+        [
+          {
+            "node": "busca cliente1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "aguarda 2Seg": {
+      "main": [
+        [
+          {
+            "node": "busca produto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "atualiza cliente": {
+      "main": [
+        [
+          {
+            "node": "junta id client",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-03T00:31:54.089Z",
+  "id": "yJ6cu3u9sOCQhol7",
+  "meta": null,
+  "name": "🔵 Checkout Populado - [IA0125]",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ia0125-popup",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        80,
+        -60
+      ],
+      "id": "3c9e30ac-690d-45b0-8885-4cb2dfefddba",
+      "name": "Webhook",
+      "webhookId": "661ed5d1-26d4-4a02-bfb4-7d61b47bd522",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "queue": "[Checkout Pré-Populado] [IA0125]",
+        "options": {
+          "arguments": {
+            "argument": [
+              {
+                "key": "x-queue-type",
+                "value": "quorum"
+              }
+            ]
+          },
+          "durable": true
+        }
+      },
+      "id": "22d0c774-9a70-44cf-b0c0-e12d8294181b",
+      "name": "entra_na_fila_compra_aprovada",
+      "type": "n8n-nodes-base.rabbitmq",
+      "typeVersion": 1,
+      "position": [
+        660,
+        -60
+      ],
+      "credentials": {
+        "rabbitmq": {
+          "id": "DG2PMHOSIQ0AOSwK",
+          "name": "RabbitMQ account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Acessa o conteúdo do body\nlet data = items[0].json.body;\n\n// Formatar o telefone: adicionar '55' se não tiver\nif (!data.Telefone.startsWith('55')) {\n  data.Telefone = '55' + data.Telefone;\n}\n\n// Formatar o email para minúsculas\ndata.Email = data.Email.toLowerCase();\n\n// Separar o nome completo em primeiro nome e sobrenome\nlet nomeCompleto = data.Nome.trim().split(\" \");\nlet primeiroNome = nomeCompleto[0];\nlet sobrenome = nomeCompleto.slice(1).join(\" \"); // une o resto como sobrenome\n\n// Atualiza os valores no JSON de saída\ndata.Nome = primeiroNome;\ndata.Sobrenome = sobrenome;\n\n// Retorna o JSON atualizado\nreturn [\n  {\n    json: data\n  }\n];"
+      },
+      "id": "aab81683-ae8c-433b-84be-078e55575a44",
+      "name": "trata_dados",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        260,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "E-mail do Cliente",
+              "value": "={{ $json[\"Email\"] }}"
+            },
+            {
+              "name": "nome_evento",
+              "value": "Imersão Atômica"
+            },
+            {
+              "name": "utm_source",
+              "value": "={{ $json[\"utm_source\"] }}"
+            },
+            {
+              "name": "utm_campaign",
+              "value": "={{ $json[\"utm_campaign\"] }}"
+            },
+            {
+              "name": "utm_medium",
+              "value": "={{ $json[\"utm_medium\"] }}"
+            },
+            {
+              "name": "utm_content",
+              "value": "={{ $json[\"utm_content\"] }}"
+            },
+            {
+              "name": "utm_term",
+              "value": "={{ $json[\"utm_term\"] }}"
+            },
+            {
+              "name": "Firts_name",
+              "value": "={{ $json[\"Nome\"] }}"
+            },
+            {
+              "name": "Last_name",
+              "value": "={{ $json[\"Sobrenome\"] }}"
+            },
+            {
+              "name": "Telefone do Cliente",
+              "value": "={{ $json[\"Telefone\"] }}"
+            },
+            {
+              "name": "página",
+              "value": "={{ $json[\"form_name\"] }}"
+            },
+            {
+              "name": "form_id",
+              "value": "={{ $json[\"form_id\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "161512b1-b53a-46fe-8355-749c779d32f8",
+      "name": "dados_da_compra2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        460,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "email": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"E-mail do Cliente\"] }}",
+        "updateIfExists": true,
+        "additionalFields": {
+          "fieldValues": {
+            "property": [
+              {
+                "field": "=394",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_source\"] }}"
+              },
+              {
+                "field": "=395",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_campaign\"] }}"
+              },
+              {
+                "field": "=396",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_term\"] }}"
+              },
+              {
+                "field": "=397",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_medium\"] }}"
+              },
+              {
+                "field": "=398",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_content\"] }}"
+              },
+              {
+                "field": "=417",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"página\"] }}"
+              }
+            ]
+          },
+          "firstName": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Firts_name\"] }}",
+          "lastName": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Last_name\"] }}",
+          "phone": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Telefone do Cliente\"] }}"
+        }
+      },
+      "id": "c1aace4f-902b-4219-8901-64177551246c",
+      "name": "cria_contato_no_ac1",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        680,
+        880
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "2130aa22-e19a-4662-8a2e-b43d36facf6d",
+              "leftValue": "={{ $json[\"contacts\"][\"0\"][\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "94f0c52a-e80d-41a4-9f05-09f353ab01a0",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        480,
+        740
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://pertengenharia65979.api-us1.com/api/3/contacts",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"E-mail do Cliente\"] }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Api-Token",
+              "value": "b419d201280255cfb5949e0ba2a37254603f256450715cb36ea5a74ecae2b608669123f9"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "262377fe-47f2-44f7-964e-10a96659beb1",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        280,
+        740
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "256",
+        "contactId": "={{ $json[\"id\"] }}"
+      },
+      "id": "1fba724a-c36e-418b-99a1-b38f392487bd",
+      "name": "tag_compra_aprovada",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        860,
+        760
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "Api-Token",
+              "value": "b419d201280255cfb5949e0ba2a37254603f256450715cb36ea5a74ecae2b608669123f9"
+            },
+            {
+              "name": "url_api_activecampaign",
+              "value": "pertengenharia65979"
+            },
+            {
+              "name": "tag_procurada",
+              "value": "compra aprovada"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "165bab46-518b-415e-b83f-98bb0cd1139b",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        180,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://{{ $json[\"url_api_activecampaign\"] }}.api-us1.com/api/3/fields?limit=1000",
+        "options": {},
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "Api-Token",
+              "value": "={{ $node[\"Set\"].json[\"Api-Token\"] }}"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        }
+      },
+      "name": "Listar Campos Personalizados de Contatos da Conta",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        380,
+        320
+      ],
+      "id": "245c1706-89c4-40e1-92ce-2f6728a6d567"
+    },
+    {
+      "parameters": {
+        "content": "## Para consulta\n \nUtilize os Nodes Abaixo para consultar os IDs dos Campos e Tags no ActiveCampaign",
+        "height": 407.6377565498652,
+        "width": 744.3875499809177
+      },
+      "id": "37d8c21b-fcb4-4e2a-95ea-4b79a1eed3bc",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        80,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://{{ $node[\"Set\"].json[\"url_api_activecampaign\"] }}.api-us1.com/api/3/tags?limit=1000&search={{ $node[\"Set\"].json[\"tag_procurada\"] }}",
+        "options": {},
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "Api-Token",
+              "value": "={{ $node[\"Set\"].json[\"Api-Token\"] }}"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        }
+      },
+      "name": "Listar Tags da Conta",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        580,
+        320
+      ],
+      "id": "6847d3b2-6f65-45b5-9022-8e999d2d30f6"
+    },
+    {
+      "parameters": {
+        "queue": "[Checkout Pré-Populado] [IA0125]",
+        "options": {
+          "arguments": {
+            "argument": [
+              {
+                "key": "x-queue-type",
+                "value": "quorum"
+              }
+            ]
+          },
+          "acknowledge": "executionFinishesSuccessfully",
+          "jsonParseBody": "={{ true }}",
+          "parallelMessages": 3
+        }
+      },
+      "id": "769bc91f-1819-4173-b3ae-e065015a1e55",
+      "name": "chega_da_fila",
+      "type": "n8n-nodes-base.rabbitmqTrigger",
+      "typeVersion": 1,
+      "position": [
+        80,
+        740
+      ],
+      "credentials": {
+        "rabbitmq": {
+          "id": "DG2PMHOSIQ0AOSwK",
+          "name": "RabbitMQ account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "contactId": "={{ $json[\"contacts\"][\"0\"][\"id\"] }}",
+        "updateFields": {
+          "fieldValues": {
+            "property": [
+              {
+                "field": "=394",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_source\"] }}"
+              },
+              {
+                "field": "=395",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_campaign\"] }}"
+              },
+              {
+                "field": "=396",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_term\"] }}"
+              },
+              {
+                "field": "=397",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_medium\"] }}"
+              },
+              {
+                "field": "=398",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_content\"] }}"
+              },
+              {
+                "field": "=417",
+                "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"página\"] }}"
+              }
+            ]
+          },
+          "email": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"E-mail do Cliente\"] }}",
+          "firstName": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Firts_name\"] }}",
+          "lastName": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Last_name\"] }}",
+          "phone": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Telefone do Cliente\"] }}"
+        }
+      },
+      "id": "df825b3d-7caf-46b0-8439-e6ea48246459",
+      "name": "atualiza_contato_no_ac1",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        680,
+        640
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "18ab0f03-07ed-483a-90ba-3c19afa5ec75",
+              "leftValue": "={{ $json.utm_id.toString() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1200,
+        640
+      ],
+      "id": "b9c4359f-865c-4d79-aaae-72a8f4e899a3",
+      "name": "Verifica se a UTM existe1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "18ab0f03-07ed-483a-90ba-3c19afa5ec75",
+              "leftValue": "={{ $json.product_id.toString() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2020,
+        660
+      ],
+      "id": "d6bc8a57-99b4-46bb-b948-7e87cb99486f",
+      "name": "Verifica se o produto já é cadastrado"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "payment_gateway",
+          "mode": "list",
+          "cachedResultName": "payment_gateway"
+        },
+        "table": {
+          "__rl": true,
+          "value": "clients",
+          "mode": "list",
+          "cachedResultName": "clients"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "email",
+              "value": "={{ $('chega_da_fila').item.json.content['E-mail do Cliente'] }}"
+            },
+            {
+              "column": "phone",
+              "value": "={{ $('chega_da_fila').item.json.content['Telefone do Cliente'] }}"
+            }
+          ]
+        },
+        "combineConditions": "OR",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        2660,
+        660
+      ],
+      "id": "0a89e390-8ad4-47fb-b62a-ee23908ac014",
+      "name": "busca cliente1",
+      "executeOnce": true,
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "t9WQc0QxKJ6DIrC9",
+          "name": "Postgres account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "payment_gateway",
+          "mode": "list",
+          "cachedResultName": "payment_gateway"
+        },
+        "table": {
+          "__rl": true,
+          "value": "products",
+          "mode": "list",
+          "cachedResultName": "products"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "product_name",
+              "value": "={{ $('chega_da_fila').item.json.content.nome_evento }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1840,
+        660
+      ],
+      "id": "761a6801-4216-45f8-ae27-5a6c700d8c47",
+      "name": "busca produto",
+      "executeOnce": true,
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "t9WQc0QxKJ6DIrC9",
+          "name": "Postgres account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "payment_gateway",
+          "mode": "list",
+          "cachedResultName": "payment_gateway"
+        },
+        "table": {
+          "__rl": true,
+          "value": "utm",
+          "mode": "list",
+          "cachedResultName": "utm"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "utm_source",
+              "value": "={{ $('chega_da_fila').item.json.content.utm_source }}"
+            },
+            {
+              "column": "utm_campaign",
+              "value": "={{ $('chega_da_fila').item.json.content.utm_campaign }}"
+            },
+            {
+              "column": "utm_medium",
+              "value": "={{ $('chega_da_fila').item.json.content.utm_medium }}"
+            },
+            {
+              "column": "utm_content",
+              "value": "={{ $('chega_da_fila').item.json.content.utm_content }}"
+            },
+            {
+              "column": "utm_term",
+              "value": "={{ $('chega_da_fila').item.json.content.utm_term }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1040,
+        640
+      ],
+      "id": "dc4ea52c-0b73-4d31-8cfe-d740af0ed924",
+      "name": "busca utm",
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "credentials": {
+        "postgres": {
+          "id": "t9WQc0QxKJ6DIrC9",
+          "name": "Postgres account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://webhook.engenheiromatheus.com/webhook/utm",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "utm_source",
+              "value": "={{ $('qual ingresso').item.json.content.utm_source }}"
+            },
+            {
+              "name": "utm_campaign",
+              "value": "={{ $('qual ingresso').item.json.content.utm_campaign }}"
+            },
+            {
+              "name": "utm_medium",
+              "value": "={{ $('qual ingresso').item.json.content.utm_medium }}"
+            },
+            {
+              "name": "utm_content",
+              "value": "={{ $('qual ingresso').item.json.content.utm_content }}"
+            },
+            {
+              "name": "utm_term",
+              "value": "={{ $('qual ingresso').item.json.content.utm_term }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1040,
+        880
+      ],
+      "id": "b54d411d-6bb8-4312-9820-ee2fe89f189d",
+      "name": "cadastra utm",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://webhook.engenheiromatheus.com/webhook/produto",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "codigo da oferta",
+              "value": "={{ $('chega_da_fila').item.json.content.offer_code }}"
+            },
+            {
+              "name": "produto",
+              "value": "={{ $('chega_da_fila').item.json.content.nome_produto }}"
+            },
+            {
+              "name": "ingresso",
+              "value": "={{ $('qual ingresso').item.json.content.ingresso }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1840,
+        880
+      ],
+      "id": "35911758-3f7a-4f79-91f8-d03c8e624af9",
+      "name": "cadastra produto",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://webhook.engenheiromatheus.com/webhook/cliente",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "first_name",
+              "value": "={{ $('chega_da_fila').item.json.content.Firts_name }}"
+            },
+            {
+              "name": "last_name",
+              "value": "={{ $('chega_da_fila').item.json.content.Last_name }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $('chega_da_fila').item.json.content['E-mail do Cliente'] }}"
+            },
+            {
+              "name": "phone",
+              "value": "={{ $('chega_da_fila').item.json.content['Telefone do Cliente'] }}"
+            },
+            {
+              "name": "cpf_cnpj",
+              "value": "={{ $('chega_da_fila').item.json.content['cpf/cnpj'] }}"
+            },
+            {
+              "name": "address",
+              "value": "={{ $('chega_da_fila').item.json.content['Endereço Completo'] }}"
+            },
+            {
+              "name": "city",
+              "value": "={{ $('chega_da_fila').item.json.content.Cidade }}"
+            },
+            {
+              "name": "state",
+              "value": "={{ $('chega_da_fila').item.json.content.Estado }}"
+            },
+            {
+              "name": "zip_code",
+              "value": "={{ $('chega_da_fila').item.json.content.cep }}"
+            },
+            {
+              "name": "country",
+              "value": "={{ $('chega_da_fila').item.json.content['País'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2660,
+        880
+      ],
+      "id": "8f746ec7-523b-43e1-940c-d7ba10aa9802",
+      "name": "cadastra produto1",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "18ab0f03-07ed-483a-90ba-3c19afa5ec75",
+              "leftValue": "={{ $json.client_id.toString() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2840,
+        660
+      ],
+      "id": "1488ae7f-390f-4926-8f03-d0183e92136e",
+      "name": "verifica se cliente existe"
+    },
+    {
+      "parameters": {
+        "content": "## Verifica se a UTM já existe",
+        "height": 480,
+        "width": 640,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        980,
+        560
+      ],
+      "id": "c398d4e5-0605-4bad-8c43-fdf8ef2295dd",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Inteligência de dados",
+        "height": 80,
+        "width": 2240,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        980,
+        460
+      ],
+      "id": "07ab02f0-d953-4315-9bdc-6c023a7a3256",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e8126eee-5973-4ad9-a317-945e5effdaf9",
+              "name": "utm_id",
+              "value": "={{ $json.utm_id.toString() }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1220,
+        880
+      ],
+      "id": "9f9a55d9-cdb2-47e2-bc23-ffc9442223cd",
+      "name": "busca id utm"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2b86cf24-c943-41d7-a33b-fc0c8890d2e0",
+              "name": "utm_id",
+              "value": "={{ $json.utm_id.toString() }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1480,
+        780
+      ],
+      "id": "4569c538-7795-4cc9-b896-ba51775bba6f",
+      "name": "junta id utm",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "content": "## Verifica se a produto já existe",
+        "height": 480,
+        "width": 640,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1780,
+        560
+      ],
+      "id": "08f00a8e-31de-47ba-bc76-5eadcfaea9c2",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e8126eee-5973-4ad9-a317-945e5effdaf9",
+              "name": "product_id",
+              "value": "={{ $json.product_id.toString() }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2020,
+        880
+      ],
+      "id": "d844e286-344d-4397-9a63-e5e9500a1b0e",
+      "name": "busca id product"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2b86cf24-c943-41d7-a33b-fc0c8890d2e0",
+              "name": "product_id",
+              "value": "={{ $json.product_id.toString() }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2280,
+        780
+      ],
+      "id": "ab331682-d00c-481b-a240-d5f347e23f47",
+      "name": "junta id product",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "content": "## Verifica se a cliente já existe",
+        "height": 480,
+        "width": 640,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2580,
+        560
+      ],
+      "id": "68da311a-ce89-43ce-8dbd-70c5a713ad58",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e8126eee-5973-4ad9-a317-945e5effdaf9",
+              "name": "client_id",
+              "value": "={{ $json.client_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2840,
+        880
+      ],
+      "id": "220cb015-3906-4113-886c-6c33f5039ab0",
+      "name": "busca id client"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2b86cf24-c943-41d7-a33b-fc0c8890d2e0",
+              "name": "client_id",
+              "value": "={{ $json.client_id }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3020,
+        880
+      ],
+      "id": "0fe0965f-4c07-4024-a904-252fc2afd2ad",
+      "name": "junta id client"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3240,
+        880
+      ],
+      "id": "d33130fa-24d5-423b-bb0d-3a501cc327b7",
+      "name": "Wait3",
+      "webhookId": "157d7b1c-53ce-4566-a8ca-7d71e6dbe4f0"
+    },
+    {
+      "parameters": {
+        "content": "## Registra cadastro",
+        "height": 200,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3360,
+        840
+      ],
+      "typeVersion": 1,
+      "id": "af7f6ccb-904b-4c15-be28-bf967a914040",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2460,
+        780
+      ],
+      "id": "97ae4326-5006-43f5-b538-a81ec21004b5",
+      "name": "Aguarda 2Seg",
+      "webhookId": "157d7b1c-53ce-4566-a8ca-7d71e6dbe4f0"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1640,
+        780
+      ],
+      "id": "8274285f-96d9-4580-8c95-b15f97f4b520",
+      "name": "aguarda 2Seg",
+      "webhookId": "157d7b1c-53ce-4566-a8ca-7d71e6dbe4f0"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "value": "payment_gateway",
+          "mode": "list",
+          "cachedResultName": "payment_gateway"
+        },
+        "table": {
+          "__rl": true,
+          "value": "clients",
+          "mode": "list",
+          "cachedResultName": "clients"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "client_id": "={{ $json.client_id.toString() }}",
+            "first_name": "={{ $('chega_da_fila').item.json.content.Firts_name }}",
+            "last_name": "={{ $('chega_da_fila').item.json.content.Last_name }}",
+            "email": "={{ $('chega_da_fila').item.json.content['E-mail do Cliente'] }}",
+            "phone": "={{ $('chega_da_fila').item.json.content['Telefone do Cliente'] }}",
+            "cpf_cnpj": "={{ $('chega_da_fila').item.json.content['cpf/cnpj'] }}",
+            "address": "={{ $('chega_da_fila').item.json.content['Endereço Completo'] }}",
+            "city": "={{ $('chega_da_fila').item.json.content.Cidade }}",
+            "state": "={{ $('chega_da_fila').item.json.content.Estado }}",
+            "zip_code": "={{ $('chega_da_fila').item.json.content.cep }}",
+            "country": "={{ $('chega_da_fila').item.json.content['País'] }}"
+          },
+          "matchingColumns": [
+            "client_id"
+          ],
+          "schema": [
+            {
+              "id": "client_id",
+              "displayName": "client_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "first_name",
+              "displayName": "first_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "last_name",
+              "displayName": "last_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cpf_cnpj",
+              "displayName": "cpf_cnpj",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "address",
+              "displayName": "address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "city",
+              "displayName": "city",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "state",
+              "displayName": "state",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "zip_code",
+              "displayName": "zip_code",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "country",
+              "displayName": "country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "updated_at",
+              "displayName": "updated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        3020,
+        660
+      ],
+      "id": "0fe5f9e8-3852-4a2c-9a33-e94becf66461",
+      "name": "atualiza cliente",
+      "credentials": {
+        "postgres": {
+          "id": "t9WQc0QxKJ6DIrC9",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "payment_gateway",
+          "mode": "list",
+          "cachedResultName": "payment_gateway"
+        },
+        "table": {
+          "__rl": true,
+          "value": "form_submissions",
+          "mode": "list",
+          "cachedResultName": "form_submissions"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "client_id": "={{ $('junta id client').item.json.client_id }}",
+            "product_id": "={{ $('junta id product').item.json.product_id }}",
+            "utm_id": "={{ $('junta id utm').item.json.utm_id }}",
+            "created_at": "={{ $now }}",
+            "delivery_tag": "={{ $('chega_da_fila').item.json.fields.deliveryTag }}",
+            "consumer_tag": "={{ $('chega_da_fila').item.json.fields.consumerTag }}",
+            "routing_key": "={{ $('chega_da_fila').item.json.fields.routingKey }}",
+            "form_id": "={{ $('chega_da_fila').item.json.content.form_id }}",
+            "page_name": "={{ $('chega_da_fila').item.json.content['página'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "submission_id",
+              "displayName": "submission_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "client_id",
+              "displayName": "client_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_id",
+              "displayName": "utm_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "product_id",
+              "displayName": "product_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "page_name",
+              "displayName": "page_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "form_id",
+              "displayName": "form_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "routing_key",
+              "displayName": "routing_key",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "consumer_tag",
+              "displayName": "consumer_tag",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "delivery_tag",
+              "displayName": "delivery_tag",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "updated_at",
+              "displayName": "updated_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        3420,
+        880
+      ],
+      "id": "fd2cde4d-13f0-4e56-a9d8-d082a8e33fc4",
+      "name": "registra cadastro",
+      "credentials": {
+        "postgres": {
+          "id": "t9WQc0QxKJ6DIrC9",
+          "name": "Postgres account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.engenheiromatheus.com",
+            "user-agent": "WordPress/6.7.1; https://victorodrigues.com",
+            "content-length": "252",
+            "accept": "*/*",
+            "accept-encoding": "deflate, gzip",
+            "content-type": "application/x-www-form-urlencoded",
+            "x-forwarded-for": "187.108.207.21",
+            "x-forwarded-host": "webhook.engenheiromatheus.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "7e5b8bef7460",
+            "x-real-ip": "187.108.207.21"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "Nome": "aasfaf",
+            "Email": "fasfaf@gmail.com",
+            "Telefone": "1312311213",
+            "utm_campaign": "plest_campaign",
+            "utm_source": "plest_source",
+            "utm_medium": "plest_medium",
+            "utm_content": "plest_content",
+            "utm_term": "plest_term",
+            "form_id": "23a35d7d",
+            "form_name": "Imersão Atômica - Janeiro 2025 - VIP"
+          },
+          "webhookUrl": "https://webhook.engenheiromatheus.com/webhook/ia0125",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "chega_da_fila": [
+      {
+        "json": {
+          "fields": {
+            "consumerTag": "amq.ctag-wIVlF0CazdFUEPKrL9AJRQ",
+            "deliveryTag": 50,
+            "redelivered": false,
+            "exchange": "",
+            "routingKey": "[Checkout Pré-Populado] [IA0125]"
+          },
+          "properties": {
+            "headers": {}
+          },
+          "content": {
+            "E-mail do Cliente": "comercial.mateusrios@gmail.com",
+            "nome_evento": "Imersão Atômica",
+            "utm_source": "stories",
+            "utm_campaign": "ia0125",
+            "utm_medium": "instagram",
+            "utm_content": "stories01",
+            "utm_term": "quente",
+            "Firts_name": "",
+            "Last_name": "",
+            "Telefone do Cliente": "5534998285085",
+            "página": "Imersão Atômica - Janeiro 2025 - VIP",
+            "form_id": "23a35d7d"
+          }
+        }
+      }
+    ],
+    "atualiza_contato_no_ac1": [
+      {
+        "json": {
+          "cdate": "2025-01-02T19:00:26-06:00",
+          "email": "fasfaf@gmail.com",
+          "phone": "551312311213",
+          "firstName": "aasfaf",
+          "lastName": "",
+          "orgid": "0",
+          "orgname": "",
+          "segmentio_id": "",
+          "bounced_hard": "0",
+          "bounced_soft": "0",
+          "bounced_date": null,
+          "ip": "0",
+          "ua": "",
+          "hash": "7ffc6cf5a1d8a02d7dea82c0fd81e102",
+          "socialdata_lastcheck": null,
+          "email_local": "",
+          "email_domain": "gmail.com",
+          "sentcnt": "0",
+          "rating_tstamp": null,
+          "gravatar": "0",
+          "deleted": "0",
+          "anonymized": "0",
+          "adate": "2025-01-02T19:00:53-06:00",
+          "udate": "2025-01-04T07:30:56-06:00",
+          "edate": "2025-01-02T19:00:53-06:00",
+          "deleted_at": null,
+          "created_utc_timestamp": "2025-01-02 19:00:26",
+          "updated_utc_timestamp": "2025-01-04 07:30:56",
+          "created_timestamp": "2025-01-02 19:00:26",
+          "updated_timestamp": "2025-01-04 07:30:56",
+          "created_by": "0",
+          "updated_by": "0",
+          "mpp_tracking": "0",
+          "accountContacts": [],
+          "links": {
+            "bounceLogs": "https://pertengenharia65979.api-us1.com/api/3/contacts/171711/bounceLogs",
+            "contactAutomations": "https://pertengenharia65979.api-us1.com/api/3/contacts/171711/contactAutomations?limit=2500&orders%5Blastdate%5D=DESC",
+            "contactData": "https://pertengenharia65979.api-us1.com/api/3/contacts/171711/contactData",
+            "contactGoals": "https://pertengenharia65979.api-us1.com/api/3/contacts/171711/contactGoals",
+            "contactLists": "https://pertengenharia65979.api-us1.com/api/3/contacts/171711/contactLists",
+            "contactLogs": "https://pertengenharia65979.api-us1.com/api/3/contacts/171711/contactLogs",
+            "contactTags": "https://pertengenharia65979.api-us1.com/api/3/contacts/171711/contactTags",
+            "contactDeals": "https://pertengenharia65979.api-us1.com/api/3/contacts/171711/contactDeals",
+            "deals": "https://pertengenharia65979.api-us1.com/api/3/contacts/171711/deals",
+            "fieldValues": "https://pertengenharia65979.api-us1.com/api/3/contacts/171711/fieldValues",
+            "geoIps": "https://pertengenharia65979.api-us1.com/api/3/contacts/171711/geoIps",
+            "notes": "https://pertengenharia65979.api-us1.com/api/3/contacts/171711/notes",
+            "organization": "https://pertengenharia65979.api-us1.com/api/3/contacts/171711/organization",
+            "plusAppend": "https://pertengenharia65979.api-us1.com/api/3/contacts/171711/plusAppend",
+            "trackingLogs": "https://pertengenharia65979.api-us1.com/api/3/contacts/171711/trackingLogs",
+            "scoreValues": "https://pertengenharia65979.api-us1.com/api/3/contacts/171711/scoreValues",
+            "automationEntryCounts": "https://pertengenharia65979.api-us1.com/api/3/contacts/171711/automationEntryCounts"
+          },
+          "fieldValues": [
+            "803524",
+            "803525",
+            "803526",
+            "803527",
+            "803528",
+            "803529"
+          ],
+          "id": "171711",
+          "organization": null
+        }
+      }
+    ],
+    "tag_compra_aprovada": [
+      {
+        "json": {
+          "contact": "171711",
+          "tag": "256",
+          "cdate": "2025-01-02T19:00:26-06:00",
+          "created_timestamp": "2025-01-02 19:00:26",
+          "updated_timestamp": "2025-01-02 19:00:26",
+          "created_by": null,
+          "updated_by": null,
+          "links": {
+            "tag": "https://pertengenharia65979.api-us1.com/api/3/contactTags/321971/tag",
+            "contact": "https://pertengenharia65979.api-us1.com/api/3/contactTags/321971/contact"
+          },
+          "id": "321971"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-01-03T01:02:24.647Z",
+      "updatedAt": "2025-01-03T01:02:24.647Z",
+      "id": "EjPSWwhGI6ssVlom",
+      "name": "Imersão Atômica"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-03-03T20:14:40.888Z",
+  "versionId": "68bcd327-9aaf-4e6a-97f1-4249d61332e4"
+}
