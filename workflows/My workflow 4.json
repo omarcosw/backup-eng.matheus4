@@ -1,0 +1,1640 @@
+{
+  "active": false,
+  "connections": {
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "entra_na_fila",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chega_da_fila": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_user": {
+      "main": [
+        [
+          {
+            "node": "encontrou_user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "encontrou_user": {
+      "main": [
+        [
+          {
+            "node": "update_user",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "pesquisa_telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_telefone": {
+      "main": [
+        [
+          {
+            "node": "encontrou_telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "encontrou_telefone": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_user2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insere_lead_na_tabela_users",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_user2": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_lead_nos_grupos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insere_lead_na_tabela_users": {
+      "main": [
+        [
+          {
+            "node": "insere_lead_na_tabela_telefones1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update_user": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_telefone1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_telefone1": {
+      "main": [
+        [
+          {
+            "node": "encontrou_telefone1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "encontrou_telefone1": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_lead_nos_grupos",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insere_lead_na_tabela_telefones",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insere_lead_na_tabela_telefones1": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_lead_nos_grupos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insere_lead_na_tabela_telefones": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_lead_nos_grupos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insere_lead_na_tabela_leads_nos_grupos": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_configs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_lead_nos_grupos": {
+      "main": [
+        [
+          {
+            "node": "encontrou_lead_no_grupo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "encontrou_lead_no_grupo": {
+      "main": [
+        [
+          {
+            "node": "entrou_no_grupo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "entrou_no_grupo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "entrou_no_grupo": {
+      "main": [
+        [
+          {
+            "node": "update_entrou_no_grupo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "update_saiu_do_grupo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update_saiu_do_grupo": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_configs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update_entrou_no_grupo": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_configs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "entrou_no_grupo1": {
+      "main": [
+        [
+          {
+            "node": "insere_lead_na_tabela_leads_nos_grupos",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insere_lead_na_tabela_leads_nos_grupos1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insere_lead_na_tabela_leads_nos_grupos1": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_configs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_grupo1": {
+      "main": [
+        [
+          {
+            "node": "encontrou_grupo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "encontrou_grupo1": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_grupo-corret",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "MySQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_grupo2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_grupo2": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_grupo-corret",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_grupo-corret": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_grupo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_configs": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-19T04:44:23.664Z",
+  "id": "uVq9gZMklDAcbfnv",
+  "meta": null,
+  "name": "My workflow 4",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "581911f4-1edc-4223-9d0b-63a4a0c51264",
+              "name": "id_campanha",
+              "value": "={{ $json[\"body\"][\"data\"][\"campaignId\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "8b54b9dd-4c63-4385-ae7b-0abb12662c7c",
+              "name": "nome_campanha",
+              "value": "={{ $json[\"body\"][\"data\"][\"campaignName\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "f345ee1e-809f-49fa-b63c-50987289cc29",
+              "name": "nome_grupo",
+              "value": "={{ $json[\"body\"][\"data\"][\"groupName\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "644349ad-b239-4d9f-823a-645498fcef5a",
+              "name": "número_participante",
+              "value": "={{ $json[\"body\"][\"data\"][\"number\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "4b6b96d1-c81b-4758-ab8e-150a033261db",
+              "name": "data_que_entrou",
+              "value": "={{ $json[\"body\"][\"data\"][\"createdAt\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "41c907e1-b28a-41ce-aa48-3ad3e5e6763a",
+              "name": "evento",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"event\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "2b0020cf-fbd5-40a4-bd2a-c4966e981b9e",
+              "name": "id",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"id\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d9015253-7253-4c58-b072-0b634b91a594",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        340,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "queue": "[CADASTRO] [PEC0325] [RABBITMQ]",
+        "options": {
+          "arguments": {
+            "argument": [
+              {
+                "key": "x-queue-type",
+                "value": "quorum"
+              }
+            ]
+          },
+          "durable": true
+        }
+      },
+      "id": "bab67fed-2e39-4ea3-b5bb-b69d96d9e865",
+      "name": "entra_na_fila",
+      "type": "n8n-nodes-base.rabbitmq",
+      "typeVersion": 1,
+      "position": [
+        540,
+        120
+      ],
+      "credentials": {
+        "rabbitmq": {
+          "id": "DG2PMHOSIQ0AOSwK",
+          "name": "RabbitMQ account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "queue": "[CADASTRO] [PEC0325] [RABBITMQ]",
+        "options": {
+          "arguments": {
+            "argument": [
+              {
+                "key": "x-queue-type",
+                "value": "quorum"
+              }
+            ]
+          },
+          "acknowledge": "executionFinishesSuccessfully",
+          "jsonParseBody": true,
+          "parallelMessages": 3
+        }
+      },
+      "id": "8e8bd678-5127-467f-bab9-5d549e0b64f9",
+      "name": "chega_da_fila",
+      "type": "n8n-nodes-base.rabbitmqTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1360,
+        940
+      ],
+      "credentials": {
+        "rabbitmq": {
+          "id": "DG2PMHOSIQ0AOSwK",
+          "name": "RabbitMQ account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "telefone",
+              "value": "={{ $node[\"Edit Fields1\"].json[\"telefone_participante\"]}}"
+            }
+          ]
+        },
+        "combineConditions": "OR",
+        "options": {}
+      },
+      "id": "c34a7a64-9871-40ce-ab6b-8184ea14f4fe",
+      "name": "pesquisa_user",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        200,
+        920
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"pesquisa_user\"].json[\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "9a2ee864-9077-45e9-b4fc-146697d488eb",
+      "name": "encontrou_user",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        360,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "telefones",
+          "mode": "list",
+          "cachedResultName": "telefones"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "telefone",
+              "value": "={{ $node[\"Edit Fields1\"].json[\"telefone_participante\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0d438dc2-cea7-40e1-87b5-8d2bd0f5a883",
+      "name": "pesquisa_telefone",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        540,
+        1020
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"pesquisa_telefone\"].json[\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "c859cebe-f192-4323-9cdf-822d5a979574",
+      "name": "encontrou_telefone",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        720,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "id",
+              "value": "={{ $node[\"pesquisa_telefone\"].json[\"id_user\"] }}"
+            }
+          ]
+        },
+        "combineConditions": "OR",
+        "options": {}
+      },
+      "id": "49ecb337-3afb-42c2-985c-993266737fa0",
+      "name": "pesquisa_user2",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        940,
+        920
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "data_de_entrada",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $node[\"Edit Fields1\"].json[\"telefone_participante\"]}}"
+            }
+          ]
+        },
+        "options": {
+          "detailedOutput": true
+        }
+      },
+      "id": "4730b7d6-bf68-44d5-b13e-8cd8ddca90e9",
+      "name": "insere_lead_na_tabela_users",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        940,
+        1120
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "id",
+        "valueToMatchOn": "={{ $node[\"pesquisa_user\"].json[\"id\"] }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "data_atualizacao",
+              "value": "={{ $now }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0cc8c00a-f84a-4d42-83bc-f2b7ea20abec",
+      "name": "update_user",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        520,
+        700
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "telefones",
+          "mode": "list",
+          "cachedResultName": "telefones"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "telefone",
+              "value": "={{ $node[\"Edit Fields1\"].json[\"telefone_participante\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "74d7172d-cec0-4acb-b4db-a94936c6c1be",
+      "name": "pesquisa_telefone1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        680,
+        700
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"pesquisa_telefone1\"].json[\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "0ad14f0b-4cb0-44e3-8922-4b522e375dae",
+      "name": "encontrou_telefone1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        860,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "telefones",
+          "mode": "list",
+          "cachedResultName": "telefones"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "id_user",
+              "value": "={{ $node[\"insere_lead_na_tabela_users\"].json[\"data\"][\"insertId\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $node[\"Edit Fields1\"].json[\"telefone_participante\"]}}"
+            },
+            {
+              "column": "data_criacao",
+              "value": "={{ $now }}"
+            }
+          ]
+        },
+        "options": {
+          "detailedOutput": true
+        }
+      },
+      "id": "7eb37227-3bc4-4a3d-885f-77ec4cf00646",
+      "name": "insere_lead_na_tabela_telefones1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1140,
+        1120
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "telefones",
+          "mode": "list",
+          "cachedResultName": "telefones"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "id_user",
+              "value": "={{ $node[\"pesquisa_user\"].json[\"id\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $node[\"Edit Fields1\"].json[\"telefone_participante\"]}}"
+            },
+            {
+              "column": "data_criacao",
+              "value": "={{ $now }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c47384f4-940e-4c86-9894-06962a7f6f2d",
+      "name": "insere_lead_na_tabela_telefones",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1060,
+        620
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "leads_nos_grupos",
+          "mode": "list",
+          "cachedResultName": "leads_nos_grupos"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "id_telefone",
+              "value": "={{   $node[\"insere_lead_na_tabela_telefones1\"].runIndex >= 0 ? $node[\"insere_lead_na_tabela_telefones1\"].json[\"data\"][\"insertId\"] : $node[\"insere_lead_na_tabela_telefones\"].runIndex >= 0        ? $node[\"insere_lead_na_tabela_telefones\"].json[\"data\"][\"insertId\"] : $node[\"pesquisa_telefone\"].runIndex >= 0 ? $node[\"pesquisa_telefone\"].json[\"id\"] : $node[\"pesquisa_telefone1\"].runIndex >= 0 ? $node[\"pesquisa_telefone1\"].json[\"id\"] : null }}"
+            },
+            {
+              "column": "id_grupo",
+              "value": "={{ $node[\"pesquisa_grupo-corret\"].json[\"id\"] }}"
+            },
+            {
+              "column": "data_entrada",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "status",
+              "value": "No Grupo"
+            },
+            {
+              "column": "nome_grupo",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome_campanha\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "785f3ac3-a4b3-4cb2-abb2-967b1df043a0",
+      "name": "insere_lead_na_tabela_leads_nos_grupos",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1920,
+        960
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "leads_nos_grupos",
+          "mode": "list",
+          "cachedResultName": "leads_nos_grupos"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "id_telefone",
+              "value": "={{   $node[\"insere_lead_na_tabela_telefones1\"].runIndex >= 0 ? $node[\"insere_lead_na_tabela_telefones1\"].json[\"data\"][\"insertId\"] : $node[\"insere_lead_na_tabela_telefones\"].runIndex >= 0        ? $node[\"insere_lead_na_tabela_telefones\"].json[\"data\"][\"insertId\"] : $node[\"pesquisa_telefone\"].runIndex >= 0 ? $node[\"pesquisa_telefone\"].json[\"id\"] : $node[\"pesquisa_telefone1\"].runIndex >= 0 ? $node[\"pesquisa_telefone1\"].json[\"id\"] : null }}"
+            },
+            {
+              "column": "id_grupo",
+              "value": "={{ $node[\"pesquisa_grupo-corret\"].json[\"id\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "88880766-9e3e-4584-9cbf-1b64477f71d3",
+      "name": "pesquisa_lead_nos_grupos",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1340,
+        920
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"pesquisa_lead_nos_grupos\"].json[\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "62e35f8c-6b6f-416e-a50a-c89d58e78f00",
+      "name": "encontrou_lead_no_grupo",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1540,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "65b5bcdb-1d2b-4071-82e8-87166a50612b",
+              "leftValue": "={{ $node[\"Edit Fields1\"].json[\"evento\"] }}",
+              "rightValue": "=group.updated.members.added",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "5a168503-6614-4776-8681-95dd66461adc",
+      "name": "entrou_no_grupo",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1700,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "leads_nos_grupos",
+          "mode": "list",
+          "cachedResultName": "leads_nos_grupos"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "id",
+        "valueToMatchOn": "={{ $node[\"pesquisa_lead_nos_grupos\"].json[\"id\"] }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "data_saida",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "status",
+              "value": "Saiu do Grupo"
+            },
+            {
+              "column": "nome_grupo",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome_campanha\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2187aa19-5ed6-447c-9e90-007179a87c5c",
+      "name": "update_saiu_do_grupo",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1920,
+        760
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "leads_nos_grupos",
+          "mode": "list",
+          "cachedResultName": "leads_nos_grupos"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "id",
+        "valueToMatchOn": "={{ $node[\"pesquisa_lead_nos_grupos\"].json[\"id\"] }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "data_entrada",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "status",
+              "value": "No Grupo"
+            },
+            {
+              "column": "nome_grupo",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome_campanha\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2e309c6c-c896-4904-b673-d4ba6695916b",
+      "name": "update_entrou_no_grupo",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1920,
+        580
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "65b5bcdb-1d2b-4071-82e8-87166a50612b",
+              "leftValue": "={{ $node[\"Edit Fields1\"].json[\"evento\"] }}",
+              "rightValue": "=group.updated.members.added",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "df0282b0-8bf5-430a-8ca3-c82ba2284bcb",
+      "name": "entrou_no_grupo1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1700,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "leads_nos_grupos",
+          "mode": "list",
+          "cachedResultName": "leads_nos_grupos"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "id_telefone",
+              "value": "={{   $node[\"insere_lead_na_tabela_telefones1\"].runIndex >= 0 ? $node[\"insere_lead_na_tabela_telefones1\"].json[\"data\"][\"insertId\"] : $node[\"insere_lead_na_tabela_telefones\"].runIndex >= 0        ? $node[\"insere_lead_na_tabela_telefones\"].json[\"data\"][\"insertId\"] : $node[\"pesquisa_telefone\"].runIndex >= 0 ? $node[\"pesquisa_telefone\"].json[\"id\"] : $node[\"pesquisa_telefone1\"].runIndex >= 0 ? $node[\"pesquisa_telefone1\"].json[\"id\"] : null }}"
+            },
+            {
+              "column": "id_grupo",
+              "value": "={{ $node[\"pesquisa_grupo-corret\"].json[\"id\"] }}"
+            },
+            {
+              "column": "data_saida",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "status",
+              "value": "Saiu do Grupo"
+            },
+            {
+              "column": "nome_grupo",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome_campanha\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c9be18b2-2050-46ea-9704-1496368bc77d",
+      "name": "insere_lead_na_tabela_leads_nos_grupos1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1920,
+        1160
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "configuracoes",
+          "mode": "list",
+          "cachedResultName": "configuracoes"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "funil",
+              "value": "={{\n$node[\"pesquisa_grupo-corret\"].runIndex >= 0 \n      ? $node[\"pesquisa_grupo-corret\"].json[\"funil\"]\n              : null\n}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f258ea78-d427-4215-a662-d0e05e9c3e07",
+      "name": "pesquisa_configs",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        2240,
+        880
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "grupos",
+          "mode": "list",
+          "cachedResultName": "grupos"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "nome",
+              "value": "={{ $json[\"nome_grupo\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7630706c-5907-4495-8f3b-e202ba691087",
+      "name": "pesquisa_grupo1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        -720,
+        940
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"pesquisa_grupo1\"].json[\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "8f6d6ed4-af7e-46d4-a5e0-ea15938ab2eb",
+      "name": "encontrou_grupo1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -560,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "grupos",
+          "mode": "list",
+          "cachedResultName": "grupos"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "nome",
+              "value": "={{ $node[\"Edit Fields1\"].json[\"nome_grupo\"] }}"
+            },
+            {
+              "column": "funil",
+              "value": "={{ $node[\"Edit Fields1\"].json[\"id_funil\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "detailedOutput": true
+        }
+      },
+      "id": "61303f64-6352-460b-b3dc-9cc24a6e5faa",
+      "name": "MySQL",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        -460,
+        1220
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 3
+      },
+      "id": "0fbf0b47-ffa4-4e4d-9a66-a91632a77287",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -240,
+        1220
+      ],
+      "webhookId": "b37db32e-076e-461e-8119-45d8459f240a"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "grupos",
+          "mode": "list",
+          "cachedResultName": "grupos"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "id",
+              "value": "={{ $json[\"data\"][\"insertId\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f9b38693-7c10-4c26-aeb9-93b0cc9bb46e",
+      "name": "pesquisa_grupo2",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        -40,
+        1220
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "grupos",
+          "mode": "list",
+          "cachedResultName": "grupos"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "nome",
+              "value": "={{ $json[\"nome\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2dd2774e-3797-4014-809d-c8441243399b",
+      "name": "pesquisa_grupo-corret",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        20,
+        920
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c5796953-c35b-45e5-9233-b80542edd549",
+              "name": "nome_grupo",
+              "value": "={{ $node[\"Code\"].json[\"content\"][\"nome_grupo\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "a069e981-f040-4c74-894b-09c2ad6d2436",
+              "name": "telefone_participante",
+              "value": "={{ $node[\"Code\"].json[\"content\"][\"número_participante\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "9932a3fc-5d92-4a68-9515-cc8c998c3896",
+              "name": "data_que_entrou",
+              "value": "={{ $node[\"Code\"].json[\"content\"][\"data_que_entrou\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "b7cc0241-0167-4b0b-b17e-ae331a700db7",
+              "name": "id_funil",
+              "value": "1",
+              "type": "string"
+            },
+            {
+              "id": "c16b5e24-98dd-4938-a833-54912887f79e",
+              "name": "evento",
+              "value": "={{ $node[\"Code\"].json[\"content\"][\"evento\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "97a957eb-9e35-4fc7-bd68-8960fd38d7a2",
+              "name": "id",
+              "value": "={{ $node[\"Code\"].json[\"content\"][\"id\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1472fe83-9303-4200-803d-61ad79fa23b6",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -940,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n    let numeroParticipante = item.json.content.número_participante;\n\n    // Verifica se o número começa com \"55\"\n    if (!numeroParticipante.startsWith('55')) {\n        // Adiciona \"55\" ao início do número\n        numeroParticipante = '55' + numeroParticipante;\n    }\n\n    // Atualiza o valor no JSON\n    item.json.content.número_participante = numeroParticipante;\n\n    return item;\n});\n"
+      },
+      "id": "e438805c-e474-4215-8e84-17917ce01460",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1140,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "581911f4-1edc-4223-9d0b-63a4a0c51264",
+              "name": "nome_grupo",
+              "value": "={{ $node[\"Edit Fields1\"].json[\"nome_grupo\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "8b54b9dd-4c63-4385-ae7b-0abb12662c7c",
+              "name": "telefone_participante",
+              "value": "={{ $node[\"Edit Fields1\"].json[\"telefone_participante\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "4b6b96d1-c81b-4758-ab8e-150a033261db",
+              "name": "data_que_entrou",
+              "value": "={{ $node[\"Edit Fields1\"].json[\"data_que_entrou\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "41c907e1-b28a-41ce-aa48-3ad3e5e6763a",
+              "name": "id",
+              "value": "={{ $node[\"Edit Fields1\"].json[\"id\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "2b0020cf-fbd5-40a4-bd2a-c4966e981b9e",
+              "name": "id_funil",
+              "value": "={{ $node[\"Edit Fields1\"].json[\"id_funil\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "99e8fd90-0b16-4887-9ac9-b228978206e4",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2440,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 376.7064131764215,
+        "width": 841.9622588233931
+      },
+      "id": "dedd19d3-e016-4883-b236-7e513c315ff9",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 1074.9826334115573,
+        "width": 4175.1132805369225
+      },
+      "id": "c6af1c2c-f7c0-4ecf-8aae-c24436ed75dd",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1460,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "black_week_pec-sendflow-api",
+        "options": {}
+      },
+      "id": "24d3bcc9-3423-42a8-8054-b3db6bac1a0a",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        140,
+        120
+      ],
+      "webhookId": "2e2334f6-cafb-4c1d-aeba-be38857db6c5"
+    }
+  ],
+  "pinData": {
+    "chega_da_fila": [
+      {
+        "json": {
+          "fields": {
+            "consumerTag": "amq.ctag-Z1AUyE-nWxBkksAy7wzwBQ",
+            "deliveryTag": 1,
+            "redelivered": false,
+            "exchange": "",
+            "routingKey": "[JDC][AGO24][CAP] [ENTROU NO GRUPO]"
+          },
+          "properties": {
+            "headers": {}
+          },
+          "content": {
+            "id_campanha": "ub2lSXl3MhsFMfqnvRLP",
+            "nome_campanha": "[JDC-SET/24]",
+            "nome_grupo": "🏠 Jornada da Construção #40",
+            "número_participante": "554388495337",
+            "data_que_entrou": "2024-09-03T14:34:10.341Z",
+            "evento": "group.updated.members.added",
+            "id": "esMGr1OANCaSl1tkd4w1"
+          }
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook-bilhon.authpro.com.br",
+            "user-agent": "axios/0.27.2",
+            "content-length": "274",
+            "accept": "application/json, text/plain, */*",
+            "content-type": "application/json",
+            "sendtok": "B717F97DAA688FE995DEB064208B2FE26393292958",
+            "x-forwarded-for": "34.34.231.34",
+            "x-forwarded-host": "webhook-bilhon.authpro.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "94d05f89f0eb",
+            "x-real-ip": "34.34.231.34",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "id": "NUwD3tUMUxmSZeFMrwpH",
+            "event": "group.updated.members.added",
+            "data": {
+              "campaignId": "0w9WQZEceZRclcefOXpv",
+              "campaignName": "Thiago Finch (Bilhon)",
+              "groupName": "O Mecanismo Invisível #10",
+              "number": "5527998210071",
+              "createdAt": "2024-09-24T16:08:43.066Z"
+            },
+            "version": "1.0.0"
+          },
+          "webhookUrl": "https://webhook-bilhon.authpro.com.br/webhook/o_mecanismo_invisivel-sendflow-api",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-02-24T17:40:27.388Z",
+      "updatedAt": "2025-02-24T17:40:27.388Z",
+      "id": "COf9ADLJml6mwtuh",
+      "name": "[LISTA DE ESPERA] [BLACK"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-03-19T04:45:55.779Z",
+  "versionId": "32d97615-0449-4d8e-aaec-0c547f15efe6"
+}
