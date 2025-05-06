@@ -1,0 +1,62 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-20T17:24:06.055Z",
+  "id": "GAW8LkBJohlrVSIR",
+  "meta": null,
+  "name": "My workflow 5",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "b3c2c57f-7c8f-409c-abd3-b1ce8ad19357",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -80,
+        0
+      ],
+      "id": "c96735f8-fe43-4571-b256-df836125de2b",
+      "name": "Webhook",
+      "webhookId": "b3c2c57f-7c8f-409c-abd3-b1ce8ad19357"
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://sendflow.pro/i/pec0325-si",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "dccf226b-424d-46b1-aa6a-92662911604b",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-03-20T17:24:06.055Z",
+  "versionId": "a520c51c-0be8-4689-9227-aa8b73680189"
+}
