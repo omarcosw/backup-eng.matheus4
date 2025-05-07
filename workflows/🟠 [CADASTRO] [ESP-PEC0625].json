@@ -1,0 +1,1587 @@
+{
+  "active": true,
+  "connections": {
+    "dados": {
+      "main": [
+        [
+          {
+            "node": "entra_na_fila",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "formata_dados": {
+      "main": [
+        [
+          {
+            "node": "dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "formata_dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_user3": {
+      "main": [
+        [
+          {
+            "node": "encontrou_user1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "encontrou_user1": {
+      "main": [
+        [
+          {
+            "node": "email_igual1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insere_lead_na_tabela_users2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insere_lead_na_tabela_cadastros9": {
+      "main": [
+        []
+      ]
+    },
+    "insere_lead_na_tabela_users2": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "tag_captacao1": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_user3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "atualiza_contato_no_ac1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "cria_contato_no_ac1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "atualiza_lead_na_tabela_cadastros": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_cadastro1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_cadastro1": {
+      "main": [
+        [
+          {
+            "node": "encontrou cadastro no lançamento?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "email do webhook é o mesmo email já captado?": {
+      "main": [
+        [
+          {
+            "node": "encontrou cadastro no lançamento?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "evento_igual",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "atualiza_user": {
+      "main": [
+        [
+          {
+            "node": "existe_cadastro",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cria_contato_no_ac1": {
+      "main": [
+        [
+          {
+            "node": "tag_captacao1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "atualiza_contato_no_ac1": {
+      "main": [
+        [
+          {
+            "node": "tag_captacao1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Stop and Error2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "existe_cadastro": {
+      "main": [
+        [
+          {
+            "node": "existe?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "existe?": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_cadastro2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insere_lead_na_tabela_cadastros9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_cadastro2": {
+      "main": [
+        [
+          {
+            "node": "email do webhook é o mesmo email já captado?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "encontrou cadastro no lançamento?": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insere_lead_na_tabela_cadastros9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insere_lead_na_tabela_cadastros7": {
+      "main": [
+        []
+      ]
+    },
+    "email_igual1": {
+      "main": [
+        [
+          {
+            "node": "existe_cadastro",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "atualiza_user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chega_da_fila": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "evento_igual": {
+      "main": [
+        [
+          {
+            "node": "atualiza_lead_na_tabela_cadastros",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "pesquisa_cadastro1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_user": {
+      "main": [
+        [
+          {
+            "node": "insere_lead_na_tabela_cadastros7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-07T13:24:43.477Z",
+  "id": "hvaulB5LXqelr1C0",
+  "meta": null,
+  "name": "🟠 [CADASTRO] [ESP-PEC0625]",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "e079b808-d6f4-4211-9ac8-90b7c3ea18listaespera",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -460,
+        -640
+      ],
+      "id": "a12326dd-c660-40ea-8c13-e1da225505b0",
+      "name": "Webhook",
+      "webhookId": "e079b808-d6f4-4211-9ac8-90b7c3ea18c3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "79edcf9f-8602-409f-8d04-ced41c06d16f",
+              "name": "email",
+              "value": "={{ $item(\"0\").$node[\"formata_dados\"].json[\"email\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "4750507c-f44a-45d5-b5ce-2a681d5a5581",
+              "name": "utm_source",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"utm_source\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "a68b8a08-b2d1-4352-affb-0a6f4045cf4a",
+              "name": "utm_campaign",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"utm_campaign\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "71c74ec7-51b3-422e-a2d5-ae7bbf3bd1b0",
+              "name": "utm_term",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"utm_term\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "57aa10ae-6631-4352-8925-35138b1c9b7a",
+              "name": "utm_medium",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"utm_medium\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "4e84ee54-3122-48e4-92d9-1f9db59e0b94",
+              "name": "utm_content",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"utm_content\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "66f8191a-dd73-4773-b3f7-a63076f8686b",
+              "name": "form_id",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"form_id\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "bb839055-124b-4671-99e9-d13293daa8c7",
+              "name": "page",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"form_name\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "b5b5da8a-46c5-44bd-acb3-3f246b420a53",
+              "name": "Evento",
+              "value": "Captação | PEC0325",
+              "type": "string"
+            },
+            {
+              "id": "271ee5fa-6031-4a09-b53d-b1da2acf56a9",
+              "name": "nome",
+              "value": "={{ $item(\"0\").$node[\"formata_dados\"].json[\"primeiro_nome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "a973ea01-7ccc-4b7b-aa43-4237223690c7",
+              "name": "sobrenome",
+              "value": "={{ $item(\"0\").$node[\"formata_dados\"].json[\"sobrenome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "7b8ac769-0ee5-410d-849d-34385009029b",
+              "name": "telefone",
+              "value": "={{ $item(\"0\").$node[\"formata_dados\"].json[\"telefone\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d5203b13-9da0-4373-9e4e-1019024a473d",
+      "name": "dados",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        -20,
+        -640
+      ]
+    },
+    {
+      "parameters": {
+        "queue": "[CADASTRO] [ESP-PEC0625]",
+        "options": {
+          "arguments": {
+            "argument": [
+              {
+                "key": "x-queue-type",
+                "value": "quorum"
+              }
+            ]
+          },
+          "durable": true
+        }
+      },
+      "id": "d94240c7-c00b-445e-9406-ae4ec80efa2b",
+      "name": "entra_na_fila",
+      "type": "n8n-nodes-base.rabbitmq",
+      "typeVersion": 1,
+      "position": [
+        180,
+        -640
+      ],
+      "credentials": {
+        "rabbitmq": {
+          "id": "DG2PMHOSIQ0AOSwK",
+          "name": "RabbitMQ account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $json.body;\n\n// Função para formatar o nome\nfunction formatarNome(nome) {\n    const partes = nome.trim().split(\" \");\n    const primeiro_nome = partes.shift();\n    const sobrenome = partes.length > 0 ? partes.join(\" \") : \"\";\n    return { primeiro_nome, sobrenome };\n}\n\n// Função para formatar o telefone mantendo o DDD correto e adicionando +55 se necessário\nfunction formatarTelefone(telefone) {\n    let numero = telefone.replace(/\\D/g, \"\"); // Remove tudo que não for número\n    if (numero.length < 10) return null; // Retorna null se o número for inválido\n\n    // Verifica se o número já começa com \"55\"\n    if (!numero.startsWith(\"55\")) {\n        numero = \"55\" + numero;\n    }\n\n    return numero;\n}\n\n// Função para formatar data e hora\nfunction formatarDataHora(data, horario) {\n    return `${data} ${horario}:00`; // Adiciona segundos para padronização\n}\n\n// Processando os dados dinamicamente\nconst { primeiro_nome, sobrenome } = formatarNome(data[\"Nome\"] || \"\");\nconst telefoneFormatado = formatarTelefone(data[\"Telefone\"] || \"\");\nconst emailFormatado = (data[\"E-mail\"] || \"\").toLowerCase();\nconst dataHoraFormatada = formatarDataHora(data[\"Data\"] || \"\", data[\"Horário\"] || \"\");\n\n// Retornando o JSON formatado\nreturn {\n    primeiro_nome,\n    sobrenome,\n    telefone: telefoneFormatado,\n    email: emailFormatado,\n    data_hora: dataHoraFormatada,\n    url_pagina: data[\"URL da página\"] || \"\",\n};"
+      },
+      "id": "11f9460c-c2de-4486-bff7-b70323287bcf",
+      "name": "formata_dados",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -220,
+        -640
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] === $node[\"chega_da_fila\"].json[\"content\"][\"email\"] ? $node[\"chega_da_fila\"].json[\"content\"][\"email\"] : \"---------\" }}"
+            }
+          ]
+        },
+        "combineConditions": "OR",
+        "options": {}
+      },
+      "id": "69799fb7-1c8e-4dc7-a839-cf18068ac21e",
+      "name": "pesquisa_user3",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        740,
+        260
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"pesquisa_user3\"].json[\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "6793cb6a-833e-4a70-abcf-cb69f744199c",
+      "name": "encontrou_user1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        940,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "cadastros",
+          "mode": "list",
+          "cachedResultName": "cadastros"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "id_user",
+              "value": "={{ $node[\"pesquisa_user3\"].json[\"id\"] }}"
+            },
+            {
+              "column": "evento",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Evento\"] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}"
+            },
+            {
+              "column": "utm_source",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_source\"] }}"
+            },
+            {
+              "column": "utm_campaign",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_campaign\"] }}"
+            },
+            {
+              "column": "utm_term",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_term\"] }}"
+            },
+            {
+              "column": "utm_medium",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_medium\"] }}"
+            },
+            {
+              "column": "utm_content",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_content\"] }}"
+            },
+            {
+              "column": "data_cadastro",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "form_id",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"form_id\"] }}"
+            },
+            {
+              "column": "pagina",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"page\"] }}"
+            },
+            {
+              "column": "nome",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"content\"][\"nome\"] }}"
+            },
+            {
+              "column": "sobrenome",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"content\"][\"sobrenome\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"content\"][\"telefone\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "detailedOutput": true
+        }
+      },
+      "id": "79cc8495-9fe9-4857-9c82-e148fc477866",
+      "name": "insere_lead_na_tabela_cadastros9",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        3040,
+        520
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "data_de_entrada",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "nome",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome\"] }}"
+            },
+            {
+              "column": "sobrenome",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"sobrenome\"] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"telefone\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "detailedOutput": true
+        }
+      },
+      "id": "54c8f112-3106-4901-85e1-3b675b5e343e",
+      "name": "insere_lead_na_tabela_users2",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1260,
+        380
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "297",
+        "contactId": "={{ $json[\"id\"] }}"
+      },
+      "id": "0d3e9538-3fba-4f60-b1e8-b04b0427919b",
+      "name": "tag_captacao1",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        520,
+        260
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign - eng. matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://pertengenharia65979.api-us1.com/api/3/contacts",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Api-Token",
+              "value": "b419d201280255cfb5949e0ba2a37254603f256450715cb36ea5a74ecae2b608669123f9"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "97aa334a-fb9b-47ce-818c-e6e6fa37ea6d",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -180,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "2130aa22-e19a-4662-8a2e-b43d36facf6d",
+              "leftValue": "={{ $json[\"contacts\"][\"0\"][\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "d5fbd094-ecc7-47d5-a4d6-8669437457db",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        20,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "cadastros",
+          "mode": "list",
+          "cachedResultName": "cadastros"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "id_user",
+        "valueToMatchOn": "={{ $node[\"pesquisa_user3\"].json[\"id\"] }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "evento",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Evento\"] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}"
+            },
+            {
+              "column": "utm_source",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_source\"] }}"
+            },
+            {
+              "column": "utm_campaign",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_campaign\"] }}"
+            },
+            {
+              "column": "utm_term",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_term\"] }}"
+            },
+            {
+              "column": "utm_medium",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_medium\"] }}"
+            },
+            {
+              "column": "utm_content",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_content\"] }}"
+            },
+            {
+              "column": "data_cadastro",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "form_id",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"form_id\"] }}"
+            },
+            {
+              "column": "pagina",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"page\"] }}"
+            },
+            {
+              "column": "nome",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"content\"][\"nome\"] }}"
+            },
+            {
+              "column": "sobrenome",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"content\"][\"sobrenome\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"content\"][\"telefone\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "detailedOutput": true
+        }
+      },
+      "id": "7b738acc-217d-4bbf-bcfa-2b28a9b8cd22",
+      "name": "atualiza_lead_na_tabela_cadastros",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        3620,
+        -80
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "cadastros",
+          "mode": "list",
+          "cachedResultName": "cadastros"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "evento",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Evento\"] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}"
+            }
+          ]
+        },
+        "combineConditions": "OR",
+        "options": {}
+      },
+      "id": "b0b295fe-d58b-47ea-890c-bbba16f58216",
+      "name": "pesquisa_cadastro1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        3620,
+        160
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"existe_cadastro\"].json[\"email\"] }}",
+              "rightValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "2c44cc73-ca7d-4505-a724-5ffc18909f6f",
+      "name": "email do webhook é o mesmo email já captado?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2860,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "id",
+        "valueToMatchOn": "={{ $node[\"pesquisa_user3\"].json[\"id\"] }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "nome",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome\"] }}"
+            },
+            {
+              "column": "sobrenome",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"sobrenome\"] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"telefone\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a17dfdfe-a33b-4572-992a-82cd6e424417",
+      "name": "atualiza_user",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        1720,
+        180
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "errorMessage": "An error ocurred!"
+      },
+      "id": "6de3e045-9c43-42a7-ba6f-d12ecb6ba8b3",
+      "name": "Stop and Error",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        400,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "errorMessage": "An error ocurred!"
+      },
+      "id": "cee0b2bf-d5d0-44f7-9c80-0633682b12d8",
+      "name": "Stop and Error2",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        440,
+        -20
+      ]
+    },
+    {
+      "parameters": {
+        "email": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}",
+        "updateIfExists": true,
+        "additionalFields": {
+          "fieldValues": {
+            "property": [
+              {
+                "field": "=454",
+                "value": "={{ $now.format('dd/MM/yyyy') }}"
+              }
+            ]
+          },
+          "firstName": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome\"] }}",
+          "lastName": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"sobrenome\"] }}",
+          "phone": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"telefone\"] }}"
+        }
+      },
+      "id": "24c7faf1-eeef-445a-bbce-e81f9d69d19d",
+      "name": "cria_contato_no_ac1",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        180,
+        380
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign - eng. matheus"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "contactId": "={{ $json[\"contacts\"][\"0\"][\"id\"] }}",
+        "updateFields": {
+          "fieldValues": {
+            "property": [
+              {
+                "field": "=454",
+                "value": "={{ $now.format('dd/MM/yyyy') }}"
+              }
+            ]
+          },
+          "email": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}",
+          "firstName": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"nome\"] }}",
+          "lastName": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"sobrenome\"] }}",
+          "phone": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"telefone\"] }}"
+        }
+      },
+      "id": "285c705c-7fe0-435e-af13-1fccf4e39f94",
+      "name": "atualiza_contato_no_ac1",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        200,
+        80
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "Duvmu036W0yUDGnv",
+          "name": "ActiveCampaign - eng. matheus"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "cadastros",
+          "mode": "list",
+          "cachedResultName": "cadastros"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "evento",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Evento\"] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "10ee370d-582a-4a48-b8c5-54802ed501da",
+      "name": "existe_cadastro",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        2100,
+        80
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $json[\"id\"] }}",
+              "rightValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "bafaca52-ee00-4d7b-bbb3-5d4ab7fd9206",
+      "name": "existe?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2340,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "cadastros",
+          "mode": "list",
+          "cachedResultName": "cadastros"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "evento",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Evento\"] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "94c757f4-16ef-403c-bc06-530d1d377ce5",
+      "name": "pesquisa_cadastro2",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        2620,
+        -60
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"pesquisa_cadastro2\"].json[\"email\"] }}",
+              "rightValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "a869ef2a-6453-4390-8c8b-008f2fb9b1e8",
+              "leftValue": "={{ $json[\"evento\"] }}",
+              "rightValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Evento\"] }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "51a888eb-73fc-41b7-bd88-d94ff5b70e9b",
+      "name": "encontrou cadastro no lançamento?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        3240,
+        -260
+      ]
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "cadastros",
+          "mode": "list",
+          "cachedResultName": "cadastros"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "id_user",
+              "value": "={{ $node[\"pesquisa_user\"].json[\"id\"] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}"
+            },
+            {
+              "column": "utm_source",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_source\"] }}"
+            },
+            {
+              "column": "utm_campaign",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_campaign\"] }}"
+            },
+            {
+              "column": "utm_term",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_term\"] }}"
+            },
+            {
+              "column": "utm_medium",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_medium\"] }}"
+            },
+            {
+              "column": "utm_content",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"utm_content\"] }}"
+            },
+            {
+              "column": "data_cadastro",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "pagina",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"page\"] }}"
+            },
+            {
+              "column": "evento",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Evento\"] }}"
+            },
+            {
+              "column": "nome",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"content\"][\"nome\"] }}"
+            },
+            {
+              "column": "sobrenome",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"content\"][\"sobrenome\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"content\"][\"telefone\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "detailedOutput": true
+        }
+      },
+      "id": "c50db02c-4fbc-4ef2-8b75-74c880c5651c",
+      "name": "insere_lead_na_tabela_cadastros7",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        2300,
+        480
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"pesquisa_user3\"].json[\"email\"] }}",
+              "rightValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "8ce4fdb8-fe80-4c2d-91da-dd9f9a37205a",
+      "name": "email_igual1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1480,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "queue": "[CADASTRO] [ESP-PEC0625]",
+        "options": {
+          "arguments": {
+            "argument": [
+              {
+                "key": "x-queue-type",
+                "value": "quorum"
+              }
+            ]
+          },
+          "acknowledge": "executionFinishesSuccessfully",
+          "jsonParseBody": "={{ true }}"
+        }
+      },
+      "id": "c89084a5-8061-4e81-b28f-141ab4894a9b",
+      "name": "chega_da_fila",
+      "type": "n8n-nodes-base.rabbitmqTrigger",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        240
+      ],
+      "credentials": {
+        "rabbitmq": {
+          "id": "DG2PMHOSIQ0AOSwK",
+          "name": "RabbitMQ account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"existe_cadastro\"].json[\"evento\"] }}",
+              "rightValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"Evento\"] }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "86b31425-fcc8-413f-8869-e15391ffa784",
+      "name": "evento_igual",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        3240,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "email",
+              "value": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] === $node[\"chega_da_fila\"].json[\"content\"][\"email\"] ? $node[\"chega_da_fila\"].json[\"content\"][\"email\"] : \"---------\" }}"
+            }
+          ]
+        },
+        "combineConditions": "OR",
+        "options": {}
+      },
+      "id": "0ecca168-a036-4636-a962-3a68a66bfb43",
+      "name": "pesquisa_user",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1500,
+        480
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3600,
+        -260
+      ],
+      "id": "f21b6964-e283-4942-b543-f634d6ac0c55",
+      "name": "No Operation, do nothing1"
+    },
+    {
+      "parameters": {
+        "content": "# RECEBE DADOS DO WEBHOOK",
+        "height": 400,
+        "width": 1100
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -580,
+        -780
+      ],
+      "id": "82b705e7-b4c9-4035-a6a8-c28e1a1ab4b7",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "# DISTRIBUI DADOS ENTRE BANCO DE DADOS E ACTIVE CAMPAIGN",
+        "height": 1087,
+        "width": 4613,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -580,
+        -320
+      ],
+      "typeVersion": 1,
+      "id": "0363a2e1-4f04-4722-8235-1af8cc7bb57a",
+      "name": "Sticky Note7"
+    }
+  ],
+  "pinData": {
+    "chega_da_fila": [
+      {
+        "json": {
+          "fields": {
+            "consumerTag": "amq.ctag-GXs8FaTCFzVOLe1fsSwMlg",
+            "deliveryTag": 1,
+            "redelivered": false,
+            "exchange": "",
+            "routingKey": "[CADASTRO] [PEC0325]"
+          },
+          "properties": {
+            "headers": {}
+          },
+          "content": {
+            "email": "jonas@gmail.com",
+            "utm_source": null,
+            "utm_campaign": null,
+            "utm_term": null,
+            "utm_medium": null,
+            "utm_content": null,
+            "form_id": "254b7a4e",
+            "page": "https://engenheiromatheus.com/cadastro-pec/",
+            "Evento": "Captação | PEC0325",
+            "nome": "Jonas",
+            "sobrenome": "Lucas",
+            "telefone": "5527992310071"
+          }
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.engenheiromatheus.com",
+            "user-agent": "WordPress/6.7.2; https://engenheiromatheus.com",
+            "content-length": "207",
+            "accept": "*/*",
+            "accept-encoding": "deflate, gzip, br",
+            "content-type": "application/x-www-form-urlencoded",
+            "x-forwarded-for": "177.154.191.229",
+            "x-forwarded-host": "webhook.engenheiromatheus.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "7e5b8bef7460",
+            "x-real-ip": "177.154.191.229"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "Nome": "abilio santana",
+            "E-mail": "abiliosanta@gmail.com",
+            "Telefone": "+55279919321",
+            "utm_source": "share",
+            "utm_campaign": "share_via",
+            "utm_medium": "android_app",
+            "utm_content": "profile",
+            "utm_term": "",
+            "form_id": "254b7a4e",
+            "form_name": "cadastro-pec"
+          },
+          "webhookUrl": "https://webhook.engenheiromatheus.com/webhook/pec0325",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2025-05-07T14:05:18.542Z",
+  "versionId": "682b5115-7d23-4c4d-888e-b49f06ce91bb"
+}
