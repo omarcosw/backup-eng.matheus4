@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "n8n": {
       "main": [
@@ -364,37 +364,37 @@
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         -1900,
-        120
+        140
       ],
       "typeVersion": 1
     },
     {
       "parameters": {
         "content": "## Single Item Loop\nWe process each workflow item one at a time, We first check Github to see if a file exists then we merge the Github Data and the API item so we can check if the values match in the function node `isDiffOrNew` we then set a status of `same`, `different` or `new`",
-        "height": 424.04333333333386,
-        "width": 755.2349999999991
+        "height": 564,
+        "width": 955
       },
       "id": "6135275c-e22c-4295-8307-7464c24a1b23",
       "name": "Note2",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -840,
-        80
+        -920,
+        20
       ],
       "typeVersion": 1
     },
     {
       "parameters": {
         "content": "## Save the data\nUsing the switch node we work out what to do based on the previous status,  If it is the same we do nothing, If it is different we update the file in Github and if it is new we create a new file. After this is done we loop back to the Split in Batches node (OneAtAtTime) to start the process again.",
-        "height": 693.9283333333326,
-        "width": 666.4416666666662
+        "height": 954,
+        "width": 766
       },
       "id": "3aefef5d-a353-45e5-9362-1d5bdd327116",
       "name": "Note3",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        220,
-        0
+        200,
+        -80
       ],
       "typeVersion": 1
     },
@@ -467,9 +467,13 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "staticData": null,
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2025-05-06T15:36:05.295Z",
-  "versionId": "ca521d3b-1248-449f-9965-adfbeedd8fa4"
+  "triggerCount": 1,
+  "updatedAt": "2025-05-06T15:45:56.948Z",
+  "versionId": "434d2ca8-dad7-40e2-9122-e07a5459e60c"
 }
