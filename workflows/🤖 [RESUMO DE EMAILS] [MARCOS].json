@@ -201,8 +201,8 @@
       "typeVersion": 2.1,
       "credentials": {
         "gmailOAuth2": {
-          "id": "Oke1a0chUjOyTBep",
-          "name": "Gmail - marcosvini.daroch@gmail.com"
+          "id": "zhe8q7AHfAfloFIM",
+          "name": "marcosvini.daroch@gmail.com - teste"
         }
       }
     },
@@ -250,8 +250,8 @@
       "typeVersion": 1.7,
       "credentials": {
         "openAiApi": {
-          "id": "TJb8CFfEt4SRVUHE",
-          "name": "OpenAi - rec. de vendas"
+          "id": "A2CkLFLHb23rhd01",
+          "name": "OpenAi account"
         }
       }
     },
@@ -385,6 +385,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-03-12T05:15:35.941Z",
-  "versionId": "82726cc6-a65c-4b6d-996b-ffeaddc7ef71"
+  "updatedAt": "2025-05-06T16:33:50.128Z",
+  "versionId": "c0ce05cb-71f5-4184-bdc6-28353d2aae7d"
 }
