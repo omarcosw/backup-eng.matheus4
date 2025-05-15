@@ -1,0 +1,1098 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_grupo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_user1": {
+      "main": [
+        [
+          {
+            "node": "encontrou_user1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "encontrou_user1": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_lead_nos_grupos1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insere_lead_na_tabela_users1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insere_lead_na_tabela_users1": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_lead_nos_grupos1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insere_lead_na_tabela_leads_nos_grupos2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_lead_nos_grupos1": {
+      "main": [
+        [
+          {
+            "node": "encontrou_lead_no_grupo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "encontrou_lead_no_grupo1": {
+      "main": [
+        [
+          {
+            "node": "entrou_no_grupo2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "entrou_no_grupo3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "entrou_no_grupo2": {
+      "main": [
+        [
+          {
+            "node": "update_entrou_no_grupo1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "update_saiu_do_grupo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update_saiu_do_grupo1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update_entrou_no_grupo1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "entrou_no_grupo3": {
+      "main": [
+        [
+          {
+            "node": "insere_lead_na_tabela_leads_nos_grupos2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insere_lead_na_tabela_leads_nos_grupos3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insere_lead_na_tabela_leads_nos_grupos3": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_grupo": {
+      "main": [
+        [
+          {
+            "node": "encontrou_grupo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "encontrou_grupo": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_grupo-corret1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "MySQL1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_grupo3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_grupo3": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_grupo-corret1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_grupo-corret1": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_user1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL1": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-15T14:40:03.917Z",
+  "id": "zK7JzIQkF6IczwBx",
+  "meta": null,
+  "name": "My workflow 10",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "6da1b412-2acb-4cbd-be55-e4259b83797c",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -580,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1KZ8EYXAi_AoiL9Gf-rRcHDDCt4TEZV5FtlZMI0xUNzg",
+          "mode": "list",
+          "cachedResultName": "[SENDFLOW X BANCO DE DADOS] [JDC GRUPOS]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1KZ8EYXAi_AoiL9Gf-rRcHDDCt4TEZV5FtlZMI0xUNzg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1KZ8EYXAi_AoiL9Gf-rRcHDDCt4TEZV5FtlZMI0xUNzg/edit#gid=0"
+        },
+        "options": {}
+      },
+      "id": "549933a5-0acd-4998-9703-b4d47ec5c539",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.4,
+      "position": [
+        -360,
+        340
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "z5gmk55vTaoF2yks",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "61b2edb6-f77d-42f2-a31a-1a6f4eb5dce1",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -140,
+        340
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "dd9ad3aa-6cd7-4664-9e56-1cbe1619b7ea",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        300,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f345ee1e-809f-49fa-b63c-50987289cc29",
+              "name": "nome_grupo",
+              "value": "={{ $json[\"nome_grupo\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "644349ad-b239-4d9f-823a-645498fcef5a",
+              "name": "número_participante",
+              "value": "={{ $json[\"telefone\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "4b6b96d1-c81b-4758-ab8e-150a033261db",
+              "name": "data_que_entrou",
+              "value": "={{ $now }}",
+              "type": "string"
+            },
+            {
+              "id": "41c907e1-b28a-41ce-aa48-3ad3e5e6763a",
+              "name": "evento (saiu do grupo?)",
+              "value": "={{ $json[\"status\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "06bf3e2c-f4f3-43c3-87d4-a84b468d24b4",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        100,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "telefone",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"número_participante\"] }}"
+            }
+          ]
+        },
+        "combineConditions": "OR",
+        "options": {}
+      },
+      "id": "42300b30-6ea3-4343-8098-67ed25255bba",
+      "name": "pesquisa_user1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1440,
+        440
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"pesquisa_user1\"].json[\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "12639e8d-380f-4f52-a757-a9df942d2b47",
+      "name": "encontrou_user1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1600,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "data_de_entrada",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"número_participante\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "detailedOutput": true
+        }
+      },
+      "id": "56aa3373-2663-4d8d-89d8-835573d5ef56",
+      "name": "insere_lead_na_tabela_users1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        2020,
+        540
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "leads_nos_grupos",
+          "mode": "list",
+          "cachedResultName": "leads_nos_grupos"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "numero",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"número_participante\"] }}"
+            },
+            {
+              "column": "id_grupo",
+              "value": "={{ $node[\"pesquisa_grupo-corret1\"].json[\"id\"] }}"
+            },
+            {
+              "column": "data_entrada",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "status",
+              "value": "No Grupo"
+            },
+            {
+              "column": "nome_grupo",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"nome_grupo\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b92336c4-2bea-4d81-9bbc-d018246449b4",
+      "name": "insere_lead_na_tabela_leads_nos_grupos2",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        2900,
+        460
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "leads_nos_grupos",
+          "mode": "list",
+          "cachedResultName": "leads_nos_grupos"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "numero",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"número_participante\"] }}"
+            },
+            {
+              "column": "id_grupo",
+              "value": "={{ $node[\"pesquisa_grupo-corret1\"].json[\"id\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "389c2a7d-be03-4167-8e87-d4b9bdc21649",
+      "name": "pesquisa_lead_nos_grupos1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        2300,
+        420
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"pesquisa_lead_nos_grupos1\"].json[\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "c1f32e76-be7f-40c1-aadd-36d719bc410c",
+      "name": "encontrou_lead_no_grupo1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2520,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "65b5bcdb-1d2b-4071-82e8-87166a50612b",
+              "leftValue": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"evento (saiu do grupo?)\"] }}",
+              "rightValue": "=group.updated.members.added",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e238232e-c8b1-44f0-9d38-f015ecd2a482",
+      "name": "entrou_no_grupo2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2680,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "leads_nos_grupos",
+          "mode": "list",
+          "cachedResultName": "leads_nos_grupos"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "id",
+        "valueToMatchOn": "={{ $node[\"pesquisa_lead_nos_grupos1\"].json[\"id\"] }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "data_saida",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "status",
+              "value": "Saiu do Grupo"
+            },
+            {
+              "column": "nome_grupo",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"nome_grupo\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1981fcf0-bf49-464d-8828-bac84ba9d6cf",
+      "name": "update_saiu_do_grupo1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        2900,
+        260
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "leads_nos_grupos",
+          "mode": "list",
+          "cachedResultName": "leads_nos_grupos"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "id",
+        "valueToMatchOn": "={{ $node[\"pesquisa_lead_nos_grupos1\"].json[\"id\"] }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "data_entrada",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "status",
+              "value": "No Grupo"
+            },
+            {
+              "column": "nome_grupo",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"nome_grupo\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "55361cff-80a9-43f1-987d-97b998c42f4f",
+      "name": "update_entrou_no_grupo1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        2900,
+        80
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "65b5bcdb-1d2b-4071-82e8-87166a50612b",
+              "leftValue": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"evento (saiu do grupo?)\"] }}",
+              "rightValue": "=group.updated.members.added",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "446aeb6b-d799-411a-a714-c2f87eb05d96",
+      "name": "entrou_no_grupo3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2680,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "leads_nos_grupos",
+          "mode": "list",
+          "cachedResultName": "leads_nos_grupos"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "numero",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"número_participante\"] }}"
+            },
+            {
+              "column": "id_grupo",
+              "value": "={{ $node[\"pesquisa_grupo-corret1\"].json[\"id\"] }}"
+            },
+            {
+              "column": "data_saida",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "status",
+              "value": "Saiu do Grupo"
+            },
+            {
+              "column": "nome_grupo",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"nome_grupo\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a8d88964-2fd0-404e-9df6-c4a38b8ea255",
+      "name": "insere_lead_na_tabela_leads_nos_grupos3",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        2900,
+        660
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "grupos",
+          "mode": "list",
+          "cachedResultName": "grupos"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "nome",
+              "value": "={{ $json[\"nome_grupo\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f7f560e8-6c0d-40a7-9c6e-879e847d3d84",
+      "name": "pesquisa_grupo",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        520,
+        460
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"pesquisa_grupo\"].json[\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "79e79404-9afb-46ac-bfa4-fee967957929",
+      "name": "encontrou_grupo",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        680,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "id": "c8f0ffe9-ccfb-4896-ad2b-7c7d908cdd71",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        920,
+        680
+      ],
+      "webhookId": "754e0802-6937-4c77-ac60-502fb27d2e3f"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "grupos",
+          "mode": "list",
+          "cachedResultName": "grupos"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "id",
+              "value": "={{ $json[\"data\"][\"insertId\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "aa86c24e-6726-4913-be04-7cef1b4a7987",
+      "name": "pesquisa_grupo3",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1140,
+        680
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "grupos",
+          "mode": "list",
+          "cachedResultName": "grupos"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "nome",
+              "value": "={{ $json[\"nome\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "39c7ff4f-7273-4678-ab61-01b278d2c005",
+      "name": "pesquisa_grupo-corret1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1280,
+        440
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "581911f4-1edc-4223-9d0b-63a4a0c51264",
+              "name": "nome_grupo",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"nome_grupo\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "8b54b9dd-4c63-4385-ae7b-0abb12662c7c",
+              "name": "telefone_participante",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"número_participante\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1ea6044f-a76c-4b9a-8a7b-68f564a6ad34",
+      "name": "Edit Fields4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3420,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "grupos",
+          "mode": "list",
+          "cachedResultName": "grupos"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "nome",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"nome_grupo\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "detailedOutput": true
+        }
+      },
+      "id": "86996284-6be5-40d1-a662-45f1d3cdce4b",
+      "name": "MySQL1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        700,
+        680
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# CADASTRA CONTATO QUE ENTROU OU SAIU DOS GRUPOS NO BANCO DE DADOS",
+        "height": 907,
+        "width": 3653,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "e800a6c7-a736-415c-a5e3-18826a13e81c",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-15T14:59:11.192Z",
+  "versionId": "8b4b01df-04a4-4bd3-a588-c7b063642a6d"
+}
