@@ -1,0 +1,866 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_user": {
+      "main": [
+        [
+          {
+            "node": "encontrou_user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "encontrou_user": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_cadastro",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insere_lead_na_tabela_users",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insere_lead_na_tabela_users": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_cadastro": {
+      "main": [
+        [
+          {
+            "node": "Encontrou Cadastro?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Encontrou Cadastro?": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_pesquisa",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insert_pesquisa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_pesquisa": {
+      "main": [
+        [
+          {
+            "node": "Encontrou Pesquisa?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Encontrou Pesquisa?": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insert_pesquisa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insert_pesquisa": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-15T15:19:01.675Z",
+  "id": "fO6iGSLZvwoEzDqq",
+  "meta": null,
+  "name": "PASSAR pesquisa",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "f17ecc8e-e937-47c3-9b58-c803e4b056ec",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -580,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1WivRRzLh5rZpzGs_QvJ9jhFD0k68W-bLpbyOTUaFeCc",
+          "mode": "list",
+          "cachedResultName": "PSSA PESQUISA",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WivRRzLh5rZpzGs_QvJ9jhFD0k68W-bLpbyOTUaFeCc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WivRRzLh5rZpzGs_QvJ9jhFD0k68W-bLpbyOTUaFeCc/edit#gid=0"
+        },
+        "options": {}
+      },
+      "id": "1f30bd6a-81a3-4f0b-b98a-b5538bda6118",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.4,
+      "position": [
+        -360,
+        340
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "z5gmk55vTaoF2yks",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "414f99e0-d80d-4c4a-87ce-4cbce1e520f0",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -140,
+        340
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "02083e0f-ea80-4472-9829-d1e0a85852d3",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        300,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 907,
+        "width": 3653,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "35b149a6-e741-433b-ac9a-8e08cc622191",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nfor (const item of items) {\n  // --- Tratamento do Telefone ---\n  let telefone = item.json.Telefone;\n\n  if (typeof telefone === 'string') {\n    // Remove \"+\" do início, se houver\n    if (telefone.startsWith(\"+\")) {\n      telefone = telefone.slice(1);\n    }\n\n    // Adiciona \"55\" se ainda não começar com \"55\"\n    if (!telefone.startsWith(\"55\")) {\n      telefone = \"55\" + telefone;\n    }\n\n    item.json.Telefone = telefone;\n  }\n\n  // --- Tratamento da Data no padrão MySQL ---\n  const rawDate = item.json.data;\n  if (rawDate) {\n    try {\n      // Converte para objeto Date\n      const dateObj = new Date(rawDate);\n\n      // Ajusta para horário local (GMT-3)\n      dateObj.setHours(dateObj.getHours() - 3);\n\n      // Formata para padrão MySQL\n      const yyyy = dateObj.getFullYear();\n      const mm = String(dateObj.getMonth() + 1).padStart(2, '0');\n      const dd = String(dateObj.getDate()).padStart(2, '0');\n      const hh = String(dateObj.getHours()).padStart(2, '0');\n      const mi = String(dateObj.getMinutes()).padStart(2, '0');\n      const ss = String(dateObj.getSeconds()).padStart(2, '0');\n\n      item.json.data_formatada = `${yyyy}-${mm}-${dd} ${hh}:${mi}:${ss}`;\n    } catch (e) {\n      item.json.data_formatada = 'Data inválida';\n    }\n  }\n}\n\nreturn items;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        460
+      ],
+      "id": "b1add6bd-82f6-4b3d-ba24-3f43ce7b1e43",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6506b44d-1928-459a-8a8d-7c6dd8243f1d",
+              "name": "Email",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"Digite abaixo o e-mail que você cadastrou no Curso Gratuito de Prática Previdenciária\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "b5b6077d-1756-4701-9446-e8b84ac251db",
+              "name": "Telefone",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"Qual é o número do seu WhatsApp com DDD? (Exemplo: 11989681235)\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "cc3813ca-1ba8-4467-aa54-6d98a9f77fcb",
+              "name": "Com qual gênero você se identifica?",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"Com qual gênero você se identifica?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "df993d5a-3bea-4923-9412-099a3f4a9fd6",
+              "name": "Qual a sua faixa etária?",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"Qual a sua faixa etária?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "4714ae2e-4607-4c3d-b6a9-35e2c7dd2136",
+              "name": "Qual é o seu nível de renda / salário mensal hoje? (Essa informação será mantida em absoluto sigilo)",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"Qual é o seu nível de renda / salário mensal hoje? (Essa informação será mantida em absoluto sigilo)\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "632d7084-85e4-4cbb-a929-629be48bd4c2",
+              "name": "Você reside em qual estado (UF)?",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"Você reside em qual estado (UF)?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "06af339e-2e0c-40c3-9535-b9f83391ee2c",
+              "name": "Você é advogado(a), bacharel em direito ou estudante de direito?",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"Você é advogado(a), bacharel em direito ou estudante de direito?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "ff05f433-fd22-493d-8c0a-539d5d21addb",
+              "name": "Por que você quer aprender mais sobre Direito Previdenciário?",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"Por que você quer aprender mais sobre Direito Previdenciário?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "817d0f5f-0a85-45e5-b5eb-0fe435e00edc",
+              "name": "Hoje você...",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"Hoje você...\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "b38de10a-ba8b-4d78-921f-1ab91ec0f079",
+              "name": "Quanto tempo de experiência você tem na advocacia?",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"Quanto tempo de experiência você tem na advocacia?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "1e107754-0f5c-473a-be64-dc3dcf069261",
+              "name": "Há quanto tempo você me conhece?",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"Há quanto tempo você me conhece?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "153726a4-8754-4d95-acdb-99f7b3773b61",
+              "name": "Qual é o maior desafio que você enfrenta atualmente para atuar na sua advocacia?",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"Qual é o maior desafio que você enfrenta atualmente para atuar na sua advocacia?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "c32aaa42-78a3-4f99-8b9a-5a1f9d997b4d",
+              "name": "Qual é a vida que você não deseja viver de jeito nenhum?",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"Qual é a vida que você não deseja viver de jeito nenhum?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "818c97a3-4411-43de-af33-6bdb68f84a1d",
+              "name": "Qual é o seu maior sonho para a sua carreira? Aquele que você deseja realizar em 2025?",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"Qual é o seu maior sonho para a sua carreira? Aquele que você deseja realizar em 2025?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "85be986e-d290-4935-884e-a48ef92f8205",
+              "name": "O que te impede de realizar esse sonho atualmente?",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"O que te impede de realizar esse sonho atualmente?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "d183a7cb-fdae-4810-a719-b03a80cee4fd",
+              "name": "Quais são as suas maiores dificuldades técnicas relacionadas a Prática Previdenciária?",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"Quais são as suas maiores dificuldades técnicas relacionadas a Prática Previdenciária?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "ab896aea-84cd-44a4-a4a4-19809f4cdd85",
+              "name": "Se você tivesse a oportunidade de ter 1 hora de consultoria comigo, quais seriam as 3 perguntas que você me faria?",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"Se você tivesse a oportunidade de ter 1 hora de consultoria comigo, quais seriam as 3 perguntas que você me faria?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "48072b88-a7ec-4118-a8c8-62524362d1db",
+              "name": "Existe algum tema específico que você gostaria que fosse tratado ao longo do Curso Prático e Gratuito - A Oportunidade de uma Vida na Advocacia Previdenciária? Aproveite esse espaço para colocar as suas melhores sugestões.",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"Existe algum tema específico que você gostaria que fosse tratado ao longo do Curso Prático e Gratuito - A Oportunidade de uma Vida na Advocacia Previdenciária? Aproveite esse espaço para colocar as suas melhores sugestões.\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "70e3f49f-3e9e-44ea-b13b-705549401426",
+              "name": "Qual é o seu nível de comprometimento para participar das aulas do curso A Oportunidade de uma Vida na Advocacia Previdenciária, dominar o Protocolo de Concessões Máximas e fazer dos próximos anos, os melhores da sua carreira?",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"Qual é o seu nível de comprometimento para participar das aulas do curso A Oportunidade de uma Vida na Advocacia Previdenciária, dominar o Protocolo de Concessões Máximas e fazer dos próximos anos, os melhores da sua carreira?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "5b27cc59-7e91-4572-b023-b21eaeb8e554",
+              "name": "data",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"Carimbo de data/hora\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        80,
+        460
+      ],
+      "id": "ef1274d2-801a-4e1f-8619-f7c43231ab0d",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "telefone",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Telefone\"] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Email\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "727550ec-30c4-44c7-ba97-3fbc7b02c4d9",
+      "name": "pesquisa_user",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        740,
+        460
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"pesquisa_user\"].json[\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "11d7bbbc-bd30-4f7b-8513-975330758e34",
+      "name": "encontrou_user",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        980,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "data_de_entrada",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Email\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $node[\"Code\"].json[\"Telefone\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "detailedOutput": true
+        }
+      },
+      "id": "020d102a-236a-4347-863b-ca9975f9aad0",
+      "name": "insere_lead_na_tabela_users",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1180,
+        600
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "cadastros",
+          "mode": "list",
+          "cachedResultName": "cadastros"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "email",
+              "value": "={{ $item(\"0\").$node[\"encontrou_user\"].json[\"email\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $item(\"0\").$node[\"encontrou_user\"].json[\"telefone\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9073f585-4e1e-4cc7-a1c4-56ee6601cd77",
+      "name": "pesquisa_cadastro",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1480,
+        460
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "pesquisas",
+          "mode": "list",
+          "cachedResultName": "pesquisas"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "id_user",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_user\"].json[\"id\"] }}"
+            },
+            {
+              "column": "id_cadastro",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"id\"] }}"
+            },
+            {
+              "column": "pergunta1",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Com qual gênero você se identifica?\"] }}"
+            },
+            {
+              "column": "pergunta2",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Qual a sua faixa etária?\"] }}"
+            },
+            {
+              "column": "pergunta3",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Qual é o seu nível de renda / salário mensal hoje? (Essa informação será mantida em absoluto sigilo)\"] }}"
+            },
+            {
+              "column": "pergunta5",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Você é advogado(a), bacharel em direito ou estudante de direito?\"] }}"
+            },
+            {
+              "column": "data_pesquisa",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"data_formatada\"] }}"
+            },
+            {
+              "column": "nome_pesquisa",
+              "value": "[CADASTRO] [PREV0625] [PESQUISA]"
+            },
+            {
+              "column": "pergunta6",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Por que você quer aprender mais sobre Direito Previdenciário?\"] }}"
+            },
+            {
+              "column": "pergunta7",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Hoje você\"][\"\"][\"\"][\"\"] }}"
+            },
+            {
+              "column": "pergunta8",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Quanto tempo de experiência você tem na advocacia?\"] }}"
+            },
+            {
+              "column": "pergunta4",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Você reside em qual estado (UF)?\"] }}"
+            },
+            {
+              "column": "pergunta9",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Há quanto tempo você me conhece?\"] }}"
+            },
+            {
+              "column": "pergunta10",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Qual é o maior desafio que você enfrenta atualmente para atuar na sua advocacia?\"] }}"
+            },
+            {
+              "column": "pergunta11",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Qual é a vida que você não deseja viver de jeito nenhum?\"] }}"
+            },
+            {
+              "column": "pergunta12",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Qual é o seu maior sonho para a sua carreira? Aquele que você deseja realizar em 2025?\"] }}"
+            },
+            {
+              "column": "pergunta13",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"O que te impede de realizar esse sonho atualmente?\"] }}"
+            },
+            {
+              "column": "pergunta14",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Quais são as suas maiores dificuldades técnicas relacionadas a Prática Previdenciária?\"] }}"
+            },
+            {
+              "column": "pergunta15",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Se você tivesse a oportunidade de ter 1 hora de consultoria comigo, quais seriam as 3 perguntas que você me faria?\"] }}"
+            },
+            {
+              "column": "pergunta16",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Existe algum tema específico que você gostaria que fosse tratado ao longo do Curso Prático e Gratuito - A Oportunidade de uma Vida na Advocacia Previdenciária? Aproveite esse espaço para colocar as suas melhores sugestões\"][\"\"] }}"
+            },
+            {
+              "column": "pergunta17",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Qual é o seu nível de comprometimento para participar das aulas do curso A Oportunidade de uma Vida na Advocacia Previdenciária, dominar o Protocolo de Concessões Máximas e fazer dos próximos anos, os melhores da sua carreira?\"] }}"
+            },
+            {
+              "column": "nome",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"nome\"] }}"
+            },
+            {
+              "column": "sobrenome",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"sobrenome\"] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"email\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"telefone\"] }}"
+            },
+            {
+              "column": "utm_source",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"utm_source\"] }}"
+            },
+            {
+              "column": "utm_campaign",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"utm_campaign\"] }}"
+            },
+            {
+              "column": "utm_term",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"utm_term\"] }}"
+            },
+            {
+              "column": "utm_medium",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"utm_medium\"] }}"
+            },
+            {
+              "column": "utm_content",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"utm_content\"] }}"
+            },
+            {
+              "column": "pagina",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"pagina\"] }}"
+            },
+            {
+              "column": "evento",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"evento\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cb052466-8cc5-4b88-9704-bbfbcc8c03cd",
+      "name": "insert_pesquisa",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        2440,
+        480
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# CADASTRA PESQUISA NO BANCO DE DADOS",
+        "height": 570,
+        "width": 2117
+      },
+      "id": "12a175f2-2232-4de0-a342-07af8bc02f67",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        600,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "88fca7c7-87e0-4538-8fdf-aa1d48f58eda",
+              "leftValue": "={{ $node[\"pesquisa_cadastro\"].json[\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1700,
+        460
+      ],
+      "id": "b43dccc3-2d88-4107-8ec2-e3ae3c90286d",
+      "name": "Encontrou Cadastro?"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "pesquisas",
+          "mode": "list",
+          "cachedResultName": "pesquisas"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "id_user",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_user\"].json[\"id\"] }}"
+            },
+            {
+              "column": "nome_pesquisa",
+              "value": "[CADASTRO] [PREV0625] [PESQUISA]"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ef6f920b-7a47-483d-a076-5750e01ac729",
+      "name": "pesquisa_pesquisa",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1980,
+        360
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "88fca7c7-87e0-4538-8fdf-aa1d48f58eda",
+              "leftValue": "={{ $node[\"pesquisa_pesquisa\"].json[\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2200,
+        360
+      ],
+      "id": "59995c7f-a5bf-4a5e-b329-835d40652e8a",
+      "name": "Encontrou Pesquisa?"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-15T15:32:40.527Z",
+  "versionId": "6e02f514-82c7-4871-8056-a259f92b8a0c"
+}
