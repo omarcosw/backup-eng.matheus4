@@ -1,0 +1,762 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_user": {
+      "main": [
+        [
+          {
+            "node": "encontrou_user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "encontrou_user": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_cadastro",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insere_lead_na_tabela_users",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insere_lead_na_tabela_users": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_cadastro": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_pesquisa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa_pesquisa": {
+      "main": [
+        [
+          {
+            "node": "Encontrou Pesquisa?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Encontrou Pesquisa?": {
+      "main": [
+        [],
+        [
+          {
+            "node": "insert_pesquisa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-16T20:21:38.703Z",
+  "id": "44QKKaSHXME6zuSd",
+  "meta": null,
+  "name": "🟠 [CADASTRO] [PREV0625] [PESQUISA]",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "prev0625-pesquisa",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        120,
+        120
+      ],
+      "id": "47542505-2bb6-4198-85da-049bd46852f8",
+      "name": "Webhook",
+      "webhookId": "1af30980-4b37-4ba9-add0-152f14f1e2e1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nfor (const item of items) {\n  let telefone = item.json.Telefone;\n\n  if (typeof telefone === 'string') {\n    // Remove \"+\" do início, se houver\n    if (telefone.startsWith(\"+\")) {\n      telefone = telefone.slice(1);\n    }\n\n    // Adiciona \"55\" se ainda não começar com \"55\"\n    if (!telefone.startsWith(\"55\")) {\n      telefone = \"55\" + telefone;\n    }\n\n    // Atualiza o valor formatado no item\n    item.json.Telefone = telefone;\n  }\n}\n\nreturn items;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        540,
+        120
+      ],
+      "id": "2238e318-892e-492e-9b50-d62acd03faca",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "telefone",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Telefone\"] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Email\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7749a7e9-2414-4ea7-ab07-94a0190a2da9",
+      "name": "pesquisa_user",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        140,
+        540
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"pesquisa_user\"].json[\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e382a3fc-634a-477e-814e-2a259396dde3",
+      "name": "encontrou_user",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        380,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "data_de_entrada",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Email\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $node[\"Code\"].json[\"Telefone\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "detailedOutput": true
+        }
+      },
+      "id": "2aded869-e262-4987-83d1-0349878b6a90",
+      "name": "insere_lead_na_tabela_users",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        580,
+        680
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "cadastros",
+          "mode": "list",
+          "cachedResultName": "cadastros"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "email",
+              "value": "={{ $item(\"0\").$node[\"encontrou_user\"].json[\"email\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $item(\"0\").$node[\"encontrou_user\"].json[\"telefone\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7331135f-a46e-4117-8704-1fef130f7dfb",
+      "name": "pesquisa_cadastro",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        880,
+        540
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "pesquisas",
+          "mode": "list",
+          "cachedResultName": "pesquisas"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "id_user",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_user\"].json[\"id\"] }}"
+            },
+            {
+              "column": "id_cadastro",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"id\"] }}"
+            },
+            {
+              "column": "pergunta1",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Com qual gênero você se identifica?\"] }}"
+            },
+            {
+              "column": "pergunta2",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Qual a sua faixa etária?\"] }}"
+            },
+            {
+              "column": "pergunta3",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Qual é o seu nível de renda / salário mensal hoje? (Essa informação será mantida em absoluto sigilo)\"] }}"
+            },
+            {
+              "column": "pergunta5",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Você é advogado(a), bacharel em direito ou estudante de direito?\"] }}"
+            },
+            {
+              "column": "data_pesquisa",
+              "value": "={{ $now }}"
+            },
+            {
+              "column": "nome_pesquisa",
+              "value": "[CADASTRO] [PREV0625] [PESQUISA]"
+            },
+            {
+              "column": "pergunta6",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Por que você quer aprender mais sobre Direito Previdenciário?\"] }}"
+            },
+            {
+              "column": "pergunta7",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Hoje você\"][\"\"][\"\"][\"\"] }}"
+            },
+            {
+              "column": "pergunta8",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Quanto tempo de experiência você tem na advocacia?\"] }}"
+            },
+            {
+              "column": "pergunta4",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Você reside em qual estado (UF)?\"] }}"
+            },
+            {
+              "column": "pergunta9",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Há quanto tempo você me conhece?\"] }}"
+            },
+            {
+              "column": "pergunta10",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Qual é o maior desafio que você enfrenta atualmente para atuar na sua advocacia?\"] }}"
+            },
+            {
+              "column": "pergunta11",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Qual é a vida que você não deseja viver de jeito nenhum?\"] }}"
+            },
+            {
+              "column": "pergunta12",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Qual é o seu maior sonho para a sua carreira? Aquele que você deseja realizar em 2025?\"] }}"
+            },
+            {
+              "column": "pergunta13",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"O que te impede de realizar esse sonho atualmente?\"] }}"
+            },
+            {
+              "column": "pergunta14",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Quais são as suas maiores dificuldades técnicas relacionadas a Prática Previdenciária?\"] }}"
+            },
+            {
+              "column": "pergunta15",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Se você tivesse a oportunidade de ter 1 hora de consultoria comigo, quais seriam as 3 perguntas que você me faria?\"] }}"
+            },
+            {
+              "column": "pergunta16",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Existe algum tema específico que você gostaria que fosse tratado ao longo do Curso Prático e Gratuito - A Oportunidade de uma Vida na Advocacia Previdenciária? Aproveite esse espaço para colocar as suas melhores sugestões\"][\"\"] }}"
+            },
+            {
+              "column": "pergunta17",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Qual é o seu nível de comprometimento para participar das aulas do curso A Oportunidade de uma Vida na Advocacia Previdenciária, dominar o Protocolo de Concessões Máximas e fazer dos próximos anos, os melhores da sua carreira?\"] }}"
+            },
+            {
+              "column": "nome",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"nome\"] }}"
+            },
+            {
+              "column": "sobrenome",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"sobrenome\"] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"email\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"telefone\"] }}"
+            },
+            {
+              "column": "utm_source",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"utm_source\"] }}"
+            },
+            {
+              "column": "utm_campaign",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"utm_campaign\"] }}"
+            },
+            {
+              "column": "utm_term",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"utm_term\"] }}"
+            },
+            {
+              "column": "utm_medium",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"utm_medium\"] }}"
+            },
+            {
+              "column": "utm_content",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"utm_content\"] }}"
+            },
+            {
+              "column": "pagina",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"pagina\"] }}"
+            },
+            {
+              "column": "evento",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_cadastro\"].json[\"evento\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0e908608-f4a6-4e40-aede-e99a5be6df1c",
+      "name": "insert_pesquisa",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1560,
+        680
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# CADASTRA PESQUISA NO BANCO DE DADOS",
+        "height": 570,
+        "width": 2117
+      },
+      "id": "7db95dde-c28d-45aa-82dc-be6decee62fc",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6506b44d-1928-459a-8a8d-7c6dd8243f1d",
+              "name": "Email",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"Digite abaixo o seu melhor e-mail.\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "b5b6077d-1756-4701-9446-e8b84ac251db",
+              "name": "Telefone",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"Qual é o número do seu WhatsApp com DDD? (Exemplo: 11989681235)\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "cc3813ca-1ba8-4467-aa54-6d98a9f77fcb",
+              "name": "Com qual gênero você se identifica?",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"Com qual gênero você se identifica?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "df993d5a-3bea-4923-9412-099a3f4a9fd6",
+              "name": "Qual a sua faixa etária?",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"Qual a sua faixa etária?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "4714ae2e-4607-4c3d-b6a9-35e2c7dd2136",
+              "name": "Qual é o seu nível de renda / salário mensal hoje? (Essa informação será mantida em absoluto sigilo)",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"Qual é o seu nível de renda / salário mensal hoje? (Essa informação será mantida em absoluto sigilo)\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "632d7084-85e4-4cbb-a929-629be48bd4c2",
+              "name": "Você reside em qual estado (UF)?",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"Você reside em qual estado (UF)?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "06af339e-2e0c-40c3-9535-b9f83391ee2c",
+              "name": "Você é advogado(a), bacharel em direito ou estudante de direito?",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"Você é advogado(a), bacharel em direito ou estudante de direito?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "ff05f433-fd22-493d-8c0a-539d5d21addb",
+              "name": "Por que você quer aprender mais sobre Direito Previdenciário?",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"Por que você quer aprender mais sobre Direito Previdenciário?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "817d0f5f-0a85-45e5-b5eb-0fe435e00edc",
+              "name": "Hoje você...",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"Hoje você...\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "b38de10a-ba8b-4d78-921f-1ab91ec0f079",
+              "name": "Quanto tempo de experiência você tem na advocacia?",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"Quanto tempo de experiência você tem na advocacia?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "1e107754-0f5c-473a-be64-dc3dcf069261",
+              "name": "Há quanto tempo você me conhece?",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"Há quanto tempo você me conhece? \"] }}",
+              "type": "string"
+            },
+            {
+              "id": "153726a4-8754-4d95-acdb-99f7b3773b61",
+              "name": "Qual é o maior desafio que você enfrenta atualmente para atuar na sua advocacia?",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"Qual é o maior desafio que você enfrenta atualmente para atuar na sua advocacia?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "c32aaa42-78a3-4f99-8b9a-5a1f9d997b4d",
+              "name": "Qual é a vida que você não deseja viver de jeito nenhum?",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"Qual é a vida que você não deseja viver de jeito nenhum?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "818c97a3-4411-43de-af33-6bdb68f84a1d",
+              "name": "Qual é o seu maior sonho para a sua carreira? Aquele que você deseja realizar em 2025?",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"Qual é o seu maior sonho para a sua carreira? Aquele que você deseja realizar em 2025?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "85be986e-d290-4935-884e-a48ef92f8205",
+              "name": "O que te impede de realizar esse sonho atualmente?",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"O que te impede de realizar esse sonho atualmente?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "d183a7cb-fdae-4810-a719-b03a80cee4fd",
+              "name": "Quais são as suas maiores dificuldades técnicas relacionadas a Prática Previdenciária?",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"Quais são as suas maiores dificuldades técnicas relacionadas a Prática Previdenciária?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "ab896aea-84cd-44a4-a4a4-19809f4cdd85",
+              "name": "Se você tivesse a oportunidade de ter 1 hora de consultoria comigo, quais seriam as 3 perguntas que você me faria?",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"Se você tivesse a oportunidade de ter 1 hora de consultoria comigo, quais seriam as 3 perguntas que você me faria?\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "48072b88-a7ec-4118-a8c8-62524362d1db",
+              "name": "Existe algum tema específico que você gostaria que fosse tratado ao longo do Curso Prático e Gratuito - A Oportunidade de uma Vida na Advocacia Previdenciária? Aproveite esse espaço para colocar as suas melhores sugestões.",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"Existe algum tema específico que você gostaria que fosse tratado ao longo do Curso Prático e Gratuito - A Oportunidade de uma Vida na Advocacia Previdenciária? Aproveite esse espaço para colocar as suas melhores sugestões.\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "70e3f49f-3e9e-44ea-b13b-705549401426",
+              "name": "Qual é o seu nível de comprometimento para participar das aulas do curso A Oportunidade de uma Vida na Advocacia Previdenciária, dominar o Protocolo de Concessões Máximas e fazer dos próximos anos, os melhores da sua carreira?",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"Qual é o seu nível de comprometimento para participar das aulas do curso A Oportunidade de uma Vida na Advocacia Previdenciária, dominar o Protocolo de Concessões Máximas e fazer dos próximos anos, os melhores da sua carreira? \"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        340,
+        120
+      ],
+      "id": "7900184b-7a04-4d7f-96d0-0a650ec8fa4b",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "content": "# CADASTRA PESQUISA NO BANCO DE DADOS",
+        "height": 330,
+        "width": 817,
+        "color": 5
+      },
+      "id": "1e4d5eab-e4e6-4423-81ba-ed9658605549",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "pesquisas",
+          "mode": "list",
+          "cachedResultName": "pesquisas"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "id_user",
+              "value": "={{ $item(\"0\").$node[\"pesquisa_user\"].json[\"id\"] }}"
+            },
+            {
+              "column": "nome_pesquisa",
+              "value": "[CADASTRO] [PREV0625] [PESQUISA]"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7700d57b-c66f-4562-951f-3839be37836f",
+      "name": "pesquisa_pesquisa",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1100,
+        540
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "88fca7c7-87e0-4538-8fdf-aa1d48f58eda",
+              "leftValue": "={{ $node[\"pesquisa_pesquisa\"].json[\"id\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1340,
+        540
+      ],
+      "id": "6008db6d-dd6a-4ba8-a5b9-7d6df9ea3fcc",
+      "name": "Encontrou Pesquisa?"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.eprevensino.com.br",
+            "user-agent": "Mozilla/5.0 (compatible; Google-Apps-Script; beanserver; +https://script.google.com; id: UAEmdDd82tQo99ozu1cNhVbccrGcrf9c93n8)",
+            "content-length": "2122",
+            "accept-encoding": "gzip, deflate, br",
+            "content-type": "application/json",
+            "x-forwarded-for": "34.116.22.36",
+            "x-forwarded-host": "webhook.eprevensino.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "40691c3ae871",
+            "x-real-ip": "34.116.22.36"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "Digite abaixo o seu melhor e-mail.": "marcosvlogs12@gmail.com",
+            "Qual é o número do seu WhatsApp com DDD? (Exemplo: 11989681235)": "27998210071",
+            "Com qual gênero você se identifica?": "Masculino",
+            "Qual a sua faixa etária?": "Menos de 18 anos",
+            "Qual é o seu nível de renda / salário mensal hoje? (Essa informação será mantida em absoluto sigilo)": "Entre R$1.500 e R$2.999",
+            "Você reside em qual estado (UF)?": "AP",
+            "Você é advogado(a), bacharel em direito ou estudante de direito?": "Estudante de Direito",
+            "Por que você quer aprender mais sobre Direito Previdenciário?": "Estou em busca de uma nova área dentro do Direito (migrar de área)",
+            "Hoje você...": "Trabalha para um escritório - Home Office",
+            "Quanto tempo de experiência você tem na advocacia?": "Ainda sou estudante",
+            "Há quanto tempo você me conhece? ": "Acabei de te conhecer através de um anúncio para a \"A Oportunidade de uma Vida na Advocacia Previdenciária\"",
+            "Qual é o maior desafio que você enfrenta atualmente para atuar na sua advocacia?": "mamgainomgao anfjsaonfgani",
+            "Qual é a vida que você não deseja viver de jeito nenhum?": "mamgainomgao anfjsaonfgani",
+            "Qual é o seu maior sonho para a sua carreira? Aquele que você deseja realizar em 2025?": "mamgainomgao anfjsaonfgani",
+            "O que te impede de realizar esse sonho atualmente?": "mamgainomgao anfjsaonfgani",
+            "Quais são as suas maiores dificuldades técnicas relacionadas a Prática Previdenciária?": "mamgainomgao anfjsaonfgani",
+            "Se você tivesse a oportunidade de ter 1 hora de consultoria comigo, quais seriam as 3 perguntas que você me faria?": "mamgainomgao anfjsaonfgani",
+            "Existe algum tema específico que você gostaria que fosse tratado ao longo do Curso Prático e Gratuito - A Oportunidade de uma Vida na Advocacia Previdenciária? Aproveite esse espaço para colocar as suas melhores sugestões.": "mamgainomgao anfjsaonfgani",
+            "Qual é o seu nível de comprometimento para participar das aulas do curso A Oportunidade de uma Vida na Advocacia Previdenciária, dominar o Protocolo de Concessões Máximas e fazer dos próximos anos, os melhores da sua carreira? ": "5"
+          },
+          "webhookUrl": "https://webhook.eprevensino.com/webhook/prev0625-pesquisa",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-05-16T20:17:49.585Z",
+      "updatedAt": "2025-05-16T20:17:49.585Z",
+      "id": "obgmbWafxQW8rGLq",
+      "name": "PREV0625"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-05-16T23:32:58.275Z",
+  "versionId": "cd3134c7-fc26-4c1d-bcab-d9ff419b3246"
+}
