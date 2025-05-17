@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "dados": {
       "main": [
@@ -1582,6 +1582,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2025-05-07T14:05:18.542Z",
+  "updatedAt": "2025-05-16T23:36:33.655Z",
   "versionId": "682b5115-7d23-4c4d-888e-b49f06ce91bb"
 }
