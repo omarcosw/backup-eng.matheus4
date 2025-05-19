@@ -1,0 +1,755 @@
+{
+  "active": true,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "MySQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "MySQL1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL1": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger2": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets2": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger3": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets3": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Responde texto2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Responde texto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-19T05:05:02.760Z",
+  "id": "Uu99y8NiGlPKX6ym",
+  "meta": null,
+  "name": "🟠 [PREV0625] [MÉTRICAS SENDFLOW]",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 30
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -280,
+        20
+      ],
+      "id": "f027d0fc-a82f-4b86-9ca0-8a77c3117a71",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n  -- Total de leads hoje = entraram - saíram\n  (\n    SELECT COUNT(*) FROM prof_frederico.leads_nos_grupos\n    WHERE DATE(data_entrada) = CURDATE() AND status = 'No Grupo'\n  ) -\n  (\n    SELECT COUNT(*) FROM prof_frederico.leads_nos_grupos\n    WHERE DATE(data_entrada) = CURDATE() AND status = 'Saiu do Grupo'\n  ) AS total_leads_hoje,\n\n  -- Total que entraram hoje\n  (\n    SELECT COUNT(*) FROM prof_frederico.leads_nos_grupos\n    WHERE DATE(data_entrada) = CURDATE() AND status = 'No Grupo'\n  ) AS total_entraram_hoje,\n\n  -- Total que saíram hoje\n  (\n    SELECT COUNT(*) FROM prof_frederico.leads_nos_grupos\n    WHERE DATE(data_entrada) = CURDATE() AND status = 'Saiu do Grupo'\n  ) AS total_sairam_hoje,\n\n  -- Total geral de leads\n  (\n    SELECT COUNT(*) FROM prof_frederico.leads_nos_grupos\n  ) AS total_leads_geral;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        40,
+        20
+      ],
+      "id": "fb97d513-c3c5-426a-aca4-95b5224cd179",
+      "name": "MySQL",
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s",
+          "mode": "list",
+          "cachedResultName": "PREV0625 - Painel de Controle",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1731088643,
+          "mode": "list",
+          "cachedResultName": "🕹️ Captação AUX [SENDFLOW]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit#gid=1731088643"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Date": "={{ $now.format('dd/MM/yyyy') }}",
+            "Entrou": "={{ $item(\"0\").$node[\"MySQL\"].json[\"total_leads_hoje\"] }}",
+            "Day Grupo": "={{ $item(\"0\").$node[\"MySQL\"].json[\"total_leads_hoje\"] }}",
+            "Saiu": "={{ $item(\"0\").$node[\"MySQL\"].json[\"total_sairam_hoje\"] }}"
+          },
+          "matchingColumns": [
+            "Date"
+          ],
+          "schema": [
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Day Grupo",
+              "displayName": "Day Grupo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Entrou",
+              "displayName": "Entrou",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Saiu",
+              "displayName": "Saiu",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        340,
+        20
+      ],
+      "id": "21d53b61-fbec-44a5-ba33-d13e15dd9a7c",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "z5gmk55vTaoF2yks",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## MÉTRICAS SENDFLOW",
+        "height": 380,
+        "width": 1080
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        -120
+      ],
+      "id": "95a91b72-7f28-45a5-ae37-004cc3077e07",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 30
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -280,
+        440
+      ],
+      "id": "3b9af808-d6b4-45f9-b6ec-215fc3824d6b",
+      "name": "Schedule Trigger1"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n  -- Leads com utm_source específico\n  (\n    SELECT COUNT(*) FROM cadastros\n    WHERE DATE(data_cadastro) = CURDATE()\n      AND (\n        utm_source LIKE '%insta-bio%'\n        OR utm_source LIKE '%insta-direct%'\n        OR utm_source LIKE '%insta-stories%'\n        OR utm_source LIKE '%whatsapp%'\n        OR utm_source LIKE '%email%'\n        OR utm_source LIKE '%youtube-org%'\n        OR utm_source LIKE '%manychat-cap%'\n        OR utm_source LIKE '%manychat-live%'\n      )\n  ) AS total_leads_por_utm_source,\n\n  -- Leads com utm_campaign específico\n  (\n    SELECT COUNT(*) FROM cadastros\n    WHERE DATE(data_cadastro) = CURDATE()\n      AND (\n        utm_campaign LIKE '%PREV0625-CAPTACAO%'\n        OR utm_campaign LIKE '%GADS%'\n      )\n  ) AS total_leads_por_utm_campaign,\n\n  -- Soma total dos dois filtros\n  (\n    SELECT COUNT(*) FROM cadastros\n    WHERE DATE(data_cadastro) = CURDATE()\n      AND (\n        (\n          utm_source LIKE '%insta-bio%'\n          OR utm_source LIKE '%insta-direct%'\n          OR utm_source LIKE '%insta-stories%'\n          OR utm_source LIKE '%whatsapp%'\n          OR utm_source LIKE '%email%'\n          OR utm_source LIKE '%youtube-org%'\n          OR utm_source LIKE '%manychat-cap%'\n          OR utm_source LIKE '%manychat-live%'\n        )\n        OR (\n          utm_campaign LIKE '%PREV0625-CAPTACAO%'\n          OR utm_campaign LIKE '%GADS%'\n        )\n      )\n  ) AS total_leads_somados;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        40,
+        440
+      ],
+      "id": "89119933-220f-4c12-a302-a88ee6d4a047",
+      "name": "MySQL1",
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s",
+          "mode": "list",
+          "cachedResultName": "PREV0625 - Painel de Controle",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 671859488,
+          "mode": "list",
+          "cachedResultName": "🕹️ Captação AUX [LEADS]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit#gid=671859488"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Day Active": "={{ $now.format('dd/MM/yyyy')}}",
+            "Orgânicos": "={{ $item(\"0\").$node[\"MySQL1\"].json[\"total_leads_por_utm_source\"] }}",
+            "Pagos": "={{ $item(\"0\").$node[\"MySQL1\"].json[\"total_leads_por_utm_campaign\"] }}",
+            "Total": "={{ $item(\"0\").$node[\"MySQL1\"].json[\"total_leads_somados\"] }}"
+          },
+          "matchingColumns": [
+            "Day Active"
+          ],
+          "schema": [
+            {
+              "id": "Day Active",
+              "displayName": "Day Active",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Orgânicos",
+              "displayName": "Orgânicos",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Pagos",
+              "displayName": "Pagos",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Total",
+              "displayName": "Total",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Ativos",
+              "displayName": "Ativos",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        340,
+        440
+      ],
+      "id": "d0f1f7bf-2ff9-401f-bd01-eaa1f9815289",
+      "name": "Google Sheets1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "z5gmk55vTaoF2yks",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## MÉTRICAS LEADS",
+        "height": 380,
+        "width": 1080,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        300
+      ],
+      "id": "b9af19a5-d2a5-41f4-a237-80b5fd5346bb",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtMinute": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        860,
+        20
+      ],
+      "id": "11ebb89a-3b93-49d7-b5c4-f2c980446f52",
+      "name": "Schedule Trigger2",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## REPORT MÉTRICAS - GRUPO",
+        "height": 380,
+        "width": 1080,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        740,
+        -120
+      ],
+      "id": "86d1d29d-d0e2-42f5-84cc-eb537d9cc192",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s",
+          "mode": "list",
+          "cachedResultName": "PREV0625 - Painel de Controle",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 118025285,
+          "mode": "list",
+          "cachedResultName": "📊 Métricas",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit#gid=118025285"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "DATA",
+              "lookupValue": "={{(() => {\n  const d = new Date();\n  d.setDate(d.getDate() - 1);\n  const day = String(d.getDate()).padStart(2, '0');\n  const month = String(d.getMonth() + 1).padStart(2, '0');\n  const year = d.getFullYear();\n  return `${day}/${month}/${year}`;\n})()}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1080,
+        20
+      ],
+      "id": "0dd7ebef-ee83-42a8-81a7-fd2b298fdbf8",
+      "name": "Google Sheets2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "z5gmk55vTaoF2yks",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://evolution.eprevensino.com.br/message/sendText/Marcos",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "F800E26D894D-46F5-BCB8-11DBCB5CEA2A"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "120363319649617757@g.us"
+            },
+            {
+              "name": "text",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"output\"] }}"
+            },
+            {
+              "name": "linkPreview",
+              "value": "false"
+            },
+            {
+              "name": "delay",
+              "value": "2200"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "57cddeac-d4ca-4e17-b158-20045e6c5dc8",
+      "name": "Responde texto",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1580,
+        20
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "url": "https://evolution.eprevensino.com.br/group/fetchAllGroups/Marcos",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "getParticipants",
+              "value": "false"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "F800E26D894D-46F5-BCB8-11DBCB5CEA2A"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "87f5a397-a5a9-49a3-a7b2-4240eadc03bd",
+      "name": "Responde texto1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1920,
+        440
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtMinute": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        860,
+        440
+      ],
+      "id": "377d38bf-9068-4654-9772-33f9abbe288f",
+      "name": "Schedule Trigger3",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## REPORT MÉTRICAS - GRUPO GERAL",
+        "height": 380,
+        "width": 1080,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        740,
+        300
+      ],
+      "id": "c4a9188a-1048-47b5-83a3-db79c58f3d8b",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s",
+          "mode": "list",
+          "cachedResultName": "PREV0625 - Painel de Controle",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 118025285,
+          "mode": "list",
+          "cachedResultName": "📊 Métricas",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit#gid=118025285"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "DATA",
+              "lookupValue": "={{(() => {\n  const now = new Date();          // Pega a data e hora atual\n  now.setDate(now.getDate() - 1);  // Subtrai 1 dia\n  return now.toLocaleDateString('pt-BR'); // Retorna no formato dd/MM/yyyy\n})()}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1080,
+        440
+      ],
+      "id": "34be1b79-ce74-4c76-bdaf-8a8c3ea3e4f2",
+      "name": "Google Sheets3",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "z5gmk55vTaoF2yks",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://evolution.eprevensino.com.br/message/sendText/Marcos",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "F800E26D894D-46F5-BCB8-11DBCB5CEA2A"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "120363417784338770@g.us"
+            },
+            {
+              "name": "text",
+              "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"output\"] }}"
+            },
+            {
+              "name": "linkPreview",
+              "value": "false"
+            },
+            {
+              "name": "delay",
+              "value": "2200"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "9f68a783-a03f-4d7f-a303-f1d86109e702",
+      "name": "Responde texto2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1580,
+        440
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all().map(i => i.json);\n\n// Funções auxiliares\nconst sum = (arr, key) => arr.reduce((acc, item) => acc + (parseFloat(item[key]) || 0), 0);\nconst last = (arr, key) => parseFloat([...arr].reverse().find(i => i[key] !== \"\" && i[key] !== undefined)?.[key] || 0);\nconst formatCurrency = val => `R$ ${val.toFixed(2).replace('.', ',')}`;\nconst formatPercent = val => `${val.toFixed(1).replace('.', ',')}%`;\nconst calcPerc = (val, meta) => meta > 0 ? formatPercent((val / meta) * 100) : '0,0%';\n\n// Nome do projeto\nconst nome = items[0][\"ADVERSÁRIO\"] || \"PROJETO\";\n\n// --- SOMATÓRIOS ---\nconst valorGasto = sum(items, \"VALOR GASTO R$\");\nconst valorPlanejado = sum(items, \"META VALOR GASTO R$\");\nconst percGasto = valorPlanejado > 0 ? (valorGasto / valorPlanejado) * 100 : 0;\n\nconst diasTotais = items.length;\nconst diaAtual = sum(items, \"DIA DO PROJETO\");\nconst percTempo = (diaAtual / (diasTotais * 1)) * 100;\n\nconst leadsTrafego = sum(items, \"Leads Active Tráfego\");\nconst leadsOrganico = sum(items, \"Leads Active Organico\");\nconst leadsTotal = leadsTrafego + leadsOrganico;\n\nconst leadsWhatsapp = sum(items, \"Leads WhatsApp\");\nconst entradas = sum(items, \"col_28\");\nconst saidas = sum(items, \"Saidas WhatsApp\");\nconst respostasPesquisa = sum(items, \"Respostas Pesquisa \");\n\n// --- ÚLTIMOS VALORES ---\nconst cplTrafego = last(items, \"CPL Tráfego Active\");\nconst cplGeral = last(items, \"CPL Active Total WhatsApp\");\nconst cplWhatsapp = last(items, \"CPL Tráfego Active WhatsApp\");\nconst taxaEntrada = last(items, \"Taxa de Entrada do lead Whatsapp: x%\");\nconst taxaPesquisa = last(items, \"% de Respostas\");\nconst connectRate = 66.9; // fixo por enquanto\nconst mediaScore = 4.97;  // fixo por enquanto\n\n// --- METAS (estáticas) ---\nconst metaTrafego = 3106;\nconst metaOrganico = 547;\nconst metaGeral = metaTrafego + metaOrganico;\nconst metaWhatsapp = 2922;\nconst metaPesquisa = 901;\n\n// --- MENSAGEM FORMATADA ---\nconst mensagem = `\n🗓 *RELATÓRIO GERAL* [${nome}] \n\n💲 Valor Gasto: ${formatCurrency(valorGasto)}\n📊 Planejado: ${formatCurrency(valorPlanejado)}\n⏱ Realizado: ${formatPercent(percGasto)} 🔴\n📊 Meta Tempo: ${formatPercent(percTempo)} 🔴\n\n*Trafego:* \n🗄 Leads: ${leadsTrafego} (${calcPerc(leadsTrafego, leadsTotal)})\n💰 CPL: ${formatCurrency(cplTrafego)} 🔴\n📊 Meta: ${metaTrafego}\n⏱ Realizado: ${calcPerc(leadsTrafego, metaTrafego)} 🔴\n\n*Organico:* \n🗄 Leads: ${leadsOrganico} (${calcPerc(leadsOrganico, leadsTotal)})\n📊 Meta: ${metaOrganico}\n⏱ Realizado: ${calcPerc(leadsOrganico, metaOrganico)} 🔴\n\n*Geral:* \n🗄 Leads: ${leadsTotal}\n💰 CPL: ${formatCurrency(cplGeral)} 🔴\n📊 Meta: ${metaGeral}\n⏱ Realizado: ${calcPerc(leadsTotal, metaGeral)} 🔴\n\n*Whatsapp:* \n🗄 Leads: ${leadsWhatsapp} (${calcPerc(leadsWhatsapp, leadsTotal)})\n📌 Entrada Grupos: ${entradas}\n📌 Saída Grupos: ${saidas}\n📊 Taxa de Entrada ${formatPercent(taxaEntrada)} 🔴\n💰 CPL: ${formatCurrency(cplWhatsapp)} 🔴\n📊 Meta: ${metaWhatsapp}\n⏱ Realizado: ${calcPerc(leadsWhatsapp, metaWhatsapp)} 🔴\n\n*Pesquisa:* \n🗄 Resposta na Pesquisa: ${respostasPesquisa} (${formatPercent(taxaPesquisa)})\n📊 Taxa de Resposta ${formatPercent(taxaPesquisa)} 🟢\n📊 Meta: ${metaPesquisa}\n⏱ Realizado: ${calcPerc(respostasPesquisa, metaPesquisa)} 🟢\n\n*LeadScore:* \nMédia: ${mediaScore.toFixed(2)} 🟢\n🟢 Alto 37 (3,3%)\n📊 Connect Rate ${formatPercent(connectRate / 100)} 🔴\n`;\n\nreturn [\n  {\n    json: {\n      output: mensagem.trim()\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        440
+      ],
+      "id": "305a7f99-7f8c-4845-b7bc-150c4b352686",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.item.json;\n\nconst formatCurrency = val => `R$ ${val.toFixed(2).replace('.', ',')}`;\nconst formatPercent = val => `${(val * 100).toFixed(1).replace('.', ',')}%`;\nconst calcPercRaw = (val, meta) => meta > 0 ? (val / meta) * 100 : 0;\nconst calcPerc = (val, meta) => `${calcPercRaw(val, meta).toFixed(1).replace('.', ',')}%`;\nconst statusMeta = (val, meta) => calcPercRaw(val, meta) >= 100 ? '🟢' : '🔴';\nconst statusCPL = (val, meta) => val <= meta ? '🟢' : '🔴';\n\nconst data = item[\"DATA\"] || \"Data não informada\";\nconst valorGasto = item[\"VALOR GASTO R$\"];\nconst valorPlanejado = item[\"META VALOR GASTO R$\"];\n\n// ✅ Cálculo corrigido do % realizado com base nos valores\nconst percGastoRaw = valorPlanejado > 0 ? valorGasto / valorPlanejado : 0;\nconst percGasto = formatPercent(percGastoRaw);\nconst statusGasto = percGastoRaw >= 1 ? '🟢' : '🔴';\n\nconst leadsTrafego = item[\"Leads Active Tráfego\"];\nconst leadsOrganico = item[\"Leads Active Organico\"];\nconst leadsTotal = item[\"Leads Active\"];\n\nconst cplTrafego = item[\"CPL Tráfego Active\"];\nconst cplTotal = item[\"CPL Active Total WhatsApp\"];\n\nconst leadsWhatsapp = parseInt(item[\"Leads WhatsApp\"] || 0);\nconst saidasWhatsapp = parseInt(item[\"Saidas WhatsApp\"] || 0);\nconst entradasWhatsapp = parseInt(item[\"col_28\"] || 0);\nconst taxaEntrada = item[\"Taxa de Entrada do lead Whatsapp: x%\"] || 0;\nconst statusEntrada = taxaEntrada >= 0.9 ? '🟢' : '🔴';\n\nconst respostasPesquisa = parseInt(item[\"Respostas Pesquisa \"] || 0);\nconst taxaPesquisa = item[\"% de Respostas\"] || 0;\n\nconst trafegoMeta = 281;\nconst organicoMeta = 49;\nconst geralMeta = trafegoMeta + organicoMeta;\nconst whatsappMeta = 264;\nconst pesquisaMeta = 108;\nconst cplMeta = 18;\n\nconst statusCPLGeral = statusCPL(cplTotal, cplMeta);\nconst statusCPLTrafego = statusCPL(cplTrafego, cplMeta);\n\nconst statusTrafego = statusMeta(leadsTrafego, trafegoMeta);\nconst statusOrganico = statusMeta(leadsOrganico, organicoMeta);\nconst statusGeral = statusMeta(leadsTotal, geralMeta);\nconst statusWhatsapp = statusMeta(leadsWhatsapp, whatsappMeta);\nconst statusPesquisa = statusMeta(respostasPesquisa, pesquisaMeta);\n\nconst mensagem = `\n📅 Data: ${data}\n\n💲 Valor Gasto: ${formatCurrency(valorGasto)}\n📊 Planejado: ${formatCurrency(valorPlanejado)}\n⏱ Realizado: ${percGasto} ${statusGasto}\n\n*Trafego:* \n🗄 Leads: ${leadsTrafego} (${calcPerc(leadsTrafego, leadsTotal)})\n💰 CPL: ${formatCurrency(cplTrafego)} ${statusCPLTrafego}\n📊 Meta: ${trafegoMeta}\n⏱ Realizado: ${calcPerc(leadsTrafego, trafegoMeta)} ${statusTrafego}\n\n*Orgânico:* \n🗄 Leads: ${leadsOrganico} (${calcPerc(leadsOrganico, leadsTotal)})\n📊 Meta: ${organicoMeta}\n⏱ Realizado: ${calcPerc(leadsOrganico, organicoMeta)} ${statusOrganico}\n\n*Geral:* \n🗄 Leads: ${leadsTotal}\n💰 CPL: ${formatCurrency(cplTotal)} ${statusCPLGeral}\n📊 Meta: ${geralMeta}\n⏱ Realizado: ${calcPerc(leadsTotal, geralMeta)} ${statusGeral}\n\n*Whatsapp:* \n🗄 Leads: ${leadsWhatsapp}\n📌 Entrada Grupos: ${entradasWhatsapp}\n📌 Saída Grupos: ${saidasWhatsapp}\n📊 Taxa de Entrada ${formatPercent(taxaEntrada)} ${statusEntrada}\n💰 CPL: ${formatCurrency(cplTotal)} ${statusCPLGeral}\n📊 Meta: ${whatsappMeta}\n⏱ Realizado: ${calcPerc(leadsWhatsapp, whatsappMeta)} ${statusWhatsapp}\n\n*Pesquisa:* \n🗄 Resposta na Pesquisa: ${respostasPesquisa}\n📊 Taxa de Resposta ${formatPercent(taxaPesquisa)} 🟢\n📊 Meta: ${pesquisaMeta}\n⏱ Realizado: ${calcPerc(respostasPesquisa, pesquisaMeta)} ${statusPesquisa}\n\n*LeadScore:* \nMédia: 4,89 🟢\n🟢 Alto 05 (3,9%)\n🟡 Médio 69 (53,5%)\n🔴 Baixo 42 (32,6%)\n❌ Desqualificado 13 (10,1%)\n\n*Página:* \n📊 Tx de Conv 28,4% 🔴\n📊 Connect Rate 64,8% 🔴\n`;\n\nreturn [\n  {\n    json: {\n      output: mensagem.trim()\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        20
+      ],
+      "id": "4c08871c-4f18-478b-a4d5-995ab49e876b",
+      "name": "Code"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    },
+    "node:Schedule Trigger1": {
+      "recurrenceRules": []
+    },
+    "node:Schedule Trigger2": {
+      "recurrenceRules": []
+    },
+    "node:Schedule Trigger3": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2025-05-19T14:40:49.613Z",
+  "versionId": "e732f1d7-5de9-4a88-abc9-35fe5bb5fad0"
+}
