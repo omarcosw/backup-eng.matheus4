@@ -67,44 +67,44 @@
         ]
       ]
     },
-    "Schedule Trigger3": {
-      "main": [
-        [
-          {
-            "node": "Google Sheets3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Sheets3": {
-      "main": [
-        [
-          {
-            "node": "Code1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code1": {
-      "main": [
-        [
-          {
-            "node": "Responde texto2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Code": {
       "main": [
         [
           {
-            "node": "Responde texto",
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger4": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets4": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
             "type": "main",
             "index": 0
           }
@@ -414,7 +414,7 @@
         "rule": {
           "interval": [
             {
-              "triggerAtMinute": 9
+              "triggerAtHour": 8
             }
           ]
         }
@@ -426,8 +426,7 @@
         20
       ],
       "id": "11ebb89a-3b93-49d7-b5c4-f2c980446f52",
-      "name": "Schedule Trigger2",
-      "disabled": true
+      "name": "Schedule Trigger2"
     },
     {
       "parameters": {
@@ -488,57 +487,6 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://evolution.eprevensino.com.br/message/sendText/Marcos",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "F800E26D894D-46F5-BCB8-11DBCB5CEA2A"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "number",
-              "value": "120363319649617757@g.us"
-            },
-            {
-              "name": "text",
-              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"output\"] }}"
-            },
-            {
-              "name": "linkPreview",
-              "value": "false"
-            },
-            {
-              "name": "delay",
-              "value": "2200"
-            }
-          ]
-        },
-        "options": {
-          "redirect": {
-            "redirect": {}
-          }
-        }
-      },
-      "id": "57cddeac-d4ca-4e17-b158-20045e6c5dc8",
-      "name": "Responde texto",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1580,
-        20
-      ],
-      "retryOnFail": true,
-      "waitBetweenTries": 5000
-    },
-    {
-      "parameters": {
         "url": "https://evolution.eprevensino.com.br/group/fetchAllGroups/Marcos",
         "sendQuery": true,
         "queryParameters": {
@@ -570,35 +518,15 @@
       "typeVersion": 4.2,
       "position": [
         1920,
-        440
+        20
       ],
       "retryOnFail": true,
       "waitBetweenTries": 5000
     },
     {
       "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "triggerAtMinute": 9
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.2,
-      "position": [
-        860,
-        440
-      ],
-      "id": "377d38bf-9068-4654-9772-33f9abbe288f",
-      "name": "Schedule Trigger3",
-      "disabled": true
-    },
-    {
-      "parameters": {
         "content": "## REPORT MÉTRICAS - GRUPO GERAL",
-        "height": 380,
+        "height": 400,
         "width": 1080,
         "color": 3
       },
@@ -606,51 +534,23 @@
       "typeVersion": 1,
       "position": [
         740,
-        300
+        280
       ],
       "id": "c4a9188a-1048-47b5-83a3-db79c58f3d8b",
       "name": "Sticky Note3"
     },
     {
       "parameters": {
-        "documentId": {
-          "__rl": true,
-          "value": "1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s",
-          "mode": "list",
-          "cachedResultName": "PREV0625 - Painel de Controle",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": 118025285,
-          "mode": "list",
-          "cachedResultName": "📊 Métricas",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit#gid=118025285"
-        },
-        "filtersUI": {
-          "values": [
-            {
-              "lookupColumn": "DATA",
-              "lookupValue": "={{(() => {\n  const now = new Date();          // Pega a data e hora atual\n  now.setDate(now.getDate() - 1);  // Subtrai 1 dia\n  return now.toLocaleDateString('pt-BR'); // Retorna no formato dd/MM/yyyy\n})()}}"
-            }
-          ]
-        },
-        "options": {}
+        "jsCode": "const item = $input.item.json;\nconst gs2 = $items(\"Google Sheets2\")[0].json;\n\n// 🔧 Metas por data para investimento em tráfego\nconst investimentoPorData = {\n  \"2025-05-14\": 2000, \"2025-05-15\": 3000, \"2025-05-16\": 3000,\n  \"2025-05-17\": 3000, \"2025-05-18\": 3000, \"2025-05-19\": 4000,\n  \"2025-05-20\": 8000, \"2025-05-21\": 10000, \"2025-05-22\": 11000,\n  \"2025-05-23\": 11000, \"2025-05-24\": 12000, \"2025-05-25\": 12000,\n  \"2025-05-26\": 12000, \"2025-05-27\": 12000, \"2025-05-28\": 14000,\n  \"2025-05-29\": 14000, \"2025-05-30\": 14000, \"2025-05-31\": 14000,\n  \"2025-06-01\": 14000, \"2025-06-02\": 14000, \"2025-06-03\": 10000\n};\n\n// 📅 Captura a data e converte para formato YYYY-MM-DD\nconst rawDate = item[\"DATA\"] || \"Data não informada\";\nconst data = rawDate.split('/').reverse().join('-');\n\n// 🔢 Metas atualizadas\nconst trafegoMeta = 500;\nconst organicoMeta = 500;\nconst geralMeta = 1000;\nconst whatsappMeta = 500;\nconst pesquisaMeta = 200;\nconst cplMeta = 18;\n\n// 📊 Utilitários\nconst formatCurrency = val => `R$ ${val.toFixed(2).replace('.', ',')}`;\nconst formatPercent = val => `${(val * 100).toFixed(1).replace('.', ',')}%`;\nconst calcPercRaw = (val, meta) => meta > 0 ? (val / meta) * 100 : 0;\nconst calcPerc = (val, meta) => `${calcPercRaw(val, meta).toFixed(1).replace('.', ',')}%`;\nconst statusMeta = (val, meta) => calcPercRaw(val, meta) >= 100 ? '🟢' : '🔴';\nconst statusCPL = (val, meta) => val <= meta ? '🟢' : '🔴';\n\n// 💰 Dados financeiros\nconst valorPlanejado = investimentoPorData[data] || 0;\nconst valorGasto = item[\"VALOR GASTO R$\"];\nconst percGastoRaw = valorPlanejado > 0 ? valorGasto / valorPlanejado : 0;\nconst percGasto = formatPercent(percGastoRaw);\nconst statusGasto = percGastoRaw >= 1 ? '🟢' : '🔴';\n\n// 📈 Leads e CPLs (de Google Sheets2)\nconst leadsTrafego = gs2[\"Leads Active Tráfego\"] || 0;\nconst leadsOrganico = gs2[\"Leads Active Organico\"] || 0;\nconst cplTrafego = gs2[\"CPL Tráfego Gerenciador\"] || 0;\n\nconst leadsTotal = gs2[\"Leads Active\"] || 0;\nconst cplTotal = gs2[\"CPL Tráfego Active WhatsApp\"] || 0;\n\nconst leadsWhatsappRaw = gs2[\"Leads WhatsApp\"] || 0;\nconst saidasWhatsapp = gs2[\"Saidas WhatsApp\"] || 0;\nconst leadsWhatsapp = leadsWhatsappRaw - saidasWhatsapp;\nconst entradasWhatsapp = leadsWhatsappRaw;\nconst cplWhatsapp = gs2[\"CPL Active Total WhatsApp\"] || 0;\n\nconst taxaEntrada = gs2[\"Taxa de Entrada do lead Whatsapp: x%\"] || 0;\nconst statusEntrada = taxaEntrada >= 0.9 ? '🟢' : '🔴';\n\nconst respostasPesquisa = parseInt(gs2[\"Respostas Pesquisa \"] || 0);\nconst taxaPesquisa = gs2[\"% de Respostas\"] || 0;\n\n// Status\nconst statusCPLGeral = statusCPL(cplTotal, cplMeta);\nconst statusCPLTrafego = statusCPL(cplTrafego, cplMeta);\nconst statusCPLWhatsapp = statusCPL(cplWhatsapp, cplMeta);\n\nconst statusTrafego = statusMeta(leadsTrafego, trafegoMeta);\nconst statusOrganico = statusMeta(leadsOrganico, organicoMeta);\nconst statusGeral = statusMeta(leadsTotal, geralMeta);\nconst statusWhatsapp = statusMeta(leadsWhatsapp, whatsappMeta);\nconst statusPesquisa = statusMeta(respostasPesquisa, pesquisaMeta);\n\n// 📤 Mensagem\nconst mensagem = `\n📅 Data: ${rawDate}\n\n💲 Valor Gasto: ${formatCurrency(valorGasto)}\n📊 Planejado: ${formatCurrency(valorPlanejado)}\n⏱ Realizado: ${percGasto} ${statusGasto}\n\n*Trafego:* \n🗄 Leads: ${leadsTrafego} (${calcPerc(leadsTrafego, leadsTotal)})\n💰 CPL: ${formatCurrency(cplTrafego)} ${statusCPLTrafego}\n📊 Meta: ${trafegoMeta}\n⏱ Realizado: ${calcPerc(leadsTrafego, trafegoMeta)} ${statusTrafego}\n\n*Orgânico:* \n🗄 Leads: ${leadsOrganico} (${calcPerc(leadsOrganico, leadsTotal)})\n📊 Meta: ${organicoMeta}\n⏱ Realizado: ${calcPerc(leadsOrganico, organicoMeta)} ${statusOrganico}\n\n*Geral:* \n🗄 Leads: ${leadsTotal}\n💰 CPL: ${formatCurrency(cplTotal)} ${statusCPLGeral}\n📊 Meta: ${geralMeta}\n⏱ Realizado: ${calcPerc(leadsTotal, geralMeta)} ${statusGeral}\n\n*Whatsapp:* \n🗄 Leads: ${leadsWhatsapp}\n📌 Entrada Grupos: ${entradasWhatsapp}\n📌 Saída Grupos: ${saidasWhatsapp}\n📊 Taxa de Entrada ${formatPercent(taxaEntrada)} ${statusEntrada}\n💰 CPL: ${formatCurrency(cplWhatsapp)} ${statusCPLWhatsapp}\n📊 Meta: ${whatsappMeta}\n⏱ Realizado: ${calcPerc(leadsWhatsapp, whatsappMeta)} ${statusWhatsapp}\n\n*Pesquisa:* \n🗄 Resposta na Pesquisa: ${respostasPesquisa}\n📊 Taxa de Resposta ${formatPercent(taxaPesquisa)} 🟢\n📊 Meta: ${pesquisaMeta}\n⏱ Realizado: ${calcPerc(respostasPesquisa, pesquisaMeta)} ${statusPesquisa}\n`;\n\nreturn [\n  {\n    json: {\n      output: mensagem.trim()\n    }\n  }\n];"
       },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.5,
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
       "position": [
-        1080,
-        440
+        1320,
+        20
       ],
-      "id": "34be1b79-ce74-4c76-bdaf-8a8c3ea3e4f2",
-      "name": "Google Sheets3",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "z5gmk55vTaoF2yks",
-          "name": "Google Sheets account"
-        }
-      }
+      "id": "4c08871c-4f18-478b-a4d5-995ab49e876b",
+      "name": "Code"
     },
     {
       "parameters": {
@@ -674,15 +574,7 @@
             },
             {
               "name": "text",
-              "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"output\"] }}"
-            },
-            {
-              "name": "linkPreview",
-              "value": "false"
-            },
-            {
-              "name": "delay",
-              "value": "2200"
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"output\"] }}"
             }
           ]
         },
@@ -692,42 +584,129 @@
           }
         }
       },
-      "id": "9f68a783-a03f-4d7f-a303-f1d86109e702",
-      "name": "Responde texto2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1580,
+        20
+      ],
+      "id": "bde79582-6717-4170-8072-f5f1a3bcaf01",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 8,
+              "triggerAtMinute": 1
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        860,
+        440
+      ],
+      "id": "35b68320-35f9-471b-8a62-877e9adc7e2b",
+      "name": "Schedule Trigger4"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s",
+          "mode": "list",
+          "cachedResultName": "PREV0625 - Painel de Controle",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 396751833,
+          "mode": "list",
+          "cachedResultName": "🕹️ Captação AUX [DASH]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit#gid=396751833"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "DATA",
+              "lookupValue": "={{ $now.format('dd/MM/yyyy') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1080,
+        440
+      ],
+      "id": "ae29cbca-96d0-433d-89cf-150003becc3b",
+      "name": "Google Sheets4",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "z5gmk55vTaoF2yks",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.item.json;\n\n// Funções utilitárias\nconst formatCurrency = (val) => `R$ ${val.toFixed(2).replace('.', ',')}`;\nconst formatPercent = (val) => `${(val * 100).toFixed(1).replace('.', ',')}%`;\nconst status = (val, meta) => val >= meta ? '🟢' : '🔴';\nconst statusCPL = (val, meta) => val <= meta ? '🟢' : '🔴';\n\n// Metas\nconst metas = {\n  planejado: 200000, // ✅ Atualizado para R$ 200.000\n  tempo: 7 / 21, // Dia do projeto atual (ajuste conforme necessário)\n  trafego: 12000,\n  organico: 6000,\n  geral: 18000,\n  whatsapp: 16417,\n  pesquisa: 3960,\n  cpl: 18,\n  taxaEntrada: 0.9,\n  taxaResposta: 0.5\n};\n\n// Dados\nconst gasto = item[\"Valor Gasto - T\"];\nconst leadsTrafego = item[\"Leads - T\"];\nconst cplTrafego = item[\"CPL - T\"];\n\nconst leadsOrganico = item[\"Leads - O\"];\nconst leadsGeral = item[\"Leads - G\"];\nconst cplGeral = item[\"CPL - G\"];\n\nconst leadsWpp = item[\"Leads - W\"];\nconst entradasWpp = item[\"Entrada Grupos - W\"];\nconst saidasWpp = item[\"Saída Grupos - W\"];\nconst taxaEntrada = item[\"Taxa de Entrada - W\"];\nconst cplWpp = item[\"CPL - W\"];\n\nconst respostas = item[\"Resposta na Pesquisa\"];\nconst taxaResposta = item[\"Taxa de Resposta\"];\n\n// Relatório\nconst mensagem = `\n🗓 *RELATÓRIO GERAL*\n\n💲 Valor Gasto: ${formatCurrency(gasto)}\n📊 Planejado: ${formatCurrency(metas.planejado)}\n⏱ Realizado: ${formatPercent(gasto / metas.planejado)} ${status(gasto, metas.planejado)}\n📊 Meta Tempo: ${formatPercent(metas.tempo)} ${status(metas.tempo, 1)}\n\n*Trafego:* \n🗄 Leads: ${leadsTrafego} (${formatPercent(leadsTrafego / leadsGeral)})\n💰 CPL: ${formatCurrency(cplTrafego)} ${statusCPL(cplTrafego, metas.cpl)}\n📊 Meta: ${metas.trafego}\n⏱ Realizado: ${formatPercent(leadsTrafego / metas.trafego)} ${status(leadsTrafego, metas.trafego)}\n\n*Organico:* \n🗄 Leads: ${leadsOrganico} (${formatPercent(leadsOrganico / leadsGeral)})\n📊 Meta: ${metas.organico}\n⏱ Realizado: ${formatPercent(leadsOrganico / metas.organico)} ${status(leadsOrganico, metas.organico)}\n\n*Geral:* \n🗄 Leads: ${leadsGeral}\n💰 CPL: ${formatCurrency(cplGeral)} ${statusCPL(cplGeral, metas.cpl)}\n📊 Meta: ${metas.geral}\n⏱ Realizado: ${formatPercent(leadsGeral / metas.geral)} ${status(leadsGeral, metas.geral)}\n\n*Whatsapp:* \n🗄 Leads: ${leadsWpp} (${formatPercent(leadsWpp / leadsGeral)})\n📌 Entrada Grupos: ${entradasWpp}\n📌 Saída Grupos: ${saidasWpp}\n📊 Taxa de Entrada: ${formatPercent(taxaEntrada)} ${status(taxaEntrada, metas.taxaEntrada)}\n💰 CPL: ${formatCurrency(cplWpp)} ${statusCPL(cplWpp, metas.cpl)}\n📊 Meta: ${metas.whatsapp}\n⏱ Realizado: ${formatPercent(leadsWpp / metas.whatsapp)} ${status(leadsWpp, metas.whatsapp)}\n\n*Pesquisa:* \n🗄 Respostas: ${respostas}\n📊 Taxa de Resposta: ${formatPercent(taxaResposta)} ${status(taxaResposta, metas.taxaResposta)}\n📊 Meta: ${metas.pesquisa}\n⏱ Realizado: ${formatPercent(respostas / metas.pesquisa)} ${status(respostas, metas.pesquisa)}\n`;\n\nreturn [\n  {\n    json: {\n      output: mensagem.trim()\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        440
+      ],
+      "id": "b3ed34de-a6c9-4ce6-93fc-a80830c97881",
+      "name": "Code2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://evolution.eprevensino.com.br/message/sendText/Marcos",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "F800E26D894D-46F5-BCB8-11DBCB5CEA2A"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "120363417784338770@g.us"
+            },
+            {
+              "name": "text",
+              "value": "={{ $item(\"0\").$node[\"Code2\"].json[\"output\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
         1580,
         440
       ],
-      "retryOnFail": true,
-      "waitBetweenTries": 5000
-    },
-    {
-      "parameters": {
-        "jsCode": "const items = $input.all().map(i => i.json);\n\n// Funções auxiliares\nconst sum = (arr, key) => arr.reduce((acc, item) => acc + (parseFloat(item[key]) || 0), 0);\nconst last = (arr, key) => parseFloat([...arr].reverse().find(i => i[key] !== \"\" && i[key] !== undefined)?.[key] || 0);\nconst formatCurrency = val => `R$ ${val.toFixed(2).replace('.', ',')}`;\nconst formatPercent = val => `${val.toFixed(1).replace('.', ',')}%`;\nconst calcPerc = (val, meta) => meta > 0 ? formatPercent((val / meta) * 100) : '0,0%';\n\n// Nome do projeto\nconst nome = items[0][\"ADVERSÁRIO\"] || \"PROJETO\";\n\n// --- SOMATÓRIOS ---\nconst valorGasto = sum(items, \"VALOR GASTO R$\");\nconst valorPlanejado = sum(items, \"META VALOR GASTO R$\");\nconst percGasto = valorPlanejado > 0 ? (valorGasto / valorPlanejado) * 100 : 0;\n\nconst diasTotais = items.length;\nconst diaAtual = sum(items, \"DIA DO PROJETO\");\nconst percTempo = (diaAtual / (diasTotais * 1)) * 100;\n\nconst leadsTrafego = sum(items, \"Leads Active Tráfego\");\nconst leadsOrganico = sum(items, \"Leads Active Organico\");\nconst leadsTotal = leadsTrafego + leadsOrganico;\n\nconst leadsWhatsapp = sum(items, \"Leads WhatsApp\");\nconst entradas = sum(items, \"col_28\");\nconst saidas = sum(items, \"Saidas WhatsApp\");\nconst respostasPesquisa = sum(items, \"Respostas Pesquisa \");\n\n// --- ÚLTIMOS VALORES ---\nconst cplTrafego = last(items, \"CPL Tráfego Active\");\nconst cplGeral = last(items, \"CPL Active Total WhatsApp\");\nconst cplWhatsapp = last(items, \"CPL Tráfego Active WhatsApp\");\nconst taxaEntrada = last(items, \"Taxa de Entrada do lead Whatsapp: x%\");\nconst taxaPesquisa = last(items, \"% de Respostas\");\nconst connectRate = 66.9; // fixo por enquanto\nconst mediaScore = 4.97;  // fixo por enquanto\n\n// --- METAS (estáticas) ---\nconst metaTrafego = 3106;\nconst metaOrganico = 547;\nconst metaGeral = metaTrafego + metaOrganico;\nconst metaWhatsapp = 2922;\nconst metaPesquisa = 901;\n\n// --- MENSAGEM FORMATADA ---\nconst mensagem = `\n🗓 *RELATÓRIO GERAL* [${nome}] \n\n💲 Valor Gasto: ${formatCurrency(valorGasto)}\n📊 Planejado: ${formatCurrency(valorPlanejado)}\n⏱ Realizado: ${formatPercent(percGasto)} 🔴\n📊 Meta Tempo: ${formatPercent(percTempo)} 🔴\n\n*Trafego:* \n🗄 Leads: ${leadsTrafego} (${calcPerc(leadsTrafego, leadsTotal)})\n💰 CPL: ${formatCurrency(cplTrafego)} 🔴\n📊 Meta: ${metaTrafego}\n⏱ Realizado: ${calcPerc(leadsTrafego, metaTrafego)} 🔴\n\n*Organico:* \n🗄 Leads: ${leadsOrganico} (${calcPerc(leadsOrganico, leadsTotal)})\n📊 Meta: ${metaOrganico}\n⏱ Realizado: ${calcPerc(leadsOrganico, metaOrganico)} 🔴\n\n*Geral:* \n🗄 Leads: ${leadsTotal}\n💰 CPL: ${formatCurrency(cplGeral)} 🔴\n📊 Meta: ${metaGeral}\n⏱ Realizado: ${calcPerc(leadsTotal, metaGeral)} 🔴\n\n*Whatsapp:* \n🗄 Leads: ${leadsWhatsapp} (${calcPerc(leadsWhatsapp, leadsTotal)})\n📌 Entrada Grupos: ${entradas}\n📌 Saída Grupos: ${saidas}\n📊 Taxa de Entrada ${formatPercent(taxaEntrada)} 🔴\n💰 CPL: ${formatCurrency(cplWhatsapp)} 🔴\n📊 Meta: ${metaWhatsapp}\n⏱ Realizado: ${calcPerc(leadsWhatsapp, metaWhatsapp)} 🔴\n\n*Pesquisa:* \n🗄 Resposta na Pesquisa: ${respostasPesquisa} (${formatPercent(taxaPesquisa)})\n📊 Taxa de Resposta ${formatPercent(taxaPesquisa)} 🟢\n📊 Meta: ${metaPesquisa}\n⏱ Realizado: ${calcPerc(respostasPesquisa, metaPesquisa)} 🟢\n\n*LeadScore:* \nMédia: ${mediaScore.toFixed(2)} 🟢\n🟢 Alto 37 (3,3%)\n📊 Connect Rate ${formatPercent(connectRate / 100)} 🔴\n`;\n\nreturn [\n  {\n    json: {\n      output: mensagem.trim()\n    }\n  }\n];"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        1320,
-        440
-      ],
-      "id": "305a7f99-7f8c-4845-b7bc-150c4b352686",
-      "name": "Code1"
-    },
-    {
-      "parameters": {
-        "jsCode": "const item = $input.item.json;\n\nconst formatCurrency = val => `R$ ${val.toFixed(2).replace('.', ',')}`;\nconst formatPercent = val => `${(val * 100).toFixed(1).replace('.', ',')}%`;\nconst calcPercRaw = (val, meta) => meta > 0 ? (val / meta) * 100 : 0;\nconst calcPerc = (val, meta) => `${calcPercRaw(val, meta).toFixed(1).replace('.', ',')}%`;\nconst statusMeta = (val, meta) => calcPercRaw(val, meta) >= 100 ? '🟢' : '🔴';\nconst statusCPL = (val, meta) => val <= meta ? '🟢' : '🔴';\n\nconst data = item[\"DATA\"] || \"Data não informada\";\nconst valorGasto = item[\"VALOR GASTO R$\"];\nconst valorPlanejado = item[\"META VALOR GASTO R$\"];\n\n// ✅ Cálculo corrigido do % realizado com base nos valores\nconst percGastoRaw = valorPlanejado > 0 ? valorGasto / valorPlanejado : 0;\nconst percGasto = formatPercent(percGastoRaw);\nconst statusGasto = percGastoRaw >= 1 ? '🟢' : '🔴';\n\nconst leadsTrafego = item[\"Leads Active Tráfego\"];\nconst leadsOrganico = item[\"Leads Active Organico\"];\nconst leadsTotal = item[\"Leads Active\"];\n\nconst cplTrafego = item[\"CPL Tráfego Active\"];\nconst cplTotal = item[\"CPL Active Total WhatsApp\"];\n\nconst leadsWhatsapp = parseInt(item[\"Leads WhatsApp\"] || 0);\nconst saidasWhatsapp = parseInt(item[\"Saidas WhatsApp\"] || 0);\nconst entradasWhatsapp = parseInt(item[\"col_28\"] || 0);\nconst taxaEntrada = item[\"Taxa de Entrada do lead Whatsapp: x%\"] || 0;\nconst statusEntrada = taxaEntrada >= 0.9 ? '🟢' : '🔴';\n\nconst respostasPesquisa = parseInt(item[\"Respostas Pesquisa \"] || 0);\nconst taxaPesquisa = item[\"% de Respostas\"] || 0;\n\nconst trafegoMeta = 281;\nconst organicoMeta = 49;\nconst geralMeta = trafegoMeta + organicoMeta;\nconst whatsappMeta = 264;\nconst pesquisaMeta = 108;\nconst cplMeta = 18;\n\nconst statusCPLGeral = statusCPL(cplTotal, cplMeta);\nconst statusCPLTrafego = statusCPL(cplTrafego, cplMeta);\n\nconst statusTrafego = statusMeta(leadsTrafego, trafegoMeta);\nconst statusOrganico = statusMeta(leadsOrganico, organicoMeta);\nconst statusGeral = statusMeta(leadsTotal, geralMeta);\nconst statusWhatsapp = statusMeta(leadsWhatsapp, whatsappMeta);\nconst statusPesquisa = statusMeta(respostasPesquisa, pesquisaMeta);\n\nconst mensagem = `\n📅 Data: ${data}\n\n💲 Valor Gasto: ${formatCurrency(valorGasto)}\n📊 Planejado: ${formatCurrency(valorPlanejado)}\n⏱ Realizado: ${percGasto} ${statusGasto}\n\n*Trafego:* \n🗄 Leads: ${leadsTrafego} (${calcPerc(leadsTrafego, leadsTotal)})\n💰 CPL: ${formatCurrency(cplTrafego)} ${statusCPLTrafego}\n📊 Meta: ${trafegoMeta}\n⏱ Realizado: ${calcPerc(leadsTrafego, trafegoMeta)} ${statusTrafego}\n\n*Orgânico:* \n🗄 Leads: ${leadsOrganico} (${calcPerc(leadsOrganico, leadsTotal)})\n📊 Meta: ${organicoMeta}\n⏱ Realizado: ${calcPerc(leadsOrganico, organicoMeta)} ${statusOrganico}\n\n*Geral:* \n🗄 Leads: ${leadsTotal}\n💰 CPL: ${formatCurrency(cplTotal)} ${statusCPLGeral}\n📊 Meta: ${geralMeta}\n⏱ Realizado: ${calcPerc(leadsTotal, geralMeta)} ${statusGeral}\n\n*Whatsapp:* \n🗄 Leads: ${leadsWhatsapp}\n📌 Entrada Grupos: ${entradasWhatsapp}\n📌 Saída Grupos: ${saidasWhatsapp}\n📊 Taxa de Entrada ${formatPercent(taxaEntrada)} ${statusEntrada}\n💰 CPL: ${formatCurrency(cplTotal)} ${statusCPLGeral}\n📊 Meta: ${whatsappMeta}\n⏱ Realizado: ${calcPerc(leadsWhatsapp, whatsappMeta)} ${statusWhatsapp}\n\n*Pesquisa:* \n🗄 Resposta na Pesquisa: ${respostasPesquisa}\n📊 Taxa de Resposta ${formatPercent(taxaPesquisa)} 🟢\n📊 Meta: ${pesquisaMeta}\n⏱ Realizado: ${calcPerc(respostasPesquisa, pesquisaMeta)} ${statusPesquisa}\n\n*LeadScore:* \nMédia: 4,89 🟢\n🟢 Alto 05 (3,9%)\n🟡 Médio 69 (53,5%)\n🔴 Baixo 42 (32,6%)\n❌ Desqualificado 13 (10,1%)\n\n*Página:* \n📊 Tx de Conv 28,4% 🔴\n📊 Connect Rate 64,8% 🔴\n`;\n\nreturn [\n  {\n    json: {\n      output: mensagem.trim()\n    }\n  }\n];"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        1320,
-        20
-      ],
-      "id": "4c08871c-4f18-478b-a4d5-995ab49e876b",
-      "name": "Code"
+      "id": "a7b5ace1-b9a3-4059-80f5-1d3c68bd96f2",
+      "name": "HTTP Request1"
     }
   ],
   "pinData": {},
@@ -746,10 +725,13 @@
     },
     "node:Schedule Trigger3": {
       "recurrenceRules": []
+    },
+    "node:Schedule Trigger4": {
+      "recurrenceRules": []
     }
   },
   "tags": [],
-  "triggerCount": 2,
-  "updatedAt": "2025-05-19T14:40:49.613Z",
-  "versionId": "e732f1d7-5de9-4a88-abc9-35fe5bb5fad0"
+  "triggerCount": 4,
+  "updatedAt": "2025-05-20T13:36:13.718Z",
+  "versionId": "5cb2bdae-814a-4fb5-9ea8-b63123560689"
 }
