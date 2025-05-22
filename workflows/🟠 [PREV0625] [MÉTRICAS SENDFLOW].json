@@ -457,7 +457,7 @@
           "__rl": true,
           "value": 118025285,
           "mode": "list",
-          "cachedResultName": "📊 Métricas",
+          "cachedResultName": "📊 Métricas - Daily ",
           "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit#gid=118025285"
         },
         "filtersUI": {
@@ -732,6 +732,6 @@
   },
   "tags": [],
   "triggerCount": 4,
-  "updatedAt": "2025-05-21T16:18:12.461Z",
-  "versionId": "3d497d8a-2c58-4e48-834b-c789a6b41f83"
+  "updatedAt": "2025-05-22T05:25:02.130Z",
+  "versionId": "badd9751-3651-4bb8-b007-4500adf04894"
 }
