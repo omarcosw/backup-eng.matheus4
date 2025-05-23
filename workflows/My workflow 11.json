@@ -1,0 +1,392 @@
+{
+  "active": true,
+  "connections": {
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets2": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook2": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-23T03:32:53.620Z",
+  "id": "pOsAADYDYmU9oHPW",
+  "meta": null,
+  "name": "My workflow 11",
+  "nodes": [
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s",
+          "mode": "list",
+          "cachedResultName": "PREV0625 - Painel de Controle",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 118025285,
+          "mode": "list",
+          "cachedResultName": "📊 Métricas - Daily ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit#gid=118025285"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        220,
+        0
+      ],
+      "id": "c372d8d6-0b90-4d92-bb1f-5815116dbd90",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "z5gmk55vTaoF2yks",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "let acumuladoValorGasto = 0;\nlet acumuladoLeadsActive = 0;\n\nconst ORGANICO_META_FIXO = 285;\n\nconst resultado = items\n  .map(item => item.json)\n  .filter(entry => {\n    const data = entry[\"DATA\"];\n    return data && data !== \"TOTAL\" && data !== \"DATA\";\n  })\n  .map(entry => {\n    const data = entry[\"DATA\"];\n    const valorGasto = parseFloat(entry[\"VALOR GASTO R$\"]);\n    const leadsActive = parseFloat(entry[\"Leads Active\"]);\n    const valorPlanejado = parseFloat(entry[\"META VALOR GASTO R$\"]);\n\n    // Acumula os valores válidos\n    if (!isNaN(valorGasto)) {\n      acumuladoValorGasto += valorGasto;\n    }\n\n    if (!isNaN(leadsActive)) {\n      acumuladoLeadsActive += leadsActive;\n    }\n\n    // Cálculo acumulado\n    const custoPorLeadGeral2 = acumuladoLeadsActive > 0\n      ? acumuladoValorGasto / acumuladoLeadsActive\n      : null;\n\n    // Cálculo da meta de leads total por dia\n    const trafegoMeta = valorPlanejado > 0 ? Math.round(valorPlanejado / 14) : 0;\n    const geralMeta = trafegoMeta + ORGANICO_META_FIXO;\n\n    return {\n      json: {\n        data,\n        ...entry,\n        \"META LEADS TOTAIS\": geralMeta,\n        \"CUSTO POR LEAD GERAL 2\": custoPorLeadGeral2\n      }\n    };\n  });\n\nreturn resultado;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ],
+      "id": "109fae02-9897-413d-a4d9-50752e6e03fb",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "path": "dashboard-prev0625",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -20,
+        0
+      ],
+      "id": "fa2c4ed7-005d-441f-8991-78562b97bdae",
+      "name": "Webhook",
+      "webhookId": "f6609c3a-804d-43eb-86cf-62562cba0749"
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        660,
+        0
+      ],
+      "id": "d0b418ce-01c9-4e47-8a64-1ddcd5e96b7b",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s",
+          "mode": "list",
+          "cachedResultName": "PREV0625 - Painel de Controle",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 403821775,
+          "mode": "list",
+          "cachedResultName": "Leads Totais",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit#gid=403821775"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        220,
+        400
+      ],
+      "id": "c5d550a7-1185-48c0-af7a-0d17d994036d",
+      "name": "Google Sheets1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "z5gmk55vTaoF2yks",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "let quente = 0;\nlet frio = 0;\n\nfor (const item of items) {\n  const data = item.json;\n  const term = (data.Term || \"\").toLowerCase();\n  const campaign = (data.Campaign || \"\").toLowerCase();\n\n  const isQuente = term.includes(\"quente\") || campaign.includes(\"-q-\");\n  const isFrio = term.includes(\"frio\") || campaign.includes(\"-f-\");\n\n  if (isQuente) quente++;\n  else if (isFrio) frio++;\n}\n\nreturn [\n  {\n    json: {\n      quente,\n      frio\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        400
+      ],
+      "id": "b07390c5-09b9-4634-a1c3-0a5745f5ce45",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "path": "dashboard-prev0625-quente/frio",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -20,
+        400
+      ],
+      "id": "7414f3c8-576e-4a51-830d-25939d75431a",
+      "name": "Webhook1",
+      "webhookId": "f6609c3a-804d-43eb-86cf-62562cba0749"
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        660,
+        400
+      ],
+      "id": "fb0935ce-e9c5-475d-bd82-429cd524b933",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s",
+          "mode": "list",
+          "cachedResultName": "PREV0625 - Painel de Controle",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1886355541,
+          "mode": "list",
+          "cachedResultName": "🕹️ Captação AUX",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit#gid=1886355541"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        220,
+        780
+      ],
+      "id": "cdd17cf4-c6f5-4e66-a35d-bfda17712a4c",
+      "name": "Google Sheets2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "z5gmk55vTaoF2yks",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const agrupado = {};\n\n// 1. Agrupamento por data com soma de todas as colunas numéricas\nfor (const item of items) {\n  const data = item.json;\n\n  // Tenta usar o campo \"d\", \"Date\" ou \"Day Active\" como referência de data\n  const dataChave = data[\"d\"] || data[\"Date\"] || data[\"Day Active\"];\n  if (!dataChave) continue;\n\n  // Inicializa o agrupamento por data, se necessário\n  if (!agrupado[dataChave]) agrupado[dataChave] = {};\n\n  for (const chave in data) {\n    const valor = parseFloat(data[chave]);\n\n    if (!isNaN(valor)) {\n      if (!agrupado[dataChave][chave]) agrupado[dataChave][chave] = 0;\n      agrupado[dataChave][chave] += valor;\n    }\n  }\n}\n\n// 2. Formata o resultado em lista ordenada por data\nconst resultado = Object.entries(agrupado)\n  .sort(([dataA], [dataB]) => new Date(dataA) - new Date(dataB))\n  .map(([data, valores]) => ({\n    json: {\n      data,\n      ...valores\n    }\n  }));\n\nreturn resultado;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        420,
+        780
+      ],
+      "id": "32275a41-0210-4568-aa61-ad2f3fe67f13",
+      "name": "Code2"
+    },
+    {
+      "parameters": {
+        "path": "dashboard-prev0625-metricas",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -20,
+        780
+      ],
+      "id": "4dd8f4c9-8557-4297-88eb-1e32a33c8e8d",
+      "name": "Webhook2",
+      "webhookId": "f6609c3a-804d-43eb-86cf-62562cba0749"
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        660,
+        780
+      ],
+      "id": "cb7eab63-7932-4fd2-a0a1-aa9950477609",
+      "name": "Respond to Webhook2"
+    },
+    {
+      "parameters": {
+        "content": "## WEB 1 - METRICAS DAYLI",
+        "height": 340,
+        "width": 1120
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        -120
+      ],
+      "id": "0c9ecce3-0dab-441d-a2ba-487de399c301",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## WEB 2 - CAPTÇÃO AUX",
+        "height": 340,
+        "width": 1120
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        280
+      ],
+      "id": "dddf39ed-b6ab-4592-b1e4-e043a205fd28",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## WEB 2 - CAPTÇÃO AUX",
+        "height": 340,
+        "width": 1120
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        680
+      ],
+      "id": "f600192e-22d4-4089-ad6f-f8dd7761a4fa",
+      "name": "Sticky Note2"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 3,
+  "updatedAt": "2025-05-23T05:41:06.416Z",
+  "versionId": "c8fa731d-4931-41b4-9532-4bc09deb655f"
+}
