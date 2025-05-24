@@ -262,17 +262,17 @@
       "parameters": {
         "documentId": {
           "__rl": true,
-          "value": "1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s",
+          "value": "10CZog1ePLImH2rh_5tSvTWWrP3uNWdeAwm7OOxCOt54",
           "mode": "list",
-          "cachedResultName": "PREV0625 - Painel de Controle",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit?usp=drivesdk"
+          "cachedResultName": "PREV0625 | DADOS ADS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/10CZog1ePLImH2rh_5tSvTWWrP3uNWdeAwm7OOxCOt54/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
-          "value": 1886355541,
+          "value": 1135877082,
           "mode": "list",
-          "cachedResultName": "🕹️ Captação AUX",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit#gid=1886355541"
+          "cachedResultName": "Página2",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/10CZog1ePLImH2rh_5tSvTWWrP3uNWdeAwm7OOxCOt54/edit#gid=1135877082"
         },
         "options": {}
       },
@@ -293,7 +293,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const agrupado = {};\n\n// 1. Agrupamento por data com soma de todas as colunas numéricas\nfor (const item of items) {\n  const data = item.json;\n\n  // Tenta usar o campo \"d\", \"Date\" ou \"Day Active\" como referência de data\n  const dataChave = data[\"d\"] || data[\"Date\"] || data[\"Day Active\"];\n  if (!dataChave) continue;\n\n  // Inicializa o agrupamento por data, se necessário\n  if (!agrupado[dataChave]) agrupado[dataChave] = {};\n\n  for (const chave in data) {\n    const valor = parseFloat(data[chave]);\n\n    if (!isNaN(valor)) {\n      if (!agrupado[dataChave][chave]) agrupado[dataChave][chave] = 0;\n      agrupado[dataChave][chave] += valor;\n    }\n  }\n}\n\n// 2. Formata o resultado em lista ordenada por data\nconst resultado = Object.entries(agrupado)\n  .sort(([dataA], [dataB]) => new Date(dataA) - new Date(dataB))\n  .map(([data, valores]) => ({\n    json: {\n      data,\n      ...valores\n    }\n  }));\n\nreturn resultado;"
+        "jsCode": "const data = $input.all().map(item => item.json);\n\n// Função para agrupar e somar\nconst groupByDate = (arr) => {\n  return arr.reduce((acc, item) => {\n    const date = item.Date;\n    \n    if (!acc[date]) {\n      acc[date] = {\n        Date: date,\n        Impressions: 0,\n        'Action Link Clicks': 0,\n        'Action Landing Page View': 0,\n        'Action Leads': 0,\n        'Spend (Cost, Amount Spent)': 0\n      };\n    }\n    \n    acc[date].Impressions += item.Impressions || 0;\n    acc[date]['Action Link Clicks'] += item['Action Link Clicks'] || 0;\n    acc[date]['Action Landing Page View'] += item['Action Landing Page View'] || 0;\n    acc[date]['Action Leads'] += item['Action Leads'] || 0;\n    acc[date]['Spend (Cost, Amount Spent)'] += item['Spend (Cost, Amount Spent)'] || 0;\n\n    return acc;\n  }, {});\n};\n\nconst grouped = groupByDate(data);\n\n// Transformar o objeto agrupado em array de objetos { json: ... }\nconst result = Object.values(grouped).map(item => ({ json: item }));\n\nreturn result;"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -366,7 +366,7 @@
     },
     {
       "parameters": {
-        "content": "## WEB 2 - CAPTÇÃO AUX",
+        "content": "## WEB 2 - IMPRESSOES E +",
         "height": 340,
         "width": 1120
       },
@@ -387,6 +387,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 3,
-  "updatedAt": "2025-05-23T05:41:06.416Z",
-  "versionId": "c8fa731d-4931-41b4-9532-4bc09deb655f"
+  "updatedAt": "2025-05-24T05:06:34.169Z",
+  "versionId": "8e53e34c-5404-480b-800f-58f8c50fc0ed"
 }
