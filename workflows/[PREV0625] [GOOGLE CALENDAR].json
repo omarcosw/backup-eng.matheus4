@@ -1,0 +1,163 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Google Calendar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Calendar": {
+      "main": [
+        [
+          {
+            "node": "Google Calendar1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-23T16:49:49.217Z",
+  "id": "2oinX32EQcnTLrKr",
+  "meta": null,
+  "name": "[PREV0625] [GOOGLE CALENDAR]",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "106a17a6-50c7-4303-91de-42f19b939248",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "ef0b0948-6022-48ba-970d-4931cf6a243b",
+      "name": "Webhook",
+      "webhookId": "106a17a6-50c7-4303-91de-42f19b939248"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "contato@eprevensino.com",
+          "mode": "list",
+          "cachedResultName": "contato@eprevensino.com"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        0
+      ],
+      "id": "a0d4f15f-f193-49ff-bfc7-7ffb0c5fdc17",
+      "name": "Google Calendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "SbqOEod0ACo2xUbn",
+          "name": "contato@eprevensino.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "contato@eprevensino.com",
+          "mode": "list",
+          "cachedResultName": "contato@eprevensino.com"
+        },
+        "eventId": "={{ $item(\"0\").$node[\"Google Calendar\"].json[\"id\"] }}",
+        "updateFields": {
+          "attendeesUi": {
+            "values": {
+              "attendees": [
+                "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"email\"] }}"
+              ]
+            }
+          },
+          "guestsCanInviteOthers": false,
+          "guestsCanSeeOtherGuests": false,
+          "summary": "Convite do Prof. Frederico Martins"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.2,
+      "position": [
+        500,
+        0
+      ],
+      "id": "71c63a87-ecde-4df8-bf7d-60dfe3d4a236",
+      "name": "Google Calendar1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "SbqOEod0ACo2xUbn",
+          "name": "contato@eprevensino.com"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.engenheiromatheus.com",
+            "user-agent": "axios/1.8.3",
+            "content-length": "265",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "content-type": "application/json",
+            "x-forwarded-for": "64.225.60.64",
+            "x-forwarded-host": "webhook.engenheiromatheus.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "7e5b8bef7460",
+            "x-real-ip": "64.225.60.64"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "email": "marcosvini.daroch@gmail.com",
+            "utm_source": "",
+            "utm_campaign": "",
+            "utm_term": "",
+            "utm_medium": "",
+            "utm_content": "",
+            "form_id": "504ef82f",
+            "page": "v1",
+            "Evento": "[CADASTRO] [PREV0625]",
+            "nome": "Marcos",
+            "sobrenome": "Vinicius Da Rocha Santana",
+            "telefone": "5527998210071"
+          },
+          "webhookUrl": "https://webhook.engenheiromatheus.com/webhook/106a17a6-50c7-4303-91de-42f19b939248",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-05-23T21:43:42.898Z",
+  "versionId": "a1e92c16-410b-4cdb-b719-d69af666e574"
+}
