@@ -110,6 +110,17 @@
           }
         ]
       ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-05-19T05:05:02.760Z",
@@ -178,10 +189,10 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "Date": "={{ $now.format('dd/MM/yyyy') }}",
             "Entrou": "={{ $item(\"0\").$node[\"MySQL\"].json[\"total_leads_hoje\"] }}",
             "Day Grupo": "={{ $item(\"0\").$node[\"MySQL\"].json[\"total_leads_hoje\"] }}",
-            "Saiu": "={{ $item(\"0\").$node[\"MySQL\"].json[\"total_sairam_hoje\"] }}"
+            "Saiu": "={{ $item(\"0\").$node[\"MySQL\"].json[\"total_sairam_hoje\"] }}",
+            "Date": "={{ $now.format('dd/MM/yyyy')}}"
           },
           "matchingColumns": [
             "Date"
@@ -231,7 +242,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
       "position": [
-        340,
+        260,
         20
       ],
       "id": "21d53b61-fbec-44a5-ba33-d13e15dd9a7c",
@@ -414,7 +425,8 @@
         "rule": {
           "interval": [
             {
-              "triggerAtHour": 8
+              "triggerAtHour": 6,
+              "triggerAtMinute": 30
             }
           ]
         }
@@ -598,8 +610,8 @@
         "rule": {
           "interval": [
             {
-              "triggerAtHour": 8,
-              "triggerAtMinute": 1
+              "triggerAtHour": 6,
+              "triggerAtMinute": 31
             }
           ]
         }
@@ -707,6 +719,92 @@
       ],
       "id": "a7b5ace1-b9a3-4059-80f5-1d3c68bd96f2",
       "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s",
+          "mode": "list",
+          "cachedResultName": "PREV0625 - Painel de Controle",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1731088643,
+          "mode": "list",
+          "cachedResultName": "🕹️ Captação AUX [SENDFLOW]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit#gid=1731088643"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Day Grupo": "={{ $item(\"0\").$node[\"MySQL\"].json[\"total_atual_leads\"] }}",
+            "Saiu": "={{ $item(\"0\").$node[\"MySQL\"].json[\"total_saidas_geral\"] }}",
+            "Date": "TOTAL",
+            "Entrou": "={{ $item(\"0\").$node[\"MySQL\"].json[\"total_leads_geral\"] }}"
+          },
+          "matchingColumns": [
+            "Date"
+          ],
+          "schema": [
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Day Grupo",
+              "displayName": "Day Grupo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Entrou",
+              "displayName": "Entrou",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Saiu",
+              "displayName": "Saiu",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        480,
+        20
+      ],
+      "id": "26f4fc77-5778-4e87-9ecf-258285f7b99a",
+      "name": "Google Sheets3",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "z5gmk55vTaoF2yks",
+          "name": "Google Sheets account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -732,6 +830,6 @@
   },
   "tags": [],
   "triggerCount": 4,
-  "updatedAt": "2025-05-25T16:15:01.279Z",
-  "versionId": "32d27067-3369-4ee9-b137-fff70bb4fa01"
+  "updatedAt": "2025-05-26T13:45:30.322Z",
+  "versionId": "75375d05-0891-4f95-9f33-619ce90422e7"
 }
