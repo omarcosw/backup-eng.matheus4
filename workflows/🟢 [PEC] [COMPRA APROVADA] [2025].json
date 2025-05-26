@@ -4141,7 +4141,7 @@
               "value": "1"
             },
             {
-              "column": "data_4",
+              "column": "data_3",
               "value": "={{ $item(\"0\").$node[\"Date & Time3\"].json[\"one_day_formated\"] }}"
             }
           ]
@@ -4366,6 +4366,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2025-04-02T20:32:58.709Z",
-  "versionId": "eca9221c-83d6-4d13-a9f4-bb580afcda08"
+  "updatedAt": "2025-05-26T04:47:35.011Z",
+  "versionId": "6654aa59-80ee-4ddd-83f7-c3f50be380b3"
 }
