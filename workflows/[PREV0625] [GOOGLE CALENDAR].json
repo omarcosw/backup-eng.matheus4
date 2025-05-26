@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "Webhook": {
       "main": [
@@ -16,7 +16,29 @@
       "main": [
         [
           {
-            "node": "Google Calendar1",
+            "node": "convite 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "convite 1": {
+      "main": [
+        [
+          {
+            "node": "convite 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "convite 2": {
+      "main": [
+        [
+          {
+            "node": "convite 3",
             "type": "main",
             "index": 0
           }
@@ -81,7 +103,7 @@
           "mode": "list",
           "cachedResultName": "contato@eprevensino.com"
         },
-        "eventId": "={{ $item(\"0\").$node[\"Google Calendar\"].json[\"id\"] }}",
+        "eventId": "={{ $item(\"2\").$node[\"Google Calendar\"].json[\"id\"] }}",
         "updateFields": {
           "attendeesUi": {
             "values": {
@@ -91,8 +113,7 @@
             }
           },
           "guestsCanInviteOthers": false,
-          "guestsCanSeeOtherGuests": false,
-          "summary": "Convite do Prof. Frederico Martins"
+          "guestsCanSeeOtherGuests": false
         }
       },
       "type": "n8n-nodes-base.googleCalendar",
@@ -102,7 +123,83 @@
         0
       ],
       "id": "71c63a87-ecde-4df8-bf7d-60dfe3d4a236",
-      "name": "Google Calendar1",
+      "name": "convite 1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "SbqOEod0ACo2xUbn",
+          "name": "contato@eprevensino.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "contato@eprevensino.com",
+          "mode": "list",
+          "cachedResultName": "contato@eprevensino.com"
+        },
+        "eventId": "={{ $item(\"1\").$node[\"Google Calendar\"].json[\"id\"] }}",
+        "updateFields": {
+          "attendeesUi": {
+            "values": {
+              "attendees": [
+                "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"email\"] }}"
+              ]
+            }
+          },
+          "guestsCanInviteOthers": false,
+          "guestsCanSeeOtherGuests": false
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.2,
+      "position": [
+        780,
+        0
+      ],
+      "id": "2876ba4a-e67b-4000-b7f9-296f91e657a5",
+      "name": "convite 2",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "SbqOEod0ACo2xUbn",
+          "name": "contato@eprevensino.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "contato@eprevensino.com",
+          "mode": "list",
+          "cachedResultName": "contato@eprevensino.com"
+        },
+        "eventId": "={{ $item(\"3\").$node[\"Google Calendar\"].json[\"id\"] }}",
+        "updateFields": {
+          "attendeesUi": {
+            "values": {
+              "attendees": [
+                "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"email\"] }}"
+              ]
+            }
+          },
+          "guestsCanInviteOthers": false,
+          "guestsCanSeeOtherGuests": false
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.2,
+      "position": [
+        1080,
+        0
+      ],
+      "id": "1f43ecd0-0020-4a5f-8a5a-b6182e64c17d",
+      "name": "convite 3",
       "alwaysOutputData": true,
       "credentials": {
         "googleCalendarOAuth2Api": {
@@ -158,6 +255,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-05-24T04:10:13.191Z",
-  "versionId": "df3abdf5-570a-4cb4-bfd2-7e86860b1a62"
+  "updatedAt": "2025-05-26T01:48:53.891Z",
+  "versionId": "be0abd08-804a-4f28-97bb-04d9d5129d6f"
 }
