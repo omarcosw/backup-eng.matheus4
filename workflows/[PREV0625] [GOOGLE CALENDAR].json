@@ -1,7 +1,7 @@
 {
   "active": true,
   "connections": {
-    "Webhook": {
+    "Wait": {
       "main": [
         [
           {
@@ -12,11 +12,11 @@
         ]
       ]
     },
-    "Google Calendar": {
+    "convite 2": {
       "main": [
         [
           {
-            "node": "convite 1",
+            "node": "convite 3",
             "type": "main",
             "index": 0
           }
@@ -34,11 +34,22 @@
         ]
       ]
     },
-    "convite 2": {
+    "Google Calendar": {
       "main": [
         [
           {
-            "node": "convite 3",
+            "node": "convite 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Wait",
             "type": "main",
             "index": 0
           }
@@ -53,46 +64,17 @@
   "nodes": [
     {
       "parameters": {
-        "httpMethod": "POST",
-        "path": "106a17a6-50c7-4303-91de-42f19b939248",
-        "options": {}
+        "amount": 10
       },
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
       "position": [
-        0,
+        220,
         0
       ],
-      "id": "ef0b0948-6022-48ba-970d-4931cf6a243b",
-      "name": "Webhook",
-      "webhookId": "106a17a6-50c7-4303-91de-42f19b939248"
-    },
-    {
-      "parameters": {
-        "operation": "getAll",
-        "calendar": {
-          "__rl": true,
-          "value": "contato@eprevensino.com",
-          "mode": "list",
-          "cachedResultName": "contato@eprevensino.com"
-        },
-        "returnAll": true,
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleCalendar",
-      "typeVersion": 1.2,
-      "position": [
-        240,
-        0
-      ],
-      "id": "a0d4f15f-f193-49ff-bfc7-7ffb0c5fdc17",
-      "name": "Google Calendar",
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "SbqOEod0ACo2xUbn",
-          "name": "contato@eprevensino.com"
-        }
-      }
+      "id": "6828b5a2-a562-4f25-aa07-bec70471d9b2",
+      "name": "Wait",
+      "webhookId": "15461565-94c5-4d93-827c-3e94c42ba843"
     },
     {
       "parameters": {
@@ -103,7 +85,7 @@
           "mode": "list",
           "cachedResultName": "contato@eprevensino.com"
         },
-        "eventId": "={{ $item(\"2\").$node[\"Google Calendar\"].json[\"id\"] }}",
+        "eventId": "={{ $item(\"3\").$node[\"Google Calendar\"].json[\"id\"] }}",
         "updateFields": {
           "attendeesUi": {
             "values": {
@@ -119,11 +101,11 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.2,
       "position": [
-        500,
+        1020,
         0
       ],
-      "id": "71c63a87-ecde-4df8-bf7d-60dfe3d4a236",
-      "name": "convite 1",
+      "id": "1f43ecd0-0020-4a5f-8a5a-b6182e64c17d",
+      "name": "convite 3",
       "alwaysOutputData": true,
       "credentials": {
         "googleCalendarOAuth2Api": {
@@ -157,7 +139,7 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.2,
       "position": [
-        780,
+        820,
         0
       ],
       "id": "2876ba4a-e67b-4000-b7f9-296f91e657a5",
@@ -179,7 +161,7 @@
           "mode": "list",
           "cachedResultName": "contato@eprevensino.com"
         },
-        "eventId": "={{ $item(\"3\").$node[\"Google Calendar\"].json[\"id\"] }}",
+        "eventId": "={{ $item(\"2\").$node[\"Google Calendar\"].json[\"id\"] }}",
         "updateFields": {
           "attendeesUi": {
             "values": {
@@ -195,11 +177,11 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.2,
       "position": [
-        1080,
+        620,
         0
       ],
-      "id": "1f43ecd0-0020-4a5f-8a5a-b6182e64c17d",
-      "name": "convite 3",
+      "id": "71c63a87-ecde-4df8-bf7d-60dfe3d4a236",
+      "name": "convite 1",
       "alwaysOutputData": true,
       "credentials": {
         "googleCalendarOAuth2Api": {
@@ -207,54 +189,58 @@
           "name": "contato@eprevensino.com"
         }
       }
-    }
-  ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "webhook.engenheiromatheus.com",
-            "user-agent": "axios/1.8.3",
-            "content-length": "265",
-            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
-            "accept-encoding": "gzip, compress, deflate, br",
-            "content-type": "application/json",
-            "x-forwarded-for": "64.225.60.64",
-            "x-forwarded-host": "webhook.engenheiromatheus.com",
-            "x-forwarded-port": "443",
-            "x-forwarded-proto": "https",
-            "x-forwarded-server": "7e5b8bef7460",
-            "x-real-ip": "64.225.60.64"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "email": "marcosvlogs12@gmail.com",
-            "utm_source": "",
-            "utm_campaign": "",
-            "utm_term": "",
-            "utm_medium": "",
-            "utm_content": "",
-            "form_id": "504ef82f",
-            "page": "v1",
-            "Evento": "[CADASTRO] [PREV0625]",
-            "nome": "Marcos",
-            "sobrenome": "Vinicius Da Rocha Santana",
-            "telefone": "5527998210071"
-          },
-          "webhookUrl": "https://webhook.engenheiromatheus.com/webhook/106a17a6-50c7-4303-91de-42f19b939248",
-          "executionMode": "production"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "contato@eprevensino.com",
+          "mode": "list",
+          "cachedResultName": "contato@eprevensino.com"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.2,
+      "position": [
+        420,
+        0
+      ],
+      "id": "a0d4f15f-f193-49ff-bfc7-7ffb0c5fdc17",
+      "name": "Google Calendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "SbqOEod0ACo2xUbn",
+          "name": "contato@eprevensino.com"
         }
       }
-    ]
-  },
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "106a17a6-50c7-4303-91de-42f19b939248",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "ef0b0948-6022-48ba-970d-4931cf6a243b",
+      "name": "Webhook",
+      "webhookId": "106a17a6-50c7-4303-91de-42f19b939248"
+    }
+  ],
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-05-26T01:48:53.891Z",
-  "versionId": "be0abd08-804a-4f28-97bb-04d9d5129d6f"
+  "updatedAt": "2025-05-26T14:25:12.343Z",
+  "versionId": "76787a37-4e84-496d-a756-b78648cadc30"
 }
