@@ -1262,7 +1262,7 @@
     },
     {
       "parameters": {
-        "queue": "[OBRA PASSO-A-PASSO] [COMPRA APROVADA] [2025]",
+        "queue": "[GUIA DO TERRENO PERFEITO] [COMPRA APROVADA] [2025]",
         "options": {
           "arguments": {
             "argument": [
@@ -4718,6 +4718,6 @@
     }
   ],
   "triggerCount": 7,
-  "updatedAt": "2025-05-26T05:58:20.211Z",
-  "versionId": "83c5c8cd-bdfc-4419-8b9e-7e9981315f38"
+  "updatedAt": "2025-05-26T22:32:08.692Z",
+  "versionId": "ed5669c5-060c-473e-868e-bc14e84e7022"
 }
