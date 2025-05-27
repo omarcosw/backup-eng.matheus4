@@ -16,7 +16,7 @@
       "main": [
         [
           {
-            "node": "convite 3",
+            "node": "Wait3",
             "type": "main",
             "index": 0
           }
@@ -27,7 +27,7 @@
       "main": [
         [
           {
-            "node": "convite 2",
+            "node": "Wait2",
             "type": "main",
             "index": 0
           }
@@ -38,7 +38,7 @@
       "main": [
         [
           {
-            "node": "convite 1",
+            "node": "Wait1",
             "type": "main",
             "index": 0
           }
@@ -50,6 +50,39 @@
         [
           {
             "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "convite 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "convite 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait3": {
+      "main": [
+        [
+          {
+            "node": "convite 3",
             "type": "main",
             "index": 0
           }
@@ -101,12 +134,14 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.2,
       "position": [
-        1020,
+        1680,
         0
       ],
       "id": "1f43ecd0-0020-4a5f-8a5a-b6182e64c17d",
       "name": "convite 3",
       "alwaysOutputData": true,
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
       "credentials": {
         "googleCalendarOAuth2Api": {
           "id": "SbqOEod0ACo2xUbn",
@@ -139,12 +174,14 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.2,
       "position": [
-        820,
+        1260,
         0
       ],
       "id": "2876ba4a-e67b-4000-b7f9-296f91e657a5",
       "name": "convite 2",
       "alwaysOutputData": true,
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
       "credentials": {
         "googleCalendarOAuth2Api": {
           "id": "SbqOEod0ACo2xUbn",
@@ -177,12 +214,14 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.2,
       "position": [
-        620,
+        840,
         0
       ],
       "id": "71c63a87-ecde-4df8-bf7d-60dfe3d4a236",
       "name": "convite 1",
       "alwaysOutputData": true,
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
       "credentials": {
         "googleCalendarOAuth2Api": {
           "id": "SbqOEod0ACo2xUbn",
@@ -232,15 +271,99 @@
       "id": "ef0b0948-6022-48ba-970d-4931cf6a243b",
       "name": "Webhook",
       "webhookId": "106a17a6-50c7-4303-91de-42f19b939248"
+    },
+    {
+      "parameters": {
+        "amount": 1,
+        "unit": "minutes"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        640,
+        0
+      ],
+      "id": "033aa9e6-5b69-45e4-a56e-b6deb6dadb82",
+      "name": "Wait1",
+      "webhookId": "ab5834e2-8d51-40bf-af56-134fff64c46a"
+    },
+    {
+      "parameters": {
+        "amount": 1,
+        "unit": "minutes"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1060,
+        0
+      ],
+      "id": "e25812da-8df9-40c9-846e-6528bc35e86d",
+      "name": "Wait2",
+      "webhookId": "6245bc5d-ac4e-44e0-a56e-191919fa13d3"
+    },
+    {
+      "parameters": {
+        "amount": 1,
+        "unit": "minutes"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1480,
+        0
+      ],
+      "id": "30180b8f-cfe4-492c-a45e-969bd443a58b",
+      "name": "Wait3",
+      "webhookId": "de7b7904-eff8-4c53-b140-0e5ea8cb9ee8"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.engenheiromatheus.com",
+            "user-agent": "axios/1.8.3",
+            "content-length": "300",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "content-type": "application/json",
+            "x-forwarded-for": "64.225.60.64",
+            "x-forwarded-host": "webhook.engenheiromatheus.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "7e5b8bef7460",
+            "x-real-ip": "64.225.60.64"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "email": "jennifersapcastro.adv@gmail.com",
+            "utm_source": "manychat-org",
+            "utm_campaign": "manychat",
+            "utm_term": "manychat",
+            "utm_medium": "manychat",
+            "utm_content": "manychat",
+            "form_id": "manychat",
+            "page": "manychat",
+            "Evento": "[CADASTRO] [PREV0625]",
+            "nome": "Jennifer",
+            "sobrenome": "",
+            "telefone": "5515998386747"
+          },
+          "webhookUrl": "https://webhook.engenheiromatheus.com/webhook/106a17a6-50c7-4303-91de-42f19b939248",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-05-26T14:25:12.343Z",
-  "versionId": "76787a37-4e84-496d-a756-b78648cadc30"
+  "updatedAt": "2025-05-26T18:42:26.498Z",
+  "versionId": "ed76952f-3be6-4a93-a0f2-83b9eedf6333"
 }
