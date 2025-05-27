@@ -2952,7 +2952,7 @@
       "parameters": {
         "operation": "addToDate",
         "magnitude": "={{ $now.format('yyyy-MM-dd') }}",
-        "duration": 3,
+        "duration": 2,
         "outputFieldName": "new_date_one",
         "options": {}
       },
@@ -3170,11 +3170,11 @@
             },
             {
               "column": "evento",
-              "value": "[GUIA DO TERRENO PERFEITO] [COMPRA APROVADA] [2025]"
+              "value": "[OBRA PASSO-A-PASSO] [COMPRA APROVADA] [2025]"
             },
             {
               "column": "mensagem",
-              "value": "[GUIA DO TERRENO PERFEITO] [COMPRA APROVADA] [2025] - [1]"
+              "value": "[OBRA PASSO-A-PASSO] [COMPRA APROVADA] [2025] - [1]"
             }
           ]
         },
@@ -3199,7 +3199,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.datacrazy.io/v1/crm/api/crm/flows/webhooks/7bc41b91-73f6-4879-91a8-0868ddc82f84/21569393-409a-4fef-8716-53133793d5b4",
+        "url": "https://api.datacrazy.io/v1/crm/api/crm/flows/webhooks/7bc41b91-73f6-4879-91a8-0868ddc82f84/2e9b64e6-2ec3-4329-ab95-fbc3c0e8acf3",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ $node[\"Edit Fields6\"].json }}",
@@ -3269,7 +3269,7 @@
             {
               "id": "5cf1d8f1-0f03-4b84-a060-e2bcbdcc8931",
               "name": "text",
-              "value": "={{ $json.nome }}, o conteúdo está todo pronto para você assistir.\n\n*Dentro do guia, você vai encontrar*:\n\n✅ _Os critérios técnicos que ninguém te conta_\n\n✅ _As armadilhas que encarecem a futura obra em um terreno_\n\n✅ _Um checklist prático pra você levar na mão durante as visitas_\n\n✅ _Tudo sobre as documentações necessárias para você avaliar antes de comprar o lote_\n\n*Minha dica?*\n\nReserve 50 minutos, com calma. Imprima o checklist.\n\nE *não pise em nenhum terreno antes de preencher cada item.*\n\nA diferença entre um bom terreno e uma bomba financeira está em 3 detalhes que você vai aprender dentro da plataforma.\n\nO link para você acessar está aqui: https://hotmart.com/pt-br/club/pec\n\nUm abraço,\n\n*Vanessa Almeida*\n_Líder dos Construtores de Sonhos_",
+              "value": "={{ $json.nome }}, se você quer um caminho seguro, começa pela aula 1. Ela se chama _”Planejamento Pré-Obra: fundamentos para uma construção bem-sucedida”_.\n\nNela você vai entender:\n\n- Como a obra se organiza por fases\n- Quais erros custam mais caro\n- E o que ninguém vai te contar sobre o que vem primeiro\n\n👉 O link direto para assistir a aula está aqui: https://engmatheus.com/opp-aula-1\n\nDica: assista com o seu Planner da Construção na mão. Caso não tenha garantido o seu, papel e caneta são fundamentais.\n\nA maioria dos alunos começa a mudar tudo depois dessa aula.\n\nUm abraço!\n\n*Vanessa Almeida*\n_Líder dos Construtores de Sonhos_",
               "type": "string"
             }
           ]
@@ -3508,6 +3508,6 @@
     }
   ],
   "triggerCount": 5,
-  "updatedAt": "2025-05-27T02:30:46.431Z",
-  "versionId": "f8fd1e50-bb5d-4d23-9f46-bf4d80b70cb1"
+  "updatedAt": "2025-05-27T05:34:38.434Z",
+  "versionId": "c11a77f4-0994-440a-830c-970be26aefc1"
 }
