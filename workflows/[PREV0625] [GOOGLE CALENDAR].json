@@ -289,7 +289,7 @@
     },
     {
       "parameters": {
-        "amount": 1,
+        "amount": 2,
         "unit": "minutes"
       },
       "type": "n8n-nodes-base.wait",
@@ -304,7 +304,7 @@
     },
     {
       "parameters": {
-        "amount": 1,
+        "amount": 2,
         "unit": "minutes"
       },
       "type": "n8n-nodes-base.wait",
@@ -364,6 +364,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-05-26T18:42:26.498Z",
-  "versionId": "ed76952f-3be6-4a93-a0f2-83b9eedf6333"
+  "updatedAt": "2025-05-27T06:28:37.624Z",
+  "versionId": "2f6f601b-2db2-40f8-aa48-e1aabbf5fb2e"
 }
