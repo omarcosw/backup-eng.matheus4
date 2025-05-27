@@ -99,6 +99,72 @@
           }
         ]
       ]
+    },
+    "Google Sheets3": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook3": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets4": {
+      "main": [
+        [
+          {
+            "node": "Code4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code4": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-05-23T03:32:53.620Z",
@@ -378,6 +444,173 @@
       ],
       "id": "f600192e-22d4-4089-ad6f-f8dd7761a4fa",
       "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "10CZog1ePLImH2rh_5tSvTWWrP3uNWdeAwm7OOxCOt54",
+          "mode": "list",
+          "cachedResultName": "PREV0625 | DADOS ADS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/10CZog1ePLImH2rh_5tSvTWWrP3uNWdeAwm7OOxCOt54/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1135877082,
+          "mode": "list",
+          "cachedResultName": "Página2",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/10CZog1ePLImH2rh_5tSvTWWrP3uNWdeAwm7OOxCOt54/edit#gid=1135877082"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1440,
+        -20
+      ],
+      "id": "249a2971-8afe-4fe2-8c84-01b1886e366e",
+      "name": "Google Sheets3",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "z5gmk55vTaoF2yks",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Soma os gastos agrupando por tipo de campanha: \"quente\" (-Q-) e \"frio\" (-F-)\n\nconst items = $input.all();\nlet quente = 0;\nlet frio = 0;\n\nfor (const item of items) {\n  const campaign = item.json[\"Campaign Name\"] || \"\";\n  const spend = parseFloat(item.json[\"Spend (Cost, Amount Spent)\"] || 0);\n\n  if (campaign.includes(\"-Q-\")) {\n    quente += spend;\n  } else if (campaign.includes(\"-F-\")) {\n    frio += spend;\n  }\n}\n\nreturn [\n  {\n    json: {\n      tipo: \"quente\",\n      total_spend: quente\n    }\n  },\n  {\n    json: {\n      tipo: \"frio\",\n      total_spend: frio\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1640,
+        -20
+      ],
+      "id": "d74bbc31-e5dc-4096-9f9c-dbbaf5bfb1fa",
+      "name": "Code3"
+    },
+    {
+      "parameters": {
+        "path": "dashboard-prev0625-metricas-1",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1160,
+        -20
+      ],
+      "id": "4bf9c003-fd92-4557-91b4-8b08d965d3d4",
+      "name": "Webhook3",
+      "webhookId": "f6609c3a-804d-43eb-86cf-62562cba0749"
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2560,
+        -20
+      ],
+      "id": "4eda86de-7694-4f22-8249-7bef1cefb3ad",
+      "name": "Respond to Webhook3"
+    },
+    {
+      "parameters": {
+        "content": "## WEB 2 - IMPRESSOES E +",
+        "height": 340,
+        "width": 1720
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        -120
+      ],
+      "id": "cb05f000-d3be-4d98-ab28-082a2915739c",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1YD_OlmxcAknpcp3RM9yUUlXE7cpncCW8hrdeu0G7k_Y",
+          "mode": "list",
+          "cachedResultName": "[CADASTRO] [PREV0625]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YD_OlmxcAknpcp3RM9yUUlXE7cpncCW8hrdeu0G7k_Y/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Cadastro",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YD_OlmxcAknpcp3RM9yUUlXE7cpncCW8hrdeu0G7k_Y/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1880,
+        -20
+      ],
+      "id": "3509b54c-7469-4df5-98b4-a7c46b180eb8",
+      "name": "Google Sheets4",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "z5gmk55vTaoF2yks",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Lê os dados do nó Google Sheets4\n// Remove duplicatas com base no campo \"Email\"\n// Conta total de leads \"quente\" (-Q-) e \"frio\" (-F-) com base no campo \"Campaign\"\n\nconst items = $('Google Sheets4').all();\n\nconst seenEmails = new Set();\nlet quente = 0;\nlet frio = 0;\n\nfor (const item of items) {\n  const email = (item.json[\"Email\"] || \"\").toLowerCase().trim();\n  const campaign = item.json[\"Campaign\"] || \"\";\n\n  if (!email || seenEmails.has(email)) {\n    continue; // pula duplicados ou vazios\n  }\n\n  seenEmails.add(email); // marca como processado\n\n  if (campaign.includes(\"-Q-\")) {\n    quente += 1;\n  } else if (campaign.includes(\"-F-\")) {\n    frio += 1;\n  }\n}\n\nreturn [\n  {\n    json: {\n      tipo: \"quente\",\n      total_leads: quente\n    }\n  },\n  {\n    json: {\n      tipo: \"frio\",\n      total_leads: frio\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2080,
+        -20
+      ],
+      "id": "9d3e765f-b94b-46cf-a6a1-1d3900e88cff",
+      "name": "Code4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bc579179-4706-4299-a88d-437c4d85163a",
+              "name": "Gasto",
+              "value": "={{ $node[\"Code3\"].json }}",
+              "type": "object"
+            },
+            {
+              "id": "a4b3e5fc-df61-4281-988f-5bd8934be2a5",
+              "name": "Leads",
+              "value": "={{ $json }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2300,
+        -20
+      ],
+      "id": "75cbc57d-2b43-4b54-a98d-d4d0e88d107f",
+      "name": "Edit Fields",
+      "alwaysOutputData": false
     }
   ],
   "pinData": {},
@@ -386,7 +619,7 @@
   },
   "staticData": null,
   "tags": [],
-  "triggerCount": 3,
-  "updatedAt": "2025-05-24T05:06:34.169Z",
-  "versionId": "8e53e34c-5404-480b-800f-58f8c50fc0ed"
+  "triggerCount": 4,
+  "updatedAt": "2025-05-27T03:52:03.911Z",
+  "versionId": "1814bc23-5e72-448d-aa76-4772e0deb1c5"
 }
