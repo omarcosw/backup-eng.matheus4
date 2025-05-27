@@ -289,62 +289,11 @@
         ]
       ]
     },
-    "Edit Fields2": {
-      "main": [
-        [
-          {
-            "node": "Verificar na audiência",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Verificar na audiência": {
-      "main": [
-        [
-          {
-            "node": "Contato existe?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Contato existe?": {
-      "main": [
-        [
-          {
-            "node": "Envia Fluxo - cliente",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Cadastrar contato",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Cadastrar contato": {
-      "main": [
-        [
-          {
-            "node": "Envia Fluxo - cliente",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "chega_da_fila1": {
       "main": [
         [
           {
-            "node": "Edit Fields2",
+            "node": "Edit Fields7",
             "type": "main",
             "index": 0
           }
@@ -356,17 +305,6 @@
         [
           {
             "node": "entra_na_fila_compra_aprovada",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Envia Fluxo - cliente": {
-      "main": [
-        [
-          {
-            "node": "Wait2",
             "type": "main",
             "index": 0
           }
@@ -421,7 +359,7 @@
       "main": [
         [
           {
-            "node": "insere_mensagem_na_tabela",
+            "node": "insere_mensagem_na_tabela2",
             "type": "main",
             "index": 0
           }
@@ -479,7 +417,7 @@
         ],
         [
           {
-            "node": "Edit Fields4",
+            "node": "Edit Fields5",
             "type": "main",
             "index": 0
           }
@@ -489,68 +427,6 @@
     "Replace Me": {
       "main": [
         []
-      ]
-    },
-    "Edit Fields4": {
-      "main": [
-        [
-          {
-            "node": "Verificar na audiência1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Verificar na audiência1": {
-      "main": [
-        [
-          {
-            "node": "Contato existe?1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Contato existe?1": {
-      "main": [
-        [
-          {
-            "node": "Envia Fluxo - cliente1",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Cadastrar contato1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Cadastrar contato1": {
-      "main": [
-        [
-          {
-            "node": "Envia Fluxo - cliente1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Envia Fluxo - cliente1": {
-      "main": [
-        [
-          {
-            "node": "Date & Time2",
-            "type": "main",
-            "index": 0
-          }
-        ]
       ]
     },
     "Date & Time2": {
@@ -579,7 +455,299 @@
       "main": [
         [
           {
+            "node": "Wait5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields7": {
+      "main": [
+        [
+          {
+            "node": "compra_confirmada1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "compra_confirmada1": {
+      "main": [
+        [
+          {
+            "node": "data_crazy1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "data_crazy1": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "compra_confirmada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "compra_confirmada": {
+      "main": [
+        [
+          {
+            "node": "data_crazy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "data_crazy": {
+      "main": [
+        [
+          {
+            "node": "Date & Time2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait5": {
+      "main": [
+        [
+          {
+            "node": "MySQL10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL10": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
             "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "MySQL11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL11": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "MySQL4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Replace Me1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Replace Me1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL3": {
+      "main": [
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time4": {
+      "main": [
+        [
+          {
+            "node": "Date & Time5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time5": {
+      "main": [
+        [
+          {
+            "node": "MySQL3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "compra_confirmada2": {
+      "main": [
+        [
+          {
+            "node": "data_crazy2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL12": {
+      "main": [
+        [
+          {
+            "node": "If6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If6": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "MySQL13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL13": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL4": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "data_crazy2": {
+      "main": [
+        [
+          {
+            "node": "Date & Time4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "compra_confirmada2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait3": {
+      "main": [
+        [
+          {
+            "node": "MySQL12",
             "type": "main",
             "index": 0
           }
@@ -1688,14 +1856,14 @@
     {
       "parameters": {
         "content": "# PARTE 1 - mensagem no wpp do cliente",
-        "height": 767,
-        "width": 3213,
+        "height": 347,
+        "width": 2393,
         "color": 3
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         3400,
-        180
+        600
       ],
       "typeVersion": 1,
       "id": "debdea88-1105-4ac4-9755-868f0455bd3b",
@@ -1724,7 +1892,7 @@
       "typeVersion": 1,
       "position": [
         3500,
-        560
+        720
       ],
       "credentials": {
         "rabbitmq": {
@@ -1732,173 +1900,6 @@
           "name": "RabbitMQ account"
         }
       }
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "c53e209f-3f99-47cf-ac2c-48e2744c2567",
-              "name": "nome",
-              "value": "={{ $json[\"content\"][\"Nome\"] }}",
-              "type": "string"
-            },
-            {
-              "id": "6a122e24-9278-4fa5-aba6-ea01b413ed09",
-              "name": "telefone",
-              "value": "={{ $json[\"content\"][\"Telefone\"] }}",
-              "type": "string"
-            },
-            {
-              "id": "af5246e1-afa0-4fc2-9a07-cf21cfc43f0b",
-              "name": "data",
-              "value": "={{ $now }}",
-              "type": "string"
-            },
-            {
-              "id": "00fa81b1-b695-4099-973d-712c2f2a2a99",
-              "name": "sobrenome",
-              "value": "={{ $json[\"content\"][\"Sobrenome\"] }}",
-              "type": "string"
-            },
-            {
-              "id": "0c83ee64-1365-49df-a8eb-687fc8742541",
-              "name": "API-KEY",
-              "value": "5a0e47da-df8c-4f73-87e2-2a72993b790c",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "be832d56-fc7b-48e7-8618-b265de8f9dfe",
-      "name": "Edit Fields2",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        3740,
-        560
-      ]
-    },
-    {
-      "parameters": {
-        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/+{{ $json[\"telefone\"] }}/",
-        "options": {},
-        "headerParametersUi": {
-          "parameter": [
-            {
-              "name": "API-KEY",
-              "value": "={{ $json[\"API-KEY\"] }}"
-            }
-          ]
-        }
-      },
-      "name": "Verificar na audiência",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 2,
-      "position": [
-        3940,
-        560
-      ],
-      "id": "fea8eb9c-cbc7-4c86-b046-265f516d564f",
-      "continueOnFail": true
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "string": [
-            {
-              "value1": "={{$json[\"id\"]}}",
-              "operation": "isNotEmpty"
-            }
-          ]
-        }
-      },
-      "name": "Contato existe?",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 1,
-      "position": [
-        4120,
-        560
-      ],
-      "id": "b9b43881-7fbf-4c48-8869-1fc17a8cdbe9"
-    },
-    {
-      "parameters": {
-        "requestMethod": "POST",
-        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/",
-        "options": {},
-        "bodyParametersUi": {
-          "parameter": [
-            {
-              "name": "phone",
-              "value": "={{ $node[\"Edit Fields2\"].json[\"telefone\"] }}"
-            },
-            {
-              "name": "first_name",
-              "value": "={{ $node[\"Edit Fields2\"].json[\"nome\"] }}"
-            },
-            {
-              "name": "last_name",
-              "value": "={{ $node[\"Edit Fields2\"].json[\"sobrenome\"] ? $node[\"Edit Fields2\"].json[\"sobrenome\"] : \".\" }}"
-            }
-          ]
-        },
-        "headerParametersUi": {
-          "parameter": [
-            {
-              "name": "API-KEY",
-              "value": "={{ $node[\"Edit Fields2\"].json[\"API-KEY\"] }}"
-            }
-          ]
-        }
-      },
-      "name": "Cadastrar contato",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 2,
-      "position": [
-        4320,
-        640
-      ],
-      "id": "9e8d2d97-593c-4233-96c8-0c419f27f449",
-      "executeOnce": true,
-      "continueOnFail": true
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/{{ $node[\"Verificar na audiência\"].json[\"id\"] || $node[\"Cadastrar contato\"].json[\"id\"] }}/send_flow/",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "API-KEY",
-              "value": "={{ $node[\"Edit Fields2\"].json[\"API-KEY\"] }}"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "flow",
-              "value": "6571974"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "c358deb0-5ac9-4fdb-9421-aca7bb04e263",
-      "name": "Envia Fluxo - cliente",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 3,
-      "position": [
-        4520,
-        540
-      ],
-      "retryOnFail": true,
-      "waitBetweenTries": 5000,
-      "continueOnFail": true
     },
     {
       "parameters": {
@@ -1954,8 +1955,8 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        4740,
-        540
+        4460,
+        720
       ],
       "id": "2ed5ef9e-9bd1-42a8-aae6-8ff335d6b094",
       "name": "Wait2",
@@ -2010,8 +2011,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        5380,
-        540
+        5100,
+        720
       ]
     },
     {
@@ -2025,8 +2026,8 @@
       "type": "n8n-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
-        4960,
-        540
+        4680,
+        720
       ],
       "id": "9f19a471-e547-4a08-a473-7d6c6e931421",
       "name": "Date & Time"
@@ -2045,8 +2046,8 @@
       "type": "n8n-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
-        5160,
-        540
+        4880,
+        720
       ],
       "id": "e86301df-23eb-43e1-a713-13071e30108b",
       "name": "Date & Time1"
@@ -2078,80 +2079,12 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        5600,
-        540
+        5320,
+        720
       ],
       "id": "d9a413c6-fb87-4fe0-87b0-cf8bc47e5534",
       "name": "pesquisa_id",
-      "credentials": {
-        "mySql": {
-          "id": "0E9JxipHlJ4dAQMU",
-          "name": "MySQL - eng_matheus"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "upsert",
-        "table": {
-          "__rl": true,
-          "value": "mensagens_agendadas",
-          "mode": "list",
-          "cachedResultName": "mensagens_agendadas"
-        },
-        "dataMode": "defineBelow",
-        "columnToMatchOn": "id_user",
-        "valueToMatchOn": "={{ $json[\"id\"] }}",
-        "valuesToSend": {
-          "values": [
-            {
-              "column": "nome",
-              "value": "={{ $node[\"Edit Fields3\"].json[\"nome\"] }}"
-            },
-            {
-              "column": "sobrenome",
-              "value": "={{ $node[\"Edit Fields3\"].json[\"sobrenome\"] }}"
-            },
-            {
-              "column": "telefone",
-              "value": "={{ $node[\"Edit Fields3\"].json[\"telefone\"] }}"
-            },
-            {
-              "column": "email",
-              "value": "={{ $node[\"Edit Fields3\"].json[\"email\"] }}"
-            },
-            {
-              "column": "data_2",
-              "value": "={{ $node[\"Edit Fields3\"].json[\"data_mensagem_1\"] }}"
-            },
-            {
-              "column": "produto",
-              "value": "={{ $node[\"Edit Fields3\"].json[\"produto\"] }}"
-            },
-            {
-              "column": "mensagem",
-              "value": "Mensagem de Compra Aprovada [1]"
-            },
-            {
-              "column": "evento",
-              "value": "Compra Aprovada - OBRA PASSO-A-PASSO"
-            },
-            {
-              "column": "enviada",
-              "value": "1"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.mySql",
-      "typeVersion": 2.4,
-      "position": [
-        5820,
-        540
-      ],
-      "id": "48b016bc-a25f-414b-9aed-4d5ba9e0d77b",
-      "name": "insere_mensagem_na_tabela",
+      "alwaysOutputData": true,
       "credentials": {
         "mySql": {
           "id": "0E9JxipHlJ4dAQMU",
@@ -2182,7 +2115,7 @@
       "parameters": {
         "content": "# PARTE 2 - mensagem no wpp do cliente",
         "height": 767,
-        "width": 3213,
+        "width": 2653,
         "color": 3
       },
       "type": "n8n-nodes-base.stickyNote",
@@ -2216,11 +2149,11 @@
             },
             {
               "column": "evento",
-              "value": "Compra Aprovada - OBRA PASSO-A-PASSO"
+              "value": "[OBRA PASSO-A-PASSO] [COMPRA APROVADA] [2025]"
             },
             {
               "column": "mensagem",
-              "value": "Mensagem de Compra Aprovada [1]"
+              "value": "[OBRA PASSO-A-PASSO] [COMPRA APROVADA] [2025] - [1]"
             }
           ]
         },
@@ -2301,6 +2234,323 @@
     },
     {
       "parameters": {
+        "operation": "upsert",
+        "table": {
+          "__rl": true,
+          "value": "mensagens_agendadas",
+          "mode": "list",
+          "cachedResultName": "mensagens_agendadas"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "id",
+        "valueToMatchOn": "={{ $node[\"MySQL\"].json[\"id\"] }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "enviada_2",
+              "value": "1"
+            },
+            {
+              "column": "data_3",
+              "value": "={{ $json[\"one_day_formated\"] }}"
+            },
+            {
+              "column": "mensagem2",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields5\"].json[\"text\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        5520,
+        1260
+      ],
+      "id": "cd069119-4b01-4188-85c3-164b3378dc0d",
+      "name": "MySQL1",
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "addToDate",
+        "magnitude": "={{ $now.format('yyyy-MM-dd') }}",
+        "duration": 2,
+        "outputFieldName": "new_date_one",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        5100,
+        1260
+      ],
+      "id": "e42edc01-f26a-42fe-8b56-841dcaddfd71",
+      "name": "Date & Time2"
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json[\"new_date_one\"] }}",
+        "format": "custom",
+        "customFormat": "yyyy-MM-dd",
+        "outputFieldName": "one_day_formated",
+        "options": {
+          "timezone": true
+        }
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        5320,
+        1260
+      ],
+      "id": "e84942d4-3ba6-4d39-94b8-e09da370ccd7",
+      "name": "Date & Time3"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $json[\"url\"] }}/message/sendText/{{ $json[\"name\"] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $json[\"API-KEY\"] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $json[\"telefone\"] }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json[\"text\"] }}"
+            },
+            {
+              "name": "linkPreview",
+              "value": "={{ $json[\"linkPreview\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4020,
+        720
+      ],
+      "id": "ed162f0b-70fb-46cf-957d-83759c6b7a93",
+      "name": "compra_confirmada1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c53e209f-3f99-47cf-ac2c-48e2744c2567",
+              "name": "nome",
+              "value": "={{ $json[\"content\"][\"Nome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "6a122e24-9278-4fa5-aba6-ea01b413ed09",
+              "name": "telefone",
+              "value": "={{ $json[\"content\"][\"Telefone\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "af5246e1-afa0-4fc2-9a07-cf21cfc43f0b",
+              "name": "data",
+              "value": "={{ $now }}",
+              "type": "string"
+            },
+            {
+              "id": "00fa81b1-b695-4099-973d-712c2f2a2a99",
+              "name": "sobrenome",
+              "value": "={{ $json[\"content\"][\"Sobrenome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "0c83ee64-1365-49df-a8eb-687fc8742541",
+              "name": "API-KEY",
+              "value": "429FD5EB5B9E-42A1-B2BD-41D5C62F0312",
+              "type": "string"
+            },
+            {
+              "id": "fa79b784-1b1f-441e-91e2-5c17c6533145",
+              "name": "name",
+              "value": "eng-mateus-sci",
+              "type": "string"
+            },
+            {
+              "id": "632ec831-29bf-4b00-ab54-ff0c8e63d44a",
+              "name": "url",
+              "value": "https://evolution.engenheiromatheus.com",
+              "type": "string"
+            },
+            {
+              "id": "f3cd27ce-c87d-4d03-8e99-73f95de0e62f",
+              "name": "email",
+              "value": "={{ $json[\"content\"][\"Email\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "885a3661-3cdc-49f9-8af4-d346a9109183",
+              "name": "text",
+              "value": "=Oiii, {{ $json[\"content\"][\"Nome\"] }}! Aqui é a Vanessa e quero te dar as boas-vindas ao Obra Passo-a-Passo!\n\nVocê acaba de dar um passo inteligente: *se preparar antes da primeira pá de concreto.*\n\nO *Obra Passo-a-Passo* vai te mostrar a ordem real das etapas, os erros que custam caro e o caminho para uma obra bem resolvida, sem improviso.\n\n*Você já deve ter recebido as instruções de acesso.* Se você usou o mesmo e-mail que usava para acessar o Guia do Terreno Perfeito, basta atualizar a plataforma que seu acesso já estará liberado.\n\nCaso tenha usado um e-mail diferente, você vai receber as instruções na sua caixa de entrada (_mas é bom dar uma olhada no spam_).\n\nAh, e deixa eu te contar uma coisa que pode potencializar tudo isso…\n\nMuitos dos nossos alunos pediam uma forma prática de *organizar os aprendizados do curso no papel, fazer checklists e planejar cada fase da obra com clareza.*\n\nPor isso, criamos o *Planner da Construção*: um material físico, estruturado, pensado para acompanhar cada etapa do processo.\n\n👉 _Se quiser garantir o seu agora (com frete grátis para alunos), é só clicar aqui_: engmatheus.com/checkout-planner-da-construcao\n\nVolto aqui com você em breve! Conte comigo!\n\n*Vanessa Almeida*\n_Líder dos Construtores de Sonhos_",
+              "type": "string"
+            },
+            {
+              "id": "5286e515-b305-4b7c-925d-dbb52635b4de",
+              "name": "linkPreview",
+              "value": false,
+              "type": "boolean"
+            },
+            {
+              "id": "434e94eb-1e6f-4c83-9de5-5dbc963ab20c",
+              "name": "data_dc",
+              "value": "={{ $now.format('dd/MM/yyyy HH:mm') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "115ff933-79f8-4831-95b4-96de2e43ad91",
+      "name": "Edit Fields7",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3780,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.datacrazy.io/v1/crm/api/crm/flows/webhooks/7bc41b91-73f6-4879-91a8-0868ddc82f84/7da8e50e-83dd-4eea-a174-24c642f5e58e",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $node[\"Edit Fields7\"].json }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4260,
+        720
+      ],
+      "id": "d3479800-21af-4742-bcd0-435e74950af9",
+      "name": "data_crazy1"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "table": {
+          "__rl": true,
+          "value": "mensagens_agendadas",
+          "mode": "list",
+          "cachedResultName": "mensagens_agendadas"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "id_user",
+        "valueToMatchOn": "={{ $json[\"id\"] }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "nome",
+              "value": "={{ $node[\"Edit Fields3\"].json[\"nome\"] }}"
+            },
+            {
+              "column": "sobrenome",
+              "value": "={{ $node[\"Edit Fields3\"].json[\"sobrenome\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $node[\"Edit Fields3\"].json[\"telefone\"] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $node[\"Edit Fields3\"].json[\"email\"] }}"
+            },
+            {
+              "column": "data_2",
+              "value": "={{ $node[\"Edit Fields3\"].json[\"data_mensagem_1\"] }}"
+            },
+            {
+              "column": "produto",
+              "value": "={{ $node[\"Edit Fields3\"].json[\"produto\"] }}"
+            },
+            {
+              "column": "mensagem",
+              "value": "[OBRA PASSO-A-PASSO] [COMPRA APROVADA] [2025] - [1]"
+            },
+            {
+              "column": "evento",
+              "value": "[OBRA PASSO-A-PASSO] [COMPRA APROVADA] [2025]"
+            },
+            {
+              "column": "enviada",
+              "value": "1"
+            },
+            {
+              "column": "data",
+              "value": "={{ $now}}"
+            },
+            {
+              "column": "api-key",
+              "value": "={{ $node[\"Edit Fields7\"].json[\"API-KEY\"] }}"
+            },
+            {
+              "column": "instancia",
+              "value": "={{ $node[\"Edit Fields7\"].json[\"name\"] }}"
+            },
+            {
+              "column": "url",
+              "value": "={{ $node[\"Edit Fields7\"].json[\"url\"] }}"
+            },
+            {
+              "column": "mensagem1",
+              "value": "={{ $node[\"Edit Fields7\"].json[\"text\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        5520,
+        720
+      ],
+      "id": "f3a47acc-c0ed-49e2-8aab-5ef53b4e03e3",
+      "name": "insere_mensagem_na_tabela2",
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
         "assignments": {
           "assignments": [
             {
@@ -2329,117 +2579,57 @@
             },
             {
               "id": "0c83ee64-1365-49df-a8eb-687fc8742541",
-              "name": "API-KEY",
-              "value": "5a0e47da-df8c-4f73-87e2-2a72993b790c",
+              "name": "api-key",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"api-key\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "83b42c7e-cbb3-48a1-aa59-9c538e0ed3a0",
+              "name": "name",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"instancia\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "86218b58-02df-4959-bdf3-7618313a5a86",
+              "name": "url",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"url\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "93c22c28-609a-4e6e-a3f7-3fc272926d7f",
+              "name": "linkPreview",
+              "value": false,
+              "type": "boolean"
+            },
+            {
+              "id": "5cf1d8f1-0f03-4b84-a060-e2bcbdcc8931",
+              "name": "text",
+              "value": "={{ $json[\"nome\"] }}, posso te contar uma cena que já vi mais vezes do que gostaria?\n\nGente gastando *R$ 100 mil em telhado*, sem saber que *a fundação estava errada desde o começo.*\n\nA obra até começa… mas começa sem ordem.\nE quando você percebe o erro, *o dinheiro já foi*.\n\nÉ por isso que o Engenheiro Matheus criou o _Obra Passo-a-Passo_.\n\nVocê não vai aprender só técnica. Vai entender *como pensar a sua obra como um todo.*\n\nPorque *quem domina a lógica da construção, nunca mais é enganado nos detalhes.*\n\nE o melhor: passa a tomar decisões com segurança, sem depender de palpites de terceiros.\n\nTenho certeza que se você se organizar, vai economizar muita grana!\n\nConte comigo,\n\n*Vanessa Almeida*\n_Líder dos Construtores de Sonhos_",
               "type": "string"
             }
           ]
         },
         "options": {}
       },
-      "id": "f5825895-d0cb-4916-b2ed-422224752344",
-      "name": "Edit Fields4",
+      "id": "f0f241f0-6c79-42bc-9a11-4961d57295d3",
+      "name": "Edit Fields5",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4500,
+        4460,
         1260
       ]
     },
     {
       "parameters": {
-        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/+{{ $json[\"telefone\"] }}/",
-        "options": {},
-        "headerParametersUi": {
-          "parameter": [
-            {
-              "name": "API-KEY",
-              "value": "={{ $json[\"API-KEY\"] }}"
-            }
-          ]
-        }
-      },
-      "name": "Verificar na audiência1",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 2,
-      "position": [
-        4700,
-        1260
-      ],
-      "id": "6742a652-5f41-45db-bcf8-db716d6c92b4",
-      "continueOnFail": true
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "string": [
-            {
-              "value1": "={{$json[\"id\"]}}",
-              "operation": "isNotEmpty"
-            }
-          ]
-        }
-      },
-      "name": "Contato existe?1",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 1,
-      "position": [
-        4880,
-        1260
-      ],
-      "id": "7ac04200-d0ce-405c-bac3-29f00c204bd9"
-    },
-    {
-      "parameters": {
-        "requestMethod": "POST",
-        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/",
-        "options": {},
-        "bodyParametersUi": {
-          "parameter": [
-            {
-              "name": "phone",
-              "value": "={{ $node[\"Edit Fields4\"].json[\"telefone\"] }}"
-            },
-            {
-              "name": "first_name",
-              "value": "={{ $node[\"Edit Fields4\"].json[\"nome\"] }}"
-            },
-            {
-              "name": "last_name",
-              "value": "={{ $node[\"Edit Fields4\"].json[\"sobrenome\"] ? $node[\"Edit Fields4\"].json[\"sobrenome\"] : \".\" }}"
-            }
-          ]
-        },
-        "headerParametersUi": {
-          "parameter": [
-            {
-              "name": "API-KEY",
-              "value": "={{ $node[\"Edit Fields4\"].json[\"API-KEY\"] }}"
-            }
-          ]
-        }
-      },
-      "name": "Cadastrar contato1",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 2,
-      "position": [
-        5080,
-        1340
-      ],
-      "id": "b0001253-bdb8-4b5e-868b-342a14f29353",
-      "executeOnce": true,
-      "continueOnFail": true
-    },
-    {
-      "parameters": {
         "method": "POST",
-        "url": "=https://backend.botconversa.com.br/api/v1/webhook/subscriber/{{ $node[\"Verificar na audiência1\"].json[\"id\"] || $node[\"Cadastrar contato1\"].json[\"id\"] }}/send_flow/",
+        "url": "={{ $json[\"url\"] }}/message/sendText/{{ $json[\"name\"] }}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
-              "name": "API-KEY",
-              "value": "={{ $node[\"Edit Fields4\"].json[\"API-KEY\"] }}"
+              "name": "apikey",
+              "value": "={{ $json[\"api-key\"] }}"
             }
           ]
         },
@@ -2447,24 +2637,271 @@
         "bodyParameters": {
           "parameters": [
             {
-              "name": "flow",
-              "value": "6569288"
+              "name": "number",
+              "value": "={{ $json[\"telefone\"] }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json[\"text\"] }}"
+            },
+            {
+              "name": "linkPreview",
+              "value": "={{ $json[\"linkPreview\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4680,
+        1260
+      ],
+      "id": "1d3c1a81-8156-45a8-8dc6-d98081594759",
+      "name": "compra_confirmada"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.datacrazy.io/v1/crm/api/crm/flows/webhooks/7bc41b91-73f6-4879-91a8-0868ddc82f84/f0e4aff9-b312-4e8b-a108-8050ecea6982",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $node[\"Edit Fields5\"].json }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4900,
+        1260
+      ],
+      "id": "fe470b3b-1cf9-429a-aaa4-d2a7aa2f73ba",
+      "name": "data_crazy"
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        5100,
+        1500
+      ],
+      "id": "c4799394-c6d7-4975-b2f3-14bab5310da9",
+      "name": "Wait5",
+      "webhookId": "6bde8141-2e70-4d96-b9f1-98710450e7ec"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "mensagens_agendadas",
+          "mode": "list",
+          "cachedResultName": "mensagens_agendadas"
+        },
+        "returnAll": true,
+        "where": {
+          "values": [
+            {
+              "column": "id",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"id\"] }}"
             }
           ]
         },
         "options": {}
       },
-      "id": "d99bbd4b-8eff-421c-8d5a-0b94092c74b0",
-      "name": "Envia Fluxo - cliente1",
-      "type": "n8n-nodes-base.httpRequest",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        5300,
+        1500
+      ],
+      "id": "e0d5330b-073e-42b2-877f-bef1cdcbfe45",
+      "name": "MySQL10",
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "478e7da7-0c2c-40c6-8983-7574be09abf6",
+              "leftValue": "={{ $item(\"0\").$node[\"MySQL10\"].json[\"enviada_2\"] }}",
+              "rightValue": 1,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        5520,
+        1500
+      ],
+      "id": "0b5dcaf9-d99f-4235-a88f-feeaee2d83aa",
+      "name": "If5"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "mensagens_agendadas",
+          "mode": "list",
+          "cachedResultName": "mensagens_agendadas"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "id",
+        "valueToMatchOn": "={{ $item(\"0\").$node[\"MySQL10\"].json[\"id\"] }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "enviada_2",
+              "value": "1"
+            },
+            {
+              "column": "data_3",
+              "value": "={{ $item(\"0\").$node[\"Date & Time3\"].json[\"one_day_formated\"] }}"
+            },
+            {
+              "column": "mensagem2",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields5\"].json[\"text\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        5740,
+        1520
+      ],
+      "id": "a56ef379-5a3f-4b13-9f66-b1b6010b22cc",
+      "name": "MySQL11",
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 10
+            }
+          ]
+        }
+      },
+      "id": "ed1336f6-fe3e-442d-ab27-caeb11676e69",
+      "name": "Schedule Trigger1",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        3480,
+        2060
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# 3. Chamada para Consumo",
+        "height": 767,
+        "width": 2653,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3400,
+        1820
+      ],
+      "typeVersion": 1,
+      "id": "fb68ab32-2163-436b-b918-9f87b066f1b8",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "2772e017-4d6f-43ca-a430-675136d99f2d",
+              "leftValue": "={{ $json[\"data_2\"].split(\" \")[0] }}",
+              "rightValue": "={{ $now.toString().split(\".\")[0].split(\":\")[0].split(\"T\")[0] }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "f44d70ca-a807-46dc-93d3-da9d5cddc572",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        3920,
+        2060
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "2efbf8f1-03f5-41aa-8cdd-2e9572f088ce",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        5280,
-        1240
-      ],
-      "retryOnFail": true,
-      "waitBetweenTries": 5000,
-      "continueOnFail": true
+        4200,
+        1980
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "b7268f21-73f4-4d8b-801c-a246212da9ae",
+      "name": "Replace Me1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        4400,
+        2200
+      ]
     },
     {
       "parameters": {
@@ -2477,16 +2914,20 @@
         },
         "dataMode": "defineBelow",
         "columnToMatchOn": "id",
-        "valueToMatchOn": "={{ $node[\"MySQL\"].json[\"id\"] }}",
+        "valueToMatchOn": "={{ $node[\"MySQL4\"].json[\"id\"] }}",
         "valuesToSend": {
           "values": [
             {
-              "column": "enviada_2",
+              "column": "enviada_3",
               "value": "1"
             },
             {
-              "column": "data_3",
+              "column": "data_4",
               "value": "={{ $json[\"one_day_formated\"] }}"
+            },
+            {
+              "column": "mensagem3",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields6\"].json[\"text\"] }}"
             }
           ]
         },
@@ -2495,11 +2936,11 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        5900,
-        1240
+        5620,
+        2000
       ],
-      "id": "cd069119-4b01-4188-85c3-164b3378dc0d",
-      "name": "MySQL1",
+      "id": "1dbd3427-ca99-4d95-ba7a-1f3311408b40",
+      "name": "MySQL3",
       "credentials": {
         "mySql": {
           "id": "0E9JxipHlJ4dAQMU",
@@ -2511,18 +2952,18 @@
       "parameters": {
         "operation": "addToDate",
         "magnitude": "={{ $now.format('yyyy-MM-dd') }}",
-        "duration": 2,
+        "duration": 3,
         "outputFieldName": "new_date_one",
         "options": {}
       },
       "type": "n8n-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
-        5520,
-        1240
+        5240,
+        2000
       ],
-      "id": "e42edc01-f26a-42fe-8b56-841dcaddfd71",
-      "name": "Date & Time2"
+      "id": "15a93440-4b67-4832-ab22-546129da9319",
+      "name": "Date & Time4"
     },
     {
       "parameters": {
@@ -2538,11 +2979,325 @@
       "type": "n8n-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
-        5700,
-        1240
+        5420,
+        2000
       ],
-      "id": "e84942d4-3ba6-4d39-94b8-e09da370ccd7",
-      "name": "Date & Time3"
+      "id": "621280df-d051-4365-a00f-b257f12bf6f4",
+      "name": "Date & Time5"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $item(\"0\").$node[\"Edit Fields6\"].json[\"url\"] }}/message/sendText/{{ $item(\"0\").$node[\"Edit Fields6\"].json[\"name\"] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields6\"].json[\"api-key\"] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields6\"].json[\"telefone\"] }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields6\"].json[\"text\"] }}"
+            },
+            {
+              "name": "linkPreview",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields6\"].json[\"linkPreview\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4700,
+        2000
+      ],
+      "id": "2b597056-c4d9-4f45-bf49-f5866a2c3b51",
+      "name": "compra_confirmada2"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "mensagens_agendadas",
+          "mode": "list",
+          "cachedResultName": "mensagens_agendadas"
+        },
+        "returnAll": true,
+        "where": {
+          "values": [
+            {
+              "column": "id",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items1\"].json[\"id\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        5340,
+        2260
+      ],
+      "id": "cffd0284-906d-45d7-b299-7bb8ddb60788",
+      "name": "MySQL12",
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "478e7da7-0c2c-40c6-8983-7574be09abf6",
+              "leftValue": "={{ $item(\"0\").$node[\"MySQL12\"].json[\"enviada_2\"] }}",
+              "rightValue": 1,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        5560,
+        2260
+      ],
+      "id": "64850651-40cb-4d8e-a58e-4bb2b38509e3",
+      "name": "If6"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "mensagens_agendadas",
+          "mode": "list",
+          "cachedResultName": "mensagens_agendadas"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "id",
+        "valueToMatchOn": "={{ $item(\"0\").$node[\"MySQL12\"].json[\"id\"] }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "enviada_3",
+              "value": "1"
+            },
+            {
+              "column": "data_4",
+              "value": "={{ $item(\"0\").$node[\"Date & Time5\"].json[\"one_day_formated\"] }}"
+            },
+            {
+              "column": "mensagem3",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields6\"].json[\"text\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        5780,
+        2280
+      ],
+      "id": "db4a2b9f-036e-4f27-8475-0643afae6f36",
+      "name": "MySQL13",
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "mensagens_agendadas",
+          "mode": "list",
+          "cachedResultName": "mensagens_agendadas"
+        },
+        "returnAll": true,
+        "where": {
+          "values": [
+            {
+              "column": "enviada",
+              "value": "1"
+            },
+            {
+              "column": "enviada_2",
+              "value": "1"
+            },
+            {
+              "column": "enviada_3",
+              "value": "0"
+            },
+            {
+              "column": "evento",
+              "value": "[GUIA DO TERRENO PERFEITO] [COMPRA APROVADA] [2025]"
+            },
+            {
+              "column": "mensagem",
+              "value": "[GUIA DO TERRENO PERFEITO] [COMPRA APROVADA] [2025] - [1]"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        3700,
+        2060
+      ],
+      "id": "a49229c2-5003-402a-abce-f96af215443c",
+      "name": "MySQL4",
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "0E9JxipHlJ4dAQMU",
+          "name": "MySQL - eng_matheus"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.datacrazy.io/v1/crm/api/crm/flows/webhooks/7bc41b91-73f6-4879-91a8-0868ddc82f84/21569393-409a-4fef-8716-53133793d5b4",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $node[\"Edit Fields6\"].json }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4960,
+        2000
+      ],
+      "id": "98cd4e4e-0151-4093-a343-af9565e2b033",
+      "name": "data_crazy2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c53e209f-3f99-47cf-ac2c-48e2744c2567",
+              "name": "nome",
+              "value": "={{ $json[\"nome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "6a122e24-9278-4fa5-aba6-ea01b413ed09",
+              "name": "telefone",
+              "value": "={{ $json[\"telefone\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "af5246e1-afa0-4fc2-9a07-cf21cfc43f0b",
+              "name": "data",
+              "value": "={{ $now }}",
+              "type": "string"
+            },
+            {
+              "id": "00fa81b1-b695-4099-973d-712c2f2a2a99",
+              "name": "sobrenome",
+              "value": "={{ $json[\"sobrenome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "0c83ee64-1365-49df-a8eb-687fc8742541",
+              "name": "api-key",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items1\"].json[\"api-key\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "83b42c7e-cbb3-48a1-aa59-9c538e0ed3a0",
+              "name": "name",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items1\"].json[\"instancia\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "86218b58-02df-4959-bdf3-7618313a5a86",
+              "name": "url",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items1\"].json[\"url\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "93c22c28-609a-4e6e-a3f7-3fc272926d7f",
+              "name": "linkPreview",
+              "value": false,
+              "type": "boolean"
+            },
+            {
+              "id": "5cf1d8f1-0f03-4b84-a060-e2bcbdcc8931",
+              "name": "text",
+              "value": "={{ $json.nome }}, o conteúdo está todo pronto para você assistir.\n\n*Dentro do guia, você vai encontrar*:\n\n✅ _Os critérios técnicos que ninguém te conta_\n\n✅ _As armadilhas que encarecem a futura obra em um terreno_\n\n✅ _Um checklist prático pra você levar na mão durante as visitas_\n\n✅ _Tudo sobre as documentações necessárias para você avaliar antes de comprar o lote_\n\n*Minha dica?*\n\nReserve 50 minutos, com calma. Imprima o checklist.\n\nE *não pise em nenhum terreno antes de preencher cada item.*\n\nA diferença entre um bom terreno e uma bomba financeira está em 3 detalhes que você vai aprender dentro da plataforma.\n\nO link para você acessar está aqui: https://hotmart.com/pt-br/club/pec\n\nUm abraço,\n\n*Vanessa Almeida*\n_Líder dos Construtores de Sonhos_",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c2db46c4-1223-4792-a454-b586b28c2be4",
+      "name": "Edit Fields6",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4460,
+        2000
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        5140,
+        2260
+      ],
+      "id": "14f34b02-d689-4388-ac78-c074daed0b0b",
+      "name": "Wait3",
+      "webhookId": "6bde8141-2e70-4d96-b9f1-98710450e7ec"
     }
   ],
   "pinData": {
@@ -2550,40 +3305,40 @@
       {
         "json": {
           "fields": {
-            "consumerTag": "amq.ctag-FWA6cOyLYJjeb8eii5NFOw",
+            "consumerTag": "amq.ctag-BMU9SF3zIWQ7Kf8J8AS99Q",
             "deliveryTag": 1,
             "redelivered": false,
             "exchange": "",
-            "routingKey": "[COMPRA APROVADA] [PEC GERAL]"
+            "routingKey": "[OBRA PASSO-A-PASSO] [COMPRA APROVADA] [2025]"
           },
           "properties": {
             "headers": {}
           },
           "content": {
-            "nome": "Juliano",
-            "email": "juliano_fabricio@yahoo.com.br",
-            "cpf/cnpj": "29201753861",
-            "nome_produto": "Imersão Atômica",
-            "transaction_id": "HP2438614899",
-            "product_id": 4561690,
-            "preco": 97,
-            "oferta": "9vab7gp7",
-            "gateway_comission": 7.21,
+            "nome": "Marcos",
+            "email": "marcosvini.daroch@gmail.com",
+            "cpf/cnpj": "18962479702",
+            "nome_produto": "Obra passo-a-passo",
+            "transaction_id": "HP16015479281022",
+            "product_id": 0,
+            "preco": 1500,
+            "gateway_comission": 149.5,
             "currency": "BRL",
-            "payment_method": "PIX",
+            "payment_method": "CREDIT_CARD",
             "trans_status": "APPROVED",
-            "data_compra": "2024-10-07T17:09:42.000Z",
-            "data_garantia": "2024-10-07T17:07:06.000Z",
-            "parcelas": 1,
-            "cep": "85601090",
-            "utm_source": "instagram",
-            "utm_campaign": "IA1024",
-            "utm_medium": "bio",
-            "utm_content": "matheus",
-            "utm_term": "matheus",
-            "telefone": "5546991361900",
-            "sobrenome": "Alarcon Fabrício",
-            "comissao_produtor": 87.3
+            "data_compra": "2025-05-26 20:59",
+            "parcelas": 12,
+            "cep": "38400123",
+            "utm_source": "",
+            "utm_campaign": "",
+            "utm_medium": "",
+            "utm_content": "",
+            "utm_term": "",
+            "telefone": "5599999999900",
+            "subscription_code": "fb056612-bcc6-4217-9e6d-2a5d1110ac2f",
+            "sobrenome": "Comprador",
+            "comissao_produtor": 1350.5,
+            "oferta": "test"
           }
         }
       }
@@ -2702,21 +3457,23 @@
       {
         "json": {
           "fields": {
-            "consumerTag": "amq.ctag-0D1vEhtB0quDr8ktXhjrCA",
-            "deliveryTag": 1,
-            "redelivered": false,
+            "consumerTag": "amq.ctag-G91VTt_68uViYD9cpKLp5Q",
+            "deliveryTag": 4,
+            "redelivered": true,
             "exchange": "",
-            "routingKey": "[COMPRA APROVADA] [PEC] [2025] [M1]"
+            "routingKey": "[OBRA PASSO-A-PASSO] [COMPRA APROVADA] [2025] [M1]"
           },
           "properties": {
-            "headers": {}
+            "headers": {
+              "x-delivery-count": 2
+            }
           },
           "content": {
-            "Nome": "Juliano",
-            "Sobrenome": "Alarcon Fabrício",
-            "Telefone": "5546991361900",
-            "Email": "juliano_fabricio@yahoo.com.br",
-            "Produto": "Imersão Atômica"
+            "Nome": "Marcos",
+            "Sobrenome": "Santana",
+            "Telefone": "5527998210071",
+            "Email": "marcosvini.daroch@gmail.com",
+            "Produto": "Obra passo-a-passo"
           }
         }
       }
@@ -2738,13 +3495,19 @@
   },
   "tags": [
     {
+      "createdAt": "2025-05-26T04:02:49.710Z",
+      "updatedAt": "2025-05-26T04:02:49.710Z",
+      "id": "Ri5NTwZpImgEBvI0",
+      "name": "GUIA DO TERRENO PERFEITO"
+    },
+    {
       "createdAt": "2025-03-03T19:12:36.968Z",
       "updatedAt": "2025-03-03T19:12:36.968Z",
       "id": "BvHk9YERqu7gkCss",
       "name": "OBRA PASSO-A-PASSO"
     }
   ],
-  "triggerCount": 4,
-  "updatedAt": "2025-03-06T14:10:47.252Z",
-  "versionId": "f62096e8-9939-4ed1-bd01-7d39394a663d"
+  "triggerCount": 5,
+  "updatedAt": "2025-05-27T02:30:46.431Z",
+  "versionId": "f8fd1e50-bb5d-4d23-9f46-bf4d80b70cb1"
 }
