@@ -12,26 +12,9 @@
         ]
       ]
     },
-    "convite 2": {
-      "main": [
-        [
-          {
-            "node": "Wait3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "convite 1": {
       "main": [
-        [
-          {
-            "node": "Wait2",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Google Calendar": {
@@ -66,28 +49,6 @@
           }
         ]
       ]
-    },
-    "Wait2": {
-      "main": [
-        [
-          {
-            "node": "convite 2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait3": {
-      "main": [
-        [
-          {
-            "node": "convite 3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
     }
   },
   "createdAt": "2025-05-23T16:49:49.217Z",
@@ -97,57 +58,18 @@
   "nodes": [
     {
       "parameters": {
-        "amount": 10
+        "amount": 10,
+        "unit": "minutes"
       },
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        220,
+        440,
         0
       ],
       "id": "6828b5a2-a562-4f25-aa07-bec70471d9b2",
       "name": "Wait",
       "webhookId": "15461565-94c5-4d93-827c-3e94c42ba843"
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "calendar": {
-          "__rl": true,
-          "value": "contato@eprevensino.com",
-          "mode": "list",
-          "cachedResultName": "contato@eprevensino.com"
-        },
-        "eventId": "={{ $item(\"3\").$node[\"Google Calendar\"].json[\"id\"] }}",
-        "updateFields": {
-          "attendeesUi": {
-            "values": {
-              "attendees": [
-                "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"email\"] }}"
-              ]
-            }
-          },
-          "guestsCanInviteOthers": false,
-          "guestsCanSeeOtherGuests": false
-        }
-      },
-      "type": "n8n-nodes-base.googleCalendar",
-      "typeVersion": 1.2,
-      "position": [
-        1680,
-        0
-      ],
-      "id": "1f43ecd0-0020-4a5f-8a5a-b6182e64c17d",
-      "name": "convite 3",
-      "alwaysOutputData": true,
-      "retryOnFail": true,
-      "waitBetweenTries": 5000,
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "SbqOEod0ACo2xUbn",
-          "name": "contato@eprevensino.com"
-        }
-      }
     },
     {
       "parameters": {
@@ -174,47 +96,7 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.2,
       "position": [
-        1260,
-        0
-      ],
-      "id": "2876ba4a-e67b-4000-b7f9-296f91e657a5",
-      "name": "convite 2",
-      "alwaysOutputData": true,
-      "retryOnFail": true,
-      "waitBetweenTries": 5000,
-      "credentials": {
-        "googleCalendarOAuth2Api": {
-          "id": "SbqOEod0ACo2xUbn",
-          "name": "contato@eprevensino.com"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "calendar": {
-          "__rl": true,
-          "value": "contato@eprevensino.com",
-          "mode": "list",
-          "cachedResultName": "contato@eprevensino.com"
-        },
-        "eventId": "={{ $item(\"2\").$node[\"Google Calendar\"].json[\"id\"] }}",
-        "updateFields": {
-          "attendeesUi": {
-            "values": {
-              "attendees": [
-                "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"email\"] }}"
-              ]
-            }
-          },
-          "guestsCanInviteOthers": false,
-          "guestsCanSeeOtherGuests": false
-        }
-      },
-      "type": "n8n-nodes-base.googleCalendar",
-      "typeVersion": 1.2,
-      "position": [
-        840,
+        1060,
         0
       ],
       "id": "71c63a87-ecde-4df8-bf7d-60dfe3d4a236",
@@ -244,7 +126,7 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.2,
       "position": [
-        420,
+        640,
         0
       ],
       "id": "a0d4f15f-f193-49ff-bfc7-7ffb0c5fdc17",
@@ -274,48 +156,17 @@
     },
     {
       "parameters": {
-        "amount": 1,
         "unit": "minutes"
       },
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        640,
+        860,
         0
       ],
       "id": "033aa9e6-5b69-45e4-a56e-b6deb6dadb82",
       "name": "Wait1",
       "webhookId": "ab5834e2-8d51-40bf-af56-134fff64c46a"
-    },
-    {
-      "parameters": {
-        "amount": 2,
-        "unit": "minutes"
-      },
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
-      "position": [
-        1060,
-        0
-      ],
-      "id": "e25812da-8df9-40c9-846e-6528bc35e86d",
-      "name": "Wait2",
-      "webhookId": "6245bc5d-ac4e-44e0-a56e-191919fa13d3"
-    },
-    {
-      "parameters": {
-        "amount": 2,
-        "unit": "minutes"
-      },
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
-      "position": [
-        1480,
-        0
-      ],
-      "id": "30180b8f-cfe4-492c-a45e-969bd443a58b",
-      "name": "Wait3",
-      "webhookId": "de7b7904-eff8-4c53-b140-0e5ea8cb9ee8"
     }
   ],
   "pinData": {
@@ -364,6 +215,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-05-27T06:28:37.624Z",
-  "versionId": "2f6f601b-2db2-40f8-aa48-e1aabbf5fb2e"
+  "updatedAt": "2025-05-27T20:41:45.074Z",
+  "versionId": "71aff1ce-107a-433e-bbf2-aabd31a19044"
 }
