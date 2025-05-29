@@ -113,13 +113,7 @@
     },
     "Google Sheets": {
       "main": [
-        [
-          {
-            "node": "Google Sheets3",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     }
   },
@@ -190,7 +184,6 @@
           "mappingMode": "defineBelow",
           "value": {
             "Entrou": "={{ $item(\"0\").$node[\"MySQL\"].json[\"total_leads_hoje\"] }}",
-            "Day Grupo": "={{ $item(\"0\").$node[\"MySQL\"].json[\"total_leads_hoje\"] }}",
             "Saiu": "={{ $item(\"0\").$node[\"MySQL\"].json[\"total_sairam_hoje\"] }}",
             "Date": "={{ $now.format('dd/MM/yyyy')}}"
           },
@@ -215,7 +208,8 @@
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": true
             },
             {
               "id": "Entrou",
@@ -723,93 +717,6 @@
       "name": "HTTP Request1",
       "retryOnFail": true,
       "waitBetweenTries": 5000
-    },
-    {
-      "parameters": {
-        "operation": "appendOrUpdate",
-        "documentId": {
-          "__rl": true,
-          "value": "1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s",
-          "mode": "list",
-          "cachedResultName": "PREV0625 - Painel de Controle",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": 1731088643,
-          "mode": "list",
-          "cachedResultName": "🕹️ Captação AUX [SENDFLOW]",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IiK-wR0_9refnvCp8aN3d6UVsxwwvcBVImQbG9dFE8s/edit#gid=1731088643"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "Day Grupo": "={{ $item(\"0\").$node[\"MySQL\"].json[\"total_leads_geral\"] }}",
-            "Saiu": "={{ $item(\"0\").$node[\"MySQL\"].json[\"total_saidas_geral\"] }}",
-            "Date": "TOTAL",
-            "Entrou": "={{ $item(\"0\").$node[\"MySQL\"].json[\"total_leads_geral\"] }}"
-          },
-          "matchingColumns": [
-            "Date"
-          ],
-          "schema": [
-            {
-              "id": "Date",
-              "displayName": "Date",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "Day Grupo",
-              "displayName": "Day Grupo",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Entrou",
-              "displayName": "Entrou",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "Saiu",
-              "displayName": "Saiu",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.5,
-      "position": [
-        480,
-        20
-      ],
-      "id": "26f4fc77-5778-4e87-9ecf-258285f7b99a",
-      "name": "Google Sheets3",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "z5gmk55vTaoF2yks",
-          "name": "Google Sheets account"
-        }
-      },
-      "disabled": true
     }
   ],
   "pinData": {},
@@ -835,6 +742,6 @@
   },
   "tags": [],
   "triggerCount": 4,
-  "updatedAt": "2025-05-28T13:26:44.028Z",
-  "versionId": "fdf5dff8-ae9a-403c-b918-eb88af3cce7b"
+  "updatedAt": "2025-05-29T04:05:01.359Z",
+  "versionId": "eff1d02d-3429-4413-b061-3be17832c9cd"
 }
