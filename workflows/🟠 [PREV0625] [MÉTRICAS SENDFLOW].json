@@ -493,44 +493,6 @@
     },
     {
       "parameters": {
-        "url": "https://evolution.eprevensino.com.br/group/fetchAllGroups/Marcos",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "getParticipants",
-              "value": "false"
-            }
-          ]
-        },
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "F800E26D894D-46F5-BCB8-11DBCB5CEA2A"
-            }
-          ]
-        },
-        "options": {
-          "redirect": {
-            "redirect": {}
-          }
-        }
-      },
-      "id": "87f5a397-a5a9-49a3-a7b2-4240eadc03bd",
-      "name": "Responde texto1",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1920,
-        20
-      ],
-      "retryOnFail": true,
-      "waitBetweenTries": 5000
-    },
-    {
-      "parameters": {
         "content": "## REPORT MÉTRICAS - GRUPO GERAL",
         "height": 400,
         "width": 1080,
@@ -742,6 +704,6 @@
   },
   "tags": [],
   "triggerCount": 4,
-  "updatedAt": "2025-05-29T04:05:01.359Z",
-  "versionId": "eff1d02d-3429-4413-b061-3be17832c9cd"
+  "updatedAt": "2025-06-02T14:42:50.683Z",
+  "versionId": "9cfb468a-6488-47ec-accf-b1c22790cd13"
 }
