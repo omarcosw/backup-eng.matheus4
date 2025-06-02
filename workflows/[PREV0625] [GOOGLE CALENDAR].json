@@ -64,7 +64,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        440,
+        180,
         0
       ],
       "id": "6828b5a2-a562-4f25-aa07-bec70471d9b2",
@@ -96,7 +96,7 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.2,
       "position": [
-        1060,
+        800,
         0
       ],
       "id": "71c63a87-ecde-4df8-bf7d-60dfe3d4a236",
@@ -126,7 +126,7 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.2,
       "position": [
-        640,
+        380,
         0
       ],
       "id": "a0d4f15f-f193-49ff-bfc7-7ffb0c5fdc17",
@@ -161,7 +161,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        860,
+        600,
         0
       ],
       "id": "033aa9e6-5b69-45e4-a56e-b6deb6dadb82",
@@ -215,6 +215,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-05-27T20:41:45.074Z",
-  "versionId": "71aff1ce-107a-433e-bbf2-aabd31a19044"
+  "updatedAt": "2025-06-02T14:42:22.489Z",
+  "versionId": "51991b72-b7ed-41f6-9baa-da0a8247d561"
 }
