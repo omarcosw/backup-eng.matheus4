@@ -109,7 +109,7 @@
       "main": [
         [
           {
-            "node": "Define image size1",
+            "node": "Respond to Webhook",
             "type": "main",
             "index": 0
           }
@@ -129,9 +129,151 @@
     },
     "Cloudinary1": {
       "main": [
+        []
+      ]
+    },
+    "avatar1": {
+      "main": [
         [
           {
-            "node": "Envia_ingresso_foto_usuario2",
+            "node": "Define image size",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "gerar ingresso com dados1": {
+      "main": [
+        [
+          {
+            "node": "retornar ingresso1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "criar diametro do avatar1": {
+      "main": [
+        [
+          {
+            "node": "criar dimensao do avatar1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "criar dimensao do avatar1": {
+      "main": [
+        [
+          {
+            "node": "juntar para criar  avatar1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baixar avatar1": {
+      "main": [
+        [
+          {
+            "node": "definir tamanho avatar1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "definir tamanho avatar1": {
+      "main": [
+        [
+          {
+            "node": "juntar para criar  avatar1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "juntar para criar  avatar1": {
+      "main": [
+        [
+          {
+            "node": "criar o avatar com bordas arredondadas1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "criar o avatar com bordas arredondadas1": {
+      "main": [
+        [
+          {
+            "node": "baixar ingresso1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baixar ingresso1": {
+      "main": [
+        [
+          {
+            "node": "gerar ingresso com dados1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Define image size": {
+      "main": [
+        [
+          {
+            "node": "criar diametro do avatar1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "baixar avatar1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca usuario": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "busca usuario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "avatar": {
+      "main": [
+        [
+          {
+            "node": "Define image size1",
             "type": "main",
             "index": 0
           }
@@ -139,8 +281,8 @@
       ]
     }
   },
-  "createdAt": "2025-06-02T18:05:26.268Z",
-  "id": "gMoXMMf1boq11JB6",
+  "createdAt": "2025-06-02T18:05:26.636Z",
+  "id": "ajTtouPwUvkP3BmC",
   "meta": null,
   "name": "My workflow 12",
   "nodes": [
@@ -153,16 +295,16 @@
             {
               "operation": "composite",
               "dataPropertyNameComposite": "overlay_avatar",
-              "positionX": 375,
-              "positionY": 380
+              "positionX": 109,
+              "positionY": 148
             },
             {
               "operation": "text",
-              "text": "={{ $('avatar1').item.json.query.name }}",
-              "fontSize": 50,
+              "text": "={{ $node[\"avatar\"].json[\"query\"][\"name\"] }}",
+              "fontSize": 22,
               "fontColor": "#FED495",
-              "positionX": "={{ (999 / 2) - (($node[\"avatar1\"].json[\"query\"][\"name\"].length * 28 * 0.54) / 2) }}",
-              "positionY": 800,
+              "positionX": 163,
+              "positionY": 370,
               "font": "/usr/share/fonts/truetype/msttcorefonts/Verdana.ttf"
             }
           ]
@@ -226,7 +368,7 @@
     },
     {
       "parameters": {
-        "url": "={{ $node[\"avatar1\"].json[\"query\"][\"image\"] }}",
+        "url": "={{ $node[\"avatar\"].json[\"query\"][\"image\"] }}",
         "options": {
           "response": {
             "response": {
@@ -300,7 +442,7 @@
     },
     {
       "parameters": {
-        "url": "https://automate.dev.br/wp-content/uploads/2025/03/POST-INGRESSO-VIP-Story.png",
+        "url": "https://lancamentos.eprevensino.com.br/wp-content/uploads/2025/06/INGRESSO-VIP.png",
         "options": {
           "response": {
             "response": {
@@ -332,7 +474,7 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1,
       "position": [
-        1280,
+        1320,
         100
       ]
     },
@@ -343,7 +485,7 @@
             {
               "name": "diameter",
               "type": "numberValue",
-              "numberValue": "350"
+              "numberValue": "180"
             }
           ]
         },
@@ -360,13 +502,13 @@
     },
     {
       "parameters": {
-        "url": "=https://api.manychat.com/fb/subscriber/getInfo?subscriber_id={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"ID\"] }}",
+        "url": "=https://api.manychat.com/fb/subscriber/getInfo?subscriber_id={{ $json[\"query\"][\"id\"] }}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Authorization",
-              "value": "Bearer 497992:98404217f7ca917e823e1f67ab50c09b"
+              "value": "Bearer 104169159278240:61969b41c2e16ce21053b0a9b903395e"
             }
           ]
         },
@@ -383,8 +525,8 @@
     },
     {
       "parameters": {
-        "httpMethod": "POST",
         "path": "2c9de7b0-1c5a-4818-bdc5-d3763ad7bbfd",
+        "responseMode": "responseNode",
         "options": {}
       },
       "id": "1bf07795-1da6-48c3-9284-53754cbe9ee1",
@@ -423,7 +565,7 @@
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"subscriber_id\": \"{{ $('Webhook').first().json.body.id }}\",\n  \"field_id\": \"12815393\",\n  \"field_value\": \"https://res.cloudinary.com/dl5cjlngm/image/upload/l_{{ $json.public_id }}.png,g_center,y_-165,x_0,c_scale,h_360,w_360,r_360,q_auto/co_rgb:171d27,l_text:arial_50:{{ $('Webhook').item.json.body.custom_fields['[INGRESSO-NOME]'] }},y_120,x_1/v1747162349/template-ingresso-magic_yjcjkq.png\"\n}",
+        "jsonBody": "={\n  \"subscriber_id\": \"{{ $item(\"0\").$node[\"busca usuario1\"].json[\"data\"][\"id\"] }}\",\n  \"field_id\": \"11031532\",\n  \"field_value\": \"\"\n}",
         "options": {}
       },
       "id": "f0a4be0f-5574-4dd3-aa09-2151d5c1c763",
@@ -431,9 +573,331 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        880,
-        380
+        1640,
+        560
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "uAytojsBbxgdwbCL",
+          "name": "Manychar"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n    \"version\": \"v2\",\n    \"content\": {\n        \"type\": \"instagram\",\n        \"messages\": [\n            {\n                \"type\": \"image\",\n                \"url\": \"https://webhook.lancamentosemcaos.com.br/webhook/afab688c-b53c-4590-bfa9-ab7995a8cc4b?image={{ $node['busca usuario'].json['data']['profile_pic'] }}&name={{ $json.data.first_name }}\"\n            }\n        ]\n    }\n}\n",
+        "options": {}
+      },
+      "id": "97338db7-71ef-45a4-b921-c6755534b678",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1540,
+        1280
       ]
+    },
+    {
+      "parameters": {
+        "path": "afab688c-b53c-4590-bfa9-ab7995a8cc4b",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "ba81e944-b351-4977-8448-7aab338e4b3a",
+      "name": "avatar1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        800,
+        840
+      ],
+      "webhookId": "322d608c-15c0-4017-8e7d-01f4592f6de3"
+    },
+    {
+      "parameters": {
+        "operation": "multiStep",
+        "dataPropertyName": "ingresso",
+        "operations": {
+          "operations": [
+            {
+              "operation": "composite",
+              "dataPropertyNameComposite": "overlay_avatar",
+              "positionX": 375,
+              "positionY": 380
+            },
+            {
+              "operation": "text",
+              "text": "={{ $('avatar1').item.json.query.name }}",
+              "fontSize": 50,
+              "fontColor": "#FED495",
+              "positionX": "={{ (999 / 2) - (($node[\"avatar1\"].json[\"query\"][\"name\"].length * 28 * 0.54) / 2) }}",
+              "positionY": 800,
+              "font": "/usr/share/fonts/truetype/msttcorefonts/Verdana.ttf"
+            }
+          ]
+        },
+        "options": {
+          "format": "jpeg",
+          "quality": 30
+        }
+      },
+      "id": "50eddd59-3bfc-4131-b96d-34318a2fdf16",
+      "name": "gerar ingresso com dados1",
+      "type": "n8n-nodes-base.editImage",
+      "typeVersion": 1,
+      "position": [
+        2300,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "dataPropertyName": "overlay_avatar",
+        "backgroundColor": "#ffffffff",
+        "width": "={{ $('Define image size').first().json.diameter }}",
+        "height": "={{ $node[\"Define image size\"].json[\"diameter\"] }}",
+        "options": {
+          "format": "png"
+        }
+      },
+      "id": "8bb2ab04-2428-46eb-b0f6-fb65acc5bbec",
+      "name": "criar diametro do avatar1",
+      "type": "n8n-nodes-base.editImage",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        740
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "draw",
+        "dataPropertyName": "overlay_avatar",
+        "color": "#1C9985",
+        "startPositionX": 0,
+        "startPositionY": 0,
+        "endPositionX": "={{ $('Define image size').first().json.diameter }}",
+        "endPositionY": "={{ $('Define image size').first().json.diameter }}",
+        "cornerRadius": "={{ $('Define image size').first().json.diameter / 2 }}",
+        "options": {
+          "format": "png"
+        }
+      },
+      "id": "2cb1a96c-17c2-4bb9-907d-f661a3f388ea",
+      "name": "criar dimensao do avatar1",
+      "type": "n8n-nodes-base.editImage",
+      "typeVersion": 1,
+      "position": [
+        1440,
+        740
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $node[\"avatar1\"].json[\"query\"][\"image\"] }}",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "file",
+              "outputPropertyName": "avatar_cru"
+            }
+          }
+        }
+      },
+      "id": "53d56bda-5d4f-40a0-8de5-d3b3a51afd74",
+      "name": "baixar avatar1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1220,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "resize",
+        "dataPropertyName": "avatar_cru",
+        "width": "={{ $('Define image size').first().json.diameter }}",
+        "height": "={{ $('Define image size').first().json.diameter }}",
+        "resizeOption": "minimumArea",
+        "options": {
+          "format": "png"
+        }
+      },
+      "id": "deb139e0-bfa4-4933-8c32-10e2429b128f",
+      "name": "definir tamanho avatar1",
+      "type": "n8n-nodes-base.editImage",
+      "typeVersion": 1,
+      "position": [
+        1440,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "a9cafd39-3e2d-4db2-a705-02fb0af2ff67",
+      "name": "juntar para criar  avatar1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1660,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "composite",
+        "dataPropertyName": "overlay_avatar",
+        "dataPropertyNameComposite": "avatar_cru",
+        "operator": "Atop",
+        "options": {}
+      },
+      "id": "453741e5-1ec2-4721-92d9-50e2e49e2d71",
+      "name": "criar o avatar com bordas arredondadas1",
+      "type": "n8n-nodes-base.editImage",
+      "typeVersion": 1,
+      "position": [
+        1880,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://automate.dev.br/wp-content/uploads/2025/03/POST-INGRESSO-VIP-Story.png",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "file",
+              "outputPropertyName": "ingresso"
+            }
+          }
+        }
+      },
+      "id": "bcb3985f-eb12-42ab-bfbc-0e842073ed10",
+      "name": "baixar ingresso1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2100,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "binary",
+        "responseDataSource": "set",
+        "inputFieldName": "ingresso",
+        "options": {}
+      },
+      "id": "c461b681-0764-4ec2-8ee5-852a9fc5ce0c",
+      "name": "retornar ingresso1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        2500,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "diameter",
+              "type": "numberValue",
+              "numberValue": "350"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3da2673e-1662-4fa1-bbd3-76d0366201cb",
+      "name": "Define image size",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1000,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.manychat.com/fb/subscriber/getInfo?subscriber_id={{ $node[\"Webhook1\"].json[\"query\"][\"id\"] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer 497992:98404217f7ca917e823e1f67ab50c09b"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2ca3b3c2-4e42-455b-b0dc-9be8db1ad607",
+      "name": "busca usuario",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1300,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "path": "2c9de7b0-1c5a-4818-bdc5-d3763ad7bbfd",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "246843b0-e7fa-4306-9996-6988e1fbeb59",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1080,
+        1280
+      ],
+      "webhookId": "71f81d87-5372-4e1b-8e84-20970aa587f6",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n    \"version\": \"v2\",\n    \"content\": {\n        \"type\": \"instagram\",\n        \"messages\": [\n            {\n                \"type\": \"image\",\n                \"url\": \"https://webhook.engenheiromatheus.com/webhook/afab688c-b53c-4590-bfa9-ab7995a8cc4b-ingresso?image={{ $json[\"data\"][\"profile_pic\"] }}&name={{ $json.data.first_name }}\"\n            }\n        ]\n    }\n}\n",
+        "options": {}
+      },
+      "id": "b8308e56-9668-41c7-a94c-11925ead30ad",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        300,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "path": "afab688c-b53c-4590-bfa9-ab7995a8cc4b-ingresso",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "09fb56cf-5df6-4863-add2-f64ee54c2697",
+      "name": "avatar",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        -460,
+        100
+      ],
+      "webhookId": "322d608c-15c0-4017-8e7d-01f4592f6de3"
     }
   ],
   "pinData": {
@@ -441,25 +905,48 @@
       {
         "json": {
           "headers": {
-            "host": "webhook.eprevensino.com.br",
+            "host": "webhook.engenheiromatheus.com",
             "user-agent": "ManyChat",
-            "content-length": "45",
-            "content-type": "application/json; charset=utf-8",
             "x-forwarded-for": "3.121.227.156",
-            "x-forwarded-host": "webhook.eprevensino.com.br",
+            "x-forwarded-host": "webhook.engenheiromatheus.com",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
-            "x-forwarded-server": "2cd880a8a4c4",
+            "x-forwarded-server": "7e5b8bef7460",
             "x-real-ip": "3.121.227.156",
             "accept-encoding": "gzip"
           },
           "params": {},
-          "query": {},
-          "body": {
-            "nome": "Marcos",
-            "ID": "809319657"
+          "query": {
+            "id": "809319657"
           },
-          "webhookUrl": "https://webhook.eprevensino.com.br/webhook/2c9de7b0-1c5a-4818-bdc5-d3763ad7bbfd",
+          "body": {},
+          "webhookUrl": "https://webhook.engenheiromatheus.com/webhook/2c9de7b0-1c5a-4818-bdc5-d3763ad7bbfd",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "avatar": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.engenheiromatheus.com",
+            "user-agent": "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)",
+            "accept": "*/*",
+            "x-forwarded-for": "31.13.103.4",
+            "x-forwarded-host": "webhook.engenheiromatheus.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "7e5b8bef7460",
+            "x-real-ip": "31.13.103.4",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {
+            "image": "https://app.manychat.com/ava/104169159278240/809319657/4d0c68533cb4c3937b42a865f29c1d64",
+            "name": "Marcos"
+          },
+          "body": {},
+          "webhookUrl": "https://webhook.engenheiromatheus.com/webhook/afab688c-b53c-4590-bfa9-ab7995a8cc4b-ingresso",
           "executionMode": "production"
         }
       }
@@ -470,7 +957,7 @@
   },
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2025-06-02T18:05:26.268Z",
-  "versionId": "e53bd161-48bf-46a8-b1d5-c7078dc84646"
+  "triggerCount": 3,
+  "updatedAt": "2025-06-02T20:13:25.353Z",
+  "versionId": "6297918d-ac5a-4383-87de-8d0486586cf9"
 }
