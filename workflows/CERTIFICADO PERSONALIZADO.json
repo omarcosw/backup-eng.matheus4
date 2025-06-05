@@ -1,0 +1,734 @@
+{
+  "active": true,
+  "connections": {
+    "gerar ingresso com dados": {
+      "main": [
+        [
+          {
+            "node": "retornar ingresso",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baixar ingresso": {
+      "main": [
+        [
+          {
+            "node": "gerar ingresso com dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca usuario1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "busca usuario1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "avatar": {
+      "main": [
+        [
+          {
+            "node": "baixar ingresso",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "gerar ingresso com dados1": {
+      "main": [
+        [
+          {
+            "node": "retornar ingresso1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "criar diametro do avatar1": {
+      "main": [
+        [
+          {
+            "node": "criar dimensao do avatar1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "criar dimensao do avatar1": {
+      "main": [
+        [
+          {
+            "node": "juntar para criar  avatar1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baixar avatar1": {
+      "main": [
+        [
+          {
+            "node": "definir tamanho avatar1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "definir tamanho avatar1": {
+      "main": [
+        [
+          {
+            "node": "juntar para criar  avatar1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "juntar para criar  avatar1": {
+      "main": [
+        [
+          {
+            "node": "criar o avatar com bordas arredondadas1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "criar o avatar com bordas arredondadas1": {
+      "main": [
+        [
+          {
+            "node": "baixar ingresso1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baixar ingresso1": {
+      "main": [
+        [
+          {
+            "node": "gerar ingresso com dados1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Define image size": {
+      "main": [
+        [
+          {
+            "node": "criar diametro do avatar1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "baixar avatar1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca usuario": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "busca usuario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "avatar1": {
+      "main": [
+        [
+          {
+            "node": "Define image size",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-05T13:20:18.330Z",
+  "id": "cfalwyAHU4JzklVS",
+  "meta": null,
+  "name": "CERTIFICADO PERSONALIZADO",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "multiStep",
+        "dataPropertyName": "certificado",
+        "operations": {
+          "operations": [
+            {
+              "operation": "text",
+              "text": "={{ $node[\"avatar\"].json[\"query\"][\"name\"] }}",
+              "fontSize": 65,
+              "fontColor": "#FFFFFF",
+              "positionX": "={{ 1000 - ($node[\"avatar\"].json[\"query\"][\"name\"].length * 36.6) / 2 }}",
+              "positionY": 865,
+              "font": "/usr/share/fonts/truetype/msttcorefonts/Verdana.ttf"
+            }
+          ]
+        },
+        "options": {
+          "format": "jpeg",
+          "quality": 30
+        }
+      },
+      "id": "fd666dc7-1ae9-4ab1-bea0-4c7408bda79d",
+      "name": "gerar ingresso com dados",
+      "type": "n8n-nodes-base.editImage",
+      "typeVersion": 1,
+      "position": [
+        0,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://lancamentos.eprevensino.com.br/wp-content/uploads/2025/06/PREV0625-CERTIFICADO-CURSO-GRATUITO.png",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "file",
+              "outputPropertyName": "certificado"
+            }
+          }
+        }
+      },
+      "id": "4816b696-fdd7-4ff3-bef1-2567a4318c50",
+      "name": "baixar ingresso",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -220,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "binary",
+        "responseDataSource": "set",
+        "inputFieldName": "certificado",
+        "options": {}
+      },
+      "id": "99fefca2-3a30-483b-9d6b-2ff06cb6b379",
+      "name": "retornar ingresso",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        240,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.manychat.com/fb/subscriber/getInfo?subscriber_id={{ $json[\"query\"][\"id\"] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer 104169159278240:61969b41c2e16ce21053b0a9b903395e"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "87fff2de-8bd6-4560-94be-83211450c380",
+      "name": "busca usuario1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -240,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "path": "certificado1212",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "5a59ebd2-edde-4c7f-8e6a-d93c814defe6",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -460,
+        320
+      ],
+      "webhookId": "e43f2650-f5a4-45bb-a0f2-4e6e95a2130b"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n    \"version\": \"v2\",\n    \"content\": {\n        \"type\": \"instagram\",\n        \"messages\": [\n            {\n                \"type\": \"text\",\n                \"url\": \"https://webhook.engenheiromatheus.com/webhook/certificado-2?name={{ $json.data.first_name }}\"\n            }\n        ]\n    }\n}",
+        "options": {}
+      },
+      "id": "e8853c7e-e2a2-4331-b8db-d6c9835491ca",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -20,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "path": "certificado-2",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "6bd18d75-4d66-44f2-85c8-08e302c8557a",
+      "name": "avatar",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        -460,
+        100
+      ],
+      "webhookId": "30cda9b1-d8b8-4e98-9218-37997cd0a712"
+    },
+    {
+      "parameters": {
+        "operation": "multiStep",
+        "dataPropertyName": "ingresso",
+        "operations": {
+          "operations": [
+            {
+              "operation": "composite",
+              "dataPropertyNameComposite": "overlay_avatar",
+              "positionX": -1000
+            },
+            {
+              "operation": "text",
+              "text": "={{ $node[\"avatar1\"].json[\"query\"][\"name\"] }}",
+              "fontSize": 65,
+              "fontColor": "#FFFFFF",
+              "positionX": "={{ 1000 - ($node[\"avatar\"].json[\"query\"][\"name\"].length * 36.6) / 2 }}",
+              "positionY": 865,
+              "font": "/usr/share/fonts/truetype/msttcorefonts/Verdana.ttf"
+            }
+          ]
+        },
+        "options": {
+          "format": "jpeg",
+          "quality": 30
+        }
+      },
+      "id": "c2900953-0eb0-4567-a050-31e3fe5c6399",
+      "name": "gerar ingresso com dados1",
+      "type": "n8n-nodes-base.editImage",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "dataPropertyName": "overlay_avatar",
+        "backgroundColor": "#ffffffff",
+        "width": "={{ $('Define image size').first().json.diameter }}",
+        "height": "={{ $node[\"Define image size\"].json[\"diameter\"] }}",
+        "options": {
+          "format": "png"
+        }
+      },
+      "id": "b8fb19c4-fdec-4570-ac14-5bcb94c4d460",
+      "name": "criar diametro do avatar1",
+      "type": "n8n-nodes-base.editImage",
+      "typeVersion": 1,
+      "position": [
+        40,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "draw",
+        "dataPropertyName": "overlay_avatar",
+        "color": "#1C9985",
+        "startPositionX": 0,
+        "startPositionY": 0,
+        "endPositionX": "={{ $('Define image size').first().json.diameter }}",
+        "endPositionY": "={{ $('Define image size').first().json.diameter }}",
+        "cornerRadius": "={{ $('Define image size').first().json.diameter / 2 }}",
+        "options": {
+          "format": "png"
+        }
+      },
+      "id": "25224ea4-7a19-48e7-81be-4c88e1fad09e",
+      "name": "criar dimensao do avatar1",
+      "type": "n8n-nodes-base.editImage",
+      "typeVersion": 1,
+      "position": [
+        260,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $node[\"avatar1\"].json[\"query\"][\"image\"] }}",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "file",
+              "outputPropertyName": "avatar_cru"
+            }
+          }
+        }
+      },
+      "id": "11c482d3-c9f5-48c3-9fbd-13f7607e6386",
+      "name": "baixar avatar1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        40,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "resize",
+        "dataPropertyName": "avatar_cru",
+        "width": "={{ $('Define image size').first().json.diameter }}",
+        "height": "={{ $('Define image size').first().json.diameter }}",
+        "resizeOption": "minimumArea",
+        "options": {
+          "format": "png"
+        }
+      },
+      "id": "5e794584-c9d2-4202-a9ca-31c0d3f4f035",
+      "name": "definir tamanho avatar1",
+      "type": "n8n-nodes-base.editImage",
+      "typeVersion": 1,
+      "position": [
+        260,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "d5d3d056-9599-4eac-8647-575a5caf2ce6",
+      "name": "juntar para criar  avatar1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        480,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "composite",
+        "dataPropertyName": "overlay_avatar",
+        "dataPropertyNameComposite": "avatar_cru",
+        "operator": "Atop",
+        "options": {}
+      },
+      "id": "36dac2af-e520-4533-b64d-90660840712b",
+      "name": "criar o avatar com bordas arredondadas1",
+      "type": "n8n-nodes-base.editImage",
+      "typeVersion": 1,
+      "position": [
+        700,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://lancamentos.eprevensino.com.br/wp-content/uploads/2025/06/PREV0625-CERTIFICADO-CURSO-GR.png",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "file",
+              "outputPropertyName": "ingresso"
+            }
+          }
+        }
+      },
+      "id": "d021166c-5ea0-4321-a12a-d423e64e0f99",
+      "name": "baixar ingresso1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        920,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "binary",
+        "responseDataSource": "set",
+        "inputFieldName": "ingresso",
+        "options": {}
+      },
+      "id": "a68139bb-28ba-4565-b64f-b7f9bdbefa2e",
+      "name": "retornar ingresso1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "diameter",
+              "type": "numberValue",
+              "numberValue": "180"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a48893db-f7b1-4571-83b3-f1b268a2594b",
+      "name": "Define image size",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        -180,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.manychat.com/fb/subscriber/getInfo?subscriber_id={{ $json[\"query\"][\"id\"] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer 104169159278240:61969b41c2e16ce21053b0a9b903395e"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "44b48be8-bf40-4ec0-be45-654128d7d8ca",
+      "name": "busca usuario",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        120,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "path": "2c9de7b0-1c5a-4818-bdc5-d3763ad7bbfd",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "4598bf2f-97f1-44ed-9222-0a1ffdc2eea7",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -100,
+        1300
+      ],
+      "webhookId": "71f81d87-5372-4e1b-8e84-20970aa587f6"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n    \"version\": \"v2\",\n    \"content\": {\n        \"type\": \"instagram\",\n        \"messages\": [\n            {\n                \"type\": \"image\",\n                \"url\": \"https://webhook.engenheiromatheus.com/webhook/afab688c-b53c-4590-bfa9-ab7995a8cc4b-ingresso?image={{ $json[\"data\"][\"profile_pic\"] }}&name={{ $json.data.first_name }}\"\n            }\n        ]\n    }\n}\n",
+        "options": {}
+      },
+      "id": "71f2959f-86b7-4f98-bca4-2ada6eb154bd",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        340,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "path": "afab688c-b53c-4590-bfa9-ab7995a8cc4b-ingresso",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "96f94c7d-39c1-4a95-a1f0-b75eb43d1184",
+      "name": "avatar1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        -420,
+        860
+      ],
+      "webhookId": "322d608c-15c0-4017-8e7d-01f4592f6de3"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.engenheiromatheus.com",
+            "user-agent": "ManyChat",
+            "x-forwarded-for": "3.121.227.156",
+            "x-forwarded-host": "webhook.engenheiromatheus.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "7e5b8bef7460",
+            "x-real-ip": "3.121.227.156",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {
+            "id": "809319657"
+          },
+          "body": {},
+          "webhookUrl": "https://webhook.engenheiromatheus.com/webhook/certificado",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "avatar": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.engenheiromatheus.com",
+            "user-agent": "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)",
+            "accept": "*/*",
+            "x-forwarded-for": "31.13.103.4",
+            "x-forwarded-host": "webhook.engenheiromatheus.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "7e5b8bef7460",
+            "x-real-ip": "31.13.103.4",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {
+            "name": "Marcos"
+          },
+          "body": {},
+          "webhookUrl": "https://webhook.engenheiromatheus.com/webhook/afab688c-b53c-4590-bfa9-ab7995a8cc4b-ingresso",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "avatar1": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.engenheiromatheus.com",
+            "user-agent": "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)",
+            "accept": "*/*",
+            "x-forwarded-for": "31.13.103.4",
+            "x-forwarded-host": "webhook.engenheiromatheus.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "7e5b8bef7460",
+            "x-real-ip": "31.13.103.4",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {
+            "image": "https://app.manychat.com/ava/104169159278240/809319657/4d0c68533cb4c3937b42a865f29c1d64",
+            "name": "Marcos"
+          },
+          "body": {},
+          "webhookUrl": "https://webhook.engenheiromatheus.com/webhook/afab688c-b53c-4590-bfa9-ab7995a8cc4b-ingresso",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "Webhook1": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.engenheiromatheus.com",
+            "user-agent": "ManyChat",
+            "x-forwarded-for": "3.121.227.156",
+            "x-forwarded-host": "webhook.engenheiromatheus.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "7e5b8bef7460",
+            "x-real-ip": "3.121.227.156",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {
+            "id": "809319657"
+          },
+          "body": {},
+          "webhookUrl": "https://webhook.engenheiromatheus.com/webhook/2c9de7b0-1c5a-4818-bdc5-d3763ad7bbfd",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 4,
+  "updatedAt": "2025-06-05T15:00:11.051Z",
+  "versionId": "344b7340-d731-487f-b93d-c83c867af61f"
+}
