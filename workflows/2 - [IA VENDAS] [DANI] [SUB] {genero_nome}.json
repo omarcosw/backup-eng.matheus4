@@ -1,0 +1,60 @@
+{
+  "active": false,
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Replace me with your logic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-12T04:30:43.126Z",
+  "id": "uBdmohxWVtX5O22e",
+  "isArchived": false,
+  "meta": null,
+  "name": "2 - [IA VENDAS] [DANI] [SUB] {genero_nome}",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        260,
+        340
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "b5942df6-0160-4ef7-965d-57583acdc8aa",
+      "name": "Replace me with your logic",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        520,
+        340
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-06-12T04:31:09.302Z",
+      "updatedAt": "2025-06-12T04:31:09.302Z",
+      "id": "LNS3WObTA5Xk35NO",
+      "name": "[IA VENDAS] [DANI]"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-12T04:31:41.538Z",
+  "versionId": "ef906da4-742c-4966-90da-546c241c5f44"
+}
