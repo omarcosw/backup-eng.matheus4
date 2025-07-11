@@ -1,0 +1,844 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "dados_da_compra1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "dados_da_compra1": {
+      "main": [
+        [
+          {
+            "node": "Vendedor IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GeraUUID": {
+      "main": [
+        [
+          {
+            "node": "CreateUser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CreateUser": {
+      "main": [
+        [
+          {
+            "node": "get.conversa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "update_mensagem/evento",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GeraUUID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get.conversa": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Vendedor IA",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Vendedor IA",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parser  Chain1": {
+      "main": [
+        [
+          {
+            "node": "Segmentos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OutputParser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Parser  Chain1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Envia mensagem1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "1,2s": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Segmentos": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Parser  Chain1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vendedor IA": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "get.conversa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update_mensagem/evento": {
+      "main": [
+        [
+          {
+            "node": "Parser  Chain1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia mensagem1": {
+      "main": [
+        [
+          {
+            "node": "1,2s",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-08T18:32:01.104Z",
+  "id": "DlJuLTVQCI2tYrav",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[Recuperação de Vendas] [Todos Produtos]",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "rec-vendas-products",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -560,
+        0
+      ],
+      "id": "9ba9984d-c996-44a4-8b2e-bf139e757a04",
+      "name": "Webhook",
+      "webhookId": "60a82d47-37b6-4464-a0c2-6b8ef4f91319"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "nome",
+              "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"transformed\"][\"firstName\"] }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"transformed\"][\"email\"] }}"
+            },
+            {
+              "name": "nome_produto",
+              "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"body\"][\"data\"][\"product\"][\"name\"] }}"
+            },
+            {
+              "name": "transaction_id",
+              "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"body\"][\"id\"] }}"
+            },
+            {
+              "name": "product_id",
+              "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"body\"][\"data\"][\"product\"][\"id\"] }}"
+            },
+            {
+              "name": "data",
+              "value": "={{ $now.format('yyyy-MM-dd HH:mm') }}"
+            },
+            {
+              "name": "sobrenome",
+              "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"transformed\"][\"lastName\"] }}"
+            },
+            {
+              "name": "telefone",
+              "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"transformed\"][\"phone\"] }}"
+            },
+            {
+              "name": "oferta",
+              "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"body\"][\"data\"][\"offer\"][\"code\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0114bc8e-af5a-46ee-93f1-937abccb4f29",
+      "name": "dados_da_compra1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -120,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Este código processa os dados do webhook recebido\nreturn items.map(item => {\n  const buyer = item.json.body.data.buyer;\n\n  // Garantir que o telefone começa com \"55\"\n  let phone = buyer.phone || '';\n  if (!phone.startsWith('55')) {\n    phone = '55' + phone;\n  }\n\n  // Email em minúsculo\n  const email = (buyer.email || '').toLowerCase();\n\n  // Separar nome e sobrenome\n  const [firstName, ...rest] = (buyer.name || '').trim().split(' ');\n  const lastName = rest.join(' ');\n\n  // Retornar os dados transformados junto com o restante da estrutura original\n  return {\n    json: {\n      ...item.json,\n      transformed: {\n        phone,\n        email,\n        firstName,\n        lastName\n      }\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -340,
+        0
+      ],
+      "id": "648a9971-21de-4713-a778-b3478ea04cdf",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "action": "generate"
+      },
+      "id": "92a63349-d8b4-4afb-b821-24f8ec90ba5a",
+      "name": "GeraUUID",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        100
+      ],
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "tableId": "disparo_mensagem_ia_vendas",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"nome\"] }}"
+            },
+            {
+              "fieldId": "telefone",
+              "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"telefone\"] }}"
+            },
+            {
+              "fieldId": "sobrenome",
+              "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"sobrenome\"] }}"
+            },
+            {
+              "fieldId": "created_at",
+              "fieldValue": "={{ $now }}"
+            },
+            {
+              "fieldId": "email",
+              "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"email\"] }}"
+            },
+            {
+              "fieldId": "evento",
+              "fieldValue": "Carrinho Abandonado"
+            },
+            {
+              "fieldId": "produto",
+              "fieldValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"product\"][\"name\"] }}"
+            },
+            {
+              "fieldId": "id_produto",
+              "fieldValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"product\"][\"id\"] }}"
+            },
+            {
+              "fieldId": "mensagem",
+              "fieldValue": "={{ $item(\"0\").$node[\"Vendedor IA\"].json[\"output\"][\"text\"] }}"
+            },
+            {
+              "fieldId": "oferta",
+              "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"oferta\"] }}"
+            }
+          ]
+        }
+      },
+      "id": "a6b39e07-81af-4286-b5cd-ca4ec06cd01c",
+      "name": "CreateUser",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        100
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4e77cc7c-48f4-4cbe-94e7-6d211db67002",
+              "leftValue": "={{ $('get.conversa').item.json.telefone }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "2dc7cb95-bd67-4355-9a20-88268f761014",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        900,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "disparo_mensagem_ia_vendas",
+        "limit": 1,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "condition": "eq",
+              "keyValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"telefone\"] }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        700,
+        0
+      ],
+      "id": "ac6b34e3-17af-4d47-964d-9f2f6f62b079",
+      "name": "get.conversa",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=<CONTATO>{{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"telefone\"] }}</CONTATO>\n<LEAD>{{ $json.nome }}</LEAD>\n<PRODUTO>{{ $json.nome_produto }}</PRODUTO>\n\n<EXEMPLO>Olá, tudo bem? Aqui é a Dani da Equipe Sorveteiro Raiz, estou entrando em contato com você porque você estava quase comprando o {{ $json.nome_produto }}, mas por algum motivo não concluiu a compra. Estou aqui para te ajudar. Por que não fechou a compra? O que houve?</EXEMPLO>",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=Voce é a Dani. Uma vendedora muito boa, de persuasão e conversão. Sua função é criar uma mensagem de whatspp personalizada para o lead <LEAD></LEAD>. Você trabalha na Equipe do Edu. A empresa do Sorveteiro Raiz. Nunca diga \"Da Sorveteiro Raiz\".\n\nA mensagem deve ser neste modelo <EXEMPLO></EXEMPLO> de mensagem, mas não identica. Modifique o nome do cliente <LEAD></LEAD>. Lembre-se de utilizar o nome do produto <PRODUTO></PRODUTO>.\n\nSempre finalize a mensagem com uma pergunta que faça a pessoa contar o porque ela não finalizou a compra, e após a pergunta, não diga mais nada. Seja persuasiva. Seja educada.\n"
+        }
+      },
+      "id": "cd141801-63c8-4977-9bad-123f90ea74b5",
+      "name": "Vendedor IA",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        120,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        120,
+        240
+      ],
+      "id": "736c2921-e8ad-408a-a48d-9e601408bc6d",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "PwsgEoPwyqAPcsYQ",
+          "name": "AI Vendas | Dani - n8n\t"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"name\": \"nome do lead aqui\",\n\t\"numero\": \"numero de telefone aqui\",\n  \"text\": \"mensagem enviada aqui\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        340,
+        220
+      ],
+      "id": "dac93b0d-2693-4db0-8ad0-61cb28056afd",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Whatsapp message to be splitted and formated: {{ $item(\"0\").$node[\"Edit Fields\"].json[\"output\"][\"text\"] }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Por favor, gere a saída no seguinte formato JSON:\n{\n  \"messages\": [\n    \"splitedMessage\",\n    \"splitedMessage\",\n    \"splitedMessage\"\n  ]\n}\n\nAs mensagens devem ser divididas de forma natural, afinal estamos conversando com um humano, não é mesmo?\n\n### Jamais separe uma mensagem vazia.\n\n### Certifique-se de que a resposta siga exatamente essa estrutura abaixo, deixando somente entre '*' para negrito e nunca fugindo das demais regras de markdown do WhatsApp:\n\t\t\t- *negrito* (substitua '**' por '*')\n\t\t\t- _itálico_ (extremamente raro)\n            - `link` (usar sempre em todos os links)\n\nTudo o que for link, deve ser exibido limpo e direto, **sem texto descritivo ou âncoras**, usando somente o domínio puro como: `https://link.com.br/exemplo`\n\n❗ Nunca use markdown no estilo `[texto](link)` ou `Texto (link)`, apenas o link puro.\n\nSe detectar um link com o padrão `www.pay.hotmart.com`, corrija automaticamente para `pay.hotmart.com`, pois o domínio com www não funciona."
+            }
+          ]
+        }
+      },
+      "id": "5dd0fd79-3839-4ca2-8bec-992d79acb905",
+      "name": "Parser  Chain1",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        1520,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"messages\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      }\n    }\n  },\n  \"required\": [\"messages\"]\n}"
+      },
+      "id": "33fdcd3b-b1ae-43d5-b432-52b45690f9ab",
+      "name": "OutputParser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        1700,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "9873a1d6-d1d9-4bc7-9c93-9af293a2344c",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2080,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1.2
+      },
+      "id": "78b1a47c-a90b-4326-8311-7ab59146e421",
+      "name": "1,2s",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2460,
+        20
+      ],
+      "webhookId": "e5987401-8b77-4a84-8693-25fd8898cd94"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output.messages",
+        "options": {
+          "destinationFieldName": "output"
+        }
+      },
+      "id": "e506ed9e-dd5a-4526-92ca-f04966026879",
+      "name": "Segmentos",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1860,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "43ad65d1-a6bd-4581-a6c6-b632f73be2c8",
+      "name": "OpenAI2",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1500,
+        180
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "QzQb6Q9G3hGozb9v",
+          "name": "OpenAi - Dani 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "tableId": "disparo_mensagem_ia_vendas",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "condition": "eq",
+              "keyValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"telefone\"] }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2460,
+        -200
+      ],
+      "id": "9e85c295-b099-4d98-9465-d3617541b82d",
+      "name": "Supabase",
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7c16fd98-9a00-4228-8c31-d0a7d347c1d6",
+              "name": "output.text",
+              "value": "={{ $json.output.text.split('\\n\\n') }}",
+              "type": "string"
+            },
+            {
+              "id": "025e6878-612d-4c76-94d7-19f6a9e74418",
+              "name": "output.numero",
+              "value": "={{ $json.output.numero }}",
+              "type": "string"
+            },
+            {
+              "id": "4786db0a-53f1-4e4e-87ac-c9cedc8e62ab",
+              "name": "output.nam",
+              "value": "={{ $json.output.name }}",
+              "type": "string"
+            },
+            {
+              "id": "a9925528-1b2c-4c6e-85fa-499ee4b90881",
+              "name": "linkPreview",
+              "value": false,
+              "type": "boolean"
+            },
+            {
+              "id": "2b2b6094-b11d-482f-9022-27ce0f643b7c",
+              "name": "delay",
+              "value": "1200",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        480,
+        0
+      ],
+      "id": "935dfb87-92bf-4a0a-85d8-db81067f4c20",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "disparo_mensagem_ia_vendas",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "condition": "eq",
+              "keyValue": "={{ $item(\"0\").$node[\"Edit Fields\"].json[\"output\"][\"numero\"] }}"
+            },
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $item(\"0\").$node[\"If1\"].json[\"id\"] }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "mensagem",
+              "fieldValue": "={{ $item(\"0\").$node[\"Vendedor IA\"].json[\"output\"][\"text\"] }}"
+            },
+            {
+              "fieldId": "produto",
+              "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"nome_produto\"] }}"
+            },
+            {
+              "fieldId": "id_produto",
+              "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"product_id\"] }}"
+            },
+            {
+              "fieldId": "evento",
+              "fieldValue": "Carrinho Abandonado"
+            },
+            {
+              "fieldId": "oferta",
+              "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"oferta\"] }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        -80
+      ],
+      "id": "d910a32e-1752-4629-b7e8-950343f13ee1",
+      "name": "update_mensagem/evento",
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://evolution.sorveteiroraiz.com/message/sendText/IA - Vendas 01",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "9B377004D560-405B-BCFC-62366342558C"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $item(\"0\").$node[\"Edit Fields\"].json[\"output\"][\"numero\"] }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $item(\"0\").$node[\"Loop Over Items1\"].json[\"output\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2280,
+        20
+      ],
+      "id": "473432b5-9369-4546-9f45-bd9f98d7c5c9",
+      "name": "Envia mensagem1"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8nwebhook.teste.com.br",
+            "user-agent": "Jodd HTTP",
+            "content-length": "402",
+            "content-type": "application/json",
+            "x-forwarded-for": "52.204.255.169",
+            "x-forwarded-host": "n8nwebhook.teste.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "827a30cbeeef",
+            "x-hotmart-hottok": "jDJBsZLbcPf9iwjkTkYZMV8Z78xuMb4ae21fce-0e50-46bd-82f9-b15a2d29655d",
+            "x-real-ip": "52.204.255.169",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "data": {
+              "offer": {
+                "code": "rtuzxmrh"
+              },
+              "product": {
+                "name": "Produto Teste",
+                "id": 2142093
+              },
+              "checkout_country": {
+                "iso": "BR",
+                "name": "Brasil"
+              },
+              "affiliate": true,
+              "buyer": {
+                "phone": "5527998210071",
+                "name": "Marcos Santana",
+                "email": "marcos@gmail.com.br"
+              }
+            },
+            "id": "be5efdac-2d3b-47a7-b02c-1de80d0f8c68",
+            "creation_date": 1707594299263,
+            "event": "PURCHASE_OUT_OF_SHOPPING_CART",
+            "version": "2.0.0"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-09T02:17:23.708Z",
+  "versionId": "c839ab32-83ea-42bf-bce5-b4f46e9baa60"
+}
