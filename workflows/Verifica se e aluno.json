@@ -1,0 +1,396 @@
+{
+  "active": true,
+  "connections": {
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "getClient": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NOP1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "NOP1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "getClient",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-07T13:18:42.958Z",
+  "id": "mr6wNxEzvTYw0VJE",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Verifica se e aluno",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "getcompra",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1680,
+        60
+      ],
+      "id": "6ce3f11f-b755-421b-9273-176ca1877d59",
+      "name": "Webhook",
+      "webhookId": "bfcba2c9-e0f0-475b-94dc-fcefd9fe62c0"
+    },
+    {
+      "parameters": {},
+      "id": "5f37739d-1cb1-4e24-94f2-9666de8858a8",
+      "name": "NOP1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -440,
+        -160
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9113a78a-fafc-4b02-a76f-02904e4cce51",
+              "leftValue": "={{ $('getClient').item.json.email }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "4f16c51f-ec18-4df3-b112-7252050533b4",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1080,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "conversoes",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "email",
+              "keyValue": "={{ $json.body.email }}"
+            }
+          ]
+        }
+      },
+      "id": "5eacbe0d-084d-479a-a1fe-28da0e110d82",
+      "name": "getClient",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1260,
+        60
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.3,
+      "position": [
+        260,
+        60
+      ],
+      "id": "64a36e80-0f0f-43ad-9524-b8d3fdadec0c",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2d4bd146-1854-4b3e-80b7-93c3e9fe9121",
+              "name": "status",
+              "value": "Email não encontrado, peça email correto utilizado no momento da compra. (NÃO CONTINUE O ATENDIMENTO SEM UM EMAIL VALIDO)",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -680,
+        220
+      ],
+      "id": "40a39894-207f-46f4-a125-d68241224cc6",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2d4bd146-1854-4b3e-80b7-93c3e9fe9121",
+              "name": "status",
+              "value": "Liberado, verificação correta",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -240,
+        -160
+      ],
+      "id": "3a8cfe26-29f2-45c3-9038-d52d24d164af",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "16c3be8d-460a-42fa-b32a-2b75fcff9142",
+              "leftValue": "={{ $('Code').item.json.body.numero }}",
+              "rightValue": "={{ $('getClient').item.json.telefone }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -960,
+        -120
+      ],
+      "id": "ea9147f6-682f-457b-a1e7-a76cb926e2a8",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2d4bd146-1854-4b3e-80b7-93c3e9fe9121",
+              "name": "status",
+              "value": "Email confirmado com Sucesso. Mas este telefone não é o mesmo da compra realizada (NÃO CONTINUE O ATENDIMENTO SEM UM TELEFONE VALIDO)",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -680,
+        -60
+      ],
+      "id": "a69493ba-1d58-4df5-9fc3-cd5ac96d1c1b",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const numeroOriginal = item.json.body.numero;\n  const numeroLimpo = numeroOriginal.replace('@s.whatsapp.net', '');\n\n  item.json.body.numero = numeroLimpo;\n  return item;\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1500,
+        60
+      ],
+      "id": "31823232-b765-4097-b6ea-1151953e5043",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "tableId": "conversoes",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "email",
+              "fieldValue": "higor@authlike.com"
+            },
+            {
+              "fieldId": "telefone",
+              "fieldValue": "5511984151865"
+            }
+          ]
+        }
+      },
+      "id": "2d97722c-bd52-483c-b64b-2ac75ce259be",
+      "name": "getClient1",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1300,
+        -340
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      },
+      "disabled": true
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-07-07T13:19:13.772Z",
+      "updatedAt": "2025-07-07T13:19:13.772Z",
+      "id": "APWtlgA2UKcKzIN6",
+      "name": "Suporte"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-08T14:00:24.523Z",
+  "versionId": "682a3105-e81e-44cd-8347-bd25bf3de4b4"
+}
