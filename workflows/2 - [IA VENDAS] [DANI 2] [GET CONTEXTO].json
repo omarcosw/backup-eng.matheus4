@@ -1,0 +1,36 @@
+{
+  "active": true,
+  "connections": {},
+  "createdAt": "2025-07-10T04:38:59.376Z",
+  "id": "JUVoPW6KzHmpZX69",
+  "isArchived": false,
+  "meta": null,
+  "name": "2 - [IA VENDAS] [DANI 2] [GET CONTEXTO]",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "getxontexto-aivendas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "246ff837-5fa9-4c67-a5e3-bf8d28d7e296",
+      "name": "Webhook",
+      "webhookId": "e6333086-8666-429a-b6a4-5f9623b119ce"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-10T04:40:41.053Z",
+  "versionId": "a2dc4aa4-240d-43a1-bbe8-32118e31700c"
+}
