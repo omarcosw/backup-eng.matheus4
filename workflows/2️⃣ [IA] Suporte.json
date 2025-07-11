@@ -1,0 +1,294 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Suporte",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Chat Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "Suporte",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Suporte",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Suporte": {
+      "main": [
+        [
+          {
+            "node": "respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Answer questions with a vector store": {
+      "ai_tool": [
+        [
+          {
+            "node": "Suporte",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Answer questions with a vector store",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase Vector Store1": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Answer questions with a vector store",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Supabase Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-07T13:00:18.332Z",
+  "id": "mmeCBxR507Pd3eSO",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "2️⃣ [IA] Suporte",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "prioridade",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -220,
+        320
+      ],
+      "id": "e89ad5dc-60c5-4687-978a-3f4c03bcaf5f",
+      "name": "Webhook",
+      "webhookId": "6367b15d-fd09-4c4b-85c9-fd2fa6831f98"
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "id": "ed0783bf-8c42-4e37-b64d-e27b1b549fbb",
+      "name": "respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        300,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=1",
+        "contextWindowLength": 20
+      },
+      "id": "31925c94-2457-41bf-a4ba-9ab96f101144",
+      "name": "Redis Chat Memory1",
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.4,
+      "position": [
+        100,
+        100
+      ],
+      "credentials": {
+        "redis": {
+          "id": "WKYrbj8mpqYSkF5s",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -40,
+        100
+      ],
+      "id": "7f93dc7d-2051-428b-8cc8-0cedf67af6a7",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "QzQb6Q9G3hGozb9v",
+          "name": "OpenAi - Dani 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.body.resposta }}",
+        "options": {
+          "systemMessage": "Sempre Acione a função tool para obter dados no banco de dados, para uma resposta eficaz e dentro do contexto"
+        }
+      },
+      "id": "61e1ddbe-860b-47ca-9760-465b11b478f8",
+      "name": "Suporte",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        -40,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "description": "Consulte o banco de dados para obter a resposta correta que lhe foi perguntado",
+        "topK": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1.1,
+      "position": [
+        200,
+        500
+      ],
+      "id": "c708e615-6956-423b-8690-93dda0962320",
+      "name": "Answer questions with a vector store"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        460,
+        640
+      ],
+      "id": "23617c94-dd0b-432f-9fe8-369c3fb2e362",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "QzQb6Q9G3hGozb9v",
+          "name": "OpenAi - Dani 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "tableName": {
+          "__rl": true,
+          "value": "profissao_sorveteiro",
+          "mode": "list",
+          "cachedResultName": "profissao_sorveteiro"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.1,
+      "position": [
+        120,
+        720
+      ],
+      "id": "5a88afd9-1c19-49d7-bf22-10ec02784d7a",
+      "name": "Supabase Vector Store1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-large",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        60,
+        900
+      ],
+      "id": "9c16ddd7-e26c-4a1f-a5c0-0af63e6994de",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "QzQb6Q9G3hGozb9v",
+          "name": "OpenAi - Dani 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-07-03T16:02:09.110Z",
+      "updatedAt": "2025-07-03T16:02:09.110Z",
+      "id": "K5MFncsCBrk1389O",
+      "name": "IA"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-08T13:57:45.743Z",
+  "versionId": "01e296f6-f798-447b-9710-03a5da20b267"
+}
