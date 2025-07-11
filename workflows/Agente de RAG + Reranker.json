@@ -1,0 +1,336 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Agente RAG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agente RAG",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Agente RAG",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Download file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download file": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-11T05:09:44.358Z",
+  "id": "oJPb7BEDZz16etjR",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Agente de RAG + Reranker",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -120,
+        440
+      ],
+      "id": "6fe98728-7b28-4a5c-b122-902e703db6c1",
+      "name": "When chat message received",
+      "webhookId": "de210796-2512-4c20-97eb-87b7f05298cb"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        100,
+        440
+      ],
+      "id": "6979b275-1da1-4479-914e-071f03a9bda7",
+      "name": "Agente RAG"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -20,
+        660
+      ],
+      "id": "fd5bf3a7-c90e-4d80-8f8b-b0b98097af21",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "QzQb6Q9G3hGozb9v",
+          "name": "OpenAi - Dani 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        300,
+        800
+      ],
+      "id": "7ff95fcd-97dd-43b2-a137-f4c18fe968a7",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "QzQb6Q9G3hGozb9v",
+          "name": "OpenAi - Dani 2"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        140,
+        660
+      ],
+      "id": "955ebea8-39c2-4d12-87ce-87f11a4be187",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        1080
+      ],
+      "id": "cf505f65-dfc5-406b-a8dd-4681b7f11e1f",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "=184902ebmXcV27wOQnO2DBcyl6jMm9Uvh",
+          "mode": "url"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        60,
+        1080
+      ],
+      "id": "0dbe3070-ba46-409e-a588-6c4b505798c8",
+      "name": "Download file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "Fj0pGWTsgTW5yLNC",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        440,
+        1280
+      ],
+      "id": "c8bbc46b-7b86-4d64-b53e-7e35a28ee0dc",
+      "name": "Embeddings OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "QzQb6Q9G3hGozb9v",
+          "name": "OpenAi - Dani 2"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        580,
+        1280
+      ],
+      "id": "3b34730c-811c-4923-b798-873ce8c62e3d",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.3,
+      "position": [
+        300,
+        660
+      ],
+      "id": "5ecbcf25-2b77-4f75-bf79-ad9cb055c195",
+      "name": "searchCafeina",
+      "credentials": {}
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.3,
+      "position": [
+        440,
+        1080
+      ],
+      "id": "f10505d4-49db-400d-8f31-fbea2eb1cfdf",
+      "name": "Supabase Vector Store",
+      "credentials": {}
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        240,
+        1080
+      ],
+      "id": "c62a7e09-a116-4eac-a9ea-510e9a079683",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
+      "typeVersion": 1,
+      "position": [
+        460,
+        800
+      ],
+      "id": "fbb231cd-7524-444a-a1eb-46efc6d90ca2",
+      "name": "Reranker Cohere",
+      "credentials": {}
+    },
+    {
+      "parameters": {
+        "content": "## Meu instagram: \n### https://www.instagram.com/oandersonadelino/\n\n## Quer montar um Agente IA SDR do absoluto zero? \n### https://andersonadelino.com.br/operacaostartia?src=temp",
+        "height": 220,
+        "width": 600,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "f7728f9d-50ba-44f0-825b-ebfebaf94ab0",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## AGENTE RAG",
+        "height": 660,
+        "width": 1080,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -260,
+        320
+      ],
+      "typeVersion": 1,
+      "id": "446f15fa-5ec2-464f-98bf-420359076c13",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## VETORIZADOR",
+        "height": 420,
+        "width": 1080,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -260,
+        1020
+      ],
+      "typeVersion": 1,
+      "id": "1ae908f0-228b-446b-b106-ae1b8a08ea26",
+      "name": "Sticky Note1"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-07-11T05:08:17.035Z",
+      "updatedAt": "2025-07-11T05:08:17.035Z",
+      "id": "MjlWgQ1bNOy1eHbS",
+      "name": "Anderson Adelino"
+    },
+    {
+      "createdAt": "2025-07-11T05:08:17.050Z",
+      "updatedAt": "2025-07-11T05:08:17.050Z",
+      "id": "at11ZIwIDccBfgnS",
+      "name": "Youtube"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-11T05:17:13.795Z",
+  "versionId": "71f99e34-a1dd-43d4-9a0e-250d539aacb2"
+}
