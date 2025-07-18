@@ -34,26 +34,9 @@
         ]
       ]
     },
-    "Listar Campos Personalizados de Contatos da Conta": {
-      "main": [
-        [
-          {
-            "node": "Listar Tags da Conta",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Set": {
       "main": [
-        [
-          {
-            "node": "Listar Campos Personalizados de Contatos da Conta",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "pesquisa_user": {
@@ -1279,36 +1262,6 @@
     },
     {
       "parameters": {
-        "url": "=https://{{ $node[\"Set\"].json[\"url_api_activecampaign\"] }}.api-us1.com/api/3/tags?limit=1000&search={{ $node[\"Set\"].json[\"tag_procurada\"] }}",
-        "options": {},
-        "headerParametersUi": {
-          "parameter": [
-            {
-              "name": "Api-Token",
-              "value": "={{ $node[\"Set\"].json[\"Api-Token\"] }}"
-            },
-            {
-              "name": "accept",
-              "value": "application/json"
-            },
-            {
-              "name": "content-type",
-              "value": "application/json"
-            }
-          ]
-        }
-      },
-      "name": "Listar Tags da Conta",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 2,
-      "position": [
-        340,
-        460
-      ],
-      "id": "bef2258a-8996-4906-9f6a-1e44740e548f"
-    },
-    {
-      "parameters": {
         "content": "## Para consulta\n \nUtilize os Nodes Abaixo para consultar os IDs dos Campos e Tags no ActiveCampaign",
         "height": 407.6377565498652,
         "width": 747.0856205721786
@@ -1321,36 +1274,6 @@
         -160,
         300
       ]
-    },
-    {
-      "parameters": {
-        "url": "=https://{{ $json[\"url_api_activecampaign\"] }}.api-us1.com/api/3/fields?limit=1000",
-        "options": {},
-        "headerParametersUi": {
-          "parameter": [
-            {
-              "name": "Api-Token",
-              "value": "={{ $node[\"Set\"].json[\"Api-Token\"] }}"
-            },
-            {
-              "name": "content-type",
-              "value": "application/json"
-            },
-            {
-              "name": "accept",
-              "value": "application/json"
-            }
-          ]
-        }
-      },
-      "name": "Listar Campos Personalizados de Contatos da Conta",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 2,
-      "position": [
-        140,
-        460
-      ],
-      "id": "5d838e95-425f-4661-b91d-ab9a15e0876f"
     },
     {
       "parameters": {
@@ -4366,6 +4289,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2025-06-27T20:55:36.650Z",
-  "versionId": "c8b153bd-e0f2-405d-a74a-487d8be89342"
+  "updatedAt": "2025-07-18T15:57:58.058Z",
+  "versionId": "5c6e8bb7-0fb6-41e7-b537-5d53cb11f513"
 }
