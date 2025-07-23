@@ -1,0 +1,276 @@
+{
+  "active": false,
+  "connections": {
+    "getClient": {
+      "main": [
+        [
+          {
+            "node": "verifica_email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "getClient",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NOP1": {
+      "main": [
+        [
+          {
+            "node": "Mensagem de Sucesso",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verifica_email": {
+      "main": [
+        [
+          {
+            "node": "NOP1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "NOP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mensagem de erro 1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mensagem de Sucesso": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NOP": {
+      "main": [
+        [
+          {
+            "node": "Mensagem de erro 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-23T20:43:47.326Z",
+  "id": "DnmlpxiSx04lQGyj",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Verificação email",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "getcompra",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1120,
+        40
+      ],
+      "id": "42fcd9ca-ee37-4f34-991b-207a334d7efa",
+      "name": "Webhook",
+      "webhookId": "bfcba2c9-e0f0-475b-94dc-fcefd9fe62c0"
+    },
+    {
+      "parameters": {},
+      "id": "9e0b8aec-0364-46ab-969a-df3e2acc32fc",
+      "name": "NOP1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -440,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "conversoes",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "email",
+              "keyValue": "={{ $json.body.email }}"
+            }
+          ]
+        }
+      },
+      "id": "05feb9b1-9cc0-44da-90ab-1d61acd41b2e",
+      "name": "getClient",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -920,
+        40
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9113a78a-fafc-4b02-a76f-02904e4cce51",
+              "leftValue": "={{ $('getClient').item.json.email }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "7eb9977b-09f5-48fa-839b-b69f68233b60",
+      "name": "verifica_email",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -720,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2d4bd146-1854-4b3e-80b7-93c3e9fe9121",
+              "name": "status",
+              "value": "Email não encontrado, peça email correto utilizado no momento da compra. (NÃO CONTINUE O ATENDIMENTO SEM UM EMAIL VALIDO)",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -200,
+        200
+      ],
+      "id": "82560a93-e894-4d92-9b05-5627ad925ad5",
+      "name": "Mensagem de erro 1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2d4bd146-1854-4b3e-80b7-93c3e9fe9121",
+              "name": "status",
+              "value": "=Verificação feita com sucesso! No entanto, seu número ainda não está autorizado. Para corrigir essa informação, entre em contato com nosso Suporte no (55) 98415-1866.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -200,
+        -120
+      ],
+      "id": "305c01a9-ad2b-43e9-b0f6-97bbeb87ca62",
+      "name": "Mensagem de Sucesso"
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        100,
+        0
+      ],
+      "id": "2e678d2c-a211-403c-b39a-9633c97438e6",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {},
+      "id": "5088a57a-24d4-4425-b4ef-b220c2184742",
+      "name": "NOP",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -440,
+        200
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-07-07T13:19:13.772Z",
+      "updatedAt": "2025-07-07T13:19:13.772Z",
+      "id": "APWtlgA2UKcKzIN6",
+      "name": "Suporte"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-23T20:45:04.547Z",
+  "versionId": "319f00eb-a449-4c18-8667-1aaeaebd5921"
+}
