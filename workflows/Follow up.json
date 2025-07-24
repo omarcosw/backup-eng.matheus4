@@ -1,0 +1,1013 @@
+{
+  "active": true,
+  "connections": {
+    "60 min": {
+      "main": [
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "10 min": {
+      "main": [
+        [
+          {
+            "node": "Redis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "24 h": {
+      "main": [
+        [
+          {
+            "node": "Redis2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis": {
+      "main": [
+        [
+          {
+            "node": "follow_up 10 min",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis1": {
+      "main": [
+        [
+          {
+            "node": "follow_up 60 min",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis2": {
+      "main": [
+        [
+          {
+            "node": "follow_up 24h",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "getfollowup": {
+      "main": [
+        [
+          {
+            "node": "getcliente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aciona a cada 10 min": {
+      "main": [
+        [
+          {
+            "node": "getfollowup",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "getcliente": {
+      "main": [
+        [
+          {
+            "node": "10 min",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "60 min",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "24 h",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "follow_up 10 min": {
+      "main": [
+        [
+          {
+            "node": "Primeira mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "follow_up 60 min": {
+      "main": [
+        [
+          {
+            "node": "Segunda mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "follow_up 24h": {
+      "main": [
+        [
+          {
+            "node": "Terceira mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Primeira mensagem": {
+      "main": [
+        [
+          {
+            "node": "Atualiza etapa1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Segunda mensagem": {
+      "main": [
+        [
+          {
+            "node": "Atualiza etapa2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Terceira mensagem": {
+      "main": [
+        [
+          {
+            "node": "Atualiza etapa3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza etapa1": {
+      "main": [
+        [
+          {
+            "node": "Memoria chat 10 min",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza etapa2": {
+      "main": [
+        [
+          {
+            "node": "Memoria chat 60 min",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza etapa3": {
+      "main": [
+        [
+          {
+            "node": "Memoria chat 24h",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memoria 10 min": {
+      "ai_memory": [
+        [
+          {
+            "node": "Memoria chat 10 min",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memoria 60 min": {
+      "ai_memory": [
+        [
+          {
+            "node": "Memoria chat 60 min",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memoria 24h": {
+      "ai_memory": [
+        [
+          {
+            "node": "Memoria chat 24h",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-11T05:53:50.547Z",
+  "id": "mJqeMfEiGWMKlAXB",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Follow up",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ae4aac33-588f-4ba7-bb04-94bb52efb6d7",
+              "leftValue": "={{ $now }}",
+              "rightValue": "={{ $('getfollowup').item.json.ultima_mensagem.toDateTime().plus(60, 'minutes') }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "after"
+              }
+            },
+            {
+              "id": "c45bc5e4-aee7-4ecb-839d-b2c69df2d6f1",
+              "leftValue": "={{ $now }}",
+              "rightValue": "={{ $('getfollowup').item.json.ultima_mensagem.toDateTime().plus(70, 'minutes') }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "before"
+              }
+            },
+            {
+              "id": "4f1ff5ca-dc52-455d-862c-7fa3822511fe",
+              "leftValue": "={{ $('getfollowup').item.json.etapa }}",
+              "rightValue": 1,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -420,
+        620
+      ],
+      "id": "f265773c-9123-4113-a8f3-f8d8fc1ffd74",
+      "name": "60 min"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ae4aac33-588f-4ba7-bb04-94bb52efb6d7",
+              "leftValue": "={{ $now }}",
+              "rightValue": "={{ $('getfollowup').item.json.ultima_mensagem.toDateTime().plus(1440, 'minutes') }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "after"
+              }
+            },
+            {
+              "id": "c45bc5e4-aee7-4ecb-839d-b2c69df2d6f1",
+              "leftValue": "={{ $now }}",
+              "rightValue": "={{ $('getfollowup').item.json.ultima_mensagem.toDateTime().plus(1450, 'minutes') }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "before"
+              }
+            },
+            {
+              "id": "1b79bebb-c38c-4603-bbf9-3d33a34bd98e",
+              "leftValue": "={{ $('getfollowup').item.json.etapa }}",
+              "rightValue": 2,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -420,
+        840
+      ],
+      "id": "ab015ac1-b34d-4792-89c5-8bb9f49ddf64",
+      "name": "24 h"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ae4aac33-588f-4ba7-bb04-94bb52efb6d7",
+              "leftValue": "={{ $now }}",
+              "rightValue": "={{ $('getfollowup').item.json.ultima_mensagem.toDateTime().plus(10, 'minutes') }} ",
+              "operator": {
+                "type": "dateTime",
+                "operation": "after"
+              }
+            },
+            {
+              "id": "c45bc5e4-aee7-4ecb-839d-b2c69df2d6f1",
+              "leftValue": "={{ $now }}",
+              "rightValue": "={{ $('getfollowup').item.json.ultima_mensagem.toDateTime().plus(20, 'minutes') }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "before"
+              }
+            },
+            {
+              "id": "0f89d5e1-ce43-420e-971f-2bc03450cb92",
+              "leftValue": "={{ $('getfollowup').item.json.etapa }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -420,
+        420
+      ],
+      "id": "542ebeca-11a3-42da-8008-609dd52da414",
+      "name": "10 min"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "key": "={{ $('getcliente').item.json.sessionid }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -220,
+        420
+      ],
+      "id": "5cbc8ae0-8f67-47d9-8eee-604d7c49280b",
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "WKYrbj8mpqYSkF5s",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "key": "={{ $('getcliente').item.json.sessionid }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -220,
+        620
+      ],
+      "id": "11705d84-5b62-49db-be29-232a39efc4f4",
+      "name": "Redis1",
+      "credentials": {
+        "redis": {
+          "id": "WKYrbj8mpqYSkF5s",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "key": "={{ $('getcliente').item.json.sessionid }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        840
+      ],
+      "id": "145cdd73-ba99-4252-aa2c-6a3816733d3b",
+      "name": "Redis2",
+      "credentials": {
+        "redis": {
+          "id": "WKYrbj8mpqYSkF5s",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "follow_up",
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -860,
+        620
+      ],
+      "id": "e2bdbcc7-fc9e-4b0b-8b6f-61336daeb1cd",
+      "name": "getfollowup",
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 10
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -1100,
+        620
+      ],
+      "id": "f6f48c1d-a4bf-45d2-97a3-49f133f89449",
+      "name": "Aciona a cada 10 min"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "atendimento_wpp_vendas",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "keyValue": "={{ $item(\"0\").$node[\"getfollowup\"].json[\"telefone\"] }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -620,
+        620
+      ],
+      "id": "6ea692ba-dc31-433b-92ef-50d7333d12fe",
+      "name": "getcliente",
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=<prompt>\n  <contexto>\n    A IA está dando continuidade a uma conversa iniciada com um cliente. \n    A última mensagem enviada anteriormente pelo assistente (IA) pode ser acessada via a expressão: {{ $json.propertyName[0] }}.\n    O cliente ainda não respondeu. A IA precisa enviar uma nova mensagem de forma natural, humana, empática e educada.\n  </contexto>\n\n  <regras_gerais>\n    <!-- Regras de comportamento -->\n    <nao_fazer>\n      <regra>Não iniciar a mensagem com \"Oi\", \"Olá\", \"Bom dia\", ou qualquer tipo de saudação.</regra>\n      <regra>Não repetir a última mensagem enviada.</regra>\n      <regra>Não usar tom robótico, genérico ou automatizado.</regra>\n      <regra>Não mudar o tom da conversa iniciado anteriormente.</regra>\n      <regra>Não fazer chamadas diretas à ação como \"Clique aqui\" sem antes criar contexto.</regra>\n      <regra>Não utilizar emojis.</regra>\n      <regra>Não usar frases feitas ou genéricas como \"Estamos aqui para ajudar\".</regra>\n      <regra>Não oferecer desculpas ou justificar a ausência do cliente.</regra>\n    </nao_fazer>\n\n    <regras_repetidas>\n      <regra>Nunca inicie com saudação. Repetindo: não use \"oi\", \"olá\", \"bom dia\" ou similares.</regra>\n      <regra>Nunca pareça uma automação. Humanização é prioridade absoluta.</regra>\n    </regras_repetidas>\n\n    <!-- Regras do que fazer -->\n    <fazer>\n      <regra>Continue a conversa com base na última mensagem enviada pela IA ({{ $json.propertyName[0] }}).</regra>\n      <regra>Use tom empático, humano e natural, sem parecer automático.</regra>\n      <regra>Faça uma pergunta simples e contextualizada, com base no conteúdo anterior.</regra>\n      <regra>Demonstre interesse genuíno na resposta do cliente, mantendo o tom conversacional.</regra>\n    </fazer>\n  </regras_gerais>\n\n  <logica_condicional>\n    <!-- Uso condicional baseado na memória -->\n    <condicao>\n      <se>Se {{ $json.propertyName[0] }} contiver uma oferta, link ou convite</se>\n      <entao>Refaça o convite de maneira leve, perguntando se conseguiu visualizar ou se ficou com alguma dúvida.</entao>\n    </condicao>\n    <condicao>\n      <se>Se {{ $json.propertyName[0] }} for uma explicação ou sugestão</se>\n      <entao>Pergunte se fez sentido ou se a pessoa gostaria de mais detalhes.</entao>\n    </condicao>\n    <condicao>\n      <se>Se {{ $json.propertyName[0] }} for uma pergunta não respondida</se>\n      <entao>Reforce a pergunta de forma leve e natural, mostrando interesse na opinião do cliente.</entao>\n    </condicao>\n  </logica_condicional>\n\n  <exemplo_negativo>\n    <titulo>Exemplo de resposta incorreta:</titulo>\n    <mensagem>\"Olá, tudo bem? Só passando pra lembrar da nossa conversa acima.\"</mensagem>\n    <motivo>Contém saudação e tom genérico. Não contextualiza nem se conecta com a última mensagem.</motivo>\n  </exemplo_negativo>\n\n  <exemplo_positivo>\n    <titulo>Exemplo de resposta correta:</titulo>\n    <mensagem>\"Conseguiu dar uma olhada no link que te mandei? Qualquer dúvida posso te ajudar com os detalhes.\"</mensagem>\n    <motivo>Direto ao ponto, com empatia e referência clara ao conteúdo anterior.</motivo>\n  </exemplo_positivo>\n\n</prompt>\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -20,
+        420
+      ],
+      "id": "2c36eea6-2afc-4e28-ba4a-b12ced1c4313",
+      "name": "follow_up 10 min",
+      "credentials": {
+        "openAiApi": {
+          "id": "QzQb6Q9G3hGozb9v",
+          "name": "OpenAi - Dani 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=<prompt>\n  <contexto>\n    A IA está dando continuidade a uma conversa iniciada com um cliente. \n    A última mensagem enviada anteriormente pelo assistente (IA) pode ser acessada via a expressão: {{ $json.propertyName[0] }}.\n    O cliente ainda não respondeu. A IA precisa enviar uma nova mensagem de forma natural, humana, empática e educada.\n  </contexto>\n\n  <regras_gerais>\n    <!-- Regras de comportamento -->\n    <nao_fazer>\n      <regra>Não iniciar a mensagem com \"Oi\", \"Olá\", \"Bom dia\", ou qualquer tipo de saudação.</regra>\n      <regra>Não repetir a última mensagem enviada.</regra>\n      <regra>Não usar tom robótico, genérico ou automatizado.</regra>\n      <regra>Não mudar o tom da conversa iniciado anteriormente.</regra>\n      <regra>Não fazer chamadas diretas à ação como \"Clique aqui\" sem antes criar contexto.</regra>\n      <regra>Não utilizar emojis.</regra>\n      <regra>Não usar frases feitas ou genéricas como \"Estamos aqui para ajudar\".</regra>\n      <regra>Não oferecer desculpas ou justificar a ausência do cliente.</regra>\n    </nao_fazer>\n\n    <regras_repetidas>\n      <regra>Nunca inicie com saudação. Repetindo: não use \"oi\", \"olá\", \"bom dia\" ou similares.</regra>\n      <regra>Nunca pareça uma automação. Humanização é prioridade absoluta.</regra>\n    </regras_repetidas>\n\n    <!-- Regras do que fazer -->\n    <fazer>\n      <regra>Continue a conversa com base na última mensagem enviada pela IA ({{ $json.propertyName[0] }}).</regra>\n      <regra>Use tom empático, humano e natural, sem parecer automático.</regra>\n      <regra>Faça uma pergunta simples e contextualizada, com base no conteúdo anterior.</regra>\n      <regra>Demonstre interesse genuíno na resposta do cliente, mantendo o tom conversacional.</regra>\n    </fazer>\n  </regras_gerais>\n\n  <logica_condicional>\n    <!-- Uso condicional baseado na memória -->\n    <condicao>\n      <se>Se {{ $json.propertyName[0] }} contiver uma oferta, link ou convite</se>\n      <entao>Refaça o convite de maneira leve, perguntando se conseguiu visualizar ou se ficou com alguma dúvida.</entao>\n    </condicao>\n    <condicao>\n      <se>Se {{ $json.propertyName[0] }} for uma explicação ou sugestão</se>\n      <entao>Pergunte se fez sentido ou se a pessoa gostaria de mais detalhes.</entao>\n    </condicao>\n    <condicao>\n      <se>Se {{ $json.propertyName[0] }} for uma pergunta não respondida</se>\n      <entao>Reforce a pergunta de forma leve e natural, mostrando interesse na opinião do cliente.</entao>\n    </condicao>\n  </logica_condicional>\n\n  <exemplo_negativo>\n    <titulo>Exemplo de resposta incorreta:</titulo>\n    <mensagem>\"Olá, tudo bem? Só passando pra lembrar da nossa conversa acima.\"</mensagem>\n    <motivo>Contém saudação e tom genérico. Não contextualiza nem se conecta com a última mensagem.</motivo>\n  </exemplo_negativo>\n\n  <exemplo_positivo>\n    <titulo>Exemplo de resposta correta:</titulo>\n    <mensagem>\"Conseguiu dar uma olhada no link que te mandei? Qualquer dúvida posso te ajudar com os detalhes.\"</mensagem>\n    <motivo>Direto ao ponto, com empatia e referência clara ao conteúdo anterior.</motivo>\n  </exemplo_positivo>\n\n</prompt>\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -20,
+        620
+      ],
+      "id": "a7c5e93c-1985-43c5-a752-bef9ab6d75f4",
+      "name": "follow_up 60 min",
+      "credentials": {
+        "openAiApi": {
+          "id": "QzQb6Q9G3hGozb9v",
+          "name": "OpenAi - Dani 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=<prompt>\n  <contexto>\n    A IA está dando continuidade a uma conversa iniciada com um cliente. \n    A última mensagem enviada anteriormente pelo assistente (IA) pode ser acessada via a expressão: {{ $json.propertyName[0] }}.\n    O cliente ainda não respondeu. A IA precisa enviar uma nova mensagem de forma natural, humana, empática e educada.\n  </contexto>\n\n  <regras_gerais>\n    <!-- Regras de comportamento -->\n    <nao_fazer>\n      <regra>Não iniciar a mensagem com \"Oi\", \"Olá\", \"Bom dia\", ou qualquer tipo de saudação.</regra>\n      <regra>Não repetir a última mensagem enviada.</regra>\n      <regra>Não usar tom robótico, genérico ou automatizado.</regra>\n      <regra>Não mudar o tom da conversa iniciado anteriormente.</regra>\n      <regra>Não fazer chamadas diretas à ação como \"Clique aqui\" sem antes criar contexto.</regra>\n      <regra>Não utilizar emojis.</regra>\n      <regra>Não usar frases feitas ou genéricas como \"Estamos aqui para ajudar\".</regra>\n      <regra>Não oferecer desculpas ou justificar a ausência do cliente.</regra>\n    </nao_fazer>\n\n    <regras_repetidas>\n      <regra>Nunca inicie com saudação. Repetindo: não use \"oi\", \"olá\", \"bom dia\" ou similares.</regra>\n      <regra>Nunca pareça uma automação. Humanização é prioridade absoluta.</regra>\n    </regras_repetidas>\n\n    <!-- Regras do que fazer -->\n    <fazer>\n      <regra>Continue a conversa com base na última mensagem enviada pela IA ({{ $json.propertyName[0] }}).</regra>\n      <regra>Use tom empático, humano e natural, sem parecer automático.</regra>\n      <regra>Faça uma pergunta simples e contextualizada, com base no conteúdo anterior.</regra>\n      <regra>Demonstre interesse genuíno na resposta do cliente, mantendo o tom conversacional.</regra>\n    </fazer>\n  </regras_gerais>\n\n  <logica_condicional>\n    <!-- Uso condicional baseado na memória -->\n    <condicao>\n      <se>Se {{ $json.propertyName[0] }} contiver uma oferta, link ou convite</se>\n      <entao>Refaça o convite de maneira leve, perguntando se conseguiu visualizar ou se ficou com alguma dúvida.</entao>\n    </condicao>\n    <condicao>\n      <se>Se {{ $json.propertyName[0] }} for uma explicação ou sugestão</se>\n      <entao>Pergunte se fez sentido ou se a pessoa gostaria de mais detalhes.</entao>\n    </condicao>\n    <condicao>\n      <se>Se {{ $json.propertyName[0] }} for uma pergunta não respondida</se>\n      <entao>Reforce a pergunta de forma leve e natural, mostrando interesse na opinião do cliente.</entao>\n    </condicao>\n  </logica_condicional>\n\n  <exemplo_negativo>\n    <titulo>Exemplo de resposta incorreta:</titulo>\n    <mensagem>\"Olá, tudo bem? Só passando pra lembrar da nossa conversa acima.\"</mensagem>\n    <motivo>Contém saudação e tom genérico. Não contextualiza nem se conecta com a última mensagem.</motivo>\n  </exemplo_negativo>\n\n  <exemplo_positivo>\n    <titulo>Exemplo de resposta correta:</titulo>\n    <mensagem>\"Conseguiu dar uma olhada no link que te mandei? Qualquer dúvida posso te ajudar com os detalhes.\"</mensagem>\n    <motivo>Direto ao ponto, com empatia e referência clara ao conteúdo anterior.</motivo>\n  </exemplo_positivo>\n\n</prompt>\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -40,
+        840
+      ],
+      "id": "fd6f4888-5427-48a2-83eb-22d510d4e11d",
+      "name": "follow_up 24h",
+      "credentials": {
+        "openAiApi": {
+          "id": "QzQb6Q9G3hGozb9v",
+          "name": "OpenAi - Dani 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://evolution.sorveteiroraiz.com/message/sendText/IA - Vendas 01",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "9B377004D560-405B-BCFC-62366342558C"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('getfollowup').item.json.telefone }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json.message.content }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        320,
+        420
+      ],
+      "id": "c6fef2ce-d7c1-47ae-90e2-9ae8ea42aac3",
+      "name": "Primeira mensagem"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://evolution.sorveteiroraiz.com/message/sendText/IA - Vendas 01",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "9B377004D560-405B-BCFC-62366342558C"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('getfollowup').item.json.telefone }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json.message.content }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        320,
+        620
+      ],
+      "id": "f6c9c598-8f9e-4222-9bae-876c8254c5ed",
+      "name": "Segunda mensagem"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://evolution.sorveteiroraiz.com/message/sendText/IA - Vendas 01",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "9B377004D560-405B-BCFC-62366342558C"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('getfollowup').item.json.telefone }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json.message.content }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        320,
+        840
+      ],
+      "id": "4f932662-8e3f-4aba-847d-4b48ea6260df",
+      "name": "Terceira mensagem"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "follow_up",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "condition": "eq",
+              "keyValue": "={{ $('getfollowup').item.json.telefone }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "etapa",
+              "fieldValue": "1"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        560,
+        420
+      ],
+      "id": "21cbf48a-57e1-4755-a5bf-f700b08e4c0d",
+      "name": "Atualiza etapa1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "follow_up",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "condition": "eq",
+              "keyValue": "={{ $('getfollowup').item.json.telefone }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "etapa",
+              "fieldValue": "2"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        560,
+        620
+      ],
+      "id": "8a245d4e-4a64-49db-8f51-260611a99e8e",
+      "name": "Atualiza etapa2",
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "follow_up",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "condition": "eq",
+              "keyValue": "={{ $('getfollowup').item.json.telefone }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "etapa",
+              "fieldValue": "3"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        560,
+        840
+      ],
+      "id": "ebbfd660-8729-406f-a034-74c534c618a5",
+      "name": "Atualiza etapa3",
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "messages": {
+          "messageValues": [
+            {
+              "type": "ai",
+              "message": "={{ $('follow_up 10 min').item.json.message.content }}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryManager",
+      "typeVersion": 1.1,
+      "position": [
+        740,
+        420
+      ],
+      "id": "895a9f3f-0c05-4017-a012-c600aede78fd",
+      "name": "Memoria chat 10 min"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "messages": {
+          "messageValues": [
+            {
+              "type": "ai",
+              "message": "={{ $('follow_up 60 min').item.json.message.content }}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryManager",
+      "typeVersion": 1.1,
+      "position": [
+        800,
+        620
+      ],
+      "id": "3126d0ef-020d-4ad0-8d99-e68217fbac7f",
+      "name": "Memoria chat 60 min"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "messages": {
+          "messageValues": [
+            {
+              "type": "ai",
+              "message": "={{ $('follow_up 24h').item.json.message.content }}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryManager",
+      "typeVersion": 1.1,
+      "position": [
+        800,
+        840
+      ],
+      "id": "693d1f2f-ea94-46cb-be7d-23554f1f11ff",
+      "name": "Memoria chat 24h"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('getfollowup').item.json.sessionid }}",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.5,
+      "position": [
+        1080,
+        480
+      ],
+      "id": "ff4f09b2-be38-4f41-8bfb-db3521361f88",
+      "name": "Memoria 10 min",
+      "credentials": {
+        "redis": {
+          "id": "WKYrbj8mpqYSkF5s",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('getfollowup').item.json.sessionid }}",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.5,
+      "position": [
+        1180,
+        660
+      ],
+      "id": "ff1649c7-26a5-43c2-a849-cd7f15893402",
+      "name": "Memoria 60 min",
+      "credentials": {
+        "redis": {
+          "id": "WKYrbj8mpqYSkF5s",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('getfollowup').item.json.sessionid }}",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.5,
+      "position": [
+        1200,
+        920
+      ],
+      "id": "4075a1e4-a435-4596-942a-d50cfbeb0c0f",
+      "name": "Memoria 24h",
+      "credentials": {
+        "redis": {
+          "id": "WKYrbj8mpqYSkF5s",
+          "name": "Redis account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    },
+    "node:Aciona a cada 10 min": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-24T17:49:44.382Z",
+  "versionId": "3bf6232a-2bbd-45ba-a44b-15471e310ae3"
+}
