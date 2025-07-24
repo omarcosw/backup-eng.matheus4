@@ -2273,8 +2273,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.4,
       "position": [
-        1560,
-        1280
+        1800,
+        1560
       ],
       "credentials": {
         "redis": {
@@ -2293,8 +2293,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        1420,
-        1280
+        1280,
+        1680
       ],
       "credentials": {
         "openAiApi": {
@@ -2403,6 +2403,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-07-23T19:58:09.725Z",
-  "versionId": "8b4a29e4-65c9-471e-b129-a6f47b63ab75"
+  "updatedAt": "2025-07-24T14:57:34.433Z",
+  "versionId": "f7b8f680-8a16-4d36-88d4-868947ed1fb9"
 }
