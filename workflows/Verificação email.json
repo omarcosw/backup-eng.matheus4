@@ -192,7 +192,7 @@
             {
               "id": "2d4bd146-1854-4b3e-80b7-93c3e9fe9121",
               "name": "status",
-              "value": "Email não encontrado, peça email correto utilizado no momento da compra. (NÃO CONTINUE O ATENDIMENTO SEM UM EMAIL VALIDO)",
+              "value": "Email não encontrado. Para corrigir essa informação, Envie Novamente o email usado no ato da compra ou entre em contato com nosso Suporte no (55) 98415-1866, para fazer alteração no seu cadastro (NÃO CONTINUE O ATENDIMENTO SEM UM EMAIL VALIDO)",
               "type": "string"
             }
           ]
@@ -271,6 +271,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-07-23T20:45:04.547Z",
-  "versionId": "319f00eb-a449-4c18-8667-1aaeaebd5921"
+  "updatedAt": "2025-07-23T21:04:05.730Z",
+  "versionId": "d80c25f5-4e6b-400d-ad98-1fbdeba4bb6a"
 }
