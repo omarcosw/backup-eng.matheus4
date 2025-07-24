@@ -274,8 +274,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1340,
-        360
+        1260,
+        340
       ],
       "id": "933e826d-ac0e-4508-ac5b-d8abd069b27a",
       "name": "If1"
@@ -398,7 +398,7 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        1060,
+        1040,
         340
       ],
       "id": "ee873b01-fe16-40f1-a89e-e72de4992c6c",
@@ -437,8 +437,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        1520,
-        300
+        1540,
+        320
       ],
       "id": "15d72707-b0bd-44e5-abc5-3444de79125c",
       "name": "update_mensagem",
@@ -473,7 +473,7 @@
       "typeVersion": 1,
       "position": [
         1520,
-        480
+        500
       ],
       "id": "b3b3086d-08d1-42d5-abf2-0a20ddbf6e5d",
       "name": "armazena_mensagem",
@@ -621,6 +621,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-07-10T04:24:47.788Z",
-  "versionId": "8dec0393-9b8e-4989-8526-d5a8038f23f2"
+  "updatedAt": "2025-07-24T15:01:41.441Z",
+  "versionId": "518a80d8-1e82-4ded-bade-dde1583c8c31"
 }
