@@ -268,8 +268,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -800,
-        1120
+        -720,
+        820
       ],
       "id": "cf505f65-dfc5-406b-a8dd-4681b7f11e1f",
       "name": "When clicking ‘Execute workflow’"
@@ -465,7 +465,7 @@
     {
       "parameters": {
         "operation": "get",
-        "documentURL": "={{ $json.id }}"
+        "documentURL": "={{ $json[\"id\"] }}"
       },
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
@@ -553,6 +553,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-07-16T00:54:07.141Z",
-  "versionId": "e23d8cbd-9847-4444-a4f0-653c17d60608"
+  "updatedAt": "2025-07-25T20:15:11.303Z",
+  "versionId": "011a9f9d-eca6-4890-831f-f468513db54a"
 }
