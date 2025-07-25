@@ -421,7 +421,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -180,
+        -440,
         360
       ],
       "id": "5adfdc6e-ee9c-4ca0-883f-d544e92a3100",
@@ -1246,7 +1246,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2000,
+        1980,
         340
       ],
       "id": "207726bf-4671-44b1-be12-47500f1dc5d0",
@@ -1360,8 +1360,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -760,
-        260
+        -1100,
+        220
       ]
     },
     {
@@ -1372,8 +1372,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -580,
-        380
+        -920,
+        340
       ],
       "id": "635d41c7-143c-4dfb-97cc-d31d7924f54a",
       "name": "deleta",
@@ -1399,6 +1399,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-07-23T20:45:21.976Z",
-  "versionId": "d90e75ee-ab24-4912-9435-d653c7ac6a9c"
+  "updatedAt": "2025-07-25T11:42:08.157Z",
+  "versionId": "28861798-ba46-4617-a7d6-d18dd08d6d38"
 }
