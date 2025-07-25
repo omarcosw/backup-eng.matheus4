@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "getClient": {
       "main": [
@@ -270,7 +270,7 @@
       "name": "Suporte"
     }
   ],
-  "triggerCount": 0,
-  "updatedAt": "2025-07-23T21:04:05.730Z",
+  "triggerCount": 1,
+  "updatedAt": "2025-07-25T18:45:51.728Z",
   "versionId": "d80c25f5-4e6b-400d-ad98-1fbdeba4bb6a"
 }
