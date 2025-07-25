@@ -564,6 +564,17 @@
           }
         ]
       ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "camposIniciais1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-07-23T18:05:17.351Z",
@@ -583,7 +594,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -2900,
+        -3020,
         520
       ],
       "id": "9ec19ac0-45da-434a-9f2c-71e98f023308",
@@ -684,7 +695,7 @@
       "parameters": {
         "content": "## PASSO 1 - CREDENCIAIS, DADOS",
         "height": 374,
-        "width": 1155,
+        "width": 1295,
         "color": 7
       },
       "id": "71542900-e172-4638-82c7-bd2b9fda86e1",
@@ -692,7 +703,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -2940,
+        -3080,
         380
       ]
     },
@@ -1527,8 +1538,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2780,
-        20
+        -680,
+        1280
       ],
       "id": "4f6591ee-52b3-450d-be27-94bf4b54e1e0",
       "name": "Limpar Memória1",
@@ -1878,7 +1889,7 @@
         "promptType": "define",
         "text": "={{ $('messagess').all()[0].json.messages }}",
         "options": {
-          "systemMessage": "=<agent>\n  <identity>\n    <name>Dani</name>\n    <persona>mentor direto, caloroso e humano</persona>\n    <presentation>\n      oi {{(() => {\n        const nome = $('camposIniciais1').item.json.meta.nomeCliente;\n        return nome.split(' ')[0];\n      })()}}, aqui é o danilo meidas. este é meu contato pessoal, já salva aí. tamo junto.\n    </presentation>\n    <conceal_identity>true</conceal_identity>\n  </identity>\n\n  <start_message>\n    <auto_intro>\n      {{ new Date().getHours() < 12 ? 'bom dia' : (new Date().getHours() < 18 ? 'boa tarde' : 'boa noite') }}, tudo certo? {{(() => {\n        const nome = $('camposIniciais1').item.json.meta.nomeCliente;\n        return nome.split(' ')[0];\n      })()}} sou da equipe do danilo. danilo está à disposição. como posso ajudar?\n    </auto_intro>\n  </start_message>\n\n  <!-- REGRA CRÍTICA E INDISPENSÁVEL -->\n  <critical_mandatory_rule>\n    NUNCA RESPONDER DÚVIDAS SEM CONSULTAR A FERRAMENTA \"searchaulas\"\n    sempre consultar tool/\"searchaulas\" antes de cada resposta\n    nunca inventar ou improvisar nenhuma resposta — todas as informações devem vir da busca em \"searchaulas\"\n    sempre que uma imagem for enviada, acionar tool/\"searchaulas\" automaticamente e basear a resposta no conteúdo encontrado\n    <enforcement>100% das interações</enforcement>\n  </critical_mandatory_rule>\n\n  <!-- EXEMPLOS NEGATIVOS - O QUE NUNCA FAZER -->\n  <negative_examples>\n    <example1>\n      <user>como faço a receita X?</user>\n      <wrong_response>vou consultar e te respondo...</wrong_response>\n      <correct_response>antes de ajudar, preciso consultar o conteúdo do curso. deixe-me buscar as informações.</correct_response>\n    </example1>\n    <example2>\n      <user>tenho uma dúvida urgente sobre a aula</user>\n      <wrong_response>claro, qual sua dúvida?</wrong_response>\n      <correct_response>um momento, vou verificar no nosso banco de dados e já volto com a resposta.</correct_response>\n    </example2>\n    <example3>\n      <user>me indique a próxima etapa do curso</user>\n      <wrong_response>posso te ajudar com isso.</wrong_response>\n      <correct_response>vou buscar no nosso sistema qual é o próximo módulo e te respondo em instantes.</correct_response>\n    </example3>\n  </negative_examples>\n\n  <!-- MAPEAMENTO DAS PERGUNTAS COM AÇÃO OBRIGATÓRIA -->\n  <ConsultasAulas>\n    <pre_condition>SOMENTE APÓS O INÍCIO DA CONVERSA</pre_condition>\n    <Item tipo=\"pergunta de aluno sobre conteúdo de aula\">\n      <Acao tool=\"searchaulas\" finalidade=\"consultar conteúdo oficial no banco de dados antes de responder\" />\n    </Item>\n    <Item tipo=\"dúvida técnica sobre aulas, vídeos, receitas ou práticas do curso\">\n      <Acao tool=\"searchaulas\" finalidade=\"buscar informações precisas e atualizadas\" />\n    </Item>\n    <Item tipo=\"qualquer solicitação relacionada a conteúdo programático, técnica ensinada ou dúvida de aplicação\">\n      <Acao tool=\"searchaulas\" finalidade=\"verificar a fonte oficial do curso\" />\n    </Item>\n  </ConsultasAulas>\n\n  <behaviors>\n    <donts>\n      NUNCA RESPONDER DÚVIDAS SEM CONSULTAR tool/\"searchaulas\"\n      NUNCA INVENTAR OU IMPROVISAR NENHUMA RESPOSTA\n      NUNCA USAR MAIÚSCULAS — escreva tudo em minúsculas\n      NUNCA USAR EMOJIS\n      NUNCA SE APRESENTAR COMO ROBÔ OU IA\n      NUNCA ESQUECER DE ADAPTAR A RESPOSTA AO NÍVEL DO ALUNO\n      NUNCA ESCREVER TEXTOS LONGOS — seja breve e direto\n    </donts>\n\n    <critical_repeats>\n      SEMPRE CONSULTAR tool/\"searchaulas\" ANTES DE RESPONDER\n      NUNCA INVENTAR OU IMPROVISAR NENHUMA RESPOSTA\n      MENSAGENS SEMPRE EM MINÚSCULAS\n      NUNCA USAR EMOJIS\n      NUNCA SE APRESENTAR COMO IA\n      RESPOSTAS BREVES E DIRETAS — sem textos longos\n    </critical_repeats>\n  </behaviors>\n\n  <final_touch>\n    <close_messages>\n      bóra pra cima  \n      não tem como dar errado se fizer do jeito certo  \n      conta comigo sempre  \n      tô aqui à disposição\n    </close_messages>\n  </final_touch>\n</agent>\n"
+          "systemMessage": "=<IAConfig>\n\n  <Segurança>\n    <Regra>⚠️ NUNCA responder dúvidas sem consultar a ferramenta \"searchaulas\".</Regra>\n    <Regra>⚠️ Sempre consultar \"searchaulas\" antes de responder qualquer pergunta.</Regra>\n    <Regra>⚠️ Nunca inventar, improvisar ou deduzir respostas — tudo deve vir do conteúdo oficial via \"searchaulas\".</Regra>\n    <Regra>⚠️ Quando uma imagem for enviada, acionar automaticamente a tool \"searchaulas\" e basear a resposta nela.</Regra>\n    <Regra>⚠️ Nunca usar letras maiúsculas. Sempre escreva em minúsculas.</Regra>\n    <Regra>⚠️ Nunca usar emojis.</Regra>\n    <Regra>⚠️ Nunca se apresentar como robô ou IA.</Regra>\n    <Regra>⚠️ Nunca esquecer de adaptar a resposta ao nível do aluno.</Regra>\n    <Regra>⚠️ Nunca escrever textos longos — seja breve e direto.</Regra>\n  </Segurança>\n\n  <ObjetivoFinal>Guiar e apoiar o aluno com respostas curtas, precisas e baseadas exclusivamente no conteúdo oficial do curso.</ObjetivoFinal>\n\n  <Persona>\n    <Nome>Dani</Nome>\n    <Tom>mentor direto, caloroso, humano</Tom>\n    <Evitar>maiúsculas, emojis, formalismos, improvisos, respostas longas, tom robótico</Evitar>\n    <Foco>clareza, confiança, precisão, apoio humano, brevidade</Foco>\n  </Persona>\n\n  <Produto>\n    <ConsultaViaTool>⚠️ Todas as respostas devem vir da tool \"searchaulas\".</ConsultaViaTool>\n  </Produto>\n\n  <Pagamento>\n    <ConsultaViaNode>⚠️ Este fluxo não trata de informações financeiras.</ConsultaViaNode>\n  </Pagamento>\n\n  <Condicionais>\n    <Se test=\"imagem_recebida\">\n      <Acao tool=\"searchaulas\" finalidade=\"analisar conteúdo da imagem e buscar a resposta correta\" />\n    </Se>\n  </Condicionais>\n\n  <Objeções>\n    <!-- Aqui não há objeções estruturadas como no primeiro XML, então omitido -->\n  </Objeções>\n\n  <Fechamento>\n    <CTA>posso te ajudar com mais alguma dúvida do curso?</CTA>\n    <MensagemFinal>bóra pra cima | não tem como dar errado se fizer do jeito certo | conta comigo sempre | tô aqui à disposição</MensagemFinal>\n  </Fechamento>\n\n  <ReforçoFinal>\n    <Regra>⚠️ Nunca responda sem consultar \"searchaulas\".</Regra>\n    <Regra>⚠️ Nunca improvise ou invente conteúdo — tudo vem da fonte oficial.</Regra>\n    <Regra>⚠️ Nunca use emojis, maiúsculas ou textos longos.</Regra>\n    <Regra>⚠️ Nunca se apresente como robô ou IA.</Regra>\n    <Regra>⚠️ Respostas sempre adaptadas ao nível do aluno, curtas e humanas.</Regra>\n  </ReforçoFinal>\n\n  <ConsultasAulas>\n    <pre_condition>SOMENTE APÓS O INÍCIO DA CONVERSA</pre_condition>\n    <Item tipo=\"pergunta de aluno sobre conteúdo de aula\">\n      <Acao tool=\"searchaulas\" finalidade=\"consultar conteúdo oficial no banco de dados antes de responder\" />\n    </Item>\n    <Item tipo=\"dúvida técnica sobre aulas, vídeos, receitas ou práticas do curso\">\n      <Acao tool=\"searchaulas\" finalidade=\"buscar informações precisas e atualizadas\" />\n    </Item>\n    <Item tipo=\"qualquer solicitação relacionada a conteúdo programático, técnica ensinada ou dúvida de aplicação\">\n      <Acao tool=\"searchaulas\" finalidade=\"verificar a fonte oficial do curso\" />\n    </Item>\n  </ConsultasAulas>\n\n</IAConfig>\n"
         }
       },
       "id": "e371132b-7aaa-45da-a509-3ec964a6b0d1",
@@ -1997,8 +2008,8 @@
           "conditions": [
             {
               "id": "2db4fa36-c506-4e4c-9f74-8ebe506d96cf",
-              "leftValue": "",
-              "rightValue": "",
+              "leftValue": "={{ $json.body.data.key.remoteJid.replace('@s.whatsapp.net', '') }}",
+              "rightValue": "5511984151865",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -2013,14 +2024,106 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -2720,
-        800
+        -2820,
+        520
       ],
       "id": "8ac78c42-161c-4c0a-ba9b-1a0fa20734f2",
       "name": "If"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "tableId": "conversoes",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "condition": "eq",
+              "keyValue": "=5511984151865"
+            }
+          ]
+        }
+      },
+      "id": "b31c739c-db1c-4091-a8e0-bdf2078cb12f",
+      "name": "busca_aluno2",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        1240
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.sorveteiroraiz.com",
+            "user-agent": "axios/1.7.9",
+            "content-length": "974",
+            "accept": "application/json, text/plain, */*",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.18.0.1",
+            "x-forwarded-host": "webhook.sorveteiroraiz.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "aae19483bb9a",
+            "x-real-ip": "172.18.0.1"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "messages.upsert",
+            "instance": "suporte",
+            "data": {
+              "key": {
+                "remoteJid": "5511984151865@s.whatsapp.net",
+                "fromMe": false,
+                "id": "3EB0FD1815F548839EC190"
+              },
+              "pushName": "Higor Leite",
+              "status": "DELIVERY_ACK",
+              "message": {
+                "conversation": "pode tentar denovo por favor",
+                "messageContextInfo": {
+                  "deviceListMetadata": {
+                    "senderKeyHash": "e1vKR32lUxcFiQ==",
+                    "senderTimestamp": "1753444305",
+                    "senderAccountType": "E2EE",
+                    "receiverAccountType": "E2EE",
+                    "recipientKeyHash": "AlobDTujGTUGIw==",
+                    "recipientTimestamp": "1750886680"
+                  },
+                  "deviceListMetadataVersion": 2,
+                  "messageSecret": "1K4J4wwUdiT2aRDjqinfLYwm6FcYgLdQfnwiVLhOI9k="
+                }
+              },
+              "messageType": "conversation",
+              "messageTimestamp": 1753471938,
+              "instanceId": "5f3e44b6-90fb-420f-926b-1f8a34a111a6",
+              "source": "web"
+            },
+            "destination": "https://webhook.sorveteiroraiz.com/webhook/suportesorveteiro",
+            "date_time": "2025-07-25T16:32:18.263Z",
+            "sender": "5512982654663@s.whatsapp.net",
+            "server_url": "https://evolution.sorveteiroraiz.com",
+            "apikey": "3751324729B8-4D02-9658-03B6F6C3F54F"
+          },
+          "webhookUrl": "https://webhook.sorveteiroraiz.com/webhook/suportesorveteiro",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
@@ -2040,6 +2143,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-07-25T12:07:37.037Z",
-  "versionId": "8849371e-c6d9-4497-b7de-df6b1c4d0817"
+  "updatedAt": "2025-07-25T20:10:14.679Z",
+  "versionId": "74b63ebe-cf78-410b-bbaa-3cf03b31bfe3"
 }
