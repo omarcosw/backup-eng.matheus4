@@ -662,6 +662,17 @@
           }
         ]
       ]
+    },
+    "searchcurso": {
+      "ai_tool": [
+        [
+          {
+            "node": "Vendedor IA",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-06-14T17:42:51.743Z",
@@ -1026,7 +1037,7 @@
           "conditions": [
             {
               "id": "b3c9b986-29a6-4418-a033-6422c387377f",
-              "leftValue": "={{ $('Webhook').item.json.body.data.key.fromMe }}",
+              "leftValue": "={{ $node[\"Webhook\"].json[\"body\"][\"data\"][\"key\"][\"fromMe\"] }}",
               "rightValue": "",
               "operator": {
                 "type": "boolean",
@@ -1591,7 +1602,8 @@
         -960,
         1880
       ],
-      "webhookId": "276b709f-7d4b-4233-9e69-254f25485c76"
+      "webhookId": "276b709f-7d4b-4233-9e69-254f25485c76",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1825,7 +1837,8 @@
       ],
       "id": "c39be7e0-58c9-4db4-a8c1-20a73cea758e",
       "name": "Espere",
-      "webhookId": "5efbac78-7c17-44b9-92cc-c3078c79f8d8"
+      "webhookId": "5efbac78-7c17-44b9-92cc-c3078c79f8d8",
+      "disabled": true
     },
     {
       "parameters": {
@@ -2110,7 +2123,7 @@
         "topK": 20,
         "useReranker": true,
         "options": {
-          "queryName": "match_ps_produto"
+          "queryName": "match_ps_curso"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
@@ -2275,8 +2288,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.4,
       "position": [
-        1800,
-        1560
+        1600,
+        1300
       ],
       "credentials": {
         "redis": {
@@ -2295,8 +2308,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        1280,
-        1680
+        1440,
+        1300
       ],
       "credentials": {
         "openAiApi": {
@@ -2439,6 +2452,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-07-24T18:22:18.570Z",
-  "versionId": "ba9a2e12-8257-40ae-9463-8725288d34c2"
+  "updatedAt": "2025-07-25T20:29:43.265Z",
+  "versionId": "59af7b61-597f-4107-bded-f7392042cf65"
 }
