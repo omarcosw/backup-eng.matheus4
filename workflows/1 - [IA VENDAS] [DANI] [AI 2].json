@@ -665,13 +665,7 @@
     },
     "searchcurso": {
       "ai_tool": [
-        [
-          {
-            "node": "Vendedor IA",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
+        []
       ]
     }
   },
@@ -2452,6 +2446,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-07-25T20:29:43.265Z",
-  "versionId": "59af7b61-597f-4107-bded-f7392042cf65"
+  "updatedAt": "2025-07-25T21:15:16.782Z",
+  "versionId": "8029dea9-028a-4184-baf0-7da1120f99ab"
 }
