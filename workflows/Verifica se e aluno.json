@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "If1": {
       "main": [
@@ -117,7 +117,7 @@
   },
   "createdAt": "2025-07-07T13:18:42.958Z",
   "id": "mr6wNxEzvTYw0VJE",
-  "isArchived": false,
+  "isArchived": true,
   "meta": {
     "templateCredsSetupCompleted": true
   },
@@ -391,6 +391,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-07-08T14:00:24.523Z",
-  "versionId": "682a3105-e81e-44cd-8347-bd25bf3de4b4"
+  "updatedAt": "2025-07-28T17:35:09.709Z",
+  "versionId": "8686f7fc-3fa0-4149-9dbb-ffaff93dfa82"
 }
