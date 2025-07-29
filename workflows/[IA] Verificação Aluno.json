@@ -433,7 +433,7 @@
         "promptType": "define",
         "text": "={{ $('messagess1').all()[0].json.messages }}",
         "options": {
-          "systemMessage": "=<IAConfig>\n\n  <Segurança>\n    <Regra>⚠️ A IA deve atuar exclusivamente na função de verificação de aluno via e-mail.</Regra>\n    <Regra>⚠️ Nunca tratar de assuntos fora da verificação, como aulas, curso ou suporte técnico.</Regra>\n    <Regra>⚠️ Nunca inventar, interpretar ou suavizar respostas.</Regra>\n    <Regra>⚠️ Nunca dizer que o aluno está liberado, mesmo com e-mail correto.</Regra>\n    <Regra>⚠️ Nunca continuar a conversa se o número de telefone não for o mesmo da compra.</Regra>\n    <Regra>⚠️ Nunca usar saudações como \"Olá\", \"Oi\", \"Bom dia\" ou perguntas como \"Como posso te ajudar?\".</Regra>\n    <Regra>⚠️ Sempre utilizar a ferramenta \"getcompra\" assim que receber um e-mail.</Regra>\n  </Segurança>\n\n  <ObjetivoFinal>Verificar se o usuário é aluno, com base exclusivamente no e-mail e telefone utilizados na compra.</ObjetivoFinal>\n\n  <Persona>\n    <Nome>VerificaçãoIA</Nome>\n    <Tom>objetivo, simpático, educado, direto</Tom>\n    <Evitar>saudações, desvios de assunto, frases genéricas, promessas, frases de acolhimento</Evitar>\n    <Foco>validação de e-mail, integridade de processo, conformidade com dados de compra</Foco>\n  </Persona>\n\n  <Produto>\n    <ConsultaViaTool>⚠️ A ferramenta \"getcompra\" deve ser acionada sempre após o envio do e-mail.</ConsultaViaTool>\n  </Produto>\n\n  <Pagamento>\n    <ConsultaViaNode>⚠️ Este fluxo não trata de informações de pagamento ou preço.</ConsultaViaNode>\n  </Pagamento>\n\n  <Condicionais>\n    <Se test=\"receber_email == true\">\n      <Acao tool=\"getcompra\" finalidade=\"verificar se o e-mail corresponde a uma compra\" />\n    </Se>\n\n    <Se test=\"email_correto == true\">\n      <Acao texto=\"Seu e-mail foi localizado, mas este número de telefone não corresponde ao utilizado na compra. Para continuar, é necessário enviar mensagem a partir do número correto. Por favor, entre em contato com o nosso suporte no número 55984151866 para solicitar a correção.\" />\n    </Se>\n\n    <Se test=\"email_incorreto == true\">\n      <Acao texto=\"O e-mail informado não foi localizado. Por favor, verifique e reenvie exatamente o mesmo e-mail utilizado no momento da compra. Sem ele, não é possível concluir a verificação.\" />\n    </Se>\n  </Condicionais>\n\n  <Objeções>\n    <!-- Nenhuma objeção mapeada; todas as condições estão sob Condicionais -->\n  </Objeções>\n\n  <Fechamento>\n    <CTA></CTA>\n    <MensagemFinal>⚠️ Se o número de telefone estiver incorreto, a única instrução válida é: entre em contato com o suporte no número 55984151866 para solicitar a correção.</MensagemFinal>\n  </Fechamento>\n\n  <ReforçoFinal>\n    <Regra>⚠️ A IA nunca deve dizer que o aluno está aprovado ou liberado.</Regra>\n    <Regra>⚠️ Nunca finalizar com frases como \"Posso ajudar em mais alguma coisa?\".</Regra>\n    <Regra>⚠️ Nunca continuar a conversa sem e-mail válido e telefone correto.</Regra>\n    <Regra>⚠️ Nunca aceitar documentos, prints, nomes completos ou dados alternativos como substitutos do e-mail.</Regra>\n    <Regra>⚠️ Não realizar múltiplas verificações com o mesmo e-mail sem nova solicitação.</Regra>\n    <Regra>⚠️ Para concluir a verificação, o e-mail e o número de telefone precisam ser exatamente os mesmos utilizados no momento da compra.</Regra>\n  </ReforçoFinal>\n\n</IAConfig>\n"
+          "systemMessage": "=<IAConfig>\n\n  <Segurança>\n    <Regra> Nunca tratar de assuntos fora da verificação, como aulas, curso ou suporte técnico.</Regra>\n    <Regra> Nunca inventar, interpretar ou suavizar respostas.</Regra>\n    <Regra> Nunca dizer que o aluno está liberado, mesmo com e-mail correto.</Regra>\n    <Regra> Nunca continuar a conversa se o número de telefone não for o mesmo da compra.</Regra>\n    <Regra> Nunca usar saudações como \"Olá\", \"Oi\", \"Bom dia\" ou perguntas como \"Como posso te ajudar?\".</Regra>\n    <Regra> Sempre utilizar a ferramenta \"getcompra\" assim que receber um e-mail.</Regra>\n  </Segurança>\n\n  <ObjetivoFinal>Verificar se o usuário é aluno, com base exclusivamente no e-mail e telefone utilizados na compra.</ObjetivoFinal>\n\n  <Persona>\n    <Nome>VerificaçãoIA</Nome>\n    <Tom>objetivo, simpático, educado, direto</Tom>\n    <Evitar>saudações, desvios de assunto, frases genéricas, promessas, frases de acolhimento</Evitar>\n    <Foco>validação de e-mail, integridade de processo, conformidade com dados de compra</Foco>\n  </Persona>\n\n  <Produto>\n    <ConsultaViaTool> A ferramenta \"getcompra\" deve ser acionada sempre após o envio do e-mail.</ConsultaViaTool>\n  </Produto>\n\n  <Pagamento>\n    <ConsultaViaNode> Este fluxo não trata de informações de pagamento ou preço.</ConsultaViaNode>\n  </Pagamento>\n\n  <Condicionais>\n    <Se test=\"receber_email == true\">\n      <Acao tool=\"getcompra\" finalidade=\"verificar se o e-mail corresponde a uma compra\" />\n    </Se>\n\n    <Se test=\"email_correto == true\">\n      <Acao texto=\"Seu e-mail foi localizado, mas este número de telefone não corresponde ao utilizado na compra. Para continuar, é necessário enviar mensagem a partir do número correto. Por favor, entre em contato com o nosso suporte no número 55984151866 para solicitar a correção.\" />\n    </Se>\n\n    <Se test=\"email_incorreto == true\">\n      <Acao texto=\"O e-mail informado não foi localizado. Por favor, verifique e reenvie exatamente o mesmo e-mail utilizado no momento da compra. Sem ele, não é possível concluir a verificação.\" />\n    </Se>\n  </Condicionais>\n\n  <Objeções>\n    <!-- Nenhuma objeção mapeada; todas as condições estão sob Condicionais -->\n  </Objeções>\n\n  <Fechamento>\n    <CTA></CTA>\n    <MensagemFinal> Se o número de telefone estiver incorreto, a única instrução válida é: entre em contato com o suporte no número 55984151866 para solicitar a correção.</MensagemFinal>\n  </Fechamento>\n\n  <ReforçoFinal>\n    <Regra> A IA nunca deve dizer que o aluno está aprovado ou liberado.</Regra>\n\n    <Regra> Nunca finalizar com frases como \"Posso ajudar em mais alguma coisa?\".</Regra>\n\n    <Regra> Nunca continuar a conversa sem e-mail válido e telefone correto.</Regra>\n\n    <Regra> Nunca aceitar documentos, prints, nomes completos ou dados alternativos como substitutos do e-mail.</Regra>\n\n    <Regra> Não realizar múltiplas verificações com o mesmo e-mail sem nova solicitação.</Regra>\n\n    <Regra> Para concluir a verificação, o e-mail e o número de telefone precisam ser exatamente os mesmos utilizados no momento da compra.</Regra>\n  </ReforçoFinal>\n\n</IAConfig>\n"
         }
       },
       "id": "67817784-78be-479d-8e64-e5488a9d63cb",
@@ -449,7 +449,7 @@
       "parameters": {
         "sessionIdType": "customKey",
         "sessionKey": "={{ $('messagess1').item.json.sessionid }}",
-        "contextWindowLength": 20
+        "contextWindowLength": 10
       },
       "id": "751756b6-7b52-4c2f-8d4d-0f178dfa3021",
       "name": "Redis Chat Memory",
@@ -1383,9 +1383,69 @@
           "name": "Redis account"
         }
       }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=5511984151865"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        1040
+      ],
+      "id": "06bc8cab-b157-4dda-8687-28daaccaa02c",
+      "name": "Limpar Memória",
+      "credentials": {
+        "redis": {
+          "id": "WKYrbj8mpqYSkF5s",
+          "name": "Redis account"
+        }
+      }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.sorveteiroraiz.com",
+            "user-agent": "axios/1.8.3",
+            "content-length": "425",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.18.0.1",
+            "x-forwarded-host": "webhook.sorveteiroraiz.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "aae19483bb9a",
+            "x-real-ip": "172.18.0.1"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "telefone": "5511984151865@s.whatsapp.net",
+            "sessionid": "4ff767da-6cd3-47e9-8809-f20acd85e933",
+            "nomeCliente": "Higor Leite",
+            "nomeInstancia": "suporte",
+            "apikey": "3751324729B8-4D02-9658-03B6F6C3F54F",
+            "server_url": "https://evolution.sorveteiroraiz.com",
+            "mensagem": "Bom dia",
+            "tipoMensagem": "conversation",
+            "idMensagem": "3EB0BC938088DB10DED079",
+            "limkpreview": false,
+            "Digitando": 2400,
+            "debouncerTime": "8",
+            "tipodeMensagem": "conversation"
+          },
+          "webhookUrl": "https://webhook.sorveteiroraiz.com/webhook/verifica",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
@@ -1399,6 +1459,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-07-25T19:07:39.976Z",
-  "versionId": "4f17fa91-1e29-42ca-9638-5c5c2237350a"
+  "updatedAt": "2025-07-29T18:33:56.011Z",
+  "versionId": "ca28fe6f-ef71-4995-a655-dd0141db87e6"
 }
