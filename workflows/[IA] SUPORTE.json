@@ -841,7 +841,7 @@
       "parameters": {
         "content": "## PASSO 4 - DEFINE O TIPO DE MENSAGEM E ORGANIZA PARA O AGENTE",
         "height": 1034,
-        "width": 1875,
+        "width": 1915,
         "color": 3
       },
       "id": "4eeaf4ca-399f-4433-ad5a-3802c050c303",
@@ -1532,26 +1532,6 @@
     },
     {
       "parameters": {
-        "operation": "delete",
-        "key": "=44a90ab5-a320-4f59-8542-82676df39dfc\n"
-      },
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        -680,
-        1280
-      ],
-      "id": "4f6591ee-52b3-450d-be27-94bf4b54e1e0",
-      "name": "Limpar Memória1",
-      "credentials": {
-        "redis": {
-          "id": "WKYrbj8mpqYSkF5s",
-          "name": "Redis account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "assignments": {
           "assignments": [
             {
@@ -1867,7 +1847,7 @@
       "parameters": {
         "sessionIdType": "customKey",
         "sessionKey": "={{ $('messagess').item.json.sessionid }}",
-        "contextWindowLength": 20
+        "contextWindowLength": 10
       },
       "id": "97207e7b-920d-4ef8-b862-01d365c88131",
       "name": "Memoria",
@@ -2032,31 +2012,50 @@
     },
     {
       "parameters": {
-        "operation": "delete",
+        "operation": "get",
         "tableId": "conversoes",
         "filters": {
           "conditions": [
             {
               "keyName": "telefone",
-              "condition": "eq",
-              "keyValue": "=5511984151865"
+              "keyValue": "="
             }
           ]
         }
       },
-      "id": "b31c739c-db1c-4091-a8e0-bdf2078cb12f",
-      "name": "busca_aluno2",
+      "id": "8190dcfc-6142-4e37-b6a9-1638d64307c0",
+      "name": "busca_aluno1",
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        -400,
-        1240
+        -1040,
+        1380
       ],
       "alwaysOutputData": true,
       "credentials": {
         "supabaseApi": {
           "id": "QiHN5zEBNyZ0P663",
           "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=4ff767da-6cd3-47e9-8809-f20acd85e933"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -240,
+        1280
+      ],
+      "id": "7ca37f59-f1ab-4cab-9d76-21cbc1a7e382",
+      "name": "Limpar Memória",
+      "credentials": {
+        "redis": {
+          "id": "WKYrbj8mpqYSkF5s",
+          "name": "Redis account"
         }
       }
     }
@@ -2143,6 +2142,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-07-25T20:10:14.679Z",
-  "versionId": "74b63ebe-cf78-410b-bbaa-3cf03b31bfe3"
+  "updatedAt": "2025-07-29T19:47:35.827Z",
+  "versionId": "97463101-0715-4150-b540-e73bfbc953e8"
 }
