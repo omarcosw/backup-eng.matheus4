@@ -34,25 +34,25 @@
         ],
         [
           {
-            "node": "Edit Fields1",
+            "node": "formata_dados",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Edit Fields1": {
+    "formata_dados": {
       "main": [
         [
           {
-            "node": "pesquisa_grupo",
+            "node": "chega_da_fila",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "pesquisa_user1": {
+    "pesquisa_user3": {
       "main": [
         [
           {
@@ -67,214 +67,221 @@
       "main": [
         [
           {
-            "node": "pesquisa_lead_nos_grupos1",
+            "node": "email_igual1",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "insere_lead_na_tabela_users1",
+            "node": "insere_lead_na_tabela_users2",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "insere_lead_na_tabela_users1": {
+    "insere_lead_na_tabela_cadastros9": {
       "main": [
         [
           {
-            "node": "pesquisa_lead_nos_grupos1",
+            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "insere_lead_na_tabela_leads_nos_grupos2": {
+    "insere_lead_na_tabela_users2": {
       "main": [
         [
           {
-            "node": "Edit Fields4",
+            "node": "pesquisa_user",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "pesquisa_lead_nos_grupos1": {
+    "atualiza_lead_na_tabela_cadastros": {
       "main": [
         [
           {
-            "node": "encontrou_lead_no_grupo1",
+            "node": "pesquisa_cadastro1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "encontrou_lead_no_grupo1": {
+    "pesquisa_cadastro1": {
       "main": [
         [
           {
-            "node": "entrou_no_grupo2",
+            "node": "encontrou cadastro no lançamento?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "email do webhook é o mesmo email já captado?": {
+      "main": [
+        [
+          {
+            "node": "encontrou cadastro no lançamento?",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "entrou_no_grupo3",
+            "node": "evento_igual",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "entrou_no_grupo2": {
+    "atualiza_user": {
       "main": [
         [
           {
-            "node": "update_entrou_no_grupo1",
+            "node": "existe_cadastro",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "existe_cadastro": {
+      "main": [
+        [
+          {
+            "node": "existe?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "existe?": {
+      "main": [
+        [
+          {
+            "node": "pesquisa_cadastro2",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "update_saiu_do_grupo1",
+            "node": "insere_lead_na_tabela_cadastros9",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "update_saiu_do_grupo1": {
+    "pesquisa_cadastro2": {
       "main": [
         [
           {
-            "node": "Edit Fields4",
+            "node": "email do webhook é o mesmo email já captado?",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "update_entrou_no_grupo1": {
+    "encontrou cadastro no lançamento?": {
       "main": [
         [
           {
-            "node": "Edit Fields4",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "entrou_no_grupo3": {
-      "main": [
-        [
-          {
-            "node": "insere_lead_na_tabela_leads_nos_grupos2",
+            "node": "No Operation, do nothing1",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "insere_lead_na_tabela_leads_nos_grupos3",
+            "node": "insere_lead_na_tabela_cadastros9",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "insere_lead_na_tabela_leads_nos_grupos3": {
+    "insere_lead_na_tabela_cadastros7": {
       "main": [
         [
           {
-            "node": "Edit Fields4",
+            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "pesquisa_grupo": {
+    "email_igual1": {
       "main": [
         [
           {
-            "node": "encontrou_grupo",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "encontrou_grupo": {
-      "main": [
-        [
-          {
-            "node": "pesquisa_grupo-corret1",
+            "node": "existe_cadastro",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "MySQL1",
+            "node": "atualiza_user",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Wait1": {
+    "evento_igual": {
       "main": [
         [
           {
-            "node": "pesquisa_grupo3",
+            "node": "atualiza_lead_na_tabela_cadastros",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "pesquisa_cadastro1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "pesquisa_grupo3": {
+    "pesquisa_user": {
       "main": [
         [
           {
-            "node": "pesquisa_grupo-corret1",
+            "node": "insere_lead_na_tabela_cadastros7",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "pesquisa_grupo-corret1": {
+    "chega_da_fila": {
       "main": [
         [
           {
-            "node": "pesquisa_user1",
+            "node": "pesquisa_user3",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "MySQL1": {
-      "main": [
-        [
-          {
-            "node": "Wait1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Edit Fields4": {
+    "No Operation, do nothing1": {
       "main": [
         [
           {
@@ -286,47 +293,47 @@
       ]
     }
   },
-  "createdAt": "2025-05-17T06:07:40.551Z",
-  "id": "RE6FhjP9U1Bj0vD5",
+  "createdAt": "2025-05-17T06:08:01.707Z",
+  "id": "ez1SkxYYC06iga6F",
   "meta": null,
   "name": "PASSAR LEADS",
   "nodes": [
     {
       "parameters": {},
-      "id": "e7aaede8-07e2-41b0-9665-c0c74517e705",
+      "id": "3fe889ac-4a60-488e-80d3-edf4422526ea",
       "name": "When clicking ‘Test workflow’",
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -580,
-        340
+        -1260,
+        1120
       ]
     },
     {
       "parameters": {
         "documentId": {
           "__rl": true,
-          "value": "1KZ8EYXAi_AoiL9Gf-rRcHDDCt4TEZV5FtlZMI0xUNzg",
+          "value": "1W5sBLo0fromM0py6C-DWb-ShRS7lUkjOSnQcT9GIAT0",
           "mode": "list",
-          "cachedResultName": "[SENDFLOW X BANCO DE DADOS] [JDC GRUPOS]",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1KZ8EYXAi_AoiL9Gf-rRcHDDCt4TEZV5FtlZMI0xUNzg/edit?usp=drivesdk"
+          "cachedResultName": "[ELEMENTOR X BANCO DE DADOS] [PREV0625]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1W5sBLo0fromM0py6C-DWb-ShRS7lUkjOSnQcT9GIAT0/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
           "value": "gid=0",
           "mode": "list",
           "cachedResultName": "Página1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1KZ8EYXAi_AoiL9Gf-rRcHDDCt4TEZV5FtlZMI0xUNzg/edit#gid=0"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1W5sBLo0fromM0py6C-DWb-ShRS7lUkjOSnQcT9GIAT0/edit#gid=0"
         },
         "options": {}
       },
-      "id": "3bb28a4d-edc7-4ab9-9645-bd9a0528542a",
+      "id": "a2bfd45c-3b31-473f-a957-dab6e4a28456",
       "name": "Google Sheets",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.4,
       "position": [
-        -360,
-        340
+        -1040,
+        1120
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -339,65 +346,53 @@
       "parameters": {
         "options": {}
       },
-      "id": "726e07b2-138f-41a5-9158-86b6e2224dfb",
+      "id": "75fadf8c-362d-47bb-bde3-2f3ecfc31da1",
       "name": "Loop Over Items",
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -140,
-        340
+        -820,
+        1120
       ]
     },
     {
       "parameters": {},
-      "id": "822b6c3c-c863-498a-9eb2-de9b85b03469",
+      "id": "9f0ab242-0b97-4cff-88f5-8802b88c1a02",
       "name": "No Operation, do nothing",
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        300,
-        160
+        -380,
+        940
       ]
     },
     {
       "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "f345ee1e-809f-49fa-b63c-50987289cc29",
-              "name": "nome_grupo",
-              "value": "={{ $json[\"nome_grupo\"] }}",
-              "type": "string"
-            },
-            {
-              "id": "644349ad-b239-4d9f-823a-645498fcef5a",
-              "name": "número_participante",
-              "value": "={{ $json[\"telefone\"] }}",
-              "type": "string"
-            },
-            {
-              "id": "4b6b96d1-c81b-4758-ab8e-150a033261db",
-              "name": "data_que_entrou",
-              "value": "={{ $now }}",
-              "type": "string"
-            },
-            {
-              "id": "41c907e1-b28a-41ce-aa48-3ad3e5e6763a",
-              "name": "evento (saiu do grupo?)",
-              "value": "={{ $json[\"status\"] }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
+        "content": "# CADASTRA CONTATO QUE ENTROU OU SAIU DOS GRUPOS NO BANCO DE DADOS",
+        "height": 907,
+        "width": 3653,
+        "color": 3
       },
-      "id": "f00eb6ff-b565-400f-b85d-7bebf98dd2be",
-      "name": "Edit Fields1",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
+      "type": "n8n-nodes-base.stickyNote",
       "position": [
-        100,
-        460
+        0,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "660bb5b4-ef87-42ce-977b-a6a6050c1a46",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $json;\n\n// Função para formatar o nome\nfunction formatarNome(nome) {\n    const partes = nome.trim().split(\" \");\n    const primeiro_nome = partes.shift();\n    const sobrenome = partes.length > 0 ? partes.join(\" \") : \"\";\n    return { primeiro_nome, sobrenome };\n}\n\n// Função para formatar o telefone mantendo o DDD correto e adicionando +55 se necessário\nfunction formatarTelefone(telefone) {\n    let numero = telefone.toString().replace(/\\D/g, \"\"); // Garante string e remove não numéricos\n    if (numero.length < 10) return null;\n    if (!numero.startsWith(\"55\")) {\n        numero = \"55\" + numero;\n    }\n    return numero;\n}\n\n// Função para formatar a data para padrão MySQL: YYYY-MM-DD HH:MM:SS\nfunction formatarDataMysql(dataHoraBr) {\n    const dataObj = new Date(dataHoraBr);\n    if (isNaN(dataObj.getTime())) return null;\n\n    const yyyy = dataObj.getFullYear();\n    const mm = String(dataObj.getMonth() + 1).padStart(2, '0');\n    const dd = String(dataObj.getDate()).padStart(2, '0');\n    const hh = String(dataObj.getHours()).padStart(2, '0');\n    const mi = String(dataObj.getMinutes()).padStart(2, '0');\n    const ss = String(dataObj.getSeconds()).padStart(2, '0');\n\n    return `${yyyy}-${mm}-${dd} ${hh}:${mi}:${ss}`;\n}\n\n// Processando os dados dinamicamente\nconst { primeiro_nome, sobrenome } = formatarNome(data[\"Nome\"] || \"\");\nconst telefoneFormatado = formatarTelefone(data[\"Telefone\"] || \"\");\nconst emailFormatado = (data[\"E-mail\"] || \"\").toLowerCase();\nconst dataHoraFormatada = formatarDataMysql(data[\"Created At\"] || \"\");\n\n// Retornando o JSON formatado\nreturn {\n    primeiro_nome,\n    sobrenome,\n    telefone: telefoneFormatado,\n    email: emailFormatado,\n    data_hora: dataHoraFormatada,\n    utm_source: data[\"utm_source\"] || \"\",\n    utm_medium: data[\"utm_medium\"] || \"\",\n    utm_campaign: data[\"utm_campaign\"] || \"\",\n    utm_term: data[\"utm_term\"] || \"\",\n    utm_content: data[\"utm_content\"] || \"\",\n    page_version: data[\"page_version\"] || \"\",\n    form_name: data[\"Form Name (ID)\"] || \"\",\n};"
+      },
+      "id": "a0795d70-99bb-4146-90c0-7440d5c055eb",
+      "name": "formata_dados",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -240,
+        1120
       ]
     },
     {
@@ -413,21 +408,21 @@
         "where": {
           "values": [
             {
-              "column": "telefone",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"número_participante\"] }}"
+              "column": "email",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"email\"] }}"
             }
           ]
         },
         "combineConditions": "OR",
         "options": {}
       },
-      "id": "88604889-d4ac-4402-ab4c-09bf1e89c3ad",
-      "name": "pesquisa_user1",
+      "id": "7a4cb239-562e-4ea5-8a67-6e32895f9b6e",
+      "name": "pesquisa_user3",
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.2,
       "position": [
-        1440,
-        440
+        720,
+        2020
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -449,7 +444,7 @@
           "conditions": [
             {
               "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
-              "leftValue": "={{ $node[\"pesquisa_user1\"].json[\"id\"] }}",
+              "leftValue": "={{ $node[\"pesquisa_user3\"].json[\"id\"] }}",
               "rightValue": "",
               "operator": {
                 "type": "number",
@@ -462,14 +457,103 @@
         },
         "options": {}
       },
-      "id": "1fb36d0b-e572-46c2-afe1-13136ac063bc",
+      "id": "c171cb4c-6234-4fbf-a006-9dd7e8b8af5c",
       "name": "encontrou_user1",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        1600,
-        440
+        920,
+        2020
       ]
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "cadastros",
+          "mode": "list",
+          "cachedResultName": "cadastros"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "id_user",
+              "value": "={{ $node[\"pesquisa_user3\"].json[\"id\"] }}"
+            },
+            {
+              "column": "evento",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"Evento\"] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"email\"] }}"
+            },
+            {
+              "column": "utm_source",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"utm_source\"] }}"
+            },
+            {
+              "column": "utm_campaign",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"utm_campaign\"] }}"
+            },
+            {
+              "column": "utm_term",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"utm_term\"] }}"
+            },
+            {
+              "column": "utm_medium",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"utm_medium\"] }}"
+            },
+            {
+              "column": "utm_content",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"utm_content\"] }}"
+            },
+            {
+              "column": "data_cadastro",
+              "value": "={{ $item(\"0\").$node[\"formata_dados\"].json[\"data_hora\"] }}"
+            },
+            {
+              "column": "form_id",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"form_id\"] }}"
+            },
+            {
+              "column": "pagina",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"page\"] }}"
+            },
+            {
+              "column": "nome",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"nome\"] }}"
+            },
+            {
+              "column": "sobrenome",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"sobrenome\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"telefone\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "detailedOutput": true
+        }
+      },
+      "id": "42b76aa6-5fc7-4f2f-86ba-6cde0f6aa6da",
+      "name": "insere_lead_na_tabela_cadastros9",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        3020,
+        2280
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
     },
     {
       "parameters": {
@@ -487,8 +571,20 @@
               "value": "={{ $now }}"
             },
             {
+              "column": "nome",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"nome\"] }}"
+            },
+            {
+              "column": "sobrenome",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"sobrenome\"] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"email\"] }}"
+            },
+            {
               "column": "telefone",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"número_participante\"] }}"
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"telefone\"] }}"
             }
           ]
         },
@@ -496,13 +592,13 @@
           "detailedOutput": true
         }
       },
-      "id": "e9924205-24b4-4031-9bd6-ad387ec02e3d",
-      "name": "insere_lead_na_tabela_users1",
+      "id": "fb6f15fb-9224-46be-ad48-3fe448f38627",
+      "name": "insere_lead_na_tabela_users2",
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.2,
       "position": [
-        2020,
-        540
+        1240,
+        2140
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -514,46 +610,83 @@
     },
     {
       "parameters": {
+        "operation": "update",
         "table": {
           "__rl": true,
-          "value": "leads_nos_grupos",
+          "value": "cadastros",
           "mode": "list",
-          "cachedResultName": "leads_nos_grupos"
+          "cachedResultName": "cadastros"
         },
         "dataMode": "defineBelow",
+        "columnToMatchOn": "id_user",
+        "valueToMatchOn": "={{ $node[\"pesquisa_user3\"].json[\"id\"] }}",
         "valuesToSend": {
           "values": [
             {
-              "column": "numero",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"número_participante\"] }}"
+              "column": "evento",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"Evento\"] }}"
             },
             {
-              "column": "id_grupo",
-              "value": "={{ $node[\"pesquisa_grupo-corret1\"].json[\"id\"] }}"
+              "column": "email",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"email\"] }}"
             },
             {
-              "column": "data_entrada",
+              "column": "utm_source",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"utm_source\"] }}"
+            },
+            {
+              "column": "utm_campaign",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"utm_campaign\"] }}"
+            },
+            {
+              "column": "utm_term",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"utm_term\"] }}"
+            },
+            {
+              "column": "utm_medium",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"utm_medium\"] }}"
+            },
+            {
+              "column": "utm_content",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"utm_content\"] }}"
+            },
+            {
+              "column": "data_cadastro",
               "value": "={{ $now }}"
             },
             {
-              "column": "status",
-              "value": "No Grupo"
+              "column": "form_id",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"form_id\"] }}"
             },
             {
-              "column": "nome_grupo",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"nome_grupo\"] }}"
+              "column": "pagina",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"page\"] }}"
+            },
+            {
+              "column": "nome",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"nome\"] }}"
+            },
+            {
+              "column": "sobrenome",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"sobrenome\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"telefone\"] }}"
             }
           ]
         },
-        "options": {}
+        "options": {
+          "detailedOutput": true
+        }
       },
-      "id": "01e9fe31-4d76-4113-8830-c528bf350ff2",
-      "name": "insere_lead_na_tabela_leads_nos_grupos2",
+      "id": "643990c2-2571-4344-8405-474e82e2d293",
+      "name": "atualiza_lead_na_tabela_cadastros",
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.2,
       "position": [
-        2900,
-        460
+        3600,
+        1680
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -568,32 +701,231 @@
         "operation": "select",
         "table": {
           "__rl": true,
-          "value": "leads_nos_grupos",
+          "value": "cadastros",
           "mode": "list",
-          "cachedResultName": "leads_nos_grupos"
+          "cachedResultName": "cadastros"
         },
         "limit": 1,
         "where": {
           "values": [
             {
-              "column": "numero",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"número_participante\"] }}"
+              "column": "evento",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"Evento\"] }}"
             },
             {
-              "column": "id_grupo",
-              "value": "={{ $node[\"pesquisa_grupo-corret1\"].json[\"id\"] }}"
+              "column": "email",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"email\"] }}"
+            }
+          ]
+        },
+        "combineConditions": "OR",
+        "options": {}
+      },
+      "id": "8c07959f-f8a3-4722-888f-3421e212a4bd",
+      "name": "pesquisa_cadastro1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        3600,
+        1920
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"existe_cadastro\"].json[\"email\"] }}",
+              "rightValue": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"email\"] }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "dd0a8887-0f9d-43c9-86b8-9ba2941ada7f",
+      "name": "email do webhook é o mesmo email já captado?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2840,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "id",
+        "valueToMatchOn": "={{ $node[\"pesquisa_user3\"].json[\"id\"] }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "nome",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"nome\"] }}"
+            },
+            {
+              "column": "sobrenome",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"utm_source\"] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"email\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"telefone\"] }}"
             }
           ]
         },
         "options": {}
       },
-      "id": "868652d9-299b-4aea-b52d-b21952d6521b",
-      "name": "pesquisa_lead_nos_grupos1",
+      "id": "3b1fc263-6c28-4d9e-bee3-a7b3ebca864f",
+      "name": "atualiza_user",
       "type": "n8n-nodes-base.mySql",
-      "typeVersion": 2.2,
+      "typeVersion": 2.4,
       "position": [
-        2300,
-        420
+        1700,
+        1940
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "cadastros",
+          "mode": "list",
+          "cachedResultName": "cadastros"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "evento",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"Evento\"] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"email\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5a4fbbf3-9011-4f58-b39e-1713247e3135",
+      "name": "existe_cadastro",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        2080,
+        1840
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ol3X43bVLiNXkonq",
+          "name": "prof_frederico"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $json[\"id\"] }}",
+              "rightValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "84005046-8efe-4f8a-bf81-072334d2a9f2",
+      "name": "existe?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2320,
+        1840
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "cadastros",
+          "mode": "list",
+          "cachedResultName": "cadastros"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "evento",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"Evento\"] }}"
+            },
+            {
+              "column": "email",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"email\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cb6fb942-fd50-4343-9824-a58750847df6",
+      "name": "pesquisa_cadastro2",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        2600,
+        1700
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -615,46 +947,21 @@
           "conditions": [
             {
               "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
-              "leftValue": "={{ $node[\"pesquisa_lead_nos_grupos1\"].json[\"id\"] }}",
-              "rightValue": "",
+              "leftValue": "={{ $node[\"pesquisa_cadastro2\"].json[\"email\"] }}",
+              "rightValue": "={{ $node[\"chega_da_fila\"].json[\"content\"][\"email\"] }}",
               "operator": {
-                "type": "number",
+                "type": "string",
                 "operation": "exists",
                 "singleValue": true
               }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "3aac75fc-a398-4114-af4a-009f4707594e",
-      "name": "encontrou_lead_no_grupo1",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2,
-      "position": [
-        2520,
-        420
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 1
-          },
-          "conditions": [
+            },
             {
-              "id": "65b5bcdb-1d2b-4071-82e8-87166a50612b",
-              "leftValue": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"evento (saiu do grupo?)\"] }}",
-              "rightValue": "=group.updated.members.added",
+              "id": "a869ef2a-6453-4390-8c8b-008f2fb9b1e8",
+              "leftValue": "={{ $json[\"evento\"] }}",
+              "rightValue": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"Evento\"] }}",
               "operator": {
                 "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
+                "operation": "equals"
               }
             }
           ],
@@ -662,219 +969,91 @@
         },
         "options": {}
       },
-      "id": "9e9ee3ac-9f4b-46c8-9434-ea6c11fff6aa",
-      "name": "entrou_no_grupo2",
+      "id": "e7bc81a2-5a43-40cb-9e02-7bc560493760",
+      "name": "encontrou cadastro no lançamento?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        2680,
-        200
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "table": {
-          "__rl": true,
-          "value": "leads_nos_grupos",
-          "mode": "list",
-          "cachedResultName": "leads_nos_grupos"
-        },
-        "dataMode": "defineBelow",
-        "columnToMatchOn": "id",
-        "valueToMatchOn": "={{ $node[\"pesquisa_lead_nos_grupos1\"].json[\"id\"] }}",
-        "valuesToSend": {
-          "values": [
-            {
-              "column": "data_saida",
-              "value": "={{ $now }}"
-            },
-            {
-              "column": "status",
-              "value": "Saiu do Grupo"
-            },
-            {
-              "column": "nome_grupo",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"nome_grupo\"] }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "466f1fe0-907c-4208-942c-426f5484324e",
-      "name": "update_saiu_do_grupo1",
-      "type": "n8n-nodes-base.mySql",
-      "typeVersion": 2.2,
-      "position": [
-        2900,
-        260
-      ],
-      "alwaysOutputData": true,
-      "credentials": {
-        "mySql": {
-          "id": "ol3X43bVLiNXkonq",
-          "name": "prof_frederico"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "table": {
-          "__rl": true,
-          "value": "leads_nos_grupos",
-          "mode": "list",
-          "cachedResultName": "leads_nos_grupos"
-        },
-        "dataMode": "defineBelow",
-        "columnToMatchOn": "id",
-        "valueToMatchOn": "={{ $node[\"pesquisa_lead_nos_grupos1\"].json[\"id\"] }}",
-        "valuesToSend": {
-          "values": [
-            {
-              "column": "data_entrada",
-              "value": "={{ $now }}"
-            },
-            {
-              "column": "status",
-              "value": "No Grupo"
-            },
-            {
-              "column": "nome_grupo",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"nome_grupo\"] }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "5f31740a-90b7-4650-accb-1acd6d033de5",
-      "name": "update_entrou_no_grupo1",
-      "type": "n8n-nodes-base.mySql",
-      "typeVersion": 2.2,
-      "position": [
-        2900,
-        80
-      ],
-      "alwaysOutputData": true,
-      "credentials": {
-        "mySql": {
-          "id": "ol3X43bVLiNXkonq",
-          "name": "prof_frederico"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 1
-          },
-          "conditions": [
-            {
-              "id": "65b5bcdb-1d2b-4071-82e8-87166a50612b",
-              "leftValue": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"evento (saiu do grupo?)\"] }}",
-              "rightValue": "=group.updated.members.added",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "fd9bcad0-b162-4a2a-bb93-d19b326e51a9",
-      "name": "entrou_no_grupo3",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2,
-      "position": [
-        2680,
-        580
+        3220,
+        1500
       ]
     },
     {
       "parameters": {
         "table": {
           "__rl": true,
-          "value": "leads_nos_grupos",
+          "value": "cadastros",
           "mode": "list",
-          "cachedResultName": "leads_nos_grupos"
+          "cachedResultName": "cadastros"
         },
         "dataMode": "defineBelow",
         "valuesToSend": {
           "values": [
             {
-              "column": "numero",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"número_participante\"] }}"
+              "column": "id_user",
+              "value": "={{ $node[\"pesquisa_user\"].json[\"id\"] }}"
             },
             {
-              "column": "id_grupo",
-              "value": "={{ $node[\"pesquisa_grupo-corret1\"].json[\"id\"] }}"
+              "column": "email",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"email\"] }}"
             },
             {
-              "column": "data_saida",
-              "value": "={{ $now }}"
+              "column": "utm_source",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"utm_source\"] }}"
             },
             {
-              "column": "status",
-              "value": "Saiu do Grupo"
+              "column": "utm_campaign",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"utm_campaign\"] }}"
             },
             {
-              "column": "nome_grupo",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"nome_grupo\"] }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "b9e14a5b-11e9-4826-b7f3-a7ced59dbe85",
-      "name": "insere_lead_na_tabela_leads_nos_grupos3",
-      "type": "n8n-nodes-base.mySql",
-      "typeVersion": 2.2,
-      "position": [
-        2900,
-        660
-      ],
-      "alwaysOutputData": true,
-      "credentials": {
-        "mySql": {
-          "id": "ol3X43bVLiNXkonq",
-          "name": "prof_frederico"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "select",
-        "table": {
-          "__rl": true,
-          "value": "grupos",
-          "mode": "list",
-          "cachedResultName": "grupos"
-        },
-        "limit": 1,
-        "where": {
-          "values": [
+              "column": "utm_term",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"utm_term\"] }}"
+            },
+            {
+              "column": "utm_medium",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"utm_medium\"] }}"
+            },
+            {
+              "column": "utm_content",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"utm_content\"] }}"
+            },
+            {
+              "column": "data_cadastro",
+              "value": "={{ $item(\"0\").$node[\"formata_dados\"].json[\"data_hora\"] }}"
+            },
+            {
+              "column": "pagina",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"page\"] }}"
+            },
+            {
+              "column": "evento",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"Evento\"] }}"
+            },
             {
               "column": "nome",
-              "value": "={{ $json[\"nome_grupo\"] }}"
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"nome\"] }}"
+            },
+            {
+              "column": "sobrenome",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"sobrenome\"] }}"
+            },
+            {
+              "column": "telefone",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"telefone\"] }}"
             }
           ]
         },
-        "options": {}
+        "options": {
+          "detailedOutput": true
+        }
       },
-      "id": "33b58ee6-2511-4f94-b8c7-c40376bf95ee",
-      "name": "pesquisa_grupo",
+      "id": "a7bdf800-10e6-4764-89d8-2cf4963e6966",
+      "name": "insere_lead_na_tabela_cadastros7",
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.2,
       "position": [
-        520,
-        460
+        2280,
+        2240
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -882,7 +1061,8 @@
           "id": "ol3X43bVLiNXkonq",
           "name": "prof_frederico"
         }
-      }
+      },
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -896,12 +1076,11 @@
           "conditions": [
             {
               "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
-              "leftValue": "={{ $node[\"pesquisa_grupo\"].json[\"id\"] }}",
-              "rightValue": "",
+              "leftValue": "={{ $node[\"pesquisa_user3\"].json[\"email\"] }}",
+              "rightValue": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"email\"] }}",
               "operator": {
-                "type": "number",
-                "operation": "exists",
-                "singleValue": true
+                "type": "string",
+                "operation": "equals"
               }
             }
           ],
@@ -909,57 +1088,76 @@
         },
         "options": {}
       },
-      "id": "73729e71-2b8c-474e-97b8-69e7664f927e",
-      "name": "encontrou_grupo",
+      "id": "6c3a1719-2980-4252-bb2c-bb265f602005",
+      "name": "email_igual1",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        680,
-        460
+        1460,
+        1840
       ]
     },
     {
       "parameters": {
-        "amount": 1,
-        "path": "c90133d9-c8a1-4245-9503-7963d836ba92"
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+              "leftValue": "={{ $node[\"existe_cadastro\"].json[\"evento\"] }}",
+              "rightValue": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"Evento\"] }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
       },
-      "id": "0a571a7f-57a0-4f30-bc5e-bf6acdf7f1ed",
-      "name": "Wait1",
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
+      "id": "0d1be239-4144-4a92-a4aa-d7bf61a494c0",
+      "name": "evento_igual",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
       "position": [
-        920,
-        680
-      ],
-      "webhookId": "c90133d9-c8a1-4245-9503-7963d836ba92"
+        3220,
+        1720
+      ]
     },
     {
       "parameters": {
         "operation": "select",
         "table": {
           "__rl": true,
-          "value": "grupos",
+          "value": "users",
           "mode": "list",
-          "cachedResultName": "grupos"
+          "cachedResultName": "users"
         },
         "limit": 1,
         "where": {
           "values": [
             {
-              "column": "id",
-              "value": "={{ $json[\"data\"][\"insertId\"] }}"
+              "column": "email",
+              "value": "={{ $item(\"0\").$node[\"chega_da_fila\"].json[\"email\"] }}"
             }
           ]
         },
+        "combineConditions": "OR",
         "options": {}
       },
-      "id": "9d62ffd4-7d33-45f9-b645-ae40549cdb77",
-      "name": "pesquisa_grupo3",
+      "id": "59e42346-0ca6-4cee-9175-f2486ec03ee7",
+      "name": "pesquisa_user",
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.2,
       "position": [
-        1140,
-        680
+        1480,
+        2240
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -970,121 +1168,151 @@
       }
     },
     {
-      "parameters": {
-        "operation": "select",
-        "table": {
-          "__rl": true,
-          "value": "grupos",
-          "mode": "list",
-          "cachedResultName": "grupos"
-        },
-        "limit": 1,
-        "where": {
-          "values": [
-            {
-              "column": "nome",
-              "value": "={{ $json[\"nome\"] }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "ca5591c8-0ee6-4405-b9b7-b5738214199e",
-      "name": "pesquisa_grupo-corret1",
-      "type": "n8n-nodes-base.mySql",
-      "typeVersion": 2.2,
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
       "position": [
-        1280,
-        440
+        3580,
+        1500
       ],
-      "alwaysOutputData": true,
-      "credentials": {
-        "mySql": {
-          "id": "ol3X43bVLiNXkonq",
-          "name": "prof_frederico"
-        }
-      }
+      "id": "c5f61072-7afe-4eab-b140-b34e7e81ee1b",
+      "name": "No Operation, do nothing1"
+    },
+    {
+      "parameters": {
+        "content": "# DISTRIBUI DADOS ENTRE BANCO DE DADOS E ACTIVE CAMPAIGN",
+        "height": 1087,
+        "width": 4613,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -600,
+        1440
+      ],
+      "typeVersion": 1,
+      "id": "e873ca5f-8ee3-4e23-9d1e-14accd83b1ce",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "content": "# VERIFICAÇÃO SE ENTROU NO GRUPO DEPOIS DE 10MIN",
+        "height": 627,
+        "width": 4613,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -600,
+        2620
+      ],
+      "typeVersion": 1,
+      "id": "c37b7b0f-1b87-4bae-81de-6a81127753cb",
+      "name": "Sticky Note8"
     },
     {
       "parameters": {
         "assignments": {
           "assignments": [
             {
-              "id": "581911f4-1edc-4223-9d0b-63a4a0c51264",
-              "name": "nome_grupo",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"nome_grupo\"] }}",
+              "id": "79edcf9f-8602-409f-8d04-ced41c06d16f",
+              "name": "email",
+              "value": "={{ $item(\"0\").$node[\"formata_dados\"].json[\"email\"] }}",
               "type": "string"
             },
             {
-              "id": "8b54b9dd-4c63-4385-ae7b-0abb12662c7c",
-              "name": "telefone_participante",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"número_participante\"] }}",
+              "id": "4750507c-f44a-45d5-b5ce-2a681d5a5581",
+              "name": "utm_source",
+              "value": "={{ $item(\"0\").$node[\"formata_dados\"].json[\"utm_source\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "a68b8a08-b2d1-4352-affb-0a6f4045cf4a",
+              "name": "utm_campaign",
+              "value": "={{ $item(\"0\").$node[\"formata_dados\"].json[\"utm_campaign\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "71c74ec7-51b3-422e-a2d5-ae7bbf3bd1b0",
+              "name": "utm_term",
+              "value": "={{ $item(\"0\").$node[\"formata_dados\"].json[\"utm_term\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "57aa10ae-6631-4352-8925-35138b1c9b7a",
+              "name": "utm_medium",
+              "value": "={{ $item(\"0\").$node[\"formata_dados\"].json[\"utm_medium\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "4e84ee54-3122-48e4-92d9-1f9db59e0b94",
+              "name": "utm_content",
+              "value": "={{ $item(\"0\").$node[\"formata_dados\"].json[\"utm_content\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "66f8191a-dd73-4773-b3f7-a63076f8686b",
+              "name": "form_id",
+              "value": "={{ $item(\"0\").$node[\"formata_dados\"].json[\"form_name\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "bb839055-124b-4671-99e9-d13293daa8c7",
+              "name": "page",
+              "value": "={{ $item(\"0\").$node[\"formata_dados\"].json[\"page_version\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "b5b5da8a-46c5-44bd-acb3-3f246b420a53",
+              "name": "Evento",
+              "value": "[CADASTRO] [PREV0625]",
+              "type": "string"
+            },
+            {
+              "id": "271ee5fa-6031-4a09-b53d-b1da2acf56a9",
+              "name": "nome",
+              "value": "={{ $item(\"0\").$node[\"formata_dados\"].json[\"primeiro_nome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "a973ea01-7ccc-4b7b-aa43-4237223690c7",
+              "name": "sobrenome",
+              "value": "={{ $item(\"0\").$node[\"formata_dados\"].json[\"sobrenome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "7b8ac769-0ee5-410d-849d-34385009029b",
+              "name": "telefone",
+              "value": "={{ $item(\"0\").$node[\"formata_dados\"].json[\"telefone\"] }}",
               "type": "string"
             }
           ]
         },
         "options": {}
       },
-      "id": "06efdf4d-fcf2-4eef-8780-ef15f1caeb3e",
-      "name": "Edit Fields4",
+      "id": "55fddd8c-dcc7-49ff-a73e-34a91769f05b",
+      "name": "chega_da_fila",
       "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
+      "typeVersion": 3.3,
       "position": [
-        3420,
-        380
+        -40,
+        1120
       ]
     },
     {
       "parameters": {
-        "table": {
-          "__rl": true,
-          "value": "grupos",
-          "mode": "list",
-          "cachedResultName": "grupos"
-        },
-        "dataMode": "defineBelow",
-        "valuesToSend": {
-          "values": [
-            {
-              "column": "nome",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"nome_grupo\"] }}"
-            }
-          ]
-        },
-        "options": {
-          "detailedOutput": true
-        }
-      },
-      "id": "daa02cfa-647a-4396-997c-b94ed09bef7e",
-      "name": "MySQL1",
-      "type": "n8n-nodes-base.mySql",
-      "typeVersion": 2.4,
-      "position": [
-        700,
-        680
-      ],
-      "credentials": {
-        "mySql": {
-          "id": "ol3X43bVLiNXkonq",
-          "name": "prof_frederico"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "content": "# CADASTRA CONTATO QUE ENTROU OU SAIU DOS GRUPOS NO BANCO DE DADOS",
-        "height": 907,
-        "width": 3653,
-        "color": 3
+        "content": "# RECEBE DADOS DO WEBHOOK",
+        "height": 400,
+        "width": 1100
       },
       "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        0,
-        0
-      ],
       "typeVersion": 1,
-      "id": "ac1f45ed-57fa-48cd-93e8-d5df8ffc8b72",
-      "name": "Sticky Note"
+      "position": [
+        500,
+        960
+      ],
+      "id": "524b63eb-6d22-4d2a-90e4-593cb5562425",
+      "name": "Sticky Note1"
     }
   ],
   "pinData": {},
@@ -1094,6 +1322,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-05-17T06:07:40.551Z",
-  "versionId": "3bdc8e7a-02ae-4c5b-b578-e5272e5d27bf"
+  "updatedAt": "2025-05-17T17:32:25.767Z",
+  "versionId": "ab06b210-4ce4-47c5-8ea5-bec81d69d4c9"
 }
