@@ -745,7 +745,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://evolution.sorveteiroraiz.com/message/sendText/IA - Vendas 01",
+        "url": "https://evolution.sorveteiroraiz.com/message/sendText/IA - Vendas 01\n",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -789,17 +789,17 @@
       {
         "json": {
           "headers": {
-            "host": "n8nwebhook.teste.com.br",
+            "host": "webhook.sorveteiroraiz.com",
             "user-agent": "Jodd HTTP",
-            "content-length": "402",
+            "content-length": "356",
             "content-type": "application/json",
-            "x-forwarded-for": "52.204.255.169",
-            "x-forwarded-host": "n8nwebhook.teste.com.br",
+            "x-forwarded-for": "54.242.54.101",
+            "x-forwarded-host": "webhook.sorveteiroraiz.com",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
-            "x-forwarded-server": "827a30cbeeef",
-            "x-hotmart-hottok": "jDJBsZLbcPf9iwjkTkYZMV8Z78xuMb4ae21fce-0e50-46bd-82f9-b15a2d29655d",
-            "x-real-ip": "52.204.255.169",
+            "x-forwarded-server": "aae19483bb9a",
+            "x-hotmart-hottok": "Srl2QUHnnelVLh9p8MDePHUcKz3hqk1526245",
+            "x-real-ip": "54.242.54.101",
             "accept-encoding": "gzip"
           },
           "params": {},
@@ -807,11 +807,11 @@
           "body": {
             "data": {
               "offer": {
-                "code": "rtuzxmrh"
+                "code": "tse3v5hl"
               },
               "product": {
-                "name": "Produto Teste",
-                "id": 2142093
+                "name": "Profissão Sorveteiro",
+                "id": 3074866
               },
               "checkout_country": {
                 "iso": "BR",
@@ -819,16 +819,17 @@
               },
               "affiliate": true,
               "buyer": {
-                "phone": "5527998210071",
-                "name": "Marcos Santana",
-                "email": "marcos@gmail.com.br"
+                "name": "Higor Leite",
+                "email": "silvahigor288@gmail.com"
               }
             },
-            "id": "be5efdac-2d3b-47a7-b02c-1de80d0f8c68",
-            "creation_date": 1707594299263,
+            "id": "11184df9-3fd4-4b59-8303-3a6db59773ea",
+            "creation_date": 1753733305854,
             "event": "PURCHASE_OUT_OF_SHOPPING_CART",
             "version": "2.0.0"
-          }
+          },
+          "webhookUrl": "https://webhook.sorveteiroraiz.com/webhook/rec-vendas-products",
+          "executionMode": "production"
         }
       }
     ]
@@ -839,6 +840,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-07-09T02:17:23.708Z",
-  "versionId": "c839ab32-83ea-42bf-bce5-b4f46e9baa60"
+  "updatedAt": "2025-07-31T14:34:34.245Z",
+  "versionId": "2006683d-a6a8-4bfb-8fb2-2b37b4934a39"
 }
