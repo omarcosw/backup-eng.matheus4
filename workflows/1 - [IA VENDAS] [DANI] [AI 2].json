@@ -710,7 +710,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -4020,
+        -4260,
         1660
       ],
       "webhookId": "01b980a0-8dbe-4b4d-8857-2321c4c5875b"
@@ -1007,7 +1007,7 @@
       "parameters": {
         "content": "## PASSO 1 - CREDENCIAIS, DADOS, E PROMPT AGENTE",
         "height": 614,
-        "width": 1479,
+        "width": 1819,
         "color": 6
       },
       "id": "901eefc1-174a-437c-9f20-a1e9a8f9ea2f",
@@ -1015,7 +1015,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -4060,
+        -4400,
         1320
       ]
     },
@@ -1263,7 +1263,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -3580,
+        -3880,
         1660
       ],
       "notesInFlow": true
@@ -1404,7 +1404,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -3400,
+        -3680,
         1660
       ],
       "id": "15515fb5-1e9c-4638-a446-c63ad08e0b90",
@@ -1532,7 +1532,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        -3800,
+        -4040,
         1660
       ],
       "id": "66883f58-fb85-4055-a0e6-eb49ee87339d",
@@ -1831,8 +1831,7 @@
       ],
       "id": "c39be7e0-58c9-4db4-a8c1-20a73cea758e",
       "name": "Espere",
-      "webhookId": "5efbac78-7c17-44b9-92cc-c3078c79f8d8",
-      "disabled": true
+      "webhookId": "5efbac78-7c17-44b9-92cc-c3078c79f8d8"
     },
     {
       "parameters": {
@@ -2446,6 +2445,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-07-25T21:15:16.782Z",
-  "versionId": "8029dea9-028a-4184-baf0-7da1120f99ab"
+  "updatedAt": "2025-08-04T18:39:53.934Z",
+  "versionId": "d5151fb4-dc7e-4a20-88b1-c230c0ea00bd"
 }
