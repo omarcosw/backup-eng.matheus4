@@ -38,7 +38,7 @@
       "main": [
         [
           {
-            "node": "Search files and folders",
+            "node": "Get a document",
             "type": "main",
             "index": 0
           }
@@ -346,12 +346,12 @@
         "mode": "insert",
         "tableName": {
           "__rl": true,
-          "value": "ps_curso",
+          "value": "ps_objecoes",
           "mode": "list",
-          "cachedResultName": "ps_curso"
+          "cachedResultName": "ps_objecoes"
         },
         "options": {
-          "queryName": "match_ps_curso"
+          "queryName": "match_ps_objecoes"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
@@ -465,7 +465,7 @@
     {
       "parameters": {
         "operation": "get",
-        "documentURL": "={{ $json[\"id\"] }}"
+        "documentURL": "=1KJktyHHnU4VTuZFwVAq2TpV_xXpUTJvw5sc682M7CzU"
       },
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
@@ -553,6 +553,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-07-25T20:15:11.303Z",
-  "versionId": "011a9f9d-eca6-4890-831f-f468513db54a"
+  "updatedAt": "2025-08-05T23:38:32.155Z",
+  "versionId": "330632e5-7f89-473c-a495-f2e2d9a5fb8b"
 }
