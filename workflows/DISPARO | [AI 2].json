@@ -23,7 +23,7 @@
         ],
         [
           {
-            "node": "Wait",
+            "node": "Limita quantidade de disparo",
             "type": "main",
             "index": 0
           }
@@ -151,7 +151,7 @@
       "main": [
         [
           {
-            "node": "Code",
+            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
@@ -162,7 +162,25 @@
       "main": [
         [
           {
-            "node": "Loop Over Items",
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limita quantidade de disparo": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Replace Me1",
             "type": "main",
             "index": 0
           }
@@ -197,7 +215,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.6,
       "position": [
-        -820,
+        -900,
         300
       ],
       "id": "4303af2a-fd26-433b-bf77-1539fed67b06",
@@ -216,7 +234,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -620,
+        -700,
         300
       ],
       "id": "a5252dfe-d531-4e85-ab15-e5f375c22bac",
@@ -228,7 +246,7 @@
       "name": "Replace Me",
       "typeVersion": 1,
       "position": [
-        -400,
+        -480,
         220
       ],
       "id": "a8a728bc-46f4-42b2-bf77-5e3e047e7d46"
@@ -283,7 +301,7 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=<CONTATO>{{ $item(\"0\").$node[\"Code\"].json[\"Número de telefone\"] }}</CONTATO>\n<LEAD>{{ $json.nome }}</LEAD>\n<EXEMPLO>Opa, tudo bem? Aqui é a Dani da Equipe Sorveteiro Raiz, estou entrando em contato com você porque você estava inscrito na nossa IMERSÃO PROFISSÃO SORVETEIRO e eu gostaria de te apresentar o Curso que o Edu abriu vagas com um desconto exclusivo para quem esta inscrito na jornada. Gostaria de saber mais?</EXEMPLO>",
+        "text": "=<CONTATO>{{ $item(\"0\").$node[\"Code\"].json[\"Número de telefone\"] }}</CONTATO>\n<LEAD>{{ $json.nome }}</LEAD>\n<EXEMPLO>Opa, tudo bem? Aqui é a Dani da Equipe Sorveteiro Raiz, estou entrando em contato com você porque você estava na na LISTA DE ESPERA do Curso Profissão Sorveteiro, aguardando para entrar no curso e ele abriu vagas com um desconto exclusivo. Você gostaria de saber mais detalhes?</EXEMPLO>\n",
         "hasOutputParser": true,
         "options": {
           "systemMessage": "=Voce é a Dani. Uma vendedora muito boa, de persuasão e conversão. Sua função é criar uma mensagem de whatspp personalizada para o lead <LEAD></LEAD>. Você trabalha na Equipe do Edu. A empresa do Sorveteiro Raiz\n\nA mensagem deve ser neste modelo <EXEMPLO></EXEMPLO> de mensagem, mas não identica. Modifique o nome do cliente <LEAD></LEAD>"
@@ -324,7 +342,7 @@
     },
     {
       "parameters": {
-        "jsonSchemaExample": "{\n\t\"name\": \"nome do lead aqui\",\n\t\"numero\": \"numero de telefone aqui\",\n  \"text\": \"mensagem enviada aqui\"\n}"
+        "jsonSchemaExample": "{\n\t\"name\": \"nome do lead aqui\",\n\t\"numero\": \"telefone do lead aqui\",\n  \"text\": \"mensagem enviada aqui\"\n}"
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
@@ -348,7 +366,7 @@
             {
               "id": "025e6878-612d-4c76-94d7-19f6a9e74418",
               "name": "output.numero",
-              "value": "={{ $json.output.numero }}",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"Telefone\"] }}",
               "type": "string"
             },
             {
@@ -487,12 +505,12 @@
     {
       "parameters": {
         "height": 740,
-        "width": 2580
+        "width": 2760
       },
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1100,
+        -1180,
         100
       ],
       "id": "0b93c029-2123-4164-8a53-1f10cd726f15",
@@ -520,7 +538,7 @@
           "interval": [
             {
               "triggerAtHour": 8,
-              "triggerAtMinute": null
+              "triggerAtMinute": {}
             }
           ]
         }
@@ -528,7 +546,7 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        -1040,
+        -1120,
         300
       ],
       "id": "ceb1c9fd-70b5-4b4a-ba44-6dbbd93766a4",
@@ -536,13 +554,14 @@
     },
     {
       "parameters": {
-        "amount": 10
+        "amount": 1,
+        "unit": "minutes"
       },
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        -400,
-        440
+        1400,
+        620
       ],
       "id": "84aa206e-79a2-48c8-8cdd-90f52753984a",
       "name": "Wait",
@@ -590,6 +609,50 @@
       "name": "Envia mensagem",
       "alwaysOutputData": true,
       "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "name": "Replace Me1",
+      "typeVersion": 1,
+      "position": [
+        -360,
+        580
+      ],
+      "id": "f96c2fd8-077d-4bc4-bbeb-a8f65f468812"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "890bf9ac-e0fc-410a-9171-8d6241a6f2f6",
+              "leftValue": "={{ $json.row_number }}",
+              "rightValue": 158,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -540,
+        460
+      ],
+      "id": "a9bdb624-2d71-4d86-8cbf-d3ea7dc62939",
+      "name": "Limita quantidade de disparo"
     }
   ],
   "pinData": {},
@@ -606,6 +669,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-08-06T01:39:43.830Z",
-  "versionId": "4ac846f7-b22d-4c9b-ae25-ef0c129e1e9e"
+  "updatedAt": "2025-08-07T21:00:32.508Z",
+  "versionId": "cb4330c7-e40f-4913-849a-b5ecf2132642"
 }
