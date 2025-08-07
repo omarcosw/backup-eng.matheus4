@@ -2249,7 +2249,7 @@
       "parameters": {
         "sessionIdType": "customKey",
         "sessionKey": "={{ $('messages').item.json.sessionId }}",
-        "contextWindowLength": 25
+        "contextWindowLength": 15
       },
       "id": "90a10725-d312-4052-8397-e4a662233fc9",
       "name": "Memoria",
@@ -2344,7 +2344,7 @@
           "headers": {
             "host": "webhook.sorveteiroraiz.com",
             "user-agent": "axios/1.7.9",
-            "content-length": "8012",
+            "content-length": "979",
             "accept": "application/json, text/plain, */*",
             "accept-encoding": "gzip, compress, deflate, br",
             "content-type": "application/json",
@@ -2362,51 +2362,35 @@
             "instance": "IA - Vendas 01",
             "data": {
               "key": {
-                "remoteJid": "5511984151865@s.whatsapp.net",
+                "remoteJid": "5512981143224@s.whatsapp.net",
                 "fromMe": false,
-                "id": "3EB0D9DF5E36981C483CD1"
+                "id": "819295A734B5D467763E0EC7C1B6C189"
               },
-              "pushName": "Higor Leite",
+              "pushName": "Bruna",
               "status": "DELIVERY_ACK",
               "message": {
-                "imageMessage": {
-                  "url": "https://mmg.whatsapp.net/o1/v/t24/f2/m239/AQPXlw5XHxZWg_yaw-jLnDWur8KQcFdAwpH1f9WNHeEdh0_ZYxMZuFJCedF67Huk6EE54NbRRLFf0ZvN0W_QYpSpH1h7vcsYgN-zICnbxA?ccb=9-4&oh=01_Q5Aa2AFntRf8IBpk6pMd-yF9mv6ER32in9Ij9_935Cp9tPGLPg&oe=6897A76B&_nc_sid=e6ed6c&mms3=true",
-                  "mimetype": "image/jpeg",
-                  "fileSha256": "S09FignspTr0ClF/CYVI1xNsKvzIDY5KJPHktOqnNbc=",
-                  "fileLength": "41186",
-                  "height": 523,
-                  "width": 372,
-                  "mediaKey": "nSlOnyE1yC4n6aLQ96HbXb7UJUaVNtZxG2jXhKO/CpQ=",
-                  "fileEncSha256": "MLLxtLOo9IFoQRQ7k0fqp4hLAg7K35OQy0MXBT/j6Eg=",
-                  "directPath": "/o1/v/t24/f2/m239/AQPy6js2-O_-diVyqops9okpkSdescMpB44Cv6NjCVVjraaHRsYyigufm6cQY4mrHlaGHRawB81hpnb4iA3uHmROMPX36oOBr9dfdSJDrw?ccb=9-4&oh=01_Q5Aa2AE-L_SFyVdo_ujKAYh9drbmg06Dnnv3ioQAv7z5pmObMw&oe=68A9FF67&_nc_sid=e6ed6c",
-                  "mediaKeyTimestamp": "1752180741",
-                  "jpegThumbnail": "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",
-                  "viewOnce": false
-                },
+                "conversation": "Sim",
                 "messageContextInfo": {
                   "deviceListMetadata": {
-                    "senderKeyHash": "e1vKR32lUxcFiQ==",
-                    "senderTimestamp": "1752350829",
-                    "senderAccountType": "E2EE",
-                    "receiverAccountType": "E2EE",
+                    "senderKeyHash": "st0scQ9CwUCKaA==",
+                    "senderTimestamp": "1754090592",
                     "recipientKeyHash": "HYcxukpAzWNTEw==",
-                    "recipientTimestamp": "1752105579"
+                    "recipientTimestamp": "1753401605"
                   },
                   "deviceListMetadataVersion": 2,
-                  "messageSecret": "YGgz5jCoNchwKts1IUTI8rfDFHapxMTvJIKyHIJGQuU="
+                  "messageSecret": "PFpUNYjecJhKLgv5ZzUdS5zYzMQM1pysUx3UhNgR1wI="
                 }
               },
-              "contextInfo": null,
-              "messageType": "imageMessage",
-              "messageTimestamp": 1753381220,
+              "messageType": "conversation",
+              "messageTimestamp": 1754592454,
               "instanceId": "6bf8734f-ee06-4a9e-bb0d-8b10dfe3975d",
-              "source": "web",
-              "chatwootMessageId": 334,
+              "source": "android",
+              "chatwootMessageId": 549,
               "chatwootInboxId": 1,
-              "chatwootConversationId": 5
+              "chatwootConversationId": 31
             },
             "destination": "https://webhook.sorveteiroraiz.com/webhook/dani-aivendas-01",
-            "date_time": "2025-07-24T15:20:22.671Z",
+            "date_time": "2025-08-07T15:47:37.903Z",
             "sender": "5512982655918@s.whatsapp.net",
             "server_url": "https://evolution.sorveteiroraiz.com",
             "apikey": "9B377004D560-405B-BCFC-62366342558C"
@@ -2436,6 +2420,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-06T18:34:46.812Z",
-  "versionId": "5ef6f43b-0faa-4bc4-a2b2-243abb7322d7"
+  "updatedAt": "2025-08-07T20:44:03.452Z",
+  "versionId": "6a3bdbc3-1c4c-46a0-9545-032b68054c36"
 }
