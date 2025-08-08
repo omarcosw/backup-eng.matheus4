@@ -152,13 +152,7 @@
             "index": 0
           }
         ],
-        [
-          {
-            "node": "Atualiza_follow_up",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "CreateUser": {
@@ -176,7 +170,7 @@
       "main": [
         [
           {
-            "node": "fromMe",
+            "node": "Atualiza_follow_up",
             "type": "main",
             "index": 0
           }
@@ -656,6 +650,17 @@
       "ai_tool": [
         []
       ]
+    },
+    "get_follow_up": {
+      "main": [
+        [
+          {
+            "node": "fromMe1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-06-14T17:42:51.743Z",
@@ -707,13 +712,13 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "={{ $('camposIniciais').item.json.whatsapp.evo.server_url }}/message/sendText/{{ $('camposIniciais').item.json.whatsapp.evo.nomeInstancia }}",
+        "url": "={{ $('camposIniciais').first().json.whatsapp.evo.server_url }}/message/sendText/{{ $('camposIniciais').first().json.whatsapp.evo.nomeInstancia }}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "apikey",
-              "value": "={{ $('camposIniciais').item.json.whatsapp.evo.apikey }}"
+              "value": "={{ $('camposIniciais').first().json.whatsapp.evo.apikey }}"
             }
           ]
         },
@@ -722,7 +727,7 @@
           "parameters": [
             {
               "name": "number",
-              "value": "={{ $('camposIniciais').item.json.meta.telefoneCliente }}"
+              "value": "={{ $('camposIniciais').first().json.meta.telefoneCliente }}"
             },
             {
               "name": "text",
@@ -730,11 +735,11 @@
             },
             {
               "name": "linkPreview",
-              "value": "={{ $('camposIniciais').item.json.linkPreview }}"
+              "value": "={{ $('camposIniciais').first().json.linkPreview }}"
             },
             {
               "name": "delay",
-              "value": "={{ $('camposIniciais').item.json.Digitando }}"
+              "value": "={{ $('camposIniciais').first().json.Digitando }}"
             }
           ]
         },
@@ -979,7 +984,7 @@
     {
       "parameters": {
         "content": "## PASSO 2 - CRIA USUÁRIO NO BANCO DE DADOS SUPABASE",
-        "height": 830,
+        "height": 1190,
         "width": 1099,
         "color": 6
       },
@@ -1083,7 +1088,7 @@
       "typeVersion": 1,
       "position": [
         -1840,
-        1820
+        2020
       ],
       "credentials": {
         "supabaseApi": {
@@ -1123,7 +1128,7 @@
       "typeVersion": 2.2,
       "position": [
         -2160,
-        1660
+        1860
       ]
     },
     {
@@ -1145,7 +1150,7 @@
       "typeVersion": 1,
       "position": [
         -2360,
-        1660
+        1860
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1468,7 +1473,7 @@
       "typeVersion": 1,
       "position": [
         -2000,
-        1820
+        2020
       ],
       "notesInFlow": false
     },
@@ -1994,7 +1999,7 @@
       "typeVersion": 1,
       "position": [
         -1660,
-        1820
+        2020
       ],
       "credentials": {
         "supabaseApi": {
@@ -2031,7 +2036,7 @@
       "typeVersion": 1,
       "position": [
         -1720,
-        1620
+        1820
       ],
       "credentials": {
         "supabaseApi": {
@@ -2294,7 +2299,7 @@
       "typeVersion": 1.1,
       "position": [
         -1500,
-        1820
+        2020
       ],
       "id": "0f25133e-f331-446f-b309-69c9e6f8e5b7",
       "name": "Wait1",
@@ -2335,6 +2340,69 @@
       "typeVersion": 1,
       "id": "88509048-07cb-49db-846f-63002205d701",
       "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "follow_up",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "keyValue": "={{ $('Code').item.json.telefoneCliente }}"
+            }
+          ]
+        }
+      },
+      "id": "71f637bf-e356-474a-bff1-9a016a4b9ff3",
+      "name": "get_follow_up",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1940,
+        1760
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b3c9b986-29a6-4418-a033-6422c387377f",
+              "leftValue": "={{ $node[\"Webhook\"].json[\"body\"][\"data\"][\"key\"][\"fromMe\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "54dae74b-23dd-404c-9dd1-d1ddec29f5f2",
+      "name": "fromMe1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1680,
+        1680
+      ]
     }
   ],
   "pinData": {
@@ -2344,7 +2412,7 @@
           "headers": {
             "host": "webhook.sorveteiroraiz.com",
             "user-agent": "axios/1.7.9",
-            "content-length": "979",
+            "content-length": "929",
             "accept": "application/json, text/plain, */*",
             "accept-encoding": "gzip, compress, deflate, br",
             "content-type": "application/json",
@@ -2362,35 +2430,33 @@
             "instance": "IA - Vendas 01",
             "data": {
               "key": {
-                "remoteJid": "5512981143224@s.whatsapp.net",
+                "remoteJid": "553198060522@s.whatsapp.net",
                 "fromMe": false,
-                "id": "819295A734B5D467763E0EC7C1B6C189"
+                "id": "1F88990AC503322D8B2F97326D782AD3"
               },
-              "pushName": "Bruna",
+              "pushName": "Ana Luiza Pontes",
               "status": "DELIVERY_ACK",
               "message": {
-                "conversation": "Sim",
+                "conversation": "Gostaria",
                 "messageContextInfo": {
                   "deviceListMetadata": {
-                    "senderKeyHash": "st0scQ9CwUCKaA==",
-                    "senderTimestamp": "1754090592",
                     "recipientKeyHash": "HYcxukpAzWNTEw==",
                     "recipientTimestamp": "1753401605"
                   },
                   "deviceListMetadataVersion": 2,
-                  "messageSecret": "PFpUNYjecJhKLgv5ZzUdS5zYzMQM1pysUx3UhNgR1wI="
+                  "messageSecret": "Fi/L0dy9Z3+oqNaGLmdsO6V2s+JmW98bAnJo0p+1ATo="
                 }
               },
               "messageType": "conversation",
-              "messageTimestamp": 1754592454,
+              "messageTimestamp": 1754600258,
               "instanceId": "6bf8734f-ee06-4a9e-bb0d-8b10dfe3975d",
               "source": "android",
-              "chatwootMessageId": 549,
+              "chatwootMessageId": 1230,
               "chatwootInboxId": 1,
-              "chatwootConversationId": 31
+              "chatwootConversationId": 81
             },
             "destination": "https://webhook.sorveteiroraiz.com/webhook/dani-aivendas-01",
-            "date_time": "2025-08-07T15:47:37.903Z",
+            "date_time": "2025-08-07T17:57:39.304Z",
             "sender": "5512982655918@s.whatsapp.net",
             "server_url": "https://evolution.sorveteiroraiz.com",
             "apikey": "9B377004D560-405B-BCFC-62366342558C"
@@ -2420,6 +2486,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-07T20:44:03.452Z",
-  "versionId": "6a3bdbc3-1c4c-46a0-9545-032b68054c36"
+  "updatedAt": "2025-08-08T02:58:35.688Z",
+  "versionId": "c19c78e9-6f53-4767-947a-07162f0a74c1"
 }
