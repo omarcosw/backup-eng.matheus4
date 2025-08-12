@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Google Sheets": {
       "main": [
@@ -667,8 +667,15 @@
       "recurrenceRules": []
     }
   },
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2025-08-12T15:25:19.774Z",
+      "updatedAt": "2025-08-12T15:25:19.774Z",
+      "id": "WUqjtcCYycM8nth1",
+      "name": "API NÃO OFICIAL"
+    }
+  ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-08T02:56:15.445Z",
-  "versionId": "03f803c9-f37d-4742-aabc-8dd2697e5db6"
+  "updatedAt": "2025-08-12T15:32:22.277Z",
+  "versionId": "face5aa9-7766-441a-bafe-2577bf65905a"
 }
