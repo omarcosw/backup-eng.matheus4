@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Switch2": {
       "main": [
@@ -687,7 +687,7 @@
     {
       "parameters": {
         "httpMethod": "POST",
-        "path": "dani-aivendas-01",
+        "path": "danivendas",
         "options": {}
       },
       "id": "a57b0561-e905-4eab-bd14-f0cf6b869138",
@@ -695,7 +695,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -3840,
+        -3940,
         1660
       ],
       "webhookId": "01b980a0-8dbe-4b4d-8857-2321c4c5875b"
@@ -992,7 +992,7 @@
       "parameters": {
         "content": "## PASSO 1 - CREDENCIAIS, DADOS, E PROMPT AGENTE",
         "height": 1434,
-        "width": 1339,
+        "width": 1559,
         "color": 6
       },
       "id": "901eefc1-174a-437c-9f20-a1e9a8f9ea2f",
@@ -1000,7 +1000,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -3920,
+        -4140,
         1240
       ]
     },
@@ -2328,72 +2328,7 @@
       ]
     }
   ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "webhook.sorveteiroraiz.com",
-            "user-agent": "axios/1.7.9",
-            "content-length": "1030",
-            "accept": "application/json, text/plain, */*",
-            "accept-encoding": "gzip, compress, deflate, br",
-            "content-type": "application/json",
-            "x-forwarded-for": "172.18.0.1",
-            "x-forwarded-host": "webhook.sorveteiroraiz.com",
-            "x-forwarded-port": "443",
-            "x-forwarded-proto": "https",
-            "x-forwarded-server": "aae19483bb9a",
-            "x-real-ip": "172.18.0.1"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "event": "messages.upsert",
-            "instance": "IA - Vendas 01",
-            "data": {
-              "key": {
-                "remoteJid": "5511984151865@s.whatsapp.net",
-                "fromMe": false,
-                "id": "3EB0ED45C8C69B0C1A8D6E"
-              },
-              "pushName": "Higor Leite",
-              "status": "DELIVERY_ACK",
-              "message": {
-                "conversation": "teste",
-                "messageContextInfo": {
-                  "deviceListMetadata": {
-                    "senderKeyHash": "e1vKR32lUxcFiQ==",
-                    "senderTimestamp": "1753810086",
-                    "senderAccountType": "E2EE",
-                    "receiverAccountType": "E2EE",
-                    "recipientKeyHash": "HYcxukpAzWNTEw==",
-                    "recipientTimestamp": "1753401605"
-                  },
-                  "deviceListMetadataVersion": 2,
-                  "messageSecret": "xCkLeptVuicE8CH5murjv+hSH3q9UBJ97WzPF7FZrIA="
-                }
-              },
-              "messageType": "conversation",
-              "messageTimestamp": 1754622505,
-              "instanceId": "6bf8734f-ee06-4a9e-bb0d-8b10dfe3975d",
-              "source": "web",
-              "chatwootMessageId": 1588,
-              "chatwootInboxId": 1,
-              "chatwootConversationId": 12
-            },
-            "destination": "https://webhook.sorveteiroraiz.com/webhook/dani-aivendas-01",
-            "date_time": "2025-08-08T00:08:27.581Z",
-            "sender": "5512982655918@s.whatsapp.net",
-            "server_url": "https://evolution.sorveteiroraiz.com",
-            "apikey": "9B377004D560-405B-BCFC-62366342558C"
-          },
-          "webhookUrl": "https://webhook.sorveteiroraiz.com/webhook/dani-aivendas-01",
-          "executionMode": "production"
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
@@ -2410,9 +2345,15 @@
       "updatedAt": "2025-06-14T17:42:47.387Z",
       "id": "BUA0OcsQ75FU3GHE",
       "name": "[IA VENDAS] [DANI] [2]"
+    },
+    {
+      "createdAt": "2025-08-12T15:25:19.774Z",
+      "updatedAt": "2025-08-12T15:25:19.774Z",
+      "id": "WUqjtcCYycM8nth1",
+      "name": "API NÃO OFICIAL"
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-08T03:21:53.719Z",
-  "versionId": "a06d2705-7245-4f0b-bf6d-d4eef4e2e914"
+  "updatedAt": "2025-08-12T15:26:04.967Z",
+  "versionId": "2a49dcc2-f091-4142-a950-93060e86957e"
 }
