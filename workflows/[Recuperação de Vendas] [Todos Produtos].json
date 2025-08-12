@@ -27,7 +27,7 @@
       "main": [
         [
           {
-            "node": "Vendedor IA",
+            "node": "Edit Fields",
             "type": "main",
             "index": 0
           }
@@ -176,13 +176,7 @@
     },
     "Vendedor IA": {
       "main": [
-        [
-          {
-            "node": "Edit Fields",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Edit Fields": {
@@ -200,7 +194,7 @@
       "main": [
         [
           {
-            "node": "Parser  Chain1",
+            "node": "HTTP Request",
             "type": "main",
             "index": 0
           }
@@ -236,7 +230,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -560,
+        -180,
         0
       ],
       "id": "9ba9984d-c996-44a4-8b2e-bf139e757a04",
@@ -250,7 +244,7 @@
           "string": [
             {
               "name": "nome",
-              "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"transformed\"][\"firstName\"] }}"
+              "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"body\"][\"data\"][\"buyer\"][\"name\"] }}"
             },
             {
               "name": "email",
@@ -273,10 +267,6 @@
               "value": "={{ $now.format('yyyy-MM-dd HH:mm') }}"
             },
             {
-              "name": "sobrenome",
-              "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"transformed\"][\"lastName\"] }}"
-            },
-            {
               "name": "telefone",
               "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"transformed\"][\"phone\"] }}"
             },
@@ -293,18 +283,18 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 2,
       "position": [
-        -120,
+        260,
         0
       ]
     },
     {
       "parameters": {
-        "jsCode": "// Este código processa os dados do webhook recebido\nreturn items.map(item => {\n  const buyer = item.json.body.data.buyer;\n\n  // Garantir que o telefone começa com \"55\"\n  let phone = buyer.phone || '';\n  if (!phone.startsWith('55')) {\n    phone = '55' + phone;\n  }\n\n  // Email em minúsculo\n  const email = (buyer.email || '').toLowerCase();\n\n  // Separar nome e sobrenome\n  const [firstName, ...rest] = (buyer.name || '').trim().split(' ');\n  const lastName = rest.join(' ');\n\n  // Retornar os dados transformados junto com o restante da estrutura original\n  return {\n    json: {\n      ...item.json,\n      transformed: {\n        phone,\n        email,\n        firstName,\n        lastName\n      }\n    }\n  };\n});"
+        "jsCode": "// Função auxiliar para buscar valor em qualquer lugar do objeto por nome da chave\nfunction findValue(obj, keyName) {\n  if (!obj || typeof obj !== 'object') return undefined;\n  if (obj.hasOwnProperty(keyName)) return obj[keyName];\n  \n  for (const key in obj) {\n    const value = findValue(obj[key], keyName);\n    if (value !== undefined) return value;\n  }\n  return undefined;\n}\n\n// Processamento dinâmico\nreturn items.map(item => {\n  const data = item.json;\n\n  // Buscar informações independentemente da posição no JSON\n  const phoneRaw = findValue(data, 'phone') || findValue(data, 'checkout_phone') || '';\n  const emailRaw = findValue(data, 'email') || '';\n  const nameRaw = findValue(data, 'name') || '';\n\n  // Garantir que o telefone começa com \"55\"\n  let phone = phoneRaw.toString();\n  if (!phone.startsWith('55') && phone.length > 0) {\n    phone = '55' + phone;\n  }\n\n  // Email em minúsculo\n  const email = emailRaw.toString().toLowerCase();\n\n  // Separar nome e sobrenome\n  const [firstName, ...rest] = nameRaw.trim().split(' ');\n  const lastName = rest.join(' ');\n\n  return {\n    json: {\n      ...item.json,\n      transformed: {\n        phone,\n        email,\n        firstName,\n        lastName\n      }\n    }\n  };\n});\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -340,
+        40,
         0
       ],
       "id": "648a9971-21de-4713-a778-b3478ea04cdf",
@@ -363,7 +353,7 @@
             },
             {
               "fieldId": "mensagem",
-              "fieldValue": "={{ $item(\"0\").$node[\"Vendedor IA\"].json[\"output\"][\"text\"] }}"
+              "fieldValue": "=Olá, tudo bem? Aqui é a Dani da Equipe Sorveteiro Raiz!\n\nEstou entrando em contato com você porque você estava quase comprando o curso Profissão Sorveteiro, mas por algum motivo não concluiu a compra. \nEstou aqui para te ajudar. Por que não fechou a compra? O que houve?"
             },
             {
               "fieldId": "oferta",
@@ -467,9 +457,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.7,
       "position": [
-        120,
-        0
-      ]
+        300,
+        -720
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -483,8 +474,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        120,
-        240
+        300,
+        -480
       ],
       "id": "736c2921-e8ad-408a-a48d-9e601408bc6d",
       "name": "OpenAI Chat Model",
@@ -493,7 +484,8 @@
           "id": "PwsgEoPwyqAPcsYQ",
           "name": "AI Vendas | Dani - n8n\t"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -502,11 +494,12 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
       "position": [
-        340,
-        220
+        520,
+        -500
       ],
       "id": "dac93b0d-2693-4db0-8ad0-61cb28056afd",
-      "name": "Structured Output Parser"
+      "name": "Structured Output Parser",
+      "disabled": true
     },
     {
       "parameters": {
@@ -526,9 +519,10 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.4,
       "position": [
-        1520,
-        -80
-      ]
+        740,
+        -720
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -540,9 +534,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
       "position": [
-        1700,
-        180
-      ]
+        920,
+        -460
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -553,9 +548,10 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        2080,
-        -80
-      ]
+        1300,
+        -720
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -566,10 +562,11 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        2460,
-        20
+        1680,
+        -620
       ],
-      "webhookId": "e5987401-8b77-4a84-8693-25fd8898cd94"
+      "webhookId": "e5987401-8b77-4a84-8693-25fd8898cd94",
+      "disabled": true
     },
     {
       "parameters": {
@@ -583,9 +580,10 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        1860,
-        -80
-      ]
+        1080,
+        -720
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -596,15 +594,16 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        1500,
-        180
+        720,
+        -460
       ],
       "credentials": {
         "openAiApi": {
           "id": "QzQb6Q9G3hGozb9v",
           "name": "OpenAi - Dani 2"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -624,8 +623,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        2460,
-        -200
+        1680,
+        -840
       ],
       "id": "9e85c295-b099-4d98-9465-d3617541b82d",
       "name": "Supabase",
@@ -634,28 +633,23 @@
           "id": "QiHN5zEBNyZ0P663",
           "name": "Supabase - Sorveteiro Raiz"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
         "assignments": {
           "assignments": [
             {
-              "id": "7c16fd98-9a00-4228-8c31-d0a7d347c1d6",
-              "name": "output.text",
-              "value": "={{ $json.output.text.split('\\n\\n') }}",
-              "type": "string"
-            },
-            {
               "id": "025e6878-612d-4c76-94d7-19f6a9e74418",
               "name": "output.numero",
-              "value": "={{ $json.output.numero }}",
+              "value": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"telefone\"] }}",
               "type": "string"
             },
             {
               "id": "4786db0a-53f1-4e4e-87ac-c9cedc8e62ab",
               "name": "output.nam",
-              "value": "={{ $json.output.name }}",
+              "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"body\"][\"data\"][\"buyer\"][\"name\"] }}",
               "type": "string"
             },
             {
@@ -706,7 +700,7 @@
           "fieldValues": [
             {
               "fieldId": "mensagem",
-              "fieldValue": "={{ $item(\"0\").$node[\"Vendedor IA\"].json[\"output\"][\"text\"] }}"
+              "fieldValue": "=Olá, tudo bem? Aqui é a Dani da Equipe Sorveteiro Raiz!\n\nEstou entrando em contato com você porque você estava quase comprando o curso Profissão Sorveteiro, mas por algum motivo não concluiu a compra. \nEstou aqui para te ajudar. Por que não fechou a compra? O que houve?"
             },
             {
               "fieldId": "produto",
@@ -777,11 +771,30 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2280,
-        20
+        1500,
+        -620
       ],
       "id": "473432b5-9369-4546-9f45-bd9f98d7c5c9",
-      "name": "Envia mensagem1"
+      "name": "Envia mensagem1",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://unnichat.com.br/a/start/7VKumMOoV3cJCIVwq3I1",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"nome\": \"{{ $item(\"0\").$node[\"Edit Fields\"].json[\"output\"][\"nam\"] }}\",\n  \"telefone\": \"{{ $item(\"0\").$node[\"Edit Fields\"].json[\"output\"][\"numero\"] }}\",\n  \"type\": \"message\",\n  \"text\": {\n    \"body\": \"recuperacao\"\n  }\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1320,
+        -80
+      ],
+      "id": "42e3fb72-d11a-4b41-8192-630b8f8fb3ed",
+      "name": "HTTP Request"
     }
   ],
   "pinData": {
@@ -791,15 +804,15 @@
           "headers": {
             "host": "webhook.sorveteiroraiz.com",
             "user-agent": "Jodd HTTP",
-            "content-length": "356",
+            "content-length": "396",
             "content-type": "application/json",
-            "x-forwarded-for": "54.242.54.101",
+            "x-forwarded-for": "54.242.27.80",
             "x-forwarded-host": "webhook.sorveteiroraiz.com",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "aae19483bb9a",
             "x-hotmart-hottok": "Srl2QUHnnelVLh9p8MDePHUcKz3hqk1526245",
-            "x-real-ip": "54.242.54.101",
+            "x-real-ip": "54.242.27.80",
             "accept-encoding": "gzip"
           },
           "params": {},
@@ -807,7 +820,7 @@
           "body": {
             "data": {
               "offer": {
-                "code": "tse3v5hl"
+                "code": "xoaij3lc"
               },
               "product": {
                 "name": "Profissão Sorveteiro",
@@ -819,12 +832,13 @@
               },
               "affiliate": true,
               "buyer": {
-                "name": "Higor Leite",
-                "email": "silvahigor288@gmail.com"
+                "phone": "5511984151865",
+                "name": "Higor leite",
+                "email": "higor@authlike.com"
               }
             },
-            "id": "11184df9-3fd4-4b59-8303-3a6db59773ea",
-            "creation_date": 1753733305854,
+            "id": "fabf2d0d-aca8-498b-9ddb-d010b048238c",
+            "creation_date": 1754569784217,
             "event": "PURCHASE_OUT_OF_SHOPPING_CART",
             "version": "2.0.0"
           },
@@ -838,8 +852,15 @@
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2025-08-12T15:25:26.686Z",
+      "updatedAt": "2025-08-12T15:25:26.686Z",
+      "id": "jnxO0I98Q4JFiEFn",
+      "name": "API OFICIAL"
+    }
+  ],
   "triggerCount": 1,
-  "updatedAt": "2025-07-31T14:34:34.245Z",
-  "versionId": "2006683d-a6a8-4bfb-8fb2-2b37b4934a39"
+  "updatedAt": "2025-08-12T19:47:44.346Z",
+  "versionId": "4a50d5e6-bcee-4c58-93d4-1c7584566ac7"
 }
