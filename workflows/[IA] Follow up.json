@@ -1150,8 +1150,15 @@
       "recurrenceRules": []
     }
   },
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2025-08-12T15:25:19.774Z",
+      "updatedAt": "2025-08-12T15:25:19.774Z",
+      "id": "WUqjtcCYycM8nth1",
+      "name": "API NÃO OFICIAL"
+    }
+  ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-07T16:55:40.100Z",
-  "versionId": "a994cbbf-b002-4e77-8a2a-383b7f017121"
+  "updatedAt": "2025-08-12T15:31:48.748Z",
+  "versionId": "1a543a54-8799-4f13-b795-a09123fe522c"
 }
