@@ -100,7 +100,7 @@
       "main": [
         [
           {
-            "node": "Ativar para teste",
+            "node": "camposIniciais",
             "type": "main",
             "index": 0
           }
@@ -490,13 +490,7 @@
     },
     "Ativar para teste": {
       "main": [
-        [
-          {
-            "node": "camposIniciais",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Embeddings OpenAI": {
@@ -1935,8 +1929,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1720,
-        1300
+        -1260,
+        1140
       ],
       "id": "1613c380-a651-4085-b9e4-241c21fc052b",
       "name": "Ativar para teste"
@@ -2415,6 +2409,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-12T19:08:09.311Z",
-  "versionId": "f965a5ef-2180-4152-9847-57661e31b913"
+  "updatedAt": "2025-08-13T01:35:08.808Z",
+  "versionId": "b3fefa0f-aa31-47f6-a09e-47af9eb7c104"
 }
