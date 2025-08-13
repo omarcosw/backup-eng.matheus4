@@ -423,6 +423,11 @@
               "keyName": "telefone",
               "condition": "eq",
               "keyValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"telefone\"] }}"
+            },
+            {
+              "keyName": "email",
+              "condition": "eq",
+              "keyValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"buyer\"][\"email\"] }}"
             }
           ]
         }
@@ -861,6 +866,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-12T19:47:44.346Z",
-  "versionId": "4a50d5e6-bcee-4c58-93d4-1c7584566ac7"
+  "updatedAt": "2025-08-13T02:25:12.479Z",
+  "versionId": "9967bdc6-14b9-40f1-9f27-f0504a54e30d"
 }
