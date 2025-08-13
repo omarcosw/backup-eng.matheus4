@@ -180,17 +180,6 @@
         ]
       ]
     },
-    "transcreve audio2": {
-      "main": [
-        [
-          {
-            "node": "Add Áudio no Buffer",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Code": {
       "main": [
         [
@@ -229,83 +218,6 @@
         [
           {
             "node": "Redis2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "converte imagem": {
-      "main": [
-        [
-          {
-            "node": "transcreve imagem",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "transcreve imagem": {
-      "main": [
-        [
-          {
-            "node": "empilhaÁudio1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "espera evolution processar imagem": {
-      "main": [
-        [
-          {
-            "node": "Busca imagem",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Busca imagem": {
-      "main": [
-        [
-          {
-            "node": "converte imagem",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Base64 Audio": {
-      "main": [
-        [
-          {
-            "node": "Get Audio",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Audio": {
-      "main": [
-        [
-          {
-            "node": "transcreve audio2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Add na Memória": {
-      "main": [
-        [
-          {
-            "node": "Memória Inicial",
             "type": "main",
             "index": 0
           }
@@ -378,17 +290,6 @@
         ]
       ]
     },
-    "Add Áudio no Buffer": {
-      "main": [
-        [
-          {
-            "node": "Memória Inicial",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "UserMessage": {
       "main": [
         [
@@ -427,17 +328,6 @@
         [
           {
             "node": "getClient",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "empilhaÁudio1": {
-      "main": [
-        [
-          {
-            "node": "Memória Inicial",
             "type": "main",
             "index": 0
           }
@@ -630,13 +520,6 @@
       "main": [
         [
           {
-            "node": "Get Base64 Audio",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
             "node": "Add na Memória",
             "type": "main",
             "index": 0
@@ -644,7 +527,25 @@
         ],
         [
           {
-            "node": "espera evolution processar imagem",
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add na Memória": {
+      "main": [
+        [
+          {
+            "node": "Memória Inicial",
             "type": "main",
             "index": 0
           }
@@ -1156,28 +1057,6 @@
     },
     {
       "parameters": {
-        "resource": "audio",
-        "operation": "transcribe",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.openAi",
-      "typeVersion": 1.7,
-      "position": [
-        1520,
-        960
-      ],
-      "id": "54cf2d13-8c12-4612-881d-72cec560fad5",
-      "name": "transcreve audio2",
-      "credentials": {
-        "openAiApi": {
-          "id": "QzQb6Q9G3hGozb9v",
-          "name": "OpenAi - Dani 2"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
         "jsCode": "// Extrai os números dos campos telefoneCliente e telefoneEmpresa removendo \"@s.whatsapp.net\"\nreturn items.map(item => {\n  const clienteRaw = item.json.meta?.telefoneCliente || '';\n  const empresaRaw = item.json.meta?.telefoneEmpresa || '';\n\n  const telefoneCliente = clienteRaw.split('@')[0];\n  const telefoneEmpresa = empresaRaw.split('@')[0];\n\n  return {\n    json: {\n      telefoneCliente,\n      telefoneEmpresa\n    }\n  };\n});"
       },
       "type": "n8n-nodes-base.code",
@@ -1275,165 +1154,6 @@
       ],
       "id": "312d7659-99f4-4369-a5e9-150ddd00a06c",
       "name": "Redis2",
-      "credentials": {
-        "redis": {
-          "id": "WKYrbj8mpqYSkF5s",
-          "name": "Redis account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "toBinary",
-        "sourceProperty": "base64",
-        "options": {}
-      },
-      "id": "ca968a1f-fe6b-4242-839f-f420e57c4a58",
-      "name": "converte imagem",
-      "type": "n8n-nodes-base.convertToFile",
-      "typeVersion": 1.1,
-      "position": [
-        1460,
-        1540
-      ],
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "resource": "image",
-        "operation": "analyze",
-        "modelId": {
-          "__rl": true,
-          "value": "gpt-4o-mini",
-          "mode": "list",
-          "cachedResultName": "GPT-4O-MINI"
-        },
-        "text": "=<image_analyzer>\n  <identity>\n    <name>analisador visual</name>\n    <persona>analista técnico e detalhista</persona>\n    <style>objetivo, claro e direto</style>\n  </identity>\n  \n  <behaviors>\n    <analysis_flow>\n      <step1>identificar elementos principais da imagem</step1>\n      <step2>descrever contexto e ambiente</step2>\n      <step3>notar detalhes relevantes</step3>\n    </analysis_flow>\n    \n    <donts>\n      <rule>nunca inventar elementos que não estão na imagem</rule>\n      <rule>nunca fazer suposições além do visível</rule>\n      <rule>nunca usar termos técnicos desnecessários</rule>\n      <rule>nunca ignorar elementos importantes</rule>\n     </rule>\n    </donts>\n    \n    <response_format>\n      <tone>profissional mas acessível</tone>\n      <structure>organizada e hierárquica</structure>\n      <detail_level>completo mas conciso</detail_level>\n    </response_format>\n  </behaviors>\n\n  </output_rules>\n</image_analyzer>",
-        "inputType": "base64",
-        "options": {}
-      },
-      "id": "4d8e4919-892c-4931-a060-d5b6634a8a97",
-      "name": "transcreve imagem",
-      "type": "@n8n/n8n-nodes-langchain.openAi",
-      "typeVersion": 1.4,
-      "position": [
-        1620,
-        1540
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": "QzQb6Q9G3hGozb9v",
-          "name": "OpenAi - Dani 2"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "amount": 10
-      },
-      "id": "167ed10b-90a5-404d-a65a-2a63e7bec694",
-      "name": "espera evolution processar imagem",
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
-      "position": [
-        1120,
-        1520
-      ],
-      "webhookId": "276b709f-7d4b-4233-9e69-254f25485c76",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "={{ $('camposIniciais').item.json.whatsapp.evo.server_url }}/chat/getBase64FromMediaMessage/{{ $item(\"0\").$node[\"camposIniciais\"].json[\"whatsapp\"][\"evo\"][\"nomeInstancia\"] }}",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"whatsapp\"][\"evo\"][\"apikey\"] }}"
-            },
-            {
-              "name": "Content-Type",
-              "value": "application/json"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n    \"message\": {\n        \"key\": {\n            \"id\": \"{{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"key\"][\"id\"] }}\"\n        }\n    },\n    \"convertToMp4\": false\n}",
-        "options": {}
-      },
-      "id": "451d0c7e-abdc-44d7-a89b-bd5b83b02324",
-      "name": "Busca imagem",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [
-        1260,
-        1520
-      ],
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "={{ $('camposIniciais').item.json.whatsapp.evo.server_url }}/chat/getBase64FromMediaMessage/{{ $item(\"0\").$node[\"camposIniciais\"].json[\"whatsapp\"][\"evo\"][\"nomeInstancia\"] }}",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"whatsapp\"][\"evo\"][\"apikey\"] }}"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n       \"message\": {\n        \"key\": {\n            \"id\": \"{{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"key\"][\"id\"] }}\"\n        }\n    },\n    \"convertToMp4\": true\n}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1120,
-        960
-      ],
-      "id": "8c1a814c-855f-4955-9ca3-7a7deaa1626b",
-      "name": "Get Base64 Audio",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "operation": "toBinary",
-        "sourceProperty": "base64",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.convertToFile",
-      "typeVersion": 1.1,
-      "position": [
-        1320,
-        960
-      ],
-      "id": "078ed3be-0e8f-4b66-b451-c859fb61f2f2",
-      "name": "Get Audio",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "operation": "push",
-        "list": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"telefoneCliente\"] }}",
-        "messageData": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"content\"][\"quoted\"] }}",
-        "tail": true
-      },
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        1120,
-        1260
-      ],
-      "id": "f29b2639-c595-462c-9fac-9f3f69b93c24",
-      "name": "Add na Memória",
       "credentials": {
         "redis": {
           "id": "WKYrbj8mpqYSkF5s",
@@ -1565,29 +1285,6 @@
           "name": "Redis account"
         }
       }
-    },
-    {
-      "parameters": {
-        "operation": "push",
-        "list": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"telefoneCliente\"] }}",
-        "messageData": "={{ $json.text }}",
-        "tail": true
-      },
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        1700,
-        960
-      ],
-      "id": "48bbcb57-47bf-4c98-b41e-4b2229872158",
-      "name": "Add Áudio no Buffer",
-      "credentials": {
-        "redis": {
-          "id": "WKYrbj8mpqYSkF5s",
-          "name": "Redis account"
-        }
-      },
-      "disabled": true
     },
     {
       "parameters": {
@@ -1733,29 +1430,6 @@
       "id": "0485f16e-2687-4a43-927b-a9bc3d184d00",
       "name": "Wait1",
       "webhookId": "ba2fcbee-aad3-4634-a1d3-ff161bc5abfd"
-    },
-    {
-      "parameters": {
-        "operation": "push",
-        "list": "={{ $('camposIniciais').item.json.meta.telefoneCliente.toString() }}",
-        "messageData": "={{ $json.content }}",
-        "tail": true
-      },
-      "id": "f8b2c429-3e16-4ac9-a070-e27b46c96cff",
-      "name": "empilhaÁudio1",
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        1800,
-        1540
-      ],
-      "credentials": {
-        "redis": {
-          "id": "WKYrbj8mpqYSkF5s",
-          "name": "Redis account"
-        }
-      },
-      "disabled": true
     },
     {
       "parameters": {
@@ -2268,32 +1942,8 @@
                 },
                 "conditions": [
                   {
-                    "leftValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"contact\"][\"lastMessageData\"][\"messageType\"] }}",
-                    "rightValue": "audioMessage",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals"
-                    },
-                    "id": "e527f4ba-343e-4001-91c5-8cc65754a95a"
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "Áudio"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
                     "id": "0cb14635-2673-408e-86db-ce9e0373674b",
-                    "leftValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"contact\"][\"lastMessageData\"][\"messageType\"] }}",
+                    "leftValue": "={{ $('camposIniciais').item.json.content.tipoMensagem }}",
                     "rightValue": "message",
                     "operator": {
                       "type": "string",
@@ -2317,9 +1967,9 @@
                 },
                 "conditions": [
                   {
-                    "id": "60065893-74f7-4b64-bc1a-d891202efa78",
-                    "leftValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"contact\"][\"lastMessageData\"][\"messageType\"] }}",
-                    "rightValue": "imageMessage",
+                    "id": "485658e2-b60e-46bf-afb7-250cc1b5bb8b",
+                    "leftValue": "={{ $('Webhook').item.json.body.contact.lastMessageData.messageType }}",
+                    "rightValue": "image",
                     "operator": {
                       "type": "string",
                       "operation": "equals",
@@ -2330,20 +1980,103 @@
                 "combinator": "and"
               },
               "renameOutput": true,
-              "outputKey": "Imagem"
+              "outputKey": "imagem"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "35ed5c99-4c5f-4d98-9a23-12882f27d1a4",
+                    "leftValue": "={{ $('Webhook').item.json.body.contact.lastMessageData.messageType }}",
+                    "rightValue": "audio",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
             }
           ]
         },
         "options": {}
       },
-      "id": "da81e5be-770a-4300-819d-fae874740741",
+      "id": "ace59780-a73a-4f1f-be7d-51f3d314c92c",
       "name": "Switch2",
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        860,
+        840,
         1260
       ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://unnichat.com.br/a/start/Pp4VlExr6e0qVmtod5fh",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"nome\": \"{{ $('camposIniciais').first().json.meta.nomeCliente }}\",\n  \"telefone\": \"{{ $('camposIniciais').first().json.meta.telefoneCliente }}\",\n  \"type\": \"{{ $('camposIniciais').first().json.content.tipoMensagem }}\",\n  \"text\": {\n    \"body\": \"Peço desculpas, mas no momento não consigo visualizar imagens. Poderia descrever o que está acontecendo?\"\n  }\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1060,
+        1020
+      ],
+      "id": "70a730d7-f210-4cc6-a350-57c15356461e",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://unnichat.com.br/a/start/Pp4VlExr6e0qVmtod5fh",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"nome\": \"{{ $('camposIniciais').first().json.meta.nomeCliente }}\",\n  \"telefone\": \"{{ $('camposIniciais').first().json.meta.telefoneCliente }}\",\n  \"type\": \"{{ $('camposIniciais').first().json.content.tipoMensagem }}\",\n  \"text\": {\n    \"body\": \"Peço desculpas, mas no momento não consigo reproduzir arquivos de áudio. Poderia transcrever ou descrever o que está acontecendo?\"\n  }\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1060,
+        1480
+      ],
+      "id": "398cb660-e680-4c14-acb5-2f07e575ce14",
+      "name": "HTTP Request2"
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"telefoneCliente\"] }}",
+        "messageData": "={{ $('camposIniciais').item.json.content.quoted }}",
+        "tail": true
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        1240
+      ],
+      "id": "ffbdf3cf-c0a4-46e8-9f7e-1814c3acacd3",
+      "name": "Add na Memória",
+      "credentials": {
+        "redis": {
+          "id": "WKYrbj8mpqYSkF5s",
+          "name": "Redis account"
+        }
+      }
     }
   ],
   "pinData": {
@@ -2415,6 +2148,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-13T14:15:05.867Z",
-  "versionId": "4b3df0e6-a366-4ea9-a8a0-838d5009d6da"
+  "updatedAt": "2025-08-13T19:45:01.192Z",
+  "versionId": "a881f4c6-9ce8-4b40-840d-68f6f5e9cd9e"
 }
