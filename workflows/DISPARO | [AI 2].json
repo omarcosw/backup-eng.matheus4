@@ -1,17 +1,6 @@
 {
   "active": false,
   "connections": {
-    "Google Sheets": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Loop Over Items": {
       "main": [
         [
@@ -140,7 +129,7 @@
       "main": [
         [
           {
-            "node": "Google Sheets",
+            "node": "Get row(s) in sheet",
             "type": "main",
             "index": 0
           }
@@ -186,6 +175,17 @@
           }
         ]
       ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-06-14T18:18:46.413Z",
@@ -196,37 +196,6 @@
   },
   "name": "DISPARO | [AI 2]",
   "nodes": [
-    {
-      "parameters": {
-        "documentId": {
-          "__rl": true,
-          "value": "https://docs.google.com/spreadsheets/d/1E9Ac8A1DktjdOfp5mzpEWjFX0E8jKu4F9TFbIVOZGNg/edit?gid=0#gid=0",
-          "mode": "url"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": 2049866651,
-          "mode": "list",
-          "cachedResultName": "1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1E9Ac8A1DktjdOfp5mzpEWjFX0E8jKu4F9TFbIVOZGNg/edit#gid=2049866651"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.6,
-      "position": [
-        -900,
-        300
-      ],
-      "id": "4303af2a-fd26-433b-bf77-1539fed67b06",
-      "name": "Google Sheets",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "rE0Y7KmzpfU43ny6",
-          "name": "Google Sheets account"
-        }
-      }
-    },
     {
       "parameters": {
         "options": {}
@@ -538,7 +507,7 @@
           "interval": [
             {
               "triggerAtHour": 9,
-              "triggerAtMinute": null
+              "triggerAtMinute": {}
             }
           ]
         }
@@ -653,6 +622,37 @@
       ],
       "id": "a9bdb624-2d71-4d86-8cbf-d3ea7dc62939",
       "name": "Limita quantidade de disparo"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1YSgrXAtFrECTMrh8K1Z00RpoCRKWNMdV02w6ES7He3A/edit?usp=sharing",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YSgrXAtFrECTMrh8K1Z00RpoCRKWNMdV02w6ES7He3A/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        -900,
+        300
+      ],
+      "id": "4303af2a-fd26-433b-bf77-1539fed67b06",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "rE0Y7KmzpfU43ny6",
+          "name": "Google Sheets account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -676,6 +676,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-12T15:32:22.277Z",
-  "versionId": "face5aa9-7766-441a-bafe-2577bf65905a"
+  "updatedAt": "2025-08-13T04:18:16.417Z",
+  "versionId": "df6d4440-c22a-49b0-9b2e-aee8c57b766c"
 }
