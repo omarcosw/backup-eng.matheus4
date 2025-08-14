@@ -346,12 +346,12 @@
         "mode": "insert",
         "tableName": {
           "__rl": true,
-          "value": "ps_objecoes",
+          "value": "ps_ebook",
           "mode": "list",
-          "cachedResultName": "ps_objecoes"
+          "cachedResultName": "ps_ebook"
         },
         "options": {
-          "queryName": "match_ps_objecoes"
+          "queryName": "match_ps_ebook"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
@@ -465,7 +465,7 @@
     {
       "parameters": {
         "operation": "get",
-        "documentURL": "=1KJktyHHnU4VTuZFwVAq2TpV_xXpUTJvw5sc682M7CzU"
+        "documentURL": "=1Nsx6bkELI3EQ0yyBncgxfARDfoDBWaJ_zXSn8hoE0NA"
       },
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
@@ -553,6 +553,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-05T23:38:32.155Z",
-  "versionId": "330632e5-7f89-473c-a495-f2e2d9a5fb8b"
+  "updatedAt": "2025-08-14T18:00:17.928Z",
+  "versionId": "5114ae22-3010-4c11-b762-e6dd9695e4a4"
 }
