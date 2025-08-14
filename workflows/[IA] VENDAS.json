@@ -854,7 +854,7 @@
           "conditions": [
             {
               "keyName": "telefone",
-              "keyValue": "={{ $node[\"Webhook\"].json[\"body\"][\"contact\"][\"phoneNumber\"] }}"
+              "keyValue": "={{ $('Webhook').item.json.body.contact.phoneNumber }}"
             }
           ]
         }
@@ -2154,6 +2154,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-14T01:44:08.303Z",
-  "versionId": "fde5ab67-5fd5-471a-982e-c3672a1a7447"
+  "updatedAt": "2025-08-14T14:24:13.386Z",
+  "versionId": "90a6ce23-cae0-41d9-afc4-1d64666d3280"
 }
