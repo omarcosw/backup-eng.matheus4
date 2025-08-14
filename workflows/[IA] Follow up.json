@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "60 min": {
       "main": [
@@ -1159,6 +1159,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-12T15:31:48.748Z",
+  "updatedAt": "2025-08-14T19:19:41.064Z",
   "versionId": "1a543a54-8799-4f13-b795-a09123fe522c"
 }
