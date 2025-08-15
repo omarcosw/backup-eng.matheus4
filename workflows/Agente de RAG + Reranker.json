@@ -346,12 +346,12 @@
         "mode": "insert",
         "tableName": {
           "__rl": true,
-          "value": "ps_ebook",
+          "value": "ps_produto",
           "mode": "list",
-          "cachedResultName": "ps_ebook"
+          "cachedResultName": "ps_produto"
         },
         "options": {
-          "queryName": "match_ps_ebook"
+          "queryName": "match_ps_produto"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
@@ -465,7 +465,7 @@
     {
       "parameters": {
         "operation": "get",
-        "documentURL": "=1Nsx6bkELI3EQ0yyBncgxfARDfoDBWaJ_zXSn8hoE0NA"
+        "documentURL": "=135pZYtUKAfhxaRoHzYUKq4iq4tz2HnJSMTL__xt0U1I"
       },
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
@@ -553,6 +553,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-14T18:00:17.928Z",
-  "versionId": "5114ae22-3010-4c11-b762-e6dd9695e4a4"
+  "updatedAt": "2025-08-15T03:05:37.802Z",
+  "versionId": "011698ca-370c-4cfb-8569-deecb0391815"
 }
