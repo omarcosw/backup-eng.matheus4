@@ -585,7 +585,7 @@
         "messages": {
           "messageValues": [
             {
-              "message": "=Por favor, gere a saída no seguinte formato JSON:\n{\n  \"messages\": [\n    \"splitedMessage\",\n    \"splitedMessage\",\n    \"splitedMessage\"\n  ]\n}\n\nAs mensagens devem ser divididas de forma natural, afinal estamos conversando com um humano, não é mesmo?\n\n### Jamais separe uma mensagem vazia.\n\n### Certifique-se de que a resposta siga exatamente essa estrutura abaixo, deixando somente entre '*' para negrito e nunca fugindo das demais regras de markdown do WhatsApp:\n\t\t\t- *negrito* (substitua '**' por '*')\n\t\t\t- _itálico_ (extremamente raro)\n            - `link` (usar sempre em todos os links)\n\nTudo o que for link, deve ser exibido limpo e direto, **sem texto descritivo ou âncoras**, usando somente o domínio puro como: `https://link.com.br/exemplo`\n\n❗ Nunca use markdown no estilo `[texto](link)` ou `Texto (link)`, apenas o link puro.\n\nSe detectar um link com o padrão como por exemplo `https://lp.sorveteiroraiz.com/curso-profissao-sorveteiro-pg-ia-vendas`, corrija automaticamente para `lp.sorveteiroraiz.com/curso-profissao-sorveteiro-pg-ia-vendas`, pois o domínio com www não funciona."
+              "message": "=Por favor, gere a saída no seguinte formato JSON:\n{\n  \"messages\": [\n    \"splitedMessage\",\n    \"splitedMessage\",\n    \"splitedMessage\"\n  ]\n}\n\nAs mensagens devem ser divididas de forma natural, afinal estamos conversando com um humano, não é mesmo?\n\n### Jamais separe uma mensagem vazia.\n\n### Certifique-se de que a resposta siga exatamente essa estrutura abaixo, deixando somente entre '*' para negrito e nunca fugindo das demais regras de markdown do WhatsApp:\n\t\t\t- *negrito* (substitua '**' por '*')\n\t\t\t- _itálico_ (extremamente raro)\n            - `link` (usar sempre em todos os links)\n\nTudo o que for link, deve ser exibido limpo e direto, **sem texto descritivo ou âncoras**, usando somente o domínio puro como EXEMPLO: `https://link.com.br/exemplo`\n\n❗ Nunca use markdown no estilo `[texto](link)` ou `Texto (link)`, apenas o link puro.\n\nSe detectar um link com o padrão como por exemplo `https://lp.sorveteiroraiz.com/curso-profissao-sorveteiro-pg-ia-vendas`, corrija automaticamente para `lp.sorveteiroraiz.com/curso-profissao-sorveteiro-pg-ia-vendas`, pois o domínio com www não funciona."
             }
           ]
         }
@@ -765,7 +765,7 @@
     {
       "parameters": {
         "content": "## PASSO 1 - CREDENCIAIS, DADOS, E PROMPT AGENTE",
-        "height": 614,
+        "height": 634,
         "width": 1479,
         "color": 6
       },
@@ -775,7 +775,7 @@
       "typeVersion": 1,
       "position": [
         -1980,
-        960
+        940
       ]
     },
     {
@@ -1854,7 +1854,7 @@
             {
               "id": "0ad262f3-a7f6-4a86-a840-1dff931a959a",
               "name": "Preço",
-              "value": "O valor normal é R$ 2.797,00, mas somente hoje você tem um desconto de R$ 800,00\n\nPor apenas: 12x de R$ 206,54 Ou R$ 1.997,00 à vista no cartão, boleto ou pix",
+              "value": "O valor normal é R$ 2.797,00, mas somente hoje você tem um desconto de R$ 600,00\n\nPor apenas: 12x de R$ 227,22 Ou R$ 2.197,00 à vista no cartão, boleto a vista ou pix\n\nNo boleto parcelado em até 12x de R$ 249,66",
               "type": "string"
             },
             {
@@ -1866,13 +1866,13 @@
             {
               "id": "41b8d959-6639-463e-9c15-0a374a87cd2f",
               "name": "Pix, Cartão de Crédito e Boleto avista",
-              "value": "=https://pay.hotmart.com/F84276539R?off=zai34d7o ",
+              "value": "=https://pay.hotmart.com/F84276539R?off=wdz9565b ",
               "type": "string"
             },
             {
               "id": "a2a2923d-e012-4c0b-8cd7-980fe9427a8a",
               "name": "Boleto Parcelado",
-              "value": "=https://pay.tmbeducacao.com.br/EduSorveteir/9AT95220TL",
+              "value": "=https://pay.tmbeducacao.com.br/EduSorveteir/0L595223JB",
               "type": "string"
             },
             {
@@ -2221,6 +2221,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-14T19:38:46.080Z",
-  "versionId": "5a1f4915-38cd-43d5-af95-dc1c00235a95"
+  "updatedAt": "2025-08-15T02:52:03.092Z",
+  "versionId": "14d1ff08-e02e-40aa-9f68-238227f42c1d"
 }
