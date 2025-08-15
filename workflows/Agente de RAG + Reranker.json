@@ -346,12 +346,12 @@
         "mode": "insert",
         "tableName": {
           "__rl": true,
-          "value": "ps_produto",
+          "value": "ps_objecoes",
           "mode": "list",
-          "cachedResultName": "ps_produto"
+          "cachedResultName": "ps_objecoes"
         },
         "options": {
-          "queryName": "match_ps_produto"
+          "queryName": "match_ps_objecoes"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
@@ -465,7 +465,7 @@
     {
       "parameters": {
         "operation": "get",
-        "documentURL": "=135pZYtUKAfhxaRoHzYUKq4iq4tz2HnJSMTL__xt0U1I"
+        "documentURL": "=14vGjdSnVEAbZcS9dQFzSjBja1TD5_jF_cTxcSd2lr8s"
       },
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
@@ -553,6 +553,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-15T03:05:37.802Z",
-  "versionId": "011698ca-370c-4cfb-8569-deecb0391815"
+  "updatedAt": "2025-08-15T15:16:44.849Z",
+  "versionId": "553fda5f-c201-4540-b171-6db1b28f165a"
 }
