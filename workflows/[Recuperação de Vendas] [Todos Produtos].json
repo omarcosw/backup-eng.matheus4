@@ -672,6 +672,7 @@
       ],
       "id": "e96046b1-a308-410a-b88e-3f6bfe1fadf4",
       "name": "getcliente",
+      "alwaysOutputData": true,
       "credentials": {
         "supabaseApi": {
           "id": "QiHN5zEBNyZ0P663",
@@ -693,12 +694,14 @@
       ],
       "id": "8526c53c-9237-45e9-b0e3-f2dbdd93a05f",
       "name": "Redis",
+      "alwaysOutputData": true,
       "credentials": {
         "redis": {
           "id": "WKYrbj8mpqYSkF5s",
           "name": "Redis account"
         }
-      }
+      },
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -999,42 +1002,112 @@
           "headers": {
             "host": "webhook.sorveteiroraiz.com",
             "user-agent": "Jodd HTTP",
-            "content-length": "396",
+            "content-length": "1560",
             "content-type": "application/json",
-            "x-forwarded-for": "54.242.27.80",
+            "x-forwarded-for": "44.200.248.216",
             "x-forwarded-host": "webhook.sorveteiroraiz.com",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "aae19483bb9a",
             "x-hotmart-hottok": "Srl2QUHnnelVLh9p8MDePHUcKz3hqk1526245",
-            "x-real-ip": "54.242.27.80",
+            "x-real-ip": "44.200.248.216",
             "accept-encoding": "gzip"
           },
           "params": {},
           "query": {},
           "body": {
             "data": {
-              "offer": {
-                "code": "xoaij3lc"
-              },
               "product": {
+                "support_email": "contato@sorveteiroraiz.com",
+                "has_co_production": false,
                 "name": "Profissão Sorveteiro",
-                "id": 3074866
+                "is_physical_product": false,
+                "id": 3074866,
+                "ucode": "e8d20be8-bffa-4719-bcf2-5f4f86b780ff"
               },
-              "checkout_country": {
-                "iso": "BR",
-                "name": "Brasil"
+              "commissions": [
+                {
+                  "currency_value": "BRL",
+                  "source": "MARKETPLACE",
+                  "value": 196.53
+                },
+                {
+                  "currency_value": "BRL",
+                  "source": "PRODUCER",
+                  "value": 1997.98
+                }
+              ],
+              "purchase": {
+                "original_offer_price": {
+                  "currency_value": "BRL",
+                  "value": 2197
+                },
+                "subscription_anticipation_purchase": false,
+                "checkout_country": {
+                  "iso": "BR",
+                  "name": "Brasil"
+                },
+                "order_bump": {
+                  "is_order_bump": false
+                },
+                "offer": {
+                  "code": "e4zmjx88",
+                  "name": "LC10 - JORNADA - R$600 DE DESCONTO",
+                  "description": "OFERTA EXCLUSIVA"
+                },
+                "is_funnel": false,
+                "order_date": 1755223064000,
+                "price": {
+                  "currency_value": "BRL",
+                  "value": 2197
+                },
+                "payment": {
+                  "refusal_reason": "UNKNOWN",
+                  "installments_number": 12,
+                  "type": "CREDIT_CARD"
+                },
+                "full_price": {
+                  "currency_value": "BRL",
+                  "value": 2726.64
+                },
+                "business_model": "I",
+                "invoice_by": "HOTMART",
+                "transaction": "HP1689503415",
+                "status": "CANCELED"
               },
-              "affiliate": true,
+              "affiliates": [
+                {
+                  "affiliate_code": "",
+                  "name": ""
+                }
+              ],
+              "producer": {
+                "legal_nature": "Pessoa Jurídica",
+                "document": "59187725000183",
+                "name": "INSTITUTO SORVETEIRO RAIZ LTDA"
+              },
               "buyer": {
-                "phone": "5511984151865",
-                "name": "Higor leite",
-                "email": "higor@authlike.com"
+                "checkout_phone_code": "11",
+                "address": {
+                  "zipcode": "",
+                  "country": "Brasil",
+                  "address": "",
+                  "city": "",
+                  "complement": "",
+                  "country_iso": "BR"
+                },
+                "document": "",
+                "name": "Anizio Dias",
+                "last_name": "Dias",
+                "checkout_phone": "11959181812",
+                "first_name": "Anizio",
+                "email": "aniziodiaz@gmail.com",
+                "document_type": ""
               }
             },
-            "id": "fabf2d0d-aca8-498b-9ddb-d010b048238c",
-            "creation_date": 1754569784217,
-            "event": "PURCHASE_OUT_OF_SHOPPING_CART",
+            "id": "5c7b4aea-e291-41a3-a2b8-435571058d93",
+            "creation_date": 1755223082453,
+            "event": "PURCHASE_CANCELED",
             "version": "2.0.0"
           },
           "webhookUrl": "https://webhook.sorveteiroraiz.com/webhook/rec-vendas-products",
@@ -1056,6 +1129,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-14T20:23:34.849Z",
-  "versionId": "403ecfc3-3282-43a3-972b-92079baaf3a8"
+  "updatedAt": "2025-08-15T02:17:13.548Z",
+  "versionId": "58b4ce2b-0533-48dd-bbbd-f25235e79aef"
 }
