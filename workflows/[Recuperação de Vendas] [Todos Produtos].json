@@ -381,7 +381,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Função auxiliar para buscar valor em qualquer lugar do objeto por nome da chave\nfunction findValue(obj, keyName) {\n  if (!obj || typeof obj !== 'object') return undefined;\n  if (obj.hasOwnProperty(keyName)) return obj[keyName];\n  \n  for (const key in obj) {\n    const value = findValue(obj[key], keyName);\n    if (value !== undefined) return value;\n  }\n  return undefined;\n}\n\n// Função para extrair dados do formato contact[...]\nfunction extractFromContactFormat(data) {\n  const result = {};\n  \n  // Procurar no body primeiro (novo formato ActiveCampaign)\n  if (data.body) {\n    result.phone = data.body['contact[phone]'] || '';\n    result.email = data.body['contact[email]'] || '';\n    result.firstName = data.body['contact[first_name]'] || '';\n    result.lastName = data.body['contact[last_name]'] || '';\n    \n    // Se encontrou algum dado no formato contact, retornar\n    if (result.phone || result.email || result.firstName || result.lastName) {\n      return result;\n    }\n  }\n  \n  return null;\n}\n\n// Função para capitalizar apenas a primeira letra da primeira palavra\nfunction capitalizeFirstOnly(str) {\n  if (!str) return '';\n  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();\n}\n\n// Processamento dinâmico\nreturn items.map(item => {\n  const data = item.json;\n  \n  let phoneRaw = '';\n  let emailRaw = '';\n  let firstName = '';\n  let lastName = '';\n  \n  // Primeiro tentar extrair do formato contact[...] (ActiveCampaign)\n  const contactData = extractFromContactFormat(data);\n  \n  if (contactData) {\n    // Formato ActiveCampaign\n    phoneRaw = contactData.phone;\n    emailRaw = contactData.email;\n    firstName = contactData.firstName;\n    lastName = contactData.lastName;\n  } else {\n    // Formato Hotmart - buscar dentro de body.data.buyer\n    if (data.body && data.body.data && data.body.data.buyer) {\n      const buyer = data.body.data.buyer;\n      phoneRaw = buyer.phone || '';\n      emailRaw = buyer.email || '';\n      const nameRaw = buyer.name || '';\n      \n      // Separar nome e sobrenome\n      if (nameRaw) {\n        const [first, ...rest] = nameRaw.trim().split(' ');\n        firstName = first || '';\n        lastName = rest.join(' ') || '';\n      }\n    } else {\n      // Fallback - buscar em qualquer lugar (caso o formato mude ligeiramente)\n      phoneRaw = findValue(data, 'phone') || findValue(data, 'checkout_phone') || '';\n      emailRaw = findValue(data, 'email') || '';\n      const nameRaw = findValue(data, 'name') || '';\n      \n      if (nameRaw) {\n        const [first, ...rest] = nameRaw.trim().split(' ');\n        firstName = first || '';\n        lastName = rest.join(' ') || '';\n      }\n    }\n  }\n  \n  // Garantir que o telefone começa com \"55\"\n  let phone = phoneRaw.toString();\n  if (!phone.startsWith('55') && phone.length > 0) {\n    phone = '55' + phone;\n  }\n  \n  // Email em minúsculo\n  const email = emailRaw.toString().toLowerCase();\n  \n  // Padronizar os nomes: primeira letra maiúscula, resto minúsculo\n  firstName = capitalizeFirstOnly(firstName.trim());\n  lastName = lastName.trim().toLowerCase(); // sobrenome todo em minúsculo\n  \n  return {\n    json: {\n      ...item.json,\n      transformed: {\n        phone,\n        email,\n        firstName,\n        lastName\n      }\n    }\n  };\n});"
+        "jsCode": "// Função auxiliar para buscar valor em qualquer lugar do objeto por nome da chave\nfunction findValue(obj, keyName) {\n  if (!obj || typeof obj !== 'object') return undefined;\n  if (obj.hasOwnProperty(keyName)) return obj[keyName];\n  \n  for (const key in obj) {\n    const value = findValue(obj[key], keyName);\n    if (value !== undefined) return value;\n  }\n  return undefined;\n}\n\n// Função para extrair dados do formato contact[...]\nfunction extractFromContactFormat(data) {\n  const result = {};\n  \n  // Procurar no body primeiro (novo formato ActiveCampaign)\n  if (data.body) {\n    result.phone = data.body['contact[phone]'] || '';\n    result.email = data.body['contact[email]'] || '';\n    result.firstName = data.body['contact[first_name]'] || '';\n    result.lastName = data.body['contact[last_name]'] || '';\n    \n    // Se encontrou algum dado no formato contact, retornar\n    if (result.phone || result.email || result.firstName || result.lastName) {\n      return result;\n    }\n  }\n  \n  return null;\n}\n\n// Função para capitalizar apenas a primeira letra da primeira palavra\nfunction capitalizeFirstOnly(str) {\n  if (!str) return '';\n  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();\n}\n\n// Processamento dinâmico\nreturn items.map(item => {\n  const data = item.json;\n  \n  let phoneRaw = '';\n  let emailRaw = '';\n  let firstName = '';\n  let lastName = '';\n  \n  // Primeiro tentar extrair do formato contact[...] (ActiveCampaign)\n  const contactData = extractFromContactFormat(data);\n  \n  if (contactData) {\n    // Formato ActiveCampaign\n    phoneRaw = contactData.phone;\n    emailRaw = contactData.email;\n    firstName = contactData.firstName;\n    lastName = contactData.lastName;\n  } else {\n    // Formato Hotmart - buscar dentro de body.data.buyer\n    if (data.body && data.body.data && data.body.data.buyer) {\n      const buyer = data.body.data.buyer;\n      phoneRaw = buyer.phone || '';\n      emailRaw = buyer.email || '';\n      const nameRaw = buyer.name || '';\n      \n      // Separar nome e sobrenome\n      if (nameRaw) {\n        const [first, ...rest] = nameRaw.trim().split(' ');\n        firstName = first || '';\n        lastName = rest.join(' ') || '';\n      }\n    } else {\n      // Fallback - buscar em qualquer lugar (caso o formato mude ligeiramente)\n      phoneRaw = findValue(data, 'phone') || findValue(data, 'checkout_phone') || '';\n      emailRaw = findValue(data, 'email') || '';\n      const nameRaw = findValue(data, 'name') || '';\n      \n      if (nameRaw) {\n        const [first, ...rest] = nameRaw.trim().split(' ');\n        firstName = first || '';\n        lastName = rest.join(' ') || '';\n      }\n    }\n  }\n  \n  // Limpar e formatar o telefone\n  let phone = phoneRaw.toString();\n  \n  // Remover caracteres não numéricos (incluindo +, -, espaços, parênteses)\n  phone = phone.replace(/\\D/g, '');\n  \n  // Se não começa com 55, adicionar\n  if (phone.length > 0 && !phone.startsWith('55')) {\n    phone = '55' + phone;\n  }\n  \n  // Email em minúsculo\n  const email = emailRaw.toString().toLowerCase();\n  \n  // Padronizar os nomes: primeira letra maiúscula, resto minúsculo\n  firstName = capitalizeFirstOnly(firstName.trim());\n  lastName = lastName.trim().toLowerCase(); // sobrenome todo em minúsculo\n  \n  return {\n    json: {\n      ...item.json,\n      transformed: {\n        phone,\n        email,\n        firstName,\n        lastName\n      }\n    }\n  };\n});"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -1166,7 +1166,7 @@
           "headers": {
             "host": "webhook.sorveteiroraiz.com",
             "user-agent": "GuzzleHttp/7",
-            "content-length": "1013",
+            "content-length": "808",
             "content-type": "application/x-www-form-urlencoded",
             "x-forwarded-for": "23.22.14.42",
             "x-forwarded-host": "webhook.sorveteiroraiz.com",
@@ -1179,34 +1179,22 @@
           "params": {},
           "query": {},
           "body": {
-            "contact[id]": "23974",
-            "contact[email]": "higorteste@teste.com",
-            "contact[first_name]": "Higor ",
-            "contact[last_name]": "Leite",
-            "contact[phone]": "5511984151865",
+            "contact[id]": "20816",
+            "contact[email]": "viniciussouzamartins1986@gmail.com",
+            "contact[first_name]": "VINICIUS SOUZA MARTINS",
+            "contact[last_name]": "",
+            "contact[phone]": "+5527996900508",
             "contact[orgname]": "",
             "contact[customer_acct_name]": "",
-            "contact[tags]": "",
+            "contact[tags]": "LC10 - LEADS JORNADA PROFISSÃO SORVETEIRO, CHECKOUT-BOLETO-PG-V02-LC10",
             "contact[ip4]": "0.0.0.0",
-            "contact[fields][utm_campaign2]": "",
-            "contact[fields][utm_source2]": "",
-            "contact[fields][utm_medium2]": "",
-            "contact[fields][utm_content2]": "",
-            "contact[fields][utm_term2]": "",
-            "contact[fields][sr04utmsource]": "",
-            "contact[fields][sr04utmcampaign]": "",
-            "contact[fields][sr04utmmedium]": "",
-            "contact[fields][sr04utmcontent]": "",
-            "contact[fields][sr04utmterm]": "",
-            "contact[fields][sr04pagina]": "",
-            "contact[fields][sr04data]": "",
-            "contact[fields][lc4_data_de_inscrio]": "",
-            "contact[fields][utm_source]": "",
-            "contact[fields][utm_campaign]": "",
-            "contact[fields][utm_medium]": "",
-            "contact[fields][utm_content]": "",
-            "contact[fields][utm_term]": "",
-            "contact[fields][lc5_le_data_de_inscrio]": "",
+            "contact[fields][sr04utmsource]": "fb",
+            "contact[fields][sr04pagina]": "Curso Profissão Sorveteiro – V02 – GWPP",
+            "contact[fields][sr04utmterm]": "120227927373240139",
+            "contact[fields][sr04utmcontent]": "120227927373090139",
+            "contact[fields][sr04utmmedium]": "paid",
+            "contact[fields][sr04utmcampaign]": "120227927372870139",
+            "contact[fields][lc4_data_de_inscrio]": "2025-08-01T09:25:57-03:00",
             "seriesid": "123"
           },
           "webhookUrl": "https://webhook.sorveteiroraiz.com/webhook/rec-vendas-products",
@@ -1228,6 +1216,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-15T17:12:43.537Z",
-  "versionId": "f7d77956-ab41-42a4-b1c4-c8d2be3e189d"
+  "updatedAt": "2025-08-16T16:19:50.872Z",
+  "versionId": "f98c9feb-97ab-4d56-ba48-6d7cac92522b"
 }
