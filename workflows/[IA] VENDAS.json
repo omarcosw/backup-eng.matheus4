@@ -1694,7 +1694,7 @@
           "mode": "list",
           "cachedResultName": "ps_produto"
         },
-        "topK": 20,
+        "topK": 50,
         "useReranker": true,
         "options": {
           "queryName": "match_ps_produto"
@@ -1765,7 +1765,7 @@
           "mode": "list",
           "cachedResultName": "ps_objecoes"
         },
-        "topK": 20,
+        "topK": 50,
         "useReranker": true,
         "options": {
           "queryName": "match_ps_objecoes"
@@ -2223,6 +2223,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-16T16:54:29.699Z",
-  "versionId": "b46540cc-9e41-41fc-917a-29274aba9e0c"
+  "updatedAt": "2025-08-18T20:23:41.426Z",
+  "versionId": "c90cfd3c-1ffa-4d3d-8a2c-65e7f7234aaa"
 }
