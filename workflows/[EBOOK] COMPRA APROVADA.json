@@ -210,7 +210,7 @@
   "nodes": [
     {
       "parameters": {
-        "jsCode": "// Pegando os dados do body do webhook\nconst data = $json[\"body\"][\"data\"];\n\n// Função para formatar o email em letras minúsculas\nconst email = data.buyer.email.toLowerCase();\n\n// Função para separar o nome e sobrenome\nconst nomeCompleto = data.buyer.name.split(\" \");\nconst nome = nomeCompleto[0]; // Primeiro nome\nconst sobrenome = nomeCompleto.slice(1).join(\" \"); // O restante é o sobrenome\n\n// Função para remover espaços e caracteres do número de telefone, deixando apenas os números\nlet phoneNumber = data.buyer.checkout_phone.replace(/\\D/g, '');\n\n// Adicionando \"55\" na frente do telefone, caso não tenha\nif (!phoneNumber.startsWith(\"55\")) {\n    phoneNumber = \"55\" + phoneNumber;\n}\n\n// Dados da compra\nconst produtoNome = data.product.name;\nconst produtoId = data.product.id;\nconst produtoUcode = data.product.ucode;\nconst preçoTotal = parseFloat(data.purchase.price.value);\nconst statusCompra = data.purchase.status;\nconst transactionId = data.purchase.transaction;\n\n// Dados do pagamento\nconst metodoPagamento = data.purchase.payment.type;\nconst numeroParcelas = data.purchase.payment.installments_number;\n\n// Dados do endereço do comprador\nconst endereco = data.buyer.address;\nconst enderecoCompleto = `${endereco.address}, ${endereco.number} - ${endereco.neighborhood}, ${endereco.city} - ${endereco.state}, ${endereco.zipcode}`;\n\n// Dados das comissões\nconst comissoes = data.commissions.map(commission => ({\n    fonte: commission.source,\n    valor: commission.value,\n    moeda: commission.currency_value\n}));\n\n// Comissão do produtor (preço total - primeira comissão)\nconst primeiraComissao = data.commissions[0]?.value ? parseFloat(data.commissions[0].value) : 0;\nconst comissaoProdutor = preçoTotal - primeiraComissao;\n\n// Dados do produtor\nconst produtorNome = data.producer.name;\n\n// UTM's\nconst utm_source = data.utm_source || '';\nconst utm_campaign = data.utm_campaign || '';\nconst utm_medium = data.utm_medium || '';\nconst utm_content = data.utm_content || '';\nconst utm_term = data.utm_term || '';\n\n// Retornando todos os dados organizados\nreturn {\n  email: email,\n  nome: nome,\n  sobrenome: sobrenome,\n  telefone: phoneNumber,\n  produto: {\n    nome: produtoNome,\n    id: produtoId,\n    ucode: produtoUcode\n  },\n  compra: {\n    preco_total: preçoTotal,\n    status: statusCompra,\n    transaction_id: transactionId\n  },\n  pagamento: {\n    metodo: metodoPagamento,\n    parcelas: numeroParcelas\n  },\n  endereco: enderecoCompleto,\n  comissoes: comissoes,\n  comissao_produtor: comissaoProdutor,\n  produtor: produtorNome,\n  utm_source: utm_source,\n  utm_campaign: utm_campaign,\n  utm_medium: utm_medium,\n  utm_content: utm_content,\n  utm_term: utm_term\n};\n"
+        "jsCode": "// Pegando os dados do body do webhook\nconst data = $json.body.data;\n\n// Função para formatar o email em letras minúsculas\nconst email = data.buyer.email.toLowerCase();\n\n// Nome e sobrenome (já separados no payload)\nconst nome = data.buyer.first_name || '';\nconst sobrenome = data.buyer.last_name || '';\nconst nomeCompleto = `${nome} ${sobrenome}`.trim();\n\n// Telefone - não existe no payload, deixo null ou vazio\nlet phoneNumber = data.buyer.checkout_phone || '';\nif (phoneNumber) {\n  phoneNumber = phoneNumber.replace(/\\D/g, '');\n  if (!phoneNumber.startsWith(\"55\")) {\n    phoneNumber = \"55\" + phoneNumber;\n  }\n} else {\n  phoneNumber = null; // ou \"\" se preferir string vazia\n}\n\n// Dados da compra\nconst produtoNome = data.product.name;\nconst produtoId = data.product.id;\nconst produtoUcode = data.product.ucode;\nconst precoTotal = parseFloat(data.purchase.price.value);\nconst statusCompra = data.purchase.status;\nconst transactionId = data.purchase.transaction;\n\n// Dados do pagamento\nconst metodoPagamento = data.purchase.payment.type;\nconst numeroParcelas = data.purchase.payment.installments_number;\n\n// Dados do endereço do comprador\nconst endereco = data.buyer.address;\nconst enderecoCompleto = `${endereco.address}, ${endereco.neighborhood}, ${endereco.city} - ${endereco.state}, ${endereco.zipcode}`;\n\n// Dados das comissões\nconst comissoes = data.commissions.map(commission => ({\n  fonte: commission.source,\n  valor: commission.value,\n  moeda: commission.currency_value\n}));\n\n// Comissão do produtor (preço total - primeira comissão)\nconst primeiraComissao = data.commissions[0]?.value ? parseFloat(data.commissions[0].value) : 0;\nconst comissaoProdutor = precoTotal - primeiraComissao;\n\n// Dados do produtor\nconst produtorNome = data.producer.name;\n\n// UTM's (não vieram nesse payload, mas deixo default)\nconst utm_source = data.utm_source || '';\nconst utm_campaign = data.utm_campaign || '';\nconst utm_medium = data.utm_medium || '';\nconst utm_content = data.utm_content || '';\nconst utm_term = data.utm_term || '';\n\n// Retornando todos os dados organizados\nreturn {\n  email: email,\n  nome: nome,\n  sobrenome: sobrenome,\n  nome_completo: nomeCompleto,\n  telefone: phoneNumber,\n  produto: {\n    nome: produtoNome,\n    id: produtoId,\n    ucode: produtoUcode\n  },\n  compra: {\n    preco_total: precoTotal,\n    status: statusCompra,\n    transaction_id: transactionId\n  },\n  pagamento: {\n    metodo: metodoPagamento,\n    parcelas: numeroParcelas\n  },\n  endereco: enderecoCompleto,\n  comissoes: comissoes,\n  comissao_produtor: comissaoProdutor,\n  produtor: produtorNome,\n  utm_source: utm_source,\n  utm_campaign: utm_campaign,\n  utm_medium: utm_medium,\n  utm_content: utm_content,\n  utm_term: utm_term\n};\n"
       },
       "id": "e8eea4e9-baee-497c-b56e-b616ab471f4d",
       "name": "trata_dados",
@@ -947,15 +947,15 @@
           "headers": {
             "host": "webhook.sorveteiroraiz.com",
             "user-agent": "Jodd HTTP",
-            "content-length": "2181",
+            "content-length": "1601",
             "content-type": "application/json",
-            "x-forwarded-for": "3.91.106.214",
+            "x-forwarded-for": "18.207.220.74",
             "x-forwarded-host": "webhook.sorveteiroraiz.com",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "aae19483bb9a",
             "x-hotmart-hottok": "Srl2QUHnnelVLh9p8MDePHUcKz3hqk1526245",
-            "x-real-ip": "3.91.106.214",
+            "x-real-ip": "18.207.220.74",
             "accept-encoding": "gzip"
           },
           "params": {},
@@ -963,128 +963,93 @@
           "body": {
             "data": {
               "product": {
-                "support_email": "support@hotmart.com.br",
                 "has_co_production": false,
-                "name": "Produto test postback2",
-                "warranty_date": "2017-12-27T00:00:00Z",
+                "name": "Sorvetes Caseiros com Qualidade Profissional - Transformando a sua paixão em uma delícia gourmet!",
+                "warranty_date": "2025-08-23T00:00:00Z",
                 "is_physical_product": false,
-                "id": 0,
-                "ucode": "fb056612-bcc6-4217-9e6d-2a5d1110ac2f",
-                "content": {
-                  "has_physical_products": true,
-                  "products": [
-                    {
-                      "name": "How to Make Clear Ice",
-                      "is_physical_product": false,
-                      "id": 4774438,
-                      "ucode": "559fef42-3406-4d82-b775-d09bd33936b1"
-                    },
-                    {
-                      "name": "Organizador de Poeira",
-                      "is_physical_product": true,
-                      "id": 4999597,
-                      "ucode": "099e7644-b7d1-43d6-82a9-ec6be0118a4b"
-                    }
-                  ]
-                }
+                "id": 6022120,
+                "ucode": "a88ab781-b541-4520-9751-d24bcd9d77ac"
               },
               "commissions": [
                 {
                   "currency_value": "BRL",
                   "source": "MARKETPLACE",
-                  "value": 149.5
+                  "value": 9.63
                 },
                 {
                   "currency_value": "BRL",
                   "source": "PRODUCER",
-                  "value": 1350.5
+                  "value": 87.37
                 }
               ],
               "purchase": {
                 "original_offer_price": {
                   "currency_value": "BRL",
-                  "value": 1500
+                  "value": 97
                 },
+                "subscription_anticipation_purchase": false,
                 "checkout_country": {
                   "iso": "BR",
                   "name": "Brasil"
                 },
-                "sckPaymentLink": "sckPaymentLinkTest",
                 "order_bump": {
-                  "parent_purchase_transaction": "HP02316330308193",
-                  "is_order_bump": true
+                  "is_order_bump": false
                 },
-                "approved_date": 1511783346000,
+                "approved_date": 1755384924000,
                 "offer": {
-                  "code": "test",
-                  "coupon_code": "SHHUHA"
+                  "code": "6yy12q3v"
                 },
                 "is_funnel": false,
-                "event_tickets": {
-                  "amount": 1755203859731
-                },
-                "order_date": 1511783344000,
+                "order_date": 1755384922000,
                 "price": {
                   "currency_value": "BRL",
-                  "value": 1500
+                  "value": 97
                 },
                 "payment": {
-                  "installments_number": 12,
+                  "installments_number": 1,
                   "type": "CREDIT_CARD"
                 },
                 "full_price": {
                   "currency_value": "BRL",
-                  "value": 1500
+                  "value": 97
                 },
                 "business_model": "I",
-                "transaction": "HP16015479281022",
+                "invoice_by": "HOTMART",
+                "transaction": "HP1903774615",
                 "status": "APPROVED"
               },
               "affiliates": [
                 {
-                  "affiliate_code": "Q58388177J",
-                  "name": "Affiliate name"
+                  "affiliate_code": "",
+                  "name": ""
                 }
               ],
               "producer": {
-                "legal_nature": "Pessoa Física",
-                "document": "12345678965",
-                "name": "Producer Test Name"
-              },
-              "subscription": {
-                "subscriber": {
-                  "code": "I9OT62C3"
-                },
-                "plan": {
-                  "name": "plano de teste",
-                  "id": 123
-                },
-                "status": "ACTIVE"
+                "legal_nature": "Pessoa Jurídica",
+                "document": "59187725000183",
+                "name": "INSTITUTO SORVETEIRO RAIZ LTDA"
               },
               "buyer": {
-                "checkout_phone_code": "999999999",
                 "address": {
-                  "zipcode": "38400123",
+                  "zipcode": "15503262",
                   "country": "Brasil",
-                  "number": "10",
-                  "address": "Avenida Francisco Galassi",
-                  "city": "Uberlândia",
-                  "state": "Minas Gerais",
-                  "neighborhood": "Tubalina",
-                  "complement": "Perto do shopping",
+                  "address": "RUA ARABIA 1702",
+                  "city": "VOTUPORANGA",
+                  "state": "SP",
+                  "neighborhood": "PARQUE DAS NACOES",
+                  "complement": "",
                   "country_iso": "BR"
                 },
-                "document": "69526128664",
-                "name": "Teste Comprador",
-                "last_name": "Comprador",
-                "checkout_phone": "99999999900",
-                "first_name": "Teste",
-                "email": "testeComprador271101postman15@example.com",
+                "document": "07050959839",
+                "name": "Vera Lucia de Carvalho",
+                "last_name": "Carvalho",
+                "first_name": "Vera",
+                "email": "vera04carvalho@hotmail.com",
                 "document_type": "CPF"
               }
             },
-            "id": "b2e965a2-f7a2-4a16-b7a7-d5d6c5aa31e2",
-            "creation_date": 1755203859739,
+            "id": "88f35c92-9e85-4a4a-9c44-2ebb5bc19f94",
+            "creation_date": 1755384935964,
             "event": "PURCHASE_APPROVED",
             "version": "2.0.0"
           },
@@ -1107,6 +1072,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-14T20:51:20.188Z",
-  "versionId": "a7d298ae-223b-4077-ae89-2e055f0cd3c8"
+  "updatedAt": "2025-08-18T12:27:52.525Z",
+  "versionId": "3061df0e-ca33-43d6-b1b1-8e0a658da24f"
 }
