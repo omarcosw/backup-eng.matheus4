@@ -377,8 +377,8 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        220,
-        820
+        680,
+        1080
       ],
       "id": "c62a7e09-a116-4eac-a9ea-510e9a079683",
       "name": "Extract from File"
@@ -399,22 +399,6 @@
           "name": "CohereApi account"
         }
       }
-    },
-    {
-      "parameters": {
-        "content": "## Meu instagram: \n### https://www.instagram.com/oandersonadelino/\n\n## Quer montar um Agente IA SDR do absoluto zero? \n### https://andersonadelino.com.br/operacaostartia?src=temp",
-        "height": 220,
-        "width": 600,
-        "color": 4
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        0,
-        0
-      ],
-      "typeVersion": 1,
-      "id": "f7728f9d-50ba-44f0-825b-ebfebaf94ab0",
-      "name": "Sticky Note2"
     },
     {
       "parameters": {
@@ -553,6 +537,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-15T15:16:44.849Z",
-  "versionId": "553fda5f-c201-4540-b171-6db1b28f165a"
+  "updatedAt": "2025-08-22T15:50:54.112Z",
+  "versionId": "d0ff00ad-30d4-4712-a049-a1444cf84175"
 }
