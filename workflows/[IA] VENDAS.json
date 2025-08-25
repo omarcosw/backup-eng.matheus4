@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "OutputParser": {
       "ai_outputParser": [
@@ -2253,6 +2253,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-19T19:41:50.365Z",
+  "updatedAt": "2025-08-25T12:56:28.192Z",
   "versionId": "977021c0-1ba1-4c24-bfd3-a1bee47a1579"
 }
