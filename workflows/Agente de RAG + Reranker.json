@@ -38,7 +38,7 @@
       "main": [
         [
           {
-            "node": "Get a document",
+            "node": "Search files and folders",
             "type": "main",
             "index": 0
           }
@@ -116,17 +116,6 @@
         ]
       ]
     },
-    "Get a document": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Loop Over Items": {
       "main": [
         [],
@@ -166,6 +155,17 @@
         [
           {
             "node": "Get a document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a document": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
@@ -346,12 +346,12 @@
         "mode": "insert",
         "tableName": {
           "__rl": true,
-          "value": "ps_objecoes",
+          "value": "ps_curso",
           "mode": "list",
-          "cachedResultName": "ps_objecoes"
+          "cachedResultName": "ps_curso"
         },
         "options": {
-          "queryName": "match_ps_objecoes"
+          "queryName": "match_ps_curso"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
@@ -448,26 +448,6 @@
     },
     {
       "parameters": {
-        "operation": "get",
-        "documentURL": "=14vGjdSnVEAbZcS9dQFzSjBja1TD5_jF_cTxcSd2lr8s"
-      },
-      "type": "n8n-nodes-base.googleDocs",
-      "typeVersion": 2,
-      "position": [
-        -400,
-        1120
-      ],
-      "id": "665a8d42-7477-4c3b-aae7-df9d35205029",
-      "name": "Get a document",
-      "credentials": {
-        "googleDocsOAuth2Api": {
-          "id": "7TJ0i7jDnGNCXmQR",
-          "name": "Google Docs account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "options": {}
       },
       "type": "n8n-nodes-base.splitInBatches",
@@ -491,12 +471,13 @@
       ],
       "id": "f95b5152-442a-446e-be02-bceb567780cf",
       "name": "Wait",
-      "webhookId": "eb2139c1-1fc3-4aa3-8b0a-d7462a11c68d"
+      "webhookId": "eb2139c1-1fc3-4aa3-8b0a-d7462a11c68d",
+      "disabled": true
     },
     {
       "parameters": {
         "resource": "fileFolder",
-        "queryString": "Módulo 4",
+        "queryString": "Módulo 5",
         "returnAll": true,
         "filter": {},
         "options": {}
@@ -513,6 +494,26 @@
         "googleDriveOAuth2Api": {
           "id": "Fj0pGWTsgTW5yLNC",
           "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "documentURL": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        -380,
+        1120
+      ],
+      "id": "a56beddc-dff7-46b4-97d2-51dede98d2b0",
+      "name": "Get a document",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "7TJ0i7jDnGNCXmQR",
+          "name": "Google Docs account"
         }
       }
     }
@@ -537,6 +538,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-22T15:50:54.112Z",
-  "versionId": "d0ff00ad-30d4-4712-a049-a1444cf84175"
+  "updatedAt": "2025-08-26T21:50:16.271Z",
+  "versionId": "1518e6e2-4a0b-4534-9a9b-cadc6bfe581e"
 }
