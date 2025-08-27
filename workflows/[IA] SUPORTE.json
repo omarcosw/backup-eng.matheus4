@@ -425,7 +425,7 @@
         ],
         [
           {
-            "node": "Envia para IA de verificação",
+            "node": "Switch",
             "type": "main",
             "index": 0
           }
@@ -2148,6 +2148,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-12T15:33:29.639Z",
-  "versionId": "a25f9a55-f3b0-4b9e-bbe2-94cccb7f98e8"
+  "updatedAt": "2025-08-27T19:52:01.502Z",
+  "versionId": "bc9dc57b-42a8-482c-b282-241596838c3f"
 }
