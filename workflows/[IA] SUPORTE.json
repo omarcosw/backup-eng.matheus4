@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Webhook": {
       "main": [
@@ -579,7 +579,7 @@
   },
   "createdAt": "2025-07-23T18:05:17.351Z",
   "id": "FJa2E2im5rrU2kLT",
-  "isArchived": false,
+  "isArchived": true,
   "meta": {
     "templateCredsSetupCompleted": true
   },
@@ -2148,6 +2148,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-27T19:52:01.502Z",
-  "versionId": "bc9dc57b-42a8-482c-b282-241596838c3f"
+  "updatedAt": "2025-08-29T15:21:18.808Z",
+  "versionId": "9ad7420a-7946-4eaf-ae2c-b5c8496708a7"
 }
