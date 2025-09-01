@@ -2126,13 +2126,22 @@
   "settings": {
     "executionOrder": "v1"
   },
+  "shared": [
+    {
+      "createdAt": "2025-07-23T18:05:17.351Z",
+      "updatedAt": "2025-07-23T18:05:17.351Z",
+      "role": "workflow:owner",
+      "workflowId": "FJa2E2im5rrU2kLT",
+      "projectId": "MnGFQuvoDMTHLtMd"
+    }
+  ],
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-07-03T16:02:09.110Z",
-      "updatedAt": "2025-07-03T16:02:09.110Z",
-      "id": "K5MFncsCBrk1389O",
-      "name": "IA"
+      "createdAt": "2025-08-12T15:25:19.774Z",
+      "updatedAt": "2025-08-12T15:25:19.774Z",
+      "id": "WUqjtcCYycM8nth1",
+      "name": "API NÃO OFICIAL"
     },
     {
       "createdAt": "2025-07-07T13:19:13.772Z",
@@ -2141,10 +2150,10 @@
       "name": "Suporte"
     },
     {
-      "createdAt": "2025-08-12T15:25:19.774Z",
-      "updatedAt": "2025-08-12T15:25:19.774Z",
-      "id": "WUqjtcCYycM8nth1",
-      "name": "API NÃO OFICIAL"
+      "createdAt": "2025-07-03T16:02:09.110Z",
+      "updatedAt": "2025-07-03T16:02:09.110Z",
+      "id": "K5MFncsCBrk1389O",
+      "name": "IA"
     }
   ],
   "triggerCount": 1,
