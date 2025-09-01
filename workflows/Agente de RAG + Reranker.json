@@ -522,19 +522,28 @@
   "settings": {
     "executionOrder": "v1"
   },
+  "shared": [
+    {
+      "createdAt": "2025-07-11T05:09:44.358Z",
+      "updatedAt": "2025-07-11T05:09:44.358Z",
+      "role": "workflow:owner",
+      "workflowId": "oJPb7BEDZz16etjR",
+      "projectId": "MnGFQuvoDMTHLtMd"
+    }
+  ],
   "staticData": null,
   "tags": [
-    {
-      "createdAt": "2025-07-11T05:08:17.035Z",
-      "updatedAt": "2025-07-11T05:08:17.035Z",
-      "id": "MjlWgQ1bNOy1eHbS",
-      "name": "Anderson Adelino"
-    },
     {
       "createdAt": "2025-07-11T05:08:17.050Z",
       "updatedAt": "2025-07-11T05:08:17.050Z",
       "id": "at11ZIwIDccBfgnS",
       "name": "Youtube"
+    },
+    {
+      "createdAt": "2025-07-11T05:08:17.035Z",
+      "updatedAt": "2025-07-11T05:08:17.035Z",
+      "id": "MjlWgQ1bNOy1eHbS",
+      "name": "Anderson Adelino"
     }
   ],
   "triggerCount": 1,
