@@ -2062,7 +2062,7 @@
           "mode": "list",
           "cachedResultName": "ps_curso"
         },
-        "topK": 10,
+        "topK": 50,
         "useReranker": true,
         "options": {
           "queryName": "match_ps_curso"
@@ -2175,6 +2175,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-09-01T16:39:05.724Z",
-  "versionId": "5679af90-1138-4bb0-9d40-373f090292a2"
+  "updatedAt": "2025-09-02T16:48:34.464Z",
+  "versionId": "144017a1-ea12-4403-9f37-97db2a80ff84"
 }
