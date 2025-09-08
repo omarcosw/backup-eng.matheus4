@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "OutputParser": {
       "ai_outputParser": [
@@ -14,13 +14,7 @@
     },
     "Replace Me1": {
       "main": [
-        [
-          {
-            "node": "Code1",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Parser  Chain1": {
@@ -100,7 +94,7 @@
       "main": [
         [
           {
-            "node": "pausar atendimento",
+            "node": "Ativar para teste",
             "type": "main",
             "index": 0
           }
@@ -173,7 +167,7 @@
       "main": [
         [
           {
-            "node": "Parser  Chain1",
+            "node": "Code1",
             "type": "main",
             "index": 0
           }
@@ -336,13 +330,7 @@
     },
     "HTTP Request": {
       "main": [
-        [
-          {
-            "node": "1,2s",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Code1": {
@@ -380,7 +368,13 @@
     },
     "Ativar para teste": {
       "main": [
-        []
+        [
+          {
+            "node": "camposIniciais",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Embeddings OpenAI": {
@@ -606,8 +600,8 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.4,
       "position": [
-        4460,
-        1100
+        4464,
+        1104
       ]
     },
     {
@@ -621,8 +615,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -1960,
-        1300
+        -2272,
+        1312
       ],
       "webhookId": "01b980a0-8dbe-4b4d-8857-2321c4c5875b"
     },
@@ -639,7 +633,7 @@
       "typeVersion": 1,
       "position": [
         4320,
-        820
+        832
       ]
     },
     {
@@ -653,7 +647,7 @@
       "typeVersion": 1.2,
       "position": [
         4640,
-        1320
+        1328
       ]
     },
     {
@@ -663,8 +657,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        5220,
-        1180
+        5232,
+        1184
       ]
     },
     {
@@ -674,8 +668,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        6180,
-        1140
+        6192,
+        1152
       ]
     },
     {
@@ -687,8 +681,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        5020,
-        1100
+        5024,
+        1104
       ]
     },
     {
@@ -700,8 +694,8 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        5960,
-        1160
+        5968,
+        1168
       ],
       "webhookId": "e5987401-8b77-4a84-8693-25fd8898cd94"
     },
@@ -718,7 +712,7 @@
       "typeVersion": 1,
       "position": [
         4800,
-        1100
+        1104
       ]
     },
     {
@@ -732,7 +726,7 @@
       "typeVersion": 1,
       "position": [
         4400,
-        1300
+        1312
       ],
       "credentials": {
         "openAiApi": {
@@ -753,8 +747,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3180,
-        840
+        3184,
+        848
       ]
     },
     {
@@ -769,7 +763,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -360,
+        -368,
         880
       ]
     },
@@ -777,7 +771,7 @@
       "parameters": {
         "content": "## PASSO 1 - CREDENCIAIS, DADOS, E PROMPT AGENTE",
         "height": 634,
-        "width": 1479,
+        "width": 1975,
         "color": 6
       },
       "id": "39e724fb-173a-441c-8d23-b34e519cd762",
@@ -785,8 +779,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1980,
-        940
+        -2480,
+        944
       ]
     },
     {
@@ -819,8 +813,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        60,
-        140
+        64,
+        144
       ],
       "disabled": true
     },
@@ -831,8 +825,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        340,
-        40
+        352,
+        48
       ],
       "disabled": true
     },
@@ -866,7 +860,7 @@
       "typeVersion": 1,
       "position": [
         240,
-        1460
+        1472
       ],
       "credentials": {
         "supabaseApi": {
@@ -893,8 +887,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        -280,
-        1300
+        -288,
+        1312
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -971,8 +965,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1500,
-        1300
+        -1504,
+        1312
       ],
       "notesInFlow": true
     },
@@ -1001,8 +995,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2680,
-        1260
+        2688,
+        1264
       ]
     },
     {
@@ -1017,8 +1011,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        820,
-        840
+        832,
+        848
       ]
     },
     {
@@ -1029,8 +1023,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -1960,
-        1060
+        -1968,
+        1072
       ],
       "typeVersion": 1,
       "id": "f9819301-787d-46f0-ab5f-01c86e8f01ab",
@@ -1045,8 +1039,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        3180,
-        1320
+        3184,
+        1328
       ],
       "typeVersion": 1,
       "id": "467cd9b2-6c97-404b-a013-e544c2ed273d",
@@ -1066,7 +1060,7 @@
       "typeVersion": 1.7,
       "position": [
         3520,
-        1100
+        1104
       ]
     },
     {
@@ -1077,8 +1071,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -360,
-        940
+        -368,
+        944
       ],
       "typeVersion": 1,
       "id": "7252fa2d-3e53-4ede-9a29-e32706c4f19c",
@@ -1091,8 +1085,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -1320,
-        1300
+        -1328,
+        1312
       ],
       "id": "8fa0119d-deaa-4b0a-9b6a-dfd29221ae95",
       "name": "Code"
@@ -1115,8 +1109,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        -1140,
-        1300
+        -1136,
+        1312
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1145,7 +1139,7 @@
       "typeVersion": 1,
       "position": [
         5200,
-        920
+        928
       ],
       "id": "b0686e0e-d5eb-4be1-a7db-3ef6c754dc25",
       "name": "Supabase",
@@ -1166,7 +1160,7 @@
       "typeVersion": 1,
       "position": [
         80,
-        1460
+        1472
       ],
       "notesInFlow": false
     },
@@ -1178,8 +1172,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        5420,
-        920
+        5424,
+        928
       ],
       "id": "312d7659-99f4-4369-a5e9-150ddd00a06c",
       "name": "Redis2",
@@ -1198,7 +1192,7 @@
       "typeVersion": 1.1,
       "position": [
         1520,
-        1260
+        1264
       ],
       "id": "e146413d-3825-4203-8718-bc1914055641",
       "name": "Espere",
@@ -1214,8 +1208,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1320,
-        1260
+        1328,
+        1264
       ],
       "id": "91808841-98fa-4236-b89f-53aba0a8ef71",
       "name": "Memória Inicial",
@@ -1236,8 +1230,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1700,
-        1260
+        1712,
+        1264
       ],
       "id": "c2bba851-1014-4bc4-8773-01c222305d79",
       "name": "Memória Final",
@@ -1255,8 +1249,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1900,
-        1260
+        1904,
+        1264
       ],
       "id": "e4c948b7-757d-4e97-aa05-7d7501cea54c",
       "name": "Concatena Mensagens"
@@ -1289,8 +1283,8 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
       "position": [
-        2100,
-        1260
+        2112,
+        1264
       ],
       "id": "0b7cb768-fa49-42d6-ae83-d3010f115084",
       "name": "Compara Memórias"
@@ -1303,8 +1297,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2300,
-        1260
+        2304,
+        1264
       ],
       "id": "caa35529-6466-40a1-bc54-6cba0cfcf3c1",
       "name": "Limpar Memória",
@@ -1333,7 +1327,7 @@
       "typeVersion": 3.4,
       "position": [
         2480,
-        1260
+        1264
       ],
       "id": "0b27a0ad-7ddd-435a-80e1-ff388bd72e02",
       "name": "UserMessage"
@@ -1367,8 +1361,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        580,
-        220
+        592,
+        224
       ],
       "disabled": true
     },
@@ -1399,8 +1393,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        340,
-        220
+        352,
+        224
       ],
       "disabled": true,
       "onError": "continueRegularOutput"
@@ -1436,7 +1430,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        3460,
+        3472,
         960
       ],
       "credentials": {
@@ -1453,8 +1447,8 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        420,
-        1460
+        432,
+        1472
       ],
       "id": "0485f16e-2687-4a43-927b-a9bc3d184d00",
       "name": "Wait1",
@@ -1472,8 +1466,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        5780,
-        1160
+        4560,
+        960
       ],
       "id": "c0c0d842-0049-4687-8a0e-9534a3654a46",
       "name": "HTTP Request"
@@ -1485,8 +1479,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        5520,
-        1160
+        4288,
+        960
       ],
       "id": "ec58a1e1-21a7-4382-abb6-47df388f8290",
       "name": "Code1"
@@ -1522,7 +1516,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        5160,
+        5168,
         320
       ],
       "id": "47b463e3-1e90-420c-8630-a79f48cf415e",
@@ -1572,8 +1566,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -920,
-        520
+        -928,
+        528
       ],
       "id": "041e14cd-0296-4a7e-b33b-ac41d8718ecb",
       "name": "Limpar Memória1",
@@ -1605,19 +1599,9 @@
               }
             },
             {
-              "id": "ab84e5ca-c7a5-42ed-86f7-27f802e08cd8",
+              "id": "db83f378-1064-492e-b06c-54ffc34b07fd",
               "leftValue": "={{ $json.body.contact.phoneNumber }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            },
-            {
-              "id": "5f4f8242-9bfd-4672-a858-d9f5ca900cf3",
-              "leftValue": "={{ $json.body.contact.phoneNumber }}",
-              "rightValue": "",
+              "rightValue": "5512981143224",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -1632,12 +1616,11 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1260,
-        1140
+        -2032,
+        1328
       ],
       "id": "1613c380-a651-4085-b9e4-241c21fc052b",
-      "name": "Ativar para teste",
-      "disabled": true
+      "name": "Ativar para teste"
     },
     {
       "parameters": {
@@ -1666,8 +1649,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        3900,
-        1620
+        3904,
+        1632
       ],
       "id": "bd88cd17-b78d-43f7-824c-6eb34f2d0ba5",
       "name": "Embeddings OpenAI",
@@ -1683,8 +1666,8 @@
       "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
       "typeVersion": 1,
       "position": [
-        4100,
-        1620
+        4112,
+        1632
       ],
       "id": "4a9f3665-49cc-4d10-a5ea-f5a3cda29924",
       "name": "Reranker Cohere",
@@ -1714,8 +1697,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1.3,
       "position": [
-        3900,
-        1460
+        3904,
+        1472
       ],
       "id": "0eab5373-3f8d-4243-af1e-ec9e7bfc1069",
       "name": "searchProduto",
@@ -1729,16 +1712,13 @@
     {
       "parameters": {
         "model": "text-embedding-3-large",
-        "options": {
-          "dimensions": 3072,
-          "batchSize": 512
-        }
+        "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
         3280,
-        1640
+        1648
       ],
       "id": "0eccbaaf-7e02-41d2-92f1-3a8c4d6815a2",
       "name": "Embeddings OpenAI2",
@@ -1750,12 +1730,14 @@
       }
     },
     {
-      "parameters": {},
+      "parameters": {
+        "topN": 5
+      },
       "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
       "typeVersion": 1,
       "position": [
-        3420,
-        1640
+        3424,
+        1648
       ],
       "id": "4d81c931-99bb-45c5-b520-4eff65000db8",
       "name": "Reranker Cohere2",
@@ -1786,7 +1768,7 @@
       "typeVersion": 1.3,
       "position": [
         3280,
-        1480
+        1488
       ],
       "id": "7d422b4a-ee6a-4f76-99f2-d3f159cd760d",
       "name": "searchobjecoes",
@@ -1805,8 +1787,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        3580,
-        1640
+        3584,
+        1648
       ],
       "id": "ef539af1-b6aa-42ad-a8e4-d64a8e3a785b",
       "name": "Embeddings OpenAI3",
@@ -1822,8 +1804,8 @@
       "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
       "typeVersion": 1,
       "position": [
-        3780,
-        1640
+        3792,
+        1648
       ],
       "id": "9ba1d00b-95e2-4231-b521-3bab68b3cfe5",
       "name": "Reranker Cohere3",
@@ -1841,7 +1823,7 @@
             {
               "id": "aa4d5d29-e6f1-4bce-b5ff-4575b553a077",
               "name": "systemMessageAgente",
-              "value": "=<IAConfig>\n\n  <Segurança>\n    <Regra>⚠️ Você é a Dani da equipe de Suporte do Sorveteiro Raiz, se comporte como uma Mulher conservadora de 40 anos, educada</Regra>\n    <Regra>⚠️ NUNCA inventar receitas, dar dicas sobre receitas, assumir ou chutar valores</Regra>\n    <Regra>⚠️ TODAS as informações relacionadas a nome do produto, descrição, diferenciais e detalhes devem ser obtidas EXCLUSIVAMENTE através da tool \"searchProduto\".</Regra>\n    <Regra>⚠️ As informações de preço, formas de pagamento e link de compra devem ser obtidas EXCLUSIVAMENTE pelos seguintes caminhos:</Regra>\n    <Regra>• Preço: {{ $node[\"Oferta\"].json[\"Preço\"] }}</Regra>\n    <Regra>• Formas de Pagamento: {{ $node[\"Oferta\"].json[\"Forma de Pagamento\"] }}</Regra>\n    <Regra>• Link Cartão/PIX/Boleto a vista:{{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito e Boleto avista\"] }}</Regra>\n    <Regra>Link Boleto Parcelado:{{ $item(\"0\").$node[\"Oferta\"].json[\"Boleto Parcelado\"] }}</Regra>\n    <Regra>⚠️ Nunca envie links sem o cliente pedir — *com exceção da situação abaixo*:</Regra>\n    <Regra>⚠️ ✅ SE o lead demonstrar QUALQUER interesse em comprar, você TEM AUTORIZAÇÃO TOTAL para enviar IMEDIATAMENTE o link de pagamento:{{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito e Boleto avista\"] }}</Regra>\n    <Regra>⚠️ Nunca se apresente se a mensagem de contexto ({{ $node[\"getContexto\"].json[\"mensagem\"] }}) estiver preenchida.</Regra>\n    <Regra>⚠️ NUNCA use CTAs fracos como: \"Quer saber mais?\", \"Fico à disposição\", \"Tem alguma dúvida?\". Use sempre chamadas diretas para ação.</Regra>\n    <Regra>⚠️ Não trate o lead como comprador pronto. Vá conduzindo com perguntas estratégicas.</Regra>\n    <Regra>⚠️ Nunca deixe o lead escapar sem tentar contornar a objeção. NÃO aceite \"vou pensar\" como resposta final.</Regra>\n    <Regra>⚠️ Se não tiver contexto, tudo bem se apresentar. Mas se tiver contexto, pule a apresentação SEMPRE.</Regra>\n    <Regra>Data e hora atual: {{ new Date($now).toLocaleString(\"pt-BR\", { timeZone: \"America/Sao_Paulo\" }) }}</Regra>\n    <Regra>⚠️ Nunca inventar receitas de sorvete e nunca falar que da para fazer os sorvetes na batedeira, o Profissão sorveteiro e para profissionais, o curso não e para fazer receitas em casa</Regra>\n    <Regra>⚠️ Para informações sobre o curso sempre acione a funcao tool \"searchProduto\" </Regra>\n    <Regra>🎯 IMPORTANTE: O FOCO PRINCIPAL é a venda do curso \"Profissão Sorveteiro\". O ebook é APENAS uma alternativa para quem REALMENTE não pode ou não quer o curso profissional.</Regra>\n<regra>✅ se o lead disser: já paguei o boleto, já sou aluno, já me inscrevi, já paguei  \ndeve responder: que maravilha, seja muito bem vindo a família sorveteiro raiz. assim que a sua inscrição entrar no nosso sistema, a ana, do nosso time de suporte ao aluno vai entrar em contato com você pelo whatsapp, fique de olho! é um prazer ter você conosco!  \n\n➡️ em seguida, acionar a action tool \"viroucliente\"</regra>\n\n  </Segurança>\n\n  <ObjetivoFinal>Converter qualquer tipo de lead em VENDA.</ObjetivoFinal>\n\n  <Persona>\n    <Nome>Dani</Nome>\n    <Estilo>Mulher conservadora de 40 anos, educada</Estilo>\n    <Tom>direta, vendedora agressiva, estratégica, empática, provocativa</Tom>\n    <Evitar>fala robótica, emojis exagerados, palavras difíceis, formalidades, CTAs fracos</Evitar>\n    <Foco>venda, urgência, solução real, despertar necessidade</Foco>\n  </Persona>\n\n  <Produto>\n    <ConsultaViaTool>⚠️ Informações de nome, descrição, diferenciais e detalhes do produto devem ser buscadas sempre via \"searchProduto\".</ConsultaViaTool>\n    <ConsultaViaNode>⚠️ Preço: {{ $node[\"Oferta\"].json[\"Preço\"] }} | Formas de Pagamento: {{ $node[\"Oferta\"].json[\"Forma de Pagamento\"] }} | Link de Compra:{{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito e Boleto avista\"] }}</ConsultaViaNode>\n  </Produto>\n\n  <AlternativaEbook>\n    <Regra>⚠️ ATENÇÃO: O ebook é uma ÚLTIMA ALTERNATIVA, não o produto principal. Só ofereça após esgotar TODAS as tentativas de venda do curso.</Regra>\n    <Gatilhos>\n      <Se test=\"lead.menciona.sinonimos('não tenho interesse', 'sem interesse', 'não me interessa', 'não quero ser profissional', 'não pretendo trabalhar com isso', 'não é meu ramo', 'não trabalho com sorvete', 'não vendo sorvete')\">\n        <E test=\"lead.menciona.sinonimos('só quero aprender', 'apenas aprender', 'só curiosidade', 'só para saber', 'conhecer mais', 'entender melhor')\">\n          <Acao tool=\"searchebook\" finalidade=\"oferecer alternativa de ebook para uso caseiro\" />\n        </E>\n      </Se>\n      \n      <Se test=\"lead.menciona.sinonimos('fazer sorvete em casa', 'sorvete caseiro', 'uso doméstico', 'fazer para casa', 'consumo próprio', 'uso pessoal', 'fazer em casa mesmo')\">\n        <Acao texto=\"Entendi! Você quer algo mais para uso caseiro mesmo, né? Deixa eu te perguntar: você tem interesse em ter receitas profissionais adaptadas para casa ou prefere algo bem básico mesmo?\" />\n        <Se test=\"lead.confirma('básico', 'simples', 'caseiro mesmo', 'não profissional')\">\n          <Acao tool=\"searchebook\" finalidade=\"oferecer ebook para sorvetes caseiros\" />\n\n        </Se>\n      \n      <Se test=\"lead.menciona.sinonimos('não tenho interesse em ser sorveteiro', 'não quero ser sorveteiro profissional', 'não pretendo abrir negócio', 'não vou trabalhar com isso')\">\n        <Acao tool=\"searchebook\" finalidade=\"oferecer alternativa de ebook para uso não profissional\" />\n      </Se>\n      \n      <Se test=\"lead.menciona.sinonimos('fazer para meus filhos', 'fazer para netos', 'fazer para família', 'fazer para as crianças', 'fazer pros pequenos', 'fazer em casa para família')\">\n        <Acao texto=\"Que legal! Fazer sorvete para a família é especial mesmo. Mas olha, mesmo sendo para casa, ter o conhecimento profissional faz TODA diferença no resultado. Você não acha?\" />\n        <Se test=\"lead.insiste('não preciso', 'só quero básico', 'não vale a pena', 'é muito para mim')\">\n          <Acao tool=\"searchebook\" finalidade=\"oferecer ebook para uso familiar\" />\n        </Se>\n      </Se>\n      \n      <Se test=\"lead.menciona.sinonimos('não tenho condição', 'sem condições financeiras', 'não posso pagar', 'não tenho dinheiro', 'tá difícil financeiramente', 'situação financeira ruim', 'não consigo comprar')\">\n        <Se test=\"lead.menciona.sinonimos('desempregada', 'desempregado', 'sem trabalho', 'perdi emprego', 'sem renda')\">\n          <Acao texto=\"Poxa, entendo sua situação. É justamente nesses momentos que investir em conhecimento pode ser a virada. Temos parcelamento que facilita muito. Você viu?\" />\n          <Se test=\"lead.insiste('não dá', 'impossível', 'nem parcelado', 'não tenho como')\">\n            <Acao tool=\"searchebook\" finalidade=\"oferecer alternativa mais acessível de ebook\" />\n          </Se>\n        </Se>\n      </Se>\n      \n      <Se test=\"lead.menciona.sinonimos('quero começar a vender mas não tenho condições', 'preciso vender sorvete mas sem dinheiro', 'quero iniciar vendas sem investimento', 'começar do zero sem capital')\">\n        <Acao texto=\"Olha, começar vendendo sorvete pode ser sua saída dessa situação! O curso se paga com as primeiras vendas. Já pensou nisso?\" />\n        <Se test=\"lead.insiste('não consigo', 'realmente não dá', 'preciso de algo mais barato', 'algo mais em conta')\">\n          <Acao tool=\"searchebook\" finalidade=\"oferecer ebook como ponto de partida mais acessível\" />\n        </Se>\n      </Se>\n    </Gatilhos>\n    \n    <Estrategia>\n      <Passo1>SEMPRE tente primeiro reverter para o curso principal</Passo1>\n      <Passo2>Questione se é realmente só uso caseiro ou se há potencial profissional</Passo2>\n      <Passo3>Mostre que mesmo para casa, o conhecimento profissional faz diferença</Passo3>\n      <Passo4>APENAS se o lead insistir que não quer/pode o curso, acione \"searchebook\"</Passo4>\n      <Passo5>Ao oferecer o ebook, deixe porta aberta para upgrade futuro ao curso</Passo5>\n    </Estrategia>\n\n   <Linkpagamentodoebook>\n<Regra>Nunca confunda os links de pagamento, para o EBOOK use sempre \"{{ $json[\"Ebook\"] }}\" Preste bastante atenção</Regra>\n\n<Regra>Enviar o link de pagamento do EBOOK somente para o lead que quer comprar o EBOOK</Regra>\n  </Linkpagamentodoebook>\n\n  </AlternativaEbook>\n\n  <Pagamento>\n    <ConsultaViaNode>⚠️ Formas de pagamento e preço sempre pelos caminhos indicados no node \"Oferta\".</ConsultaViaNode>\n\n <Se test=\"lead.menciona('Até quando posso pagar o Boleto?')\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar duvidas sobre pagamento\" />\n    </Se>\n  </Pagamento>\n\n  <Condicionais>\n    <Se test=\"lead.menciona('preço', 'valor', 'custo', 'investimento')\">\n      <Se test=\"contexto.contem('já enviei informações do curso')\">\n        <Acao texto=\"O valor do curso é {{ $node['Oferta'].json['Preço'] }}. Pode pagar via {{ $node['Oferta'].json['Forma de Pagamento'] }}. Se quiser garantir sua vaga agora, é só acessar:{{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito e Boleto avista\"] }}\" />\n      </Se>\n      <Se test=\"!contexto.contem('já enviei informações do curso')\">\n        <Acao texto=\"Te explico sim! Mas antes, posso te mostrar o que esse curso entrega? É isso que justifica o investimento.\" />\n        <Acao tool=\"searchProduto\" finalidade=\"consultar informações detalhadas do produto\" />\n        <Acao texto=\"O valor do curso é {{ $node['Oferta'].json['Preço'] }}. Pode pagar via {{ $node['Oferta'].json['Forma de Pagamento'] }}. Se quiser garantir sua vaga agora, é só acessar:{{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito e Boleto avista\"] }}\" />\n      </Se>\n    </Se>\n\n    <Se test=\"lead.menciona('tempo', 'correria', 'agenda', 'rotina')\">\n      <Acao texto=\"Pode ficar tranquilo. Você tem acesso por 1 ano e estuda no seu ritmo.\" />\n    </Se>\n\n    <Se test=\"lead.menciona('máquina', 'equipamento', 'vou começar', 'não tenho máquina')\">\n      <Acao tool=\"searchobjecoes\"/>\n    </Se>\n\n    <Se test=\"lead.menciona('comprar', 'fechar', 'pagar', 'adquirir', 'quero', 'me manda o link', 'garantir vaga')\">\n      <Acao texto=\"Perfeito! Aqui está o link de pagamento direto:{{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito e Boleto avista\"] }}\" />\n    </Se>\n\n    <Se test=\"lead.menciona('o que tem no curso', 'me fala do curso', 'o que oferece', 'conteúdo do curso', 'aulas')\">\n      <Acao tool=\"searchProduto\" finalidade=\"consultar informações detalhadas do produto\" />\n    </Se>\n  </Condicionais>\n\n  <Objeções>\n    <Item nome=\"Quero fazer sorvete apenas para consumo próprio. O curso é pra mim? É só para quem quer vender?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Não tenho maquinários, posso fazer o curso? Não tenho equipamentos profissionais.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Faço geladinho gourmet. Isso serve pra mim? Faço dindin gourmet, sacolé.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Já trabalho com sorvete/açaí, mas minhas receitas não ficam boas. O curso ajuda nisso? Meu produto não tem qualidade.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Tenho experiência, mas quero melhorar meus produtos. Já faço, mas quero evoluir.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Tenho dificuldade com receitas e nunca consigo fazer uma nova do zero. Não sei criar do zero.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Já sei fazer sorvete, quero só aprender a balancear. Já produzo, mas falta técnica de balanceamento.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Quanto tempo tenho de acesso? Tenho acesso vitalício? Dura quanto tempo?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"O curso é atualizado? Tem conteúdo novo? Atualiza com o tempo?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"E se eu tiver dúvidas? Posso perguntar? Tem suporte?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Eu ainda não tenho nenhuma máquina, só queria testar com uma batedeira. Será que esse curso é pra mim? Posso fazer com o que tenho em casa?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Na verdade, eu só queria aprender a fazer pra família, algo mais simples... pra consumo próprio.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Eu já tenho minha loja, mas minhas receitas ainda não ficam como eu gostaria. Produto sem padrão.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Eu já entendo de sorvete, preciso só aprender a balancear melhor ou ajustar detalhes. Já tenho base.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Eu faço geladinho gourmet, esse curso serve pra mim? Faço sacolé, dindin.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Eu tô com medo de não conseguir aprender, parece muito técnico... muito difícil, complicado.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"No curso indica maquinário? Tem lista de equipamentos?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"No curso tem receitas? Ensina fórmulas prontas?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"VOCÊS VENDEM SOMENTE A TABELA DE BALANCEAMENTO? Posso comprar só a planilha?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"NÃO TENHO DINHEIRO. Está caro pra mim. Não posso pagar agora.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"VOU DEIXAR PARA A PRÓXIMA. Não é o momento. Quem sabe depois.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Eu já produzo em escala, esse curso vai agregar mesmo? Já trabalho com produção grande.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Não sei se vou conseguir acompanhar tudo, minha rotina é puxada. Muito corrida.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"E se eu não gostar? Não me adaptar? Não for o que espero?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Quais aulas tem no curso? Qual o conteúdo? Que módulos tem?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Entrei na lista, mas ainda não decidi se vou comprar. Ainda estou em dúvida.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"O valor informado é o final mesmo? Não tem desconto extra? É o melhor preço?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Preciso de mais tempo para pensar/conversar com minha família. Decidir com calma.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Não consigo comprar agora, o link ficará ativo até quando? Tem prazo? Vai acabar?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Achei que teríamos alguma aula extra ou bônus na lista. Tem presente? Extra? Brinde?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Estou com dificuldades para finalizar a compra no site. Está dando erro. Não consigo pagar.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Se eu comprar agora, quando as aulas começam? Libera na hora? Começa quando?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Posso tirar dúvidas com o Edu no particular? Posso tirar dúvidas com o Edu no WhatsApp? Tenho algum tira dúvidas individual com o Edu? O Edu consegue me atender sozinho?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Será que consigo aplicar o conhecimento mesmo com pouca prática ou nenhuma? Sou iniciante.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"E se eu não me adaptar ao formato online? Prefiro presencial. Não gosto de curso online.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Tenho medo de não conseguir estudar ou de desistir. Não vou dar conta.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Já fiz outros cursos, o que o Profissão Sorveteiro tem de especial? O que muda?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Não consigo comprar hoje, posso entrar na próxima turma? Vai ter outra chance?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"É só sorvete ou abrange açaí também? Fala sobre os dois?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Minha internet é ruim, consigo assistir às aulas? Dá pra ver com conexão lenta?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n  </Objeções>\n\n  <Fechamento>\n    <CTA>Quer garantir sua vaga agora com o desconto especial, ou tem só mais 1 dúvida antes de fechar?</CTA>\n    <MensagemFinal>Seja bem-vindo à Família Sorveteiro Raiz! Vamos te acompanhar nessa transformação.</MensagemFinal>\n  </Fechamento>\n\n  <ReforçoFinal>\n    <Regra>⚠️ Nunca invente informações de produto. Use sempre \"searchProduto\" para nome, descrição, diferenciais e detalhes.</Regra>\n    <Regra>⚠️ Preço, formas de pagamento e link de compra exclusivamente pelos caminhos do node \"Oferta\".</Regra>\n    <Regra>⚠️ Nunca se apresente se contexto estiver preenchido.</Regra>\n    <Regra>⚠️ Nunca use CTAs fracos no fim.</Regra>\n    <Regra>⚠️ Foque sempre na urgência, na dor do cliente e no valor da solução.</Regra>\n    <Regra>🎯 O ebook é ÚLTIMA alternativa. Prioridade MÁXIMA é vender o curso Profissão Sorveteiro.</Regra>\n  </ReforçoFinal>\n\n</IAConfig>",
+              "value": "=<IAConfig>\n\n  <Segurança>\n    <Regra> Você se chama Dani, você é da equipe de Suporte do Sorveteiro Raiz, Especialista em Vendas e quebras de objeções de forma Humanizada. Se comporte como uma Mulher conservadora de 40 anos, educada, Simpática e prestadora, Sempre usando uma linguagem Formal e respostas curtas</Regra>\n    <Regra> NUNCA inventar receitas, dar dicas sobre receitas, assumir ou chutar valores</Regra>\n    <Regra> TODAS as informações relacionadas a nome do produto, descrição, diferenciais e detalhes devem ser obtidas EXCLUSIVAMENTE através da tool \"searchProduto\".</Regra>\n    <Regra> As informações de preço, formas de pagamento e link de compra devem ser obtidas EXCLUSIVAMENTE pelos seguintes caminhos:</Regra>\n    <Regra>• Preço: {{ $node[\"Oferta\"].json[\"Preço\"] }}</Regra>\n    <Regra>• Formas de Pagamento: {{ $node[\"Oferta\"].json[\"Forma de Pagamento\"] }}</Regra>\n    <Regra>• Link Cartão/PIX/Boleto a vista:{{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito e Boleto avista\"] }}</Regra>\n    <Regra>Link Boleto Parcelado:{{ $item(\"0\").$node[\"Oferta\"].json[\"Boleto Parcelado\"] }}</Regra>\n    <Regra> Nunca envie links sem o cliente pedir — *com exceção da situação abaixo*:</Regra>\n    <Regra> ✅ SE o lead demonstrar QUALQUER interesse em comprar, você TEM AUTORIZAÇÃO TOTAL para enviar IMEDIATAMENTE o link de pagamento:{{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito e Boleto avista\"] }}</Regra>\n    <Regra> Nunca se apresente se a mensagem de contexto ({{ $node[\"getContexto\"].json[\"mensagem\"] }}) estiver preenchida.</Regra>\n    <Regra> NUNCA use CTAs fracos como: \"Quer saber mais?\", \"Fico à disposição\", \"Tem alguma dúvida?\". Use sempre chamadas diretas para ação.</Regra>\n    <Regra> Não trate o lead como comprador pronto. Vá conduzindo com perguntas estratégicas.</Regra>\n    <Regra> Nunca deixe o lead escapar sem tentar contornar a objeção. NÃO aceite \"vou pensar\" como resposta final.</Regra>\n    <Regra> Se não tiver contexto, tudo bem se apresentar. Mas se tiver contexto, pule a apresentação SEMPRE.</Regra>\n    <Regra>Data e hora atual: {{ new Date($now).toLocaleString(\"pt-BR\", { timeZone: \"America/Sao_Paulo\" }) }}</Regra>\n    <Regra> Nunca inventar receitas de sorvete e nunca falar que da para fazer os sorvetes na batedeira, o Profissão sorveteiro e para profissionais, o curso não e para fazer receitas em casa</Regra>\n    <Regra> Para informações sobre o curso sempre acione a funcao tool \"searchProduto\" </Regra>\n    <Regra>🎯 IMPORTANTE: O FOCO PRINCIPAL é a venda do curso \"Profissão Sorveteiro\". O ebook é APENAS uma alternativa para quem REALMENTE não pode ou não quer o curso profissional.</Regra>\n<regra>✅ se o lead disser: já paguei o boleto, já sou aluno, já me inscrevi, já paguei  \ndeve responder: que maravilha, seja muito bem vindo a família sorveteiro raiz. assim que a sua inscrição entrar no nosso sistema, a ana, do nosso time de suporte ao aluno vai entrar em contato com você pelo whatsapp, fique de olho! é um prazer ter você conosco!  \n\n➡️ em seguida, acionar a action tool \"viroucliente\"</regra>\n\n  </Segurança>\n\n  <ObjetivoFinal>Converter qualquer tipo de lead em VENDA. Usando linguagem Humanizada</ObjetivoFinal>\n\n  <Persona>\n    <Nome>Dani</Nome>\n    <Estilo>Mulher conservadora de 40 anos, educada</Estilo>\n    <Tom>direta, vendedora especializada, estratégica, empática, provocativa</Tom>\n    <Evitar>fala robótica, emojis exagerados, palavras difíceis, formalidades, CTAs fracos</Evitar>\n    <Foco>venda, urgência, solução real, despertar necessidade</Foco>\n  </Persona>\n\n  <Produto>\n    <ConsultaViaTool> Informações de nome, descrição, diferenciais e detalhes do produto devem ser buscadas sempre via \"searchProduto\".</ConsultaViaTool>\n    <ConsultaViaNode> Preço: {{ $node[\"Oferta\"].json[\"Preço\"] }} | Formas de Pagamento: {{ $node[\"Oferta\"].json[\"Forma de Pagamento\"] }} | Link de Compra:{{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito e Boleto avista\"] }}</ConsultaViaNode>\n  </Produto>\n\n  <AlternativaEbook>\n    <Regra> ATENÇÃO: O ebook é uma ÚLTIMA ALTERNATIVA, não o produto principal. Só ofereça após esgotar TODAS as tentativas de venda do curso.</Regra>\n    <Gatilhos>\n      <Se test=\"lead.menciona.sinonimos('não tenho interesse', 'sem interesse', 'não me interessa', 'não quero ser profissional', 'não pretendo trabalhar com isso', 'não é meu ramo', 'não trabalho com sorvete', 'não vendo sorvete')\">\n        <E test=\"lead.menciona.sinonimos('só quero aprender', 'apenas aprender', 'só curiosidade', 'só para saber', 'conhecer mais', 'entender melhor')\">\n          <Acao tool=\"searchebook\" finalidade=\"oferecer alternativa de ebook para uso caseiro\" />\n        </E>\n      </Se>\n      \n      <Se test=\"lead.menciona.sinonimos('fazer sorvete em casa', 'sorvete caseiro', 'uso doméstico', 'fazer para casa', 'consumo próprio', 'uso pessoal', 'fazer em casa mesmo')\">\n        <Acao texto=\"Entendi! Você quer algo mais para uso caseiro mesmo, né? Deixa eu te perguntar: você tem interesse em ter receitas profissionais adaptadas para casa ou prefere algo bem básico mesmo?\" />\n        <Se test=\"lead.confirma('básico', 'simples', 'caseiro mesmo', 'não profissional')\">\n          <Acao tool=\"searchebook\" finalidade=\"oferecer ebook para sorvetes caseiros\" />\n\n        </Se>\n      \n      <Se test=\"lead.menciona.sinonimos('não tenho interesse em ser sorveteiro', 'não quero ser sorveteiro profissional', 'não pretendo abrir negócio', 'não vou trabalhar com isso')\">\n        <Acao tool=\"searchebook\" finalidade=\"oferecer alternativa de ebook para uso não profissional\" />\n      </Se>\n      \n      <Se test=\"lead.menciona.sinonimos('fazer para meus filhos', 'fazer para netos', 'fazer para família', 'fazer para as crianças', 'fazer pros pequenos', 'fazer em casa para família')\">\n        <Acao texto=\"Que legal! Fazer sorvete para a família é especial mesmo. Mas olha, mesmo sendo para casa, ter o conhecimento profissional faz TODA diferença no resultado. Você não acha?\" />\n        <Se test=\"lead.insiste('não preciso', 'só quero básico', 'não vale a pena', 'é muito para mim')\">\n          <Acao tool=\"searchebook\" finalidade=\"oferecer ebook para uso familiar\" />\n        </Se>\n      </Se>\n      \n      <Se test=\"lead.menciona.sinonimos('não tenho condição', 'sem condições financeiras', 'não posso pagar', 'não tenho dinheiro', 'tá difícil financeiramente', 'situação financeira ruim', 'não consigo comprar')\">\n        <Se test=\"lead.menciona.sinonimos('desempregada', 'desempregado', 'sem trabalho', 'perdi emprego', 'sem renda')\">\n          <Acao texto=\"Poxa, entendo sua situação. É justamente nesses momentos que investir em conhecimento pode ser a virada. Temos parcelamento que facilita muito. Você viu?\" />\n          <Se test=\"lead.insiste('não dá', 'impossível', 'nem parcelado', 'não tenho como')\">\n            <Acao tool=\"searchebook\" finalidade=\"oferecer alternativa mais acessível de ebook\" />\n          </Se>\n        </Se>\n      </Se>\n      \n      <Se test=\"lead.menciona.sinonimos('quero começar a vender mas não tenho condições', 'preciso vender sorvete mas sem dinheiro', 'quero iniciar vendas sem investimento', 'começar do zero sem capital')\">\n        <Acao texto=\"Olha, começar vendendo sorvete pode ser sua saída dessa situação! O curso se paga com as primeiras vendas. Já pensou nisso?\" />\n        <Se test=\"lead.insiste('não consigo', 'realmente não dá', 'preciso de algo mais barato', 'algo mais em conta')\">\n          <Acao tool=\"searchebook\" finalidade=\"oferecer ebook como ponto de partida mais acessível\" />\n        </Se>\n      </Se>\n    </Gatilhos>\n    \n    <Estrategia>\n      <Passo1>SEMPRE tente primeiro reverter para o curso principal</Passo1>\n      <Passo2>Questione se é realmente só uso caseiro ou se há potencial profissional</Passo2>\n      <Passo3>Mostre que mesmo para casa, o conhecimento profissional faz diferença</Passo3>\n      <Passo4>APENAS se o lead insistir que não quer/pode o curso, acione \"searchebook\"</Passo4>\n      <Passo5>Ao oferecer o ebook, deixe porta aberta para upgrade futuro ao curso</Passo5>\n    </Estrategia>\n\n   <Linkpagamentodoebook>\n<Regra>Nunca confunda os links de pagamento, para o EBOOK use sempre \"{{ $json[\"Ebook\"] }}\" Preste bastante atenção</Regra>\n\n<Regra>Enviar o link de pagamento do EBOOK somente para o lead que quer comprar o EBOOK</Regra>\n  </Linkpagamentodoebook>\n\n  </AlternativaEbook>\n\n  <Pagamento>\n    <ConsultaViaNode> Formas de pagamento e preço sempre pelos caminhos indicados no node \"Oferta\".</ConsultaViaNode>\n\n <Se test=\"lead.menciona('Até quando posso pagar o Boleto?')\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar duvidas sobre pagamento\" />\n    </Se>\n  </Pagamento>\n\n  <Condicionais>\n    <Se test=\"lead.menciona('preço', 'valor', 'custo', 'investimento')\">\n      <Se test=\"contexto.contem('já enviei informações do curso')\">\n        <Acao texto=\"O valor do curso é {{ $node['Oferta'].json['Preço'] }}. Pode pagar via {{ $node['Oferta'].json['Forma de Pagamento'] }}. Se quiser garantir sua vaga agora, é só acessar:{{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito e Boleto avista\"] }}\" />\n      </Se>\n      <Se test=\"!contexto.contem('já enviei informações do curso')\">\n        <Acao texto=\"Te explico sim! Mas antes, posso te mostrar o que esse curso entrega? É isso que justifica o investimento.\" />\n        <Acao tool=\"searchProduto\" finalidade=\"consultar informações detalhadas do produto\" />\n        <Acao texto=\"O valor do curso é {{ $node['Oferta'].json['Preço'] }}. Pode pagar via {{ $node['Oferta'].json['Forma de Pagamento'] }}. Se quiser garantir sua vaga agora, é só acessar:{{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito e Boleto avista\"] }}\" />\n      </Se>\n    </Se>\n\n    <Se test=\"lead.menciona('tempo', 'correria', 'agenda', 'rotina')\">\n      <Acao texto=\"Pode ficar tranquilo. Você tem acesso por 1 ano e estuda no seu ritmo.\" />\n    </Se>\n\n    <Se test=\"lead.menciona('máquina', 'equipamento', 'vou começar', 'não tenho máquina')\">\n      <Acao tool=\"searchobjecoes\"/>\n    </Se>\n\n    <Se test=\"lead.menciona('comprar', 'fechar', 'pagar', 'adquirir', 'quero', 'me manda o link', 'garantir vaga')\">\n      <Acao texto=\"Perfeito! Aqui está o link de pagamento direto:{{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito e Boleto avista\"] }}\" />\n    </Se>\n\n    <Se test=\"lead.menciona('o que tem no curso', 'me fala do curso', 'o que oferece', 'conteúdo do curso', 'aulas')\">\n      <Acao tool=\"searchProduto\" finalidade=\"consultar informações detalhadas do produto\" />\n    </Se>\n  </Condicionais>\n\n  <Objeções>\n    <Item nome=\"Quero fazer sorvete apenas para consumo próprio. O curso é pra mim? É só para quem quer vender?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Não tenho maquinários, posso fazer o curso? Não tenho equipamentos profissionais.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Faço geladinho gourmet. Isso serve pra mim? Faço dindin gourmet, sacolé.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Já trabalho com sorvete/açaí, mas minhas receitas não ficam boas. O curso ajuda nisso? Meu produto não tem qualidade.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Tenho experiência, mas quero melhorar meus produtos. Já faço, mas quero evoluir.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Tenho dificuldade com receitas e nunca consigo fazer uma nova do zero. Não sei criar do zero.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Já sei fazer sorvete, quero só aprender a balancear. Já produzo, mas falta técnica de balanceamento.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Quanto tempo tenho de acesso? Tenho acesso vitalício? Dura quanto tempo?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"O curso é atualizado? Tem conteúdo novo? Atualiza com o tempo?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"E se eu tiver dúvidas? Posso perguntar? Tem suporte?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Eu ainda não tenho nenhuma máquina, só queria testar com uma batedeira. Será que esse curso é pra mim? Posso fazer com o que tenho em casa?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Na verdade, eu só queria aprender a fazer pra família, algo mais simples... pra consumo próprio.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Eu já tenho minha loja, mas minhas receitas ainda não ficam como eu gostaria. Produto sem padrão.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Eu já entendo de sorvete, preciso só aprender a balancear melhor ou ajustar detalhes. Já tenho base.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Eu faço geladinho gourmet, esse curso serve pra mim? Faço sacolé, dindin.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Eu tô com medo de não conseguir aprender, parece muito técnico... muito difícil, complicado.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"No curso indica maquinário? Tem lista de equipamentos?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"No curso tem receitas? Ensina fórmulas prontas?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"VOCÊS VENDEM SOMENTE A TABELA DE BALANCEAMENTO? Posso comprar só a planilha?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"NÃO TENHO DINHEIRO. Está caro pra mim. Não posso pagar agora.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"VOU DEIXAR PARA A PRÓXIMA. Não é o momento. Quem sabe depois.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Eu já produzo em escala, esse curso vai agregar mesmo? Já trabalho com produção grande.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Não sei se vou conseguir acompanhar tudo, minha rotina é puxada. Muito corrida.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"E se eu não gostar? Não me adaptar? Não for o que espero?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Quais aulas tem no curso? Qual o conteúdo? Que módulos tem?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Entrei na lista, mas ainda não decidi se vou comprar. Ainda estou em dúvida.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"O valor informado é o final mesmo? Não tem desconto extra? É o melhor preço?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Preciso de mais tempo para pensar/conversar com minha família. Decidir com calma.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Não consigo comprar agora, o link ficará ativo até quando? Tem prazo? Vai acabar?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Achei que teríamos alguma aula extra ou bônus na lista. Tem presente? Extra? Brinde?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Estou com dificuldades para finalizar a compra no site. Está dando erro. Não consigo pagar.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Se eu comprar agora, quando as aulas começam? Libera na hora? Começa quando?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Posso tirar dúvidas com o Edu no particular? Posso tirar dúvidas com o Edu no WhatsApp? Tenho algum tira dúvidas individual com o Edu? O Edu consegue me atender sozinho?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Será que consigo aplicar o conhecimento mesmo com pouca prática ou nenhuma? Sou iniciante.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"E se eu não me adaptar ao formato online? Prefiro presencial. Não gosto de curso online.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Tenho medo de não conseguir estudar ou de desistir. Não vou dar conta.\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Já fiz outros cursos, o que o Profissão Sorveteiro tem de especial? O que muda?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Não consigo comprar hoje, posso entrar na próxima turma? Vai ter outra chance?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"É só sorvete ou abrange açaí também? Fala sobre os dois?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n    <Item nome=\"Minha internet é ruim, consigo assistir às aulas? Dá pra ver com conexão lenta?\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar detalhes da objeção\" />\n    </Item>\n  </Objeções>\n\n  <Fechamento>\n    <CTA>Quer garantir sua vaga agora com o desconto especial, ou tem só mais 1 dúvida antes de fechar?</CTA>\n    <MensagemFinal>Seja bem-vindo à Família Sorveteiro Raiz! Vamos te acompanhar nessa transformação.</MensagemFinal>\n  </Fechamento>\n\n  <ReforçoFinal>\n    <Regra> Nunca invente informações de produto. Use sempre \"searchProduto\" para nome, descrição, diferenciais e detalhes.</Regra>\n    <Regra> Preço, formas de pagamento e link de compra exclusivamente pelos caminhos do node \"Oferta\".</Regra>\n    <Regra> Nunca se apresente se contexto estiver preenchido.</Regra>\n    <Regra> Nunca use CTAs fracos no fim.</Regra>\n    <Regra> Foque sempre na urgência, na dor do cliente e no valor da solução.</Regra>\n    <Regra>🎯 O ebook é ÚLTIMA alternativa. Prioridade MÁXIMA é vender o curso Profissão Sorveteiro.</Regra>\n  </ReforçoFinal>\n\n</IAConfig>",
               "type": "string"
             }
           ]
@@ -1853,8 +1835,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -760,
-        1300
+        -768,
+        1312
       ],
       "alwaysOutputData": false
     },
@@ -1900,7 +1882,7 @@
       "typeVersion": 3.4,
       "position": [
         -960,
-        1300
+        1312
       ],
       "id": "3bb03aa1-9676-4f24-ae74-17f12bffe6c0",
       "name": "Oferta"
@@ -1935,8 +1917,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -100,
-        1300
+        -96,
+        1312
       ]
     },
     {
@@ -2027,8 +2009,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        840,
-        1260
+        848,
+        1264
       ]
     },
     {
@@ -2043,8 +2025,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1060,
-        1020
+        1072,
+        1024
       ],
       "id": "70a730d7-f210-4cc6-a350-57c15356461e",
       "name": "HTTP Request1"
@@ -2061,8 +2043,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1060,
-        1480
+        1072,
+        1488
       ],
       "id": "398cb660-e680-4c14-acb5-2f07e575ce14",
       "name": "HTTP Request2"
@@ -2077,8 +2059,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1060,
-        1240
+        1072,
+        1248
       ],
       "id": "ffbdf3cf-c0a4-46e8-9f7e-1814c3acacd3",
       "name": "Add na Memória",
@@ -2125,11 +2107,12 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1780,
-        1300
+        -1776,
+        1312
       ],
       "id": "cddf4af6-2312-492d-9525-a4484aca9691",
-      "name": "pausar atendimento"
+      "name": "pausar atendimento",
+      "disabled": true
     },
     {
       "parameters": {
@@ -2150,8 +2133,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1.3,
       "position": [
-        3580,
-        1480
+        3584,
+        1488
       ],
       "id": "43e3970e-a7d3-4a6b-8eb7-f812bbce933e",
       "name": "searchebook",
@@ -2175,8 +2158,8 @@
       "type": "n8n-nodes-base.httpRequestTool",
       "typeVersion": 4.2,
       "position": [
-        3940,
-        1000
+        3952,
+        1008
       ],
       "id": "65ab3104-a0af-4941-963c-2aedf434614a",
       "name": "viroucliente"
@@ -2262,6 +2245,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-25T12:56:28.192Z",
-  "versionId": "977021c0-1ba1-4c24-bfd3-a1bee47a1579"
+  "updatedAt": "2025-09-08T19:40:14.498Z",
+  "versionId": "cf01fb1d-3ee3-4cde-a1be-51aa2845c498"
 }
