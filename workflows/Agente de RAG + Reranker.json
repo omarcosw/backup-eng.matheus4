@@ -38,7 +38,7 @@
       "main": [
         [
           {
-            "node": "Search files and folders",
+            "node": "Get a document",
             "type": "main",
             "index": 0
           }
@@ -121,7 +121,7 @@
         [],
         [
           {
-            "node": "Supabase Vector Store",
+            "node": "Edit Fields",
             "type": "main",
             "index": 0
           }
@@ -152,16 +152,32 @@
     },
     "Search files and folders": {
       "main": [
+        []
+      ]
+    },
+    "Get a document": {
+      "main": [
         [
           {
-            "node": "Get a document",
+            "node": "Code",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Get a document": {
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
       "main": [
         [
           {
@@ -188,8 +204,8 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        1000,
-        1100
+        1008,
+        1104
       ],
       "id": "6fe98728-7b28-4a5c-b122-902e703db6c1",
       "name": "When chat message received",
@@ -202,8 +218,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        1220,
-        1100
+        1232,
+        1104
       ],
       "id": "6979b275-1da1-4479-914e-071f03a9bda7",
       "name": "Agente RAG"
@@ -220,8 +236,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        1100,
-        1320
+        1104,
+        1328
       ],
       "id": "fd5bf3a7-c90e-4d80-8f8b-b0b98097af21",
       "name": "OpenAI Chat Model",
@@ -240,8 +256,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        1420,
-        1460
+        1424,
+        1472
       ],
       "id": "7ff95fcd-97dd-43b2-a137-f4c18fe968a7",
       "name": "Embeddings OpenAI",
@@ -257,8 +273,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        1260,
-        1320
+        1264,
+        1328
       ],
       "id": "955ebea8-39c2-4d12-87ce-87f11a4be187",
       "name": "Simple Memory"
@@ -268,8 +284,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -720,
-        820
+        -992,
+        784
       ],
       "id": "cf505f65-dfc5-406b-a8dd-4681b7f11e1f",
       "name": "When clicking ‘Execute workflow’"
@@ -282,8 +298,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        20,
-        1300
+        32,
+        1312
       ],
       "id": "c8bbc46b-7b86-4d64-b53e-7e35a28ee0dc",
       "name": "Embeddings OpenAI1",
@@ -297,15 +313,15 @@
     {
       "parameters": {
         "jsonMode": "expressionData",
-        "jsonData": "={{ $('Get a document').item.json.content }}",
+        "jsonData": "={{ $('Loop Over Items').item.json.conteudo }}",
         "textSplittingMode": "custom",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1.1,
       "position": [
-        220,
-        1320
+        224,
+        1328
       ],
       "id": "3b34730c-811c-4923-b798-873ce8c62e3d",
       "name": "Default Data Loader"
@@ -329,8 +345,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1.3,
       "position": [
-        1420,
-        1320
+        1424,
+        1328
       ],
       "id": "5ecbcf25-2b77-4f75-bf79-ad9cb055c195",
       "name": "searchCafeina",
@@ -346,19 +362,19 @@
         "mode": "insert",
         "tableName": {
           "__rl": true,
-          "value": "ps_curso",
+          "value": "ps_objecoes",
           "mode": "list",
-          "cachedResultName": "ps_curso"
+          "cachedResultName": "ps_objecoes"
         },
         "options": {
-          "queryName": "match_ps_curso"
+          "queryName": "match_ps_objecoes"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1.3,
       "position": [
-        100,
-        1140
+        112,
+        1152
       ],
       "id": "f10505d4-49db-400d-8f31-fbea2eb1cfdf",
       "name": "Supabase Vector Store",
@@ -377,8 +393,8 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        680,
-        1080
+        688,
+        1088
       ],
       "id": "c62a7e09-a116-4eac-a9ea-510e9a079683",
       "name": "Extract from File"
@@ -388,8 +404,8 @@
       "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
       "typeVersion": 1,
       "position": [
-        1580,
-        1460
+        1584,
+        1472
       ],
       "id": "fbb231cd-7524-444a-a1eb-46efc6d90ca2",
       "name": "Reranker Cohere",
@@ -409,8 +425,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        860,
-        980
+        864,
+        992
       ],
       "typeVersion": 1,
       "id": "446f15fa-5ec2-464f-98bf-420359076c13",
@@ -426,7 +442,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         -880,
-        1020
+        1024
       ],
       "typeVersion": 1,
       "id": "1ae908f0-228b-446b-b106-ae1b8a08ea26",
@@ -441,7 +457,7 @@
       "typeVersion": 1,
       "position": [
         320,
-        1460
+        1472
       ],
       "id": "6223c16e-12af-4ead-be5c-f6609a23f60a",
       "name": "Recursive Character Text Splitter"
@@ -453,8 +469,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -180,
-        1120
+        -208,
+        864
       ],
       "id": "85f8046c-5fa1-4189-b8a3-20f41a77dc71",
       "name": "Loop Over Items"
@@ -466,8 +482,8 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        460,
-        1140
+        464,
+        1152
       ],
       "id": "f95b5152-442a-446e-be02-bceb567780cf",
       "name": "Wait",
@@ -485,8 +501,8 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        -600,
-        1120
+        -768,
+        880
       ],
       "id": "0dbe3070-ba46-409e-a588-6c4b505798c8",
       "name": "Search files and folders",
@@ -500,13 +516,13 @@
     {
       "parameters": {
         "operation": "get",
-        "documentURL": "={{ $json.id }}"
+        "documentURL": "=1PlSNtdQCidN0EvOkLUP-1eAdMmOzbjh-A3D_XokNXYk"
       },
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
       "position": [
-        -380,
-        1120
+        -624,
+        816
       ],
       "id": "a56beddc-dff7-46b4-97d2-51dede98d2b0",
       "name": "Get a document",
@@ -516,6 +532,32 @@
           "name": "Google Docs account"
         }
       }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -80,
+        1088
+      ],
+      "id": "e9efa1fe-5238-4539-8578-65938b185cbb",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Código para separar as objeções do Curso Profissão Sorveteiro no n8n\nconst dados = $input.first().json;\n\n// Se for um array, pega o primeiro item\nconst item = Array.isArray(dados) ? dados[0] : dados;\n\n// Extrai o conteúdo\nconst textoCompleto = item.content || item.texto || item.data;\n\nif (!textoCompleto || typeof textoCompleto !== 'string') {\n  throw new Error(`Texto não encontrado. Estrutura: ${JSON.stringify(Object.keys(item))}`);\n}\n\n// Remove o título principal e normaliza quebras de linha\nconst textoLimpo = textoCompleto\n  .replace(/^OBJEÇÕES COMUNS E RESPOSTAS PARA O CURSO PROFISSÃO SORVETEIRO\\s*\\n+/, '')\n  .replace(/\\u000b/g, '\\n') // Remove caracteres especiais de quebra\n  .replace(/\\n{3,}/g, '\\n\\n'); // Normaliza múltiplas quebras\n\n// Separa usando regex mais específica para capturar números no início da linha\nconst matches = textoLimpo.match(/\\d+\\.\\s*[^]*?(?=\\n\\d+\\.\\s|$)/g);\n\nif (!matches) {\n  throw new Error('Nenhuma objeção encontrada no formato esperado');\n}\n\nconst resultado = [];\n\nmatches.forEach((bloco, index) => {\n  const linhas = bloco.trim().split('\\n').filter(linha => linha.trim() !== '');\n  \n  if (linhas.length === 0) return;\n  \n  // Extrai informações da primeira linha\n  const primeiraLinha = linhas[0];\n  \n  // Tenta extrair número e pergunta com diferentes padrões\n  let match = primeiraLinha.match(/^(\\d+)\\.\\s*[\"\"]([^\"\"]+)[\"\"](.*)$/);\n  \n  if (!match) {\n    // Tenta sem aspas\n    match = primeiraLinha.match(/^(\\d+)\\.\\s*(.+)$/);\n  }\n  \n  if (!match) return;\n  \n  const numero = match[1];\n  let pergunta = match[2].trim();\n  \n  // Se há texto adicional após as aspas na primeira linha, adiciona à pergunta\n  if (match[3] && match[3].trim()) {\n    pergunta += ' ' + match[3].trim();\n  }\n  \n  // Procura por \"Resposta:\" nas linhas seguintes\n  const respostaIndex = linhas.findIndex(linha => linha.includes('Resposta:'));\n  \n  let resposta = '';\n  if (respostaIndex >= 0) {\n    // Junta todas as linhas da resposta\n    const respostaLinhas = linhas.slice(respostaIndex);\n    resposta = respostaLinhas.join(' ').replace(/^.*?Resposta:\\s*/, '').trim();\n  } else {\n    // Se não encontrar \"Resposta:\", pega tudo após a primeira linha\n    resposta = linhas.slice(1).join(' ').trim();\n  }\n  \n  // Cria o conteúdo completo\n  const conteudo = `${pergunta}\\nResposta: ${resposta}`;\n  \n  // Só adiciona se tiver conteúdo válido\n  if (pergunta.length > 0 && resposta.length > 0) {\n    resultado.push({\n      json: {\n        id: parseInt(numero),\n        numero: numero,\n        titulo: null,\n        pergunta: pergunta,\n        resposta: resposta,\n        conteudo: conteudo,\n        tamanho_texto: conteudo.length,\n        documentId: item.documentId || null,\n        texto_original: bloco.trim()\n      }\n    });\n  }\n});\n\n// Retorna array de objetos JSON - cada objeção será um item separado no n8n\nreturn resultado;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -432,
+        880
+      ],
+      "id": "06b7cfee-6f3f-4eaf-a339-27a3a094998e",
+      "name": "Code"
     }
   ],
   "pinData": {},
@@ -547,6 +589,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-29T18:07:18.726Z",
-  "versionId": "df3cf4ff-c2ea-4113-ac7f-75d1e7178b1f"
+  "updatedAt": "2025-09-08T17:02:27.075Z",
+  "versionId": "f1224566-e22f-499d-8e78-91d0408d19cd"
 }
