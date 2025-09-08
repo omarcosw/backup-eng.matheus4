@@ -443,7 +443,7 @@
       "main": [
         [
           {
-            "node": "Parser  Chain",
+            "node": "AI Agent",
             "type": "main",
             "index": 0
           }
@@ -566,6 +566,61 @@
           }
         ]
       ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings": {
+      "ai_embedding": [
+        [
+          {
+            "node": "searchaulas1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reranker": {
+      "ai_reranker": [
+        [
+          {
+            "node": "searchaulas1",
+            "type": "ai_reranker",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "searchaulas1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Parser  Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-08-29T15:22:42.704Z",
@@ -585,7 +640,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -1000,
+        -1008,
         720
       ],
       "id": "f6279699-9e76-40ec-b00f-8e9ae3a6a2a6",
@@ -695,7 +750,7 @@
       "typeVersion": 1,
       "position": [
         -1040,
-        580
+        592
       ]
     },
     {
@@ -801,7 +856,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -540,
+        -544,
         720
       ],
       "notesInFlow": true
@@ -819,7 +874,7 @@
       "typeVersion": 1,
       "position": [
         3680,
-        100
+        112
       ],
       "credentials": {
         "redis": {
@@ -840,7 +895,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2740,
+        2752,
         0
       ]
     },
@@ -854,7 +909,7 @@
       "typeVersion": 1.1,
       "position": [
         2960,
-        100
+        112
       ],
       "webhookId": "8ae10f5c-5f7c-4288-b75d-e3d415e5798c"
     },
@@ -872,8 +927,8 @@
       "type": "n8n-nodes-base.convertToFile",
       "typeVersion": 1.1,
       "position": [
-        3320,
-        100
+        3328,
+        112
       ]
     },
     {
@@ -904,7 +959,7 @@
       "typeVersion": 4.1,
       "position": [
         3120,
-        100
+        112
       ]
     },
     {
@@ -916,8 +971,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.7,
       "position": [
-        3500,
-        100
+        3504,
+        112
       ],
       "id": "c343a033-ff91-408a-af52-250c283b96d9",
       "name": "transcreve audio",
@@ -946,7 +1001,7 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.4,
       "position": [
-        5920,
+        6624,
         480
       ]
     },
@@ -995,7 +1050,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        6920,
+        7632,
         560
       ],
       "retryOnFail": true,
@@ -1011,8 +1066,8 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
       "position": [
-        6140,
-        660
+        6848,
+        672
       ]
     },
     {
@@ -1024,7 +1079,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        6540,
+        7248,
         480
       ]
     },
@@ -1037,7 +1092,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        7100,
+        7808,
         720
       ],
       "webhookId": "e5987401-8b77-4a84-8693-25fd8898cd94"
@@ -1054,7 +1109,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        6320,
+        7024,
         480
       ]
     },
@@ -1067,8 +1122,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        5920,
-        660
+        6624,
+        672
       ],
       "credentials": {
         "openAiApi": {
@@ -1105,7 +1160,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        5840,
+        6544,
         320
       ]
     },
@@ -1137,7 +1192,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        6700,
+        7408,
         560
       ],
       "id": "a13c52c5-cbc2-4981-b0b7-70eaf18ab1e3",
@@ -1154,8 +1209,8 @@
       "type": "n8n-nodes-base.convertToFile",
       "typeVersion": 1.1,
       "position": [
-        3240,
-        820
+        3248,
+        832
       ]
     },
     {
@@ -1177,8 +1232,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.4,
       "position": [
-        3400,
-        820
+        3408,
+        832
       ],
       "credentials": {
         "openAiApi": {
@@ -1214,7 +1269,7 @@
       "typeVersion": 1,
       "position": [
         3600,
-        820
+        832
       ],
       "credentials": {
         "redis": {
@@ -1300,7 +1355,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3320,
+        3328,
         480
       ],
       "id": "47b9e000-9409-429b-a082-033fc8528c27",
@@ -1322,7 +1377,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3720,
+        3728,
         480
       ],
       "id": "13725dae-0edf-4e5c-8985-079be9c17a2d",
@@ -1375,7 +1430,7 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
       "position": [
-        4120,
+        4128,
         480
       ],
       "id": "92c474d4-2199-4628-a6d6-883de761e9ce",
@@ -1389,7 +1444,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4300,
+        4304,
         480
       ],
       "id": "bd02c279-7f63-446d-8c2b-7ae06efb989f",
@@ -1418,7 +1473,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4520,
+        4528,
         480
       ],
       "id": "4c1025c6-98fe-4d3b-b0a4-46a30eee0c60",
@@ -1449,7 +1504,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4840,
+        4848,
         480
       ]
     },
@@ -1577,7 +1632,7 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        1560,
+        1568,
         800
       ],
       "credentials": {
@@ -1618,7 +1673,7 @@
       "typeVersion": 2.2,
       "position": [
         1200,
-        700
+        704
       ]
     },
     {
@@ -1629,7 +1684,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        920,
+        928,
         480
       ],
       "typeVersion": 1,
@@ -1655,7 +1710,7 @@
       "typeVersion": 1,
       "position": [
         960,
-        700
+        704
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1784,7 +1839,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        5100,
+        5104,
         320
       ],
       "credentials": {
@@ -1816,8 +1871,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        4920,
-        860
+        4928,
+        864
       ],
       "id": "21fd49a3-f4b0-4168-9a0b-523a99bfe721",
       "name": "Embeddings1",
@@ -1834,7 +1889,7 @@
       "typeVersion": 1,
       "position": [
         5120,
-        860
+        864
       ],
       "id": "e45b8af6-a618-4456-9427-745394f3e2b7",
       "name": "Reranker1",
@@ -1887,7 +1942,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -340,
+        -336,
         720
       ],
       "id": "c6310cac-45fd-4191-b1bf-2d53def4b5d0",
@@ -1925,7 +1980,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        -100,
+        -96,
         720
       ],
       "alwaysOutputData": true,
@@ -1954,7 +2009,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        120,
+        128,
         720
       ],
       "alwaysOutputData": true,
@@ -1998,8 +2053,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        6760,
-        380
+        7472,
+        384
       ],
       "id": "53130272-48db-4fc6-83c4-75c5be88e9ac",
       "name": "No Operation, do nothing"
@@ -2025,7 +2080,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         -1040,
-        340
+        352
       ],
       "typeVersion": 1,
       "id": "b658d360-87c1-47e5-865a-b3690238e060",
@@ -2071,11 +2126,121 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1.2,
       "position": [
-        4920,
-        660
+        4928,
+        672
       ],
       "id": "2333eed7-3140-44ac-b69d-d8f27364ae65",
       "name": "searchaulas",
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.output }}",
+        "options": {
+          "systemMessage": "=Voce é Treinada para fazer uma segunda verificação e conferir se a mensagem condiz com oque esta no banco de dados.\n\nSempre acione a funcao tool \"searchaulas1\" para fazer essa verificação.\n\nSe caso não tiver condizente, sempre de a resposta que retornar na tool \n\no contexto da conversa e esse:  {{ $('messagess').item.json.messages }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        5488,
+        480
+      ],
+      "id": "5e1c9ad9-0005-4449-b534-9bd845b12951",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        5344,
+        688
+      ],
+      "id": "0827b9f2-cc35-4821-95b9-78f9f9a1ad82",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "QzQb6Q9G3hGozb9v",
+          "name": "OpenAi - Dani 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-large",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        5552,
+        944
+      ],
+      "id": "1ce914dd-21fc-478e-b8e3-c225c01df5b0",
+      "name": "Embeddings",
+      "credentials": {
+        "openAiApi": {
+          "id": "QzQb6Q9G3hGozb9v",
+          "name": "OpenAi - Dani 2"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
+      "typeVersion": 1,
+      "position": [
+        5744,
+        944
+      ],
+      "id": "5d2e00d9-6e56-4653-bf4c-3f77e5b89587",
+      "name": "Reranker",
+      "credentials": {
+        "cohereApi": {
+          "id": "A7tX1jXD2d5wRh1M",
+          "name": "CohereApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolName": "searchaulas",
+        "toolDescription": "Sempre acione essa função tool para todos os assuntos e duvidas dos alunos",
+        "tableName": {
+          "__rl": true,
+          "value": "ps_curso",
+          "mode": "list",
+          "cachedResultName": "ps_curso"
+        },
+        "topK": 50,
+        "useReranker": true,
+        "options": {
+          "queryName": "match_ps_curso"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.2,
+      "position": [
+        5552,
+        752
+      ],
+      "id": "71003087-5b4e-4b95-92a1-9df804a4d8eb",
+      "name": "searchaulas1",
       "credentials": {
         "supabaseApi": {
           "id": "QiHN5zEBNyZ0P663",
@@ -2091,7 +2256,7 @@
           "headers": {
             "host": "webhook.sorveteiroraiz.com",
             "user-agent": "axios/1.7.9",
-            "content-length": "949",
+            "content-length": "970",
             "accept": "application/json, text/plain, */*",
             "accept-encoding": "gzip, compress, deflate, br",
             "content-type": "application/json",
@@ -2109,34 +2274,34 @@
             "instance": "suporte",
             "data": {
               "key": {
-                "remoteJid": "5511984151865@s.whatsapp.net",
+                "remoteJid": "5512981443543@s.whatsapp.net",
                 "fromMe": false,
-                "id": "3EB04C60ACEDB1BFDDBDBB"
+                "id": "3EB05FEBB93DA24A795C71"
               },
-              "pushName": "Higor Leite",
+              "pushName": "Edu",
               "status": "DELIVERY_ACK",
               "message": {
-                "conversation": "opa",
+                "conversation": "tenho outra opção de guaraná?",
                 "messageContextInfo": {
                   "deviceListMetadata": {
-                    "senderKeyHash": "Vt0aWJZfX35K1Q==",
-                    "senderTimestamp": "1755624058",
+                    "senderKeyHash": "j4zcOTBal4nB8w==",
+                    "senderTimestamp": "1756767564",
                     "senderAccountType": "E2EE",
                     "receiverAccountType": "E2EE",
                     "recipientKeyHash": "Uku5vIoihP14PQ==",
                     "recipientTimestamp": "1756404502"
                   },
                   "deviceListMetadataVersion": 2,
-                  "messageSecret": "w043Zo7zbU6z74qS5q84vLmVzwxzLd27QEiZSpbHtwQ="
+                  "messageSecret": "c17+Cn11DUThYnCaNmRe+2aqfb6n4pvLaB4E9J1KsR4="
                 }
               },
               "messageType": "conversation",
-              "messageTimestamp": 1756481330,
+              "messageTimestamp": 1757030552,
               "instanceId": "5f3e44b6-90fb-420f-926b-1f8a34a111a6",
               "source": "web"
             },
             "destination": "https://webhook.sorveteiroraiz.com/webhook/suportesorveteiro",
-            "date_time": "2025-08-29T12:28:52.436Z",
+            "date_time": "2025-09-04T21:02:32.772Z",
             "sender": "5512982654663@s.whatsapp.net",
             "server_url": "https://evolution.sorveteiroraiz.com",
             "apikey": "3751324729B8-4D02-9658-03B6F6C3F54F"
@@ -2175,6 +2340,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-09-02T16:48:34.464Z",
-  "versionId": "144017a1-ea12-4403-9f37-97db2a80ff84"
+  "updatedAt": "2025-09-08T19:50:45.093Z",
+  "versionId": "a3d67cb6-0e95-486c-b68a-252e2988bc31"
 }
