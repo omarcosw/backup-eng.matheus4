@@ -313,7 +313,7 @@
     {
       "parameters": {
         "jsonMode": "expressionData",
-        "jsonData": "={{ $('Loop Over Items').item.json.conteudo }}",
+        "jsonData": "={{ $('Loop Over Items').item.json.content }}",
         "textSplittingMode": "custom",
         "options": {}
       },
@@ -516,7 +516,7 @@
     {
       "parameters": {
         "operation": "get",
-        "documentURL": "=1PlSNtdQCidN0EvOkLUP-1eAdMmOzbjh-A3D_XokNXYk"
+        "documentURL": "=1qqYg2kppWOUzDJnytQ5vivgAZJQMHa-0uLS-6swSUrY/"
       },
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
@@ -557,7 +557,8 @@
         880
       ],
       "id": "06b7cfee-6f3f-4eaf-a339-27a3a094998e",
-      "name": "Code"
+      "name": "Code",
+      "disabled": true
     }
   ],
   "pinData": {},
@@ -589,6 +590,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-09-08T17:02:27.075Z",
-  "versionId": "f1224566-e22f-499d-8e78-91d0408d19cd"
+  "updatedAt": "2025-09-10T16:32:39.483Z",
+  "versionId": "eb8fe929-2601-4a8d-9215-cd8e7623faba"
 }
