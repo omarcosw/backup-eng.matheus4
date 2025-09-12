@@ -315,7 +315,19 @@
         "jsonMode": "expressionData",
         "jsonData": "={{ $('Loop Over Items').item.json.content }}",
         "textSplittingMode": "custom",
-        "options": {}
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "Duvidas",
+                "value": "Boleto Parcelado"
+              },
+              {
+                "name": "Link para fazer o passo a passo"
+              }
+            ]
+          }
+        }
       },
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1.1,
@@ -516,7 +528,7 @@
     {
       "parameters": {
         "operation": "get",
-        "documentURL": "=1qqYg2kppWOUzDJnytQ5vivgAZJQMHa-0uLS-6swSUrY/"
+        "documentURL": "=1bt1DPidi-WuCL5-gbm4tMZcOXOjlzPFVNgtQFWy0vYY"
       },
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
@@ -590,6 +602,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-09-10T16:32:39.483Z",
-  "versionId": "eb8fe929-2601-4a8d-9215-cd8e7623faba"
+  "updatedAt": "2025-09-12T14:34:10.521Z",
+  "versionId": "f0e2d456-2e43-423f-95dc-2097d0a0264b"
 }
