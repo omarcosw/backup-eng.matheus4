@@ -319,16 +319,8 @@
           "metadata": {
             "metadataValues": [
               {
-                "name": "Duvidas",
-                "value": "Sobre Maquinario "
-              },
-              {
-                "name": "Objeção 1",
-                "value": "Quais maquinas precisa para Produzir?"
-              },
-              {
-                "name": "Objeção 2",
-                "value": "Maquinario para iniciar a produção de Sorvete"
+                "name": "Link da Ementa",
+                "value": "https://drive.google.com/file/d/1EqTAzPhvOsGOeBNeWcQKEP_Mc528VXpl/view?usp=sharing"
               }
             ]
           }
@@ -533,7 +525,7 @@
     {
       "parameters": {
         "operation": "get",
-        "documentURL": "=1mLQ7fSvHwj3eF6_cd4A6aCj5iT8XYufv6eH3vkxiqXs"
+        "documentURL": "=1qqYg2kppWOUzDJnytQ5vivgAZJQMHa-0uLS-6swSUrY"
       },
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
@@ -607,6 +599,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-09-16T23:18:50.477Z",
-  "versionId": "5946a5a3-3cab-4199-b23e-8b3f57e62a5f"
+  "updatedAt": "2025-09-17T18:55:12.901Z",
+  "versionId": "12815f75-a32e-485d-8e3b-0afbfee506f9"
 }
