@@ -1,67 +1,12 @@
 {
   "active": false,
   "connections": {
-    "When chat message received": {
-      "main": [
-        [
-          {
-            "node": "Agente RAG",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Agente RAG",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Simple Memory": {
-      "ai_memory": [
-        [
-          {
-            "node": "Agente RAG",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "When clicking ‘Execute workflow’": {
       "main": [
         [
           {
-            "node": "Get a document",
+            "node": "Search files and folders",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Reranker Cohere": {
-      "ai_reranker": [
-        [
-          {
-            "node": "searchCafeina",
-            "type": "ai_reranker",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Embeddings OpenAI": {
-      "ai_embedding": [
-        [
-          {
-            "node": "searchCafeina",
-            "type": "ai_embedding",
             "index": 0
           }
         ]
@@ -89,28 +34,23 @@
         ]
       ]
     },
-    "Extract from File": {
-      "main": [
-        []
-      ]
-    },
-    "searchCafeina": {
-      "ai_tool": [
-        [
-          {
-            "node": "Agente RAG",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Recursive Character Text Splitter": {
       "ai_textSplitter": [
         [
           {
             "node": "Default Data Loader",
             "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a document": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
             "index": 0
           }
         ]
@@ -152,14 +92,9 @@
     },
     "Search files and folders": {
       "main": [
-        []
-      ]
-    },
-    "Get a document": {
-      "main": [
         [
           {
-            "node": "Code",
+            "node": "Get a document",
             "type": "main",
             "index": 0
           }
@@ -198,96 +133,14 @@
   "name": "Agente de RAG + Reranker",
   "nodes": [
     {
-      "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
-      "typeVersion": 1.1,
-      "position": [
-        1008,
-        1104
-      ],
-      "id": "6fe98728-7b28-4a5c-b122-902e703db6c1",
-      "name": "When chat message received",
-      "webhookId": "de210796-2512-4c20-97eb-87b7f05298cb"
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 2,
-      "position": [
-        1232,
-        1104
-      ],
-      "id": "6979b275-1da1-4479-914e-071f03a9bda7",
-      "name": "Agente RAG"
-    },
-    {
-      "parameters": {
-        "model": {
-          "__rl": true,
-          "mode": "list",
-          "value": "gpt-4.1-mini"
-        },
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.2,
-      "position": [
-        1104,
-        1328
-      ],
-      "id": "fd5bf3a7-c90e-4d80-8f8b-b0b98097af21",
-      "name": "OpenAI Chat Model",
-      "credentials": {
-        "openAiApi": {
-          "id": "QzQb6Q9G3hGozb9v",
-          "name": "OpenAi - Dani 2"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "model": "text-embedding-3-large",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
-      "typeVersion": 1.2,
-      "position": [
-        1424,
-        1472
-      ],
-      "id": "7ff95fcd-97dd-43b2-a137-f4c18fe968a7",
-      "name": "Embeddings OpenAI",
-      "credentials": {
-        "openAiApi": {
-          "id": "QzQb6Q9G3hGozb9v",
-          "name": "OpenAi - Dani 2"
-        }
-      }
-    },
-    {
-      "parameters": {},
-      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "typeVersion": 1.3,
-      "position": [
-        1264,
-        1328
-      ],
-      "id": "955ebea8-39c2-4d12-87ce-87f11a4be187",
-      "name": "Simple Memory"
-    },
-    {
       "parameters": {},
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -992,
-        784
+        -1520,
+        -144
       ],
-      "id": "cf505f65-dfc5-406b-a8dd-4681b7f11e1f",
+      "id": "6723f7ca-6758-4279-b1c6-49493cfb9c2f",
       "name": "When clicking ‘Execute workflow’"
     },
     {
@@ -298,10 +151,10 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        32,
-        1312
+        -160,
+        64
       ],
-      "id": "c8bbc46b-7b86-4d64-b53e-7e35a28ee0dc",
+      "id": "f4eaeb4c-5c4e-4ed2-aec3-1eed5f364644",
       "name": "Embeddings OpenAI1",
       "credentials": {
         "openAiApi": {
@@ -313,14 +166,22 @@
     {
       "parameters": {
         "jsonMode": "expressionData",
-        "jsonData": "={{ $('Loop Over Items').item.json.content }}",
+        "jsonData": "={{ $('Loop Over Items').item.json.conteudo_parte }}",
         "textSplittingMode": "custom",
         "options": {
           "metadata": {
             "metadataValues": [
               {
-                "name": "Link da Ementa",
-                "value": "https://drive.google.com/file/d/1EqTAzPhvOsGOeBNeWcQKEP_Mc528VXpl/view?usp=sharing"
+                "name": "Modulo",
+                "value": "={{ $('Loop Over Items').item.json.modulo }}"
+              },
+              {
+                "name": "Aula",
+                "value": "={{ $('Loop Over Items').item.json.aula }}"
+              },
+              {
+                "name": "Parte",
+                "value": "={{ $('Loop Over Items').item.json.parte }}"
               }
             ]
           }
@@ -329,63 +190,32 @@
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1.1,
       "position": [
-        224,
-        1328
+        96,
+        48
       ],
-      "id": "3b34730c-811c-4923-b798-873ce8c62e3d",
+      "id": "85fcea0d-5db5-4f86-ab33-0c77070cd192",
       "name": "Default Data Loader"
-    },
-    {
-      "parameters": {
-        "mode": "retrieve-as-tool",
-        "toolDescription": "Use essa tool para consultar informações sobre o curso \"Profissão Sorveteiro\"",
-        "tableName": {
-          "__rl": true,
-          "value": "ps_curso",
-          "mode": "list",
-          "cachedResultName": "ps_curso"
-        },
-        "topK": 15,
-        "useReranker": true,
-        "options": {
-          "queryName": "match_ps_produto"
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
-      "typeVersion": 1.3,
-      "position": [
-        1424,
-        1328
-      ],
-      "id": "5ecbcf25-2b77-4f75-bf79-ad9cb055c195",
-      "name": "searchCafeina",
-      "credentials": {
-        "supabaseApi": {
-          "id": "QiHN5zEBNyZ0P663",
-          "name": "Supabase - Sorveteiro Raiz"
-        }
-      }
     },
     {
       "parameters": {
         "mode": "insert",
         "tableName": {
           "__rl": true,
-          "value": "ps_objecoes",
+          "value": "ps_curso",
           "mode": "list",
-          "cachedResultName": "ps_objecoes"
+          "cachedResultName": "ps_curso"
         },
         "options": {
-          "queryName": "match_ps_objecoes"
+          "queryName": "match_ps_curso"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1.3,
       "position": [
-        112,
-        1152
+        -64,
+        -176
       ],
-      "id": "f10505d4-49db-400d-8f31-fbea2eb1cfdf",
+      "id": "d0a17703-37ee-44c9-b416-c2bc49374ece",
       "name": "Supabase Vector Store",
       "credentials": {
         "supabaseApi": {
@@ -396,65 +226,18 @@
     },
     {
       "parameters": {
-        "operation": "text",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.extractFromFile",
-      "typeVersion": 1,
-      "position": [
-        688,
-        1088
-      ],
-      "id": "c62a7e09-a116-4eac-a9ea-510e9a079683",
-      "name": "Extract from File"
-    },
-    {
-      "parameters": {},
-      "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
-      "typeVersion": 1,
-      "position": [
-        1584,
-        1472
-      ],
-      "id": "fbb231cd-7524-444a-a1eb-46efc6d90ca2",
-      "name": "Reranker Cohere",
-      "credentials": {
-        "cohereApi": {
-          "id": "A7tX1jXD2d5wRh1M",
-          "name": "CohereApi account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "content": "## AGENTE RAG",
-        "height": 660,
-        "width": 1080,
+        "content": "## VETORIZADOR",
+        "height": 748,
+        "width": 2244,
         "color": 3
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        864,
-        992
+        -1616,
+        -368
       ],
       "typeVersion": 1,
-      "id": "446f15fa-5ec2-464f-98bf-420359076c13",
-      "name": "Sticky Note"
-    },
-    {
-      "parameters": {
-        "content": "## VETORIZADOR",
-        "height": 620,
-        "width": 1700,
-        "color": 7
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -880,
-        1024
-      ],
-      "typeVersion": 1,
-      "id": "1ae908f0-228b-446b-b106-ae1b8a08ea26",
+      "id": "cc2296db-43c5-44d8-aa95-f05a11d86d19",
       "name": "Sticky Note1"
     },
     {
@@ -465,75 +248,24 @@
       "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
       "typeVersion": 1,
       "position": [
-        320,
-        1472
+        208,
+        192
       ],
-      "id": "6223c16e-12af-4ead-be5c-f6609a23f60a",
+      "id": "d72c7c8e-3d55-48c9-8ba1-3768542f2f2c",
       "name": "Recursive Character Text Splitter"
     },
     {
       "parameters": {
-        "options": {}
-      },
-      "type": "n8n-nodes-base.splitInBatches",
-      "typeVersion": 3,
-      "position": [
-        -208,
-        864
-      ],
-      "id": "85f8046c-5fa1-4189-b8a3-20f41a77dc71",
-      "name": "Loop Over Items"
-    },
-    {
-      "parameters": {
-        "amount": 2
-      },
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
-      "position": [
-        464,
-        1152
-      ],
-      "id": "f95b5152-442a-446e-be02-bceb567780cf",
-      "name": "Wait",
-      "webhookId": "eb2139c1-1fc3-4aa3-8b0a-d7462a11c68d",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "resource": "fileFolder",
-        "queryString": "Módulo 6",
-        "returnAll": true,
-        "filter": {},
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleDrive",
-      "typeVersion": 3,
-      "position": [
-        -768,
-        880
-      ],
-      "id": "0dbe3070-ba46-409e-a588-6c4b505798c8",
-      "name": "Search files and folders",
-      "credentials": {
-        "googleDriveOAuth2Api": {
-          "id": "Fj0pGWTsgTW5yLNC",
-          "name": "Google Drive account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "operation": "get",
-        "documentURL": "=1qqYg2kppWOUzDJnytQ5vivgAZJQMHa-0uLS-6swSUrY"
+        "documentURL": "={{ $json.id }}"
       },
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
       "position": [
-        -624,
-        816
+        -1088,
+        -144
       ],
-      "id": "a56beddc-dff7-46b4-97d2-51dede98d2b0",
+      "id": "31fb455f-091e-432a-8e2e-f7a60cf6fdcb",
       "name": "Get a document",
       "credentials": {
         "googleDocsOAuth2Api": {
@@ -546,28 +278,111 @@
       "parameters": {
         "options": {}
       },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -608,
+        -144
+      ],
+      "id": "147839dc-4d41-43da-9165-ccb24437a8c3",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        288,
+        -176
+      ],
+      "id": "be0184aa-677c-4734-b6af-6a824fe3331c",
+      "name": "Wait",
+      "webhookId": "eb2139c1-1fc3-4aa3-8b0a-d7462a11c68d",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "returnAll": true,
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "19C8BuvE1zkxRSWPzdyNm_qwEF3bEQ3DN",
+            "mode": "list",
+            "cachedResultName": "Modulo 4",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/19C8BuvE1zkxRSWPzdyNm_qwEF3bEQ3DN"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -1296,
+        -144
+      ],
+      "id": "72d21ade-41a8-47f6-bdcf-1fba303ede35",
+      "name": "Search files and folders",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "Fj0pGWTsgTW5yLNC",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "03a9bb27-f540-44e7-8c2a-98a996676128",
+              "name": "content",
+              "value": "={{ $json.texto_original }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -80,
-        1088
+        -368,
+        -128
       ],
-      "id": "e9efa1fe-5238-4539-8578-65938b185cbb",
+      "id": "9b066bd6-612c-46ae-8e04-96eee03fc678",
       "name": "Edit Fields"
     },
     {
       "parameters": {
-        "jsCode": "// Código para separar as objeções do Curso Profissão Sorveteiro no n8n\nconst dados = $input.first().json;\n\n// Se for um array, pega o primeiro item\nconst item = Array.isArray(dados) ? dados[0] : dados;\n\n// Extrai o conteúdo\nconst textoCompleto = item.content || item.texto || item.data;\n\nif (!textoCompleto || typeof textoCompleto !== 'string') {\n  throw new Error(`Texto não encontrado. Estrutura: ${JSON.stringify(Object.keys(item))}`);\n}\n\n// Remove o título principal e normaliza quebras de linha\nconst textoLimpo = textoCompleto\n  .replace(/^OBJEÇÕES COMUNS E RESPOSTAS PARA O CURSO PROFISSÃO SORVETEIRO\\s*\\n+/, '')\n  .replace(/\\u000b/g, '\\n') // Remove caracteres especiais de quebra\n  .replace(/\\n{3,}/g, '\\n\\n'); // Normaliza múltiplas quebras\n\n// Separa usando regex mais específica para capturar números no início da linha\nconst matches = textoLimpo.match(/\\d+\\.\\s*[^]*?(?=\\n\\d+\\.\\s|$)/g);\n\nif (!matches) {\n  throw new Error('Nenhuma objeção encontrada no formato esperado');\n}\n\nconst resultado = [];\n\nmatches.forEach((bloco, index) => {\n  const linhas = bloco.trim().split('\\n').filter(linha => linha.trim() !== '');\n  \n  if (linhas.length === 0) return;\n  \n  // Extrai informações da primeira linha\n  const primeiraLinha = linhas[0];\n  \n  // Tenta extrair número e pergunta com diferentes padrões\n  let match = primeiraLinha.match(/^(\\d+)\\.\\s*[\"\"]([^\"\"]+)[\"\"](.*)$/);\n  \n  if (!match) {\n    // Tenta sem aspas\n    match = primeiraLinha.match(/^(\\d+)\\.\\s*(.+)$/);\n  }\n  \n  if (!match) return;\n  \n  const numero = match[1];\n  let pergunta = match[2].trim();\n  \n  // Se há texto adicional após as aspas na primeira linha, adiciona à pergunta\n  if (match[3] && match[3].trim()) {\n    pergunta += ' ' + match[3].trim();\n  }\n  \n  // Procura por \"Resposta:\" nas linhas seguintes\n  const respostaIndex = linhas.findIndex(linha => linha.includes('Resposta:'));\n  \n  let resposta = '';\n  if (respostaIndex >= 0) {\n    // Junta todas as linhas da resposta\n    const respostaLinhas = linhas.slice(respostaIndex);\n    resposta = respostaLinhas.join(' ').replace(/^.*?Resposta:\\s*/, '').trim();\n  } else {\n    // Se não encontrar \"Resposta:\", pega tudo após a primeira linha\n    resposta = linhas.slice(1).join(' ').trim();\n  }\n  \n  // Cria o conteúdo completo\n  const conteudo = `${pergunta}\\nResposta: ${resposta}`;\n  \n  // Só adiciona se tiver conteúdo válido\n  if (pergunta.length > 0 && resposta.length > 0) {\n    resultado.push({\n      json: {\n        id: parseInt(numero),\n        numero: numero,\n        titulo: null,\n        pergunta: pergunta,\n        resposta: resposta,\n        conteudo: conteudo,\n        tamanho_texto: conteudo.length,\n        documentId: item.documentId || null,\n        texto_original: bloco.trim()\n      }\n    });\n  }\n});\n\n// Retorna array de objetos JSON - cada objeção será um item separado no n8n\nreturn resultado;"
+        "jsCode": "// Define o tamanho máximo de caracteres para cada pedaço de conteúdo.\nconst chunkSize = 2000; // Ajuste este valor conforme a necessidade do seu BD/Metabase.\nconst outputItems = []; \n\nfor (const item of items) {\n    // 1. EXTRAÇÃO E LIMPEZA DO TÍTULO DO MÓDULO E AULA\n    const fullText = item.json.content || ''; // O conteúdo completo\n    const documentId = item.json.documentId;\n    \n    // Tenta pegar a linha do Módulo/Título\n    const moduleMatch = fullText.match(/Módulo \\d{2}(.*?)\\n/i); \n    const tituloCompleto = moduleMatch ? moduleMatch[0].trim() : \"Módulo/Aula Não Encontrados\";\n\n    let modulo = 'Módulo Desconhecido';\n    let aula = 'Aula Desconhecida';\n    \n    const parts = tituloCompleto.split(' - ', 2); \n    if (parts.length > 0) {\n        // Tenta isolar o Módulo (ex: \"Módulo 04\")\n        const moduloMatch = parts[0].match(/Módulo \\d{2}/i);\n        modulo = moduloMatch ? moduloMatch[0].trim() : 'Módulo Desconhecido';\n        \n        // Assume o resto como o nome da Aula\n        let nomeAulaCompleto = tituloCompleto.replace(new RegExp(`^${modulo}\\\\s*-\\\\s*`), '').trim();\n\n        // **NOVO AJUSTE: Remove \" - Parte X\" do final do nome da Aula**\n        aula = nomeAulaCompleto.replace(/ - Parte\\s*\\d+$/i, '').trim(); \n        // Ex: \"Processos Produtora Contínua - Parte 1\" -> \"Processos Produtora Contínua\"\n    }\n\n\n    if (!fullText) {\n        // Trata o caso de conteúdo vazio\n        outputItems.push({\n            json: {\n                documentId: documentId,\n                modulo: modulo,\n                aula: aula,\n                parte: 1,\n                conteudo_parte: \"Conteúdo vazio ou não encontrado.\",\n            }\n        });\n        continue;\n    }\n\n    // 2. LÓGICA DE QUEBRA POR PARTES\n    let startIndex = 0;\n    let partNumber = 1;\n\n    while (startIndex < fullText.length) {\n        let endIndex = startIndex + chunkSize;\n        \n        if (endIndex > fullText.length) {\n            endIndex = fullText.length;\n        } else {\n            // Busca o último espaço para quebrar o texto sem cortar palavras\n            const safeIndex = fullText.substring(startIndex, endIndex).lastIndexOf(' ');\n\n            if (safeIndex > -1) {\n                endIndex = startIndex + safeIndex;\n            }\n        }\n        \n        // Extrai o pedaço de texto e remove espaços extras\n        const chunk = fullText.substring(startIndex, endIndex).trim();\n        \n        // 3. CRIAÇÃO DO NOVO ITEM PARA O N8N\n        outputItems.push({\n            json: {\n                documentId: documentId,\n                modulo: modulo,      // Ex: \"Módulo 04\"\n                aula: aula,          // Ex: \"Processos Produtora Contínua\" (Sem a parte)\n                parte: partNumber,   // Número sequencial da parte (1, 2, 3...)\n                conteudo_parte: chunk, // O pedaço de texto\n            }\n        });\n\n        // Prepara para o próximo loop\n        startIndex = endIndex;\n        while (fullText[startIndex] === ' ' && startIndex < fullText.length) {\n            startIndex++;\n        }\n        \n        partNumber++;\n    }\n}\n\nreturn outputItems;"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -432,
-        880
+        -848,
+        -144
       ],
-      "id": "06b7cfee-6f3f-4eaf-a339-27a3a094998e",
-      "name": "Code",
-      "disabled": true
+      "id": "865989c9-2deb-4cf1-a99f-684341baedae",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "content": "```\n$$$$$$\\   $$\\   $$\\ $$$$$$$\\   $$$$$$\\  $$$$$$$\\$$$$$$$$\\ $$$$$$$$\\ \n$$  __$$\\ $$ |  $$ |$$  __$$\\ $$  __$$\\ $$  __$$\\\\__$$  __|$$  _____|\n$$ /  \\__|$$ |  $$ |$$ |  $$ |$$ /  $$ |$$ |  $$ |  $$ |   $$ |      \n\\$$$$$$\\  $$ |  $$ |$$$$$$$  |$$ |  $$ |$$$$$$$  |  $$ |   $$$$$\\    \n \\____$$\\ $$ |  $$ |$$  ____/ $$ |  $$ |$$  __$$    $$ |   $$  __|   \n$$\\   $$ |$$ |  $$ |$$ |      $$ |  $$ |$$ |  $$ |  $$ |   $$ |      \n\\$$$$$$  |\\$$$$$$  |$$ |      \\$$$$$$  |$$ |  $$ |  $$ |   $$$$$$$$\\ \n \\______/  \\______/ \\__|       \\______/ \\__|  \\__|  \\__|   \\________|\n```",
+        "height": 180,
+        "width": 680,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -896,
+        -608
+      ],
+      "typeVersion": 1,
+      "id": "55ffb3c8-bf92-4043-864d-73a1e6777e44",
+      "name": "Sticky Note"
     }
   ],
   "pinData": {},
@@ -599,6 +414,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-09-17T18:55:12.901Z",
-  "versionId": "12815f75-a32e-485d-8e3b-0afbfee506f9"
+  "updatedAt": "2025-09-25T20:19:34.115Z",
+  "versionId": "79a0fb07-f2e2-4e28-9fba-b4f2b5b2c7be"
 }
