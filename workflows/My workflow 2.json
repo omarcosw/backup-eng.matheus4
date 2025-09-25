@@ -443,7 +443,7 @@
       "main": [
         [
           {
-            "node": "AI Agent",
+            "node": "Parser  Chain",
             "type": "main",
             "index": 0
           }
@@ -562,61 +562,6 @@
           {
             "node": "IA SUPORTE",
             "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Embeddings": {
-      "ai_embedding": [
-        [
-          {
-            "node": "searchaulas1",
-            "type": "ai_embedding",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Reranker": {
-      "ai_reranker": [
-        [
-          {
-            "node": "searchaulas1",
-            "type": "ai_reranker",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "searchaulas1": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "AI Agent": {
-      "main": [
-        [
-          {
-            "node": "Parser  Chain",
-            "type": "main",
             "index": 0
           }
         ]
@@ -1932,8 +1877,7 @@
         720
       ],
       "id": "37a8d12f-cae2-4a5c-82b8-fe3f47b11854",
-      "name": "Ativar para teste",
-      "disabled": true
+      "name": "Ativar para teste"
     },
     {
       "parameters": {
@@ -2137,116 +2081,6 @@
           "name": "Supabase - Sorveteiro Raiz"
         }
       }
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $json.output }}",
-        "options": {
-          "systemMessage": "=Voce é Treinada para fazer uma segunda verificação e conferir se a mensagem condiz com oque esta no banco de dados.\n\nSempre acione a funcao tool \"searchaulas1\" para fazer essa verificação.\n\nSe caso não tiver condizente, sempre de a resposta que retornar na tool \n\no contexto da conversa e esse:  {{ $('messagess').item.json.messages }}"
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 2.2,
-      "position": [
-        5488,
-        480
-      ],
-      "id": "5e1c9ad9-0005-4449-b534-9bd845b12951",
-      "name": "AI Agent"
-    },
-    {
-      "parameters": {
-        "model": {
-          "__rl": true,
-          "mode": "list",
-          "value": "gpt-4.1-mini"
-        },
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.2,
-      "position": [
-        5344,
-        688
-      ],
-      "id": "0827b9f2-cc35-4821-95b9-78f9f9a1ad82",
-      "name": "OpenAI Chat Model",
-      "credentials": {
-        "openAiApi": {
-          "id": "QzQb6Q9G3hGozb9v",
-          "name": "OpenAi - Dani 2"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "model": "text-embedding-3-large",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
-      "typeVersion": 1.2,
-      "position": [
-        5552,
-        944
-      ],
-      "id": "1ce914dd-21fc-478e-b8e3-c225c01df5b0",
-      "name": "Embeddings",
-      "credentials": {
-        "openAiApi": {
-          "id": "QzQb6Q9G3hGozb9v",
-          "name": "OpenAi - Dani 2"
-        }
-      }
-    },
-    {
-      "parameters": {},
-      "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
-      "typeVersion": 1,
-      "position": [
-        5744,
-        944
-      ],
-      "id": "5d2e00d9-6e56-4653-bf4c-3f77e5b89587",
-      "name": "Reranker",
-      "credentials": {
-        "cohereApi": {
-          "id": "A7tX1jXD2d5wRh1M",
-          "name": "CohereApi account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "mode": "retrieve-as-tool",
-        "toolName": "searchaulas",
-        "toolDescription": "Sempre acione essa função tool para todos os assuntos e duvidas dos alunos",
-        "tableName": {
-          "__rl": true,
-          "value": "ps_curso",
-          "mode": "list",
-          "cachedResultName": "ps_curso"
-        },
-        "topK": 50,
-        "useReranker": true,
-        "options": {
-          "queryName": "match_ps_curso"
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
-      "typeVersion": 1.2,
-      "position": [
-        5552,
-        752
-      ],
-      "id": "71003087-5b4e-4b95-92a1-9df804a4d8eb",
-      "name": "searchaulas1",
-      "credentials": {
-        "supabaseApi": {
-          "id": "QiHN5zEBNyZ0P663",
-          "name": "Supabase - Sorveteiro Raiz"
-        }
-      }
     }
   ],
   "pinData": {
@@ -2340,6 +2174,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-09-08T19:50:45.093Z",
-  "versionId": "a3d67cb6-0e95-486c-b68a-252e2988bc31"
+  "updatedAt": "2025-09-25T19:46:11.203Z",
+  "versionId": "d66e434d-011b-4f47-8482-6ce40925a9b4"
 }
