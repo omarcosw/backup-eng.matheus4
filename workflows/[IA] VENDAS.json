@@ -1714,7 +1714,7 @@
             {
               "id": "0ad262f3-a7f6-4a86-a840-1dff931a959a",
               "name": "Preço",
-              "value": "O valor normal é R$ 2.797,00, mas liberamos um grande desconto para você de R$ 1.000,00\n\nPor apenas: 12x de R$ 185,85 Ou R$ 1.797,00 à vista no cartão, boleto a vista ou pix\n\nNo boleto parcelado em até 12x de R$ 199,87",
+              "value": "O valor normal é R$ 2.797,00, mas liberamos um grande desconto para você de R$ 900,00\n\nPor apenas: 12x de R$ 196,19 Ou R$ 1.897,00 à vista no cartão, boleto a vista ou pix\n\nNo boleto parcelado em até 12x de R$ 209,66",
               "type": "string"
             },
             {
@@ -1726,13 +1726,13 @@
             {
               "id": "41b8d959-6639-463e-9c15-0a374a87cd2f",
               "name": "Pix, Cartão de Crédito e Boleto avista",
-              "value": "=https://pay.hotmart.com/F84276539R?off=m6l0skyk&checkoutMode=10",
+              "value": "=https://pay.hotmart.com/F84276539R?off=67il2svp&checkoutMode=10",
               "type": "string"
             },
             {
               "id": "a2a2923d-e012-4c0b-8cd7-980fe9427a8a",
               "name": "Boleto Parcelado",
-              "value": "=https://pay.tmbeducacao.com.br/EduSorveteir/N4B109240MV",
+              "value": "=https://pay.tmbeducacao.com.br/EduSorveteir/BTT1099097C",
               "type": "string"
             }
           ]
@@ -2196,6 +2196,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-09-17T19:02:08.672Z",
-  "versionId": "0079a5a0-1ffe-4b8e-a7f7-df3cf74a6efa"
+  "updatedAt": "2025-10-08T01:10:08.975Z",
+  "versionId": "43ff80bf-13b0-4d9e-9dff-06c1eff508cf"
 }
