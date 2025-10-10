@@ -726,7 +726,7 @@
       "parameters": {
         "content": "## PASSO 1 - CREDENCIAIS, DADOS, E PROMPT AGENTE",
         "height": 634,
-        "width": 1975,
+        "width": 1879,
         "color": 6
       },
       "id": "39e724fb-173a-441c-8d23-b34e519cd762",
@@ -734,7 +734,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -2480,
+        -2384,
         944
       ]
     },
@@ -2196,6 +2196,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-10-08T01:10:08.975Z",
-  "versionId": "43ff80bf-13b0-4d9e-9dff-06c1eff508cf"
+  "updatedAt": "2025-10-10T19:13:01.488Z",
+  "versionId": "6243ad07-559d-4a61-94c0-ca98cd0f52ef"
 }
