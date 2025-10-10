@@ -246,8 +246,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 1,
       "position": [
-        2100,
-        180
+        2112,
+        192
       ]
     },
     {
@@ -336,8 +336,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 2,
       "position": [
-        2340,
-        180
+        2352,
+        192
       ]
     },
     {
@@ -349,8 +349,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1700,
-        60
+        1712,
+        64
       ],
       "typeVersion": 1,
       "id": "d9a52e2d-95d4-42de-9c0c-2f449f0466d7",
@@ -381,8 +381,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 2,
       "position": [
-        2200,
-        600
+        2208,
+        608
       ],
       "id": "0afde697-00df-46ea-9e12-11905056d8ef"
     },
@@ -397,8 +397,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1700,
-        440
+        1712,
+        448
       ]
     },
     {
@@ -427,7 +427,7 @@
       "typeVersion": 2,
       "position": [
         2000,
-        600
+        608
       ],
       "id": "a529bc41-677b-469a-9320-73c0eb8dad97"
     },
@@ -456,8 +456,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 2,
       "position": [
-        1800,
-        600
+        1808,
+        608
       ]
     },
     {
@@ -471,7 +471,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1700,
+        1712,
         880
       ]
     },
@@ -506,7 +506,7 @@
       "typeVersion": 2,
       "position": [
         2000,
-        1160
+        1168
       ]
     },
     {
@@ -538,8 +538,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        2220,
-        1320
+        2224,
+        1328
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -612,7 +612,7 @@
       "typeVersion": 2,
       "position": [
         2800,
-        940
+        944
       ]
     },
     {
@@ -655,7 +655,7 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        2580,
+        2592,
         1040
       ],
       "alwaysOutputData": true,
@@ -705,8 +705,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        3080,
-        1000
+        3088,
+        1008
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -742,7 +742,7 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        2860,
+        2864,
         1360
       ],
       "alwaysOutputData": true,
@@ -783,7 +783,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        3080,
+        3088,
         1360
       ]
     },
@@ -808,7 +808,7 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        3320,
+        3328,
         1440
       ],
       "credentials": {
@@ -857,8 +857,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        3720,
-        1340
+        3728,
+        1344
       ]
     },
     {
@@ -887,8 +887,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        3500,
-        1340
+        3504,
+        1344
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -905,8 +905,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        4040,
-        1240
+        4048,
+        1248
       ]
     },
     {
@@ -1014,8 +1014,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        4040,
-        1460
+        4048,
+        1472
       ],
       "credentials": {
         "supabaseApi": {
@@ -1044,8 +1044,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        1800,
-        1160
+        1808,
+        1168
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1065,7 +1065,7 @@
       "typeVersion": 2,
       "position": [
         1840,
-        180
+        192
       ],
       "id": "6e5fbdc7-be0f-4343-8d6f-d06154f153f5",
       "name": "Webhook",
@@ -1208,6 +1208,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-06-12T16:22:37.388Z",
-  "versionId": "7631c8d0-7846-48cb-90c3-1634245edd33"
+  "updatedAt": "2025-10-10T18:20:57.313Z",
+  "versionId": "e2cce792-091f-40a4-98a5-63555e38f601"
 }
