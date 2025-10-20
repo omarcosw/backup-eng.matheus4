@@ -145,7 +145,6 @@
     },
     {
       "parameters": {
-        "model": "text-embedding-3-large",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
@@ -173,7 +172,7 @@
             "metadataValues": [
               {
                 "name": "Tabela de Balanceamento",
-                "value": "=Açucares das frutas"
+                "value": "=Açucares das Frutas"
               }
             ]
           }
@@ -182,8 +181,8 @@
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1.1,
       "position": [
-        96,
-        48
+        64,
+        64
       ],
       "id": "85fcea0d-5db5-4f86-ab33-0c77070cd192",
       "name": "Default Data Loader"
@@ -193,12 +192,12 @@
         "mode": "insert",
         "tableName": {
           "__rl": true,
-          "value": "ps_curso",
+          "value": "curso",
           "mode": "list",
-          "cachedResultName": "ps_curso"
+          "cachedResultName": "curso"
         },
         "options": {
-          "queryName": "match_ps_curso"
+          "queryName": "match_curso"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
@@ -301,10 +300,10 @@
         "filter": {
           "folderId": {
             "__rl": true,
-            "value": "1oCGUfrvJ9xFICEImoroGv4mFwMjbFctZ",
+            "value": "1p8mhaYapN1hgI0s0EFBXMXQiNEx2i-a_",
             "mode": "list",
-            "cachedResultName": "Modulo 2 ",
-            "cachedResultUrl": "https://drive.google.com/drive/folders/1oCGUfrvJ9xFICEImoroGv4mFwMjbFctZ"
+            "cachedResultName": "Modulo 6",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1p8mhaYapN1hgI0s0EFBXMXQiNEx2i-a_"
           }
         },
         "options": {}
@@ -313,7 +312,7 @@
       "typeVersion": 3,
       "position": [
         -1296,
-        -144
+        -272
       ],
       "id": "72d21ade-41a8-47f6-bdcf-1fba303ede35",
       "name": "Search files and folders",
@@ -407,6 +406,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-10-20T13:05:15.219Z",
-  "versionId": "52481b0c-61a7-47cc-910c-657dd0af00d8"
+  "updatedAt": "2025-10-20T19:47:48.023Z",
+  "versionId": "71b5c94b-4a50-4250-b1b4-21627d30236a"
 }
