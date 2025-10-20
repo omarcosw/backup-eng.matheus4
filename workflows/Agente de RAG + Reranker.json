@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "Search files and folders",
+            "node": "Get a document",
             "type": "main",
             "index": 0
           }
@@ -166,22 +166,14 @@
     {
       "parameters": {
         "jsonMode": "expressionData",
-        "jsonData": "={{ $('Loop Over Items').item.json.conteudo_parte }}",
+        "jsonData": "={{ $('Loop Over Items').item.json.content }}",
         "textSplittingMode": "custom",
         "options": {
           "metadata": {
             "metadataValues": [
               {
-                "name": "Modulo",
-                "value": "={{ $('Loop Over Items').item.json.modulo }}"
-              },
-              {
-                "name": "Aula",
-                "value": "={{ $('Loop Over Items').item.json.aula }}"
-              },
-              {
-                "name": "Parte",
-                "value": "={{ $('Loop Over Items').item.json.parte }}"
+                "name": "Tabela de Balanceamento",
+                "value": "=Açucares das frutas"
               }
             ]
           }
@@ -257,7 +249,7 @@
     {
       "parameters": {
         "operation": "get",
-        "documentURL": "={{ $json.id }}"
+        "documentURL": "=1rVGVU-MSI7Df3_xcoziekxwXvjJ6pIoFqI0HuoeYsAU"
       },
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
@@ -366,7 +358,8 @@
         -144
       ],
       "id": "865989c9-2deb-4cf1-a99f-684341baedae",
-      "name": "Code"
+      "name": "Code",
+      "disabled": true
     },
     {
       "parameters": {
@@ -414,6 +407,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-10-17T05:29:53.621Z",
-  "versionId": "e3a7e72f-c393-46b7-87fc-bda1207c2708"
+  "updatedAt": "2025-10-20T13:05:15.219Z",
+  "versionId": "52481b0c-61a7-47cc-910c-657dd0af00d8"
 }
