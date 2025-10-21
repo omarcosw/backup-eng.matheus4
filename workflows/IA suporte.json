@@ -1852,6 +1852,26 @@
                 "operation": "equals",
                 "name": "filter.operator.equals"
               }
+            },
+            {
+              "id": "9831ad53-2cb8-4fec-ae98-456d1a545008",
+              "leftValue": "={{ $json.body.data.key.remoteJid.replace('@s.whatsapp.net', '') }}",
+              "rightValue": "5512981143224",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "0a7abe5a-205a-495e-8379-bc1bd4d05636",
+              "leftValue": "={{ $json.body.data.key.remoteJid.replace('@s.whatsapp.net', '') }}",
+              "rightValue": "5512981443543",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
             }
           ],
           "combinator": "or"
@@ -2116,6 +2136,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-10-20T20:55:55.413Z",
-  "versionId": "58e53188-3fcf-4c5b-a4bf-1711c780cb86"
+  "updatedAt": "2025-10-21T13:25:43.567Z",
+  "versionId": "1ddcd62e-fbb0-4c2f-9c3e-c4470fcfe83a"
 }
