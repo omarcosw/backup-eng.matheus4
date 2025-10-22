@@ -566,6 +566,11 @@
           }
         ]
       ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        []
+      ]
     }
   },
   "createdAt": "2025-08-29T15:22:42.704Z",
@@ -1732,7 +1737,7 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.4,
       "position": [
-        5280,
+        5264,
         320
       ],
       "credentials": {
@@ -2104,6 +2109,18 @@
       "id": "26178239-a597-4c79-8439-87ce4d59a0a0",
       "name": "Webhook",
       "webhookId": "e892cd17-b486-4fb2-8a7f-ac5f106217fe"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        5248,
+        80
+      ],
+      "id": "2f19798c-aa14-4ccc-b72f-0f815ecdc74e",
+      "name": "Postgres Chat Memory",
+      "disabled": true
     }
   ],
   "pinData": {},
@@ -2135,6 +2152,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-10-21T23:59:28.077Z",
-  "versionId": "63fdb6a8-d83b-4ce6-9c3f-ecd98331d829"
+  "updatedAt": "2025-10-22T13:51:12.412Z",
+  "versionId": "ce623cff-942a-49d3-bdbf-312e2df6f5f0"
 }
