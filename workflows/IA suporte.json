@@ -1277,7 +1277,8 @@
       ],
       "id": "d992c6b5-b417-41d9-8bd8-fb627416af77",
       "name": "Espere1",
-      "webhookId": "5efbac78-7c17-44b9-92cc-c3078c79f8d8"
+      "webhookId": "5efbac78-7c17-44b9-92cc-c3078c79f8d8",
+      "disabled": true
     },
     {
       "parameters": {
@@ -2091,7 +2092,7 @@
     {
       "parameters": {
         "mode": "retrieve-as-tool",
-        "toolDescription": "Essa tool tem a função de buscar as informações necessarias dentro do banco de dados para uma excelente resposta dentro do contexto perguntado",
+        "toolDescription": "Essa tool tem a função de buscar as informações necessarias dentro do banco de dados para uma excelente resposta dentro do contexto perguntado\n\nÉ de extrema importancia que o texto que você ira usar como busca seja 100% o mesmo texto saido do input do \"IA SUPORTE\" ",
         "tableName": {
           "__rl": true,
           "value": "ps_curso",
@@ -2211,6 +2212,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-10-23T01:49:45.824Z",
-  "versionId": "994ff3df-ed7d-4fa3-b614-ff66806c11c8"
+  "updatedAt": "2025-10-23T14:13:24.173Z",
+  "versionId": "ae848ca6-a285-4d6d-922a-bda7846a94da"
 }
