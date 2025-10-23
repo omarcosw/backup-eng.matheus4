@@ -461,28 +461,6 @@
         ]
       ]
     },
-    "Embeddings1": {
-      "ai_embedding": [
-        [
-          {
-            "node": "searchaulas",
-            "type": "ai_embedding",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Reranker1": {
-      "ai_reranker": [
-        [
-          {
-            "node": "searchaulas",
-            "type": "ai_reranker",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Ativar para teste": {
       "main": [
         [
@@ -545,17 +523,6 @@
         ]
       ]
     },
-    "searchaulas": {
-      "ai_tool": [
-        [
-          {
-            "node": "IA SUPORTE",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Webhook": {
       "main": [
         [
@@ -570,6 +537,39 @@
     "Postgres Chat Memory": {
       "ai_memory": [
         []
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "searchaulas",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reranker Cohere": {
+      "ai_reranker": [
+        [
+          {
+            "node": "searchaulas",
+            "type": "ai_reranker",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "searchaulas": {
+      "ai_tool": [
+        [
+          {
+            "node": "IA SUPORTE",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
       ]
     }
   },
@@ -1153,9 +1153,9 @@
         "operation": "analyze",
         "modelId": {
           "__rl": true,
-          "value": "gpt-4o-mini",
+          "value": "chatgpt-4o-latest",
           "mode": "list",
-          "cachedResultName": "GPT-4O-MINI"
+          "cachedResultName": "CHATGPT-4O-LATEST"
         },
         "text": "={\n  \"REGRA_MAIS_CRÍTICA_DO_UNIVERSO\": {\n    \"SEMPRE_SEARCHAULAS\": \"Para QUALQUER imagem recebida - É OBRIGATÓRIO acionar a função tool 'searchaulas' PRIMEIRO antes de responder\",\n    \"TABELAS_BALANCEAMENTO_PRIORIDADE\": \"Quando receber imagens de Tabelas de Balanceamento de sorvetes - OBRIGATÓRIO usar 'searchaulas' para análise técnica precisa\",\n    \"ZERO_RESPOSTAS_SEM_TOOL\": \"É TERMINANTEMENTE PROIBIDO analisar qualquer imagem sem consultar 'searchaulas' primeiro\",\n    \"ENFORCEMENT_MÁXIMO\": \"1000% OBRIGATÓRIO - JAMAIS PULAR ESTA REGRA\"\n  },\n\n  \"agent\": {\n    \"name\": \"Analisador Visual\",\n    \"persona\": {\n      \"age\": null,\n      \"personality\": \"analista técnico e detalhista\",\n      \"style\": \"objetivo, claro e direto\",\n      \"identity\": \"especialista em análise de imagens para curso de sorvetes profissionais\"\n    },\n    \n    \"critical_rules\": [\n      \"🚨🚨🚨 REGRA MAIS IMPORTANTE: QUALQUER imagem = OBRIGATÓRIO usar 'searchaulas' primeiro\",\n      \"⚠️ sempre identificar corretamente o contexto da imagem e acionar a ferramenta 'searchaulas' antes de enviar qualquer resposta\",\n      \"nunca inventar elementos que não estão na imagem\",\n      \"nunca fazer suposições além do visível\",\n      \"nunca usar termos técnicos desnecessários\",\n      \"nunca ignorar elementos importantes\",\n      \"nunca responder sem consultar a ferramenta 'searchaulas'\",\n      \"🚨 ESPECIALIDADE: Analisar Tabelas de Balanceamento de sorvetes com precisão técnica\"\n    ],\n\n    \"objective\": \"Analisar imagens de forma técnica e detalhada, com foco especial em Tabelas de Balanceamento de sorvetes\",\n\n    \"FLUXO_OBRIGATÓRIO_SEM_EXCEÇÕES\": {\n      \"PARA_TODAS_AS_IMAGENS\": {\n        \"tool\": \"searchaulas\",\n        \"incluindo\": [\n          \"Tabelas de Balanceamento de sorvetes\",\n          \"imagens de conteúdo acadêmico de aulas\",\n          \"imagens de conteúdo administrativo\",\n          \"qualquer imagem relacionada ao curso\",\n          \"LITERALMENTE QUALQUER IMAGEM RECEBIDA\"\n        ]\n      }\n    },\n\n    \"PROCESSO_ANÁLISE_OBRIGATÓRIO\": {\n      \"1_RECEBER_IMAGEM\": \"Qualquer imagem enviada pelo usuário\",\n      \"2_IDENTIFICAR_TIPO\": \"Verificar se é Tabela de Balanceamento de sorvetes ou outro conteúdo\",\n      \"3_OBRIGATORIAMENTE_SEARCHAULAS\": \"SEMPRE usar 'searchaulas' primeiro - SEM EXCEÇÕES\", \n      \"4_ANÁLISE_DETALHADA\": \"Realizar análise técnica baseada no resultado da tool\",\n      \"5_RESPOSTA_CONTEXTUALIZADA\": \"Fornecer resposta precisa baseada no conhecimento obtido\",\n      \"JAMAIS_PULAR_TOOL\": \"NUNCA, EM HIPÓTESE ALGUMA, analisar imagem sem usar tool primeiro\"\n    },\n\n    \"analysis_flow\": {\n      \"step1\": \"identificar elementos principais da imagem\",\n      \"step2\": \"descrever contexto e ambiente\", \n      \"step3\": \"notar detalhes relevantes\",\n      \"step4\": \"identificar se o conteúdo é acadêmico (de aula) ou administrativo\",\n      \"step5\": \"OBRIGATÓRIO: acionar tool 'searchaulas'\",\n      \"step6\": \"analisar resultado da tool para contexto apropriado\",\n      \"step7\": \"fornecer análise completa e precisa baseada na tool\"\n    },\n\n    \"especialidade_sorvetes\": {\n      \"tabelas_balanceamento\": {\n        \"priority\": \"MÁXIMA PRIORIDADE para análise técnica de Tabelas de Balanceamento\",\n        \"components_to_identify\": [\n          \"percentuais de gordura\",\n          \"percentuais de sólidos não gordurosos\",\n          \"percentuais de açúcar\",\n          \"percentuais de estabilizantes\",\n          \"percentuais de emulsificantes\",\n          \"valores de overrun\",\n          \"temperaturas de processo\",\n          \"qualquer outro parâmetro técnico de balanceamento\"\n        ],\n        \"action\": \"sempre usar 'searchaulas' para validar análise técnica\",\n        \"precision\": \"análise detalhada de cada componente da fórmula\"\n      }\n    },\n\n    \"behavior\": {\n      \"do\": [\n        \"ser analista técnico e detalhista\",\n        \"manter estilo objetivo, claro e direto\",\n        \"🚨 SEMPRE usar 'searchaulas' para qualquer imagem\",\n        \"analisar Tabelas de Balanceamento com precisão técnica\",\n        \"fornecer análise completa mas concisa\",\n        \"usar tom profissional mas acessível\",\n        \"organizar resposta de forma hierárquica\"\n      ],\n      \"dont\": [\n        \"inventar elementos não visíveis na imagem\",\n        \"fazer suposições além do visível\",\n        \"usar termos técnicos desnecessários\",\n        \"ignorar elementos importantes\",\n        \"🚨 NUNCA analisar imagem sem consultar 'searchaulas' primeiro\"\n      ]\n    },\n\n    \"response_format\": {\n      \"tone\": \"profissional mas acessível\",\n      \"structure\": \"organizada e hierárquica\", \n      \"detail_level\": \"completo mas conciso\",\n      \"mandatory_flow\": \"identificar tipo de conteúdo → acionar 'searchaulas' → analisar imagem → resposta contextualizada\",\n      \"format\": \"descrição objetiva com base no conhecimento da ferramenta 'searchaulas'\"\n    },\n\n    \"fallback\": {\n      \"no_results\": \"vou consultar nossa base de conhecimento sobre o curso e retorno com análise precisa\",\n      \"always_use_tool\": true,\n      \"specialization\": \"análise técnica de imagens do curso de sorvetes\"\n    },\n\n    \"final_reminders\": [\n      \"🚨🚨🚨 REGRA MAIS IMPORTANTE: QUALQUER imagem = OBRIGATÓRIO usar 'searchaulas' primeiro\",\n      \"🚨 ESPECIALIDADE: Tabelas de Balanceamento de sorvetes requerem análise técnica precisa\",\n      \"🚨 PROIBIDO: Analisar QUALQUER imagem sem usar tool primeiro - ZERO EXCEÇÕES\", \n      \"⚠️ sempre identificar contexto da imagem e acionar 'searchaulas'\",\n      \"nunca inventar elementos não visíveis\",\n      \"fornecer análise técnica baseada exclusivamente no conhecimento da tool\",\n      \"🚨🚨🚨 REPITO: QUALQUER IMAGEM = searchaulas PRIMEIRO - REGRA EXTREMAMENTE IMPORTANTE\"\n    ]\n  }\n}",
         "inputType": "base64",
@@ -1800,45 +1800,6 @@
     },
     {
       "parameters": {
-        "model": "text-embedding-3-large",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
-      "typeVersion": 1.2,
-      "position": [
-        4928,
-        864
-      ],
-      "id": "21fd49a3-f4b0-4168-9a0b-523a99bfe721",
-      "name": "Embeddings1",
-      "credentials": {
-        "openAiApi": {
-          "id": "QzQb6Q9G3hGozb9v",
-          "name": "OpenAi - Dani 2"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "topN": 5
-      },
-      "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
-      "typeVersion": 1,
-      "position": [
-        5120,
-        864
-      ],
-      "id": "e45b8af6-a618-4456-9427-745394f3e2b7",
-      "name": "Reranker1",
-      "credentials": {
-        "cohereApi": {
-          "id": "A7tX1jXD2d5wRh1M",
-          "name": "CohereApi account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "conditions": {
           "options": {
             "caseSensitive": true,
@@ -2064,38 +2025,6 @@
     },
     {
       "parameters": {
-        "mode": "retrieve-as-tool",
-        "toolName": "searchaulas",
-        "toolDescription": "Sempre acione essa função tool para todos os assuntos e duvidas dos alunos",
-        "tableName": {
-          "__rl": true,
-          "value": "ps_curso",
-          "mode": "list",
-          "cachedResultName": "ps_curso"
-        },
-        "topK": 10,
-        "useReranker": true,
-        "options": {
-          "queryName": "match_ps_curso"
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
-      "typeVersion": 1.2,
-      "position": [
-        4928,
-        672
-      ],
-      "id": "2333eed7-3140-44ac-b69d-d8f27364ae65",
-      "name": "searchaulas",
-      "credentials": {
-        "supabaseApi": {
-          "id": "QiHN5zEBNyZ0P663",
-          "name": "Supabase - Sorveteiro Raiz"
-        }
-      }
-    },
-    {
-      "parameters": {
         "httpMethod": "POST",
         "path": "iasuporte",
         "options": {}
@@ -2121,9 +2050,139 @@
       "id": "2f19798c-aa14-4ccc-b72f-0f815ecdc74e",
       "name": "Postgres Chat Memory",
       "disabled": true
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-large",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        5056,
+        864
+      ],
+      "id": "2c45d724-d45f-4dfc-bf78-6d382e4f6698",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "QzQb6Q9G3hGozb9v",
+          "name": "OpenAi - Dani 2"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
+      "typeVersion": 1,
+      "position": [
+        5264,
+        864
+      ],
+      "id": "0f19a600-494a-42c6-a375-ea55cf954ce1",
+      "name": "Reranker Cohere",
+      "credentials": {
+        "cohereApi": {
+          "id": "A7tX1jXD2d5wRh1M",
+          "name": "CohereApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Essa tool tem a função de buscar as informações necessarias dentro do banco de dados para uma excelente resposta dentro do contexto perguntado",
+        "tableName": {
+          "__rl": true,
+          "value": "ps_curso",
+          "mode": "list",
+          "cachedResultName": "ps_curso"
+        },
+        "topK": 10,
+        "useReranker": true,
+        "options": {
+          "queryName": "=match_ps_curso"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.3,
+      "position": [
+        5136,
+        704
+      ],
+      "id": "ea4c5b3a-2649-4633-bda4-84bfbb5b0369",
+      "name": "searchaulas",
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.sorveteiroraiz.com",
+            "user-agent": "axios/1.7.9",
+            "content-length": "947",
+            "accept": "application/json, text/plain, */*",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.18.0.1",
+            "x-forwarded-host": "webhook.sorveteiroraiz.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "aae19483bb9a",
+            "x-real-ip": "172.18.0.1"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "messages.upsert",
+            "instance": "suporte",
+            "data": {
+              "key": {
+                "remoteJid": "5511984151865@s.whatsapp.net",
+                "fromMe": false,
+                "id": "3EB07D66DE915B248A981B"
+              },
+              "pushName": "Higor Leite",
+              "status": "DELIVERY_ACK",
+              "message": {
+                "conversation": "Boa tarde",
+                "messageContextInfo": {
+                  "deviceListMetadata": {
+                    "senderKeyHash": "Vt0aWJZfX35K1Q==",
+                    "senderTimestamp": "1760986119",
+                    "senderAccountType": "E2EE",
+                    "receiverAccountType": "E2EE",
+                    "recipientKeyHash": "upJB39jH6a1ljw==",
+                    "recipientTimestamp": "1760583656"
+                  },
+                  "deviceListMetadataVersion": 2,
+                  "messageSecret": "Mh0xc9M88vQqSdvBBQpdeVrnVYPMYjyI7GyZbjMEGUk="
+                }
+              },
+              "messageType": "conversation",
+              "messageTimestamp": 1760990696,
+              "instanceId": "5f3e44b6-90fb-420f-926b-1f8a34a111a6",
+              "source": "web"
+            },
+            "destination": "https://webhook.sorveteiroraiz.com/webhook/iasuporte",
+            "date_time": "2025-10-20T17:04:57.176Z",
+            "sender": "5512982654663@s.whatsapp.net",
+            "server_url": "https://evolution.sorveteiroraiz.com",
+            "apikey": "3751324729B8-4D02-9658-03B6F6C3F54F"
+          },
+          "webhookUrl": "https://webhook.sorveteiroraiz.com/webhook/iasuporte",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
@@ -2152,6 +2211,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-10-22T13:51:12.412Z",
-  "versionId": "ce623cff-942a-49d3-bdbf-312e2df6f5f0"
+  "updatedAt": "2025-10-23T01:49:45.824Z",
+  "versionId": "994ff3df-ed7d-4fa3-b614-ff66806c11c8"
 }
