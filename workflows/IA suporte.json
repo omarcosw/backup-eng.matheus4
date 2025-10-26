@@ -1277,8 +1277,7 @@
       ],
       "id": "d992c6b5-b417-41d9-8bd8-fb627416af77",
       "name": "Espere1",
-      "webhookId": "5efbac78-7c17-44b9-92cc-c3078c79f8d8",
-      "disabled": true
+      "webhookId": "5efbac78-7c17-44b9-92cc-c3078c79f8d8"
     },
     {
       "parameters": {
@@ -2212,6 +2211,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-10-23T14:13:24.173Z",
-  "versionId": "ae848ca6-a285-4d6d-922a-bda7846a94da"
+  "updatedAt": "2025-10-26T09:07:03.661Z",
+  "versionId": "afd88cfe-88a8-4984-b11c-4123afb471fe"
 }
