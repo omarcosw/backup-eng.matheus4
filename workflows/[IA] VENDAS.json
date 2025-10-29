@@ -132,18 +132,7 @@
       "main": [
         [
           {
-            "node": "Vendedor IA",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Vendedor IA": {
-      "main": [
-        [
-          {
-            "node": "Code1",
+            "node": "IA VENDAS",
             "type": "main",
             "index": 0
           }
@@ -269,7 +258,7 @@
       "ai_memory": [
         [
           {
-            "node": "Vendedor IA",
+            "node": "IA VENDAS",
             "type": "ai_memory",
             "index": 0
           }
@@ -280,7 +269,7 @@
       "ai_languageModel": [
         [
           {
-            "node": "Vendedor IA",
+            "node": "IA VENDAS",
             "type": "ai_languageModel",
             "index": 0
           }
@@ -384,7 +373,7 @@
       "ai_tool": [
         [
           {
-            "node": "Vendedor IA",
+            "node": "IA VENDAS",
             "type": "ai_tool",
             "index": 0
           }
@@ -488,7 +477,7 @@
       "ai_tool": [
         [
           {
-            "node": "Vendedor IA",
+            "node": "IA VENDAS",
             "type": "ai_tool",
             "index": 0
           }
@@ -501,6 +490,17 @@
           {
             "node": "searchobjecoes",
             "type": "ai_reranker",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IA VENDAS": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
             "index": 0
           }
         ]
@@ -931,23 +931,6 @@
       "typeVersion": 1,
       "id": "467cd9b2-6c97-404b-a013-e544c2ed273d",
       "name": "Sticky Note24"
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ (() => {\n  const mensagens = $('messages').all()[0].json.messages;\n  const contextoAnterior = $node[\"getContexto\"].json?.mensagem || '';\n  return contextoAnterior ? `${contextoAnterior}\\n\\n${mensagens}` : mensagens;\n})() }}",
-        "options": {
-          "systemMessage": "={{ $('Prompt_').first().json.systemMessageAgente }}"
-        }
-      },
-      "id": "285d6b6b-1b90-4947-843a-413e130bce73",
-      "name": "Vendedor IA",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.7,
-      "position": [
-        3520,
-        1104
-      ]
     },
     {
       "parameters": {
@@ -1464,7 +1447,7 @@
     {
       "parameters": {
         "mode": "retrieve-as-tool",
-        "toolDescription": "Use essa tool para consultar informações sobre   objecoes para o Curso Profissão sorveteiro",
+        "toolDescription": "Essa tool tem a função de buscar as informações necessarias dentro do banco de dados para uma excelente resposta dentro do contexto perguntado\n\nÉ de extrema importancia que o texto que você ira usar como busca seja 100% o mesmo texto saido do input do \"IA VENDAS\" ",
         "tableName": {
           "__rl": true,
           "value": "ps_objecoes",
@@ -1885,10 +1868,27 @@
       "name": "Reranker Cohere",
       "credentials": {
         "cohereApi": {
-          "id": "A7tX1jXD2d5wRh1M",
-          "name": "CohereApi account"
+          "id": "tSc0UxtlAdJbmFqO",
+          "name": "NOVO"
         }
       }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.messages }}",
+        "options": {
+          "systemMessage": "={{ $('Prompt_').first().json.systemMessageAgente }}"
+        }
+      },
+      "id": "285d6b6b-1b90-4947-843a-413e130bce73",
+      "name": "IA VENDAS",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        3520,
+        1104
+      ]
     }
   ],
   "pinData": {
@@ -1971,6 +1971,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-10-28T21:14:51.751Z",
-  "versionId": "b0308857-e219-42ce-b0d7-3311daf99987"
+  "updatedAt": "2025-10-29T18:21:22.698Z",
+  "versionId": "9328af28-92e9-4dca-8852-8ff420d9bc91"
 }
