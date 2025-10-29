@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "GeraUUID": {
       "main": [
@@ -171,7 +171,7 @@
             },
             {
               "fieldId": "mensagem",
-              "fieldValue": "=Olá! 👋  Aqui é a Dani da Equipe Sorveteiro Raiz 🍨  Estou entrando em contato porque você estava na LISTA DE ESPERA do curso Profissão Sorveteiro. As inscrições abriram, mas percebemos que você ainda não garantiu sua vaga.  Temos uma condição única para quem estava na LISTA DE ESPERA: um desconto exclusivo de R$900!  🚨 Essa é a sua chance de alavancar o seu negócio, e essa oferta não se repetirá.  Tem alguma dúvida? Estou à disposição para ajudar você a fazer parte da Família Sorveteiro Raiz.  Me diga como posso te ajudar."
+              "fieldValue": "=UAU! Que alegria falar com você!👋 \nAqui é a Dani da Equipe Sorveteiro Raiz! 🍨\n\nEstou entrando em contato porque, como participante da nossa Imersão Profissão Sorveteiro, você garantiu uma condição ultramega especial para o Curso Completo do Edu!\n\nO Edu liberou as vagas para o Curso Completo Profissão Sorveteiro com um desconto inacreditável para você:\n\n➡️ O valor normal é de R$ 3.097, mas com o desconto de R$ 1.100 🎁, o seu investimento será de apenas R$ 1.997 á vista ou parcelar em até 12x no cartão de crédito ou boleto parcelado.\n\n🚨Eu não quero de jeito nenhum deixar você de fora, por isso meu contato é urgente🚨\n\nEssa condição é por tempo limitado ou até as vagas se esgotarem, e nós já preenchemos 87% da turma! 🏃‍♀️💨\n\nEntão, estou aqui à disposição, para te ajudar a ingressar na nossa Família Sorveteiro Raiz!\n\nMe diga, como eu posso te ajudar a se matricular hoje!"
             }
           ]
         }
@@ -272,7 +272,7 @@
           "fieldValues": [
             {
               "fieldId": "mensagem",
-              "fieldValue": "=Olá! 👋  Aqui é a Dani da Equipe Sorveteiro Raiz 🍨  Estou entrando em contato porque você estava na LISTA DE ESPERA do curso Profissão Sorveteiro. As inscrições abriram, mas percebemos que você ainda não garantiu sua vaga.  Temos uma condição única para quem estava na LISTA DE ESPERA: um desconto exclusivo de R$900!  🚨 Essa é a sua chance de alavancar o seu negócio, e essa oferta não se repetirá.  Tem alguma dúvida? Estou à disposição para ajudar você a fazer parte da Família Sorveteiro Raiz.  Me diga como posso te ajudar."
+              "fieldValue": "=UAU! Que alegria falar com você!👋 \nAqui é a Dani da Equipe Sorveteiro Raiz! 🍨\n\nEstou entrando em contato porque, como participante da nossa Imersão Profissão Sorveteiro, você garantiu uma condição ultramega especial para o Curso Completo do Edu!\n\nO Edu liberou as vagas para o Curso Completo Profissão Sorveteiro com um desconto inacreditável para você:\n\n➡️ O valor normal é de R$ 3.097, mas com o desconto de R$ 1.100 🎁, o seu investimento será de apenas R$ 1.997 á vista ou parcelar em até 12x no cartão de crédito ou boleto parcelado.\n\n🚨Eu não quero de jeito nenhum deixar você de fora, por isso meu contato é urgente🚨\n\nEssa condição é por tempo limitado ou até as vagas se esgotarem, e nós já preenchemos 87% da turma! 🏃‍♀️💨\n\nEntão, estou aqui à disposição, para te ajudar a ingressar na nossa Família Sorveteiro Raiz!\n\nMe diga, como eu posso te ajudar a se matricular hoje!"
             }
           ]
         }
@@ -402,17 +402,17 @@
         "json": {
           "headers": {
             "host": "webhook.sorveteiroraiz.com",
-            "user-agent": "axios/1.11.0",
-            "content-length": "459",
+            "user-agent": "axios/1.12.2",
+            "content-length": "644",
             "accept": "application/json, text/plain, */*",
             "accept-encoding": "gzip, compress, deflate, br",
             "content-type": "application/json",
-            "x-forwarded-for": "34.34.231.37",
+            "x-forwarded-for": "34.34.231.49",
             "x-forwarded-host": "webhook.sorveteiroraiz.com",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "aae19483bb9a",
-            "x-real-ip": "34.34.231.37"
+            "x-real-ip": "34.34.231.49"
           },
           "params": {},
           "query": {},
@@ -424,17 +424,17 @@
               "phoneNumber": "5511984151865",
               "tags": "LP6 - CLICOU - PRECISO DE AJUDA, TESTE IA - INSCRIÇÕES ABERTAS, TESTE DISPARO",
               "fields": {
-                "mensagens": "Fico feliz em saber! Quais são suas dúvidas? Estou aqui para ajudar."
+                "mensagens": "Perfeito! Aqui está o link para garantir sua vaga com o desconto especial: [Link de Pagamento](https://pay.hotmart.com/F84276539R?off=u9gxnorh&checkoutMode=10). Não perca essa oportunidade! Se precisar de mais alguma informação, estou à disposição."
               },
-              "lastMessage": "top",
+              "lastMessage": "sim",
               "lastMessageData": {
-                "message": "top",
+                "message": "sim",
                 "messageType": "message"
               },
               "instaName": "",
               "profilePicUrl": ""
             },
-            "event_date": 1760360579,
+            "event_date": 1761687272,
             "triggerData": {}
           },
           "webhookUrl": "https://webhook.sorveteiroraiz.com/webhook/disparo",
@@ -458,6 +458,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-10-23T01:26:59.284Z",
-  "versionId": "bb0250df-79b5-4a57-a679-c1956ef1597a"
+  "updatedAt": "2025-10-28T21:35:14.194Z",
+  "versionId": "720cdb1f-9a23-4c03-a2a0-0a8c3275526c"
 }
