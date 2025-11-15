@@ -2091,7 +2091,7 @@
     {
       "parameters": {
         "mode": "retrieve-as-tool",
-        "toolDescription": "Essa tool tem a função de buscar as informações necessarias dentro do banco de dados para uma excelente resposta dentro do contexto perguntado\n\nÉ de extrema importancia que o texto que você ira usar como busca seja 100% o mesmo texto saido do input do \"IA SUPORTE\" ",
+        "toolDescription": "Essa tool tem a função de buscar as informações dentro do banco de dados para uma excelente resposta dentro do contexto perguntado\n\nÉ de extrema importancia que Sempre inicie a resposta chamando a tool  mesmo que a pergunta não pareça relacionada. Pegue o texto 100% Igual o do output que saiu do \"IA SUPORTE\" para usar como busca.\n\nNunca desenvolva uma resposta 100% referente a o texto de pergunta/resposta do output \"IA SUPORTE\", sempre consulte também a memória e contexto. Não invente nada.\n",
         "tableName": {
           "__rl": true,
           "value": "ps_curso",
@@ -2211,6 +2211,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-10-29T18:27:27.882Z",
-  "versionId": "68e690ee-42e3-4cea-90af-2f949518cde1"
+  "updatedAt": "2025-11-15T03:10:55.856Z",
+  "versionId": "6db2a1e1-6e84-4361-8586-33e2e32888b1"
 }
