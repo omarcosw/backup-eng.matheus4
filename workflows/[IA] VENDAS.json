@@ -840,7 +840,7 @@
       "parameters": {
         "content": "## PASSO 3 - DEFINE O TIPO DE MENSAGEM E ORGANIZA PARA O AGENTE",
         "height": 954,
-        "width": 2019,
+        "width": 2067,
         "color": 6
       },
       "id": "8889f25a-3118-45fc-ae60-2762c542cd9d",
@@ -848,7 +848,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        832,
+        784,
         848
       ]
     },
@@ -1384,7 +1384,7 @@
             {
               "id": "0ad262f3-a7f6-4a86-a840-1dff931a959a",
               "name": "Preço",
-              "value": "O valor normal é R$ 3.097,00, mas liberamos um grande desconto para você de R$ 1.100,00\n\nPor apenas: 12 x de R$ 206,54 Ou R$ 1.997,00 à vista no cartão, boleto a vista ou pix\n\nNo boleto parcelado em até 12X DE R$ 227,22",
+              "value": "O valor normal é R$ 4.097,00, mas liberamos um grande desconto para você de R$ 1.000\n\nPor apenas: 12 x de R$ 320,30 Ou R$ 3.097,00 à vista no cartão, boleto a vista ou pix\n\nNo boleto parcelado em até 12X DE R$ 340,99",
               "type": "string"
             },
             {
@@ -1396,13 +1396,13 @@
             {
               "id": "41b8d959-6639-463e-9c15-0a374a87cd2f",
               "name": "Pix, Cartão de Crédito e Boleto avista",
-              "value": "=https://pay.hotmart.com/F84276539R?off=u9gxnorh&checkoutMode=10",
+              "value": "=https://pay.hotmart.com/F84276539R?off=pzmm8h28&checkoutMode=10",
               "type": "string"
             },
             {
               "id": "a2a2923d-e012-4c0b-8cd7-980fe9427a8a",
               "name": "Boleto Parcelado",
-              "value": "=https://pay.tmbeducacao.com.br/EduSorveteir/I9B116679DQ",
+              "value": "=https://pay.tmbeducacao.com.br/EduSorveteir/V8M87053NG",
               "type": "string"
             }
           ]
@@ -1802,6 +1802,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-11-15T20:41:59.821Z",
-  "versionId": "178929a4-7823-47df-92c4-72a2b3396591"
+  "updatedAt": "2025-11-17T14:10:48.933Z",
+  "versionId": "a530c061-7e49-475a-b2c1-c136a2d85b41"
 }
