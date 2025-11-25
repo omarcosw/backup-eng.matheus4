@@ -1267,7 +1267,7 @@
     },
     {
       "parameters": {
-        "amount": 15
+        "amount": 10
       },
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
@@ -2211,6 +2211,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-11-15T03:10:55.856Z",
-  "versionId": "6db2a1e1-6e84-4361-8586-33e2e32888b1"
+  "updatedAt": "2025-11-24T22:35:22.006Z",
+  "versionId": "a8d03fda-3882-43b8-bd20-d53c818f4321"
 }
