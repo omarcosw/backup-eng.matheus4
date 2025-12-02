@@ -167,16 +167,7 @@
         "jsonMode": "expressionData",
         "jsonData": "={{ $('Loop Over Items').item.json.content }}",
         "textSplittingMode": "custom",
-        "options": {
-          "metadata": {
-            "metadataValues": [
-              {
-                "name": "Assunto",
-                "value": "Tabela de Balanceamento"
-              }
-            ]
-          }
-        }
+        "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1.1,
@@ -248,13 +239,13 @@
     {
       "parameters": {
         "operation": "get",
-        "documentURL": "=1rXA7aqOJjltAguITacRna6kiFTYOnQAJz8AbeF4kqJ4"
+        "documentURL": "=1W79ueICVUXAUcUPbNOfNEetn8uXyHXMJBRTgaEoB2Jc"
       },
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
       "position": [
-        -1088,
-        -144
+        -1104,
+        -112
       ],
       "id": "31fb455f-091e-432a-8e2e-f7a60cf6fdcb",
       "name": "Get a document",
@@ -406,6 +397,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-12-01T22:11:34.477Z",
-  "versionId": "9dcbe90f-7903-4dbe-bfcd-401597988bc2"
+  "updatedAt": "2025-12-02T18:31:54.080Z",
+  "versionId": "e73227a7-a923-485f-86fa-050d07d4bd34"
 }
