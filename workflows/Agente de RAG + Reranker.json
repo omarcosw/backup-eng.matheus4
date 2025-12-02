@@ -171,8 +171,8 @@
           "metadata": {
             "metadataValues": [
               {
-                "name": "Tabela de Balanceamento",
-                "value": "=Açucares das Frutas"
+                "name": "Assunto",
+                "value": "Tabela de Balanceamento"
               }
             ]
           }
@@ -248,7 +248,7 @@
     {
       "parameters": {
         "operation": "get",
-        "documentURL": "=1rVGVU-MSI7Df3_xcoziekxwXvjJ6pIoFqI0HuoeYsAU"
+        "documentURL": "=1rXA7aqOJjltAguITacRna6kiFTYOnQAJz8AbeF4kqJ4"
       },
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
@@ -406,6 +406,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-12-01T20:59:26.735Z",
-  "versionId": "a20ac605-3d80-484d-862a-08a8f0a596ea"
+  "updatedAt": "2025-12-01T22:11:34.477Z",
+  "versionId": "9dcbe90f-7903-4dbe-bfcd-401597988bc2"
 }
