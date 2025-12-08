@@ -295,14 +295,14 @@
     {
       "parameters": {
         "content": "# TEMPLATE FORA JANELA 24H",
-        "height": 580,
+        "height": 612,
         "width": 1320,
         "color": 3
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         528,
-        -128
+        -160
       ],
       "typeVersion": 1,
       "id": "1cc04d9c-5e8e-4dc0-8372-2a3f1931ca80",
@@ -458,6 +458,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-12-08T11:11:33.393Z",
-  "versionId": "720cdb1f-9a23-4c03-a2a0-0a8c3275526c"
+  "updatedAt": "2025-12-08T16:15:05.846Z",
+  "versionId": "d92e2e08-13f3-40a9-926e-018fbbace4bf"
 }
