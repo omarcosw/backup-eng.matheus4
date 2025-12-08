@@ -1737,6 +1737,46 @@
           "name": "Supabase - Sorveteiro Raiz"
         }
       }
+    },
+    {
+      "parameters": {
+        "operation": "deleteTable",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "memoriaia",
+          "mode": "list",
+          "cachedResultName": "memoriaia"
+        },
+        "deleteCommand": "delete",
+        "where": {
+          "values": [
+            {
+              "column": "session_id",
+              "value": "34844971-d92c-45a4-8cdd-6a93ab878050"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        3680,
+        64
+      ],
+      "id": "28170b09-132e-46a1-bebc-0ff1107ffa2f",
+      "name": "Delete table or rows",
+      "credentials": {
+        "postgres": {
+          "id": "IYNLdJqCB5ipfbuh",
+          "name": "Postgres account"
+        }
+      }
     }
   ],
   "pinData": {
@@ -1820,6 +1860,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-12-07T16:38:40.916Z",
-  "versionId": "ad269d19-367c-48f3-97f0-8db9fc61c5db"
+  "updatedAt": "2025-12-08T13:48:11.582Z",
+  "versionId": "7e172728-ca7a-4985-93b5-0fbd60b6ee9b"
 }
