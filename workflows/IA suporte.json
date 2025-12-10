@@ -2222,32 +2222,32 @@
               "key": {
                 "remoteJid": "5511984151865@s.whatsapp.net",
                 "fromMe": false,
-                "id": "3EB07D66DE915B248A981B"
+                "id": "3EB0E9CEF8C939FD99A15F"
               },
               "pushName": "Higor Leite",
               "status": "DELIVERY_ACK",
               "message": {
-                "conversation": "Boa tarde",
+                "conversation": "boa tarde",
                 "messageContextInfo": {
                   "deviceListMetadata": {
-                    "senderKeyHash": "Vt0aWJZfX35K1Q==",
-                    "senderTimestamp": "1760986119",
+                    "senderKeyHash": "/Gknq3Is4xHdJQ==",
+                    "senderTimestamp": "1764703523",
                     "senderAccountType": "E2EE",
                     "receiverAccountType": "E2EE",
-                    "recipientKeyHash": "upJB39jH6a1ljw==",
-                    "recipientTimestamp": "1760583656"
+                    "recipientKeyHash": "pzu0MOFcZzq4TA==",
+                    "recipientTimestamp": "1764680846"
                   },
                   "deviceListMetadataVersion": 2,
-                  "messageSecret": "Mh0xc9M88vQqSdvBBQpdeVrnVYPMYjyI7GyZbjMEGUk="
+                  "messageSecret": "UXFWtgeIDat3Qf3nS1AFEQiyo+CRM2XRDXxurOFgKCg="
                 }
               },
               "messageType": "conversation",
-              "messageTimestamp": 1760990696,
+              "messageTimestamp": 1765393519,
               "instanceId": "5f3e44b6-90fb-420f-926b-1f8a34a111a6",
               "source": "web"
             },
             "destination": "https://webhook.sorveteiroraiz.com/webhook/iasuporte",
-            "date_time": "2025-10-20T17:04:57.176Z",
+            "date_time": "2025-12-10T16:05:22.285Z",
             "sender": "5512982654663@s.whatsapp.net",
             "server_url": "https://evolution.sorveteiroraiz.com",
             "apikey": "3751324729B8-4D02-9658-03B6F6C3F54F"
@@ -2286,6 +2286,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-12-02T19:36:06.120Z",
-  "versionId": "fdabcdc8-c8df-41a6-a91a-75e9792903f2"
+  "updatedAt": "2025-12-10T19:09:12.691Z",
+  "versionId": "65ff3819-046c-426c-a3b3-2a8c4c025fea"
 }
