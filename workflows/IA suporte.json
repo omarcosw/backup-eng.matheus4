@@ -458,14 +458,15 @@
             "type": "main",
             "index": 0
           }
-        ]
+        ],
+        []
       ]
     },
     "Filtra dados": {
       "main": [
         [
           {
-            "node": "Busca lead no chatwoot",
+            "node": "getClient2",
             "type": "main",
             "index": 0
           }
@@ -485,24 +486,12 @@
     },
     "Busca id conversation": {
       "main": [
-        [
-          {
-            "node": "atendimento humano?",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "atendimento humano?": {
       "main": [
-        [
-          {
-            "node": "getClient2",
-            "type": "main",
-            "index": 0
-          }
-        ],
+        [],
         [
           {
             "node": "No Operation, do nothing1",
@@ -595,7 +584,8 @@
                     "operator": {
                       "type": "string",
                       "operation": "equals"
-                    }
+                    },
+                    "id": "166e2448-8e3f-4ea7-b719-c87863c8be27"
                   }
                 ],
                 "combinator": "and"
@@ -830,9 +820,7 @@
       "disabled": true
     },
     {
-      "parameters": {
-        "amount": 10
-      },
+      "parameters": {},
       "id": "a8008342-314f-425c-9d44-260db812b642",
       "name": "espera evolution processar1",
       "type": "n8n-nodes-base.wait",
@@ -1173,9 +1161,7 @@
       }
     },
     {
-      "parameters": {
-        "amount": 10
-      },
+      "parameters": {},
       "id": "47ef8d70-34ff-492a-8559-9228a2bff8f9",
       "name": "espera evolution processar imagem1",
       "type": "n8n-nodes-base.wait",
@@ -1273,8 +1259,7 @@
       ],
       "id": "d992c6b5-b417-41d9-8bd8-fb627416af77",
       "name": "Espere1",
-      "webhookId": "5efbac78-7c17-44b9-92cc-c3078c79f8d8",
-      "disabled": true
+      "webhookId": "5efbac78-7c17-44b9-92cc-c3078c79f8d8"
     },
     {
       "parameters": {
@@ -1874,7 +1859,7 @@
       "typeVersion": 4.1,
       "position": [
         -96,
-        720
+        528
       ],
       "alwaysOutputData": true,
       "onError": "continueRegularOutput"
@@ -1902,8 +1887,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        128,
-        720
+        112,
+        528
       ],
       "alwaysOutputData": true,
       "onError": "continueRegularOutput"
@@ -1935,8 +1920,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        320,
-        720
+        368,
+        464
       ],
       "id": "39f9fba9-60cf-4f7a-9ac7-7edb543f0a09",
       "name": "atendimento humano?"
@@ -1957,8 +1942,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        560,
-        800
+        608,
+        464
       ],
       "id": "12f766a6-a438-438e-8117-a4cea22896db",
       "name": "No Operation, do nothing1"
@@ -2203,7 +2188,7 @@
           "headers": {
             "host": "webhook.sorveteiroraiz.com",
             "user-agent": "axios/1.7.9",
-            "content-length": "947",
+            "content-length": "1679",
             "accept": "application/json, text/plain, */*",
             "accept-encoding": "gzip, compress, deflate, br",
             "content-type": "application/json",
@@ -2221,34 +2206,45 @@
             "instance": "suporte",
             "data": {
               "key": {
-                "remoteJid": "5511984151865@s.whatsapp.net",
+                "remoteJid": "164132359811272@lid",
                 "fromMe": false,
-                "id": "3EB0E9CEF8C939FD99A15F"
+                "id": "ACF5F04DC597BF897AB6328BA77C7A80"
               },
               "pushName": "Higor Leite",
               "status": "DELIVERY_ACK",
               "message": {
-                "conversation": "boa tarde",
+                "audioMessage": {
+                  "url": "https://mmg.whatsapp.net/v/t62.7117-24/553415089_1376324630189822_8595540492168554863_n.enc?ccb=11-4&oh=01_Q5Aa3QETbg7eHSo6m4cEocOD1jJygfs3AuUsmNCOJgIMfAyUoQ&oe=696CADA7&_nc_sid=5e03e0&mms3=true",
+                  "mimetype": "audio/ogg; codecs=opus",
+                  "fileSha256": "ftIEe+KoV9/MdZpjG6UxaJHPDlMXG0UXzvJRgze+6fA=",
+                  "fileLength": "6923",
+                  "seconds": 2,
+                  "ptt": true,
+                  "mediaKey": "8TyTBiDUi5tZ3BYkwF1yq9was6+DM2szIxCEDCLbU7k=",
+                  "fileEncSha256": "pVBPBSoDzwdOIS+DdHfG5Y5mCP+nhjKt5YBCaKaLNrA=",
+                  "directPath": "/v/t62.7117-24/553415089_1376324630189822_8595540492168554863_n.enc?ccb=11-4&oh=01_Q5Aa3QETbg7eHSo6m4cEocOD1jJygfs3AuUsmNCOJgIMfAyUoQ&oe=696CADA7&_nc_sid=5e03e0",
+                  "mediaKeyTimestamp": "1766149653",
+                  "waveform": "AAAAADVZXFxbWFhYPjdJTzkwRlVVVVJITEhOVlhTRz4rJERMSUVCPDxISzY0FzNEPzc/UU47R0JHTkU8OigAAA=="
+                },
                 "messageContextInfo": {
                   "deviceListMetadata": {
                     "senderKeyHash": "/Gknq3Is4xHdJQ==",
-                    "senderTimestamp": "1764703523",
-                    "senderAccountType": "E2EE",
-                    "receiverAccountType": "E2EE",
+                    "senderTimestamp": "1765999817",
                     "recipientKeyHash": "pzu0MOFcZzq4TA==",
-                    "recipientTimestamp": "1764680846"
+                    "recipientTimestamp": "1765374400"
                   },
                   "deviceListMetadataVersion": 2,
-                  "messageSecret": "UXFWtgeIDat3Qf3nS1AFEQiyo+CRM2XRDXxurOFgKCg="
+                  "messageSecret": "2p6IhBbuagDxZEpANS7JI3/Lx2kL5zoILlcM1CodcII="
                 }
               },
-              "messageType": "conversation",
-              "messageTimestamp": 1765393519,
+              "contextInfo": null,
+              "messageType": "audioMessage",
+              "messageTimestamp": 1766149661,
               "instanceId": "5f3e44b6-90fb-420f-926b-1f8a34a111a6",
-              "source": "web"
+              "source": "android"
             },
             "destination": "https://webhook.sorveteiroraiz.com/webhook/iasuporte",
-            "date_time": "2025-12-10T16:05:22.285Z",
+            "date_time": "2025-12-19T10:07:44.180Z",
             "sender": "5512982654663@s.whatsapp.net",
             "server_url": "https://evolution.sorveteiroraiz.com",
             "apikey": "3751324729B8-4D02-9658-03B6F6C3F54F"
@@ -2287,6 +2283,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-12-16T18:54:29.142Z",
-  "versionId": "4b291a45-c687-462b-839e-885193f1e1e0"
+  "updatedAt": "2025-12-19T13:15:13.393Z",
+  "versionId": "1f0c1f9c-311b-419b-bc7f-6c598b454b14"
 }
