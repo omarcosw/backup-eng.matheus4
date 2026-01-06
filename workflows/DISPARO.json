@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "GeraUUID": {
       "main": [
@@ -458,6 +458,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-12-08T16:15:05.846Z",
+  "updatedAt": "2026-01-06T13:02:16.317Z",
   "versionId": "d92e2e08-13f3-40a9-926e-018fbbace4bf"
 }
