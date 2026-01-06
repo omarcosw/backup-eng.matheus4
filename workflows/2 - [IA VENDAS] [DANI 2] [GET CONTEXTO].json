@@ -1,9 +1,9 @@
 {
-  "active": true,
+  "active": false,
   "connections": {},
   "createdAt": "2025-07-10T04:38:59.376Z",
   "id": "JUVoPW6KzHmpZX69",
-  "isArchived": false,
+  "isArchived": true,
   "meta": null,
   "name": "2 - [IA VENDAS] [DANI 2] [GET CONTEXTO]",
   "nodes": [
@@ -40,6 +40,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-07-10T04:40:41.053Z",
-  "versionId": "a2dc4aa4-240d-43a1-bbe8-32118e31700c"
+  "updatedAt": "2026-01-06T13:02:51.482Z",
+  "versionId": "792074cd-6026-406d-97d0-6c2f6414bf5d"
 }
