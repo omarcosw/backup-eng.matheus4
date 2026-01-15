@@ -16,7 +16,7 @@
       "main": [
         [
           {
-            "node": "Memória Inicial1",
+            "node": "Transcribe a recording",
             "type": "main",
             "index": 0
           }
@@ -30,7 +30,7 @@
         ],
         [
           {
-            "node": "empilhaÁudio1",
+            "node": "analisar um video",
             "type": "main",
             "index": 0
           }
@@ -377,6 +377,39 @@
           }
         ]
       ]
+    },
+    "Transcribe a recording": {
+      "main": [
+        [
+          {
+            "node": "empilhaÁudio2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "empilhaÁudio2": {
+      "main": [
+        [
+          {
+            "node": "Memória Inicial1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "analisar um video": {
+      "main": [
+        [
+          {
+            "node": "empilhaÁudio1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-01-13T19:33:15.045Z",
@@ -556,7 +589,7 @@
       "typeVersion": 1,
       "position": [
         -2976,
-        832
+        848
       ]
     },
     {
@@ -1417,6 +1450,84 @@
           "name": "Postgres account"
         }
       }
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash"
+        },
+        "audioUrls": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"messages\"][\"0\"][\"attachments\"][\"0\"][\"data_url\"] }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        -2608,
+        1216
+      ],
+      "id": "a6dba99e-811d-43c3-8cd5-b494d3018e9f",
+      "name": "Transcribe a recording",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "pgFHVz3tyeXURIqV",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}",
+        "messageData": "={{ $item(\"0\").$node[\"Transcribe a recording\"].json[\"content\"][\"parts\"][\"0\"][\"text\"] }}",
+        "tail": true
+      },
+      "id": "60fdb474-a9f5-4169-88de-895369997ac3",
+      "name": "empilhaÁudio2",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -2368,
+        1216
+      ],
+      "credentials": {
+        "redis": {
+          "id": "WKYrbj8mpqYSkF5s",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "video",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash"
+        },
+        "text": "Me diga o que é esse vídeo para uma outra IA do GPT 4 desenvolver uma resposta para esse vídeo.",
+        "videoUrls": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"attachments\"][\"0\"][\"data_url\"] }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        -2608,
+        1600
+      ],
+      "id": "757a44c4-0a6a-4654-be3e-d0aaf109be24",
+      "name": "analisar um video",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "pgFHVz3tyeXURIqV",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -1442,6 +1553,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-01-14T22:54:40.332Z",
-  "versionId": "bd94e366-888f-4551-a13d-228db5752b74"
+  "updatedAt": "2026-01-15T17:02:24.804Z",
+  "versionId": "2912a491-edec-4bcd-9efe-e49f966ea654"
 }
