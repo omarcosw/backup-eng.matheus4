@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "GeraUUID": {
       "main": [
@@ -171,7 +171,7 @@
             },
             {
               "fieldId": "mensagem",
-              "fieldValue": "=UAU! Que alegria falar com você!👋 \nAqui é a Dani da Equipe Sorveteiro Raiz! 🍨\n\nEstou entrando em contato porque, como participante da nossa Imersão Profissão Sorveteiro, você garantiu uma condição ultramega especial para o Curso Completo do Edu!\n\nO Edu liberou as vagas para o Curso Completo Profissão Sorveteiro com um desconto inacreditável para você:\n\n➡️ O valor normal é de R$ 3.097, mas com o desconto de R$ 1.100 🎁, o seu investimento será de apenas R$ 1.997 á vista ou parcelar em até 12x no cartão de crédito ou boleto parcelado.\n\n🚨Eu não quero de jeito nenhum deixar você de fora, por isso meu contato é urgente🚨\n\nEssa condição é por tempo limitado ou até as vagas se esgotarem, e nós já preenchemos 87% da turma! 🏃‍♀️💨\n\nEntão, estou aqui à disposição, para te ajudar a ingressar na nossa Família Sorveteiro Raiz!\n\nMe diga, como eu posso te ajudar a se matricular hoje!"
+              "fieldValue": "=*UAU! Que alegria falar com você!*👋 \nAqui é a Dani da Equipe Sorveteiro Raiz! 🍨\n\nO Edu liberou as vagas para o *Curso Completo Profissão Sorveteiro* com um desconto inacreditável para você:\n\n➡️ O valor normal é de R$ 3.097, mas com o desconto de *R$ 700* 🎁, o seu investimento será de apenas R$ 2.397 á vista ou em até 12x no cartão de crédito.\n\n🚨Eu não quero de jeito nenhum deixar você de fora! \n\nEntão me diga, qual é a sua dúvida em relação ao curso *Profissão Sorveteiro*? Ou como eu posso te ajudar a se tornar aluno(a)?"
             }
           ]
         }
@@ -272,7 +272,7 @@
           "fieldValues": [
             {
               "fieldId": "mensagem",
-              "fieldValue": "=UAU! Que alegria falar com você!👋 \nAqui é a Dani da Equipe Sorveteiro Raiz! 🍨\n\nEstou entrando em contato porque, como participante da nossa Imersão Profissão Sorveteiro, você garantiu uma condição ultramega especial para o Curso Completo do Edu!\n\nO Edu liberou as vagas para o Curso Completo Profissão Sorveteiro com um desconto inacreditável para você:\n\n➡️ O valor normal é de R$ 3.097, mas com o desconto de R$ 1.100 🎁, o seu investimento será de apenas R$ 1.997 á vista ou parcelar em até 12x no cartão de crédito ou boleto parcelado.\n\n🚨Eu não quero de jeito nenhum deixar você de fora, por isso meu contato é urgente🚨\n\nEssa condição é por tempo limitado ou até as vagas se esgotarem, e nós já preenchemos 87% da turma! 🏃‍♀️💨\n\nEntão, estou aqui à disposição, para te ajudar a ingressar na nossa Família Sorveteiro Raiz!\n\nMe diga, como eu posso te ajudar a se matricular hoje!"
+              "fieldValue": "=*UAU! Que alegria falar com você!*👋 \nAqui é a Dani da Equipe Sorveteiro Raiz! 🍨\n\nO Edu liberou as vagas para o *Curso Completo Profissão Sorveteiro* com um desconto inacreditável para você:\n\n➡️ O valor normal é de R$ 3.097, mas com o desconto de *R$ 700* 🎁, o seu investimento será de apenas R$ 2.397 á vista ou em até 12x no cartão de crédito.\n\n🚨Eu não quero de jeito nenhum deixar você de fora! \n\nEntão me diga, qual é a sua dúvida em relação ao curso *Profissão Sorveteiro*? Ou como eu posso te ajudar a se tornar aluno(a)?"
             }
           ]
         }
@@ -458,6 +458,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-01-06T13:02:16.317Z",
-  "versionId": "d92e2e08-13f3-40a9-926e-018fbbace4bf"
+  "updatedAt": "2026-01-20T19:57:10.594Z",
+  "versionId": "b650b582-3c99-4983-8c4a-7aa5b66d5206"
 }
