@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "OutputParser": {
       "ai_outputParser": [
@@ -88,7 +88,7 @@
       "main": [
         [
           {
-            "node": "pausar atendimento",
+            "node": "Ativar para teste",
             "type": "main",
             "index": 0
           }
@@ -260,11 +260,6 @@
         ]
       ]
     },
-    "Memoria": {
-      "ai_memory": [
-        []
-      ]
-    },
     "Modelo IA": {
       "ai_languageModel": [
         [
@@ -311,7 +306,13 @@
     },
     "Ativar para teste": {
       "main": [
-        []
+        [
+          {
+            "node": "pausar atendimento",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Embeddings OpenAI2": {
@@ -383,7 +384,7 @@
         ],
         [
           {
-            "node": "HTTP Request2",
+            "node": "Transcribe a recording",
             "type": "main",
             "index": 0
           }
@@ -456,6 +457,28 @@
           }
         ]
       ]
+    },
+    "Transcribe a recording": {
+      "main": [
+        [
+          {
+            "node": "empilhaÁudio2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "empilhaÁudio2": {
+      "main": [
+        [
+          {
+            "node": "Memória Inicial",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-08-12T15:36:02.172Z",
@@ -499,7 +522,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -2272,
+        -2368,
         1312
       ],
       "webhookId": "01b980a0-8dbe-4b4d-8857-2321c4c5875b"
@@ -1135,28 +1158,6 @@
     },
     {
       "parameters": {
-        "sessionIdType": "customKey",
-        "sessionKey": "={{ $('messages').item.json.sessionId }}",
-        "contextWindowLength": 10
-      },
-      "id": "72e297f2-ab00-4809-991d-7d25cf5870b6",
-      "name": "Memoria",
-      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
-      "typeVersion": 1.4,
-      "position": [
-        4016,
-        960
-      ],
-      "credentials": {
-        "redis": {
-          "id": "WKYrbj8mpqYSkF5s",
-          "name": "Redis account"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
         "options": {}
       },
       "id": "0b7d95d6-dcb7-4d54-b805-972a7bd14d73",
@@ -1277,8 +1278,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -2096,
-        800
+        -2160,
+        1328
       ],
       "id": "1613c380-a651-4085-b9e4-241c21fc052b",
       "name": "Ativar para teste"
@@ -1313,7 +1314,7 @@
           "mode": "list",
           "cachedResultName": "ps_objecoes"
         },
-        "topK": 15,
+        "topK": 12,
         "useReranker": true,
         "options": {
           "queryName": "match_ps_objecoes"
@@ -1341,25 +1342,19 @@
             {
               "id": "0ad262f3-a7f6-4a86-a840-1dff931a959a",
               "name": "Preço",
-              "value": "O valor normal é R$ 3.097,00, mas liberamos um grande desconto para você de R$ 1.100,00\n\nPor apenas: 12 x de R$ 206,54 Ou R$ 1.997,00 à vista no cartão, boleto a vista ou pix\n\nNo boleto parcelado em até 12X ",
+              "value": "O valor normal é R$ 3.097,00, mas liberamos um grande desconto para você de R$ 700,000\n\nPor apenas: 12 x de R$ 239,66 Ou R$ 2.397,00 à vista no cartão, boleto a vista ou pix",
               "type": "string"
             },
             {
               "id": "1178fd11-4d1d-4ff2-9ae2-431edfc5a409",
               "name": "Forma de Pagamento",
-              "value": "Pix, Cartão de Crédito, Boleto avista ou Boleto Parcelado em até 12x",
+              "value": "Pix, Cartão de Crédito ou Boleto avista",
               "type": "string"
             },
             {
               "id": "41b8d959-6639-463e-9c15-0a374a87cd2f",
               "name": "Pix, Cartão de Crédito e Boleto avista",
-              "value": "=https://pay.hotmart.com/F84276539R?off=kio4i68d&checkoutMode=10",
-              "type": "string"
-            },
-            {
-              "id": "a2a2923d-e012-4c0b-8cd7-980fe9427a8a",
-              "name": "=Boleto Parcelado",
-              "value": "=https://pay.tmbeducacao.com.br/EduSorveteir/G55134715AM",
+              "value": "=https://lp.sorveteiroraiz.com/pg-vnd-v02-ia/",
               "type": "string"
             }
           ]
@@ -1531,8 +1526,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1072,
-        1488
+        1648,
+        2032
       ],
       "id": "398cb660-e680-4c14-acb5-2f07e575ce14",
       "name": "HTTP Request2"
@@ -1547,8 +1542,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1072,
-        1248
+        1104,
+        1264
       ],
       "id": "ffbdf3cf-c0a4-46e8-9f7e-1814c3acacd3",
       "name": "Add na Memória",
@@ -1777,6 +1772,55 @@
           "name": "Postgres account"
         }
       }
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash"
+        },
+        "audioUrls": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"contact\"][\"lastMessage\"] }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        1072,
+        1552
+      ],
+      "id": "d9929962-6808-44cd-90e5-6a836007a831",
+      "name": "Transcribe a recording",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "pgFHVz3tyeXURIqV",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"telefoneCliente\"] }}",
+        "messageData": "={{ $item(\"0\").$node[\"Transcribe a recording\"].json[\"content\"][\"parts\"][\"0\"][\"text\"] }}",
+        "tail": true
+      },
+      "id": "8408f7a8-77a3-488b-afc1-67558b90fefb",
+      "name": "empilhaÁudio2",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1328,
+        1568
+      ],
+      "credentials": {
+        "redis": {
+          "id": "WKYrbj8mpqYSkF5s",
+          "name": "Redis account"
+        }
+      }
     }
   ],
   "pinData": {
@@ -1785,17 +1829,17 @@
         "json": {
           "headers": {
             "host": "webhook.sorveteiroraiz.com",
-            "user-agent": "axios/1.12.2",
-            "content-length": "948",
+            "user-agent": "axios/1.13.2",
+            "content-length": "1370",
             "accept": "application/json, text/plain, */*",
             "accept-encoding": "gzip, compress, deflate, br",
             "content-type": "application/json",
-            "x-forwarded-for": "34.34.231.57",
+            "x-forwarded-for": "34.34.231.82",
             "x-forwarded-host": "webhook.sorveteiroraiz.com",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
-            "x-forwarded-server": "aae19483bb9a",
-            "x-real-ip": "34.34.231.57"
+            "x-forwarded-server": "77efa1e6cf5f",
+            "x-real-ip": "34.34.231.82"
           },
           "params": {},
           "query": {},
@@ -1805,19 +1849,20 @@
               "name": "Higor Leite",
               "email": "",
               "phoneNumber": "5511984151865",
-              "tags": "TESTE DISPARO, LP6 - CLICOU - PRECISO DE AJUDA, TESTE IA - INSCRIÇÕES ABERTAS",
+              "tags": "TESTE DISPARO, TESTE IA - INSCRIÇÕES ABERTAS, LP6 - CLICOU - PRECISO DE AJUDA",
               "fields": {
-                "mensagens": "Compreendo que pode ser desanimador estar em uma situação assim e que as opções nem sempre parecem viáveis. Às vezes, é normal não se sentir motivado. Se precisar de um tempo para pensar ou mesmo de apoio emocional, isso é completamente válido.\n\nLembre-se de que sua situação atual não define seu futuro. Sempre há possibilidades de recomeço, e às vezes, um passo pequeno pode levar a grandes mudanças.\n\nSe em algum momento você quiser reassistir sobre o curso ou outra forma de apoio, estou aqui. Cuide-se e reserve um tempo para você!"
+                "mensagens": "Entendo sua dúvida! O desconto é uma oportunidade exclusiva oferecida para garantir sua vaga no curso antes que ele se feche. O valor normal do curso é de R$ 3.097, mas você pode aproveitar um desconto de R$ 1.100, pagando apenas R$ 1.997 à vista ou parcelando em até 12 vezes.\n\nAlém disso, essa oferta é por tempo limitado ou até as vagas se esgotarem, então é importante agir rápido para garantir essa condição especial. Enquanto você espera, muitos alunos já estão aprendendo e se preparando para ter seu próprio negócio. Que tal me contar se está pronto para garantir sua vaga agora?"
               },
-              "lastMessage": "Ola",
+              "lastMessage": "https://firebasestorage.googleapis.com/v0/b/plataforma-unnichat-media/o/messages%2Ff8fcda71-5da8-45fc-b286-aa4dd29463ff.ogg?alt=media&token=f8fcda71-5da8-45fc-b286-aa4dd29463ff",
               "lastMessageData": {
-                "message": "Ola",
-                "messageType": "message"
+                "message": "https://firebasestorage.googleapis.com/v0/b/plataforma-unnichat-media/o/messages%2Ff8fcda71-5da8-45fc-b286-aa4dd29463ff.ogg?alt=media&token=f8fcda71-5da8-45fc-b286-aa4dd29463ff",
+                "messageType": "audio",
+                "id": "Fr3l7SbB5nRz0xIhUSsx"
               },
               "instaName": "",
               "profilePicUrl": ""
             },
-            "event_date": 1764019108,
+            "event_date": 1768939593,
             "triggerData": {}
           },
           "webhookUrl": "https://webhook.sorveteiroraiz.com/webhook/danivendas01",
@@ -1860,6 +1905,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-01-06T13:02:20.924Z",
-  "versionId": "7e172728-ca7a-4985-93b5-0fbd60b6ee9b"
+  "updatedAt": "2026-01-20T20:21:04.607Z",
+  "versionId": "1c6ab212-3327-489e-9cbb-142e58317f87"
 }
