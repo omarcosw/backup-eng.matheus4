@@ -145,7 +145,6 @@
     },
     {
       "parameters": {
-        "model": "text-embedding-3-large",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
@@ -166,18 +165,14 @@
     {
       "parameters": {
         "jsonMode": "expressionData",
-        "jsonData": "={{ $('Loop Over Items').item.json.texto_completo }}",
+        "jsonData": "={{ $('Loop Over Items').item.json.content }}",
         "textSplittingMode": "custom",
         "options": {
           "metadata": {
             "metadataValues": [
               {
-                "name": "Pergunta",
-                "value": "={{ $('Loop Over Items').item.json.pergunta }}"
-              },
-              {
-                "name": "Resposta",
-                "value": "={{ $('Loop Over Items').item.json.resposta }}"
+                "name": "Duvidas sobre",
+                "value": "pagamentos/futuras aulas/troca de email/acesso aocurso"
               }
             ]
           }
@@ -197,12 +192,12 @@
         "mode": "insert",
         "tableName": {
           "__rl": true,
-          "value": "ps_objecoes",
+          "value": "curso",
           "mode": "list",
-          "cachedResultName": "ps_objecoes"
+          "cachedResultName": "curso"
         },
         "options": {
-          "queryName": "match_ps_objecoes"
+          "queryName": "match_curso"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
@@ -253,7 +248,7 @@
     {
       "parameters": {
         "operation": "get",
-        "documentURL": "=1rBfaJj08XnZMdumCgBsami1-OuuzmTP08at2sIPprww"
+        "documentURL": "=1lKrcHcRAuHWVcpyaa9cXfSySKwUqv5usTgneDquv0uA"
       },
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
@@ -362,7 +357,8 @@
         -144
       ],
       "id": "865989c9-2deb-4cf1-a99f-684341baedae",
-      "name": "Code"
+      "name": "Code",
+      "disabled": true
     },
     {
       "parameters": {
@@ -410,6 +406,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-01-20T22:09:35.164Z",
-  "versionId": "7704b2e8-8f6a-4a1d-88bd-b40fd8b467c3"
+  "updatedAt": "2026-01-21T12:43:14.807Z",
+  "versionId": "72e883ab-488f-4a52-86e6-34c9291e9d0f"
 }
