@@ -166,9 +166,22 @@
     {
       "parameters": {
         "jsonMode": "expressionData",
-        "jsonData": "={{ $('Loop Over Items').item.json.content }}",
+        "jsonData": "={{ $('Loop Over Items').item.json.texto_completo }}",
         "textSplittingMode": "custom",
-        "options": {}
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "Pergunta",
+                "value": "={{ $('Loop Over Items').item.json.pergunta }}"
+              },
+              {
+                "name": "Resposta",
+                "value": "={{ $('Loop Over Items').item.json.resposta }}"
+              }
+            ]
+          }
+        }
       },
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1.1,
@@ -240,7 +253,7 @@
     {
       "parameters": {
         "operation": "get",
-        "documentURL": "=1dIRIr4Fb5SRbJcbzUZ04MekQW9jdVzowSZh8IAeWlbA"
+        "documentURL": "=1rBfaJj08XnZMdumCgBsami1-OuuzmTP08at2sIPprww"
       },
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
@@ -340,7 +353,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Define o tamanho máximo de caracteres para cada pedaço de conteúdo.\nconst chunkSize = 2000; // Ajuste este valor conforme a necessidade do seu BD/Metabase.\nconst outputItems = []; \n\nfor (const item of items) {\n    // 1. EXTRAÇÃO E LIMPEZA DO TÍTULO DO MÓDULO E AULA\n    const fullText = item.json.content || ''; // O conteúdo completo\n    const documentId = item.json.documentId;\n    \n    // Tenta pegar a linha do Módulo/Título\n    const moduleMatch = fullText.match(/Módulo \\d{2}(.*?)\\n/i); \n    const tituloCompleto = moduleMatch ? moduleMatch[0].trim() : \"Módulo/Aula Não Encontrados\";\n\n    let modulo = 'Módulo Desconhecido';\n    let aula = 'Aula Desconhecida';\n    \n    const parts = tituloCompleto.split(' - ', 2); \n    if (parts.length > 0) {\n        // Tenta isolar o Módulo (ex: \"Módulo 04\")\n        const moduloMatch = parts[0].match(/Módulo \\d{2}/i);\n        modulo = moduloMatch ? moduloMatch[0].trim() : 'Módulo Desconhecido';\n        \n        // Assume o resto como o nome da Aula\n        let nomeAulaCompleto = tituloCompleto.replace(new RegExp(`^${modulo}\\\\s*-\\\\s*`), '').trim();\n\n        // **NOVO AJUSTE: Remove \" - Parte X\" do final do nome da Aula**\n        aula = nomeAulaCompleto.replace(/ - Parte\\s*\\d+$/i, '').trim(); \n        // Ex: \"Processos Produtora Contínua - Parte 1\" -> \"Processos Produtora Contínua\"\n    }\n\n\n    if (!fullText) {\n        // Trata o caso de conteúdo vazio\n        outputItems.push({\n            json: {\n                documentId: documentId,\n                modulo: modulo,\n                aula: aula,\n                parte: 1,\n                conteudo_parte: \"Conteúdo vazio ou não encontrado.\",\n            }\n        });\n        continue;\n    }\n\n    // 2. LÓGICA DE QUEBRA POR PARTES\n    let startIndex = 0;\n    let partNumber = 1;\n\n    while (startIndex < fullText.length) {\n        let endIndex = startIndex + chunkSize;\n        \n        if (endIndex > fullText.length) {\n            endIndex = fullText.length;\n        } else {\n            // Busca o último espaço para quebrar o texto sem cortar palavras\n            const safeIndex = fullText.substring(startIndex, endIndex).lastIndexOf(' ');\n\n            if (safeIndex > -1) {\n                endIndex = startIndex + safeIndex;\n            }\n        }\n        \n        // Extrai o pedaço de texto e remove espaços extras\n        const chunk = fullText.substring(startIndex, endIndex).trim();\n        \n        // 3. CRIAÇÃO DO NOVO ITEM PARA O N8N\n        outputItems.push({\n            json: {\n                documentId: documentId,\n                modulo: modulo,      // Ex: \"Módulo 04\"\n                aula: aula,          // Ex: \"Processos Produtora Contínua\" (Sem a parte)\n                parte: partNumber,   // Número sequencial da parte (1, 2, 3...)\n                conteudo_parte: chunk, // O pedaço de texto\n            }\n        });\n\n        // Prepara para o próximo loop\n        startIndex = endIndex;\n        while (fullText[startIndex] === ' ' && startIndex < fullText.length) {\n            startIndex++;\n        }\n        \n        partNumber++;\n    }\n}\n\nreturn outputItems;"
+        "jsCode": "// Acessa o conteúdo\nlet content;\ntry {\n  if ($input.all && $input.all().length > 0) {\n    content = $input.all()[0].json.content;\n  } else if ($input.item && $input.item.json) {\n    content = $input.item.json.content;\n  }\n} catch (e) {\n  throw new Error('Erro ao acessar conteúdo');\n}\n\nif (!content) {\n  throw new Error('Conteúdo não encontrado');\n}\n\n// Categorias/motivos de cada pergunta\nconst categorias = {\n  \"Quero fazer sorvete apenas para consumo próprio\": \"Qualificação de Lead - Intenção de Uso\",\n  \"Não tenho maquinários\": \"Objeção Estrutural - Equipamentos\",\n  \"Faço geladinho gourmet. Isso serve\": \"Qualificação de Lead - Produto Relacionado\",\n  \"Já trabalho com sorvete/açaí\": \"Objeção Técnica - Qualidade do Produto\",\n  \"Tenho experiência, mas quero melhorar\": \"Qualificação Positiva - Aperfeiçoamento\",\n  \"Tenho dificuldade com receitas\": \"Objeção Técnica - Desenvolvimento de Receitas\",\n  \"Já sei fazer sorvete, quero só aprender a balancear\": \"Qualificação Positiva - Conhecimento Específico\",\n  \"Quanto tempo tenho de acesso\": \"Objeção Estrutural - Acesso e Suporte\",\n  \"O curso é atualizado\": \"Objeção de Valor - Atualização de Conteúdo\",\n  \"E se eu tiver dúvidas\": \"Objeção Estrutural - Suporte\",\n  \"Eu ainda não tenho nenhuma máquina\": \"Objeção Estrutural - Equipamentos Inicial\",\n  \"Na verdade, eu só queria aprender a fazer pra família\": \"Qualificação de Lead - Uso Doméstico\",\n  \"Eu já tenho minha loja\": \"Objeção Técnica - Negócio Estabelecido\",\n  \"Eu já entendo de sorvete\": \"Qualificação Positiva - Especialização\",\n  \"Eu faço geladinho gourmet, esse curso serve\": \"Qualificação de Lead - Transição de Produto\",\n  \"Eu tô com medo\": \"Objeção Psicológica - Insegurança\",\n  \"No curso indica maquinário\": \"Dúvida sobre Conteúdo - Equipamentos\",\n  \"No curso tem receitas\": \"Dúvida sobre Conteúdo - Receitas\",\n  \"Vocês vendem somente\": \"Objeção Comercial - Produto Separado\",\n  \"Não tenho dinheiro\": \"Objeção Comercial - Investimento\",\n  \"Vou deixar para a próxima\": \"Objeção de Urgência - Procrastinação\",\n  \"Eu já produzo em escala\": \"Qualificação Positiva - Produção Industrial\",\n  \"Não sei se vou conseguir acompanhar\": \"Objeção Estrutural - Tempo Disponível\",\n  \"E se eu não gostar\": \"Objeção de Risco - Garantia\"\n};\n\n// Função para encontrar o motivo\nfunction encontrarMotivo(pergunta) {\n  for (const [key, value] of Object.entries(categorias)) {\n    if (pergunta.toLowerCase().includes(key.toLowerCase())) {\n      return value;\n    }\n  }\n  return \"Objeção Geral\";\n}\n\n// Regex para capturar pergunta e resposta\n// Captura: \"pergunta\"\\nResposta: resposta (até a próxima pergunta ou fim)\nconst regex = /\"([^\"]+)\"\\s*\\n\\s*Resposta:\\s*([^\"]+?)(?=\\n\"|$)/gs;\n\nconst results = [];\nlet match;\n\nwhile ((match = regex.exec(content)) !== null) {\n  const pergunta = match[1].trim();\n  const resposta = match[2].trim();\n  \n  const motivo = encontrarMotivo(pergunta);\n  \n  results.push({\n    pergunta: pergunta,\n    resposta: resposta,\n    texto_completo: `\"${pergunta}\"\\n\\nResposta: ${resposta}`,\n    motivo: motivo,\n    categoria_principal: motivo.split(' - ')[0],\n    subcategoria: motivo.split(' - ')[1] || 'Geral'\n  });\n}\n\n// Log para debug\nconsole.log(`Total de perguntas encontradas: ${results.length}`);\n\nreturn results.map(item => ({ json: item }));"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -349,8 +362,7 @@
         -144
       ],
       "id": "865989c9-2deb-4cf1-a99f-684341baedae",
-      "name": "Code",
-      "disabled": true
+      "name": "Code"
     },
     {
       "parameters": {
@@ -398,6 +410,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-01-20T20:45:10.392Z",
-  "versionId": "bc5cfcfb-1326-4b1a-9e6e-123899192865"
+  "updatedAt": "2026-01-20T22:09:35.164Z",
+  "versionId": "7704b2e8-8f6a-4a1d-88bd-b40fd8b467c3"
 }
