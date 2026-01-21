@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "If5",
+            "node": "Code1",
             "type": "main",
             "index": 0
           }
@@ -144,18 +144,7 @@
       "main": [
         [
           {
-            "node": "Redis",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Redis": {
-      "main": [
-        [
-          {
-            "node": "If",
+            "node": "Execute a SQL query",
             "type": "main",
             "index": 0
           }
@@ -164,8 +153,20 @@
     },
     "If": {
       "main": [
-        [],
-        []
+        [
+          {
+            "node": "Vendedor IA",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "get.conversa",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "GeraUUID1": {
@@ -290,9 +291,14 @@
     },
     "If5": {
       "main": [
+        []
+      ]
+    },
+    "Execute a SQL query": {
+      "main": [
         [
           {
-            "node": "Code1",
+            "node": "If",
             "type": "main",
             "index": 0
           }
@@ -317,7 +323,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -544,
+        -336,
         608
       ],
       "id": "9ba9984d-c996-44a4-8b2e-bf139e757a04",
@@ -400,7 +406,7 @@
       "type": "n8n-nodes-base.crypto",
       "typeVersion": 1,
       "position": [
-        1808,
+        2016,
         1104
       ],
       "notesInFlow": false
@@ -458,7 +464,7 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        1984,
+        2192,
         1104
       ],
       "credentials": {
@@ -498,7 +504,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1600,
+        1808,
         1008
       ]
     },
@@ -518,7 +524,7 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        1184,
+        1392,
         1008
       ],
       "id": "ac6b34e3-17af-4d47-964d-9f2f6f62b079",
@@ -534,10 +540,10 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=<CONTATO>{{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"telefone\"] }}</CONTATO>\n<LEAD>{{ $node[\"dados_da_compra1\"].json[\"nome\"] }}</LEAD>\n<PRODUTO>{{ $node[\"dados_da_compra1\"].json[\"nome_produto\"] }}</PRODUTO>\n\n\n<ULTIMAMENSAGEM>{{ $node[\"Redis\"].json[\"propertyName\"] }}</ULTIMAMENSAGEM>\n",
+        "text": "=<CONTATO>{{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"telefone\"] }}</CONTATO>\n<LEAD>{{ $node[\"dados_da_compra1\"].json[\"nome\"] }}</LEAD>\n<PRODUTO>Profissão Sorveteiro</PRODUTO>\n\n\n<ULTIMAMENSAGEM>{{ $json.ultima_mensagem_ia }}</ULTIMAMENSAGEM>\n",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "=<PROMPT>\n  <IDENTIDADE>\n    <PERSONAGEM>Você é a Dani — vendedora extremamente persuasiva, com alto índice de conversão.</PERSONAGEM>\n    <MISSAO>Recuperar a venda abandonada de forma direta, assertiva e com foco total na conversão.</MISSAO>\n  </IDENTIDADE>\n\n  <RESTRICOES>\n    <NAO_FAZER>\n      <REGRA_1>NUNCA mencionar \"Da Sorveteiro Raiz\".</REGRA_1>\n      <REGRA_2>NUNCA iniciar com cumprimentos genéricos como \"Oi, tudo bem?\".</REGRA_2>\n      <REGRA_3>NUNCA quebrar o fluxo natural da conversa — continue como se nada tivesse interrompido.</REGRA_3>\n      <REGRA_4>NUNCA deixar de personalizar com <LEAD></LEAD> e <PRODUTO></PRODUTO>.</REGRA_4>\n      <REGRA_5>NUNCA responder após a pergunta final — termine a mensagem e aguarde.</REGRA_5>\n      <REGRA_6>EVITAR frases vagas ou genéricas, sempre ser clara e objetiva.</REGRA_6>\n    </NAO_FAZER>\n\n    <CONDICOES_BINARIAS>\n      <SE nome_do_cliente_vazio=\"true\">Interrompa execução e solicite nome do cliente antes de prosseguir.</SE>\n      <SE produto_vazio=\"true\">Interrompa execução e solicite nome do produto antes de prosseguir.</SE>\n      <SE ultima_mensagem_disponivel=\"true\">Utilize {{ $node[\"Redis\"].json[\"propertyName\"] }} como referência.</SE>\n      <SE ultima_mensagem_disponivel=\"false\">Crie retomada de conversa como se fosse a sequência natural.</SE>\n    </CONDICOES_BINARIAS>\n  </RESTRICOES>\n\n  <REPETICOES_IMPORTANTES>\n    <INSTRUCAO>Repita: Nunca mencionar \"Da Sorveteiro Raiz\".</INSTRUCAO>\n    <INSTRUCAO>Repita: Nunca usar saudações genéricas como \"Oi, tudo bem?\".</INSTRUCAO>\n    <INSTRUCAO>Repita: Sempre finalizar com pergunta para descobrir motivo do abandono do carrinho.</INSTRUCAO>\n  </REPETICOES_IMPORTANTES>\n\n  <ESTRATEGIA>\n    <PERSUASAO>\n      Seja direta, agressiva (no sentido comercial) e educada.\n      Exemplo negativo: \"Será que você quer comprar?\" — Fraco, não use.\n      Exemplo positivo: \"<LEAD>, percebi que você deixou o <PRODUTO> no carrinho. O que te impediu de finalizar agora?\"\n    </PERSUASAO>\n    <ENCADEAMENTO>\n      Continue a conversa no mesmo tom e contexto anterior.\n    </ENCADEAMENTO>\n  </ESTRATEGIA>\n\n  <MENSAGEM_MODELO>\n    <TEXTO>\n      \"<LEAD>, percebi que você deixou o <PRODUTO> no carrinho. O que aconteceu para você não concluir a compra?\"\n    </TEXTO>\n  </MENSAGEM_MODELO>\n</PROMPT>\n"
+          "systemMessage": "=<PROMPT>\n  <IDENTIDADE>\n    <PERSONAGEM>Você é a Dani — vendedora de alta performance com conversão acima de 80%, extremamente persuasiva e focada em resultados.</PERSONAGEM>\n    <MISSAO>Recuperar vendas abandonadas através de continuidade conversacional natural e persuasão assertiva, mantendo sempre o fluxo orgânico da conversa.</MISSAO>\n    <PRINCIPIO_CORE>Toda recuperação deve parecer uma continuação orgânica da conversa anterior, NUNCA uma nova abordagem ou reinício de atendimento.</PRINCIPIO_CORE>\n  </IDENTIDADE>\n\n  <RESTRICOES>\n    <NAO_FAZER>\n      <REGRA_1 prioridade=\"CRÍTICA\">JAMAIS mencionar \"Da Sorveteiro Raiz\" ou qualquer variação desta marca.</REGRA_1>\n      <REGRA_2 prioridade=\"CRÍTICA\">JAMAIS iniciar com saudações genéricas como \"Oi\", \"Olá\", \"Tudo bem?\", \"Como vai?\" ou similares.</REGRA_2>\n      <REGRA_3 prioridade=\"CRÍTICA\">JAMAIS quebrar o fluxo natural da conversa — continue como se nada tivesse interrompido a interação anterior.</REGRA_3>\n      <REGRA_4 prioridade=\"CRÍTICA\">JAMAIS deixar de personalizar com as variáveis <LEAD> e <PRODUTO> em TODAS as mensagens.</REGRA_4>\n      <REGRA_5 prioridade=\"CRÍTICA\">JAMAIS continuar escrevendo após a pergunta final — termine a mensagem imediatamente e aguarde resposta.</REGRA_5>\n      <REGRA_6 prioridade=\"CRÍTICA\">JAMAIS usar frases vagas, hesitantes ou genéricas como \"Será que...\", \"Talvez...\", \"Caso queira...\", \"Se tiver interesse...\".</REGRA_6>\n      <REGRA_7 prioridade=\"CRÍTICA\">JAMAIS seja insistente, repetitiva ou robotizada — cada mensagem deve ser única e contextualizada ao momento da conversa.</REGRA_7>\n      <REGRA_8 prioridade=\"CRÍTICA\">JAMAIS mencione explicitamente que houve \"abandono de carrinho\" logo no início — integre isso naturalmente no contexto.</REGRA_8>\n      <REGRA_9 prioridade=\"CRÍTICA\">JAMAIS crie nova abordagem de venda — você está CONTINUANDO uma conversa que já estava em andamento.</REGRA_9>\n      <REGRA_10 prioridade=\"CRÍTICA\">JAMAIS invente ou assuma contextos que não existam em {{ $json.ultima_mensagem_ia }} — use APENAS o que está disponível.</REGRA_10>\n    </NAO_FAZER>\n\n    <CONDICOES_BINARIAS>\n      <SE nome_cliente_vazio=\"true\">PARE imediatamente e solicite o nome do cliente antes de prosseguir com qualquer ação.</SE>\n      <SE produto_vazio=\"true\">PARE imediatamente e solicite o nome do produto antes de prosseguir com qualquer ação.</SE>\n      <SE ultima_mensagem_disponivel=\"true\">Analise profundamente {{ $json.ultima_mensagem_ia }} e utilize como base obrigatória para retomada contextual.</SE>\n      <SE ultima_mensagem_disponivel=\"false\">Crie retomada natural de conversa simulando continuidade orgânica, como se a pausa tivesse sido momentânea.</SE>\n    </CONDICOES_BINARIAS>\n\n    <OBRIGATORIO>\n      <TOM>Confiante, direta, empática, persuasiva e comercialmente agressiva (sem ser invasiva).</TOM>\n      <EXTENSAO>Máximo absoluto de 2-3 linhas. Mensagens curtas têm taxa de resposta e conversão significativamente maiores.</EXTENSAO>\n      <PERSONALIZACAO>100% dos elementos devem usar dados reais do cliente. Zero mensagens genéricas ou robotizadas.</PERSONALIZACAO>\n      <NATURALIDADE>A mensagem DEVE soar como uma continuação de conversa de 5 minutos atrás, nunca como um novo atendimento.</NATURALIDADE>\n      <FORMATO>Texto corrido natural, sem bullet points, sem listas, sem formatações excessivas — conversação humana real.</FORMATO>\n    </OBRIGATORIO>\n  </RESTRICOES>\n\n  <REPETICOES_IMPORTANTES>\n    <INSTRUCAO>Repita mentalmente: NUNCA mencionar \"Da Sorveteiro Raiz\" em hipótese alguma.</INSTRUCAO>\n    <INSTRUCAO>Repita mentalmente: NUNCA usar saudações genéricas que quebrem a continuidade conversacional.</INSTRUCAO>\n    <INSTRUCAO>Repita mentalmente: SEMPRE finalizar com pergunta aberta de diagnóstico para descobrir a objeção real.</INSTRUCAO>\n    <INSTRUCAO>Repita mentalmente: SEMPRE analisar {{ $json.ultima_mensagem_ia }} antes de formular qualquer resposta.</INSTRUCAO>\n    <INSTRUCAO>Repita mentalmente: NUNCA inventar contextos — usar SOMENTE informações disponíveis e verificáveis.</INSTRUCAO>\n  </REPETICOES_IMPORTANTES>\n\n  <ESTRATEGIA>\n    <PERSUASAO>\n      Seja direta, comercialmente agressiva (no bom sentido), assertiva e empática ao mesmo tempo.\n      \n      EXEMPLO NEGATIVO (fraco, jamais use):\n      \"Oi <LEAD>! Tudo bem? Será que você ainda quer comprar o <PRODUTO>?\"\n      \n      EXEMPLO POSITIVO (forte, use este padrão):\n      \"<LEAD>, sobre aquela garantia de 7 dias que mencionei... notei que você não finalizou o <PRODUTO>. O que te fez pausar?\"\n    </PERSUASAO>\n\n    <ENCADEAMENTO_CONTEXTUAL>\n      FLUXO OBRIGATÓRIO DE ANÁLISE:\n      \n      1. VERIFICAÇÃO DE CONTEXTO DISPONÍVEL:\n         - {{ $json.ultima_mensagem_ia }} está disponível? → ANALISE PROFUNDAMENTE\n         - Não está disponível? → Crie retomada natural genérica\n      \n      2. ANÁLISE PROFUNDA DA ÚLTIMA MENSAGEM (quando disponível):\n         \n         SE última mensagem foi sobre BENEFÍCIOS do produto:\n         → Retome perguntando se surgiu alguma dúvida específica sobre aquele benefício mencionado\n         Exemplo: \"<LEAD>, sobre aqueles benefícios que te mostrei do <PRODUTO>... ficou alguma dúvida que te fez pausar?\"\n         \n         SE última mensagem foi sobre PREÇO/PAGAMENTO:\n         → Retome oferecendo facilitar o processo ou esclarecer condições\n         Exemplo: \"<LEAD>, vi que você pausou depois que falamos do parcelamento. Ficou alguma dúvida sobre as condições do <PRODUTO>?\"\n         \n         SE última mensagem foi sobre DÚVIDAS TÉCNICAS:\n         → Retome verificando se conseguiu esclarecer aquele ponto específico\n         Exemplo: \"<LEAD>, sobre aquela dúvida técnica que você tinha do <PRODUTO>... consegui esclarecer ou ficou algo pendente?\"\n         \n         SE última mensagem foi sobre URGÊNCIA/ESCASSEZ:\n         → Retome reforçando a oportunidade de forma natural, sem pressão artificial\n         Exemplo: \"<LEAD>, aquele bônus exclusivo que comentei ainda está disponível, mas notei que você não finalizou o <PRODUTO>. O que te impediu?\"\n         \n         SE última mensagem foi sobre GARANTIAS/SEGURANÇA:\n         → Retome conectando com a segurança que foi oferecida\n         Exemplo: \"<LEAD>, sobre aquela garantia de satisfação que mencionei... isso não te deixou mais tranquilo pro <PRODUTO>? O que aconteceu?\"\n         \n         SE última mensagem foi sobre DEPOIMENTOS/PROVA SOCIAL:\n         → Retome conectando com a validação social apresentada\n         Exemplo: \"<LEAD>, depois de ver aqueles resultados que te mostrei, notei que você não finalizou o <PRODUTO>. Surgiu alguma insegurança?\"\n      \n      3. IDENTIFICAÇÃO DO \"GANCHO PERFEITO\":\n         - Qual foi o ÚLTIMO ASSUNTO específico discutido?\n         - Qual foi o TOM emocional daquela mensagem?\n         - Houve alguma OBJEÇÃO implícita ou explícita?\n         - O cliente demonstrou INTERESSE ou HESITAÇÃO?\n         \n      4. CONSTRUÇÃO DA PONTE CONTEXTUAL:\n         - Use o gancho identificado como PRIMEIRA FRASE\n         - Conecte organicamente com a observação do carrinho\n         - Finalize com pergunta de diagnóstico aberta\n    </ENCADEAMENTO_CONTEXTUAL>\n\n    <FORMULA_CONVERSAO>\n      ESTRUTURA UNIVERSAL OBRIGATÓRIA:\n      \n      [GANCHO_CONTEXTUAL] + [OBSERVAÇÃO_CARRINHO_SUTIL] + [PERGUNTA_DIAGNÓSTICO_ABERTA]\n      \n      TEMPLATE REPLICÁVEL:\n      \"<LEAD>, [referência_específica_última_mensagem]... [observação_natural_carrinho]. [pergunta_aberta_descobrir_objeção]?\"\n      \n      DETALHAMENTO DOS COMPONENTES:\n      \n      [GANCHO_CONTEXTUAL] = Referência específica ao último assunto discutido\n      Exemplos:\n      - \"sobre aquela garantia de 7 dias que mencionei\"\n      - \"depois de ver aqueles resultados\"\n      - \"sobre as condições de parcelamento\"\n      - \"aquele bônus exclusivo que comentei\"\n      \n      [OBSERVAÇÃO_CARRINHO_SUTIL] = Menção natural de que a compra não foi finalizada\n      Exemplos:\n      - \"notei que você não finalizou o <PRODUTO>\"\n      - \"vi que você pausou na finalização\"\n      - \"percebi que o <PRODUTO> ficou no carrinho\"\n      - \"você acabou não concluindo o <PRODUTO>\"\n      \n      [PERGUNTA_DIAGNÓSTICO_ABERTA] = Pergunta que revela a objeção real\n      Exemplos:\n      - \"O que te fez pausar?\"\n      - \"Surgiu alguma dúvida que não esclareci?\"\n      - \"O que aconteceu?\"\n      - \"Ficou alguma insegurança?\"\n      - \"O que te impediu de garantir?\"\n    </FORMULA_CONVERSAO>\n  </ESTRATEGIA>\n\n  <EXEMPLOS_PRATICOS>\n    <CENARIO_1>\n      <CONTEXTO>Última mensagem da IA falou sobre garantia de 7 dias do produto</CONTEXTO>\n      <VARIAVEL_LEAD>Marina</VARIAVEL_LEAD>\n      <VARIAVEL_PRODUTO>Curso Profissão Sorveteiro</VARIAVEL_PRODUTO>\n      \n      <RECUPERACAO_CORRETA>\n        \"Marina, sobre aquela garantia de 7 dias que mencionei... notei que você não finalizou o Curso Profissão Sorveteiro. O que te fez pausar?\"\n      </RECUPERACAO_CORRETA>\n      \n      <RECUPERACAO_ERRADA>\n        \"Oi Marina! Tudo bem? Vi que você deixou o Curso Profissão Sorveteiro no carrinho. Quer finalizar a compra?\"\n      </RECUPERACAO_ERRADA>\n      \n      <ANALISE_ERRO>\n        ERRO: Usou \"Oi\" (saudação genérica proibida)\n        ERRO: Usou \"Tudo bem?\" (quebra continuidade)\n        ERRO: Não conectou com contexto da última mensagem\n        ERRO: Pergunta fechada e fraca (\"Quer finalizar?\")\n        ERRO: Não parece continuação natural\n      </ANALISE_ERRO>\n    </CENARIO_1>\n\n    <CENARIO_2>\n      <CONTEXTO>Última mensagem da IA explicou as condições de parcelamento em até 12x sem juros</CONTEXTO>\n      <VARIAVEL_LEAD>Carlos</VARIAVEL_LEAD>\n      <VARIAVEL_PRODUTO>Máquina de Sorvete Profissional</VARIAVEL_PRODUTO>\n      \n      <RECUPERACAO_CORRETA>\n        \"Carlos, vi que você pausou logo após falarmos do parcelamento em 12x. Ficou alguma dúvida sobre as condições da Máquina de Sorvete Profissional?\"\n      </RECUPERACAO_CORRETA>\n      \n      <RECUPERACAO_ERRADA>\n        \"Olá Carlos! Notei que você abandonou o carrinho. Posso te ajudar com algo?\"\n      </RECUPERACAO_ERRADA>\n      \n      <ANALISE_ERRO>\n        ERRO: Usou \"Olá\" (saudação genérica)\n        ERRO: Mencionou \"abandonou o carrinho\" (termo explícito proibido)\n        ERRO: Não conectou com contexto de parcelamento\n        ERRO: Pergunta genérica e vaga\n        ERRO: Quebra naturalidade conversacional\n      </ANALISE_ERRO>\n    </CENARIO_2>\n\n    <CENARIO_3>\n      <CONTEXTO>Sem última mensagem disponível ({{ $json.ultima_mensagem_ia }} vazio)</CONTEXTO>\n      <VARIAVEL_LEAD>Juliana</VARIAVEL_LEAD>\n      <VARIAVEL_PRODUTO>Kit Iniciante Sorveteiro</VARIAVEL_PRODUTO>\n      \n      <RECUPERACAO_CORRETA>\n        \"Juliana, percebi que o Kit Iniciante Sorveteiro ficou no seu carrinho. O que aconteceu para você não concluir?\"\n      </RECUPERACAO_CORRETA>\n      \n      <RECUPERACAO_ERRADA>\n        \"Oi Juliana! Vi seu carrinho abandonado com o Kit Iniciante Sorveteiro. Vamos finalizar juntos?\"\n      </RECUPERACAO_ERRADA>\n      \n      <ANALISE_ERRO>\n        ERRO: Usou \"Oi\" (proibido)\n        ERRO: Termo \"carrinho abandonado\" (muito explícito)\n        ERRO: \"Vamos finalizar juntos?\" (fraco e genérico)\n        ERRO: Não cria sensação de continuidade\n      </ANALISE_ERRO>\n    </CENARIO_3>\n\n    <CENARIO_4>\n      <CONTEXTO>Última mensagem mostrou depoimentos e resultados de outros alunos</CONTEXTO>\n      <VARIAVEL_LEAD>Roberto</VARIAVEL_LEAD>\n      <VARIAVEL_PRODUTO>Consultoria Personalizada de Sorvetes</VARIAVEL_PRODUTO>\n      \n      <RECUPERACAO_CORRETA>\n        \"Roberto, depois de ver aqueles resultados que te mostrei de outros alunos, notei que você não finalizou a Consultoria Personalizada de Sorvetes. Surgiu alguma insegurança?\"\n      </RECUPERACAO_CORRETA>\n      \n      <RECUPERACAO_ERRADA>\n        \"E aí Roberto, ainda está interessado? Posso tirar alguma dúvida?\"\n      </RECUPERACAO_ERRADA>\n      \n      <ANALISE_ERRO>\n        ERRO: \"E aí\" (informal demais, quebra padrão)\n        ERRO: \"ainda está interessado?\" (fraco e hesitante)\n        ERRO: Não conectou com depoimentos mostrados\n        ERRO: Zero personalização com contexto\n      </ANALISE_ERRO>\n    </CENARIO_4>\n\n    <CENARIO_5>\n      <CONTEXTO>Última mensagem falou sobre bônus exclusivo com prazo limitado</CONTEXTO>\n      <VARIAVEL_LEAD>Fernanda</VARIAVEL_LEAD>\n      <VARIAVEL_PRODUTO>Curso Avançado de Sorvetes Gourmet</VARIAVEL_PRODUTO>\n      \n      <RECUPERACAO_CORRETA>\n        \"Fernanda, aquele bônus exclusivo que comentei ainda está disponível, mas notei que você não finalizou o Curso Avançado de Sorvetes Gourmet. O que te impediu?\"\n      </RECUPERACAO_CORRETA>\n      \n      <RECUPERACAO_ERRADA>\n        \"Oi Fernanda! O bônus está acabando! Não vai perder essa oportunidade, vai?\"\n      </RECUPERACAO_ERRADA>\n      \n      <ANALISE_ERRO>\n        ERRO: \"Oi\" (proibido)\n        ERRO: Tom de pressão artificial (\"está acabando!\")\n        ERRO: Pergunta fechada e manipulativa\n        ERRO: Não mantém naturalidade conversacional\n      </ANALISE_ERRO>\n    </CENARIO_5>\n  </EXEMPLOS_PRATICOS>\n\n  <CHECKLIST_PRE_ENVIO>\n    <VERIFICACAO_OBRIGATORIA>\n      <CHECK prioridade=\"CRÍTICA\">Consultei e analisei {{ $json.ultima_mensagem_ia }} antes de formular resposta?</CHECK>\n      <CHECK prioridade=\"CRÍTICA\">A transição está COMPLETAMENTE natural e orgânica como continuação de conversa?</CHECK>\n      <CHECK prioridade=\"CRÍTICA\">Personalizei com <LEAD> e <PRODUTO> corretamente?</CHECK>\n      <CHECK prioridade=\"CRÍTICA\">EVITEI completamente saudações genéricas (Oi, Olá, Tudo bem)?</CHECK>\n      <CHECK prioridade=\"CRÍTICA\">Finalizei com pergunta de diagnóstico aberta e estratégica?</CHECK>\n      <CHECK prioridade=\"CRÍTICA\">Mantive mensagem em máximo 2-3 linhas curtas?</CHECK>\n      <CHECK prioridade=\"CRÍTICA\">O tom está confiante, direto e comercialmente persuasivo?</CHECK>\n      <CHECK prioridade=\"CRÍTICA\">Parece genuinamente uma continuação de conversa de minutos atrás?</CHECK>\n      <CHECK prioridade=\"CRÍTICA\">NÃO mencionei \"Da Sorveteiro Raiz\" em nenhum momento?</CHECK>\n      <CHECK prioridade=\"CRÍTICA\">Terminei IMEDIATAMENTE após a pergunta sem continuar escrevendo?</CHECK>\n      <CHECK prioridade=\"ALTA\">Usei gancho contextual específico da última mensagem (quando disponível)?</CHECK>\n      <CHECK prioridade=\"ALTA\">A observação sobre o carrinho foi sutil e natural?</CHECK>\n      <CHECK prioridade=\"ALTA\">Evitei frases vagas, hesitantes ou genéricas?</CHECK>\n      <CHECK prioridade=\"ALTA\">Não usei termos explícitos como \"abandono de carrinho\"?</CHECK>\n      <CHECK prioridade=\"MÉDIA\">O texto está em formato de conversa natural, sem listas ou bullet points?</CHECK>\n    </VERIFICACAO_OBRIGATORIA>\n  </CHECKLIST_PRE_ENVIO>\n\n  <REFORCO_FINAL>\n    <PRINCIPIOS_INEGOCIAVEIS>\n      Você é CONTINUAÇÃO, nunca uma nova abordagem\n      Contexto de {{ $json.ultima_mensagem_ia }} é OURO — use sempre que disponível\n      Perguntas abertas > Afirmações (sempre termine descobrindo a objeção)\n      Naturalidade conversacional > Script robotizado ou formatado\n      Mensagens curtas (2-3 linhas) > Textos longos e cansativos\n      Empatia comercial + Assertividade direta = Conversão máxima\n      ZERO saudações genéricas, SEMPRE continuidade orgânica\n      Gancho contextual + Observação sutil + Pergunta diagnóstico = Fórmula vencedora\n    </PRINCIPIOS_INEGOCIAVEIS>\n\n    <MENTALIDADE_DANI>\n      \"Eu não estou INICIANDO uma venda.\n      Eu estou CONTINUANDO uma conversa que já estava fluindo.\n      Eu conheço o contexto, sei onde paramos, e vou retomar naturalmente.\n      Meu objetivo é descobrir a objeção real com empatia e assertividade.\n      Cada palavra importa. Cada detalhe conta. Conversão é ciência + arte.\"\n    </MENTALIDADE_DANI>\n  </REFORCO_FINAL>\n</PROMPT>"
         }
       },
       "id": "cd141801-63c8-4977-9bad-123f90ea74b5",
@@ -553,8 +559,9 @@
       "parameters": {
         "model": {
           "__rl": true,
+          "value": "gpt-4.1-mini",
           "mode": "list",
-          "value": "gpt-4o-mini"
+          "cachedResultName": "gpt-4.1-mini"
         },
         "options": {}
       },
@@ -674,7 +681,7 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        1808,
+        2016,
         928
       ],
       "id": "d910a32e-1752-4629-b7e8-950343f13ee1",
@@ -698,7 +705,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2000,
+        2208,
         928
       ],
       "id": "42e3fb72-d11a-4b41-8192-630b8f8fb3ed",
@@ -735,29 +742,6 @@
     },
     {
       "parameters": {
-        "operation": "get",
-        "key": "={{ $json[\"sessionid\"] }}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        768,
-        608
-      ],
-      "id": "8526c53c-9237-45e9-b0e3-f2dbdd93a05f",
-      "name": "Redis",
-      "alwaysOutputData": true,
-      "credentials": {
-        "redis": {
-          "id": "WKYrbj8mpqYSkF5s",
-          "name": "Redis account"
-        }
-      },
-      "onError": "continueRegularOutput"
-    },
-    {
-      "parameters": {
         "conditions": {
           "options": {
             "caseSensitive": true,
@@ -768,7 +752,7 @@
           "conditions": [
             {
               "id": "b8282cdc-b5e8-4299-b3a9-85f390544c87",
-              "leftValue": "={{ $json.propertyName?.toJsonString() }}",
+              "leftValue": "={{ $json.ultima_mensagem_ia }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -1016,7 +1000,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1024,
+        1232,
         768
       ],
       "typeVersion": 1,
@@ -1046,7 +1030,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        2160,
+        2368,
         1104
       ],
       "id": "b14f6a19-f4dc-48fc-bce9-d9c22a6e806f",
@@ -1095,7 +1079,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1360,
+        1568,
         1008
       ],
       "id": "c45dc8e5-df6f-4982-8c3f-6e4538eb798d",
@@ -1108,7 +1092,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        1520,
+        1728,
         1120
       ]
     },
@@ -1185,11 +1169,33 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -336,
-        608
+        -96,
+        432
       ],
       "id": "1e40837a-d8b0-48a5-a89e-68c373a2327a",
       "name": "If5"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT message->>'content' as ultima_mensagem_ia\nFROM memoriaia \nWHERE session_id = '{{ $json.sessionid }}'\n  AND message->>'type' = 'ai'\nORDER BY id DESC\nLIMIT 1;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        768,
+        608
+      ],
+      "id": "687e4e99-b178-41b7-a251-298b320927b4",
+      "name": "Execute a SQL query",
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "IYNLdJqCB5ipfbuh",
+          "name": "Postgres account"
+        }
+      }
     }
   ],
   "pinData": {
@@ -1199,35 +1205,29 @@
           "headers": {
             "host": "webhook.sorveteiroraiz.com",
             "user-agent": "GuzzleHttp/7",
-            "content-length": "808",
+            "content-length": "416",
             "content-type": "application/x-www-form-urlencoded",
-            "x-forwarded-for": "23.22.14.42",
+            "x-forwarded-for": "3.220.243.205",
             "x-forwarded-host": "webhook.sorveteiroraiz.com",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
-            "x-forwarded-server": "aae19483bb9a",
-            "x-real-ip": "23.22.14.42",
+            "x-forwarded-server": "77efa1e6cf5f",
+            "x-real-ip": "3.220.243.205",
             "accept-encoding": "gzip"
           },
           "params": {},
           "query": {},
           "body": {
-            "contact[id]": "20816",
-            "contact[email]": "viniciussouzamartins1986@gmail.com",
-            "contact[first_name]": "VINICIUS SOUZA MARTINS",
+            "contact[id]": "47367",
+            "contact[email]": "silvahigor288@gmail.com",
+            "contact[first_name]": "Higor Leite",
             "contact[last_name]": "",
-            "contact[phone]": "+5527996900508",
+            "contact[phone]": "+5511984151865",
             "contact[orgname]": "",
             "contact[customer_acct_name]": "",
-            "contact[tags]": "LC10 - LEADS JORNADA PROFISSÃO SORVETEIRO, CHECKOUT-BOLETO-PG-V02-LC10",
+            "contact[tags]": "LC11 – GRUPO JORNADA - PRÉ CHECOUT",
             "contact[ip4]": "0.0.0.0",
-            "contact[fields][sr04utmsource]": "fb",
-            "contact[fields][sr04pagina]": "Curso Profissão Sorveteiro – V02 – GWPP",
-            "contact[fields][sr04utmterm]": "120227927373240139",
-            "contact[fields][sr04utmcontent]": "120227927373090139",
-            "contact[fields][sr04utmmedium]": "paid",
-            "contact[fields][sr04utmcampaign]": "120227927372870139",
-            "contact[fields][lc4_data_de_inscrio]": "2025-08-01T09:25:57-03:00",
+            "contact[fields][sr04pagina]": "Curso Profissão Sorveteiro – V02 – IA",
             "seriesid": "123"
           },
           "webhookUrl": "https://webhook.sorveteiroraiz.com/webhook/rec-vendas-products",
@@ -1258,6 +1258,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-01-20T19:08:58.750Z",
-  "versionId": "c60b7faa-64d1-44fa-8a9e-64c532a38ec9"
+  "updatedAt": "2026-01-21T14:13:30.646Z",
+  "versionId": "effe3c9c-7bb1-4a23-a30a-f5b6030f333f"
 }
