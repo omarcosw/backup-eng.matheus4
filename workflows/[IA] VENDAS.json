@@ -1,94 +1,11 @@
 {
   "active": true,
   "connections": {
-    "OutputParser": {
-      "ai_outputParser": [
-        [
-          {
-            "node": "Parser  Chain1",
-            "type": "ai_outputParser",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Replace Me1": {
-      "main": [
-        []
-      ]
-    },
-    "Parser  Chain1": {
-      "main": [
-        [
-          {
-            "node": "Segmentos",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "no.op2": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Loop Over Items1": {
-      "main": [
-        [],
-        [
-          {
-            "node": "Replace Me1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "1,2s": {
-      "main": [
-        [
-          {
-            "node": "no.op2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Segmentos": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI2": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Parser  Chain1",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Webhook": {
       "main": [
         [
           {
-            "node": "Ativar para teste",
+            "node": "pausar atendimento",
             "type": "main",
             "index": 0
           }
@@ -306,13 +223,7 @@
     },
     "Ativar para teste": {
       "main": [
-        [
-          {
-            "node": "pausar atendimento",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Embeddings OpenAI2": {
@@ -366,7 +277,7 @@
         ],
         [
           {
-            "node": "HTTP Request1",
+            "node": "Analyze image",
             "type": "main",
             "index": 0
           }
@@ -479,6 +390,28 @@
           }
         ]
       ]
+    },
+    "Analyze image": {
+      "main": [
+        [
+          {
+            "node": "empilhaÁudio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "empilhaÁudio": {
+      "main": [
+        [
+          {
+            "node": "Memória Inicial",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-08-12T15:36:02.172Z",
@@ -489,28 +422,6 @@
   },
   "name": "[IA] VENDAS",
   "nodes": [
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "=Whatsapp message to be splitted and formated: {{ $json.output }}",
-        "hasOutputParser": true,
-        "messages": {
-          "messageValues": [
-            {
-              "message": "=Por favor, gere a saída no seguinte formato JSON:\n{\n  \"messages\": [\n    \"splitedMessage\"\n  ]\n}\n\nAs mensagens devem ser divididas de forma natural e Humanizada, afinal estamos conversando com um humano.\n\n### Jamais separe uma mensagem vazia.\n\n### Certifique-se de que a resposta siga exatamente essa estrutura abaixo, deixando somente entre '*' para negrito e nunca fugindo das demais regras de markdown do WhatsApp:\n\t\t\t- *negrito* (substitua '**' por '*')\n\t\t\t- _itálico_ (extremamente raro)\n            - `link` (usar sempre em todos os links)\n\nTudo o que for link, deve ser exibido limpo e direto, **sem texto descritivo ou âncoras**, usando somente o domínio puro como EXEMPLO: `https://link.com.br/exemplo`\n\n❗ Nunca use markdown no estilo `[texto](link)` ou `Texto (link)`, apenas o link puro.\n\nSe detectar um link com o padrão como por exemplo `https://lp.sorveteiroraiz.com/curso-profissao-sorveteiro-pg-ia-vendas`, corrija automaticamente para `lp.sorveteiroraiz.com/curso-profissao-sorveteiro-pg-ia-vendas`, pois o domínio com www não funciona."
-            }
-          ]
-        }
-      },
-      "id": "18ea9d66-669c-469b-aed4-bc98a4e08d80",
-      "name": "Parser  Chain1",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.4,
-      "position": [
-        4464,
-        1104
-      ]
-    },
     {
       "parameters": {
         "httpMethod": "POST",
@@ -530,8 +441,8 @@
     {
       "parameters": {
         "content": "## PASSO 5 - ORGANIZA E ENVIA AS MENSAGENS PARA O CLIENTE",
-        "height": 738,
-        "width": 2068,
+        "height": 418,
+        "width": 1028,
         "color": 6
       },
       "id": "b3ec306a-ab8b-4577-97fc-43ca927d4863",
@@ -540,107 +451,8 @@
       "typeVersion": 1,
       "position": [
         4336,
-        784
+        832
       ]
-    },
-    {
-      "parameters": {
-        "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"messages\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      }\n    }\n  },\n  \"required\": [\"messages\"]\n}"
-      },
-      "id": "8f917b62-9789-4a4b-962e-32fc8b770c3d",
-      "name": "OutputParser",
-      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
-      "typeVersion": 1.2,
-      "position": [
-        4640,
-        1328
-      ]
-    },
-    {
-      "parameters": {},
-      "id": "d27e3860-df77-416f-868a-17b1a06210cc",
-      "name": "Replace Me1",
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
-      "position": [
-        5232,
-        1184
-      ]
-    },
-    {
-      "parameters": {},
-      "id": "2e212fb6-65f3-4d5f-8bfd-7b85a997fd29",
-      "name": "no.op2",
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
-      "position": [
-        6192,
-        1152
-      ]
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "id": "47f2bc38-805f-4806-965d-950d321190bc",
-      "name": "Loop Over Items1",
-      "type": "n8n-nodes-base.splitInBatches",
-      "typeVersion": 3,
-      "position": [
-        5024,
-        1104
-      ]
-    },
-    {
-      "parameters": {
-        "amount": 1.2
-      },
-      "id": "f456b832-6ec3-4235-ac81-02884b04eef0",
-      "name": "1,2s",
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
-      "position": [
-        5968,
-        1168
-      ],
-      "webhookId": "e5987401-8b77-4a84-8693-25fd8898cd94"
-    },
-    {
-      "parameters": {
-        "fieldToSplitOut": "output.messages",
-        "options": {
-          "destinationFieldName": "output"
-        }
-      },
-      "id": "033d30c2-42e5-41f7-a28b-98245279a37f",
-      "name": "Segmentos",
-      "type": "n8n-nodes-base.splitOut",
-      "typeVersion": 1,
-      "position": [
-        4800,
-        1104
-      ]
-    },
-    {
-      "parameters": {
-        "model": "gpt-4.1-mini",
-        "options": {}
-      },
-      "id": "75418645-7739-4422-97de-c75721d3f651",
-      "name": "OpenAI2",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1,
-      "position": [
-        4400,
-        1312
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": "QzQb6Q9G3hGozb9v",
-          "name": "OpenAi - Dani 2"
-        }
-      }
     },
     {
       "parameters": {
@@ -874,21 +686,6 @@
         784,
         848
       ]
-    },
-    {
-      "parameters": {
-        "content": "### - Recebe dados da Evolution API [Webhook]\n\n### - Tratamento e Organização dos dados [camposIniciais]\n\n### - Combinar dados recebidos [unificaDados]",
-        "width": 660,
-        "color": 7
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -1968,
-        1072
-      ],
-      "typeVersion": 1,
-      "id": "f9819301-787d-46f0-ab5f-01c86e8f01ab",
-      "name": "Sticky Note20"
     },
     {
       "parameters": {
@@ -1222,26 +1019,6 @@
     },
     {
       "parameters": {
-        "operation": "delete",
-        "key": "=34844971-d92c-45a4-8cdd-6a93ab878050"
-      },
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        -2368,
-        784
-      ],
-      "id": "041e14cd-0296-4a7e-b33b-ac41d8718ecb",
-      "name": "Limpar Memória1",
-      "credentials": {
-        "redis": {
-          "id": "WKYrbj8mpqYSkF5s",
-          "name": "Redis account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "conditions": {
           "options": {
             "caseSensitive": true,
@@ -1278,8 +1055,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -2160,
-        1328
+        -2192,
+        1120
       ],
       "id": "1613c380-a651-4085-b9e4-241c21fc052b",
       "name": "Ativar para teste"
@@ -1467,42 +1244,6 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://unnichat.com.br/a/start/Pp4VlExr6e0qVmtod5fh",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"nome\": \"{{ $('camposIniciais').first().json.meta.nomeCliente }}\",\n  \"telefone\": \"{{ $('camposIniciais').first().json.meta.telefoneCliente }}\",\n  \"type\": \"{{ $('camposIniciais').first().json.content.tipoMensagem }}\",\n  \"text\": {\n    \"body\": \"Peço desculpas, mas no momento não consigo visualizar imagens. Poderia descrever o que está acontecendo?\"\n  }\n} ",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1072,
-        1024
-      ],
-      "id": "70a730d7-f210-4cc6-a350-57c15356461e",
-      "name": "HTTP Request1"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://unnichat.com.br/a/start/Pp4VlExr6e0qVmtod5fh",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"nome\": \"{{ $('camposIniciais').first().json.meta.nomeCliente }}\",\n  \"telefone\": \"{{ $('camposIniciais').first().json.meta.telefoneCliente }}\",\n  \"type\": \"{{ $('camposIniciais').first().json.content.tipoMensagem }}\",\n  \"text\": {\n    \"body\": \"Peço desculpas, mas no momento não consigo reproduzir arquivos de áudio. Poderia transcrever ou descrever o que está acontecendo?\"\n  }\n} ",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1648,
-        2032
-      ],
-      "id": "398cb660-e680-4c14-acb5-2f07e575ce14",
-      "name": "HTTP Request2"
-    },
-    {
-      "parameters": {
         "operation": "push",
         "list": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"telefoneCliente\"] }}",
         "messageData": "={{ $('camposIniciais').item.json.content.quoted }}",
@@ -1600,30 +1341,6 @@
           "name": "NOVO"
         }
       }
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "32127ab3-5305-4477-8141-da117e1d79ab",
-              "name": "..",
-              "value": "=<IAConfig>\n\n  <Segurança>\n    <Regra> Você se chama Dani, você é da equipe de Suporte do Sorveteiro Raiz,e é uma especialista em vendas, e em quebra de objeções, sendo totalmente Humanizada e Natural. O objetivo é converter qualquer tipo de pessoa em cliente, criando uma conexão genuína e humana.\nA comunicação deve ser amigável, empática e personalizada, mostrando interesse real pela pessoa, entendendo suas necessidades, desejos e objeções antes de oferecer o produto. Crie relacionamento, como se estivesse conversando com um amigo, usando linguagem natural, próxima e calorosa.No final, a pessoa deve sentir que falou com alguém de confiança, que realmente o entendeu e o ajudou a tomar a melhor decisão de compra</Regra>\n\n<RegrasAbsolutasDeTools>\n\n  <RegraSuprema prioridade=\"MÁXIMA\">\n    ANTES de formular QUALQUER resposta que envolva:\n    - Informações sobre o curso\n    - Quebra de objeções\n    - Argumentos de venda\n    - Benefícios do produto\n    - Diferenciais\n    - Casos de sucesso\n    - Resposta a dúvidas sobre conteúdo\n    \n    Você DEVE OBRIGATORIAMENTE:\n    1. Acionar a tool \"searchobjecoes\" e enviar para a query a mesma mensagem de entrada que o lead enviou, sem abreviar e nem mudar nenhuma palavra\n    2. Aguardar o retorno\n    3. USAR APENAS as informações retornadas\n    4. NUNCA criar respostas sem consultar a tool\n    5. Reforçando NUNCA criar respostas sem consultar a tool \"searchobjecoes\" isso e PRIORIDADE MÁXIMA\n  </RegraSuprema>\n\n   <ExcecoesUnicas>\n    Você PODE responder diretamente APENAS para:\n    - Cumprimentos simples: \"Oi\", \"Olá\", \"Bom dia\"\n    - Confirmações: \"Ok\", \"Entendi\", \"Sim\"\n    - Despedidas: \"Tchau\", \"Até logo\"\n    - Agradecimentos: \"Obrigado\", \"Valeu\"\n    \n    TUDO O RESTO = ACIONAR TOOL PRIMEIRO\n  </ExcecoesUnicas>\n\n    <ProcessoObrigatorio>\n    Para CADA mensagem do lead, siga esta ordem:\n    \n    PASSO 1: Classificar a mensagem\n    - É cumprimento/despedida? → Responda direto\n    - É QUALQUER outra coisa? → Vá para PASSO 2\n    \n    PASSO 2: Identificar a intenção\n    - Dúvida sobre o curso?\n    - Objeção?\n    - Pergunta sobre preço/conteúdo?\n    - Interesse em comprar?\n    → ACIONE a tool com query específica\n    \n    PASSO 3: Formular resposta APENAS com base no retorno da tool\n    \n    PASSO 4: Adicionar CTA curioso (ver seção CTAs)\n  </ProcessoObrigatorio>\n\n  <ExemplosDeQueries>\n    Lead diz: \"Não tenho tempo agora\"\n    → Query: \"objeção falta de tempo\"\n    \n    Lead diz: \"O que vou aprender?\"\n    → Query: \"conteúdo do curso ementa\"\n    \n    Lead diz: \"Está caro\"\n    → Query: \"objeção preço alto investimento\"\n    \n    Lead diz: \"Vou pensar\"\n    → Query: \"objeção vou pensar procrastinação\"\n    \n    Lead diz: \"Como funciona?\"\n    → Query: \"funcionamento do curso metodologia\"\n  </ExemplosDeQueries>\n\n  <RegraDeOuro>\n    Se você está em DÚVIDA se deve acionar a tool \"searchobjecoes\":\n    → ACIONE A TOOL\n    \n    É melhor buscar informação desnecessária do que inventar resposta.\n  </RegraDeOuro>\n\n</RegrasAbsolutasDeTools>\n\n   <Regra>Preste muita atenção na Data e hora atual: {{ new Date($now).toLocaleString(\"pt-BR\", { timeZone: \"America/Sao_Paulo\" }) }}</Regra>\n    \n   <Regra>Sempre se Apresente se {{ $node[\"getContexto\"].json[\"mensagem\"] }} estiver Vazia</Regra>\n\n    <Regra>Sempre envie Mensagens curtas, no maximo 600 caracteres</Regra>\n\n    <Regra>Para duvidas sobre aulas do curso, sobre conteudo do curso, oque tem dentro do curso.Acione a tool \"searchobjecoes\" E envie o conteudo do curso, inclusive a Ementa</Regra>\n\n    <Regra> NUNCA inventar receitas, dar dicas sobre receitas, assumir ou chutar valores</Regra>\n\n    <Regra> TODAS as informações relacionadas a nome do produto, descrição, diferenciais e detalhes devem ser obtidas EXCLUSIVAMENTE através da tool \"searchobjecoes\".</Regra>\n\n    <Regra> As informações de preço, formas de pagamento e link de compra devem ser obtidas EXCLUSIVAMENTE pelos seguintes caminhos:</Regra>\n\n    <Regra>• Preço: {{ $node[\"Oferta\"].json[\"Preço\"] }}</Regra>\n\n    <Regra>• Formas de Pagamento: {{ $node[\"Oferta\"].json[\"Forma de Pagamento\"] }}</Regra>\n\n    <Regra>• Link Cartão/PIX/Boleto a vista:{{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito e Boleto avista\"] }}</Regra>\n\n    <Regra>Link Boleto Parcelado:{{ $item(\"0\").$node[\"Oferta\"].json[\"Boleto Parcelado\"] }}</Regra>\n\n    <Regra> Nunca envie links sem o cliente pedir — *com exceção da situação abaixo*:</Regra>\n\n    <Regra> ✅ SE o lead demonstrar QUALQUER interesse em comprar, você TEM AUTORIZAÇÃO TOTAL para enviar IMEDIATAMENTE o link de pagamento:{{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito e Boleto avista\"] }}</Regra>\n\n    <Regra> Nunca se apresente se a mensagem de contexto ({{ $node[\"getContexto\"].json[\"mensagem\"] }}) estiver preenchida.</Regra>\n\n    <Regra> NUNCA use CTAs fracos como: \"Quer saber mais?\", \"Fico à disposição\", \"Tem alguma dúvida?\". Use sempre chamadas diretas para ação.</Regra>\n\n    <Regra> Não trate o lead como comprador pronto. Vá conduzindo com perguntas estratégicas.</Regra>\n\n    <Regra> Nunca deixe o lead escapar sem tentar contornar a objeção. NÃO aceite \"vou pensar\" como resposta final.</Regra>\n\n    <Regra> Se não tiver contexto, tudo bem se apresentar. Mas se tiver contexto, pule a apresentação SEMPRE.</Regra>\n\n    <Regra>Preste bastante atenção na Data e hora atual: {{ new Date($now).toLocaleString(\"pt-BR\", { timeZone: \"America/Sao_Paulo\" }) }}</Regra>\n\n    <Regra> Nunca inventar receitas de sorvete e nunca falar que da para fazer os sorvetes na batedeira, o Profissão sorveteiro e para profissionais, o curso não e para fazer receitas em casa</Regra>\n    <Regra> Para informações sobre o curso sempre acione a funcao tool \"searchobjecoes\" </Regra>\n\n    <Regra>✅ se o lead disser: já paguei o boleto, já sou aluno, já me inscrevi, já paguei  \ndeve responder: que maravilha, seja muito bem vindo a família sorveteiro raiz. assim que a sua inscrição entrar no nosso sistema, a ana, do nosso time de suporte ao aluno vai entrar em contato com você pelo whatsapp, fique de olho! é um prazer ter você conosco!  \n\n➡️ em seguida, acionar a action tool \"viroucliente\"</regra>\n\n  </Segurança>\n\n  <ObjetivoFinal>Converter qualquer tipo de lead em VENDA. Usando linguagem Humanizada</ObjetivoFinal>\n\n  <Persona>\n    <Nome>Dani</Nome>\n    <Estilo>Mulher conservadora de 40 anos, educada</Estilo>\n    <Tom>direta, vendedora especializada, estratégica, empática, provocativa</Tom>\n    <Evitar>fala robótica, emojis exagerados, palavras difíceis, formalidades, CTAs fracos</Evitar>\n    <Foco>venda, urgência, solução real, despertar necessidade</Foco>\n  </Persona>\n\n  <Produto>\n    <ConsultaViaTool> Informações de nome, descrição, diferenciais e detalhes do produto devem ser buscadas sempre via \"searchobjecoes\".</ConsultaViaTool>\n    <ConsultaViaNode> Preço: {{ $node[\"Oferta\"].json[\"Preço\"] }} | Formas de Pagamento: {{ $node[\"Oferta\"].json[\"Forma de Pagamento\"] }} | Link de Compra:{{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito e Boleto avista\"] }}</ConsultaViaNode>\n  </Produto>\n\n  <Pagamento>\n    <ConsultaViaNode> Formas de pagamento e preço sempre pelos caminhos indicados no node \"Oferta\".</ConsultaViaNode>\n\n <Se test=\"lead.menciona('Até quando posso pagar o Boleto?')\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar duvidas sobre pagamento\" />\n    </Se>\n  </Pagamento>\n\n  <Condicionais>\n    <Se test=\"lead.menciona('preço', 'valor', 'custo', 'investimento')\">\n      <Se test=\"contexto.contem('já enviei informações do curso')\">\n        <Acao texto=\"O valor do curso é {{ $node['Oferta'].json['Preço'] }}. Pode pagar via {{ $node['Oferta'].json['Forma de Pagamento'] }}. Se quiser garantir sua vaga agora, é só acessar:{{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito e Boleto avista\"] }}\" />\n      </Se>\n      <Se test=\"!contexto.contem('já enviei informações do curso')\">\n        <Acao texto=\"Te explico sim! Mas antes, posso te mostrar o que esse curso entrega? É isso que justifica o investimento.\" />\n        <Acao tool=\"searchobjecoes\" finalidade=\"consultar informações detalhadas do produto\" />\n        <Acao texto=\"O valor do curso é {{ $node['Oferta'].json['Preço'] }}. Pode pagar via {{ $node['Oferta'].json['Forma de Pagamento'] }}. Se quiser garantir sua vaga agora, é só acessar:{{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito e Boleto avista\"] }}\" />\n      </Se>\n    </Se>\n\n    <Se test=\"lead.menciona('tempo', 'correria', 'agenda', 'rotina')\">\n      <Acao texto=\"Pode ficar tranquilo. Você tem acesso por 1 ano e estuda no seu ritmo.\" />\n    </Se>\n\n    <Se test=\"lead.menciona('máquina', 'equipamento', 'vou começar', 'não tenho máquina')\">\n      <Acao tool=\"searchobjecoes\"/>\n    </Se>\n\n    <Se test=\"lead.menciona('comprar', 'fechar', 'pagar', 'adquirir', 'quero', 'me manda o link', 'garantir vaga')\">\n      <Acao texto=\"Perfeito! Aqui está o link de pagamento direto:{{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito e Boleto avista\"] }}\" />\n    </Se>\n\n    <Se test=\"lead.menciona('o que tem no curso', 'me fala do curso', 'o que oferece', 'conteúdo do curso', 'aulas')\">\n      <Acao tool=\"searchobjecoes\" finalidade=\"consultar informações detalhadas do produto\" />\n    </Se>\n  </Condicionais>\n\n\n  <Fechamento>\n    <CTA>sempre envie uma mensagem de argumentação Boa, quebrando a objeção e deixando o lead curioso para comprar</CTA>\n  </Fechamento>\n\n  <ReforçoFinal>\n    <Regra> Nunca invente informações de produto. Use sempre \"searchobjecoes\" para nome, descrição, diferenciais e detalhes.</Regra>\n\n    <Regra> Preço, formas de pagamento e link de compra exclusivamente pelos caminhos do node \"Oferta\".</Regra>\n\n    <Regra> Nunca se apresente se contexto estiver preenchido.</Regra>\n\n    <Regra> Nunca use CTAs fracos no fim.</Regra>\n\n    <Regra> Foque sempre na urgência, na dor do cliente e no valor da solução.</Regra>\n\n    <Regra> Sua base de conhecimento esta toda na Tool \"searchobjecoes\" Sempre consultar OBRIGATÓRIAMENTE antes de qualquer resposta</Regra>\n\n    <Regra>NUNCA enviar mensagens Longas. Tenha um limite de no maximo 600  caracteres</Regra>\n\n   <InstrucoesSupremas prioridade=\"ABSOLUTA\">\n  \n  <Regra1>\n    Para QUALQUER mensagem que NÃO seja cumprimento/despedida:\n    PRIMEIRO → Acionar tool \"searchobjecoes\"\n    DEPOIS → Formular resposta baseada APENAS no retorno\n    NUNCA → Criar resposta sem consultar a tool\n  </Regra1>\n\n  <Regra2>\n    TODA resposta DEVE terminar com:\n    - UMA pergunta específica, OU\n    - UMA provocação curiosa, OU\n    - UM próximo passo claro\n    \n    NUNCA termine com frases genéricas tipo \"fico à disposição\"\n  </Regra2>\n\n  <Regra3>\n    Se o lead não responder após seu CTA:\n    - 1ª tentativa: Mude a abordagem (use pergunta diferente)\n    - 2ª tentativa: Use provocação/urgência\n  </Regra3>\n\n  <ValidacaoAutomatica>\n    Antes de enviar QUALQUER mensagem, pergunte-se:\n    ✓ Consultei a tool \"searchobjecoes\"? (Se não for cumprimento, a resposta DEVE ser SIM)\n    ✓ Terminei com pergunta/provocação específica? (DEVE ser SIM)\n    ✓ Usei CTAs proibidos? (DEVE ser NÃO)\n    \n    Se qualquer resposta estiver errada: REFAÇA a mensagem\n  </ValidacaoAutomatica>\n\n</InstrucoesSupremas>\n\n\n  </ReforçoFinal>\n\n</IAConfig>",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "f7d7ed7c-060a-4df9-9edb-78d4e1f01499",
-      "name": "camposIniciais1",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -1840,
-        784
-      ],
-      "notesInFlow": true
     },
     {
       "parameters": {
@@ -1821,6 +1538,57 @@
           "name": "Supabase - Sorveteiro Raiz"
         }
       }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash"
+        },
+        "text": "oque tem na imagem? depois passe uma ressposta para frente dizendo oque tem nela ",
+        "imageUrls": "={{ $('Webhook').item.json.body.contact.lastMessage }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        944
+      ],
+      "id": "2ac68672-c655-448c-8c06-4163d8ac7562",
+      "name": "Analyze image",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "pgFHVz3tyeXURIqV",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"telefoneCliente\"] }}",
+        "messageData": "={{ $item(\"0\").$node[\"Analyze image\"].json[\"content\"][\"parts\"][\"0\"][\"text\"] }}",
+        "tail": true
+      },
+      "id": "549f93f7-4a90-49b2-8a9b-f72ae5932c88",
+      "name": "empilhaÁudio",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1296,
+        944
+      ],
+      "credentials": {
+        "redis": {
+          "id": "WKYrbj8mpqYSkF5s",
+          "name": "Redis account"
+        }
+      }
     }
   ],
   "pinData": {
@@ -1830,16 +1598,16 @@
           "headers": {
             "host": "webhook.sorveteiroraiz.com",
             "user-agent": "axios/1.13.2",
-            "content-length": "1370",
+            "content-length": "1054",
             "accept": "application/json, text/plain, */*",
             "accept-encoding": "gzip, compress, deflate, br",
             "content-type": "application/json",
-            "x-forwarded-for": "34.34.231.82",
+            "x-forwarded-for": "34.34.231.31",
             "x-forwarded-host": "webhook.sorveteiroraiz.com",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "77efa1e6cf5f",
-            "x-real-ip": "34.34.231.82"
+            "x-real-ip": "34.34.231.31"
           },
           "params": {},
           "query": {},
@@ -1849,20 +1617,20 @@
               "name": "Higor Leite",
               "email": "",
               "phoneNumber": "5511984151865",
-              "tags": "TESTE DISPARO, TESTE IA - INSCRIÇÕES ABERTAS, LP6 - CLICOU - PRECISO DE AJUDA",
+              "tags": "VIROU CLIENTE, TESTE IA - INSCRIÇÕES ABERTAS, LP6 - CLICOU - PRECISO DE AJUDA, TESTE DISPARO",
               "fields": {
-                "mensagens": "Entendo sua dúvida! O desconto é uma oportunidade exclusiva oferecida para garantir sua vaga no curso antes que ele se feche. O valor normal do curso é de R$ 3.097, mas você pode aproveitar um desconto de R$ 1.100, pagando apenas R$ 1.997 à vista ou parcelando em até 12 vezes.\n\nAlém disso, essa oferta é por tempo limitado ou até as vagas se esgotarem, então é importante agir rápido para garantir essa condição especial. Enquanto você espera, muitos alunos já estão aprendendo e se preparando para ter seu próprio negócio. Que tal me contar se está pronto para garantir sua vaga agora?"
+                "mensagens": "Perfeito, Higor! Sua inscrição foi registrada. Fique atento ao contato da Ana, que logo estará em contato com você pelo WhatsApp. \n\nSe precisar de mais alguma coisa, é só avisar! Estamos aqui para te ajudar a dar os primeiros passos no seu novo negócio. Vamos juntos!"
               },
-              "lastMessage": "https://firebasestorage.googleapis.com/v0/b/plataforma-unnichat-media/o/messages%2Ff8fcda71-5da8-45fc-b286-aa4dd29463ff.ogg?alt=media&token=f8fcda71-5da8-45fc-b286-aa4dd29463ff",
+              "lastMessage": "https://firebasestorage.googleapis.com/v0/b/plataforma-unnichat-media/o/messages%2F655bffaa-bb06-419c-a842-18d09455ceed.jpeg?alt=media&token=655bffaa-bb06-419c-a842-18d09455ceed",
               "lastMessageData": {
-                "message": "https://firebasestorage.googleapis.com/v0/b/plataforma-unnichat-media/o/messages%2Ff8fcda71-5da8-45fc-b286-aa4dd29463ff.ogg?alt=media&token=f8fcda71-5da8-45fc-b286-aa4dd29463ff",
-                "messageType": "audio",
-                "id": "Fr3l7SbB5nRz0xIhUSsx"
+                "message": "https://firebasestorage.googleapis.com/v0/b/plataforma-unnichat-media/o/messages%2F655bffaa-bb06-419c-a842-18d09455ceed.jpeg?alt=media&token=655bffaa-bb06-419c-a842-18d09455ceed",
+                "messageType": "image",
+                "id": "3Kq2TNdxvsMoeHVtSQqy"
               },
               "instaName": "",
               "profilePicUrl": ""
             },
-            "event_date": 1768939593,
+            "event_date": 1769003284,
             "triggerData": {}
           },
           "webhookUrl": "https://webhook.sorveteiroraiz.com/webhook/danivendas01",
@@ -1905,6 +1673,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-01-20T21:58:55.819Z",
-  "versionId": "3b3ab788-b23f-4352-986c-c2067342dcdc"
+  "updatedAt": "2026-01-21T14:54:57.010Z",
+  "versionId": "2ecd6539-482e-4bdb-b788-205c3b07d883"
 }
