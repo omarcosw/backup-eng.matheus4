@@ -202,25 +202,7 @@
       "main": [
         [
           {
-            "node": "atendimento humano?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "atendimento humano?": {
-      "main": [
-        [
-          {
             "node": "getClient2",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "No Operation, do nothing1",
             "type": "main",
             "index": 0
           }
@@ -523,8 +505,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -2864,
-        1376
+        -2960,
+        1392
       ],
       "alwaysOutputData": false
     },
@@ -588,8 +570,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -2976,
-        848
+        -3072,
+        864
       ]
     },
     {
@@ -602,8 +584,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2368,
-        1888
+        -2464,
+        1904
       ],
       "id": "2759ae8f-9d63-45a7-a971-c833654c5e7a",
       "name": "Add na Memória1",
@@ -621,8 +603,8 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        -1408,
-        1520
+        -1504,
+        1536
       ],
       "id": "bc16cf06-6d58-497d-9ba8-1cdb27f04065",
       "name": "Espere1",
@@ -638,8 +620,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1616,
-        1520
+        -1712,
+        1536
       ],
       "id": "931358b3-ff9f-4aad-9b6a-64e948d36a1b",
       "name": "Memória Inicial1",
@@ -660,8 +642,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1152,
-        1520
+        -1248,
+        1536
       ],
       "id": "894f398e-6e6b-40de-9fc7-ef117266c598",
       "name": "Memória Final1",
@@ -679,8 +661,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -960,
-        1520
+        -1056,
+        1536
       ],
       "id": "309aa08a-35a8-486e-a1e1-4db29f8c78af",
       "name": "Concatena Mensagens1"
@@ -713,8 +695,8 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
       "position": [
-        -784,
-        1520
+        -880,
+        1536
       ],
       "id": "3599b1ca-bf6f-4b2e-9cc8-d2233fa25a67",
       "name": "Compara Memórias1"
@@ -727,8 +709,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -608,
-        1520
+        -704,
+        1536
       ],
       "id": "6cf1f4c0-1762-4ba0-84fb-91bb0094975e",
       "name": "Limpar Memória2",
@@ -756,8 +738,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -416,
-        1520
+        -512,
+        1536
       ],
       "id": "97b1e28f-bc91-4850-ae54-3bffe6f686f1",
       "name": "UserMessage1"
@@ -787,8 +769,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -128,
-        1520
+        -224,
+        1536
       ]
     },
     {
@@ -972,50 +954,6 @@
           },
           "conditions": [
             {
-              "id": "7c14851b-1442-4ad6-aaa9-ab5ce72cb596",
-              "leftValue": "={{ $item(\"0\").$node[\"Busca id conversation\"].json[\"payload\"][\"0\"][\"labels\"][\"0\"] }}",
-              "rightValue": "pausar_atendimento",
-              "operator": {
-                "type": "string",
-                "operation": "notEquals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        -4544,
-        1600
-      ],
-      "id": "90f7be82-2056-428d-9b7b-8dbb592dcec8",
-      "name": "atendimento humano?"
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
-      "position": [
-        -4368,
-        1776
-      ],
-      "id": "9144d258-339b-49a6-a63d-525d16eca1d5",
-      "name": "No Operation, do nothing1"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
               "id": "4e77cc7c-48f4-4cbe-94e7-6d211db67002",
               "leftValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"tipoMensagem\"] }}",
               "rightValue": "",
@@ -1074,8 +1012,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        640,
-        1520
+        544,
+        1536
       ],
       "id": "ac1c98b7-e4f4-432a-b0de-b8f744bd0de0",
       "name": "HTTP Request1"
@@ -1092,8 +1030,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2368,
-        1392
+        -2464,
+        1408
       ],
       "credentials": {
         "redis": {
@@ -1114,8 +1052,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2368,
-        1648
+        -2464,
+        1664
       ],
       "credentials": {
         "redis": {
@@ -1127,7 +1065,7 @@
     {
       "parameters": {
         "content": "## PASSO 1 - CREDENCIAIS, DADOS",
-        "height": 1438,
+        "height": 1486,
         "width": 2151,
         "color": 7
       },
@@ -1137,7 +1075,7 @@
       "typeVersion": 1,
       "position": [
         -5328,
-        832
+        864
       ]
     },
     {
@@ -1150,8 +1088,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
       "typeVersion": 1.3,
       "position": [
-        16,
-        1824
+        -80,
+        1840
       ],
       "id": "51accb90-2dec-44c7-be0c-fbae0fbe342e",
       "name": "MEMORIA",
@@ -1182,8 +1120,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1.2,
       "position": [
-        464,
-        1760
+        368,
+        1776
       ],
       "id": "aed2f646-84f4-415d-963e-7b1d1f2b32b9",
       "name": "data_info",
@@ -1255,8 +1193,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.4,
       "position": [
-        -2608,
-        1392
+        -2704,
+        1408
       ],
       "credentials": {
         "openAiApi": {
@@ -1317,8 +1255,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.7,
       "position": [
-        192,
-        1520
+        96,
+        1536
       ]
     },
     {
@@ -1331,8 +1269,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        160,
-        1840
+        64,
+        1856
       ],
       "credentials": {
         "openAiApi": {
@@ -1346,8 +1284,8 @@
       "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
       "typeVersion": 1,
       "position": [
-        448,
-        1920
+        352,
+        1936
       ],
       "id": "5120b1ad-8640-432a-82b6-13ee8153cb79",
       "name": "Reranker",
@@ -1365,8 +1303,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        608,
-        1920
+        512,
+        1936
       ],
       "id": "973ff5d6-5132-485f-9eaf-23d49c6826bd",
       "name": "Embeddings",
@@ -1439,8 +1377,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        1072,
-        1456
+        976,
+        1472
       ],
       "id": "4cba94c8-e979-458e-9099-fa9ed3298756",
       "name": "Delete table or rows",
@@ -1466,8 +1404,8 @@
       "type": "@n8n/n8n-nodes-langchain.googleGemini",
       "typeVersion": 1,
       "position": [
-        -2608,
-        1216
+        -2704,
+        1232
       ],
       "id": "a6dba99e-811d-43c3-8cd5-b494d3018e9f",
       "name": "Transcribe a recording",
@@ -1490,8 +1428,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2368,
-        1216
+        -2464,
+        1232
       ],
       "credentials": {
         "redis": {
@@ -1517,8 +1455,8 @@
       "type": "@n8n/n8n-nodes-langchain.googleGemini",
       "typeVersion": 1,
       "position": [
-        -2608,
-        1600
+        -2704,
+        1616
       ],
       "id": "757a44c4-0a6a-4654-be3e-d0aaf109be24",
       "name": "analisar um video",
@@ -1530,7 +1468,170 @@
       }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.sorveteiroraiz.com",
+            "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.4.4p34",
+            "content-length": "4421",
+            "accept": "application/json",
+            "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.18.0.1",
+            "x-forwarded-host": "webhook.sorveteiroraiz.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "77efa1e6cf5f",
+            "x-real-ip": "172.18.0.1"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "account": {
+              "id": 1,
+              "name": "Sorveteiro Raiz"
+            },
+            "additional_attributes": {},
+            "content_attributes": {},
+            "content_type": "text",
+            "content": "entendi",
+            "conversation": {
+              "additional_attributes": {},
+              "can_reply": true,
+              "channel": "Channel::Whatsapp",
+              "contact_inbox": {
+                "id": 254,
+                "contact_id": 5,
+                "inbox_id": 3,
+                "source_id": "5511984151865",
+                "created_at": "2026-01-13T19:25:52.910Z",
+                "updated_at": "2026-01-13T19:25:52.910Z",
+                "hmac_verified": false,
+                "pubsub_token": "vntgAUvCvwC12QQ8ZVNqbGcS"
+              },
+              "id": 128,
+              "inbox_id": 3,
+              "messages": [
+                {
+                  "id": 1984,
+                  "content": "entendi",
+                  "account_id": 1,
+                  "inbox_id": 3,
+                  "conversation_id": 128,
+                  "message_type": 0,
+                  "created_at": 1769004973,
+                  "updated_at": "2026-01-21T14:16:13.693Z",
+                  "private": false,
+                  "status": "sent",
+                  "source_id": "wamid.HBgNNTUxMTk4NDE1MTg2NRUCABIYFjNFQjA4NTMzQzU5Q0ExNzk5RTVDQ0IA",
+                  "content_type": "text",
+                  "content_attributes": {},
+                  "sender_type": "Contact",
+                  "sender_id": 5,
+                  "external_source_ids": {},
+                  "additional_attributes": {},
+                  "processed_message_content": "entendi",
+                  "sentiment": {},
+                  "conversation": {
+                    "assignee_id": 1,
+                    "unread_count": 1,
+                    "last_activity_at": 1769004973,
+                    "contact_inbox": {
+                      "source_id": "5511984151865"
+                    }
+                  },
+                  "sender": {
+                    "additional_attributes": {},
+                    "custom_attributes": {},
+                    "email": null,
+                    "id": 5,
+                    "identifier": "5511984151865@s.whatsapp.net",
+                    "name": "Higor Leite",
+                    "phone_number": "+5511984151865",
+                    "thumbnail": "https://chat.sorveteiroraiz.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9dc729d7663546d91652f94c0637e06804f8f20/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--dcb30c339f725240acd3fd239c6956bb67feece5/510539844_612025878163706_7849170990941451161_n.jpg",
+                    "blocked": false,
+                    "type": "contact"
+                  }
+                }
+              ],
+              "labels": [
+                "pausar_atendimento"
+              ],
+              "meta": {
+                "sender": {
+                  "additional_attributes": {},
+                  "custom_attributes": {},
+                  "email": null,
+                  "id": 5,
+                  "identifier": "5511984151865@s.whatsapp.net",
+                  "name": "Higor Leite",
+                  "phone_number": "+5511984151865",
+                  "thumbnail": "https://chat.sorveteiroraiz.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9dc729d7663546d91652f94c0637e06804f8f20/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--dcb30c339f725240acd3fd239c6956bb67feece5/510539844_612025878163706_7849170990941451161_n.jpg",
+                  "blocked": false,
+                  "type": "contact"
+                },
+                "assignee": {
+                  "id": 1,
+                  "name": "Sorveteiro Raiz",
+                  "available_name": "Sorveteiro Raiz",
+                  "avatar_url": "",
+                  "type": "user",
+                  "availability_status": null,
+                  "thumbnail": ""
+                },
+                "assignee_type": "User",
+                "team": null,
+                "hmac_verified": false
+              },
+              "status": "open",
+              "custom_attributes": {},
+              "snoozed_until": null,
+              "unread_count": 1,
+              "first_reply_created_at": "2026-01-13T20:05:27.487Z",
+              "priority": null,
+              "waiting_since": 1769004973,
+              "agent_last_seen_at": 1769004924,
+              "contact_last_seen_at": 0,
+              "last_activity_at": 1769004973,
+              "timestamp": 1769004973,
+              "created_at": 1768332353,
+              "updated_at": 1769004973.7666528
+            },
+            "created_at": "2026-01-21T14:16:13.693Z",
+            "id": 1984,
+            "inbox": {
+              "id": 3,
+              "name": "Suporte - Sorveteiro"
+            },
+            "message_type": "incoming",
+            "private": false,
+            "sender": {
+              "account": {
+                "id": 1,
+                "name": "Sorveteiro Raiz"
+              },
+              "additional_attributes": {},
+              "avatar": "https://chat.sorveteiroraiz.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9dc729d7663546d91652f94c0637e06804f8f20/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--dcb30c339f725240acd3fd239c6956bb67feece5/510539844_612025878163706_7849170990941451161_n.jpg",
+              "custom_attributes": {},
+              "email": null,
+              "id": 5,
+              "identifier": "5511984151865@s.whatsapp.net",
+              "name": "Higor Leite",
+              "phone_number": "+5511984151865",
+              "thumbnail": "https://chat.sorveteiroraiz.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9dc729d7663546d91652f94c0637e06804f8f20/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--dcb30c339f725240acd3fd239c6956bb67feece5/510539844_612025878163706_7849170990941451161_n.jpg",
+              "blocked": false
+            },
+            "source_id": "wamid.HBgNNTUxMTk4NDE1MTg2NRUCABIYFjNFQjA4NTMzQzU5Q0ExNzk5RTVDQ0IA",
+            "event": "message_created"
+          },
+          "webhookUrl": "https://webhook.sorveteiroraiz.com/webhook/suporte",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
@@ -1553,6 +1654,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-01-15T17:02:24.804Z",
-  "versionId": "2912a491-edec-4bcd-9efe-e49f966ea654"
+  "updatedAt": "2026-01-21T14:28:39.370Z",
+  "versionId": "260b0c7b-b205-488d-94f5-78fd389251dd"
 }
