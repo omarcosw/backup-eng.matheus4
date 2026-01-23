@@ -145,6 +145,7 @@
     },
     {
       "parameters": {
+        "model": "text-embedding-3-large",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
@@ -172,7 +173,15 @@
             "metadataValues": [
               {
                 "name": "Duvidas sobre",
-                "value": "pagamentos/futuras aulas/troca de email/acesso aocurso"
+                "value": "vagas/ inscrição"
+              },
+              {
+                "name": "Pergunta",
+                "value": "As vagas ou as inscriçoes encerram quando?"
+              },
+              {
+                "name": "Resposta",
+                "value": " As vagas ficam abertas até completar o número de vags da turma, entao pode encerrar a qualquer momento."
               }
             ]
           }
@@ -192,12 +201,12 @@
         "mode": "insert",
         "tableName": {
           "__rl": true,
-          "value": "curso",
+          "value": "ps_objecoes",
           "mode": "list",
-          "cachedResultName": "curso"
+          "cachedResultName": "ps_objecoes"
         },
         "options": {
-          "queryName": "match_curso"
+          "queryName": "match_ps_objecoes"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
@@ -248,7 +257,7 @@
     {
       "parameters": {
         "operation": "get",
-        "documentURL": "=1lKrcHcRAuHWVcpyaa9cXfSySKwUqv5usTgneDquv0uA"
+        "documentURL": "=1aG1Z7J8XY4A8Gnd8-XKddpKiqMDz1_S-7PalscIPtsg"
       },
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
@@ -406,6 +415,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-01-21T12:43:14.807Z",
-  "versionId": "72e883ab-488f-4a52-86e6-34c9291e9d0f"
+  "updatedAt": "2026-01-23T13:36:07.719Z",
+  "versionId": "d7c7e178-c2ea-49a0-812e-b2d93733a859"
 }
