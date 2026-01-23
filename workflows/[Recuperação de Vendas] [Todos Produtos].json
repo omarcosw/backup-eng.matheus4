@@ -1196,6 +1196,45 @@
           "name": "Postgres account"
         }
       }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://dash.unnichat.com.br/contact/search",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer fbe15e04-5670-4b83-aaad-d97dcdd3eb57"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "5511984151865"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -96,
+        64
+      ],
+      "id": "e07be58e-3532-467b-807d-629473319ff7",
+      "name": "HTTP Request2"
     }
   ],
   "pinData": {
@@ -1258,6 +1297,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-01-21T19:02:49.073Z",
-  "versionId": "7469ec0e-f9d9-434d-864a-33b17bd4bc82"
+  "updatedAt": "2026-01-23T14:23:59.565Z",
+  "versionId": "51a2ead7-f574-473e-84aa-ed672c45f7d3"
 }
