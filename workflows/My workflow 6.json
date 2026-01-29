@@ -1,11 +1,67 @@
 {
   "active": false,
   "connections": {
-    "When clicking ‘Test workflow’": {
+    "When clicking ‘Execute workflow’": {
       "main": [
         [
           {
-            "node": "file_id",
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Somente email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Somente email": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "CreateUser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CreateUser": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
@@ -13,9 +69,12 @@
       ]
     }
   },
-  "createdAt": "2025-03-31T16:20:36.890Z",
-  "id": "0mLSPmTUkEq2wSrj",
-  "meta": null,
+  "createdAt": "2026-01-29T17:57:04.862Z",
+  "id": "mxAQIyDArdkCjXfA",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "My workflow 6",
   "nodes": [
     {
@@ -26,17 +85,68 @@
         0,
         0
       ],
-      "id": "516fa2a1-e389-40c2-8f04-d4be1cf6662c",
-      "name": "When clicking ‘Test workflow’"
+      "id": "4da099ba-3f18-460f-ae3d-1e7544c0e8c0",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1kfJgq7Bz9AcwNiqka1E_XXD1VYHdtl6WD1yVOpGX7Q8",
+          "mode": "list",
+          "cachedResultName": "ALUNOS LIBERADOS IA DE SUPORTE",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kfJgq7Bz9AcwNiqka1E_XXD1VYHdtl6WD1yVOpGX7Q8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 738962872,
+          "mode": "list",
+          "cachedResultName": "alunos lc11",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kfJgq7Bz9AcwNiqka1E_XXD1VYHdtl6WD1yVOpGX7Q8/edit#gid=738962872"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "d927d001-9b1d-41e7-98df-e880161d4d84",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "rE0Y7KmzpfU43ny6",
+          "name": "Google Sheets account"
+        }
+      }
     },
     {
       "parameters": {
         "assignments": {
           "assignments": [
             {
-              "id": "bbaa8aff-0fac-4175-997e-83325c44bd19",
-              "name": "file_id",
-              "value": "",
+              "id": "001877d2-a1ec-49df-9728-5d76fccf15ba",
+              "name": "nome",
+              "value": "={{ $json.NOME }}",
+              "type": "string"
+            },
+            {
+              "id": "f2da43e1-ff4c-40e8-9a5b-29e3a42d6e60",
+              "name": "email",
+              "value": "={{ $json.EMAIL }}",
+              "type": "string"
+            },
+            {
+              "id": "c00282a7-f79f-4268-a11e-1c1003254f0c",
+              "name": "telefone",
+              "value": "={{ $json[\"TELEFONE COM DDD\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "c29c2388-c646-4473-b7e9-a4de9a828f65",
+              "name": "data_expiracao",
+              "value": "={{ $json[\"DATA EXPIRAÇÃO\"] }}",
               "type": "string"
             }
           ]
@@ -46,20 +156,95 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        220,
+        432,
         0
       ],
-      "id": "722ad758-dbb8-4bc1-81c6-dce04aff6c62",
-      "name": "file_id"
+      "id": "88635cdd-88e1-4c6d-9f29-96bec674c515",
+      "name": "Somente email"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        640,
+        0
+      ],
+      "id": "e15d0e46-fe88-4ddf-aa9d-fc9151c128f5",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        48
+      ],
+      "id": "338d3c94-6e9a-4fca-a1a4-ccaed7b0d7fc",
+      "name": "Wait",
+      "webhookId": "36a25bca-74ca-46af-8818-c8835d1dc48b"
+    },
+    {
+      "parameters": {
+        "tableId": "acesso_ia_suporte",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "={{ $('Loop Over Items').item.json.nome }}"
+            },
+            {
+              "fieldId": "telefone",
+              "fieldValue": "={{ $('Loop Over Items').item.json.telefone }}"
+            },
+            {
+              "fieldId": "email",
+              "fieldValue": "={{ $('Loop Over Items').item.json.email }}"
+            },
+            {
+              "fieldId": "data_fim",
+              "fieldValue": "={{ $('Loop Over Items').item.json.data_expiracao.split('/').reverse().join('-') }}"
+            }
+          ]
+        }
+      },
+      "id": "88b4b5e3-2d0d-42fe-8588-cacb4a9f685c",
+      "name": "CreateUser",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1104,
+        64
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
     }
   ],
   "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
+  "shared": [
+    {
+      "createdAt": "2026-01-29T17:57:04.862Z",
+      "updatedAt": "2026-01-29T17:57:04.862Z",
+      "role": "workflow:owner",
+      "workflowId": "mxAQIyDArdkCjXfA",
+      "projectId": "MnGFQuvoDMTHLtMd"
+    }
+  ],
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-03-31T16:20:36.890Z",
-  "versionId": "ae5d09ec-8de3-4291-9490-04998ebdbeda"
+  "updatedAt": "2026-01-29T19:16:13.498Z",
+  "versionId": "d9685bba-1bb9-4ec2-93a6-10680eb641a4"
 }
