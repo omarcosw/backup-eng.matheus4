@@ -189,20 +189,14 @@
     },
     "Ativar para teste": {
       "main": [
-        [
-          {
-            "node": "Filter2",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Busca id conversation": {
       "main": [
         [
           {
-            "node": "getClient2",
+            "node": "getClient",
             "type": "main",
             "index": 0
           }
@@ -353,7 +347,7 @@
         [],
         [
           {
-            "node": "Ativar para teste",
+            "node": "Filter2",
             "type": "main",
             "index": 0
           }
@@ -387,6 +381,28 @@
         [
           {
             "node": "empilhaÁudio1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "getClient": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "getClient2",
             "type": "main",
             "index": 0
           }
@@ -908,8 +924,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -4576,
-        1120
+        -4592,
+        912
       ],
       "id": "7ccf8f23-bc54-412d-9316-6496bd9e8e62",
       "name": "Ativar para teste"
@@ -1466,6 +1482,69 @@
           "name": "Google Gemini(PaLM) Api account"
         }
       }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "acesso_ia_suporte",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "keyValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}"
+            }
+          ]
+        }
+      },
+      "id": "4aac3115-78ed-4aad-943a-b4e60ea8265f",
+      "name": "getClient",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -3664,
+        1120
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4e77cc7c-48f4-4cbe-94e7-6d211db67002",
+              "leftValue": "={{ $('getClient').item.json.telefone }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "1b52470e-6f2a-4d6c-950e-2265defa140a",
+      "name": "If2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -3440,
+        1120
+      ]
     }
   ],
   "pinData": {
@@ -1654,6 +1733,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-01-21T14:28:39.370Z",
-  "versionId": "260b0c7b-b205-488d-94f5-78fd389251dd"
+  "updatedAt": "2026-01-29T19:38:27.119Z",
+  "versionId": "52142032-8d09-4631-be35-9581833b58b6"
 }
