@@ -344,7 +344,13 @@
     },
     "Atendimento Pausado?": {
       "main": [
-        [],
+        [
+          {
+            "node": "Filter2",
+            "type": "main",
+            "index": 0
+          }
+        ],
         [
           {
             "node": "Filter2",
@@ -406,7 +412,8 @@
             "type": "main",
             "index": 0
           }
-        ]
+        ],
+        []
       ]
     }
   },
@@ -1226,15 +1233,15 @@
           "fieldValues": [
             {
               "fieldId": "nome",
-              "fieldValue": "={{ $('camposIniciais1').item.json.meta.nomeCliente }}"
+              "fieldValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"nome\"] }}"
             },
             {
               "fieldId": "telefone",
-              "fieldValue": "={{ $('camposIniciais1').item.json.meta.telefoneCliente.replace('@s.whatsapp.net', '') }}"
+              "fieldValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}"
             },
             {
               "fieldId": "idmensagem",
-              "fieldValue": "={{ $('camposIniciais1').item.json.content.idMensagem }}"
+              "fieldValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"id_conversations\"] }}"
             },
             {
               "fieldId": "sessionid",
@@ -1733,6 +1740,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-01-29T19:38:27.119Z",
-  "versionId": "52142032-8d09-4631-be35-9581833b58b6"
+  "updatedAt": "2026-01-31T16:07:19.337Z",
+  "versionId": "376b74bf-6c6a-48b0-9e3b-6372bf9060ea"
 }
