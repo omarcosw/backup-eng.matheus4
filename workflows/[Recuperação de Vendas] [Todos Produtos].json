@@ -1169,8 +1169,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -96,
-        432
+        -144,
+        304
       ],
       "id": "1e40837a-d8b0-48a5-a89e-68c373a2327a",
       "name": "If5"
@@ -1297,6 +1297,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-01-23T14:23:59.565Z",
-  "versionId": "51a2ead7-f574-473e-84aa-ed672c45f7d3"
+  "updatedAt": "2026-02-01T00:35:26.946Z",
+  "versionId": "9af18228-8003-41f7-9d59-929e0bf05e8d"
 }
