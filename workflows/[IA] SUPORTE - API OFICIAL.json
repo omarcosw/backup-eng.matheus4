@@ -344,13 +344,7 @@
     },
     "Atendimento Pausado?": {
       "main": [
-        [
-          {
-            "node": "Filter2",
-            "type": "main",
-            "index": 0
-          }
-        ],
+        [],
         [
           {
             "node": "Filter2",
@@ -1740,6 +1734,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-01-31T16:07:19.337Z",
-  "versionId": "376b74bf-6c6a-48b0-9e3b-6372bf9060ea"
+  "updatedAt": "2026-02-02T02:38:05.185Z",
+  "versionId": "c8ae3e8c-cedf-4741-912c-ed7de6c2425b"
 }
