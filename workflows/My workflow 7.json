@@ -1,35 +1,206 @@
 {
-  "active": true,
-  "connections": {},
-  "createdAt": "2025-04-04T15:43:07.434Z",
-  "id": "yOuBquMN2e9oamKe",
-  "meta": null,
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2026-02-09T09:29:15.632Z",
+  "id": "tuZ0SjIu0kk7rfQS",
+  "isArchived": true,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "My workflow 7",
   "nodes": [
     {
       "parameters": {
         "httpMethod": "POST",
-        "path": "e0d7a2db-c39d-493a-a6ed-ccbd9c271605",
+        "path": "aulateste",
         "options": {}
       },
       "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
+      "typeVersion": 2.1,
       "position": [
-        0,
-        0
+        -672,
+        -128
       ],
-      "id": "a892552c-abc9-4e74-b813-93e3ba09aaba",
+      "id": "5bb04bec-ee42-4933-83bc-356e11ce0b2a",
       "name": "Webhook",
-      "webhookId": "e0d7a2db-c39d-493a-a6ed-ccbd9c271605"
+      "webhookId": "d280205c-f08f-440a-abd6-e29984a6b077"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.sorveteiroraiz.com",
+            "user-agent": "Jodd HTTP",
+            "content-length": "2181",
+            "content-type": "application/json",
+            "x-forwarded-for": "100.52.167.208",
+            "x-forwarded-host": "webhook.sorveteiroraiz.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "77efa1e6cf5f",
+            "x-hotmart-hottok": "Srl2QUHnnelVLh9p8MDePHUcKz3hqk1526245",
+            "x-real-ip": "100.52.167.208",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "data": {
+              "product": {
+                "support_email": "support@hotmart.com.br",
+                "has_co_production": false,
+                "name": "Produto test postback2",
+                "warranty_date": "2017-12-27T00:00:00Z",
+                "is_physical_product": false,
+                "id": 0,
+                "ucode": "fb056612-bcc6-4217-9e6d-2a5d1110ac2f",
+                "content": {
+                  "has_physical_products": true,
+                  "products": [
+                    {
+                      "name": "How to Make Clear Ice",
+                      "is_physical_product": false,
+                      "id": 4774438,
+                      "ucode": "559fef42-3406-4d82-b775-d09bd33936b1"
+                    },
+                    {
+                      "name": "Organizador de Poeira",
+                      "is_physical_product": true,
+                      "id": 4999597,
+                      "ucode": "099e7644-b7d1-43d6-82a9-ec6be0118a4b"
+                    }
+                  ]
+                }
+              },
+              "commissions": [
+                {
+                  "currency_value": "BRL",
+                  "source": "MARKETPLACE",
+                  "value": 149.5
+                },
+                {
+                  "currency_value": "BRL",
+                  "source": "PRODUCER",
+                  "value": 1350.5
+                }
+              ],
+              "purchase": {
+                "original_offer_price": {
+                  "currency_value": "BRL",
+                  "value": 1500
+                },
+                "checkout_country": {
+                  "iso": "BR",
+                  "name": "Brasil"
+                },
+                "sckPaymentLink": "sckPaymentLinkTest",
+                "order_bump": {
+                  "parent_purchase_transaction": "HP02316330308193",
+                  "is_order_bump": true
+                },
+                "approved_date": 1511783346000,
+                "offer": {
+                  "code": "test",
+                  "coupon_code": "SHHUHA"
+                },
+                "is_funnel": false,
+                "event_tickets": {
+                  "amount": 1770633032739
+                },
+                "order_date": 1511783344000,
+                "price": {
+                  "currency_value": "BRL",
+                  "value": 1500
+                },
+                "payment": {
+                  "installments_number": 12,
+                  "type": "CREDIT_CARD"
+                },
+                "full_price": {
+                  "currency_value": "BRL",
+                  "value": 1500
+                },
+                "business_model": "I",
+                "transaction": "HP16015479281022",
+                "status": "APPROVED"
+              },
+              "affiliates": [
+                {
+                  "affiliate_code": "Q58388177J",
+                  "name": "Affiliate name"
+                }
+              ],
+              "producer": {
+                "legal_nature": "Pessoa Física",
+                "document": "12345678965",
+                "name": "Producer Test Name"
+              },
+              "subscription": {
+                "subscriber": {
+                  "code": "I9OT62C3"
+                },
+                "plan": {
+                  "name": "plano de teste",
+                  "id": 123
+                },
+                "status": "ACTIVE"
+              },
+              "buyer": {
+                "checkout_phone_code": "999999999",
+                "address": {
+                  "zipcode": "38400123",
+                  "country": "Brasil",
+                  "number": "10",
+                  "address": "Avenida Francisco Galassi",
+                  "city": "Uberlândia",
+                  "state": "Minas Gerais",
+                  "neighborhood": "Tubalina",
+                  "complement": "Perto do shopping",
+                  "country_iso": "BR"
+                },
+                "document": "69526128664",
+                "name": "Teste Comprador",
+                "last_name": "Comprador",
+                "checkout_phone": "99999999900",
+                "first_name": "Teste",
+                "email": "testeComprador271101postman15@example.com",
+                "document_type": "CPF"
+              }
+            },
+            "id": "6260ffb4-1cad-40b1-9bf7-edc418efb1ba",
+            "creation_date": 1770633032742,
+            "event": "PURCHASE_APPROVED",
+            "version": "2.0.0"
+          },
+          "webhookUrl": "https://webhook.sorveteiroraiz.com/webhook/aulateste",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
+  "shared": [
+    {
+      "createdAt": "2026-02-09T09:29:15.632Z",
+      "updatedAt": "2026-02-09T09:29:15.632Z",
+      "role": "workflow:owner",
+      "workflowId": "tuZ0SjIu0kk7rfQS",
+      "projectId": "MnGFQuvoDMTHLtMd"
+    }
+  ],
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-04-04T15:43:08.445Z",
-  "versionId": "18852c5f-f311-4a59-9abb-1b758855bdf7"
+  "updatedAt": "2026-02-09T10:36:52.661Z",
+  "versionId": "260845e1-6e69-4cae-86f7-e7ffbe0e47af"
 }
