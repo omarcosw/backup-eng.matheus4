@@ -39,7 +39,7 @@
         [],
         [
           {
-            "node": "Wait",
+            "node": "Code",
             "type": "main",
             "index": 0
           }
@@ -62,6 +62,46 @@
         [
           {
             "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CreateUser1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "CreateUser1",
             "type": "main",
             "index": 0
           }
@@ -92,17 +132,17 @@
       "parameters": {
         "documentId": {
           "__rl": true,
-          "value": "1kfJgq7Bz9AcwNiqka1E_XXD1VYHdtl6WD1yVOpGX7Q8",
+          "value": "1cSJpwwuGGy1f0PCwBEC9F99uiD7bSsuL9L-HdTshtsY",
           "mode": "list",
-          "cachedResultName": "ALUNOS LIBERADOS IA DE SUPORTE",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kfJgq7Bz9AcwNiqka1E_XXD1VYHdtl6WD1yVOpGX7Q8/edit?usp=drivesdk"
+          "cachedResultName": "LC11 - ALUNOS LIBERADOS PARA A IA DE SUPORTE",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1cSJpwwuGGy1f0PCwBEC9F99uiD7bSsuL9L-HdTshtsY/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
-          "value": 738962872,
+          "value": 381904524,
           "mode": "list",
-          "cachedResultName": "alunos lc11",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kfJgq7Bz9AcwNiqka1E_XXD1VYHdtl6WD1yVOpGX7Q8/edit#gid=738962872"
+          "cachedResultName": "users_csv (1)",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1cSJpwwuGGy1f0PCwBEC9F99uiD7bSsuL9L-HdTshtsY/edit#gid=381904524"
         },
         "options": {}
       },
@@ -134,19 +174,19 @@
             {
               "id": "f2da43e1-ff4c-40e8-9a5b-29e3a42d6e60",
               "name": "email",
-              "value": "={{ $json.EMAIL }}",
+              "value": "={{ $json[\"E-MAIL\"] }}",
               "type": "string"
             },
             {
               "id": "c00282a7-f79f-4268-a11e-1c1003254f0c",
               "name": "telefone",
-              "value": "={{ $json[\"TELEFONE COM DDD\"] }}",
+              "value": "={{ $json.TELEFONE }}",
               "type": "string"
             },
             {
               "id": "c29c2388-c646-4473-b7e9-a4de9a828f65",
               "name": "data_expiracao",
-              "value": "={{ $json[\"DATA EXPIRAÇÃO\"] }}",
+              "value": "={{ $json[\"DATA DE ENCERRAMENTO\"] }}",
               "type": "string"
             }
           ]
@@ -182,8 +222,8 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        880,
-        48
+        1376,
+        160
       ],
       "id": "338d3c94-6e9a-4fca-a1a4-ccaed7b0d7fc",
       "name": "Wait",
@@ -208,7 +248,7 @@
             },
             {
               "fieldId": "data_fim",
-              "fieldValue": "={{ $('Loop Over Items').item.json.data_expiracao.split('/').reverse().join('-') }}"
+              "fieldValue": "={{ $item(\"0\").$node[\"Code\"].json[\"data_expiracao\"] }}"
             }
           ]
         }
@@ -218,8 +258,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        1104,
-        64
+        1680,
+        192
       ],
       "credentials": {
         "supabaseApi": {
@@ -227,6 +267,82 @@
           "name": "Supabase - Sorveteiro Raiz"
         }
       }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "acesso_ia_suporte",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "keyValue": "={{ $json.telefone }}"
+            }
+          ]
+        }
+      },
+      "id": "41c75d28-5da3-4385-add8-be7da5be40f5",
+      "name": "CreateUser1",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        960,
+        48
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "573278c8-68aa-4c70-8abe-ab4b995186b1",
+              "leftValue": "={{ $json.telefone }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1104,
+        16
+      ],
+      "id": "15be8d33-de38-488b-b655-0cd8931c9bc3",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Para modo \"Run Once for All Items\"\nreturn $input.all().map(item => {\n  const parts = item.json.data_expiracao.split('/');\n  // Formato MM/DD/YYYY → YYYY-MM-DD\n  const dataFormatada = `${parts[2]}-${parts[0].padStart(2,'0')}-${parts[1].padStart(2,'0')}`;\n  \n  return {\n    json: {\n      ...item.json,\n      data_expiracao: dataFormatada\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        -256
+      ],
+      "id": "a302cff0-8ace-44f8-894d-dcb9703e3ac4",
+      "name": "Code"
     }
   ],
   "pinData": {},
@@ -245,6 +361,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-01-29T19:16:13.498Z",
-  "versionId": "d9685bba-1bb9-4ec2-93a6-10680eb641a4"
+  "updatedAt": "2026-02-10T13:46:02.095Z",
+  "versionId": "b4ae2169-5d7e-4227-90fa-f1d87fbc0761"
 }
