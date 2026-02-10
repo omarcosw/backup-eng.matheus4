@@ -407,7 +407,13 @@
             "index": 0
           }
         ],
-        []
+        [
+          {
+            "node": "Cliente não existe",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },
@@ -1546,6 +1552,47 @@
         -3440,
         1120
       ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://chat.sorveteiroraiz.com/api/v1/accounts/1/conversations/{{ $item(\"0\").$node[\"camposIniciais1\"].json[\"id_conversations\"] }}/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "9QnwDsmh2dwF5q45vi59upxe"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "content",
+              "value": "=Olá, tudo bem?\n\nNão identificamos este número em nosso sistema, por isso não conseguimos dar continuidade por aqui. Verifique se o número que você está entrando em contato conosco é o mesmo número que você utilizou na hora da compra ou entre em contato diretamente com a Ana, do Suporte Sorveteiro Raiz, pelo número:\n📲 (12) 98216-0408\n\nSolicite ajuda para inserir ou atualizar seu número de telefone no nosso cadastro.\n\nAgradeço a compreensão!"
+            },
+            {
+              "name": "echo_id",
+              "value": "=msg{{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"contact_inbox\"][\"contact_id\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -3312,
+        912
+      ],
+      "id": "8d923c3c-d0b6-40bb-8ef8-85323b9f55a8",
+      "name": "Cliente não existe"
     }
   ],
   "pinData": {
@@ -1637,7 +1684,7 @@
                 }
               ],
               "labels": [
-                "pausar_atendimento"
+                "pausa"
               ],
               "meta": {
                 "sender": {
@@ -1734,6 +1781,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-02-02T02:38:05.185Z",
-  "versionId": "c8ae3e8c-cedf-4741-912c-ed7de6c2425b"
+  "updatedAt": "2026-02-10T13:22:27.035Z",
+  "versionId": "3bb0a628-5fd9-4b1a-9161-44f697697777"
 }
