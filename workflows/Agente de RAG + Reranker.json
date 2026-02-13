@@ -171,7 +171,7 @@
           "metadata": {
             "metadataValues": [
               {
-                "name": "Duvida sobre açucares",
+                "name": "Duvida sobre gordura",
                 "value": "={{ $('Loop Over Items').item.json.content }}"
               }
             ]
@@ -406,6 +406,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-02-13T14:57:38.373Z",
-  "versionId": "80f4d595-0eba-4a07-a9ac-ee5925288611"
+  "updatedAt": "2026-02-13T15:20:13.318Z",
+  "versionId": "4c219cb8-08a0-4d15-9fab-9c0f6f69081c"
 }
