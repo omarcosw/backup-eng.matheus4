@@ -145,7 +145,6 @@
     },
     {
       "parameters": {
-        "model": "text-embedding-3-large",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
@@ -172,16 +171,8 @@
           "metadata": {
             "metadataValues": [
               {
-                "name": "Duvidas sobre",
-                "value": "vagas/ inscrição"
-              },
-              {
-                "name": "Pergunta",
-                "value": "As vagas ou as inscriçoes encerram quando?"
-              },
-              {
-                "name": "Resposta",
-                "value": " As vagas ficam abertas até completar o número de vags da turma, entao pode encerrar a qualquer momento."
+                "name": "Duvida sobre açucares",
+                "value": "={{ $('Loop Over Items').item.json.content }}"
               }
             ]
           }
@@ -201,12 +192,12 @@
         "mode": "insert",
         "tableName": {
           "__rl": true,
-          "value": "ps_objecoes",
+          "value": "curso",
           "mode": "list",
-          "cachedResultName": "ps_objecoes"
+          "cachedResultName": "curso"
         },
         "options": {
-          "queryName": "match_ps_objecoes"
+          "queryName": "match_curso"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
@@ -257,7 +248,7 @@
     {
       "parameters": {
         "operation": "get",
-        "documentURL": "=1aG1Z7J8XY4A8Gnd8-XKddpKiqMDz1_S-7PalscIPtsg"
+        "documentURL": "=1ubkShWjbAJNL7BkzH9El5OjbUJbv3rqrFg_qgBzOhC4"
       },
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
@@ -357,7 +348,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Acessa o conteúdo\nlet content;\ntry {\n  if ($input.all && $input.all().length > 0) {\n    content = $input.all()[0].json.content;\n  } else if ($input.item && $input.item.json) {\n    content = $input.item.json.content;\n  }\n} catch (e) {\n  throw new Error('Erro ao acessar conteúdo');\n}\n\nif (!content) {\n  throw new Error('Conteúdo não encontrado');\n}\n\n// Categorias/motivos de cada pergunta\nconst categorias = {\n  \"Quero fazer sorvete apenas para consumo próprio\": \"Qualificação de Lead - Intenção de Uso\",\n  \"Não tenho maquinários\": \"Objeção Estrutural - Equipamentos\",\n  \"Faço geladinho gourmet. Isso serve\": \"Qualificação de Lead - Produto Relacionado\",\n  \"Já trabalho com sorvete/açaí\": \"Objeção Técnica - Qualidade do Produto\",\n  \"Tenho experiência, mas quero melhorar\": \"Qualificação Positiva - Aperfeiçoamento\",\n  \"Tenho dificuldade com receitas\": \"Objeção Técnica - Desenvolvimento de Receitas\",\n  \"Já sei fazer sorvete, quero só aprender a balancear\": \"Qualificação Positiva - Conhecimento Específico\",\n  \"Quanto tempo tenho de acesso\": \"Objeção Estrutural - Acesso e Suporte\",\n  \"O curso é atualizado\": \"Objeção de Valor - Atualização de Conteúdo\",\n  \"E se eu tiver dúvidas\": \"Objeção Estrutural - Suporte\",\n  \"Eu ainda não tenho nenhuma máquina\": \"Objeção Estrutural - Equipamentos Inicial\",\n  \"Na verdade, eu só queria aprender a fazer pra família\": \"Qualificação de Lead - Uso Doméstico\",\n  \"Eu já tenho minha loja\": \"Objeção Técnica - Negócio Estabelecido\",\n  \"Eu já entendo de sorvete\": \"Qualificação Positiva - Especialização\",\n  \"Eu faço geladinho gourmet, esse curso serve\": \"Qualificação de Lead - Transição de Produto\",\n  \"Eu tô com medo\": \"Objeção Psicológica - Insegurança\",\n  \"No curso indica maquinário\": \"Dúvida sobre Conteúdo - Equipamentos\",\n  \"No curso tem receitas\": \"Dúvida sobre Conteúdo - Receitas\",\n  \"Vocês vendem somente\": \"Objeção Comercial - Produto Separado\",\n  \"Não tenho dinheiro\": \"Objeção Comercial - Investimento\",\n  \"Vou deixar para a próxima\": \"Objeção de Urgência - Procrastinação\",\n  \"Eu já produzo em escala\": \"Qualificação Positiva - Produção Industrial\",\n  \"Não sei se vou conseguir acompanhar\": \"Objeção Estrutural - Tempo Disponível\",\n  \"E se eu não gostar\": \"Objeção de Risco - Garantia\"\n};\n\n// Função para encontrar o motivo\nfunction encontrarMotivo(pergunta) {\n  for (const [key, value] of Object.entries(categorias)) {\n    if (pergunta.toLowerCase().includes(key.toLowerCase())) {\n      return value;\n    }\n  }\n  return \"Objeção Geral\";\n}\n\n// Regex para capturar pergunta e resposta\n// Captura: \"pergunta\"\\nResposta: resposta (até a próxima pergunta ou fim)\nconst regex = /\"([^\"]+)\"\\s*\\n\\s*Resposta:\\s*([^\"]+?)(?=\\n\"|$)/gs;\n\nconst results = [];\nlet match;\n\nwhile ((match = regex.exec(content)) !== null) {\n  const pergunta = match[1].trim();\n  const resposta = match[2].trim();\n  \n  const motivo = encontrarMotivo(pergunta);\n  \n  results.push({\n    pergunta: pergunta,\n    resposta: resposta,\n    texto_completo: `\"${pergunta}\"\\n\\nResposta: ${resposta}`,\n    motivo: motivo,\n    categoria_principal: motivo.split(' - ')[0],\n    subcategoria: motivo.split(' - ')[1] || 'Geral'\n  });\n}\n\n// Log para debug\nconsole.log(`Total de perguntas encontradas: ${results.length}`);\n\nreturn results.map(item => ({ json: item }));"
+        "jsCode": "// Código para o node \"Code\" no n8n\nconst items = $input.all();\nconst results = [];\n\nfor (const item of items) {\n  const content = item.json.content;\n  const documentId = item.json.documentId;\n  \n  // Regex para separar pergunta e resposta\n  const match = content.match(/^\"(.+?)\"\\s*\\n\\nResposta:\\s*(.+)$/s);\n  \n  if (match) {\n    results.push({\n      json: {\n        documentId: documentId,\n        pergunta: match[1].trim(),\n        resposta: match[2].trim(),\n        textoInteiro: content\n      }\n    });\n  } else {\n    // Fallback caso o formato seja diferente\n    const parts = content.split(/\\n\\nResposta:\\s*/i);\n    results.push({\n      json: {\n        documentId: documentId,\n        pergunta: parts[0]?.replace(/^\"|\"$/g, '').trim() || '',\n        resposta: parts[1]?.trim() || '',\n        textoInteiro: content\n      }\n    });\n  }\n}\n\nreturn results;"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -415,6 +406,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-01-23T13:36:07.719Z",
-  "versionId": "d7c7e178-c2ea-49a0-812e-b2d93733a859"
+  "updatedAt": "2026-02-13T14:57:38.373Z",
+  "versionId": "80f4d595-0eba-4a07-a9ac-ee5925288611"
 }
