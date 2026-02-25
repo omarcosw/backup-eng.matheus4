@@ -1602,7 +1602,7 @@
           "headers": {
             "host": "webhook.sorveteiroraiz.com",
             "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.4.4p34",
-            "content-length": "4421",
+            "content-length": "3206",
             "accept": "application/json",
             "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
             "content-type": "application/json",
@@ -1623,111 +1623,116 @@
             "additional_attributes": {},
             "content_attributes": {},
             "content_type": "text",
-            "content": "entendi",
+            "content": null,
             "conversation": {
               "additional_attributes": {},
               "can_reply": true,
               "channel": "Channel::Whatsapp",
               "contact_inbox": {
-                "id": 254,
-                "contact_id": 5,
+                "id": 267,
+                "contact_id": 140,
                 "inbox_id": 3,
-                "source_id": "5511984151865",
-                "created_at": "2026-01-13T19:25:52.910Z",
-                "updated_at": "2026-01-13T19:25:52.910Z",
+                "source_id": "554784584426",
+                "created_at": "2026-02-24T18:54:36.236Z",
+                "updated_at": "2026-02-24T18:54:36.236Z",
                 "hmac_verified": false,
-                "pubsub_token": "vntgAUvCvwC12QQ8ZVNqbGcS"
+                "pubsub_token": "1XHWyVmDehRkT2fSNkva9nAW"
               },
-              "id": 128,
+              "id": 141,
               "inbox_id": 3,
               "messages": [
                 {
-                  "id": 1984,
-                  "content": "entendi",
+                  "id": 2172,
+                  "content": null,
                   "account_id": 1,
                   "inbox_id": 3,
-                  "conversation_id": 128,
+                  "conversation_id": 141,
                   "message_type": 0,
-                  "created_at": 1769004973,
-                  "updated_at": "2026-01-21T14:16:13.693Z",
+                  "created_at": 1772043940,
+                  "updated_at": "2026-02-25T18:25:40.071Z",
                   "private": false,
                   "status": "sent",
-                  "source_id": "wamid.HBgNNTUxMTk4NDE1MTg2NRUCABIYFjNFQjA4NTMzQzU5Q0ExNzk5RTVDQ0IA",
+                  "source_id": "wamid.HBgMNTU0Nzg0NTg0NDI2FQIAEhggQUMzNjdDMTg0MDY2NkQ3NkQ1NkNDOTI4MEZGN0Y2RkIA",
                   "content_type": "text",
                   "content_attributes": {},
                   "sender_type": "Contact",
-                  "sender_id": 5,
+                  "sender_id": 140,
                   "external_source_ids": {},
                   "additional_attributes": {},
-                  "processed_message_content": "entendi",
+                  "processed_message_content": null,
                   "sentiment": {},
                   "conversation": {
-                    "assignee_id": 1,
-                    "unread_count": 1,
-                    "last_activity_at": 1769004973,
+                    "assignee_id": null,
+                    "unread_count": 2,
+                    "last_activity_at": 1772043940,
                     "contact_inbox": {
-                      "source_id": "5511984151865"
+                      "source_id": "554784584426"
                     }
                   },
+                  "attachments": [
+                    {
+                      "id": 178,
+                      "message_id": 2172,
+                      "file_type": "audio",
+                      "account_id": 1,
+                      "extension": null,
+                      "data_url": "https://chat.sorveteiroraiz.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTRCIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d8cc9d2a77bb7f739a4ec076ea5b8ff725b9a386/File.ogg",
+                      "thumb_url": "",
+                      "file_size": 32117,
+                      "width": null,
+                      "height": null,
+                      "transcribed_text": ""
+                    }
+                  ],
                   "sender": {
                     "additional_attributes": {},
                     "custom_attributes": {},
                     "email": null,
-                    "id": 5,
-                    "identifier": "5511984151865@s.whatsapp.net",
-                    "name": "Higor Leite",
-                    "phone_number": "+5511984151865",
-                    "thumbnail": "https://chat.sorveteiroraiz.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9dc729d7663546d91652f94c0637e06804f8f20/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--dcb30c339f725240acd3fd239c6956bb67feece5/510539844_612025878163706_7849170990941451161_n.jpg",
+                    "id": 140,
+                    "identifier": null,
+                    "name": "Carlos Hohmanm",
+                    "phone_number": "+554784584426",
+                    "thumbnail": "",
                     "blocked": false,
                     "type": "contact"
                   }
                 }
               ],
-              "labels": [
-                "pausa"
-              ],
+              "labels": [],
               "meta": {
                 "sender": {
                   "additional_attributes": {},
                   "custom_attributes": {},
                   "email": null,
-                  "id": 5,
-                  "identifier": "5511984151865@s.whatsapp.net",
-                  "name": "Higor Leite",
-                  "phone_number": "+5511984151865",
-                  "thumbnail": "https://chat.sorveteiroraiz.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9dc729d7663546d91652f94c0637e06804f8f20/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--dcb30c339f725240acd3fd239c6956bb67feece5/510539844_612025878163706_7849170990941451161_n.jpg",
+                  "id": 140,
+                  "identifier": null,
+                  "name": "Carlos Hohmanm",
+                  "phone_number": "+554784584426",
+                  "thumbnail": "",
                   "blocked": false,
                   "type": "contact"
                 },
-                "assignee": {
-                  "id": 1,
-                  "name": "Sorveteiro Raiz",
-                  "available_name": "Sorveteiro Raiz",
-                  "avatar_url": "",
-                  "type": "user",
-                  "availability_status": null,
-                  "thumbnail": ""
-                },
-                "assignee_type": "User",
+                "assignee": null,
+                "assignee_type": null,
                 "team": null,
                 "hmac_verified": false
               },
               "status": "open",
               "custom_attributes": {},
               "snoozed_until": null,
-              "unread_count": 1,
-              "first_reply_created_at": "2026-01-13T20:05:27.487Z",
+              "unread_count": 2,
+              "first_reply_created_at": "2026-02-24T18:54:39.121Z",
               "priority": null,
-              "waiting_since": 1769004973,
-              "agent_last_seen_at": 1769004924,
+              "waiting_since": 1772043940,
+              "agent_last_seen_at": 1771979567,
               "contact_last_seen_at": 0,
-              "last_activity_at": 1769004973,
-              "timestamp": 1769004973,
-              "created_at": 1768332353,
-              "updated_at": 1769004973.7666528
+              "last_activity_at": 1772043940,
+              "timestamp": 1772043940,
+              "created_at": 1771959276,
+              "updated_at": 1772043940.186935
             },
-            "created_at": "2026-01-21T14:16:13.693Z",
-            "id": 1984,
+            "created_at": "2026-02-25T18:25:40.071Z",
+            "id": 2172,
             "inbox": {
               "id": 3,
               "name": "Suporte - Sorveteiro"
@@ -1740,17 +1745,32 @@
                 "name": "Sorveteiro Raiz"
               },
               "additional_attributes": {},
-              "avatar": "https://chat.sorveteiroraiz.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9dc729d7663546d91652f94c0637e06804f8f20/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--dcb30c339f725240acd3fd239c6956bb67feece5/510539844_612025878163706_7849170990941451161_n.jpg",
+              "avatar": "",
               "custom_attributes": {},
               "email": null,
-              "id": 5,
-              "identifier": "5511984151865@s.whatsapp.net",
-              "name": "Higor Leite",
-              "phone_number": "+5511984151865",
-              "thumbnail": "https://chat.sorveteiroraiz.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9dc729d7663546d91652f94c0637e06804f8f20/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--dcb30c339f725240acd3fd239c6956bb67feece5/510539844_612025878163706_7849170990941451161_n.jpg",
+              "id": 140,
+              "identifier": null,
+              "name": "Carlos Hohmanm",
+              "phone_number": "+554784584426",
+              "thumbnail": "",
               "blocked": false
             },
-            "source_id": "wamid.HBgNNTUxMTk4NDE1MTg2NRUCABIYFjNFQjA4NTMzQzU5Q0ExNzk5RTVDQ0IA",
+            "source_id": "wamid.HBgMNTU0Nzg0NTg0NDI2FQIAEhggQUMzNjdDMTg0MDY2NkQ3NkQ1NkNDOTI4MEZGN0Y2RkIA",
+            "attachments": [
+              {
+                "id": 178,
+                "message_id": 2172,
+                "file_type": "audio",
+                "account_id": 1,
+                "extension": null,
+                "data_url": "https://chat.sorveteiroraiz.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTRCIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d8cc9d2a77bb7f739a4ec076ea5b8ff725b9a386/File.ogg",
+                "thumb_url": "",
+                "file_size": 32117,
+                "width": null,
+                "height": null,
+                "transcribed_text": ""
+              }
+            ],
             "event": "message_created"
           },
           "webhookUrl": "https://webhook.sorveteiroraiz.com/webhook/suporte",
@@ -1781,6 +1801,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-02-10T13:22:27.035Z",
-  "versionId": "3bb0a628-5fd9-4b1a-9161-44f697697777"
+  "updatedAt": "2026-02-25T20:13:10.738Z",
+  "versionId": "e8b34dd8-5817-4c41-8469-8f9c68278acc"
 }
