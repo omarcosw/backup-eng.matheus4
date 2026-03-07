@@ -1088,7 +1088,7 @@
             {
               "id": "0ad262f3-a7f6-4a86-a840-1dff931a959a",
               "name": "Preço",
-              "value": "O valor normal é R$ 3.097,00, mas liberamos um grande desconto para você de R$ 700,000\n\nPor apenas: 12 x de R$ 239,66 Ou R$ 2.397,00 à vista no cartão, boleto a vista, pix ou Boleto parcelado em 12x de R$ 258,25",
+              "value": "O valor normal é R$ 3.097,00, mas liberamos um grande desconto para você de R$ 900,000\n\nPor apenas: 12 x de R$ 227,22 Ou R$ 2.197,00 à vista no cartão, boleto a vista, pix ou Boleto parcelado em 12x de R$ 247,91",
               "type": "string"
             },
             {
@@ -1100,7 +1100,7 @@
             {
               "id": "41b8d959-6639-463e-9c15-0a374a87cd2f",
               "name": "Pix, Cartão de Crédito, Boleto avista e Boleto parcelado",
-              "value": "=https://lp.sorveteiroraiz.com/pg-vnd-v02-ia/",
+              "value": "=https://lp.sorveteiroraiz.com/pag-vnd-pg-ia/",
               "type": "string"
             }
           ]
@@ -1683,6 +1683,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-01-22T20:54:36.630Z",
-  "versionId": "8689547a-868c-4474-9e04-4c1855c5281f"
+  "updatedAt": "2026-03-07T03:48:55.575Z",
+  "versionId": "804a4f56-ae12-4195-b1c5-d437d18548e5"
 }
