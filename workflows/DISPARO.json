@@ -171,7 +171,7 @@
             },
             {
               "fieldId": "mensagem",
-              "fieldValue": "=*UAU! Que alegria falar com você!*👋 \nAqui é a Dani da Equipe Sorveteiro Raiz! 🍨\n\nO Edu liberou as vagas para o *Curso Completo Profissão Sorveteiro* com um desconto inacreditável para você:\n\n➡️ O valor normal é de R$ 3.097, mas com o desconto de *R$ 700* 🎁, o seu investimento será de apenas R$ 2.397 á vista ou em até 12x no cartão de crédito.\n\n🚨Eu não quero de jeito nenhum deixar você de fora! \n\nEntão me diga, qual é a sua dúvida em relação ao curso *Profissão Sorveteiro*? Ou como eu posso te ajudar a se tornar aluno(a)?"
+              "fieldValue": "=*UAU! Que alegria falar com você!*👋 \nAqui é a Dani da Equipe Sorveteiro Raiz! 🍨\n\nO Edu liberou as vagas para o *Curso Completo Profissão Sorveteiro* com um desconto inacreditável para você:\n\n➡️ O valor normal é de R$ 3.097, mas com o desconto de *R$ 900* 🎁, o seu investimento será de apenas R$ 2.197 á vista ou em até 12x no cartão de crédito ou boleto parcelado.\n\n🚨Eu não quero de jeito nenhum deixar você de fora! \n\nEntão me diga, qual é a sua dúvida em relação ao curso *Profissão Sorveteiro*? Ou como eu posso te ajudar a se tornar aluno(a)?"
             }
           ]
         }
@@ -272,7 +272,7 @@
           "fieldValues": [
             {
               "fieldId": "mensagem",
-              "fieldValue": "=*UAU! Que alegria falar com você!*👋 \nAqui é a Dani da Equipe Sorveteiro Raiz! 🍨\n\nO Edu liberou as vagas para o *Curso Completo Profissão Sorveteiro* com um desconto inacreditável para você:\n\n➡️ O valor normal é de R$ 3.097, mas com o desconto de *R$ 700* 🎁, o seu investimento será de apenas R$ 2.397 á vista ou em até 12x no cartão de crédito.\n\n🚨Eu não quero de jeito nenhum deixar você de fora! \n\nEntão me diga, qual é a sua dúvida em relação ao curso *Profissão Sorveteiro*? Ou como eu posso te ajudar a se tornar aluno(a)?"
+              "fieldValue": "=*UAU! Que alegria falar com você!*👋 \nAqui é a Dani da Equipe Sorveteiro Raiz! 🍨\n\nO Edu liberou as vagas para o *Curso Completo Profissão Sorveteiro* com um desconto inacreditável para você:\n\n➡️ O valor normal é de R$ 3.097, mas com o desconto de *R$ 900* 🎁, o seu investimento será de apenas R$ 2.197 á vista ou em até 12x no cartão de crédito ou boleto parcelado.\n\n🚨Eu não quero de jeito nenhum deixar você de fora! \n\nEntão me diga, qual é a sua dúvida em relação ao curso *Profissão Sorveteiro*? Ou como eu posso te ajudar a se tornar aluno(a)?"
             }
           ]
         }
@@ -402,17 +402,17 @@
         "json": {
           "headers": {
             "host": "webhook.sorveteiroraiz.com",
-            "user-agent": "axios/1.12.2",
-            "content-length": "644",
+            "user-agent": "axios/1.13.5",
+            "content-length": "809",
             "accept": "application/json, text/plain, */*",
             "accept-encoding": "gzip, compress, deflate, br",
             "content-type": "application/json",
-            "x-forwarded-for": "34.34.231.49",
+            "x-forwarded-for": "34.34.231.8",
             "x-forwarded-host": "webhook.sorveteiroraiz.com",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
-            "x-forwarded-server": "aae19483bb9a",
-            "x-real-ip": "34.34.231.49"
+            "x-forwarded-server": "77efa1e6cf5f",
+            "x-real-ip": "34.34.231.8"
           },
           "params": {},
           "query": {},
@@ -422,19 +422,20 @@
               "name": "Higor Leite",
               "email": "",
               "phoneNumber": "5511984151865",
-              "tags": "LP6 - CLICOU - PRECISO DE AJUDA, TESTE IA - INSCRIÇÕES ABERTAS, TESTE DISPARO",
+              "tags": "TESTE IA - INSCRIÇÕES ABERTAS, LP6 - CLICOU - PRECISO DE AJUDA, TESTE DISPARO, LP - FALE CONOSCO, teste com higor",
               "fields": {
-                "mensagens": "Perfeito! Aqui está o link para garantir sua vaga com o desconto especial: [Link de Pagamento](https://pay.hotmart.com/F84276539R?off=u9gxnorh&checkoutMode=10). Não perca essa oportunidade! Se precisar de mais alguma informação, estou à disposição."
+                "mensagens": "O valor do curso *Profissão Sorveteiro* é de R$ 3.097,00, mas estamos oferecendo um desconto especial. Você pode garantir sua inscrição por apenas R$ 2.397,00, seja pago à vista ou em até 12 vezes de R$ 239,66.\n\nÉ um investimento que trará um grande retorno na sua carreira como sorveteiro. Está pronto para garantir sua vaga?"
               },
-              "lastMessage": "sim",
+              "lastMessage": "FALE CONOSCO",
               "lastMessageData": {
-                "message": "sim",
-                "messageType": "message"
+                "message": "FALE CONOSCO",
+                "messageType": "message",
+                "id": "2dxMJvT4lcktML8PCReR"
               },
               "instaName": "",
               "profilePicUrl": ""
             },
-            "event_date": 1761687272,
+            "event_date": 1772855789,
             "triggerData": {}
           },
           "webhookUrl": "https://webhook.sorveteiroraiz.com/webhook/disparo",
@@ -458,6 +459,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-01-20T19:57:10.594Z",
-  "versionId": "b650b582-3c99-4983-8c4a-7aa5b66d5206"
+  "updatedAt": "2026-03-07T03:59:26.243Z",
+  "versionId": "63e241e4-04a9-48f0-904e-e00dad006698"
 }
