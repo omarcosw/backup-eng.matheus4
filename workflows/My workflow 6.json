@@ -16,7 +16,7 @@
       "main": [
         [
           {
-            "node": "Somente email",
+            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
@@ -25,13 +25,7 @@
     },
     "Somente email": {
       "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Loop Over Items": {
@@ -132,17 +126,17 @@
       "parameters": {
         "documentId": {
           "__rl": true,
-          "value": "1cSJpwwuGGy1f0PCwBEC9F99uiD7bSsuL9L-HdTshtsY",
+          "value": "13ZbneDz5d5Bsw-OTDY-XOAwyiS9UEZdd_sioZtRzm9U",
           "mode": "list",
-          "cachedResultName": "LC11 - ALUNOS LIBERADOS PARA A IA DE SUPORTE",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1cSJpwwuGGy1f0PCwBEC9F99uiD7bSsuL9L-HdTshtsY/edit?usp=drivesdk"
+          "cachedResultName": "ALUNOS COM ACESSO A IA MARÇO_26 S1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/13ZbneDz5d5Bsw-OTDY-XOAwyiS9UEZdd_sioZtRzm9U/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
-          "value": 381904524,
+          "value": 1719547295,
           "mode": "list",
-          "cachedResultName": "users_csv (1)",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1cSJpwwuGGy1f0PCwBEC9F99uiD7bSsuL9L-HdTshtsY/edit#gid=381904524"
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/13ZbneDz5d5Bsw-OTDY-XOAwyiS9UEZdd_sioZtRzm9U/edit#gid=1719547295"
         },
         "options": {}
       },
@@ -168,25 +162,25 @@
             {
               "id": "001877d2-a1ec-49df-9728-5d76fccf15ba",
               "name": "nome",
-              "value": "={{ $json.NOME }}",
+              "value": "={{ $item(\"0\").$node[\"Get row(s) in sheet\"].json[\"NOME \"] }}",
               "type": "string"
             },
             {
               "id": "f2da43e1-ff4c-40e8-9a5b-29e3a42d6e60",
               "name": "email",
-              "value": "={{ $json[\"E-MAIL\"] }}",
+              "value": "={{ $item(\"0\").$node[\"Get row(s) in sheet\"].json[\"EMAIL \"] }}",
               "type": "string"
             },
             {
               "id": "c00282a7-f79f-4268-a11e-1c1003254f0c",
               "name": "telefone",
-              "value": "={{ $json.TELEFONE }}",
+              "value": "={{ $item(\"0\").$node[\"Get row(s) in sheet\"].json[\"TELEFONE \"] }}",
               "type": "string"
             },
             {
               "id": "c29c2388-c646-4473-b7e9-a4de9a828f65",
               "name": "data_expiracao",
-              "value": "={{ $json[\"DATA DE ENCERRAMENTO\"] }}",
+              "value": "={{ $item(\"0\").$node[\"Get row(s) in sheet\"].json[\"DATA DE COMPRA \"] }}",
               "type": "string"
             }
           ]
@@ -196,8 +190,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        432,
-        0
+        384,
+        -208
       ],
       "id": "88635cdd-88e1-4c6d-9f29-96bec674c515",
       "name": "Somente email"
@@ -236,19 +230,19 @@
           "fieldValues": [
             {
               "fieldId": "nome",
-              "fieldValue": "={{ $('Loop Over Items').item.json.nome }}"
+              "fieldValue": "={{ $('Loop Over Items').item.json[\"NOME \"] }}"
             },
             {
               "fieldId": "telefone",
-              "fieldValue": "={{ $('Loop Over Items').item.json.telefone }}"
+              "fieldValue": "={{ $('Loop Over Items').item.json[\"TELEFONE \"] }}"
             },
             {
               "fieldId": "email",
-              "fieldValue": "={{ $('Loop Over Items').item.json.email }}"
+              "fieldValue": "={{ $('Loop Over Items').item.json[\"EMAIL \"] }}"
             },
             {
               "fieldId": "data_fim",
-              "fieldValue": "={{ $item(\"0\").$node[\"Code\"].json[\"data_expiracao\"] }}"
+              "fieldValue": "={{ $('Loop Over Items').item.json[\"DATA DE COMPRA \"] }}"
             }
           ]
         }
@@ -333,7 +327,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Para modo \"Run Once for All Items\"\nreturn $input.all().map(item => {\n  const parts = item.json.data_expiracao.split('/');\n  // Formato MM/DD/YYYY → YYYY-MM-DD\n  const dataFormatada = `${parts[2]}-${parts[0].padStart(2,'0')}-${parts[1].padStart(2,'0')}`;\n  \n  return {\n    json: {\n      ...item.json,\n      data_expiracao: dataFormatada\n    }\n  };\n});"
+        "jsCode": "return $input.all().map(item => {\n  const row = item.json;\n  \n  const dataRaw = row['DATA DE COMPRA '];\n  \n  let dataFormatada = null;\n  if (dataRaw) {\n    const parts = dataRaw.split('/');\n    dataFormatada = `${parts[2]}-${parts[0].padStart(2,'0')}-${parts[1].padStart(2,'0')}`;\n  }\n\n  return {\n    json: {\n      nome: row['NOME ']?.trim(),\n      email: row['EMAIL ']?.trim(),\n      telefone: String(row['TELEFONE ']),\n      data_compra: dataFormatada\n    }\n  };\n});"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -361,6 +355,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-02-10T13:46:02.095Z",
-  "versionId": "b4ae2169-5d7e-4227-90fa-f1d87fbc0761"
+  "updatedAt": "2026-03-12T18:27:49.944Z",
+  "versionId": "1e78dfcd-7c9e-4a52-8d0c-97cc20c3ac9f"
 }
