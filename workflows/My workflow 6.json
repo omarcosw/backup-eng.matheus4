@@ -230,19 +230,19 @@
           "fieldValues": [
             {
               "fieldId": "nome",
-              "fieldValue": "={{ $('Loop Over Items').item.json[\"NOME \"] }}"
+              "fieldValue": "={{ $('Loop Over Items').item.json.NOME }}"
             },
             {
               "fieldId": "telefone",
-              "fieldValue": "={{ $('Loop Over Items').item.json[\"TELEFONE \"] }}"
+              "fieldValue": "={{ $('Loop Over Items').item.json.TELEFONE }}"
             },
             {
               "fieldId": "email",
-              "fieldValue": "={{ $('Loop Over Items').item.json[\"EMAIL \"] }}"
+              "fieldValue": "={{ $('Loop Over Items').item.json.EMAIL }}"
             },
             {
               "fieldId": "data_fim",
-              "fieldValue": "={{ $('Loop Over Items').item.json[\"DATA DE COMPRA \"] }}"
+              "fieldValue": "={{ $('Loop Over Items').item.json[\"Data-compra\"] ? $('Loop Over Items').item.json[\"Data-compra\"].split('/').reverse().join('-') : null }}"
             }
           ]
         }
@@ -327,7 +327,7 @@
     },
     {
       "parameters": {
-        "jsCode": "return $input.all().map(item => {\n  const row = item.json;\n  \n  const dataRaw = row['DATA DE COMPRA '];\n  \n  let dataFormatada = null;\n  if (dataRaw) {\n    const parts = dataRaw.split('/');\n    dataFormatada = `${parts[2]}-${parts[0].padStart(2,'0')}-${parts[1].padStart(2,'0')}`;\n  }\n\n  return {\n    json: {\n      nome: row['NOME ']?.trim(),\n      email: row['EMAIL ']?.trim(),\n      telefone: String(row['TELEFONE ']),\n      data_compra: dataFormatada\n    }\n  };\n});"
+        "jsCode": "return $input.all().map(item => {\n  const row = item.json;\n  \n  const dataRaw = row['Data-compra'];\n  \n  let dataFormatada = null;\n  if (dataRaw) {\n    const parts = dataRaw.split('/');\n    dataFormatada = `${parts[2]}-${parts[0].padStart(2,'0')}-${parts[1].padStart(2,'0')}`;\n  }\n\n  return {\n    json: {\n      nome: row['NOME']?.trim(),\n      email: row['EMAIL']?.trim(),\n      telefone: String(row['TELEFONE']),\n      data_compra: dataFormatada\n    }\n  };\n});"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -355,6 +355,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-03-12T18:27:49.944Z",
-  "versionId": "1e78dfcd-7c9e-4a52-8d0c-97cc20c3ac9f"
+  "updatedAt": "2026-03-16T13:51:35.293Z",
+  "versionId": "6ff86581-4bce-4352-8880-0e6ab2a69c49"
 }
