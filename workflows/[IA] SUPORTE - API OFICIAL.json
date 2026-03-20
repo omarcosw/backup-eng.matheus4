@@ -196,7 +196,7 @@
       "main": [
         [
           {
-            "node": "getClient",
+            "node": "getClient2",
             "type": "main",
             "index": 0
           }
@@ -400,13 +400,7 @@
     },
     "If2": {
       "main": [
-        [
-          {
-            "node": "getClient2",
-            "type": "main",
-            "index": 0
-          }
-        ],
+        [],
         [
           {
             "node": "Cliente não existe",
@@ -1801,6 +1795,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-02-25T20:13:10.738Z",
-  "versionId": "e8b34dd8-5817-4c41-8469-8f9c68278acc"
+  "updatedAt": "2026-03-20T18:30:29.075Z",
+  "versionId": "a508098c-9ceb-478a-b89d-a80bd299ab4c"
 }
