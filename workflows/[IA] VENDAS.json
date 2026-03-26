@@ -307,7 +307,7 @@
         [],
         [
           {
-            "node": "camposIniciais",
+            "node": "pausar atendimento1",
             "type": "main",
             "index": 0
           }
@@ -407,6 +407,35 @@
         [
           {
             "node": "Memória Inicial",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pausar atendimento1": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "camposIniciais",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "camposIniciais",
             "type": "main",
             "index": 0
           }
@@ -1088,7 +1117,7 @@
             {
               "id": "0ad262f3-a7f6-4a86-a840-1dff931a959a",
               "name": "Preço",
-              "value": "O valor normal é R$ 3.097,00, mas liberamos um grande desconto para você de R$ 900,000\n\nPor apenas: 12 x de R$ 227,22 Ou R$ 2.197,00 à vista no cartão, boleto a vista, pix ou Boleto parcelado em 12x de R$ 247,91",
+              "value": "O valor normal é R$ 3.097,00, mas liberamos um grande desconto para você de R$ 700,000\n\nPor apenas: 12x R$ 247,91 Ou R$ 2.397,00 à vista no cartão, boleto a vista, pix ou Boleto parcelado em 12x de R$ 12x R$268,59 ",
               "type": "string"
             },
             {
@@ -1295,7 +1324,7 @@
             {
               "id": "80d09a63-5051-4654-a6fd-c14df984cbde",
               "leftValue": "={{ $json.body.contact.lastMessageData.message }}",
-              "rightValue": "TORNAR-SE ALUNO",
+              "rightValue": "TORNAR - SE ALUNO(A)",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -1310,7 +1339,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1904,
+        -2080,
         1312
       ],
       "id": "cddf4af6-2312-492d-9525-a4484aca9691",
@@ -1599,6 +1628,54 @@
           "name": "Redis account"
         }
       }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "80d09a63-5051-4654-a6fd-c14df984cbde",
+              "leftValue": "={{ $json.body.contact.lastMessageData.message }}",
+              "rightValue": "TORNAR - SE ALUNO(A)",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1824,
+        1328
+      ],
+      "id": "b71c873a-5365-46c3-a07c-92f24ffe8b17",
+      "name": "pausar atendimento1"
+    },
+    {
+      "parameters": {
+        "unit": "minutes"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -1664,
+        1168
+      ],
+      "id": "c38fdc30-5450-48bc-885a-62a643ae7de3",
+      "name": "Wait",
+      "webhookId": "87b75605-2588-4de7-ac0c-d955c4474209"
     }
   ],
   "pinData": {
@@ -1683,6 +1760,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-03-07T03:48:55.575Z",
-  "versionId": "804a4f56-ae12-4195-b1c5-d437d18548e5"
+  "updatedAt": "2026-03-25T23:34:52.298Z",
+  "versionId": "136f62af-bcd3-405e-a809-ce9ccec3a886"
 }
