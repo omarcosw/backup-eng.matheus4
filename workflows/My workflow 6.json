@@ -337,6 +337,45 @@
       ],
       "id": "a302cff0-8ace-44f8-894d-dcb9703e3ac4",
       "name": "Code"
+    },
+    {
+      "parameters": {
+        "tableId": "acesso_ia_suporte",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "={{ $('Loop Over Items').item.json.NOME }}"
+            },
+            {
+              "fieldId": "telefone",
+              "fieldValue": "={{ $('Loop Over Items').item.json.TELEFONE }}"
+            },
+            {
+              "fieldId": "email",
+              "fieldValue": "={{ $('Loop Over Items').item.json.EMAIL }}"
+            },
+            {
+              "fieldId": "data_fim",
+              "fieldValue": "={{ $('Loop Over Items').item.json[\"Data-compra\"] ? $('Loop Over Items').item.json[\"Data-compra\"].split('/').reverse().join('-') : null }}"
+            }
+          ]
+        }
+      },
+      "id": "46ef3d12-5210-4ec2-898a-a9e08d62e96d",
+      "name": "CreateUser2",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1344,
+        -224
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -355,6 +394,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-03-16T13:51:35.293Z",
-  "versionId": "6ff86581-4bce-4352-8880-0e6ab2a69c49"
+  "updatedAt": "2026-04-08T18:09:08.823Z",
+  "versionId": "a02dab2c-3924-47dd-8042-9ba2396f4b0e"
 }
