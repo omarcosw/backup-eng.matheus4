@@ -1,296 +1,121 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
-    "When clicking ‘Test workflow’": {
+    "Webhook": {
       "main": [
         [
           {
-            "node": "Google Sheets",
+            "node": "Edit Fields",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Google Sheets": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Loop Over Items": {
-      "main": [
-        [
-          {
-            "node": "Replace Me",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Edit Fields1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Replace Me": {
+    "Edit Fields": {
       "main": [
         []
       ]
-    },
-    "Edit Fields1": {
-      "main": [
-        [
-          {
-            "node": "insert_pesquisa",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "insert_pesquisa": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
     }
   },
-  "createdAt": "2025-04-09T18:12:12.416Z",
-  "id": "MHzDruGwLxnlGN2t",
-  "meta": null,
+  "createdAt": "2026-04-13T23:27:43.586Z",
+  "id": "q77AiPSZYKOVI49m",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "My workflow 8",
   "nodes": [
     {
-      "parameters": {},
-      "type": "n8n-nodes-base.manualTrigger",
-      "typeVersion": 1,
-      "position": [
-        0,
-        0
-      ],
-      "id": "ad65da2c-8335-425a-bddf-72b12befd750",
-      "name": "When clicking ‘Test workflow’"
-    },
-    {
       "parameters": {
-        "documentId": {
-          "__rl": true,
-          "value": "https://docs.google.com/spreadsheets/d/1z8KTR-aZ5nmy1XDqT99IiirKmQjJhfq6r8I9cQ4dqxE/edit?gid=0#gid=0",
-          "mode": "url"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": "gid=0",
-          "mode": "list",
-          "cachedResultName": "Página1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1z8KTR-aZ5nmy1XDqT99IiirKmQjJhfq6r8I9cQ4dqxE/edit#gid=0"
-        },
+        "httpMethod": "POST",
+        "path": "comprarecusada",
         "options": {}
       },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.5,
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
       "position": [
-        220,
-        0
+        -208,
+        -64
       ],
-      "id": "9341b8a5-0cda-43b4-86c8-72028ad75762",
-      "name": "Google Sheets",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "xYJkSCz0e2nP7wEP",
-          "name": "marcosvlogs12@gmail.com"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "n8n-nodes-base.splitInBatches",
-      "typeVersion": 3,
-      "position": [
-        440,
-        0
-      ],
-      "id": "1c3a8020-010c-4811-a10d-032dbb3a0f77",
-      "name": "Loop Over Items"
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.noOp",
-      "name": "Replace Me",
-      "typeVersion": 1,
-      "position": [
-        720,
-        -220
-      ],
-      "id": "8dc3a49f-2626-4eac-acbc-082edf4ebbc7"
-    },
-    {
-      "parameters": {
-        "table": {
-          "__rl": true,
-          "value": "pesquisas",
-          "mode": "list",
-          "cachedResultName": "pesquisas"
-        },
-        "dataMode": "defineBelow",
-        "valuesToSend": {
-          "values": [
-            {
-              "column": "pergunta1",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta1\"] }}"
-            },
-            {
-              "column": "pergunta2",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta2\"] }}"
-            },
-            {
-              "column": "data_pesquisa",
-              "value": "={{ $now }}"
-            },
-            {
-              "column": "nome_pesquisa",
-              "value": "[CADASTRO] [PEC0325] [TYPEFORM]"
-            },
-            {
-              "column": "pergunta3",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta3\"] }}"
-            },
-            {
-              "column": "pergunta4",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta4\"] }}"
-            },
-            {
-              "column": "pergunta5",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta5\"] }}"
-            },
-            {
-              "column": "pergunta6",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta6\"] }}"
-            },
-            {
-              "column": "pergunta7",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta7\"] }}"
-            },
-            {
-              "column": "pergunta8",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta8\"] }}"
-            },
-            {
-              "column": "pergunta9",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta9\"] }}"
-            },
-            {
-              "column": "pergunta10",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta10\"] }}"
-            },
-            {
-              "column": "pergunta11",
-              "value": "={{ $item(\"0\").$node[\"Edit Fields1\"].json[\"pergunta11\"] }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "ff72b376-e1ab-47db-b2a3-fdcfcefc789e",
-      "name": "insert_pesquisa",
-      "type": "n8n-nodes-base.mySql",
-      "typeVersion": 2.2,
-      "position": [
-        1140,
-        340
-      ],
-      "alwaysOutputData": true,
-      "credentials": {
-        "mySql": {
-          "id": "0E9JxipHlJ4dAQMU",
-          "name": "MySQL - eng_matheus"
-        }
-      }
+      "id": "1a24228c-8005-4d70-8cd4-c3d939b7583e",
+      "name": "Webhook",
+      "webhookId": "56c351cb-772d-4c67-8080-3c6f74070850"
     },
     {
       "parameters": {
         "assignments": {
           "assignments": [
             {
-              "id": "56a816d6-de4d-4a29-b59d-09fb7db8a6b2",
-              "name": "pergunta1",
-              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"pergunta1\"] }}",
+              "id": "17e91766-95d7-457b-80ed-56d47b649bf1",
+              "name": "identidade",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"buyer\"][\"document\"] }}",
               "type": "string"
             },
             {
-              "id": "31f71641-7a32-4a23-b6e5-0c03c4acea96",
-              "name": "pergunta2",
-              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"pergunta2\"] }}",
+              "id": "7b7d07d2-4151-4121-a494-34bf1a9c6130",
+              "name": "nome",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"buyer\"][\"name\"] }}",
               "type": "string"
             },
             {
-              "id": "e4cfed4f-d3a0-4731-a313-96c8af5b2b15",
-              "name": "pergunta3",
-              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"pergunta3\"] }}",
+              "id": "1ac1767b-3724-414f-bc84-733866173d3a",
+              "name": "telefone",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"buyer\"][\"checkout_phone\"] }}",
               "type": "string"
             },
             {
-              "id": "dfd5d3a5-6eb0-4bed-b278-53fe50078847",
-              "name": "pergunta4",
-              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"pergunta4\"] }}",
+              "id": "2f6a17a6-ad46-40fe-9107-ee3d25c67f81",
+              "name": "email",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"buyer\"][\"email\"] }}",
               "type": "string"
             },
             {
-              "id": "0f7eee72-f27b-4b71-aaaf-d101fb865995",
-              "name": "pergunta5",
-              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"pergunta5\"] }}",
+              "id": "060ae604-fe85-45fb-afbb-18e31e927caa",
+              "name": "",
+              "value": "",
               "type": "string"
             },
             {
-              "id": "156d7d37-d86c-46d8-a3df-10e9736b3821",
-              "name": "pergunta6",
-              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"pergunta6\"] }}",
+              "id": "a73bcd40-ee65-4291-959e-6dbbadc96804",
+              "name": "",
+              "value": "",
               "type": "string"
             },
             {
-              "id": "e3e689ec-cf5d-4bb7-8ace-3f405c5648c1",
-              "name": "pergunta7",
-              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"pergunta7\"] }}",
+              "id": "fdd1dce4-1359-4c10-8b4e-b9aeb88782a6",
+              "name": "",
+              "value": "",
               "type": "string"
             },
             {
-              "id": "755da001-e50c-4d56-ab31-d123917d4ce2",
-              "name": "pergunta8",
-              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"pergunta8\"] }}",
+              "id": "c3188500-8f73-47da-9509-11bde7124ef1",
+              "name": "",
+              "value": "",
               "type": "string"
             },
             {
-              "id": "a8399493-58b2-4036-8601-05f9216cdaf9",
-              "name": "pergunta9",
-              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"pergunta9\"] }}",
+              "id": "0e91ef36-24a8-472c-9747-62bb63766e8b",
+              "name": "",
+              "value": "",
               "type": "string"
             },
             {
-              "id": "0d97a39d-f6e2-46ba-9767-1d4fdf660cd1",
-              "name": "pergunta10",
-              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"pergunta10\"] }}",
+              "id": "ea56be19-eee2-46d1-8f70-717896876c66",
+              "name": "",
+              "value": "",
               "type": "string"
             },
             {
-              "id": "f959e7ae-e3f0-4ada-9061-9a41b68f7460",
-              "name": "pergunta11",
-              "value": "={{ $item(\"0\").$node[\"Loop Over Items\"].json[\"Pergunta11\"] }}",
+              "id": "c3c3c7fd-2a35-47ae-9b2d-83fca7672b26",
+              "name": "",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "85cc1db7-9a9b-41ce-81f9-962f6a16c967",
+              "name": "",
+              "value": "",
               "type": "string"
             }
           ]
@@ -300,20 +125,210 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        860,
-        320
+        0,
+        -64
       ],
-      "id": "568bcb0a-852b-4d55-b0b6-b41ed5eb0191",
-      "name": "Edit Fields1"
+      "id": "eb88e52e-9366-4879-94a2-d47f972a3c87",
+      "name": "Edit Fields"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.sorveteiroraiz.com",
+            "user-agent": "Jodd HTTP",
+            "content-length": "2487",
+            "content-type": "application/json",
+            "x-forwarded-for": "32.195.65.180",
+            "x-forwarded-host": "webhook.sorveteiroraiz.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "77efa1e6cf5f",
+            "x-hotmart-hottok": "Srl2QUHnnelVLh9p8MDePHUcKz3hqk1526245",
+            "x-real-ip": "32.195.65.180",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "data": {
+              "product": {
+                "support_email": "support@hotmart.com.br",
+                "has_co_production": false,
+                "name": "Produto test postback2",
+                "warranty_date": "2017-12-27T00:00:00Z",
+                "is_physical_product": false,
+                "id": 0,
+                "ucode": "fb056612-bcc6-4217-9e6d-2a5d1110ac2f",
+                "product_format_id": 1,
+                "content": {
+                  "has_physical_products": true,
+                  "products": [
+                    {
+                      "name": "How to Make Clear Ice",
+                      "is_physical_product": false,
+                      "id": 4774438,
+                      "ucode": "559fef42-3406-4d82-b775-d09bd33936b1"
+                    },
+                    {
+                      "name": "Organizador de Poeira",
+                      "is_physical_product": true,
+                      "id": 4999597,
+                      "ucode": "099e7644-b7d1-43d6-82a9-ec6be0118a4b"
+                    }
+                  ]
+                }
+              },
+              "shipping": {
+                "carrier": {
+                  "service": "SEDEX",
+                  "name": "CORREIOS"
+                },
+                "cost": {
+                  "currency_value": "BRL",
+                  "value": 25.5
+                },
+                "estimated_delivery_days": 7,
+                "fulfillment": {
+                  "service": "MANUAL"
+                }
+              },
+              "commissions": [
+                {
+                  "currency_value": "BRL",
+                  "source": "MARKETPLACE",
+                  "value": 149.5
+                },
+                {
+                  "currency_value": "BRL",
+                  "source": "PRODUCER",
+                  "value": 1350.5
+                }
+              ],
+              "purchase": {
+                "original_offer_price": {
+                  "currency_value": "BRL",
+                  "value": 1500
+                },
+                "checkout_country": {
+                  "iso": "BR",
+                  "name": "Brasil"
+                },
+                "sckPaymentLink": "sckPaymentLinkTest",
+                "order_bump": {
+                  "parent_purchase_transaction": "HP02316330308193",
+                  "is_order_bump": true
+                },
+                "variants": {
+                  "attributes": [
+                    {
+                      "name": "Tamanho",
+                      "value": "Médio"
+                    },
+                    {
+                      "name": "Cor",
+                      "value": "Azul"
+                    }
+                  ],
+                  "sku": "HTM_SANDBOX-01"
+                },
+                "approved_date": 1511783346000,
+                "offer": {
+                  "code": "test",
+                  "coupon_code": "SHHUHA"
+                },
+                "is_funnel": false,
+                "event_tickets": {
+                  "amount": 1776123369964
+                },
+                "order_date": 1511783344000,
+                "price": {
+                  "currency_value": "BRL",
+                  "value": 1500
+                },
+                "payment": {
+                  "installments_number": 12,
+                  "type": "CREDIT_CARD"
+                },
+                "full_price": {
+                  "currency_value": "BRL",
+                  "value": 1500
+                },
+                "business_model": "I",
+                "transaction": "HP16015479281022",
+                "status": "DELAYED"
+              },
+              "affiliates": [
+                {
+                  "affiliate_code": "Q58388177J",
+                  "name": "Affiliate name"
+                }
+              ],
+              "producer": {
+                "legal_nature": "Pessoa Física",
+                "document": "12345678965",
+                "name": "Producer Test Name"
+              },
+              "subscription": {
+                "subscriber": {
+                  "code": "I9OT62C3"
+                },
+                "plan": {
+                  "name": "plano de teste",
+                  "id": 123
+                },
+                "status": "ACTIVE"
+              },
+              "buyer": {
+                "checkout_phone_code": "999999999",
+                "address": {
+                  "zipcode": "38400123",
+                  "country": "Brasil",
+                  "number": "10",
+                  "address": "Avenida Francisco Galassi",
+                  "city": "Uberlândia",
+                  "state": "Minas Gerais",
+                  "neighborhood": "Tubalina",
+                  "complement": "Perto do shopping",
+                  "country_iso": "BR"
+                },
+                "document": "69526128664",
+                "name": "Teste Comprador",
+                "last_name": "Comprador",
+                "checkout_phone": "99999999900",
+                "first_name": "Teste",
+                "email": "testeComprador271101postman15@example.com",
+                "document_type": "CPF"
+              }
+            },
+            "id": "18970af0-42b3-487f-9c4a-f4cf2fe09dd1",
+            "creation_date": 1776123369968,
+            "event": "PURCHASE_DELAYED",
+            "version": "2.0.0"
+          },
+          "webhookUrl": "https://webhook.sorveteiroraiz.com/webhook/comprarecusada",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
+  "shared": [
+    {
+      "createdAt": "2026-04-13T23:27:43.586Z",
+      "updatedAt": "2026-04-13T23:27:43.586Z",
+      "role": "workflow:owner",
+      "workflowId": "q77AiPSZYKOVI49m",
+      "projectId": "MnGFQuvoDMTHLtMd"
+    }
+  ],
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2025-04-09T18:16:58.879Z",
-  "versionId": "425402ba-92be-4c34-bcb0-04282de46387"
+  "triggerCount": 1,
+  "updatedAt": "2026-04-13T23:47:59.054Z",
+  "versionId": "5229b1a5-04ea-49ca-b440-d002f195e1eb"
 }
