@@ -1,0 +1,539 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "pesquisa email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa email": {
+      "main": [
+        [
+          {
+            "node": "email existe?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pesquisa telefone": {
+      "main": [
+        [
+          {
+            "node": "telefone existe?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "email existe?": {
+      "main": [
+        [
+          {
+            "node": "atualiza status",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "pesquisa telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "telefone existe?": {
+      "main": [
+        [
+          {
+            "node": "atualiza status1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-04-13T23:27:43.586Z",
+  "id": "q77AiPSZYKOVI49m",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[Compra Atrasada] Produto IA",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "compraatrasada",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -464,
+        -240
+      ],
+      "id": "1a24228c-8005-4d70-8cd4-c3d939b7583e",
+      "name": "Webhook",
+      "webhookId": "56c351cb-772d-4c67-8080-3c6f74070850"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cca66a8a-33b0-4107-8423-c1b835621ccc",
+              "name": "Nome",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"buyer\"][\"name\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "ac0c2313-215d-47b6-b215-eff17671d92b",
+              "name": "Telefone",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"buyer\"][\"checkout_phone\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "39a6e323-b3c1-4061-9ef2-6481fd5ec4ca",
+              "name": "Email",
+              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"buyer\"][\"email\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -256,
+        -240
+      ],
+      "id": "5e9576c7-9e58-47d8-b0b2-0e33c2517c57",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "acesso_ia_suporte",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "email",
+              "keyValue": "={{ $item(\"0\").$node[\"Edit Fields\"].json[\"Email\"] }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -48,
+        -240
+      ],
+      "id": "2b0eacdc-6665-427a-98f7-fbf58d924ca9",
+      "name": "pesquisa email",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "acesso_ia_suporte",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "keyValue": "={{ $item(\"0\").$node[\"Edit Fields\"].json[\"Telefone\"] }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        400,
+        -160
+      ],
+      "id": "af70e11d-60a0-48ca-b677-4bb048d7eab4",
+      "name": "pesquisa telefone",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "acesso_ia_suporte",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "email",
+              "condition": "eq",
+              "keyValue": "={{ $item(\"0\").$node[\"email existe?\"].json[\"email\"] }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "status_compra",
+              "fieldValue": "inativo"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        400,
+        -352
+      ],
+      "id": "4016867b-663f-49ad-b3e2-bed541c23d7b",
+      "name": "atualiza status",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "acesso_ia_suporte",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "condition": "eq",
+              "keyValue": "={{ $item(\"0\").$node[\"telefone existe?\"].json[\"telefone\"] }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "status_compra",
+              "fieldValue": "inativo"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        912,
+        -240
+      ],
+      "id": "f78e3972-6ea3-4d4d-beb3-5a7374bf487b",
+      "name": "atualiza status1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f0cafca6-d690-4bc5-b170-fc3bf05c4396",
+              "leftValue": "={{ $json.email }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        160,
+        -240
+      ],
+      "id": "e37f2032-ee8f-41f2-8b16-de6b9a695447",
+      "name": "email existe?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f0cafca6-d690-4bc5-b170-fc3bf05c4396",
+              "leftValue": "={{ $json.telefone }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        672,
+        -144
+      ],
+      "id": "111129cc-99c5-4715-8ee7-93d19f07bfa5",
+      "name": "telefone existe?"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.sorveteiroraiz.com",
+            "user-agent": "Jodd HTTP",
+            "content-length": "2487",
+            "content-type": "application/json",
+            "x-forwarded-for": "13.221.6.142",
+            "x-forwarded-host": "webhook.sorveteiroraiz.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "77efa1e6cf5f",
+            "x-hotmart-hottok": "Srl2QUHnnelVLh9p8MDePHUcKz3hqk1526245",
+            "x-real-ip": "13.221.6.142",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "data": {
+              "product": {
+                "support_email": "support@hotmart.com.br",
+                "has_co_production": false,
+                "name": "Produto test postback2",
+                "warranty_date": "2017-12-27T00:00:00Z",
+                "is_physical_product": false,
+                "id": 0,
+                "ucode": "fb056612-bcc6-4217-9e6d-2a5d1110ac2f",
+                "product_format_id": 1,
+                "content": {
+                  "has_physical_products": true,
+                  "products": [
+                    {
+                      "name": "How to Make Clear Ice",
+                      "is_physical_product": false,
+                      "id": 4774438,
+                      "ucode": "559fef42-3406-4d82-b775-d09bd33936b1"
+                    },
+                    {
+                      "name": "Organizador de Poeira",
+                      "is_physical_product": true,
+                      "id": 4999597,
+                      "ucode": "099e7644-b7d1-43d6-82a9-ec6be0118a4b"
+                    }
+                  ]
+                }
+              },
+              "shipping": {
+                "carrier": {
+                  "service": "SEDEX",
+                  "name": "CORREIOS"
+                },
+                "cost": {
+                  "currency_value": "BRL",
+                  "value": 25.5
+                },
+                "estimated_delivery_days": 7,
+                "fulfillment": {
+                  "service": "MANUAL"
+                }
+              },
+              "commissions": [
+                {
+                  "currency_value": "BRL",
+                  "source": "MARKETPLACE",
+                  "value": 149.5
+                },
+                {
+                  "currency_value": "BRL",
+                  "source": "PRODUCER",
+                  "value": 1350.5
+                }
+              ],
+              "purchase": {
+                "original_offer_price": {
+                  "currency_value": "BRL",
+                  "value": 1500
+                },
+                "checkout_country": {
+                  "iso": "BR",
+                  "name": "Brasil"
+                },
+                "sckPaymentLink": "sckPaymentLinkTest",
+                "order_bump": {
+                  "parent_purchase_transaction": "HP02316330308193",
+                  "is_order_bump": true
+                },
+                "variants": {
+                  "attributes": [
+                    {
+                      "name": "Tamanho",
+                      "value": "Médio"
+                    },
+                    {
+                      "name": "Cor",
+                      "value": "Azul"
+                    }
+                  ],
+                  "sku": "HTM_SANDBOX-01"
+                },
+                "approved_date": 1511783346000,
+                "offer": {
+                  "code": "test",
+                  "coupon_code": "SHHUHA"
+                },
+                "is_funnel": false,
+                "event_tickets": {
+                  "amount": 1776441661924
+                },
+                "order_date": 1511783344000,
+                "price": {
+                  "currency_value": "BRL",
+                  "value": 1500
+                },
+                "payment": {
+                  "installments_number": 12,
+                  "type": "CREDIT_CARD"
+                },
+                "full_price": {
+                  "currency_value": "BRL",
+                  "value": 1500
+                },
+                "business_model": "I",
+                "transaction": "HP16015479281022",
+                "status": "DELAYED"
+              },
+              "affiliates": [
+                {
+                  "affiliate_code": "Q58388177J",
+                  "name": "Affiliate name"
+                }
+              ],
+              "producer": {
+                "legal_nature": "Pessoa Física",
+                "document": "12345678965",
+                "name": "Producer Test Name"
+              },
+              "subscription": {
+                "subscriber": {
+                  "code": "I9OT62C3"
+                },
+                "plan": {
+                  "name": "plano de teste",
+                  "id": 123
+                },
+                "status": "ACTIVE"
+              },
+              "buyer": {
+                "checkout_phone_code": "999999999",
+                "address": {
+                  "zipcode": "38400123",
+                  "country": "Brasil",
+                  "number": "10",
+                  "address": "Avenida Francisco Galassi",
+                  "city": "Uberlândia",
+                  "state": "Minas Gerais",
+                  "neighborhood": "Tubalina",
+                  "complement": "Perto do shopping",
+                  "country_iso": "BR"
+                },
+                "document": "69526128664",
+                "name": "Teste Comprador",
+                "last_name": "Comprador",
+                "checkout_phone": "99999999900",
+                "first_name": "Teste",
+                "email": "testeComprador271101postman15@example.com",
+                "document_type": "CPF"
+              }
+            },
+            "id": "666051f4-eefb-4d5b-b167-d37e046be1e0",
+            "creation_date": 1776441661937,
+            "event": "PURCHASE_DELAYED",
+            "version": "2.0.0"
+          },
+          "webhookUrl": "https://webhook.sorveteiroraiz.com/webhook/compraatrasada",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2026-04-13T23:27:43.586Z",
+      "updatedAt": "2026-04-13T23:27:43.586Z",
+      "role": "workflow:owner",
+      "workflowId": "q77AiPSZYKOVI49m",
+      "projectId": "MnGFQuvoDMTHLtMd"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2026-04-17T19:41:57.161Z",
+  "versionId": "4d2279d1-3498-403c-9a3e-2cb10744e795"
+}
