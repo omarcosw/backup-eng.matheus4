@@ -196,7 +196,7 @@
       "main": [
         [
           {
-            "node": "getClient2",
+            "node": "getClient1",
             "type": "main",
             "index": 0
           }
@@ -389,21 +389,32 @@
     },
     "getClient": {
       "main": [
+        []
+      ]
+    },
+    "If2": {
+      "main": [
         [
           {
-            "node": "If2",
+            "node": "getClient2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Cliente não existe",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "If2": {
+    "getClient1": {
       "main": [
-        [],
         [
           {
-            "node": "Cliente não existe",
+            "node": "If2",
             "type": "main",
             "index": 0
           }
@@ -428,8 +439,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -5216,
-        1104
+        -5728,
+        1136
       ],
       "id": "2330c36d-1450-4897-9baa-ddae97f831f1",
       "name": "webhook",
@@ -570,8 +581,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -4080,
-        1120
+        -4928,
+        1152
       ],
       "notesInFlow": true
     },
@@ -925,8 +936,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -4592,
-        912
+        -5104,
+        944
       ],
       "id": "7ccf8f23-bc54-412d-9316-6496bd9e8e62",
       "name": "Ativar para teste"
@@ -954,8 +965,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        -3872,
-        1120
+        -4656,
+        1152
       ],
       "alwaysOutputData": true,
       "onError": "continueRegularOutput"
@@ -1083,7 +1094,7 @@
       "parameters": {
         "content": "## PASSO 1 - CREDENCIAIS, DADOS",
         "height": 1486,
-        "width": 2151,
+        "width": 2679,
         "color": 7
       },
       "id": "892f43fd-2fd9-41fd-be63-7120f0f71f7a",
@@ -1091,7 +1102,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -5328,
+        -5856,
         864
       ]
     },
@@ -1185,8 +1196,8 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
       "position": [
-        -4352,
-        1120
+        -5168,
+        1152
       ],
       "id": "f5aed8fd-3f41-4c92-b919-afe73b2fb947",
       "name": "Filter2"
@@ -1360,8 +1371,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -4960,
-        1104
+        -5472,
+        1136
       ],
       "id": "6a635f46-9b88-4f67-b0c4-0d9d6b50a6ea",
       "name": "Atendimento Pausado?"
@@ -1502,8 +1513,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        -3664,
-        1120
+        -3680,
+        624
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1525,12 +1536,11 @@
           "conditions": [
             {
               "id": "4e77cc7c-48f4-4cbe-94e7-6d211db67002",
-              "leftValue": "={{ $('getClient').item.json.telefone }}",
-              "rightValue": "",
+              "leftValue": "={{ $json.status_compra }}",
+              "rightValue": "ativo",
               "operator": {
                 "type": "string",
-                "operation": "notEmpty",
-                "singleValue": true
+                "operation": "equals"
               }
             }
           ],
@@ -1543,8 +1553,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -3440,
-        1120
+        -4208,
+        1152
       ]
     },
     {
@@ -1569,7 +1579,7 @@
           "parameters": [
             {
               "name": "content",
-              "value": "=Olá, tudo bem?\n\nNão identificamos este número em nosso sistema, por isso não conseguimos dar continuidade por aqui. Verifique se o número que você está entrando em contato conosco é o mesmo número que você utilizou na hora da compra ou entre em contato diretamente com a Ana, do Suporte Sorveteiro Raiz, pelo número:\n📲 (12) 98216-0408\n\nSolicite ajuda para inserir ou atualizar seu número de telefone no nosso cadastro.\n\nAgradeço a compreensão!"
+              "value": "=Olá, tudo bem?\n\nPor algum motivo seu número em nosso sistema não está verificado ou sua compra está Atrasada, por isso não conseguimos dar continuidade por aqui. Verifique se o número que você está entrando em contato conosco é o mesmo número que você utilizou na hora da compra, verifique se sua compra está em dia ou entre em contato diretamente com a Ana, do Suporte Sorveteiro Raiz, pelo número:\n📲 (12) 98216-0408\n\nSolicite ajuda para inserir ou atualizar seu número de telefone no nosso cadastro.\n\nAgradeço a compreensão!"
             },
             {
               "name": "echo_id",
@@ -1582,11 +1592,40 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -3312,
-        912
+        -3904,
+        1200
       ],
       "id": "8d923c3c-d0b6-40bb-8ef8-85323b9f55a8",
       "name": "Cliente não existe"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "acesso_ia_suporte",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "keyValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}"
+            }
+          ]
+        }
+      },
+      "id": "8c259ab5-8f03-4e6a-9885-5af39f4ce808",
+      "name": "getClient1",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -4448,
+        1152
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
     }
   ],
   "pinData": {
@@ -1795,6 +1834,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-04-14T00:18:18.748Z",
-  "versionId": "018b8a43-415b-4d44-aa5f-cadde463f3b2"
+  "updatedAt": "2026-04-17T19:37:17.574Z",
+  "versionId": "6ca25ae9-0cd6-463b-b4c4-a10499ba4c5a"
 }
