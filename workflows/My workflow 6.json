@@ -376,6 +376,45 @@
           "name": "Supabase - Sorveteiro Raiz"
         }
       }
+    },
+    {
+      "parameters": {
+        "tableId": "acesso_ia_suporte",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "=Max Martíns"
+            },
+            {
+              "fieldId": "telefone",
+              "fieldValue": "=559186033229"
+            },
+            {
+              "fieldId": "email",
+              "fieldValue": "=maxcardosomartins.mcm@gmail.com"
+            },
+            {
+              "fieldId": "data_fim",
+              "fieldValue": "=2027/04/21"
+            }
+          ]
+        }
+      },
+      "id": "430cc139-1099-4196-9316-5142ab4460e7",
+      "name": "CreateUser3",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        288,
+        240
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -394,6 +433,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-04-08T18:09:08.823Z",
-  "versionId": "a02dab2c-3924-47dd-8042-9ba2396f4b0e"
+  "updatedAt": "2026-04-21T15:49:42.596Z",
+  "versionId": "c332b2d3-9e0c-4a3e-a772-8020200ae282"
 }
