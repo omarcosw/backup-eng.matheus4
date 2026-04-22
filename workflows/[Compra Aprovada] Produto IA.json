@@ -74,18 +74,26 @@
         ],
         [
           {
-            "node": "pesquisa telefone1",
+            "node": "cria usuario",
             "type": "main",
             "index": 0
           }
         ]
+      ]
+    },
+    "cria usuario": {
+      "main": [
+        [],
+        []
       ]
     }
   },
   "createdAt": "2026-04-17T19:43:03.222Z",
   "id": "1iOxnrcppdaGWCag",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "[Compra Aprovada] Produto IA",
   "nodes": [
     {
@@ -117,7 +125,7 @@
             {
               "id": "ac0c2313-215d-47b6-b215-eff17671d92b",
               "name": "Telefone",
-              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"buyer\"][\"checkout_phone\"] }}",
+              "value": "=55{{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"buyer\"][\"checkout_phone\"] }}",
               "type": "string"
             },
             {
@@ -267,50 +275,6 @@
     },
     {
       "parameters": {
-        "tableId": "acesso_ia_suporte",
-        "fieldsUi": {
-          "fieldValues": [
-            {
-              "fieldId": "nome",
-              "fieldValue": "={{ $item(\"0\").$node[\"Edit Fields\"].json[\"Nome\"] }}"
-            },
-            {
-              "fieldId": "email",
-              "fieldValue": "={{ $item(\"0\").$node[\"Edit Fields\"].json[\"Email\"] }}"
-            },
-            {
-              "fieldId": "telefone",
-              "fieldValue": "={{ $item(\"0\").$node[\"Edit Fields\"].json[\"Telefone\"] }}"
-            },
-            {
-              "fieldId": "data_inicio",
-              "fieldValue": "={{ $now.toFormat('yyyy-MM-dd') }}"
-            },
-            {
-              "fieldId": "status_compra",
-              "fieldValue": "ativo"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        1296,
-        80
-      ],
-      "id": "96ee8ae0-3528-4a77-b11a-6e437bd8fce6",
-      "name": "pesquisa telefone1",
-      "alwaysOutputData": true,
-      "credentials": {
-        "supabaseApi": {
-          "id": "QiHN5zEBNyZ0P663",
-          "name": "Supabase - Sorveteiro Raiz"
-        }
-      }
-    },
-    {
-      "parameters": {
         "operation": "update",
         "tableId": "acesso_ia_suporte",
         "filters": {
@@ -384,6 +348,54 @@
           "name": "Supabase - Sorveteiro Raiz"
         }
       }
+    },
+    {
+      "parameters": {
+        "tableId": "acesso_ia_suporte",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "={{ $item(\"0\").$node[\"Edit Fields\"].json[\"Nome\"] }}"
+            },
+            {
+              "fieldId": "email",
+              "fieldValue": "={{ $item(\"0\").$node[\"Edit Fields\"].json[\"Email\"] }}"
+            },
+            {
+              "fieldId": "telefone",
+              "fieldValue": "={{ $item(\"0\").$node[\"Edit Fields\"].json[\"Telefone\"] }}"
+            },
+            {
+              "fieldId": "data_inicio",
+              "fieldValue": "={{ $now.toFormat('yyyy-MM-dd') }}"
+            },
+            {
+              "fieldId": "status_compra",
+              "fieldValue": "ativo"
+            },
+            {
+              "fieldId": "data_fim",
+              "fieldValue": "={{ $now.plus({years: 1}).toFormat('yyyy-MM-dd') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1296,
+        80
+      ],
+      "id": "96ee8ae0-3528-4a77-b11a-6e437bd8fce6",
+      "name": "cria usuario",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
     }
   ],
   "pinData": {
@@ -393,15 +405,15 @@
           "headers": {
             "host": "webhook.sorveteiroraiz.com",
             "user-agent": "Jodd HTTP",
-            "content-length": "2489",
+            "content-length": "2246",
             "content-type": "application/json",
-            "x-forwarded-for": "18.206.59.94",
+            "x-forwarded-for": "44.200.219.2",
             "x-forwarded-host": "webhook.sorveteiroraiz.com",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "77efa1e6cf5f",
             "x-hotmart-hottok": "Srl2QUHnnelVLh9p8MDePHUcKz3hqk1526245",
-            "x-real-ip": "18.206.59.94",
+            "x-real-ip": "44.200.219.2",
             "accept-encoding": "gzip"
           },
           "params": {},
@@ -409,156 +421,114 @@
           "body": {
             "data": {
               "product": {
-                "support_email": "support@hotmart.com.br",
+                "support_email": "suporte@sorveteiroraiz.com",
                 "has_co_production": false,
-                "name": "Produto test postback2",
-                "warranty_date": "2017-12-27T00:00:00Z",
+                "name": "Time Sorveteiro Raiz - 24 horas",
+                "warranty_date": "2026-04-27T00:00:00Z",
                 "is_physical_product": false,
-                "id": 0,
-                "ucode": "fb056612-bcc6-4217-9e6d-2a5d1110ac2f",
-                "product_format_id": 1,
-                "content": {
-                  "has_physical_products": true,
-                  "products": [
-                    {
-                      "name": "How to Make Clear Ice",
-                      "is_physical_product": false,
-                      "id": 4774438,
-                      "ucode": "559fef42-3406-4d82-b775-d09bd33936b1"
-                    },
-                    {
-                      "name": "Organizador de Poeira",
-                      "is_physical_product": true,
-                      "id": 4999597,
-                      "ucode": "099e7644-b7d1-43d6-82a9-ec6be0118a4b"
-                    }
-                  ]
-                }
-              },
-              "shipping": {
-                "carrier": {
-                  "service": "SEDEX",
-                  "name": "CORREIOS"
-                },
-                "cost": {
-                  "currency_value": "BRL",
-                  "value": 25.5
-                },
-                "estimated_delivery_days": 7,
-                "fulfillment": {
-                  "service": "MANUAL"
-                }
+                "id": 7020328,
+                "ucode": "f3f78329-2861-42d2-91ad-4d7a0bca959e",
+                "product_format_id": 8
               },
               "commissions": [
                 {
                   "currency_value": "BRL",
                   "source": "MARKETPLACE",
-                  "value": 149.5
+                  "value": 0
                 },
                 {
                   "currency_value": "BRL",
                   "source": "PRODUCER",
-                  "value": 1350.5
+                  "value": 0
                 }
               ],
               "purchase": {
                 "original_offer_price": {
                   "currency_value": "BRL",
-                  "value": 1500
+                  "value": 0
                 },
+                "recurrence_number": 1,
+                "subscription_anticipation_purchase": false,
                 "checkout_country": {
                   "iso": "BR",
                   "name": "Brasil"
                 },
-                "sckPaymentLink": "sckPaymentLinkTest",
                 "order_bump": {
-                  "parent_purchase_transaction": "HP02316330308193",
-                  "is_order_bump": true
+                  "is_order_bump": false
                 },
-                "variants": {
-                  "attributes": [
-                    {
-                      "name": "Tamanho",
-                      "value": "Médio"
-                    },
-                    {
-                      "name": "Cor",
-                      "value": "Azul"
-                    }
-                  ],
-                  "sku": "HTM_SANDBOX-01"
-                },
-                "approved_date": 1511783346000,
+                "approved_date": 1776718496000,
                 "offer": {
-                  "code": "test",
-                  "coupon_code": "SHHUHA"
+                  "code": "b5ajljkf",
+                  "description": "Valor especial para alunos ativos"
                 },
                 "is_funnel": false,
-                "event_tickets": {
-                  "amount": 1776455166279
-                },
-                "order_date": 1511783344000,
+                "order_date": 1776718310000,
+                "date_next_charge": 1779278400000,
                 "price": {
                   "currency_value": "BRL",
-                  "value": 1500
+                  "value": 0
                 },
                 "payment": {
-                  "installments_number": 12,
-                  "type": "CREDIT_CARD"
+                  "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/enrollment?contract=TGdZFkEBbRu8zZLZ398FRT",
+                  "pix_expiration_date": 1776891111000,
+                  "installments_number": 1,
+                  "type": "PIX_AUTOMATIC",
+                  "pix_code": "00020126180014br.gov.bcb.pix5204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***80720014br.gov.bcb.pix2550pix.ebanx.com/rec/66A8324FC20E3B13258EBE1E848D1F0663044AAC"
                 },
                 "full_price": {
                   "currency_value": "BRL",
-                  "value": 1500
+                  "value": 0
                 },
                 "business_model": "I",
-                "transaction": "HP16015479281022",
+                "invoice_by": "SELLER",
+                "transaction": "HP2153575036",
                 "status": "APPROVED"
               },
               "affiliates": [
                 {
-                  "affiliate_code": "Q58388177J",
-                  "name": "Affiliate name"
+                  "affiliate_code": "",
+                  "name": ""
                 }
               ],
               "producer": {
-                "legal_nature": "Pessoa Física",
-                "document": "12345678965",
-                "name": "Producer Test Name"
+                "legal_nature": "Pessoa Jurídica",
+                "document": "59187725000183",
+                "name": "INSTITUTO SORVETEIRO RAIZ LTDA"
               },
               "subscription": {
                 "subscriber": {
-                  "code": "I9OT62C3"
+                  "code": "SHCOSY12"
                 },
                 "plan": {
-                  "name": "plano de teste",
-                  "id": 123
+                  "name": "Valor especial para alunos",
+                  "id": 1249706
                 },
                 "status": "ACTIVE"
               },
               "buyer": {
-                "checkout_phone_code": "999999999",
+                "checkout_phone_code": "91",
                 "address": {
-                  "zipcode": "38400123",
+                  "zipcode": "68300000",
                   "country": "Brasil",
-                  "number": "10",
-                  "address": "Avenida Francisco Galassi",
-                  "city": "Uberlândia",
-                  "state": "Minas Gerais",
-                  "neighborhood": "Tubalina",
-                  "complement": "Perto do shopping",
+                  "number": "258",
+                  "address": "Av santo Antônio ",
+                  "city": "Gurupá",
+                  "state": "PA",
+                  "neighborhood": "Centro ",
+                  "complement": "Atrás da prefeitura ",
                   "country_iso": "BR"
                 },
-                "document": "69526128664",
-                "name": "Teste Comprador",
-                "last_name": "Comprador",
-                "checkout_phone": "99999999900",
-                "first_name": "Teste",
-                "email": "testeComprador271101postman15@example.com",
+                "document": "02176208250",
+                "name": "Max Cardoso Martins",
+                "last_name": "Martins",
+                "checkout_phone": "91986033229",
+                "first_name": "Max",
+                "email": "maxcardosomartins.mcm@gmail.com",
                 "document_type": "CPF"
               }
             },
-            "id": "f9bdc82d-564c-4f1a-a9ac-2def461ab379",
-            "creation_date": 1776455166287,
+            "id": "181d454e-0608-4278-92cd-b10e1b8a57e2",
+            "creation_date": 1776718506920,
             "event": "PURCHASE_APPROVED",
             "version": "2.0.0"
           },
@@ -583,6 +553,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-04-17T19:54:49.441Z",
-  "versionId": "60d7b290-6175-4b94-b69d-52c6f0113f56"
+  "updatedAt": "2026-04-21T23:23:10.998Z",
+  "versionId": "e41bf929-16f5-419a-b34c-fe66bdc05377"
 }
