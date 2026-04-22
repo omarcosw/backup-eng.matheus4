@@ -1,0 +1,96 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-04-21T23:47:31.158Z",
+  "id": "qCkxylZublKNNdc9",
+  "isArchived": true,
+  "meta": null,
+  "name": "[RH] Atualização de atendimento",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "24c749aa-d521-40e4-ac19-b831894862ae",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "206d6f92-32d1-4af3-b6e4-bd8ad1d7af8c",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "913b068a-a28b-4d42-bc03-694fd91f71b8",
+      "name": "Code"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2026-04-21T23:47:31.158Z",
+      "updatedAt": "2026-04-21T23:47:31.158Z",
+      "role": "workflow:owner",
+      "workflowId": "qCkxylZublKNNdc9",
+      "projectId": "MnGFQuvoDMTHLtMd"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2026-04-21T23:48:10.328Z",
+      "updatedAt": "2026-04-21T23:48:10.328Z",
+      "id": "2XxS3LNT0IoP4QfA",
+      "name": "Bruno"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2026-04-21T23:55:53.715Z",
+  "versionId": "cffbb262-4c7c-423c-bb42-49c95a1ed615"
+}
