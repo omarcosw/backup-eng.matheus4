@@ -1,0 +1,413 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a row": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Get a row1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Formata dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata dados": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        []
+      ]
+    },
+    "Get a row1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Update a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-04-22T00:07:54.863Z",
+  "id": "ZyFQPAbG4hOBXL64",
+  "isArchived": true,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[]",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -448,
+        -224
+      ],
+      "id": "5a088209-29c2-484a-9096-fe2d59565214",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "Nicolly_teste",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "email",
+              "keyValue": "bruno.martins@email.com"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -208,
+        -224
+      ],
+      "id": "c8f48d9a-a418-4140-a16d-263520bd663e",
+      "name": "Get a row",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d20808a6-0f84-4763-bb9f-03852062984d",
+              "name": "name",
+              "value": "={{ $item(\"0\").$node[\"Get a row\"].json[\"nome\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "b3488ef9-5843-4fdb-8ed7-a49fb071104d",
+              "name": "email",
+              "value": "={{ $item(\"0\").$node[\"Get a row\"].json[\"email\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "ec56f927-f316-49c2-a30b-f9690c07c1ed",
+              "name": "phone",
+              "value": "={{ $item(\"0\").$node[\"Get a row\"].json[\"telefone\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        -224
+      ],
+      "id": "df393d48-e54a-4a08-aac1-5d2b557975bf",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "289730cb-5b19-4f68-8a71-eaeaa22ba665",
+              "leftValue": "={{ $item(\"0\").$node[\"Get a row\"].json[\"email\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -32,
+        224
+      ],
+      "id": "08982ada-60ba-408e-8769-85ed10a6d6ff",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "jsCode": "function normalizarTelefone(telefone) {\n  if (!telefone) return null;\n  let digitos = String(telefone).replace(/\\D/g, '');\n  return digitos.startsWith('55') ? digitos : '55' + digitos;\n}\n\nfunction parseNome(nomeCompleto) {\n  if (!nomeCompleto) return { firstName: null, lastName: null };\n\n  // Remove espaços extras (início, fim, e múltiplos espaços no meio)\n  const partes = String(nomeCompleto).trim().replace(/\\s+/g, ' ').split(' ');\n\n  const firstName = partes[0];\n  const lastName = partes.slice(1).join(' ') || null; // null se só tiver 1 palavra\n\n  return { firstName, lastName };\n}\n\nreturn $input.all().map(item => {\n  const { firstName, lastName } = parseNome(item.json.name);\n\n  return {\n    json: {\n      ...item.json,\n      firstName,\n      lastName,\n      phone: normalizarTelefone(item.json.phone),\n    },\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        -224
+      ],
+      "id": "845ce7b5-06da-4012-93a6-44c52a0fcc96",
+      "name": "Formata dados"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $item(\"0\").$node[\"Formata dados\"].json[\"lastName\"] }}",
+        "options": {
+          "systemMessage": "voce e uma IA de atendimento de advogados"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        416,
+        -224
+      ],
+      "id": "ae8fd556-ec37-4008-8609-4583968d8f84",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        288,
+        -16
+      ],
+      "id": "c8a5a5d9-3a0c-443f-9e6e-233e594c8343",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "QzQb6Q9G3hGozb9v",
+          "name": "OpenAi - Dani 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "Bruno_teste",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "keyValue": "+55 15 99812-4565"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        240,
+        240
+      ],
+      "id": "8dde1289-12c3-4433-bacf-451d480a5b51",
+      "name": "Get a row1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "289730cb-5b19-4f68-8a71-eaeaa22ba665",
+              "leftValue": "={{ $item(\"0\").$node[\"Get a row1\"].json[\"telefone\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        528,
+        256
+      ],
+      "id": "fafd8794-aa3f-469f-a556-08df81dd48fd",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "Bruno_teste",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "email",
+              "condition": "eq",
+              "keyValue": "={{ $item(\"0\").$node[\"Get a row\"].json[\"email\"] }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "Julia"
+            },
+            {
+              "fieldId": "telefone",
+              "fieldValue": "={{ $item(\"0\").$node[\"Get a row\"].json[\"telefone\"] }}"
+            },
+            {
+              "fieldId": "email",
+              "fieldValue": "silkvahigor288@gmail.com"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        784,
+        400
+      ],
+      "id": "ad4fe508-768c-4db5-9d48-53e9ead99dce",
+      "name": "Update a row",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# AUTOMACAO DE TESTE",
+        "height": 528,
+        "width": 1504
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -560,
+        -384
+      ],
+      "typeVersion": 1,
+      "id": "865032a1-bef5-4455-bfac-f3b846e251e2",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2026-04-22T00:07:54.863Z",
+      "updatedAt": "2026-04-22T00:07:54.863Z",
+      "role": "workflow:owner",
+      "workflowId": "ZyFQPAbG4hOBXL64",
+      "projectId": "MnGFQuvoDMTHLtMd"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-04-22T01:37:13.275Z",
+  "versionId": "c72dfb4a-4c95-4719-bbd2-95e1ea373409"
+}
