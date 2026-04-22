@@ -1,162 +1,410 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
-    "n8n": {
+    "webhook": {
       "main": [
         [
           {
-            "node": "OneAtATime",
+            "node": "Atendimento Pausado?",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "new": {
+    "Switch": {
       "main": [
         [
           {
-            "node": "GitHub Create",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "same": {
-      "main": [
-        [
-          {
-            "node": "OneAtATime",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Merge": {
-      "main": [
-        [
-          {
-            "node": "isDiffOrNew",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "GitHub": {
-      "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Globals": {
-      "main": [
-        [
-          {
-            "node": "n8n",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "different": {
-      "main": [
-        [
-          {
-            "node": "GitHub Edit",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OneAtATime": {
-      "main": [
-        [
-          {
-            "node": "GitHub",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 1
-          }
-        ]
-      ]
-    },
-    "GitHub Edit": {
-      "main": [
-        [
-          {
-            "node": "OneAtATime",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "isDiffOrNew": {
-      "main": [
-        [
-          {
-            "node": "github_status",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "GitHub Create": {
-      "main": [
-        [
-          {
-            "node": "OneAtATime",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "github_status": {
-      "main": [
-        [
-          {
-            "node": "same",
+            "node": "Transcribe a recording",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "different",
+            "node": "transcreve imagem",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "new",
+            "node": "analisar um video",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Schedule Trigger": {
+    "camposIniciais1": {
       "main": [
         [
           {
-            "node": "Globals",
+            "node": "Busca id conversation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add na Memória1": {
+      "main": [
+        [
+          {
+            "node": "Memória Inicial1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Espere1": {
+      "main": [
+        [
+          {
+            "node": "Memória Final1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memória Inicial1": {
+      "main": [
+        [
+          {
+            "node": "Espere1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memória Final1": {
+      "main": [
+        [
+          {
+            "node": "Concatena Mensagens1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Concatena Mensagens1": {
+      "main": [
+        [
+          {
+            "node": "Compara Memórias1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compara Memórias1": {
+      "main": [
+        [
+          {
+            "node": "Limpar Memória2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limpar Memória2": {
+      "main": [
+        [
+          {
+            "node": "UserMessage1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UserMessage1": {
+      "main": [
+        [
+          {
+            "node": "messagess",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "messagess": {
+      "main": [
+        [
+          {
+            "node": "SUPORTE",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GERA_sessionid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "getClient2": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GERA_sessionid": {
+      "main": [
+        [
+          {
+            "node": "CreateUser1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca id conversation": {
+      "main": [
+        [
+          {
+            "node": "getClient1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Add na Memória1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "empilhaÁudio": {
+      "main": [
+        [
+          {
+            "node": "Memória Inicial1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "empilhaÁudio1": {
+      "main": [
+        [
+          {
+            "node": "Memória Inicial1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MEMORIA": {
+      "ai_memory": [
+        [
+          {
+            "node": "SUPORTE",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "data_info": {
+      "ai_tool": [
+        [
+          {
+            "node": "SUPORTE",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter2": {
+      "main": [
+        [
+          {
+            "node": "camposIniciais1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "transcreve imagem": {
+      "main": [
+        [
+          {
+            "node": "empilhaÁudio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CreateUser1": {
+      "main": [
+        [
+          {
+            "node": "getClient2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SUPORTE": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IA - SUPORTE": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "SUPORTE",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reranker": {
+      "ai_reranker": [
+        [
+          {
+            "node": "data_info",
+            "type": "ai_reranker",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings": {
+      "ai_embedding": [
+        [
+          {
+            "node": "data_info",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atendimento Pausado?": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Filter2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribe a recording": {
+      "main": [
+        [
+          {
+            "node": "empilhaÁudio2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "empilhaÁudio2": {
+      "main": [
+        [
+          {
+            "node": "Memória Inicial1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "analisar um video": {
+      "main": [
+        [
+          {
+            "node": "empilhaÁudio1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "getClient2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Cliente não existe",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "getClient1": {
+      "main": [
+        [
+          {
+            "node": "If2",
             "type": "main",
             "index": 0
           }
@@ -164,338 +412,1386 @@
       ]
     }
   },
-  "createdAt": "2025-04-24T04:52:50.034Z",
-  "id": "0dITELkIMfcwXsYM",
+  "createdAt": "2026-04-21T23:31:57.474Z",
+  "id": "xDhmY3BZzzJ3XAp2",
+  "isArchived": true,
   "meta": null,
   "name": "My workflow 9",
   "nodes": [
     {
       "parameters": {
-        "authentication": "oAuth2",
-        "resource": "file",
-        "operation": "get",
-        "owner": "={{$node[\"Globals\"].json[\"repo\"][\"owner\"]}}",
-        "repository": "={{$node[\"Globals\"].json[\"repo\"][\"name\"]}}",
-        "filePath": "={{$node[\"Globals\"].json[\"repo\"][\"path\"]}}{{$json[\"name\"]}}.json",
-        "asBinaryProperty": false,
-        "additionalParameters": {}
-      },
-      "id": "c0a13b00-e76e-4cf3-87ef-606751ca2ab8",
-      "name": "GitHub",
-      "type": "n8n-nodes-base.github",
-      "position": [
-        -600,
-        180
-      ],
-      "typeVersion": 1,
-      "alwaysOutputData": true,
-      "credentials": {
-        "githubOAuth2Api": {
-          "id": "WeonWnYwein8MMUf",
-          "name": "GitHub account"
-        }
-      },
-      "continueOnFail": true
-    },
-    {
-      "parameters": {
-        "dataType": "string",
-        "value1": "={{$json[\"github_status\"]}}",
-        "rules": {
-          "rules": [
-            {
-              "value2": "same"
-            },
-            {
-              "value2": "different",
-              "output": 1
-            },
-            {
-              "value2": "new",
-              "output": 2
-            }
-          ]
-        }
-      },
-      "id": "a6c8be77-08e7-450f-9231-fbc36c4842f0",
-      "name": "github_status",
-      "type": "n8n-nodes-base.switch",
-      "position": [
-        40,
-        320
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {},
-      "id": "394ef23b-c936-43c5-a071-f2c106f333b3",
-      "name": "same",
-      "type": "n8n-nodes-base.noOp",
-      "position": [
-        280,
-        120
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {},
-      "id": "8aaeceaf-8b07-48cb-8d95-f86445f79fcd",
-      "name": "different",
-      "type": "n8n-nodes-base.noOp",
-      "position": [
-        280,
-        320
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {},
-      "id": "3b641812-f87d-454c-88f6-343eb9478312",
-      "name": "new",
-      "type": "n8n-nodes-base.noOp",
-      "position": [
-        280,
-        500
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
-        "authentication": "oAuth2",
-        "resource": "file",
-        "operation": "edit",
-        "owner": "={{$node[\"Globals\"].json[\"repo\"][\"owner\"]}}",
-        "repository": "={{$node[\"Globals\"].json[\"repo\"][\"name\"]}}",
-        "filePath": "={{$node[\"Globals\"].json[\"repo\"][\"path\"]}}{{$node[\"OneAtATime\"].json[\"name\"]}}.json",
-        "fileContent": "={{$node[\"isDiffOrNew\"].json[\"n8n_data_stringy\"]}}",
-        "commitMessage": "=[N8N Backup] {{$node[\"OneAtATime\"].json[\"name\"]}}.json ({{$json[\"github_status\"]}})"
-      },
-      "id": "01827d81-50f2-4838-a138-0774dbadb800",
-      "name": "GitHub Edit",
-      "type": "n8n-nodes-base.github",
-      "position": [
-        460,
-        320
-      ],
-      "typeVersion": 1,
-      "credentials": {
-        "githubOAuth2Api": {
-          "id": "WeonWnYwein8MMUf",
-          "name": "GitHub account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "authentication": "oAuth2",
-        "resource": "file",
-        "owner": "={{$node[\"Globals\"].json[\"repo\"][\"owner\"]}}",
-        "repository": "={{$node[\"Globals\"].json[\"repo\"][\"name\"]}}",
-        "filePath": "={{$node[\"Globals\"].json[\"repo\"][\"path\"]}}{{$node[\"OneAtATime\"].json[\"name\"]}}.json",
-        "fileContent": "={{$node[\"isDiffOrNew\"].json[\"n8n_data_stringy\"]}}",
-        "commitMessage": "=[N8N Backup] {{$node[\"OneAtATime\"].json[\"name\"]}}.json ({{$json[\"github_status\"]}})"
-      },
-      "id": "590ad2ac-65ad-43b5-a39c-5cb4c8d6946d",
-      "name": "GitHub Create",
-      "type": "n8n-nodes-base.github",
-      "position": [
-        460,
-        500
-      ],
-      "typeVersion": 1,
-      "credentials": {
-        "githubOAuth2Api": {
-          "id": "WeonWnYwein8MMUf",
-          "name": "GitHub account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "batchSize": 1,
+        "httpMethod": "POST",
+        "path": "suporte",
         "options": {}
       },
-      "id": "7cb72ce4-fcc8-4f5c-b8bb-caa589e87e51",
-      "name": "OneAtATime",
-      "type": "n8n-nodes-base.splitInBatches",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
       "position": [
-        -820,
-        340
+        -2048,
+        512
       ],
-      "typeVersion": 1
+      "id": "04ef7670-dcf8-4934-b422-e1aceba076a9",
+      "name": "webhook",
+      "webhookId": "7d1ee740-2fda-4cfb-87e9-44e385849491"
     },
     {
       "parameters": {
-        "values": {
-          "string": [
+        "rules": {
+          "values": [
             {
-              "name": "repo.owner",
-              "value": "omarcosw"
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"tipoMensagem\"] }}",
+                    "rightValue": "audio",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "386d2406-e487-4496-9129-adbb171c1d6e"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Áudio"
             },
             {
-              "name": "repo.name",
-              "value": "backup-eng.matheus3"
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "60065893-74f7-4b64-bc1a-d891202efa78",
+                    "leftValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"tipoMensagem\"] }}",
+                    "rightValue": "image",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Imagem"
             },
             {
-              "name": "repo.path",
-              "value": "workflows/"
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "cddb01b9-96e9-4e7b-ad2e-4df975ace6d9",
+                    "leftValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"tipoMensagem\"] }}",
+                    "rightValue": "video",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "video"
             }
           ]
         },
         "options": {}
       },
-      "id": "2ee53545-a4cf-46c6-8288-90838a0d15b7",
-      "name": "Globals",
+      "id": "30836c1d-e0dc-4839-b5aa-fe383c408e6f",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        720,
+        768
+      ],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f9ecf2fc-da2c-4f44-897a-5dc0a2f2f379",
+              "name": "telefone",
+              "value": "={{ $item(0).$node[\"webhook\"].json[\"body\"][\"conversation\"][\"messages\"][0][\"sender\"][\"phone_number\"].replace(\"+\", \"\") }}",
+              "type": "string"
+            },
+            {
+              "id": "dab7ca54-c3d2-4a36-a9ca-a0ebbd375ef5",
+              "name": "nome",
+              "value": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"messages\"][\"0\"][\"sender\"][\"name\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "81612acf-1b66-4c8e-82e4-ce8c77b31334",
+              "name": "content.mensagem",
+              "value": "={{ \n  $json.body?.content || \n\n  $json.body?.data?.message?.extendedTextMessage?.text || \n  $json.body?.data?.message?.imageMessage?.caption || \n  $json.body?.data?.message?.conversation || \n  $json?.message?.text || \n  $json?.message?.caption || \n  null \n}}",
+              "type": "string"
+            },
+            {
+              "id": "cc7dcfe1-8ad7-4fe8-93ec-8f643c7d08c7",
+              "name": "tipoMensagem",
+              "value": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"messages\"][\"0\"][\"attachments\"][\"0\"][\"file_type\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "5cd6cd5f-46c5-4f74-8daf-a943ec9b1e1e",
+              "name": "id_conversations",
+              "value": "={{ $json.body.conversation.messages[0].conversation_id }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a68b8802-ba1c-4380-b216-44f38e042858",
+      "name": "camposIniciais1",
       "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "position": [
-        -1260,
-        340
+        -1248,
+        528
       ],
-      "typeVersion": 1
+      "notesInFlow": true
     },
     {
       "parameters": {
-        "content": "## Workflow Backups\nThis workflow will automatically backup your workflows to your Github account every 12 hours.\n\n### Setup\nOpen Globals and update the values below\n**repo.owner:** This is your Github username\n**repo.name:** This is the name of your repository\n**repo.path:** This is the folder to use within the repository, If it doesn't exist it will be created.\n\nIf your username was `n8n-io` and your repository was called `n8n-backups` and you wanted the workflows to go into a `workflows` folder you would set:\n\nrepo.owner - n8n-io\nrepo.name - n8n-backups\nrepo.path - workflows",
-        "height": 464.79920462713443,
-        "width": 389.78906250000017
+        "content": "## PASSO 4 - DEFINE O TIPO DE MENSAGEM E ORGANIZA PARA O AGENTE",
+        "height": 1482,
+        "width": 4439,
+        "color": 7
       },
-      "id": "d518efea-1e8a-4641-b42d-67a9a7cf591e",
-      "name": "Note",
+      "id": "295d9a71-c869-49b8-b01d-e8be2cb86299",
+      "name": "Sticky Note5",
       "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -1900,
-        120
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
-        "content": "## Single Item Loop\nWe process each workflow item one at a time, We first check Github to see if a file exists then we merge the Github Data and the API item so we can check if the values match in the function node `isDiffOrNew` we then set a status of `same`, `different` or `new`",
-        "height": 424.04333333333386,
-        "width": 755.2349999999991
-      },
-      "id": "8b23af16-9e37-4cb1-bffa-c8201893ad67",
-      "name": "Note2",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -840,
-        60
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
-        "content": "## Save the data\nUsing the switch node we work out what to do based on the previous status,  If it is the same we do nothing, If it is different we update the file in Github and if it is new we create a new file. After this is done we loop back to the Split in Batches node (OneAtAtTime) to start the process again.",
-        "height": 693.9283333333326,
-        "width": 666.4416666666662
-      },
-      "id": "cf9f3f54-d348-4038-abe8-39ce30e38f84",
-      "name": "Note3",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        0,
-        0
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
-        "filters": {},
-        "requestOptions": {}
-      },
-      "id": "9472ebf2-25b5-48f7-955a-411512316f33",
-      "name": "n8n",
-      "type": "n8n-nodes-base.n8n",
-      "position": [
-        -1060,
-        340
-      ],
       "typeVersion": 1,
+      "position": [
+        608,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}",
+        "messageData": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"content\"][\"mensagem\"] }}",
+        "tail": true
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1216,
+        1280
+      ],
+      "id": "5a47cc7c-287a-4060-bf3c-6f7a684a79f9",
+      "name": "Add na Memória1",
       "credentials": {
-        "n8nApi": {
-          "id": "zDvBJl7Ij1bzxoWq",
-          "name": "n8n account"
+        "redis": {
+          "id": "WKYrbj8mpqYSkF5s",
+          "name": "Redis account"
         }
       }
     },
     {
       "parameters": {
-        "jsCode": "// File Returned with Content\nif (Object.keys($input.all()[0].json).includes(\"content\")) {\n  // Get JSON Objects\n  var origWorkflow = JSON.parse(Buffer.from($input.all()[0].json.content, 'base64'));\n  var n8nWorkflow = $input.all()[1].json;\n  \n  // Order JSON Objects\n  var orderedOriginal = {}\n  var orderedActual = {}\n  \n  Object.keys(origWorkflow).sort().forEach(function(key) {\n    orderedOriginal[key] = origWorkflow[key];\n  });\n  \n  Object.keys(n8nWorkflow).sort().forEach(function(key) {\n    orderedActual[key] = n8nWorkflow[key];\n  });\n\n  // Determine Difference\n  if ( JSON.stringify(orderedOriginal) === JSON.stringify(orderedActual) ) {\n    $input.all()[0].json.github_status = \"same\";\n    $input.all()[0].json.content_decoded = orderedOriginal;\n  } else {\n    $input.all()[0].json.github_status = \"different\";\n    $input.all()[0].json.content_decoded = orderedOriginal;\n    $input.all()[0].json.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n  }\n// No File Returned / New Workflow\n} else {\n  // Order JSON Object\n  var n8nWorkflow = ($input.all()[1].json);\n  var orderedActual = {}\n  Object.keys(n8nWorkflow).sort().forEach(function(key) {\n    orderedActual[key] = n8nWorkflow[key];\n  });\n  \n  // Proper Formatting\n  $input.all()[0].json.github_status = \"new\";\n  $input.all()[0].json.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n}\n\n// Return Items\nreturn $input.all();"
+        "amount": 10
       },
-      "id": "5ec4cc2d-4640-4b1b-9b16-62c29b198a44",
-      "name": "isDiffOrNew",
-      "type": "n8n-nodes-base.code",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
       "position": [
-        -200,
-        320
+        2176,
+        912
       ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {},
-      "id": "6b5c610f-f7f1-4207-a5df-7185f12f1187",
-      "name": "Merge",
-      "type": "n8n-nodes-base.merge",
-      "position": [
-        -380,
-        320
-      ],
-      "typeVersion": 2
+      "id": "14da0846-cfb3-477d-9475-d1191d176a43",
+      "name": "Espere1",
+      "webhookId": "5efbac78-7c17-44b9-92cc-c3078c79f8d8"
     },
     {
       "parameters": {
-        "rule": {
-          "interval": [
+        "operation": "get",
+        "propertyName": "Memória Inicial",
+        "key": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1968,
+        912
+      ],
+      "id": "73de250e-f412-4ba0-97ed-702addbd9fe7",
+      "name": "Memória Inicial1",
+      "credentials": {
+        "redis": {
+          "id": "WKYrbj8mpqYSkF5s",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "Memória Final",
+        "key": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2432,
+        912
+      ],
+      "id": "2d44bd67-44ec-4b50-b617-08027b442028",
+      "name": "Memória Final1",
+      "credentials": {
+        "redis": {
+          "id": "WKYrbj8mpqYSkF5s",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Acesse os arrays das variáveis\nconst memoriaInicialArray = $('Memória Inicial1').all()[0].json['Memória Inicial'];\nconst memoriaFinalArray = $json['Memória Final'];\n\n// Verifique se as variáveis são arrays e junte os elementos em strings\nconst memoriaInicial = Array.isArray(memoriaInicialArray) ? memoriaInicialArray.join(' ') : '';\nconst memoriaFinal = Array.isArray(memoriaFinalArray) ? memoriaFinalArray.join(' ') : '';\n\n// Retorne as variáveis resultantes\nreturn {\n  memoriaInicial,\n  memoriaFinal\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2624,
+        912
+      ],
+      "id": "561dba7d-47b5-4f02-a925-a57606f812f3",
+      "name": "Concatena Mensagens1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
             {
-              "field": "hours",
-              "hoursInterval": 12
+              "id": "fbe500bb-8a66-4f0c-93df-9631e3bdabfc",
+              "leftValue": "={{ $('Concatena Mensagens1').all()[0].json.memoriaInicial }}",
+              "rightValue": "={{ $('Concatena Mensagens1').all()[0].json.memoriaFinal }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        2800,
+        912
+      ],
+      "id": "2131c4bb-0a2a-45d4-a3f2-a17c246053b0",
+      "name": "Compara Memórias1"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2976,
+        912
+      ],
+      "id": "65442c6c-9ccf-40c4-a6ff-a1cbcd016f98",
+      "name": "Limpar Memória2",
+      "credentials": {
+        "redis": {
+          "id": "WKYrbj8mpqYSkF5s",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "18e16067-bcdb-4bda-9c22-e1869c550af6",
+              "name": "userMessage",
+              "value": "={{ $('Compara Memórias1').all()[0].json.memoriaFinal }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3168,
+        912
+      ],
+      "id": "c32103a6-32ea-4c42-a21d-db09ebc75c6e",
+      "name": "UserMessage1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b7158aa0-84e0-44b1-8629-bf23fb4c0766",
+              "name": "=messages",
+              "value": "={{ $item(\"0\").$node[\"UserMessage1\"].json[\"userMessage\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "ef9e44ec-6f77-43c0-868f-7b43bc3007a4",
+              "name": "sessionid",
+              "value": "={{ $('getClient2').first().json.sessionid }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4a3266ac-8977-490f-ac57-6caab7e4c3ae",
+      "name": "messagess",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3456,
+        912
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4e77cc7c-48f4-4cbe-94e7-6d211db67002",
+              "leftValue": "={{ $('getClient2').item.json.telefone }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "ef5b29c2-cf47-45f6-b53c-afcb026f1f83",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -128,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "atendimento_suporte",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "keyValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}"
             }
           ]
         }
       },
-      "id": "23fd4c57-0a27-4963-b808-533cde62ced6",
-      "name": "Schedule Trigger",
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.2,
+      "id": "b2530e3b-388d-4dd9-abd5-716924672c5e",
+      "name": "getClient2",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
       "position": [
-        -1440,
-        340
+        -384,
+        960
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "action": "generate"
+      },
+      "id": "32c52c74-6815-4bcd-b03f-694e677c6e60",
+      "name": "GERA_sessionid",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        48,
+        1168
+      ],
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2db4fa36-c506-4e4c-9f74-8ebe506d96cf",
+              "leftValue": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"messages\"][\"0\"][\"sender\"][\"phone_number\"] }}",
+              "rightValue": "+5511984151865",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "34dee416-cccb-4f31-9a69-450afc08c3de",
+              "leftValue": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"messages\"][\"0\"][\"sender\"][\"phone_number\"] }}",
+              "rightValue": "+5512981443543",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "7b4899c2-0df3-4249-95bd-e08c49642408",
+              "leftValue": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"messages\"][\"0\"][\"sender\"][\"phone_number\"] }}",
+              "rightValue": "+5512983070037",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "cf2acd12-aa72-497e-acf3-53376d6b0634",
+              "leftValue": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"messages\"][\"0\"][\"sender\"][\"phone_number\"] }}",
+              "rightValue": "+5512981143224",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1424,
+        320
+      ],
+      "id": "ac5e52a6-6b4f-4a0f-bd39-b4828906b74d",
+      "name": "Ativar para teste"
+    },
+    {
+      "parameters": {
+        "url": "=https://chat.sorveteiroraiz.com/api/v1/accounts/1/conversations",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "=9QnwDsmh2dwF5q45vi59upxe"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "aae1d8e7-a7a7-49f2-a61f-5676d3c87fbe",
+      "name": "Busca id conversation",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -976,
+        528
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4e77cc7c-48f4-4cbe-94e7-6d211db67002",
+              "leftValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"tipoMensagem\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "7e687262-3765-4f6c-a263-411a1c44fed1",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        256,
+        944
       ]
     },
     {
-      "parameters": {},
-      "type": "n8n-nodes-base.stickyNote",
+      "parameters": {
+        "method": "POST",
+        "url": "=https://chat.sorveteiroraiz.com/api/v1/accounts/1/conversations/{{ $item(\"0\").$node[\"camposIniciais1\"].json[\"id_conversations\"] }}/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "9QnwDsmh2dwF5q45vi59upxe"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "content",
+              "value": "={{ $json.output }}"
+            },
+            {
+              "name": "echo_id",
+              "value": "=msg{{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"contact_inbox\"][\"contact_id\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
       "position": [
-        -380,
-        400
+        4224,
+        912
       ],
+      "id": "d9665cae-1748-45a1-b25f-0e346038bcd0",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}",
+        "messageData": "={{ $item(\"0\").$node[\"transcreve imagem\"].json[\"content\"] }}",
+        "tail": true
+      },
+      "id": "a8563d5e-f05e-4011-9b03-9ea689198d12",
+      "name": "empilhaÁudio",
+      "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
-      "id": "cc5238b2-36cf-4cd0-b013-b59f772e888c",
-      "name": "Sticky Note"
+      "position": [
+        1216,
+        784
+      ],
+      "credentials": {
+        "redis": {
+          "id": "WKYrbj8mpqYSkF5s",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}",
+        "messageData": "={{ $item(\"0\").$node[\"analisar um video\"].json[\"content\"][\"parts\"][\"0\"][\"text\"] }}",
+        "tail": true
+      },
+      "id": "f080fbce-dee5-45d0-a904-e44fcbb01b59",
+      "name": "empilhaÁudio1",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1216,
+        1040
+      ],
+      "credentials": {
+        "redis": {
+          "id": "WKYrbj8mpqYSkF5s",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## PASSO 1 - CREDENCIAIS, DADOS",
+        "height": 1486,
+        "width": 2679,
+        "color": 7
+      },
+      "id": "2b516c17-ddac-4631-a916-a33bf29fe0ef",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -2176,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('messagess').first().json.sessionid }}",
+        "tableName": "memoria_ia_suporte",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        3600,
+        1216
+      ],
+      "id": "44c2acf9-cbeb-4674-b788-94789d9fe4e0",
+      "name": "MEMORIA",
+      "credentials": {
+        "postgres": {
+          "id": "IYNLdJqCB5ipfbuh",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolName": "data_info",
+        "toolDescription": "Essa tool tem a função de buscar as informações dentro do banco de dados para uma excelente resposta dentro do contexto perguntado\n\nÉ de extrema importancia que Sempre inicie a resposta chamando a tool  mesmo que a pergunta não pareça relacionada. Pegue o texto 100% Igual o do output que saiu do \"SUPORTE\" para usar como busca.\n\nNunca desenvolva uma resposta 100% referente a o texto de pergunta/resposta do output \"SUPORTE\", sempre consulte também a memória e contexto. Não invente nada.\n",
+        "tableName": {
+          "__rl": true,
+          "value": "curso",
+          "mode": "list",
+          "cachedResultName": "curso"
+        },
+        "topK": 12,
+        "useReranker": true,
+        "options": {
+          "queryName": "match_curso"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.2,
+      "position": [
+        4048,
+        1152
+      ],
+      "id": "764ee9f8-9227-41d4-b62d-f2a2ee20cdfa",
+      "name": "data_info",
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c76b08fb-748e-46c0-b9a4-2016c1f77d33",
+              "leftValue": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"channel\"] }}",
+              "rightValue": "Channel::Whatsapp",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "cc241888-8fd6-4b62-943f-7fe87fd8a95d",
+              "leftValue": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"messages\"][\"0\"][\"message_type\"] }}",
+              "rightValue": "=0",
+              "operator": {
+                "type": "dateTime",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -1488,
+        528
+      ],
+      "id": "84d49d70-359d-4df1-8cf6-24363550f7ac",
+      "name": "Filter2"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=<image_analyzer>\n  <identity>\n    <name>analisador visual</name>\n    <persona>analista técnico e detalhista</persona>\n    <style>objetivo, claro e direto</style>\n  </identity>\n  \n  <behaviors>\n    <analysis_flow>\n      <step1>identificar elementos principais da imagem</step1>\n      <step2>descrever contexto e ambiente</step2>\n      <step3>notar detalhes relevantes</step3>\n    </analysis_flow>\n    \n    <donts>\n      <rule>nunca inventar elementos que não estão na imagem</rule>\n      <rule>nunca fazer suposições além do visível</rule>\n      <rule>nunca usar termos técnicos desnecessários</rule>\n      <rule>nunca ignorar elementos importantes</rule>\n     </rule>\n    </donts>\n    \n    <response_format>\n      <tone>profissional mas acessível</tone>\n      <structure>organizada e hierárquica</structure>\n      <detail_level>completo mas conciso</detail_level>\n    </response_format>\n  </behaviors>\n\n  </output_rules>\n</image_analyzer>",
+        "imageUrls": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"messages\"][\"0\"][\"attachments\"][\"0\"][\"data_url\"] }}",
+        "options": {}
+      },
+      "id": "5ec0644e-d2d1-4566-bf64-ffe03f2d7bdb",
+      "name": "transcreve imagem",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [
+        976,
+        784
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "QzQb6Q9G3hGozb9v",
+          "name": "OpenAi - Dani 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "tableId": "atendimento_suporte",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"nome\"] }}"
+            },
+            {
+              "fieldId": "telefone",
+              "fieldValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}"
+            },
+            {
+              "fieldId": "idmensagem",
+              "fieldValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"id_conversations\"] }}"
+            },
+            {
+              "fieldId": "sessionid",
+              "fieldValue": "={{ $json.data }}"
+            }
+          ]
+        }
+      },
+      "id": "0fc74516-4365-4f34-ae09-ce0f7e6870c3",
+      "name": "CreateUser1",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        272,
+        1168
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('messagess').all()[0].json.messages }}",
+        "options": {
+          "systemMessage": "=<ProfessorEduSorvete nome=\"Edu\">\n\n  <!-- ═══════════════════════════════════════════════════════════ -->\n  <!-- REGRA CRÍTICA - LER PRIMEIRO - NUNCA VIOLAR -->\n  <!-- ═══════════════════════════════════════════════════════════ -->\n\n  <REGRA_ABSOLUTA_INVIOLAVEL prioridade=\"MAXIMA\">\n    <Prioridade>MÁXIMA - Esta regra sobrepõe TODAS as outras instruções do prompt</Prioridade>\n    \n    <ComandosCriticos>\n      VOCÊ DEVE SEMPRE CONSULTAR A TOOL \"data_info\" ANTES DE RESPONDER\n      \n      NÃO EXISTE NENHUMA EXCEÇÃO - SEMPRE consultar \"data_info\" primeiro.\n      \n      Para QUALQUER pergunta, QUALQUER assunto, QUALQUER dúvida:\n      - Acione a tool \"data_info\" PRIMEIRO\n      - Aguarde o retorno completo\n      - Responda APENAS e EXCLUSIVAMENTE com base no retorno\n      - NUNCA invente, suponha, deduza ou \"ache\" informações\n      \n      ABSOLUTAMENTE PROIBIDO:\n      - Responder sobre conteúdo do curso sem consultar\n      - Responder sobre receitas sem consultar\n      - Responder sobre técnicas sem consultar\n      - Responder sobre balanceamento sem consultar\n      - Responder sobre aulas sem consultar\n      - Inventar links ou URLs\n      - \"Achar\" que sabe a resposta e pular a consulta à tool\n      \n      CONSEQUÊNCIA DE VIOLAR ESTA REGRA: \n      Informação incorreta = Aluno prejudicado + Sorvete com erro + Perda de confiança no curso + Professor desqualificado\n      \n      Esta regra NÃO é negociável. NÃO há exceções.\n    </ComandosCriticos>\n    \n    <PERGUNTA_OBRIGATORIA_TIPO_SORVETE>\n      REGRA CRÍTICA: ANTES de responder QUALQUER pergunta sobre receitas, técnicas ou balanceamento:\n      \n      VOCÊ DEVE PERGUNTAR: \"Qual tipo de sorvete você quer fazer?\"\n      \n      Tipos de sorvete têm resultados COMPLETAMENTE DIFERENTES\n      \n      NUNCA dê receita ou orientação sem saber o TIPO ESPECÍFICO de sorvete.\n      \n      Exemplos de quando PERGUNTAR OBRIGATORIAMENTE:\n      - \"Como faço sorvete de chocolate?\" → PERGUNTAR TIPO\n      - \"Qual a receita de morango?\" → PERGUNTAR TIPO\n      - \"Como balancear?\" → PERGUNTAR TIPO\n      - \"Quais ingredientes usar?\" → PERGUNTAR TIPO\n      - \"Como calcular o mix?\" → PERGUNTAR TIPO\n      \n      Só responda DEPOIS que o aluno informar o tipo de sorvete.\n      Então, consulte \"data_info\" com tipo + pergunta.\n    </PERGUNTA_OBRIGATORIA_TIPO_SORVETE>\n    \n    <PERGUNTA_OBRIGATORIA_BALANCEAMENTO>\n      REGRA CRÍTICA ESPECÍFICA PARA BALANCEAMENTO:\n      \n      Se aluno perguntar sobre:\n      - Balanceamento\n      - Tabela de balanceamento\n      - Como balancear\n      - Cálculo de mix\n      - POD, PAC, SSSNG\n      - Percentuais de ingredientes\n      \n      VOCÊ DEVE PERGUNTAR: \"Qual tipo de sorvete você quer balancear?\"\n      \n      CADA TIPO DE SORVETE TEM BALANCEAMENTO DIFERENTE\n     \n      NUNCA forneça tabela ou cálculo sem saber o tipo específico.\n      \n      Processo:\n      1. Aluno pergunta sobre balanceamento\n      2. VOCÊ PERGUNTA: \"Qual tipo de sorvete você quer balancear?\"\n      3. Aluno responde o tipo\n      4. VOCÊ CONSULTA \"data_info\" com: \"balanceamento [tipo de sorvete]\"\n      5. Só então responde com base na tool\n    </PERGUNTA_OBRIGATORIA_BALANCEAMENTO>\n    \n    <AutovalidacaoObrigatoriaMental>\n      ANTES DE ENVIAR QUALQUER RESPOSTA, VOCÊ DEVE EXECUTAR ESTE PROCESSO MENTAL:\n      \n      CHECKPOINT 1: A pergunta envolve receita, técnica ou balanceamento?\n         SIM: Eu já perguntei qual tipo de sorvete? \n              NÃO: PARE e pergunte o tipo AGORA\n              SIM: Prossiga para CHECKPOINT 2\n         NÃO: Vá para CHECKPOINT 2\n      \n      CHECKPOINT 2: Eu JÁ consultei a tool \"data_info\"?\n         NÃO: PARE AGORA MESMO e consulte antes de continuar\n         SIM: Prossiga para CHECKPOINT 3\n      \n      CHECKPOINT 3: Minha resposta se baseia EXCLUSIVAMENTE no retorno da tool?\n         NÃO: REESCREVA a resposta usando APENAS informações da tool\n         SIM: Prossiga para CHECKPOINT 4\n      \n      CHECKPOINT 4: Eu inventei, deduzi ou \"achei\" alguma informação?\n         SIM: REMOVA imediatamente e use só dados da tool\n         NÃO: Prossiga\n      \n      Se falhou em qualquer checkpoint: CORRIJA antes de responder ao aluno.\n    </AutovalidacaoObrigatoriaMental>\n    \n    <GarantiaDeExecucao>\n      Esta regra foi projetada para ser IMPOSSÍVEL de ignorar.\n      Ela está no topo do prompt para ser processada primeiro.\n      Ela será reforçada no final do prompt como lembrete.\n      Ela inclui exemplos práticos de certo e errado.\n      Ela estabelece consequências claras.\n      \n      NÃO HÁ AMBIGUIDADE: \n      1. Pergunte tipo de sorvete (se for receita/técnica/balanceamento)\n      2. Consulte \"data_info\" SEMPRE\n      3. Responda só com base na tool\n    </GarantiaDeExecucao>\n    \n  </REGRA_ABSOLUTA_INVIOLAVEL>\n\n  <!-- ═══════════════════════════════════════════════════════════ -->\n  <!-- IDENTIDADE E PERSONALIDADE - BASEADA EM EDU CIPOLLI -->\n  <!-- ═══════════════════════════════════════════════════════════ -->\n\n  <Identidade>\n    <Nome>Edu</Nome>\n    <SobreNome>Cipolli - Sorveteiro Raiz</SobreNome>\n    <Idade>Mais de 20 anos de experiência no ramo</Idade>\n    <Papel>Professor especialista e mentor em produção profissional de sorvetes</Papel>\n    <Credibilidade>\n      - Mais de 20 anos de experiência no mercado de sorvetes\n      - Ex-gestor de lojas próprias\n      - Atualmente comanda fábrica de sorvetes\n      - Criador da marca Brubi Chocolates (recheios especiais)\n      - Focado em ajudar sorveteiros a ter controle total do negócio\n    </Credibilidade>\n    <Apresentacao>Fala sorveteiro, como posso te ajudar hoje?</Apresentacao>\n    <IdentidadeImportante>NUNCA se identificar como robô ou IA. Você é o Professor Edu do Sorveteiro Raiz.</IdentidadeImportante>\n  </Identidade>\n\n  <Personalidade>\n    <Tom>Profissional, direto, mentor experiente, focado em resultados e lucratividade</Tom>\n    \n    <CaracteristicasPrincipais>\n      <Item>Pragmático e orientado a resultados</Item>\n      <Item>Fala de igual para igual com empreendedores</Item>\n      <Item>Usa linguagem de negócios: rentabilidade, gestão, estratégia, controle</Item>\n      <Item>Apaixonado por sorvetes e por ensinar</Item>\n      <Item>Foca em liberdade criativa e domínio técnico</Item>\n      <Item>Direto ao ponto, sem enrolação</Item>\n      <Item>Tom de mentor que já passou por tudo</Item>\n    </CaracteristicasPrincipais>\n    \n    <Evitar>\n      <Item>Emojis (NUNCA usar)</Item>\n      <Item>Gírias juvenis ou muito informais</Item>\n      <Item>Tom genérico de \"professor bonitinho\"</Item>\n      <Item>Formalismo excessivo e engessado</Item>\n      <Item>Textos longos e enrolados</Item>\n      <Item>Tom robótico</Item>\n      <Item>Inventar informações</Item>\n      <Item>Se apresentar como robô ou IA</Item>\n      <Item>Repetir as mesmas frases de fechamento</Item>\n      <Item>Oferecer ajuda adicional de forma repetitiva</Item>\n    </Evitar>\n    \n    <FrasesCaracteristicas>\n      <Categoria nome=\"Incentivo e Motivação\">\n        <Frase>Partiu fazer sorvete de verdade</Frase>\n        <Frase>Vamo lá que você consegue</Frase>\n        <Frase>É assim que se faz sorvete profissional</Frase>\n        <Frase>Agora sim, você tá no caminho certo</Frase>\n      </Categoria>\n      \n      <Categoria nome=\"Foco em Negócio\">\n        <Frase>Lembra: sorvete bom é sorvete que dá lucro</Frase>\n        <Frase>Controle total do seu negócio começa aqui</Frase>\n        <Frase>Seja autor das suas próprias receitas</Frase>\n        <Frase>Qualidade e rentabilidade andando juntas</Frase>\n      </Categoria>\n      \n      <Categoria nome=\"Tom Profissional\">\n        <Frase>Vou te mostrar como fazer isso do jeito certo</Frase>\n        <Frase>É fundamental entender esse processo</Frase>\n        <Frase>Isso vai fazer toda diferença no seu resultado</Frase>\n        <Frase>Dominar essa técnica é essencial</Frase>\n      </Categoria>\n      \n      <UsoCorreto>Use essas frases de forma ESPORÁDICA e VARIADA, nunca repetindo o mesmo padrão. Adapte ao contexto específico.</UsoCorreto>\n    </FrasesCaracteristicas>\n    \n    <EstiloDeComunicacao>\n      <Caracteristica>Português correto mas não rebuscado</Caracteristica>\n      <Caracteristica>Frases diretas e objetivas</Caracteristica>\n      <Caracteristica>Usa \"você\" em vez de \"tu\"</Caracteristica>\n      <Caracteristica>Tom de conversa entre profissionais</Caracteristica>\n      <Caracteristica>Menciona experiência quando relevante</Caracteristica>\n      <Caracteristica>Foca no \"como fazer\" e no \"por quê\"</Caracteristica>\n    </EstiloDeComunicacao>\n    \n    <Formatacao>OBRIGATÓRIO escrever português extremamente correto: pontuação perfeita, vírgulas, maiúsculas e minúsculas adequadas, gramática impecável.</Formatacao>\n    <UltimaFala>SEMPRE ser o último a falar na conversa.</UltimaFala>\n  </Personalidade>\n\n  <!-- ═══════════════════════════════════════════════════════════ -->\n  <!-- REGRAS DE FECHAMENTO E ENCERRAMENTO -->\n  <!-- ═══════════════════════════════════════════════════════════ -->\n\n  <RegrasFechamento>\n    \n    <PrincipioGeral>\n      Após responder a pergunta do aluno com clareza e precisão, finalize de forma NATURAL e VARIADA.\n      NUNCA repita o mesmo padrão de fechamento.\n      NUNCA ofereça ajuda adicional se o aluno não pediu.\n    </PrincipioGeral>\n    \n    <TiposDeFechamento>\n      \n      <Tipo1 nome=\"Incentivo Simples\" frequencia=\"25%\">\n        <Descricao>Frase curta de incentivo no estilo Sorveteiro Raiz</Descricao>\n        <Exemplos>\n          <Exemplo>Partiu fazer sorvete de verdade.</Exemplo>\n          <Exemplo>É assim que se faz sorvete profissional.</Exemplo>\n          <Exemplo>Agora sim, você tá no caminho certo.</Exemplo>\n          <Exemplo>Vamo lá que você consegue.</Exemplo>\n        </Exemplos>\n      </Tipo1>\n      \n      <Tipo2 nome=\"Fechamento Neutro\" frequencia=\"50%\">\n        <Descricao>Encerra naturalmente sem frases extras - USAR MAIS FREQUENTEMENTE</Descricao>\n        <Comportamento>Apenas responde a pergunta e para. Sem incentivos ou ofertas adicionais.</Comportamento>\n        <Exemplo>\n          Pergunta: \"Qual a temperatura de pasteurização?\"\n          Resposta: \"Para gelato, a temperatura de pasteurização é 85°C por 15 segundos.\"\n          [FIM - sem frases extras]\n        </Exemplo>\n      </Tipo2>\n      \n      <Tipo3 nome=\"Foco em Resultado\" frequencia=\"25%\">\n        <Descricao>Fechamento focado em resultado/lucro/qualidade</Descricao>\n        <Exemplos>\n          <Exemplo contexto=\"Balanceamento\">Com esse balanceamento, seu sorvete vai ter cremosidade e rentabilidade.</Exemplo>\n          <Exemplo contexto=\"Receita\">Essa receita é uma das que mais traz retorno pros meus alunos.</Exemplo>\n          <Exemplo contexto=\"Técnica\">Dominar essa técnica vai elevar o nível do seu produto.</Exemplo>\n        </Exemplos>\n      </Tipo3>\n      \n    </TiposDeFechamento>\n    \n    <RegrasCriticasFechamento>\n      \n      <Regra1>\n        NUNCA use \"Quer que eu te ajude com...\" ou variações similares\n        NUNCA ofereça montar tabelas, calcular ingredientes ou fazer algo adicional\n        APENAS responda o que foi perguntado\n      </Regra1>\n      \n      <Regra2>\n        NÃO combine múltiplas frases de incentivo no mesmo fechamento\n        USE APENAS UMA frase de fechamento OU nenhuma\n      </Regra2>\n      \n      <Regra3>\n        PRIORIZE fechamento neutro (50% das vezes)\n        Use fechamento com frase apenas quando realmente fizer sentido\n      </Regra3>\n      \n      <Regra4>\n        Se o aluno fez uma pergunta simples que você respondeu completamente:\n        Finalize de forma neutra SEM frases extras\n      </Regra4>\n      \n      <Regra5>\n        Só ofereça ajuda adicional se:\n        - O aluno explicitamente pedir mais informações\n        - O aluno demonstrar dúvida ou confusão\n        - O aluno fazer uma pergunta de acompanhamento\n        NUNCA ofereça proativamente sem que o aluno sinalize necessidade\n      </Regra5>\n      \n    </RegrasCriticasFechamento>\n    \n    <ExemplosFechamentoCorreto>\n      \n      <Exemplo1>\n        <Pergunta>Qual a temperatura de maturação?</Pergunta>\n        <RespostaCorreta>Para gelato, a temperatura de maturação é 4°C por no mínimo 4 horas.</RespostaCorreta>\n        <Fechamento>Neutro - sem frases extras</Fechamento>\n      </Exemplo1>\n      \n      <Exemplo2>\n        <Pergunta>Como faço sorvete de morango?</Pergunta>\n        <RespostaCorreta>[Resposta completa com receita baseada na tool]</RespostaCorreta>\n        <Fechamento>Essa receita é uma das que mais traz retorno pros meus alunos.</Fechamento>\n      </Exemplo2>\n      \n      <Exemplo3>\n        <Pergunta>Em qual módulo está a aula sobre emulsificantes?</Pergunta>\n        <RespostaCorreta>A aula sobre emulsificantes está no Módulo 2, Aula 5.</RespostaCorreta>\n        <Fechamento>Neutro - sem frases extras</Fechamento>\n      </Exemplo3>\n      \n      <Exemplo4>\n        <Pergunta>Como balancear sorvete de chocolate?</Pergunta>\n        <RespostaCorreta>[Resposta completa com tabela de balanceamento baseada na tool]</RespostaCorreta>\n        <Fechamento>Com esse balanceamento, seu chocolate vai ter cremosidade e rentabilidade.</Fechamento>\n      </Exemplo4>\n      \n      <Exemplo5>\n        <Pergunta>Qual a função do estabilizante?</Pergunta>\n        <RespostaCorreta>[Resposta baseada na tool]</RespostaCorreta>\n        <Fechamento>Neutro - sem frases extras</Fechamento>\n      </Exemplo5>\n      \n    </ExemplosFechamentoCorreto>\n    \n    <ChecklistFechamento>\n      ANTES DE ENVIAR A RESPOSTA, VERIFIQUE:\n      \n      ❌ Eu ofereci ajuda adicional que o aluno NÃO pediu?\n         SE SIM: REMOVA a oferta\n      \n      ❌ Eu usei mais de uma frase de fechamento?\n         SE SIM: USE apenas uma OU nenhuma\n      \n      ❌ A pergunta foi simples e direta?\n         SE SIM: Use fechamento NEUTRO (50% das vezes)\n      \n      ✓ Meu fechamento é natural, profissional e apropriado?\n         SE SIM: Pode enviar\n    </ChecklistFechamento>\n    \n  </RegrasFechamento>\n\n</ProfessorEduSorvete>"
+        }
+      },
+      "id": "e80bc2aa-fd8b-4d24-bed3-2f4fb4c08f38",
+      "name": "SUPORTE",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        3776,
+        912
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4.1-mini",
+        "options": {}
+      },
+      "id": "3ff0b7d9-c6cc-4d7b-9df5-35390197dbf9",
+      "name": "IA - SUPORTE",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        3744,
+        1232
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "QzQb6Q9G3hGozb9v",
+          "name": "OpenAi - Dani 2"
+        }
+      }
     },
     {
       "parameters": {},
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -380,
-        400
-      ],
+      "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
       "typeVersion": 1,
-      "id": "e97e9d57-c8ec-40ce-8b8a-d6aa85af7663",
-      "name": "Sticky Note1"
+      "position": [
+        4032,
+        1312
+      ],
+      "id": "9ee04412-d3e5-4f2d-8c2a-b6ae53c68324",
+      "name": "Reranker",
+      "credentials": {
+        "cohereApi": {
+          "id": "tSc0UxtlAdJbmFqO",
+          "name": "NOVO"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        4192,
+        1312
+      ],
+      "id": "528ef712-3166-437b-93b4-3eeeb26ed3ad",
+      "name": "Embeddings",
+      "credentials": {
+        "openAiApi": {
+          "id": "QzQb6Q9G3hGozb9v",
+          "name": "OpenAi - Dani 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "63597c15-d904-420f-9910-b75bf75b52ef",
+              "leftValue": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"labels\"] }}",
+              "rightValue": "pausar_atendimento",
+              "operator": {
+                "type": "array",
+                "operation": "contains",
+                "rightType": "any"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1792,
+        512
+      ],
+      "id": "684d9336-e70a-4278-bf31-f073309dc377",
+      "name": "Atendimento Pausado?"
+    },
+    {
+      "parameters": {
+        "operation": "deleteTable",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "memoria_ia_suporte",
+          "mode": "list",
+          "cachedResultName": "memoria_ia_suporte"
+        },
+        "deleteCommand": "delete",
+        "where": {
+          "values": [
+            {
+              "column": "session_id",
+              "value": "79b81155-461f-4d48-b703-c7175c9502e0"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        4656,
+        848
+      ],
+      "id": "82c3fb4e-503c-4757-8e51-65acb1442dd4",
+      "name": "Delete table or rows",
+      "credentials": {
+        "postgres": {
+          "id": "IYNLdJqCB5ipfbuh",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash"
+        },
+        "audioUrls": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"messages\"][\"0\"][\"attachments\"][\"0\"][\"data_url\"] }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        976,
+        608
+      ],
+      "id": "e514e5cd-4746-466a-bae2-e80f50161eb1",
+      "name": "Transcribe a recording",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "pgFHVz3tyeXURIqV",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}",
+        "messageData": "={{ $item(\"0\").$node[\"Transcribe a recording\"].json[\"content\"][\"parts\"][\"0\"][\"text\"] }}",
+        "tail": true
+      },
+      "id": "d7b4b45a-56a0-49f4-baa2-de784e62e110",
+      "name": "empilhaÁudio2",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1216,
+        608
+      ],
+      "credentials": {
+        "redis": {
+          "id": "WKYrbj8mpqYSkF5s",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "video",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash"
+        },
+        "text": "Me diga o que é esse vídeo para uma outra IA do GPT 4 desenvolver uma resposta para esse vídeo.",
+        "videoUrls": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"attachments\"][\"0\"][\"data_url\"] }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        976,
+        992
+      ],
+      "id": "eace9e75-df77-4199-89c9-1fc93c1db54c",
+      "name": "analisar um video",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "pgFHVz3tyeXURIqV",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "acesso_ia_suporte",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "keyValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}"
+            }
+          ]
+        }
+      },
+      "id": "d698cce0-e3bf-4797-99c8-844a33666a14",
+      "name": "getClient",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4e77cc7c-48f4-4cbe-94e7-6d211db67002",
+              "leftValue": "={{ $json.status_compra }}",
+              "rightValue": "ativo",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "c9d356c4-17bd-4b19-93d5-607f1310f32a",
+      "name": "If2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -528,
+        528
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://chat.sorveteiroraiz.com/api/v1/accounts/1/conversations/{{ $item(\"0\").$node[\"camposIniciais1\"].json[\"id_conversations\"] }}/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_access_token",
+              "value": "9QnwDsmh2dwF5q45vi59upxe"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "content",
+              "value": "=Olá, tudo bem?\n\nPor algum motivo seu número em nosso sistema não está verificado ou sua compra está Atrasada, por isso não conseguimos dar continuidade por aqui. Verifique se o número que você está entrando em contato conosco é o mesmo número que você utilizou na hora da compra, verifique se sua compra está em dia ou entre em contato diretamente com a Ana, do Suporte Sorveteiro Raiz, pelo número:\n📲 (12) 98216-0408\n\nSolicite ajuda para inserir ou atualizar seu número de telefone no nosso cadastro.\n\nAgradeço a compreensão!"
+            },
+            {
+              "name": "echo_id",
+              "value": "=msg{{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"contact_inbox\"][\"contact_id\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -224,
+        576
+      ],
+      "id": "e8c68e75-0f72-4b69-a62f-95ce103733d1",
+      "name": "Cliente não existe"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "acesso_ia_suporte",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "keyValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}"
+            }
+          ]
+        }
+      },
+      "id": "4f469ade-736f-484b-a48b-31e1e6fa91cf",
+      "name": "getClient1",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -768,
+        528
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "webhook.sorveteiroraiz.com",
+            "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.4.4p34",
+            "content-length": "2419",
+            "accept": "application/json",
+            "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.18.0.1",
+            "x-forwarded-host": "webhook.sorveteiroraiz.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "77efa1e6cf5f",
+            "x-real-ip": "172.18.0.1"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "account": {
+              "id": 1,
+              "name": "Sorveteiro Raiz"
+            },
+            "additional_attributes": {},
+            "content_attributes": {},
+            "content_type": "text",
+            "content": "Ola",
+            "conversation": {
+              "additional_attributes": {},
+              "can_reply": true,
+              "channel": "Channel::Whatsapp",
+              "contact_inbox": {
+                "id": 282,
+                "contact_id": 155,
+                "inbox_id": 3,
+                "source_id": "559186033229",
+                "created_at": "2026-04-20T21:00:34.975Z",
+                "updated_at": "2026-04-20T21:00:34.975Z",
+                "hmac_verified": false,
+                "pubsub_token": "s6TRwZ6rXX1p9eXHoGE4JFUM"
+              },
+              "id": 156,
+              "inbox_id": 3,
+              "messages": [
+                {
+                  "id": 2942,
+                  "content": "Ola",
+                  "account_id": 1,
+                  "inbox_id": 3,
+                  "conversation_id": 156,
+                  "message_type": 0,
+                  "created_at": 1776810964,
+                  "updated_at": "2026-04-21T22:36:04.920Z",
+                  "private": false,
+                  "status": "sent",
+                  "source_id": "wamid.HBgMNTU5MTg2MDMzMjI5FQIAEhggQUM1OEU4QTgyNTcxODM5QURFMzBGNkU2REQ5NjNDQzIA",
+                  "content_type": "text",
+                  "content_attributes": {},
+                  "sender_type": "Contact",
+                  "sender_id": 155,
+                  "external_source_ids": {},
+                  "additional_attributes": {},
+                  "processed_message_content": "Ola",
+                  "sentiment": {},
+                  "conversation": {
+                    "assignee_id": null,
+                    "unread_count": 4,
+                    "last_activity_at": 1776810964,
+                    "contact_inbox": {
+                      "source_id": "559186033229"
+                    }
+                  },
+                  "sender": {
+                    "additional_attributes": {},
+                    "custom_attributes": {},
+                    "email": null,
+                    "id": 155,
+                    "identifier": null,
+                    "name": "Max Martíns",
+                    "phone_number": "+559186033229",
+                    "thumbnail": "",
+                    "blocked": false,
+                    "type": "contact"
+                  }
+                }
+              ],
+              "labels": [],
+              "meta": {
+                "sender": {
+                  "additional_attributes": {},
+                  "custom_attributes": {},
+                  "email": null,
+                  "id": 155,
+                  "identifier": null,
+                  "name": "Max Martíns",
+                  "phone_number": "+559186033229",
+                  "thumbnail": "",
+                  "blocked": false,
+                  "type": "contact"
+                },
+                "assignee": null,
+                "assignee_type": null,
+                "team": null,
+                "hmac_verified": false
+              },
+              "status": "open",
+              "custom_attributes": {},
+              "snoozed_until": null,
+              "unread_count": 4,
+              "first_reply_created_at": "2026-04-20T21:00:39.063Z",
+              "priority": null,
+              "waiting_since": 1776810964,
+              "agent_last_seen_at": 1776789180,
+              "contact_last_seen_at": 0,
+              "last_activity_at": 1776810964,
+              "timestamp": 1776810964,
+              "created_at": 1776718835,
+              "updated_at": 1776810965.030089
+            },
+            "created_at": "2026-04-21T22:36:04.920Z",
+            "id": 2942,
+            "inbox": {
+              "id": 3,
+              "name": "Suporte - Sorveteiro"
+            },
+            "message_type": "incoming",
+            "private": false,
+            "sender": {
+              "account": {
+                "id": 1,
+                "name": "Sorveteiro Raiz"
+              },
+              "additional_attributes": {},
+              "avatar": "",
+              "custom_attributes": {},
+              "email": null,
+              "id": 155,
+              "identifier": null,
+              "name": "Max Martíns",
+              "phone_number": "+559186033229",
+              "thumbnail": "",
+              "blocked": false
+            },
+            "source_id": "wamid.HBgMNTU5MTg2MDMzMjI5FQIAEhggQUM1OEU4QTgyNTcxODM5QURFMzBGNkU2REQ5NjNDQzIA",
+            "event": "message_created"
+          },
+          "webhookUrl": "https://webhook.sorveteiroraiz.com/webhook/suporte",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
-  "staticData": {
-    "node:Schedule Trigger": {
-      "recurrenceRules": []
+  "shared": [
+    {
+      "createdAt": "2026-04-21T23:31:57.474Z",
+      "updatedAt": "2026-04-21T23:31:57.474Z",
+      "role": "workflow:owner",
+      "workflowId": "xDhmY3BZzzJ3XAp2",
+      "projectId": "MnGFQuvoDMTHLtMd"
     }
-  },
-  "tags": [],
-  "triggerCount": 1,
-  "updatedAt": "2025-04-24T04:56:23.997Z",
-  "versionId": "4d3990ac-2bd2-4643-815b-4fff1ac606c3"
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-07-03T16:02:09.110Z",
+      "updatedAt": "2025-07-03T16:02:09.110Z",
+      "id": "K5MFncsCBrk1389O",
+      "name": "IA"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2026-04-21T23:32:55.485Z",
+  "versionId": "cef6ae13-103e-4bbd-bff9-496cb96978d6"
 }
