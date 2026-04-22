@@ -1635,7 +1635,7 @@
           "headers": {
             "host": "webhook.sorveteiroraiz.com",
             "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.4.4p34",
-            "content-length": "3206",
+            "content-length": "2419",
             "accept": "application/json",
             "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
             "content-type": "application/json",
@@ -1656,75 +1656,60 @@
             "additional_attributes": {},
             "content_attributes": {},
             "content_type": "text",
-            "content": null,
+            "content": "Ola",
             "conversation": {
               "additional_attributes": {},
               "can_reply": true,
               "channel": "Channel::Whatsapp",
               "contact_inbox": {
-                "id": 267,
-                "contact_id": 140,
+                "id": 282,
+                "contact_id": 155,
                 "inbox_id": 3,
-                "source_id": "554784584426",
-                "created_at": "2026-02-24T18:54:36.236Z",
-                "updated_at": "2026-02-24T18:54:36.236Z",
+                "source_id": "559186033229",
+                "created_at": "2026-04-20T21:00:34.975Z",
+                "updated_at": "2026-04-20T21:00:34.975Z",
                 "hmac_verified": false,
-                "pubsub_token": "1XHWyVmDehRkT2fSNkva9nAW"
+                "pubsub_token": "s6TRwZ6rXX1p9eXHoGE4JFUM"
               },
-              "id": 141,
+              "id": 156,
               "inbox_id": 3,
               "messages": [
                 {
-                  "id": 2172,
-                  "content": null,
+                  "id": 2942,
+                  "content": "Ola",
                   "account_id": 1,
                   "inbox_id": 3,
-                  "conversation_id": 141,
+                  "conversation_id": 156,
                   "message_type": 0,
-                  "created_at": 1772043940,
-                  "updated_at": "2026-02-25T18:25:40.071Z",
+                  "created_at": 1776810964,
+                  "updated_at": "2026-04-21T22:36:04.920Z",
                   "private": false,
                   "status": "sent",
-                  "source_id": "wamid.HBgMNTU0Nzg0NTg0NDI2FQIAEhggQUMzNjdDMTg0MDY2NkQ3NkQ1NkNDOTI4MEZGN0Y2RkIA",
+                  "source_id": "wamid.HBgMNTU5MTg2MDMzMjI5FQIAEhggQUM1OEU4QTgyNTcxODM5QURFMzBGNkU2REQ5NjNDQzIA",
                   "content_type": "text",
                   "content_attributes": {},
                   "sender_type": "Contact",
-                  "sender_id": 140,
+                  "sender_id": 155,
                   "external_source_ids": {},
                   "additional_attributes": {},
-                  "processed_message_content": null,
+                  "processed_message_content": "Ola",
                   "sentiment": {},
                   "conversation": {
                     "assignee_id": null,
-                    "unread_count": 2,
-                    "last_activity_at": 1772043940,
+                    "unread_count": 4,
+                    "last_activity_at": 1776810964,
                     "contact_inbox": {
-                      "source_id": "554784584426"
+                      "source_id": "559186033229"
                     }
                   },
-                  "attachments": [
-                    {
-                      "id": 178,
-                      "message_id": 2172,
-                      "file_type": "audio",
-                      "account_id": 1,
-                      "extension": null,
-                      "data_url": "https://chat.sorveteiroraiz.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTRCIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d8cc9d2a77bb7f739a4ec076ea5b8ff725b9a386/File.ogg",
-                      "thumb_url": "",
-                      "file_size": 32117,
-                      "width": null,
-                      "height": null,
-                      "transcribed_text": ""
-                    }
-                  ],
                   "sender": {
                     "additional_attributes": {},
                     "custom_attributes": {},
                     "email": null,
-                    "id": 140,
+                    "id": 155,
                     "identifier": null,
-                    "name": "Carlos Hohmanm",
-                    "phone_number": "+554784584426",
+                    "name": "Max Martíns",
+                    "phone_number": "+559186033229",
                     "thumbnail": "",
                     "blocked": false,
                     "type": "contact"
@@ -1737,10 +1722,10 @@
                   "additional_attributes": {},
                   "custom_attributes": {},
                   "email": null,
-                  "id": 140,
+                  "id": 155,
                   "identifier": null,
-                  "name": "Carlos Hohmanm",
-                  "phone_number": "+554784584426",
+                  "name": "Max Martíns",
+                  "phone_number": "+559186033229",
                   "thumbnail": "",
                   "blocked": false,
                   "type": "contact"
@@ -1753,19 +1738,19 @@
               "status": "open",
               "custom_attributes": {},
               "snoozed_until": null,
-              "unread_count": 2,
-              "first_reply_created_at": "2026-02-24T18:54:39.121Z",
+              "unread_count": 4,
+              "first_reply_created_at": "2026-04-20T21:00:39.063Z",
               "priority": null,
-              "waiting_since": 1772043940,
-              "agent_last_seen_at": 1771979567,
+              "waiting_since": 1776810964,
+              "agent_last_seen_at": 1776789180,
               "contact_last_seen_at": 0,
-              "last_activity_at": 1772043940,
-              "timestamp": 1772043940,
-              "created_at": 1771959276,
-              "updated_at": 1772043940.186935
+              "last_activity_at": 1776810964,
+              "timestamp": 1776810964,
+              "created_at": 1776718835,
+              "updated_at": 1776810965.030089
             },
-            "created_at": "2026-02-25T18:25:40.071Z",
-            "id": 2172,
+            "created_at": "2026-04-21T22:36:04.920Z",
+            "id": 2942,
             "inbox": {
               "id": 3,
               "name": "Suporte - Sorveteiro"
@@ -1781,29 +1766,14 @@
               "avatar": "",
               "custom_attributes": {},
               "email": null,
-              "id": 140,
+              "id": 155,
               "identifier": null,
-              "name": "Carlos Hohmanm",
-              "phone_number": "+554784584426",
+              "name": "Max Martíns",
+              "phone_number": "+559186033229",
               "thumbnail": "",
               "blocked": false
             },
-            "source_id": "wamid.HBgMNTU0Nzg0NTg0NDI2FQIAEhggQUMzNjdDMTg0MDY2NkQ3NkQ1NkNDOTI4MEZGN0Y2RkIA",
-            "attachments": [
-              {
-                "id": 178,
-                "message_id": 2172,
-                "file_type": "audio",
-                "account_id": 1,
-                "extension": null,
-                "data_url": "https://chat.sorveteiroraiz.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTRCIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d8cc9d2a77bb7f739a4ec076ea5b8ff725b9a386/File.ogg",
-                "thumb_url": "",
-                "file_size": 32117,
-                "width": null,
-                "height": null,
-                "transcribed_text": ""
-              }
-            ],
+            "source_id": "wamid.HBgMNTU5MTg2MDMzMjI5FQIAEhggQUM1OEU4QTgyNTcxODM5QURFMzBGNkU2REQ5NjNDQzIA",
             "event": "message_created"
           },
           "webhookUrl": "https://webhook.sorveteiroraiz.com/webhook/suporte",
@@ -1834,6 +1804,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-04-17T19:37:17.574Z",
-  "versionId": "6ca25ae9-0cd6-463b-b4c4-a10499ba4c5a"
+  "updatedAt": "2026-04-21T23:11:56.889Z",
+  "versionId": "69390056-2be6-4bb9-b610-cc280251cac0"
 }
