@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "Edit Fields",
+            "node": "Code",
             "type": "main",
             "index": 0
           }
@@ -86,6 +86,17 @@
         [],
         []
       ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-04-17T19:43:03.222Z",
@@ -105,7 +116,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        -224,
+        -336,
         -80
       ],
       "id": "c8781e2e-a83c-4090-a785-297cdc26efb0",
@@ -119,19 +130,19 @@
             {
               "id": "cca66a8a-33b0-4107-8423-c1b835621ccc",
               "name": "Nome",
-              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"buyer\"][\"name\"] }}",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"nome\"] }}",
               "type": "string"
             },
             {
               "id": "ac0c2313-215d-47b6-b215-eff17671d92b",
               "name": "Telefone",
-              "value": "=55{{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"buyer\"][\"checkout_phone\"] }}",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"telefone\"] }}",
               "type": "string"
             },
             {
               "id": "39a6e323-b3c1-4061-9ef2-6481fd5ec4ca",
               "name": "Email",
-              "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"buyer\"][\"email\"] }}",
+              "value": "={{ $item(\"0\").$node[\"Code\"].json[\"email\"] }}",
               "type": "string"
             }
           ]
@@ -396,6 +407,19 @@
           "name": "Supabase - Sorveteiro Raiz"
         }
       }
+    },
+    {
+      "parameters": {
+        "jsCode": "const buyer = $input.first().json.body.data.buyer;\nconst phoneCode = buyer.checkout_phone_code || '';\nconst rawPhone = buyer.checkout_phone || '';\n\nfunction normalizePhone(phone, ddd) {\n  let cleaned = String(phone).replace(/\\D/g, '');\n  \n  // Remove o 55 do começo se vier (pra tratar só o miolo)\n  if (cleaned.startsWith('55') && (cleaned.length === 12 || cleaned.length === 13)) {\n    cleaned = cleaned.substring(2);\n  }\n  \n  // Garante que o DDD está no começo\n  if (ddd && !cleaned.startsWith(ddd)) {\n    cleaned = ddd + cleaned;\n  }\n  \n  // Extrai o DDD pra decidir se remove o 9\n  const dddNum = parseInt(cleaned.substring(0, 2), 10);\n  \n  // Regra Meta/WhatsApp:\n  // - DDD >= 30 → remove o 9 (formato JID antigo)\n  // - DDD < 30  → mantém o 9 (SP/RJ/ES — JID já migrado pela Meta)\n  const removeO9 = dddNum >= 30;\n  \n  if (removeO9 && cleaned.length === 11 && cleaned.charAt(2) === '9') {\n    cleaned = cleaned.substring(0, 2) + cleaned.substring(3);\n  }\n  \n  return '55' + cleaned;\n}\n\nreturn [\n  {\n    json: {\n      nome: buyer.first_name,\n      email: buyer.email,\n      telefone: normalizePhone(rawPhone, phoneCode)\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -176,
+        -80
+      ],
+      "id": "ac307f26-1181-476c-9bdf-5dc9d00034c5",
+      "name": "Code"
     }
   ],
   "pinData": {
@@ -405,15 +429,15 @@
           "headers": {
             "host": "webhook.sorveteiroraiz.com",
             "user-agent": "Jodd HTTP",
-            "content-length": "2246",
+            "content-length": "1882",
             "content-type": "application/json",
-            "x-forwarded-for": "44.200.219.2",
+            "x-forwarded-for": "54.208.230.164",
             "x-forwarded-host": "webhook.sorveteiroraiz.com",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "77efa1e6cf5f",
             "x-hotmart-hottok": "Srl2QUHnnelVLh9p8MDePHUcKz3hqk1526245",
-            "x-real-ip": "44.200.219.2",
+            "x-real-ip": "54.208.230.164",
             "accept-encoding": "gzip"
           },
           "params": {},
@@ -424,7 +448,7 @@
                 "support_email": "suporte@sorveteiroraiz.com",
                 "has_co_production": false,
                 "name": "Time Sorveteiro Raiz - 24 horas",
-                "warranty_date": "2026-04-27T00:00:00Z",
+                "warranty_date": "2026-05-07T00:00:00Z",
                 "is_physical_product": false,
                 "id": 7020328,
                 "ucode": "f3f78329-2861-42d2-91ad-4d7a0bca959e",
@@ -456,24 +480,21 @@
                 "order_bump": {
                   "is_order_bump": false
                 },
-                "approved_date": 1776718496000,
+                "approved_date": 1777576003000,
                 "offer": {
                   "code": "b5ajljkf",
                   "description": "Valor especial para alunos ativos"
                 },
                 "is_funnel": false,
-                "order_date": 1776718310000,
-                "date_next_charge": 1779278400000,
+                "order_date": 1777575999000,
+                "date_next_charge": 1780142400000,
                 "price": {
                   "currency_value": "BRL",
                   "value": 0
                 },
                 "payment": {
-                  "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/enrollment?contract=TGdZFkEBbRu8zZLZ398FRT",
-                  "pix_expiration_date": 1776891111000,
                   "installments_number": 1,
-                  "type": "PIX_AUTOMATIC",
-                  "pix_code": "00020126180014br.gov.bcb.pix5204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***80720014br.gov.bcb.pix2550pix.ebanx.com/rec/66A8324FC20E3B13258EBE1E848D1F0663044AAC"
+                  "type": "CREDIT_CARD"
                 },
                 "full_price": {
                   "currency_value": "BRL",
@@ -481,7 +502,7 @@
                 },
                 "business_model": "I",
                 "invoice_by": "SELLER",
-                "transaction": "HP2153575036",
+                "transaction": "HP1625332288",
                 "status": "APPROVED"
               },
               "affiliates": [
@@ -497,7 +518,7 @@
               },
               "subscription": {
                 "subscriber": {
-                  "code": "SHCOSY12"
+                  "code": "2QVAIQ50"
                 },
                 "plan": {
                   "name": "Valor especial para alunos",
@@ -506,29 +527,28 @@
                 "status": "ACTIVE"
               },
               "buyer": {
-                "checkout_phone_code": "91",
+                "checkout_phone_code": "11",
                 "address": {
-                  "zipcode": "68300000",
+                  "zipcode": "38015270",
                   "country": "Brasil",
-                  "number": "258",
-                  "address": "Av santo Antônio ",
-                  "city": "Gurupá",
-                  "state": "PA",
-                  "neighborhood": "Centro ",
-                  "complement": "Atrás da prefeitura ",
+                  "number": "404",
+                  "address": "Rua Professor Terra",
+                  "city": "Uberaba",
+                  "state": "MG",
+                  "neighborhood": "Estados Unidos",
                   "country_iso": "BR"
                 },
-                "document": "02176208250",
-                "name": "Max Cardoso Martins",
-                "last_name": "Martins",
-                "checkout_phone": "91986033229",
-                "first_name": "Max",
-                "email": "maxcardosomartins.mcm@gmail.com",
+                "document": "83573992668",
+                "name": "Josafá Mendes Faquineli",
+                "last_name": "Faquineli",
+                "checkout_phone": "11984151865",
+                "first_name": "Josafá",
+                "email": "josafa.faquineli@hotmail.com",
                 "document_type": "CPF"
               }
             },
-            "id": "181d454e-0608-4278-92cd-b10e1b8a57e2",
-            "creation_date": 1776718506920,
+            "id": "5b8dd045-fbf7-430e-9141-90b3f78151b7",
+            "creation_date": 1777576014453,
             "event": "PURCHASE_APPROVED",
             "version": "2.0.0"
           },
@@ -553,6 +573,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-04-24T08:19:41.762Z",
-  "versionId": "7c728296-cb55-404a-b96f-ffdb665e0ca7"
+  "updatedAt": "2026-05-02T17:57:59.198Z",
+  "versionId": "2a91267c-12d7-4a62-a52c-2316de916ae6"
 }
