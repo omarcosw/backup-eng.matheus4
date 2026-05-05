@@ -116,7 +116,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        -336,
+        -368,
         -80
       ],
       "id": "c8781e2e-a83c-4090-a785-297cdc26efb0",
@@ -347,8 +347,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        720,
-        -160
+        752,
+        -208
       ],
       "id": "6c01a42c-ad0e-4fdd-9b76-793d94e7a22b",
       "name": "atualiza status",
@@ -573,6 +573,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-05-02T17:57:59.198Z",
-  "versionId": "2a91267c-12d7-4a62-a52c-2316de916ae6"
+  "updatedAt": "2026-05-04T22:55:44.222Z",
+  "versionId": "7dca0f55-0bce-44e2-b906-8be0b331f556"
 }
