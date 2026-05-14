@@ -420,6 +420,54 @@
       ],
       "id": "ac307f26-1181-476c-9bdf-5dc9d00034c5",
       "name": "Code"
+    },
+    {
+      "parameters": {
+        "tableId": "acesso_ia_suporte",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "=Carlos Monte"
+            },
+            {
+              "fieldId": "email",
+              "fieldValue": "=carlosmonte2021@gmail.com"
+            },
+            {
+              "fieldId": "telefone",
+              "fieldValue": "=558188784420"
+            },
+            {
+              "fieldId": "data_inicio",
+              "fieldValue": "={{ $now.toFormat('yyyy-MM-dd') }}"
+            },
+            {
+              "fieldId": "status_compra",
+              "fieldValue": "ativo"
+            },
+            {
+              "fieldId": "data_fim",
+              "fieldValue": "={{ $now.plus({years: 1}).toFormat('yyyy-MM-dd') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        224,
+        -384
+      ],
+      "id": "33761739-b929-4997-9021-49d3ee31df87",
+      "name": "cria usuario1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "QiHN5zEBNyZ0P663",
+          "name": "Supabase - Sorveteiro Raiz"
+        }
+      }
     }
   ],
   "pinData": {
@@ -429,15 +477,15 @@
           "headers": {
             "host": "webhook.sorveteiroraiz.com",
             "user-agent": "Jodd HTTP",
-            "content-length": "1882",
+            "content-length": "2003",
             "content-type": "application/json",
-            "x-forwarded-for": "54.208.230.164",
+            "x-forwarded-for": "3.238.53.217",
             "x-forwarded-host": "webhook.sorveteiroraiz.com",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "77efa1e6cf5f",
             "x-hotmart-hottok": "Srl2QUHnnelVLh9p8MDePHUcKz3hqk1526245",
-            "x-real-ip": "54.208.230.164",
+            "x-real-ip": "3.238.53.217",
             "accept-encoding": "gzip"
           },
           "params": {},
@@ -448,7 +496,7 @@
                 "support_email": "suporte@sorveteiroraiz.com",
                 "has_co_production": false,
                 "name": "Time Sorveteiro Raiz - 24 horas",
-                "warranty_date": "2026-05-07T00:00:00Z",
+                "warranty_date": "2026-05-21T00:00:00Z",
                 "is_physical_product": false,
                 "id": 7020328,
                 "ucode": "f3f78329-2861-42d2-91ad-4d7a0bca959e",
@@ -458,18 +506,18 @@
                 {
                   "currency_value": "BRL",
                   "source": "MARKETPLACE",
-                  "value": 0
+                  "value": 2.77
                 },
                 {
                   "currency_value": "BRL",
                   "source": "PRODUCER",
-                  "value": 0
+                  "value": 17.13
                 }
               ],
               "purchase": {
                 "original_offer_price": {
                   "currency_value": "BRL",
-                  "value": 0
+                  "value": 19.9
                 },
                 "recurrence_number": 1,
                 "subscription_anticipation_purchase": false,
@@ -480,29 +528,31 @@
                 "order_bump": {
                   "is_order_bump": false
                 },
-                "approved_date": 1777576003000,
+                "approved_date": 1778738559000,
                 "offer": {
                   "code": "b5ajljkf",
                   "description": "Valor especial para alunos ativos"
                 },
                 "is_funnel": false,
-                "order_date": 1777575999000,
-                "date_next_charge": 1780142400000,
+                "order_date": 1778721419000,
+                "date_next_charge": 1781438400000,
                 "price": {
                   "currency_value": "BRL",
-                  "value": 0
+                  "value": 19.9
                 },
                 "payment": {
+                  "billet_url": "https://hotm.co/bHP3575666254",
+                  "billet_barcode": "34191097274324542054289356830003314460000001990",
                   "installments_number": 1,
-                  "type": "CREDIT_CARD"
+                  "type": "BILLET"
                 },
                 "full_price": {
                   "currency_value": "BRL",
-                  "value": 0
+                  "value": 19.9
                 },
                 "business_model": "I",
                 "invoice_by": "SELLER",
-                "transaction": "HP1625332288",
+                "transaction": "HP3575666254",
                 "status": "APPROVED"
               },
               "affiliates": [
@@ -518,7 +568,7 @@
               },
               "subscription": {
                 "subscriber": {
-                  "code": "2QVAIQ50"
+                  "code": "7HGXVTVQ"
                 },
                 "plan": {
                   "name": "Valor especial para alunos",
@@ -527,28 +577,28 @@
                 "status": "ACTIVE"
               },
               "buyer": {
-                "checkout_phone_code": "11",
+                "checkout_phone_code": "16",
                 "address": {
-                  "zipcode": "38015270",
+                  "zipcode": "14020300",
                   "country": "Brasil",
-                  "number": "404",
-                  "address": "Rua Professor Terra",
-                  "city": "Uberaba",
-                  "state": "MG",
-                  "neighborhood": "Estados Unidos",
+                  "number": "771",
+                  "address": "Rua Cavalheiro Torquato Rizzi",
+                  "city": "Ribeirão Preto",
+                  "state": "SP",
+                  "neighborhood": "Jardim São Luiz",
                   "country_iso": "BR"
                 },
-                "document": "83573992668",
-                "name": "Josafá Mendes Faquineli",
-                "last_name": "Faquineli",
-                "checkout_phone": "11984151865",
-                "first_name": "Josafá",
-                "email": "josafa.faquineli@hotmail.com",
+                "document": "59418702800",
+                "name": "joel Antonio Sian",
+                "last_name": "Sian",
+                "checkout_phone": "16982435520",
+                "first_name": "Joel",
+                "email": "joel.sian50@gmail.com",
                 "document_type": "CPF"
               }
             },
-            "id": "5b8dd045-fbf7-430e-9141-90b3f78151b7",
-            "creation_date": 1777576014453,
+            "id": "5a381cc0-972c-4a84-8fc9-53eebbcb64ac",
+            "creation_date": 1778738573912,
             "event": "PURCHASE_APPROVED",
             "version": "2.0.0"
           },
@@ -573,6 +623,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-05-12T15:21:41.490Z",
-  "versionId": "2769bd01-7427-47fd-8747-b0a4e6df5ae2"
+  "updatedAt": "2026-05-14T20:06:56.949Z",
+  "versionId": "d78758e4-ad39-44d6-a7fa-5cf350cb7f74"
 }
