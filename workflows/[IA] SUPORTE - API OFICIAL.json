@@ -1635,7 +1635,7 @@
           "headers": {
             "host": "webhook.sorveteiroraiz.com",
             "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.4.4p34",
-            "content-length": "2428",
+            "content-length": "2407",
             "accept": "application/json",
             "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
             "content-type": "application/json",
@@ -1662,34 +1662,34 @@
               "can_reply": true,
               "channel": "Channel::Whatsapp",
               "contact_inbox": {
-                "id": 290,
-                "contact_id": 162,
+                "id": 292,
+                "contact_id": 164,
                 "inbox_id": 3,
-                "source_id": "5513997821233",
-                "created_at": "2026-05-22T12:45:51.337Z",
-                "updated_at": "2026-05-22T12:45:51.337Z",
+                "source_id": "556993838203",
+                "created_at": "2026-05-28T14:06:07.559Z",
+                "updated_at": "2026-05-28T14:06:07.559Z",
                 "hmac_verified": false,
-                "pubsub_token": "PpJSTbgVxPEESTULQDqtcG97"
+                "pubsub_token": "Z1xCav6aEtAAJgM733NqtyHN"
               },
-              "id": 164,
+              "id": 166,
               "inbox_id": 3,
               "messages": [
                 {
-                  "id": 3355,
+                  "id": 3422,
                   "content": "Bom dia",
                   "account_id": 1,
                   "inbox_id": 3,
-                  "conversation_id": 164,
+                  "conversation_id": 166,
                   "message_type": 0,
-                  "created_at": 1779453951,
-                  "updated_at": "2026-05-22T12:45:51.694Z",
+                  "created_at": 1779977167,
+                  "updated_at": "2026-05-28T14:06:07.842Z",
                   "private": false,
                   "status": "sent",
-                  "source_id": "wamid.HBgNNTUxMzk5NzgyMTIzMxUCABIYIEFDQUYwNEE5Q0M4NjcwMEZDM0U5MjdBRDgzNkQ1RTMwAA==",
+                  "source_id": "wamid.HBgMNTU2OTkzODM4MjAzFQIAEhggQTU0NjNFQjMzQzBFNDZFNjc2MDI2OTRGM0FBRTIzN0IA",
                   "content_type": "text",
                   "content_attributes": {},
                   "sender_type": "Contact",
-                  "sender_id": 162,
+                  "sender_id": 164,
                   "external_source_ids": {},
                   "additional_attributes": {},
                   "processed_message_content": "Bom dia",
@@ -1697,19 +1697,19 @@
                   "conversation": {
                     "assignee_id": null,
                     "unread_count": 1,
-                    "last_activity_at": 1779453951,
+                    "last_activity_at": 1779977167,
                     "contact_inbox": {
-                      "source_id": "5513997821233"
+                      "source_id": "556993838203"
                     }
                   },
                   "sender": {
                     "additional_attributes": {},
                     "custom_attributes": {},
                     "email": null,
-                    "id": 162,
+                    "id": 164,
                     "identifier": null,
-                    "name": "Celmi Mara Campos",
-                    "phone_number": "+5513997821233",
+                    "name": "Lainê Júnior",
+                    "phone_number": "+556993838203",
                     "thumbnail": "",
                     "blocked": false,
                     "type": "contact"
@@ -1722,10 +1722,10 @@
                   "additional_attributes": {},
                   "custom_attributes": {},
                   "email": null,
-                  "id": 162,
+                  "id": 164,
                   "identifier": null,
-                  "name": "Celmi Mara Campos",
-                  "phone_number": "+5513997821233",
+                  "name": "Lainê Júnior",
+                  "phone_number": "+556993838203",
                   "thumbnail": "",
                   "blocked": false,
                   "type": "contact"
@@ -1741,16 +1741,16 @@
               "unread_count": 1,
               "first_reply_created_at": null,
               "priority": null,
-              "waiting_since": 1779453951,
+              "waiting_since": 1779977167,
               "agent_last_seen_at": 0,
               "contact_last_seen_at": 0,
-              "last_activity_at": 1779453951,
-              "timestamp": 1779453951,
-              "created_at": 1779453951,
-              "updated_at": 1779453951.729955
+              "last_activity_at": 1779977167,
+              "timestamp": 1779977167,
+              "created_at": 1779977167,
+              "updated_at": 1779977167.8563142
             },
-            "created_at": "2026-05-22T12:45:51.694Z",
-            "id": 3355,
+            "created_at": "2026-05-28T14:06:07.842Z",
+            "id": 3422,
             "inbox": {
               "id": 3,
               "name": "Suporte - Sorveteiro"
@@ -1766,14 +1766,14 @@
               "avatar": "",
               "custom_attributes": {},
               "email": null,
-              "id": 162,
+              "id": 164,
               "identifier": null,
-              "name": "Celmi Mara Campos",
-              "phone_number": "+5513997821233",
+              "name": "Lainê Júnior",
+              "phone_number": "+556993838203",
               "thumbnail": "",
               "blocked": false
             },
-            "source_id": "wamid.HBgNNTUxMzk5NzgyMTIzMxUCABIYIEFDQUYwNEE5Q0M4NjcwMEZDM0U5MjdBRDgzNkQ1RTMwAA==",
+            "source_id": "wamid.HBgMNTU2OTkzODM4MjAzFQIAEhggQTU0NjNFQjMzQzBFNDZFNjc2MDI2OTRGM0FBRTIzN0IA",
             "event": "message_created"
           },
           "webhookUrl": "https://webhook.sorveteiroraiz.com/webhook/suporte",
@@ -1804,6 +1804,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-05-22T15:14:07.939Z",
-  "versionId": "37cf1d81-1fe3-4bea-bd6d-5f72795e0731"
+  "updatedAt": "2026-05-29T20:19:22.301Z",
+  "versionId": "a274ad92-f233-4e9f-8970-80f93a806156"
 }
