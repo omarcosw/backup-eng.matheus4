@@ -196,7 +196,7 @@
       "main": [
         [
           {
-            "node": "getClient1",
+            "node": "getClient2",
             "type": "main",
             "index": 0
           }
@@ -394,13 +394,7 @@
     },
     "If2": {
       "main": [
-        [
-          {
-            "node": "getClient2",
-            "type": "main",
-            "index": 0
-          }
-        ],
+        [],
         [
           {
             "node": "Cliente não existe",
@@ -1102,8 +1096,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -5856,
-        864
+        -5824,
+        848
       ]
     },
     {
@@ -1616,8 +1610,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        -4448,
-        1152
+        -4384,
+        1040
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1804,6 +1798,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-05-29T20:19:22.301Z",
-  "versionId": "a274ad92-f233-4e9f-8970-80f93a806156"
+  "updatedAt": "2026-05-30T16:13:12.096Z",
+  "versionId": "d51b3073-b0f8-4c8d-bd9b-2f4878979224"
 }
