@@ -1296,8 +1296,8 @@
       ],
       "credentials": {
         "openAiApi": {
-          "id": "QzQb6Q9G3hGozb9v",
-          "name": "OpenAi - Dani 2"
+          "id": "DFjrt8FgQbQdUPPs",
+          "name": "IA geral"
         }
       }
     },
@@ -1629,7 +1629,7 @@
           "headers": {
             "host": "webhook.sorveteiroraiz.com",
             "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.4.4p34",
-            "content-length": "2407",
+            "content-length": "2387",
             "accept": "application/json",
             "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
             "content-type": "application/json",
@@ -1650,60 +1650,60 @@
             "additional_attributes": {},
             "content_attributes": {},
             "content_type": "text",
-            "content": "Bom dia",
+            "content": "Oi",
             "conversation": {
               "additional_attributes": {},
               "can_reply": true,
               "channel": "Channel::Whatsapp",
               "contact_inbox": {
-                "id": 292,
-                "contact_id": 164,
+                "id": 269,
+                "contact_id": 142,
                 "inbox_id": 3,
-                "source_id": "556993838203",
-                "created_at": "2026-05-28T14:06:07.559Z",
-                "updated_at": "2026-05-28T14:06:07.559Z",
+                "source_id": "5521964301470",
+                "created_at": "2026-03-16T19:52:25.617Z",
+                "updated_at": "2026-03-16T19:52:25.617Z",
                 "hmac_verified": false,
-                "pubsub_token": "Z1xCav6aEtAAJgM733NqtyHN"
+                "pubsub_token": "zvbPppq9MitbzLzrLM75o1st"
               },
-              "id": 166,
+              "id": 143,
               "inbox_id": 3,
               "messages": [
                 {
-                  "id": 3422,
-                  "content": "Bom dia",
+                  "id": 3814,
+                  "content": "Oi",
                   "account_id": 1,
                   "inbox_id": 3,
-                  "conversation_id": 166,
+                  "conversation_id": 143,
                   "message_type": 0,
-                  "created_at": 1779977167,
-                  "updated_at": "2026-05-28T14:06:07.842Z",
+                  "created_at": 1782991873,
+                  "updated_at": "2026-07-02T11:31:13.525Z",
                   "private": false,
                   "status": "sent",
-                  "source_id": "wamid.HBgMNTU2OTkzODM4MjAzFQIAEhggQTU0NjNFQjMzQzBFNDZFNjc2MDI2OTRGM0FBRTIzN0IA",
+                  "source_id": "wamid.HBgNNTUyMTk2NDMwMTQ3MBUCABIYFDNBMTNCMEYxMzU3NTYzMEZBNUJCAA==",
                   "content_type": "text",
                   "content_attributes": {},
                   "sender_type": "Contact",
-                  "sender_id": 164,
+                  "sender_id": 142,
                   "external_source_ids": {},
                   "additional_attributes": {},
-                  "processed_message_content": "Bom dia",
+                  "processed_message_content": "Oi",
                   "sentiment": {},
                   "conversation": {
                     "assignee_id": null,
-                    "unread_count": 1,
-                    "last_activity_at": 1779977167,
+                    "unread_count": 10,
+                    "last_activity_at": 1782991873,
                     "contact_inbox": {
-                      "source_id": "556993838203"
+                      "source_id": "5521964301470"
                     }
                   },
                   "sender": {
                     "additional_attributes": {},
                     "custom_attributes": {},
                     "email": null,
-                    "id": 164,
+                    "id": 142,
                     "identifier": null,
-                    "name": "Lainê Júnior",
-                    "phone_number": "+556993838203",
+                    "name": "PATRICIA",
+                    "phone_number": "+5521964301470",
                     "thumbnail": "",
                     "blocked": false,
                     "type": "contact"
@@ -1716,10 +1716,10 @@
                   "additional_attributes": {},
                   "custom_attributes": {},
                   "email": null,
-                  "id": 164,
+                  "id": 142,
                   "identifier": null,
-                  "name": "Lainê Júnior",
-                  "phone_number": "+556993838203",
+                  "name": "PATRICIA",
+                  "phone_number": "+5521964301470",
                   "thumbnail": "",
                   "blocked": false,
                   "type": "contact"
@@ -1732,19 +1732,19 @@
               "status": "open",
               "custom_attributes": {},
               "snoozed_until": null,
-              "unread_count": 1,
-              "first_reply_created_at": null,
+              "unread_count": 10,
+              "first_reply_created_at": "2026-03-16T19:52:45.154Z",
               "priority": null,
-              "waiting_since": 1779977167,
-              "agent_last_seen_at": 0,
+              "waiting_since": 1782991324,
+              "agent_last_seen_at": 1778063717,
               "contact_last_seen_at": 0,
-              "last_activity_at": 1779977167,
-              "timestamp": 1779977167,
-              "created_at": 1779977167,
-              "updated_at": 1779977167.8563142
+              "last_activity_at": 1782991873,
+              "timestamp": 1782991873,
+              "created_at": 1773690745,
+              "updated_at": 1782991873.566638
             },
-            "created_at": "2026-05-28T14:06:07.842Z",
-            "id": 3422,
+            "created_at": "2026-07-02T11:31:13.525Z",
+            "id": 3814,
             "inbox": {
               "id": 3,
               "name": "Suporte - Sorveteiro"
@@ -1760,14 +1760,14 @@
               "avatar": "",
               "custom_attributes": {},
               "email": null,
-              "id": 164,
+              "id": 142,
               "identifier": null,
-              "name": "Lainê Júnior",
-              "phone_number": "+556993838203",
+              "name": "PATRICIA",
+              "phone_number": "+5521964301470",
               "thumbnail": "",
               "blocked": false
             },
-            "source_id": "wamid.HBgMNTU2OTkzODM4MjAzFQIAEhggQTU0NjNFQjMzQzBFNDZFNjc2MDI2OTRGM0FBRTIzN0IA",
+            "source_id": "wamid.HBgNNTUyMTk2NDMwMTQ3MBUCABIYFDNBMTNCMEYxMzU3NTYzMEZBNUJCAA==",
             "event": "message_created"
           },
           "webhookUrl": "https://webhook.sorveteiroraiz.com/webhook/suporte",
@@ -1798,6 +1798,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-05-30T16:13:12.096Z",
-  "versionId": "d51b3073-b0f8-4c8d-bd9b-2f4878979224"
+  "updatedAt": "2026-07-03T15:55:52.119Z",
+  "versionId": "3dfd3405-82b4-44ed-9975-6610256ade37"
 }
