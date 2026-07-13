@@ -817,7 +817,8 @@
       ],
       "id": "e146413d-3825-4203-8718-bc1914055641",
       "name": "Espere",
-      "webhookId": "5efbac78-7c17-44b9-92cc-c3078c79f8d8"
+      "webhookId": "5efbac78-7c17-44b9-92cc-c3078c79f8d8",
+      "disabled": true
     },
     {
       "parameters": {
@@ -989,7 +990,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://unnichat.com.br/a/start/Pp4VlExr6e0qVmtod5fh",
+        "url": "https://unnichat.com.br/a/start/L6Sf2kQutwFPQbPhCpD9",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"nome\": \"{{ $('camposIniciais').item.json.meta.nomeCliente }}\",\n  \"telefone\": \"{{ $('camposIniciais').item.json.meta.telefoneCliente }}\",\n  \"type\": \"{{ $('camposIniciais').item.json.content.tipoMensagem }}\",\n  \"text\": {\n    \"body\": \"{{ $json.body }}\"\n  }\n} ",
@@ -1088,7 +1089,7 @@
             {
               "id": "0ad262f3-a7f6-4a86-a840-1dff931a959a",
               "name": "Preço",
-              "value": "O valor normal é R$ 3.097,00, mas liberamos um grande desconto para você de R$ 900,000\n\nPor apenas: 12x R$ 227,22 Ou R$ 2.197,00 à vista no cartão, boleto a vista, pix ou Boleto parcelado em 12x de R$ 12x R$ 247,91 ",
+              "value": "mas para quem está inscrito na Semana Sorvete e Açaí Lucrativo tem o desconto de R$ 600.\n\nPor apenas: Em até 12x no cartão de crédito ou em até 12x no boleto parcelado ou R$ 2.497 á vista \nOs pagamentos parcelados no cartão ou no boleto, incidem os juros da operadora.\n",
               "type": "string"
             },
             {
@@ -1100,7 +1101,7 @@
             {
               "id": "41b8d959-6639-463e-9c15-0a374a87cd2f",
               "name": "Pix, Cartão de Crédito, Boleto avista e Boleto parcelado",
-              "value": "=https://lp.sorveteiroraiz.com/pag-vnd-pg-ia/",
+              "value": "=https://lp.sorveteiroraiz.com/pg-vnd-v02-ia/",
               "type": "string"
             }
           ]
@@ -1683,6 +1684,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-04-06T20:04:37.980Z",
-  "versionId": "eaf3c68f-55db-4f46-b9a5-587bf40c6b5d"
+  "updatedAt": "2026-07-12T23:19:02.901Z",
+  "versionId": "7d626952-7080-4eb1-adf3-44c02506efe2"
 }
