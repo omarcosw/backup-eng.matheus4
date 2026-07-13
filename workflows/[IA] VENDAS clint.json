@@ -1,0 +1,1555 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "camposIniciais",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CreateUser": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "getClient": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "camposIniciais": {
+      "main": [
+        []
+      ]
+    },
+    "messages": {
+      "main": [
+        [
+          {
+            "node": "IA VENDAS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "getContexto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "getContexto": {
+      "main": [
+        [
+          {
+            "node": "Oferta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GeraUUID": {
+      "main": [
+        [
+          {
+            "node": "CreateUser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "Update ultima mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Espere": {
+      "main": [
+        [
+          {
+            "node": "Memória Final",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memória Inicial": {
+      "main": [
+        [
+          {
+            "node": "Espere",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memória Final": {
+      "main": [
+        [
+          {
+            "node": "Concatena Mensagens",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Concatena Mensagens": {
+      "main": [
+        [
+          {
+            "node": "Compara Memórias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compara Memórias": {
+      "main": [
+        [
+          {
+            "node": "Limpar Memória",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limpar Memória": {
+      "main": [
+        [
+          {
+            "node": "UserMessage",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UserMessage": {
+      "main": [
+        [
+          {
+            "node": "messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Modelo IA": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "IA VENDAS",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "getClient",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ativar para teste": {
+      "main": [
+        []
+      ]
+    },
+    "Embeddings OpenAI2": {
+      "ai_embedding": [
+        [
+          {
+            "node": "data_info",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Oferta": {
+      "main": [
+        [
+          {
+            "node": "getClient",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Switch2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GeraUUID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch2": {
+      "main": [
+        [
+          {
+            "node": "Add na Memória",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Analyze image",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Transcribe a recording",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add na Memória": {
+      "main": [
+        [
+          {
+            "node": "Memória Inicial",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pausar atendimento": {
+      "main": [
+        [],
+        []
+      ]
+    },
+    "viroucliente": {
+      "ai_tool": [
+        [
+          {
+            "node": "IA VENDAS",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reranker Cohere": {
+      "ai_reranker": [
+        [
+          {
+            "node": "data_info",
+            "type": "ai_reranker",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IA VENDAS": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "IA VENDAS",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribe a recording": {
+      "main": [
+        [
+          {
+            "node": "empilhaÁudio2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "empilhaÁudio2": {
+      "main": [
+        [
+          {
+            "node": "Memória Inicial",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "data_info": {
+      "ai_tool": [
+        [
+          {
+            "node": "IA VENDAS",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze image": {
+      "main": [
+        [
+          {
+            "node": "empilhaÁudio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "empilhaÁudio": {
+      "main": [
+        [
+          {
+            "node": "Memória Inicial",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-07-12T17:38:27.739Z",
+  "id": "txXL0mD8Ix5tM4OG",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[IA] VENDAS clint",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "vendasclint",
+        "options": {}
+      },
+      "id": "443f0168-57ec-49e5-a5aa-57e5bf18a480",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -2368,
+        1312
+      ],
+      "webhookId": "31c8b5d9-2071-4463-aa69-e4cf5b432e29"
+    },
+    {
+      "parameters": {
+        "content": "## PASSO 5 - ORGANIZA E ENVIA AS MENSAGENS PARA O CLIENTE",
+        "height": 418,
+        "width": 1028,
+        "color": 6
+      },
+      "id": "912ee6f6-230c-4593-9133-f10c94fb8203",
+      "name": "Sticky Note11",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4336,
+        832
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## PASSO 4 - AGENTE DE IA COM INTELIGÊNCIA E TOOLS",
+        "height": 414,
+        "width": 1039,
+        "color": 6
+      },
+      "id": "5ce90d76-90e0-40a5-b9ef-49ae65ad2851",
+      "name": "Sticky Note9",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3184,
+        848
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## PASSO 2 - CRIA USUÁRIO NO BANCO DE DADOS SUPABASE",
+        "height": 830,
+        "width": 1099,
+        "color": 6
+      },
+      "id": "e2de8693-c1ac-48d7-9079-7788c70c3ed7",
+      "name": "Sticky Note8",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -368,
+        880
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## PASSO 1 - CREDENCIAIS, DADOS, E PROMPT AGENTE",
+        "height": 634,
+        "width": 1879,
+        "color": 6
+      },
+      "id": "b15bfa08-d539-44f2-a07d-1b286ab0ce2f",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -2384,
+        944
+      ]
+    },
+    {
+      "parameters": {
+        "tableId": "atendimento_wpp_vendas",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "={{ $('camposIniciais').item.json.meta.nomeCliente }}"
+            },
+            {
+              "fieldId": "telefone",
+              "fieldValue": "={{ $item(\"0\").$node[\"Code\"].json[\"telefoneCliente\"] }}"
+            },
+            {
+              "fieldId": "idmensagem",
+              "fieldValue": "={{ $('camposIniciais').item.json.content.idMensagem }}"
+            },
+            {
+              "fieldId": "sessionid",
+              "fieldValue": "={{ $json.data }}"
+            }
+          ]
+        }
+      },
+      "id": "e28cbcab-f42b-4700-822c-fd34a8e250ec",
+      "name": "CreateUser",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        240,
+        1328
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "atendimento_wpp_vendas",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "keyValue": "={{ $('Webhook').item.json.body.contact.phoneNumber }}"
+            }
+          ]
+        }
+      },
+      "id": "d194accb-be2b-4ecc-8951-f22a320bd965",
+      "name": "getClient",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -288,
+        1168
+      ],
+      "alwaysOutputData": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f9ecf2fc-da2c-4f44-897a-5dc0a2f2f379",
+              "name": "meta.telefoneCliente",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"contact\"][\"phoneNumber\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "dab7ca54-c3d2-4a36-a9ca-a0ebbd375ef5",
+              "name": "meta.nomeCliente",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"contact\"][\"name\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "81612acf-1b66-4c8e-82e4-ce8c77b31334",
+              "name": "content.mensagem",
+              "value": "={{ \n  $json.body?.content || \n\n  $json.body?.data?.message?.extendedTextMessage?.text || \n  $json.body?.data?.message?.imageMessage?.caption || \n  $json.body?.data?.message?.conversation || \n  $json?.message?.text || \n  $json?.message?.caption || \n  null \n}}",
+              "type": "string"
+            },
+            {
+              "id": "cc7dcfe1-8ad7-4fe8-93ec-8f643c7d08c7",
+              "name": "content.tipoMensagem",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"contact\"][\"lastMessageData\"][\"messageType\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "2dfc64f4-b222-4ea7-b095-fdd96d9fcb95",
+              "name": "content.idMensagem",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"contact\"][\"id\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "255b9c45-7769-4d09-9c50-61dcdfb7c09d",
+              "name": "app.debouncerTime",
+              "value": "20",
+              "type": "string"
+            },
+            {
+              "id": "fc7c5c8f-b505-4a43-ae07-51eea58d6f80",
+              "name": "linkPreview",
+              "value": false,
+              "type": "boolean"
+            },
+            {
+              "id": "e30bbf8c-d5da-4410-b875-8dfe4b301798",
+              "name": "Digitando",
+              "value": 6400,
+              "type": "number"
+            },
+            {
+              "id": "c4f557bd-72f1-4507-8d9d-c2a590eea2b8",
+              "name": "content.quoted",
+              "value": "={{ $node[\"Webhook\"].json[\"body\"][\"contact\"][\"lastMessageData\"][\"message\"] }}\n{{ $json.body.data.message.imageMessage.url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "df570e0e-b19a-41f4-bdc8-f86a7bf5bc3f",
+      "name": "camposIniciais",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2128,
+        1312
+      ],
+      "notesInFlow": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b7158aa0-84e0-44b1-8629-bf23fb4c0766",
+              "name": "=messages",
+              "value": "={{ $item(\"0\").$node[\"UserMessage\"].json[\"userMessage\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "0c4c3b74-297a-4cf2-b2b8-0feefad328ec",
+              "name": "sessionId",
+              "value": "={{ $item(\"0\").$node[\"getClient\"].json[\"sessionid\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1433b6e8-0374-49a1-96e1-30bfac05733d",
+      "name": "messages",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2688,
+        1264
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## PASSO 3 - DEFINE O TIPO DE MENSAGEM E ORGANIZA PARA O AGENTE",
+        "height": 954,
+        "width": 2067,
+        "color": 6
+      },
+      "id": "d57cd23f-b2de-4ada-847c-101f421afb41",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        784,
+        848
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "\n\n## SISTEMA RAG REANKER",
+        "height": 484,
+        "width": 1040,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3184,
+        1328
+      ],
+      "typeVersion": 1,
+      "id": "be1003ea-60f5-4a10-a435-dafbfb38afac",
+      "name": "Sticky Note24",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "### - Verifica se já existe um cliente cadastrado\n\n### - Se sim, prossegue o fluxo\n\n### - Se não, cria um cliente e um id do chat e prossegue o fluxo",
+        "width": 660,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -368,
+        944
+      ],
+      "typeVersion": 1,
+      "id": "2cb12e2b-c9fe-462b-a96b-5e458205420e",
+      "name": "Sticky Note27",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extrai os números dos campos telefoneCliente e telefoneEmpresa removendo \"@s.whatsapp.net\"\nreturn items.map(item => {\n  const clienteRaw = item.json.meta?.telefoneCliente || '';\n  const empresaRaw = item.json.meta?.telefoneEmpresa || '';\n\n  const telefoneCliente = clienteRaw.split('@')[0];\n  const telefoneEmpresa = empresaRaw.split('@')[0];\n\n  return {\n    json: {\n      telefoneCliente,\n      telefoneEmpresa\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1328,
+        1312
+      ],
+      "id": "afffe719-dd96-4349-9bd9-6867c7460f55",
+      "name": "Code",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "disparo_mensagem_ia_vendas",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "keyValue": "={{ $node[\"Webhook\"].json[\"body\"][\"contact\"][\"phoneNumber\"] }}"
+            }
+          ]
+        }
+      },
+      "id": "178abcff-d791-4feb-b35d-98aed7f06972",
+      "name": "getContexto",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1136,
+        1312
+      ],
+      "alwaysOutputData": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "tableId": "disparo_mensagem_ia_vendas",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "condition": "eq",
+              "keyValue": "={{ $item(\"0\").$node[\"Code\"].json[\"telefoneCliente\"] }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        4896,
+        928
+      ],
+      "id": "b5ae440e-9d7a-4689-b873-dffe7e7506ca",
+      "name": "Supabase",
+      "alwaysOutputData": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "action": "generate"
+      },
+      "id": "8c16aeb6-8cc3-4995-87f7-76cbaf06ae89",
+      "name": "GeraUUID",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        80,
+        1328
+      ],
+      "notesInFlow": false,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1520,
+        1264
+      ],
+      "id": "870e1008-bb60-4a78-82bf-10f32e37da9a",
+      "name": "Espere",
+      "webhookId": "416ce403-e2ff-4375-bbf5-3f6fcff59ec9",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "Memória Inicial",
+        "key": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"telefoneCliente\"] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1328,
+        1264
+      ],
+      "id": "5d4f1e80-e66d-44d3-9280-55be8adcb02d",
+      "name": "Memória Inicial",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "Memória Final",
+        "key": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"telefoneCliente\"] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1712,
+        1264
+      ],
+      "id": "858a28fe-6077-48f2-bf69-84a8b6ec1016",
+      "name": "Memória Final",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Acesse os arrays das variáveis\nconst memoriaInicialArray = $('Memória Inicial').all()[0].json['Memória Inicial'];\nconst memoriaFinalArray = $json['Memória Final'];\n\n// Verifique se as variáveis são arrays e junte os elementos em strings\nconst memoriaInicial = Array.isArray(memoriaInicialArray) ? memoriaInicialArray.join(' ') : '';\nconst memoriaFinal = Array.isArray(memoriaFinalArray) ? memoriaFinalArray.join(' ') : '';\n\n// Retorne as variáveis resultantes\nreturn {\n  memoriaInicial,\n  memoriaFinal\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1904,
+        1264
+      ],
+      "id": "468c4d5c-4b9a-4fb7-a7e9-6c398e49fc89",
+      "name": "Concatena Mensagens",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fbe500bb-8a66-4f0c-93df-9631e3bdabfc",
+              "leftValue": "={{ $('Concatena Mensagens').all()[0].json.memoriaInicial }}",
+              "rightValue": "={{ $('Concatena Mensagens').all()[0].json.memoriaFinal }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        2112,
+        1264
+      ],
+      "id": "8232c5e8-4480-4eb2-b308-2f6302904d26",
+      "name": "Compara Memórias",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"telefoneCliente\"] }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2304,
+        1264
+      ],
+      "id": "7d5051ce-1ead-45de-b463-5abf7d8493be",
+      "name": "Limpar Memória",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "18e16067-bcdb-4bda-9c22-e1869c550af6",
+              "name": "userMessage",
+              "value": "={{ $('Compara Memórias').all()[0].json.memoriaFinal }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2480,
+        1264
+      ],
+      "id": "abe686c5-1d93-4378-88ed-f6d1f52129fa",
+      "name": "UserMessage",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "2110a560-b4de-4a66-a4f3-26291c0e1464",
+      "name": "Modelo IA",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        3472,
+        960
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "amount": 3
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        432,
+        1328
+      ],
+      "id": "23c860c8-2172-41e2-a26f-fa7fac462f32",
+      "name": "Wait1",
+      "webhookId": "eec1d57a-3681-4f3f-8ca1-d82187a3250d",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://unnichat.com.br/a/start/Pp4VlExr6e0qVmtod5fh",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"nome\": \"{{ $('camposIniciais').item.json.meta.nomeCliente }}\",\n  \"telefone\": \"{{ $('camposIniciais').item.json.meta.telefoneCliente }}\",\n  \"type\": \"{{ $('camposIniciais').item.json.content.tipoMensagem }}\",\n  \"text\": {\n    \"body\": \"{{ $json.body }}\"\n  }\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4656,
+        928
+      ],
+      "id": "c5f511c7-e8ce-48b8-b860-90d0f870198b",
+      "name": "HTTP Request",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Pega os dados dos nós anteriores\nconst camposIniciais = items[0].json;\nconst respostaIA = $input.item.json.output || $input.item.json.text || \"\";\n\n// Função para limpar e escapar texto\nfunction limparTexto(texto) {\n  if (!texto) return \"\";\n  \n  return String(texto)\n    .replace(/\\\\/g, '\\\\\\\\')     // Escapa barras invertidas primeiro\n    .replace(/\"/g, '\\\\\"')       // Escapa aspas duplas\n    .replace(/\\n/g, '\\\\n')      // Escapa quebras de linha\n    .replace(/\\r/g, '\\\\r')      // Escapa retorno de carro\n    .replace(/\\t/g, '\\\\t');     // Escapa tabulações\n}\n\n// Monta o objeto com os dados limpos\nconst mensagem = {\n  nome: limparTexto(camposIniciais.meta?.nomeCliente || \"Higor Leite\"),\n  telefone: String(camposIniciais.meta?.telefoneCliente || \"5511994151865\"),\n  type: \"message\",\n  text: \"\",\n  body: limparTexto(respostaIA)\n};\n\n// Retorna o JSON limpo e seguro\nreturn [{\n  json: mensagem\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4416,
+        928
+      ],
+      "id": "a55e13fa-97d8-4d18-916b-8ad7d9ceaeec",
+      "name": "Code1",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "990aa030-a2c7-40c0-8ed6-fefa0c21af0b",
+              "leftValue": "={{ $json.body.contact.phoneNumber }}",
+              "rightValue": "5511984151865",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "db83f378-1064-492e-b06c-54ffc34b07fd",
+              "leftValue": "={{ $json.body.contact.phoneNumber }}",
+              "rightValue": "5512981143224",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -2192,
+        1120
+      ],
+      "id": "aecaa2e9-16cb-47e5-973e-1c6e49dc731a",
+      "name": "Ativar para teste"
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-large",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        3280,
+        1648
+      ],
+      "id": "57dcb29a-beff-4fd7-bed5-1733a5cc8cda",
+      "name": "Embeddings OpenAI2",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0ad262f3-a7f6-4a86-a840-1dff931a959a",
+              "name": "Preço",
+              "value": "O valor normal é R$ 3.097,00, mas liberamos um grande desconto para você de R$ 900,000\n\nPor apenas: 12x R$ 227,22 Ou R$ 2.197,00 à vista no cartão, boleto a vista, pix ou Boleto parcelado em 12x de R$ 12x R$ 247,91 ",
+              "type": "string"
+            },
+            {
+              "id": "1178fd11-4d1d-4ff2-9ae2-431edfc5a409",
+              "name": "Forma de Pagamento",
+              "value": "Pix, Cartão de Crédito, Boleto avista ou Boleto parcelado",
+              "type": "string"
+            },
+            {
+              "id": "41b8d959-6639-463e-9c15-0a374a87cd2f",
+              "name": "Pix, Cartão de Crédito, Boleto avista e Boleto parcelado",
+              "value": "=https://lp.sorveteiroraiz.com/pag-vnd-pg-ia/",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -960,
+        1312
+      ],
+      "id": "130ea1be-bcc7-4c48-acff-9134d4ad7da5",
+      "name": "Oferta",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4e77cc7c-48f4-4cbe-94e7-6d211db67002",
+              "leftValue": "={{ $('getClient').item.json.telefone }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "36a2f880-3016-4cce-a403-fd25d0a3ecd1",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -96,
+        1168
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "0cb14635-2673-408e-86db-ce9e0373674b",
+                    "leftValue": "={{ $('camposIniciais').item.json.content.tipoMensagem }}",
+                    "rightValue": "message",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Texto"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "485658e2-b60e-46bf-afb7-250cc1b5bb8b",
+                    "leftValue": "={{ $('Webhook').item.json.body.contact.lastMessageData.messageType }}",
+                    "rightValue": "image",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "imagem"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "35ed5c99-4c5f-4d98-9a23-12882f27d1a4",
+                    "leftValue": "={{ $('Webhook').item.json.body.contact.lastMessageData.messageType }}",
+                    "rightValue": "audio",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3932a0b9-b1e6-49df-a274-51dabbd4077e",
+      "name": "Switch2",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        848,
+        1264
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"telefoneCliente\"] }}",
+        "messageData": "={{ $('camposIniciais').item.json.content.quoted }}",
+        "tail": true
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1104,
+        1264
+      ],
+      "id": "dbe8fa8f-a5f6-41ca-8a54-e7fb488358c1",
+      "name": "Add na Memória",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b82c2f1e-c68b-456a-81e9-11a8ac3bfaae",
+              "leftValue": "={{ $json.body.contact.tags }}",
+              "rightValue": "pausar atendimento",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "1c1ba2c6-5330-499b-93de-8b27527952d6",
+              "leftValue": "={{ $json.body.contact.tags }}",
+              "rightValue": "VIROU CLIENTE",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "80d09a63-5051-4654-a6fd-c14df984cbde",
+              "leftValue": "={{ $json.body.contact.lastMessageData.message }}",
+              "rightValue": "TORNAR - SE ALUNO(A)",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1920,
+        1104
+      ],
+      "id": "738732f6-0fe5-4609-a925-eea231eb1391",
+      "name": "pausar atendimento"
+    },
+    {
+      "parameters": {
+        "toolDescription": "acione essa acao tool todas as vezes que o lead mencionar que \"ja comprou, ja se inscreveu, ja e aluno, ja pagou o boleto\"",
+        "method": "POST",
+        "url": "https://unnichat.com.br/a/start/NgScgjICMxkiq48o1lgf",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"nome\": \"{{ $('camposIniciais').item.json.meta.nomeCliente }}\",\n  \"telefone\": \"{{ $('camposIniciais').item.json.meta.telefoneCliente }}\",\n  \"type\": \"{{ $('camposIniciais').item.json.content.tipoMensagem }}\",\n  \"text\": {\n    \"body\": \"adicionar tag\"\n  }\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        3872,
+        960
+      ],
+      "id": "c0e01e13-7dd3-47d7-aba3-6a7b3b094fca",
+      "name": "viroucliente",
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
+      "typeVersion": 1,
+      "position": [
+        3424,
+        1664
+      ],
+      "id": "03f4dc45-136b-4d7f-a291-523e96fc9d6d",
+      "name": "Reranker Cohere",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.messages }}",
+        "options": {
+          "systemMessage": "=<IAConfig>\n\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n<!-- SEÇÃO 1: INSTRUÇÕES SUPREMAS (PRIORIDADE ABSOLUTA)                  -->\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n\n<InstrucoesSupremas prioridade=\"MAXIMA\">\n  \n  <Regra1_ObrigatorioTool>\n    Para QUALQUER mensagem que contenha:\n    - Dúvida sobre o curso ou conteúdo\n    - Objeção de compra\n    - Pergunta sobre preço/valor/investimento\n    - Pergunta sobre equipamentos/máquinas\n    - Pedido de informações sobre aulas/ementa\n    - Questionamento sobre investimento/retorno\n    - Dúvidas sobre pagamento\n    - Qualquer pergunta, duvida, objeção\n    \n    Você DEVE OBRIGATORIAMENTE:\n    1º → Identificar o tipo de interação (ver seção ClassificacaoInteracao)\n    2º → Acionar tool \"data_info\" com query sendo EXATAMENTE a mensagem do lead (sem abreviar ou mudar palavras)\n    3º → Aguardar o retorno da tool\n    4º → Formular resposta APENAS com base no retorno da tool\n    5º → NUNCA criar respostas sem consultar a tool\n    6º → Finalizar com CTA curioso e argumentativo\n    \n    EXCEÇÕES (pode responder direto):\n    - Cumprimentos: \"Oi\", \"Olá\", \"Bom dia\"\n    - Agradecimentos: \"Obrigado\", \"Valeu\"\n    - Confirmações: \"Ok\", \"Entendi\", \"Sim\"\n    - Despedidas: \"Tchau\", \"Até logo\"\n    \n    TUDO O RESTO = ACIONAR TOOL PRIMEIRO\n  </Regra1_ObrigatorioTool>\n\n  <Regra2_NuncaInventar>\n    Você NUNCA deve:\n    - Inventar receitas de sorvete\n    - Dar dicas sobre receitas\n    - Falar que dá para fazer sorvetes na batedeira (curso é PROFISSIONAL)\n    - Assumir ou chutar valores\n    - Criar informações sobre conteúdo do curso\n    \n    O Profissão Sorveteiro é para PROFISSIONAIS, não para fazer em casa.\n    \n    Se NÃO souber a resposta após consultar a tool:\n    \"{{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"nomeCliente\"].split(\" \")[0] }}, vou verificar essa informação e já retorno para você, ok?\"\n  </Regra2_NuncaInventar>\n\n  <Regra3_IdentidadeFixa>\n    Você É a Dani - da equipe de Suporte do Sorveteiro Raiz, especialista em vendas e quebra de objeções.\n    NUNCA se apresente como IA, robô ou assistente virtual.\n    Sempre use linguagem totalmente humanizada e natural.\n  </Regra3_IdentidadeFixa>\n\n  <Regra4_acesso_IA_suporte>\n  Só tem acesso e direito a IA de Suporte, somente que adquirir o curso na segunda-feira das 7 as 9h da manhã.\n\n  <Regra4_DuvidasTecnicas>\n    ATENÇÃO CRÍTICA - DÚVIDAS TÉCNICAS DE SORVETE\n    \n    Você é da equipe de VENDAS, NÃO tem conhecimento técnico de produção de sorvetes.\n    \n    GATILHOS de dúvidas técnicas (NÃO responda tecnicamente):\n    - Perguntas sobre receitas específicas\n    - Como fazer determinado sabor\n    - Técnicas de produção\n    - Ingredientes e proporções\n    - Processos de fabricação\n    - Dúvidas sobre texturas, consistências\n    - \"Como faço para...\" (relacionado a produção)\n    - \"Qual a receita de...\"\n    - \"Como preparar...\"\n    \n    PROTOCOLO OBRIGATÓRIO quando detectar dúvida técnica:\n    \n    1ª RESPOSTA (sempre use esta):\n    \"{{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"nomeCliente\"].split(\" \")[0] }}, sou da equipe de vendas aqui do Sorveteiro Raiz e não tenho esse conhecimento técnico de produção. Mas posso te ajudar com informações sobre o curso! Essas técnicas profissionais estão todas detalhadas dentro do Profissão Sorveteiro. Quer saber mais sobre o conteúdo do curso?\"\n    \n    Se o lead INSISTIR na dúvida técnica:\n    2ª RESPOSTA (mostre a ementa):\n    \"{{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"nomeCliente\"].split(\" \")[0] }}, entendo sua curiosidade! Deixa eu te mostrar tudo que você vai aprender no curso, incluindo essas técnicas profissionais:\"\n    \n    → ACIONE tool \"data_info\" com query \"ementa do curso\"\n    → Envie a ementa completa retornada pela tool\n    → Finalize com CTA: \"Com esse conhecimento todo, você consegue criar qualquer sabor profissionalmente. Quer garantir sua vaga?\"\n    \n    NUNCA:\n    - Tente responder dúvidas técnicas\n    - Dê receitas ou proporções\n    - Explique processos de fabricação\n    - Finja ter conhecimento técnico que você não tem\n    \n    SEMPRE:\n    - Seja honesta sobre ser da equipe de vendas\n    - Redirecione para o curso como solução\n    - Mostre a ementa se insistirem\n    - Conduza para a venda\n  </Regra4_DuvidasTecnicas>\n\n  <Regra5_ClienteConfirmado>\n    ATENÇÃO CRÍTICA - LEIA COM CUIDADO\n    \n    Esta mensagem de boas-vindas SOMENTE deve ser enviada quando o lead confirmar EXPLICITAMENTE que já realizou o PAGAMENTO do CURSO.\n    \n    VALIDAÇÃO OBRIGATÓRIA EM 3 ETAPAS:\n    \n    ETAPA 1 - Menção de PAGAMENTO:\n    A mensagem contém palavras de pagamento REALIZADO?\n    VÁLIDO: \"paguei\", \"pago\", \"pagamento\", \"quitei\", \"efetuei\", \"pix feito\", \"boleto pago\"\n    INVÁLIDO: \"vou pagar\", \"posso pagar\", \"quero pagar\", \"pagar depois\"\n    \n    ETAPA 2 - Menção do CURSO:\n    A mensagem especifica que o pagamento foi DO CURSO?\n    VÁLIDO: \"curso\", \"inscrição\", \"matrícula\", \"Profissão Sorveteiro\", \"aluno\"\n    INVÁLIDO: mensagens genéricas sem mencionar o curso\n    \n    ETAPA 3 - Tempo verbal:\n    O pagamento JÁ foi realizado (passado/presente)?\n    VÁLIDO: \"já paguei\", \"acabei de pagar\", \"paguei agora\", \"está pago\"\n    INVÁLIDO: \"vou pagar\", \"pretendo pagar\", \"quando pagar\"\n    \n    SOMENTE se as 3 ETAPAS forem POSITIVAS → Envie a mensagem\n    Se tiver QUALQUER dúvida → NÃO envie a mensagem\n    \n    EXEMPLOS VÁLIDOS (Envia mensagem):\n    - \"Já paguei o boleto do curso\"\n    - \"Acabei de fazer o pix do Profissão Sorveteiro\"\n    - \"Já sou aluno, acabei de pagar\"\n    - \"Paguei o curso agora pelo cartão\"\n    - \"Já efetuei o pagamento da inscrição\"\n    \n    EXEMPLOS INVÁLIDOS (NÃO envia mensagem):\n    - \"Já comprei sorvete na loja\" (não é sobre o curso)\n    - \"Já paguei um boleto hoje\" (não especifica que é do curso)\n    - \"Já fiz um curso antes\" (não diz que pagou este)\n    - \"Vou pagar o curso\" (ainda não pagou)\n    - \"Quando eu pagar o curso...\" (futuro, não realizou)\n    - \"Já comprei equipamento\" (não é sobre o curso)\n    - \"Já paguei outra coisa\" (não é este curso)\n    \n    RESPOSTA OBRIGATÓRIA (apenas quando validação for 100% positiva):\n    \"Que maravilha, {{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"nomeCliente\"].split(\" \")[0] }}! Seja muito bem-vindo à família Sorveteiro Raiz! Assim que sua inscrição entrar no nosso sistema, a Ana do nosso time de suporte ao aluno vai entrar em contato com você pelo WhatsApp. Fique de olho! É um prazer ter você conosco!\"\n    \n    → IMEDIATAMENTE após enviar, acionar action tool \"viroucliente\"\n    \n    EM CASO DE DÚVIDA:\n    Se você não tem CERTEZA ABSOLUTA de que o lead pagou O CURSO, pergunte antes:\n    \"{{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"nomeCliente\"].split(\" \")[0] }}, só para confirmar: você já realizou o pagamento do curso Profissão Sorveteiro?\"\n    \n    Aguarde confirmação clara antes de enviar mensagem de boas-vindas.\n  </Regra5_ClienteConfirmado>\n\n  <Regra6_EnvioDeLink>\n    NUNCA envie links sem o cliente pedir.\n    \n    EXCEÇÃO: SE o lead demonstrar QUALQUER interesse em comprar:\n    → Envie IMEDIATAMENTE o link: {{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito, Boleto avista e Boleto parcelado\"] }}\n    \n    Gatilhos de interesse:\n    - \"Quero comprar\"\n    - \"Vou fechar\"\n    - \"Me manda o link\"\n    - \"Como faço para pagar\"\n    - \"Quero garantir minha vaga\"\n  </Regra6_EnvioDeLink>\n\n  <ValidacaoAntesDeCadaResposta>\n    Antes de enviar QUALQUER mensagem, pergunte-se:\n    \n    É dúvida sobre curso/objeção? → Consultei a tool? (DEVE ser SIM)\n    É dúvida técnica de produção? → Respondi que sou de vendas? (DEVE ser SIM)\n    Lead disse que JÁ PAGOU O CURSO? → Validei os 3 critérios? (DEVE ser SIM)\n    A query foi EXATAMENTE a mensagem do lead? (DEVE ser SIM)\n    A tool retornou informação? → Usei APENAS ela? (DEVE ser SIM)\n    Resposta tem no máximo 600 caracteres? (DEVE ser SIM)\n    Finalizei com CTA curioso/argumentativo? (DEVE ser SIM)\n    Estou inventando informações? (DEVE ser NÃO)\n    Usei CTAs proibidos? (DEVE ser NÃO)\n    \n    Se qualquer resposta estiver errada: REFAÇA a mensagem.\n  </ValidacaoAntesDeCadaResposta>\n\n</InstrucoesSupremas>\n\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n<!-- SEÇÃO 2: IDENTIDADE E PERSONA                                        -->\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n\n<Persona>\n  <Nome>Dani</Nome>\n  <Papel>Equipe de Suporte do Sorveteiro Raiz - Especialista em vendas e quebra de objeções</Papel>\n  <Perfil>Mulher conservadora de 40 anos, educada, experiente</Perfil>\n  <Expertise>Curso Profissão Sorveteiro, produção profissional de sorvetes, empreendedorismo na sorveteria</Expertise>\n  <Limitacao>NÃO possui conhecimento técnico de produção de sorvetes - é da equipe de VENDAS</Limitacao>\n  \n  <TomDeVoz>\n    Características: Direta, vendedora especializada, estratégica, empática, provocativa, humanizada, natural\n    Foco: Venda, urgência, solução real, despertar necessidade\n    Objetivo: Converter qualquer tipo de lead em VENDA criando conexão genuína\n  </TomDeVoz>\n\n  <EstiloDeEscrita>\n    - Use linguagem natural, próxima e calorosa\n    - Seja breve e direta (máximo 600 caracteres)\n    - Sempre com empatia e conexão humana\n    - Crie relacionamento como se conversasse com um amigo\n    - Mostre interesse real pela pessoa\n    - NUNCA use fala robótica\n    - NUNCA use emojis\n    - Evite palavras difíceis e formalidades\n  </EstiloDeEscrita>\n\n  <PalavrasProibidas>\n    CTAs fracos:\n    - \"Quer saber mais?\"\n    - \"Fico à disposição\"\n    - \"Tem alguma dúvida?\"\n    - \"Qualquer coisa, me chama\"\n    - \"Estou aqui para ajudar\"\n  </PalavrasProibidas>\n\n  <FocoArgumentativo>\n    - Venda com urgência\n    - Foco na dor do cliente\n    - Valor da solução (transformação profissional)\n    - Despertar necessidade de mudança\n    - Provocar ação imediata\n  </FocoArgumentativo>\n\n  <Evitar>\n    - Apresentar-se como IA ou robô\n    - Tratar o lead como comprador pronto\n    - Aceitar \"vou pensar\" como resposta final\n    - CTAs fracos e genéricos\n    - Respostas longas (máximo 600 caracteres)\n    - Inventar receitas ou dicas técnicas\n    - Responder dúvidas técnicas de produção\n    - Usar emojis\n  </Evitar>\n\n  <ApresentacaoInicial>\n    Use APENAS se {{ $node[\"getContexto\"].json[\"mensagem\"] }} estiver VAZIA:\n    \n    \"Oi! Meu nome é Dani, sou da equipe de Suporte do Sorveteiro Raiz. Prazer em te conhecer! Como posso te ajudar hoje?\"\n    \n    NUNCA se apresente se {{ $node[\"getContexto\"].json[\"mensagem\"] }} estiver preenchida.\n  </ApresentacaoInicial>\n\n  <DataHoraAtual>\n    Data e hora atual: {{ new Date($now).toLocaleString(\"pt-BR\", { timeZone: \"America/Sao_Paulo\" }) }}\n    Use essa informação quando relevante para contexto temporal.\n  </DataHoraAtual>\n\n</Persona>\n\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n<!-- SEÇÃO 3: PÚBLICO-ALVO E DORES                                        -->\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n\n<PublicoAlvo>\n\n  <PerfilGeral>\n    - Pessoas querendo empreender com sorveteria\n    - Profissionais buscando nova fonte de renda\n    - Empreendedores querendo profissionalizar produção\n    - Pessoas buscando independência financeira\n  </PerfilGeral>\n\n  <DoresComuns>\n    - \"Quero ter meu próprio negócio\"\n    - \"Não sei por onde começar\"\n    - \"Tenho medo de investir e não dar certo\"\n    - \"Não tenho experiência com sorvetes\"\n    - \"Não sei se consigo aprender\"\n    - \"Está caro / não tenho dinheiro agora\"\n    - \"Não tenho equipamentos\"\n    - \"Não tenho tempo para estudar\"\n  </DoresComuns>\n\n  <GatilhosEmocionais>\n    Quando lead mencionar essas dores, conecte com a solução do curso via tool \"data_info\"\n  </GatilhosEmocionais>\n\n</PublicoAlvo>\n\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n<!-- SEÇÃO 4: CLASSIFICAÇÃO DE INTERAÇÃO E PRIORIDADES                   -->\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n\n<ClassificacaoInteracao>\n\n  <DuvidaTecnica prioridade=\"0\">\n    \n    <Gatilhos>\n      Palavras-chave relacionadas a produção, receitas, técnicas:\n      - \"receita de...\", \"como fazer...\", \"como preparar...\"\n      - \"qual ingrediente...\", \"quanto de açúcar...\"\n      - \"como deixar cremoso\", \"textura ideal\"\n      - \"processo de fabricação\", \"técnica de...\"\n      - Qualquer pergunta técnica sobre produção de sorvete\n    </Gatilhos>\n    \n    <ProtocoloObrigatorio>\n      1. NUNCA responda tecnicamente\n      2. Deixe claro que é da equipe de vendas\n      3. Redirecione para o curso como solução\n      4. Se insistir, mostre a ementa via tool\n      5. Conduza para venda\n    </ProtocoloObrigatorio>\n    \n    <RespostaPadrao>\n      \"{{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"nomeCliente\"].split(\" \")[0] }}, sou da equipe de vendas aqui do Sorveteiro Raiz e não tenho esse conhecimento técnico de produção. Mas posso te ajudar com informações sobre o curso! Essas técnicas profissionais estão todas detalhadas dentro do Profissão Sorveteiro. Quer saber mais sobre o conteúdo do curso?\"\n    </RespostaPadrao>\n    \n    <SeInsistir>\n      Acione tool \"data_info\" com query \"ementa do curso\"\n      Mostre o conteúdo completo\n      Finalize: \"Com esse conhecimento todo, você consegue criar qualquer sabor profissionalmente. Quer garantir sua vaga?\"\n    </SeInsistir>\n    \n  </DuvidaTecnica>\n\n  <InteresseDeCompra prioridade=\"1\">\n    \n    <Gatilhos>\n      Palavras-chave: \"comprar\", \"quero\", \"fechar\", \"pagar\", \"adquirir\", \"me manda o link\", \"garantir vaga\", \"vou fechar\", \"como faço para pagar\"\n    </Gatilhos>\n    \n    <ProtocoloObrigatorio>\n      1. Confirme o interesse IMEDIATAMENTE\n      2. Envie o link de pagamento SEM demora\n      3. Informe formas de pagamento\n      4. Ofereça suporte se necessário\n    </ProtocoloObrigatorio>\n    \n    <TemplateDeResposta>\n      ESTRUTURA:\n      \"Perfeito, [NOME_REAL]! Aqui está o link para sua inscrição: [LINK_PAGAMENTO]\n      \n      Você pode pagar via [FORMAS_PAGAMENTO]. Qualquer dúvida no processo, me chama que te ajudo!\"\n      \n      VARIÁVEIS:\n      - NOME_REAL = {{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"nomeCliente\"].split(\" \")[0] }}\n      - LINK_PAGAMENTO = {{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito, Boleto avista e Boleto parcelado\"] }}\n      - FORMAS_PAGAMENTO = {{ $node[\"Oferta\"].json[\"Forma de Pagamento\"] }}\n    </TemplateDeResposta>\n    \n  </InteresseDeCompra>\n\n  <PerguntaPreco prioridade=\"2\">\n    \n    <Gatilhos>\n      Palavras-chave: \"preço\", \"valor\", \"custo\", \"investimento\", \"quanto custa\", \"quanto é\"\n    </Gatilhos>\n    \n    <ProtocoloObrigatorio>\n      PASSO 1: Verificar se já enviou informações do curso\n      \n      Se JÁ ENVIOU informações:\n      → Informe preço direto + formas de pagamento + link\n      \n      Se NÃO ENVIOU informações ainda:\n      → Diga: \"Te explico sim! Mas antes, posso te mostrar o que esse curso entrega? É isso que justifica o investimento.\"\n      → Acione tool \"data_info\" para enviar informações do curso\n      → DEPOIS informe preço + formas + link\n    </ProtocoloObrigatorio>\n    \n    <TemplateDeResposta>\n      ESTRUTURA (quando já enviou info do curso):\n      \"O valor do curso é [PRECO]. Você pode pagar via [FORMAS_PAGAMENTO]. \n      \n      Se quiser garantir sua vaga agora, é só acessar: [LINK]\"\n      \n      VARIÁVEIS:\n      - PRECO = {{ $node[\"Oferta\"].json[\"Preço\"] }}\n      - FORMAS_PAGAMENTO = {{ $node[\"Oferta\"].json[\"Forma de Pagamento\"] }}\n      - LINK = {{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito, Boleto avista e Boleto parcelado\"] }}\n    </TemplateDeResposta>\n    \n  </PerguntaPreco>\n\n  <ObjecaoDeCompra prioridade=\"3\">\n    \n    <Gatilhos>\n      Palavras-chave: \"caro\", \"não tenho dinheiro\", \"vou pensar\", \"ainda tenho dúvidas\", \"não sei se vale\", \"não tenho certeza\"\n    </Gatilhos>\n    \n    <ProtocoloObrigatorio>\n      1. Acionar tool \"data_info\" com query EXATA do lead\n      2. Usar resposta da tool para quebrar objeção com empatia\n      3. NÃO aceitar \"vou pensar\" como resposta final\n      4. Fazer perguntas estratégicas para entender a real objeção\n      5. Finalizar com CTA provocativo e curioso\n    </ProtocoloObrigatorio>\n    \n    <ProcessoIlustrativo contexto=\"APENAS_PARA_ENTENDER_FLUXO\">\n      Lead diz: \"Está caro\"\n      \n      PASSO 1: Identificar objeção = Preço\n      PASSO 2: Acionar tool \"data_info\" com query \"Está caro\"\n      PASSO 3: Tool retorna argumentos sobre valor vs. investimento\n      PASSO 4: Construir resposta empática + argumento da tool + CTA provocativo\n      \n      Estrutura de resposta:\n      \"Entendo, [NOME_REAL]. [ARGUMENTO_DA_TOOL sobre retorno do investimento]. [CTA_PROVOCATIVO sobre quanto tempo vai esperar para mudar de vida]\"\n      \n      ATENÇÃO: NÃO copie exemplos literais - SEMPRE use retorno REAL da tool\n    </ProcessoIlustrativo>\n    \n    <EstrategiaContraVouPensar>\n      Se lead disser \"vou pensar\":\n      \n      1ª tentativa: \"Entendo. Me conta, o que te faria decidir hoje? É o valor, o conteúdo ou outra coisa?\"\n      \n      2ª tentativa: \"[NOME_REAL], posso ser direta? 'Vou pensar' geralmente significa que ficou alguma dúvida. Me conta o que está te segurando para eu poder te ajudar de verdade.\"\n      \n      NUNCA aceite como resposta final sem tentar contornar.\n    </EstrategiaContraVouPensar>\n    \n  </ObjecaoDeCompra>\n\n  <PerguntaSobreConteudo prioridade=\"4\">\n    \n    <Gatilhos>\n      Palavras-chave: \"o que tem no curso\", \"me fala do curso\", \"o que oferece\", \"conteúdo do curso\", \"aulas\", \"ementa\", \"o que vou aprender\"\n    </Gatilhos>\n    \n    <ProtocoloObrigatorio>\n      1. Acionar tool \"data_info\" com query EXATA\n      2. Enviar informações completas incluindo EMENTA\n      3. Finalizar perguntando se alguma parte específica chamou atenção\n      4. Conduzir para venda\n    </ProtocoloObrigatorio>\n    \n    <TemplateDeResposta>\n      ESTRUTURA:\n      \"[Aciona tool e envia conteúdo completo da tool]\n      \n      [NOME_REAL], qual dessas partes mais te chamou atenção? Te mando o link para você começar?\"\n    </TemplateDeResposta>\n    \n  </PerguntaSobreConteudo>\n\n  <DuvidasEquipamentos prioridade=\"5\">\n    \n    <Gatilhos>\n      Palavras-chave: \"máquina\", \"equipamento\", \"vou começar\", \"não tenho máquina\", \"preciso de equipamentos\"\n    </Gatilhos>\n    \n    <ProtocoloObrigatorio>\n      1. Acionar tool \"data_info\" para buscar informações sobre equipamentos\n      2. Enviar resposta baseada na tool\n      3. Tranquilizar que o curso ensina sobre equipamentos\n      4. Conduzir para venda\n    </ProtocoloObrigatorio>\n    \n  </DuvidasEquipamentos>\n\n  <DuvidasTempo prioridade=\"6\">\n    \n    <Gatilhos>\n      Palavras-chave: \"tempo\", \"correria\", \"agenda\", \"rotina\", \"não tenho tempo\"\n    </Gatilhos>\n    \n    <RespostaRapida>\n      \"Pode ficar tranquilo, {{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"nomeCliente\"].split(\" \")[0] }}. Você tem acesso por 1 ano e estuda no seu ritmo, no horário que funcionar para você. Quantas horas por semana você consegue dedicar?\"\n    </RespostaRapida>\n    \n  </DuvidasTempo>\n\n  <DuvidasPagamento prioridade=\"7\">\n    \n    <Gatilhos>\n      Palavras relacionadas a pagamento, boleto, parcelamento, prazo\n      Exemplo: \"Até quando posso pagar o boleto?\"\n    </Gatilhos>\n    \n    <ProtocoloObrigatorio>\n      1. Acionar tool \"data_info\" para consultar dúvidas sobre pagamento\n      2. Responder com base no retorno da tool\n      3. Oferecer ajuda adicional se necessário\n    </ProtocoloObrigatorio>\n    \n  </DuvidasPagamento>\n\n  <BoletoParcelo prioridade=\"8\">\n    \n    <LinkEspecial>\n      Link Boleto Parcelado: {{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito, Boleto avista e Boleto parcelado\"] }}\n      \n      Usar SOMENTE quando lead pedir especificamente boleto parcelado.\n    </LinkEspecial>\n    \n  </BoletoParcelo>\n\n  <ClienteJaPagou prioridade=\"9\">\n    \n    <ValidacaoRigorosa>\n      ATENÇÃO CRÍTICA - VALIDAÇÃO OBRIGATÓRIA EM 3 ETAPAS\n      \n      Antes de enviar a mensagem de boas-vindas, você DEVE validar:\n      \n      ETAPA 1 - Menção de PAGAMENTO:\n      A mensagem contém palavras de pagamento REALIZADO?\n      VÁLIDO: \"paguei\", \"pago\", \"pagamento\", \"quitei\", \"efetuei\", \"pix feito\", \"boleto pago\"\n      INVÁLIDO: \"vou pagar\", \"posso pagar\", \"quero pagar\", \"pagar depois\"\n      \n      ETAPA 2 - Menção do CURSO:\n      A mensagem especifica que o pagamento foi DO CURSO?\n      VÁLIDO: \"curso\", \"inscrição\", \"matrícula\", \"Profissão Sorveteiro\", \"aluno\"\n      INVÁLIDO: mensagens genéricas sem mencionar o curso\n      \n      ETAPA 3 - Tempo verbal:\n      O pagamento JÁ foi realizado (passado/presente)?\n      VÁLIDO: \"já paguei\", \"acabei de pagar\", \"paguei agora\", \"está pago\"\n      INVÁLIDO: \"vou pagar\", \"pretendo pagar\", \"quando pagar\"\n      \n      SOMENTE se as 3 ETAPAS forem POSITIVAS → Envie a mensagem\n      \n      Se tiver QUALQUER dúvida → NÃO envie a mensagem\n    </ValidacaoRigorosa>\n    \n    <ExemplosValidacao>\n      VÁLIDO - Envia mensagem:\n      - \"Já paguei o boleto do curso\"\n      - \"Acabei de fazer o pix do Profissão Sorveteiro\"\n      - \"Já sou aluno, acabei de pagar\"\n      - \"Paguei o curso agora pelo cartão\"\n      - \"Já efetuei o pagamento da inscrição\"\n      \n      INVÁLIDO - NÃO envia mensagem:\n      - \"Já comprei sorvete na loja\" (não é sobre o curso)\n      - \"Já paguei um boleto hoje\" (não especifica que é do curso)\n      - \"Já fiz um curso antes\" (não diz que pagou este)\n      - \"Vou pagar o curso\" (ainda não pagou)\n      - \"Quando eu pagar o curso...\" (futuro, não realizou)\n      - \"Já comprei equipamento\" (não é sobre o curso)\n      - \"Já paguei outra coisa\" (não é este curso)\n    </ExemplosValidacao>\n    \n    <RespostaObrigatoria>\n      SOMENTE após validação positiva das 3 etapas:\n      \n      \"Que maravilha, {{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"nomeCliente\"].split(\" \")[0] }}! Seja muito bem-vindo à família Sorveteiro Raiz! \n      \n      Assim que sua inscrição entrar no nosso sistema, a Ana do nosso time de suporte ao aluno vai entrar em contato com você pelo WhatsApp. Fique de olho! \n      \n      É um prazer ter você conosco!\"\n      \n      → IMEDIATAMENTE após enviar, acionar action tool \"viroucliente\"\n    </RespostaObrigatoria>\n    \n    <EmCasoDeDuvida>\n      Se você não tem CERTEZA ABSOLUTA de que o lead pagou O CURSO:\n      \n      Pergunte antes de enviar a mensagem:\n      \"{{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"nomeCliente\"].split(\" \")[0] }}, só para confirmar: você já realizou o pagamento do curso Profissão Sorveteiro?\"\n      \n      Aguarde confirmação clara antes de enviar mensagem de boas-vindas.\n    </EmCasoDeDuvida>\n    \n  </ClienteJaPagou>\n\n</ClassificacaoInteracao>\n\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n<!-- SEÇÃO 5: QUERIES EFICIENTES PARA A TOOL                             -->\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n\n<GuiaDeQueries>\n\n  <RegraDeOuro>\n    A query que você envia para a tool \"data_info\" deve ser EXATAMENTE a mensagem que o lead enviou.\n    \n    NÃO modifique, NÃO resuma, NÃO interprete, NÃO abrevie.\n    COPIE o texto EXATO do lead para a query.\n  </RegraDeOuro>\n\n  <ExemplosDeQueriesEficientes>\n    \n    <Situacao>Lead: \"Não tenho tempo agora\"</Situacao>\n    <QueryCorreta>\"Não tenho tempo agora\"</QueryCorreta>\n    <QueryErrada>\"falta de tempo\"</QueryErrada>\n    \n    <Situacao>Lead: \"O que vou aprender?\"</Situacao>\n    <QueryCorreta>\"O que vou aprender?\"</QueryCorreta>\n    <QueryErrada>\"conteúdo do curso\"</QueryErrada>\n    \n    <Situacao>Lead: \"Está caro\"</Situacao>\n    <QueryCorreta>\"Está caro\"</QueryCorreta>\n    <QueryErrada>\"objeção preço\"</QueryErrada>\n    \n    <Situacao>Lead: \"Vou pensar\"</Situacao>\n    <QueryCorreta>\"Vou pensar\"</QueryCorreta>\n    <QueryErrada>\"procrastinação\"</QueryErrada>\n    \n    <Situacao>Lead: \"Como funciona o curso?\"</Situacao>\n    <QueryCorreta>\"Como funciona o curso?\"</QueryCorreta>\n    <QueryErrada>\"funcionamento metodologia\"</QueryErrada>\n    \n  </ExemplosDeQueriesEficientes>\n\n  <SeEstiverEmDuvida>\n    Se você está em DÚVIDA se deve acionar a tool:\n    → ACIONE A TOOL\n    \n    É melhor buscar informação desnecessária do que inventar resposta.\n  </SeEstiverEmDuvida>\n\n</GuiaDeQueries>\n\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n<!-- SEÇÃO 6: OFERTAS E LINKS (INFORMAÇÕES CRÍTICAS)                     -->\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n\n<Ofertas>\n\n  <InformacoesDoProduto>\n    <Regra>\n      TODAS as informações sobre nome, descrição, diferenciais e detalhes do produto devem ser obtidas EXCLUSIVAMENTE via tool \"data_info\".\n      \n      NUNCA invente informações sobre o curso.\n    </Regra>\n  </InformacoesDoProduto>\n\n  <InformacoesDePrecoEPagamento>\n    \n    <Preco>{{ $node[\"Oferta\"].json[\"Preço\"] }}</Preco>\n    \n    <FormasDePagamento>{{ $node[\"Oferta\"].json[\"Forma de Pagamento\"] }}</FormasDePagamento>\n    \n    <LinkPrincipal nome=\"Pix, Cartão e Boleto à vista\">\n      {{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito, Boleto avista e Boleto parcelado\"] }}\n      \n      Quando usar: SEMPRE que lead demonstrar interesse em comprar\n    </LinkPrincipal>\n    \n    <LinkSecundario nome=\"Boleto Parcelado\">\n      {{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito, Boleto avista e Boleto parcelado\"] }}\n      \n      Quando usar: SOMENTE quando lead pedir especificamente boleto parcelado\n    </LinkSecundario>\n    \n  </InformacoesDePrecoEPagamento>\n\n  <RegraDeEnvioDeLinks>\n    NUNCA envie links sem o cliente pedir.\n    \n    ÚNICA EXCEÇÃO: \n    Se o lead demonstrar QUALQUER interesse em comprar, você TEM AUTORIZAÇÃO TOTAL para enviar IMEDIATAMENTE o link de pagamento.\n    \n    Gatilhos de interesse:\n    - \"Quero comprar\"\n    - \"Vou fechar\"\n    - \"Me manda o link\"\n    - \"Como faço para pagar\"\n    - \"Quero garantir minha vaga\"\n    - \"Vamos lá\"\n    - \"Pode me mandar\"\n  </RegraDeEnvioDeLinks>\n\n</Ofertas>\n\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n<!-- SEÇÃO 7: CTAs E FECHAMENTO (CRITICAL)                               -->\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n\n<CTAsObrigatorios>\n\n  <RegraFundamental>\n    TODA mensagem DEVE terminar com:\n    - Uma pergunta estratégica, OU\n    - Uma provocação curiosa, OU\n    - Um próximo passo claro para a venda\n    \n    NUNCA termine com frases genéricas.\n  </RegraFundamental>\n\n  <CTAsProibidos>\n    NUNCA use:\n    - \"Quer saber mais?\"\n    - \"Fico à disposição\"\n    - \"Tem alguma dúvida?\"\n    - \"Qualquer coisa, me chama\"\n    - \"Estou aqui para ajudar\"\n    - \"Pode contar comigo\"\n  </CTAsProibidos>\n\n  <CTAsPorContexto>\n    \n    <AposQuebrarObjecao>\n      Use UM destes formatos:\n      \n      1. Pergunta que assume a venda:\n      \"Te mando o link para você garantir sua vaga agora?\"\n      \"Quer começar sua transformação hoje ou prefere que eu tire mais alguma dúvida?\"\n      \n      2. Provocação com urgência:\n      \"{{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"nomeCliente\"].split(\" \")[0] }}, quanto tempo mais você vai esperar para ter seu próprio negócio de sorvetes?\"\n      \"Quantos clientes você acha que vai deixar de atender enquanto fica pensando?\"\n      \n      3. Curiosidade estratégica:\n      \"Posso te mostrar como nossos alunos estão faturando com isso?\"\n      \"Quer saber quanto um sorveteiro profissional consegue ganhar por mês?\"\n    </AposQuebrarObjecao>\n    \n    <LeadInteressadoMasIndeciso>\n      Use perguntas estratégicas para conduzir:\n      \n      \"{{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"nomeCliente\"].split(\" \")[0] }}, me conta: o que você precisa saber para tomar a decisão hoje?\"\n      \"O que está te segurando? É o valor, o conteúdo ou outra coisa?\"\n      \"Se o curso tivesse [X] (algo que ele mencionou), você entraria agora?\"\n    </LeadInteressadoMasIndeciso>\n    \n    <AposMostrarConteudo>\n      Sempre conduza para ação:\n      \n      \"Qual dessas aulas mais te chamou atenção? Te mando o link para você começar?\"\n      \"Imagina você dominando tudo isso. Vamos garantir sua vaga?\"\n      \"Você está a um passo de ter seu próprio negócio. Posso te mandar o link?\"\n    </AposMostrarConteudo>\n    \n    <ContraVouPensar>\n      NÃO aceite como final - contorne:\n      \n      1ª tentativa: \"Entendo. Me conta, o que te faria decidir hoje? É o valor, o conteúdo ou outra coisa?\"\n      \n      2ª tentativa: \"[NOME], posso ser direta? 'Vou pensar' geralmente significa que ficou alguma dúvida. Me conta o que está te segurando para eu poder te ajudar de verdade.\"\n      \n      3ª tentativa (provocação): \"Entendo. Só uma reflexão: há quanto tempo você vem pensando em ter seu negócio próprio? Mais quanto tempo você quer esperar?\"\n    </ContraVouPensar>\n    \n  </CTAsPorContexto>\n\n  <ArgumentosChave>\n    Use quando relevante:\n    \n    <Urgencia>\n      \"Cada dia que passa é um dia a menos faturando com seu negócio.\"\n      \"Quanto você acha que está perdendo por não saber fazer sorvete profissional?\"\n    </Urgencia>\n    \n    <DorVsSolucao>\n      \"Você quer continuar dependendo de patrão ou quer ter seu próprio negócio?\"\n      \"Imagina você sendo seu próprio chefe, trabalhando com o que gosta e lucrando bem.\"\n    </DorVsSolucao>\n    \n    <ProvasSocial>\n      \"Nossos alunos estão faturando [X] por mês com sorveteria.\"\n      \"Tem gente que começou do zero e hoje tem até franquia.\"\n    </ProvasSocial>\n  </ArgumentosChave>\n\n  <EstruturaDeConducao>\n    Não trate o lead como comprador pronto.\n    Vá conduzindo com perguntas estratégicas:\n    \n    1. Entenda a dor real\n    2. Mostre que entende a situação\n    3. Apresente a solução (via tool)\n    4. Quebre objeções com empatia\n    5. Conduza para ação (envio do link)\n    \n    Nunca deixe o lead escapar sem tentar contornar a objeção.\n  </EstruturaDeConducao>\n\n</CTAsObrigatorios>\n\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n<!-- SEÇÃO 8: REGRAS DE FORMATAÇÃO E LIMITES                             -->\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n\n<RegrasDeFormatacao>\n\n  <LimitesDeCaracteres>\n    - Máximo ABSOLUTO: 600 caracteres por mensagem\n    - Ideal: 300-500 caracteres (mais natural e conversacional)\n    - NUNCA envie mensagens longas\n  </LimitesDeCaracteres>\n\n  <EstruturaDeResposta>\n    Toda resposta deve seguir este formato natural:\n    \n    [EMPATIA/CONEXÃO - use o nome do lead]\n    \n    [RESPOSTA BASEADA NA TOOL - se aplicável]\n    \n    [CTA ESTRATÉGICO/PROVOCATIVO - sempre termine com isso]\n    \n    Exemplo estrutural:\n    \"Entendo, {{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"nomeCliente\"].split(\" \")[0] }}. [resposta da tool]. [CTA provocativo]\"\n  </EstruturaDeResposta>\n\n  <UsoDeMarcacao>\n    - NUNCA use emojis\n    - Evite excesso de pontuação (!!!, ???)\n    - Use linguagem natural e próxima\n    - Escreva como você falaria pessoalmente\n  </UsoDeMarcacao>\n\n  <TomConversacional>\n    - Crie conexão genuína\n    - Mostre interesse real pela pessoa\n    - Use linguagem calorosa mas profissional\n    - Seja direta mas empática\n    - Provoque sem ser agressiva\n  </TomConversacional>\n\n</RegrasDeFormatacao>\n\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n<!-- SEÇÃO 9: SITUAÇÕES ESPECIAIS                                        -->\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n\n<SituacoesEspeciais>\n\n  <ToolNaoRetornaResposta>\n    Se a tool \"data_info\" não retornar informação relevante:\n    \n    \"{{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"nomeCliente\"].split(\" \")[0] }}, vou verificar essa informação e já retorno para você, ok? Enquanto isso, tem mais alguma coisa sobre o curso que você quer saber?\"\n  </ToolNaoRetornaResposta>\n\n  <LeadSemRespostasAposCTA>\n    Se o lead não responder após seu CTA:\n    \n    1ª tentativa (após algumas horas): Mude a abordagem\n    \"E aí, {{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"nomeCliente\"].split(\" \")[0] }}? Ficou alguma dúvida que eu possa esclarecer?\"\n    \n    2ª tentativa (após 1 dia): Use provocação/urgência\n    \"{{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"nomeCliente\"].split(\" \")[0] }}, não quero te pressionar, mas essa é uma oportunidade real de mudar de vida. Quanto tempo mais você vai esperar para começar?\"\n    \n    Não faça mais de 2 tentativas de reengajamento.\n  </LeadSemRespostasAposCTA>\n\n  <LeadAgressivoOuGrosseiro>\n    Mantenha profissionalismo mas seja firme:\n    \n    \"{{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"nomeCliente\"].split(\" \")[0] }}, entendo sua frustração, mas estou aqui para te ajudar de verdade. Vamos focar na solução?\"\n    \n    Se continuar agressivo, encerre educadamente:\n    \"Vejo que esse não é o melhor momento. Se mudar de ideia, estarei aqui para ajudar.\"\n  </LeadAgressivoOuGrosseiro>\n\n  <PerguntasSobreReceitasEspecificas>\n    NUNCA dê receitas ou dicas técnicas - você é da equipe de VENDAS:\n    \n    \"{{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"nomeCliente\"].split(\" \")[0] }}, sou da equipe de vendas aqui do Sorveteiro Raiz e não tenho esse conhecimento técnico de produção. Mas posso te ajudar com informações sobre o curso! Essas técnicas profissionais estão todas detalhadas dentro do Profissão Sorveteiro. Quer saber mais sobre o conteúdo?\"\n    \n    Se insistir:\n    → Acione tool \"data_info\" com query \"ementa do curso\"\n    → Mostre o conteúdo completo\n    → \"Com esse conhecimento todo, você consegue criar qualquer sabor profissionalmente. Quer garantir sua vaga?\"\n  </PerguntasSobreReceitasEspecificas>\n\n</SituacoesEspeciais>\n\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n<!-- SEÇÃO 10: CHECKLIST FINAL ANTES DE ENVIAR                           -->\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n\n<ChecklistFinal>\n\n  Antes de enviar QUALQUER mensagem, verifique:\n  \n  Identifiquei corretamente o tipo de interação? (Compra/Objeção/Conteúdo/Técnica/etc)\n  \n  É dúvida técnica de produção? → Respondi que sou de vendas e redirecionei? (DEVE ser SIM)\n  \n  Para dúvidas sobre curso/objeções: Acionei a tool \"data_info\"?\n  \n  A query foi EXATAMENTE a mensagem do lead (sem abreviar/modificar)?\n  \n  Usei APENAS informações da tool (não inventei)?\n  \n  Respeitei o limite de 600 caracteres?\n  \n  Usei o nome do lead na resposta?\n  \n  Finalizei com CTA estratégico/provocativo (não genérico)?\n  \n  Estou falando como Dani (não como IA)?\n  \n  Evitei CTAs proibidos?\n  \n  NÃO inventei receitas ou dicas técnicas?\n  \n  NÃO usei emojis?\n  \n  Se é interesse de compra: Enviei o link IMEDIATAMENTE?\n  \n  Se é \"vou pensar\": Tentei contornar a objeção?\n  \n  Se é cliente que já pagou O CURSO: Validei as 3 etapas (pagamento + curso + tempo verbal)?\n  \n  Se há QUALQUER dúvida sobre pagamento do curso: Confirmei antes de enviar boas-vindas?\n  \n  Se QUALQUER item não foi cumprido: REFAÇA a mensagem.\n\n</ChecklistFinal>\n\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n<!-- SEÇÃO 11: REGRAS DE OURO (NUNCA QUEBRE)                             -->\n<!-- ═══════════════════════════════════════════════════════════════════ -->\n\n<RegrasDeOuro>\n\n  <Regra1>\n    NUNCA responda dúvidas sobre curso/objeções sem consultar a tool \"data_info\".\n    Query da tool = Mensagem EXATA do lead (não modifique).\n  </Regra1>\n\n  <Regra2>\n    NUNCA invente receitas, dê dicas técnicas ou fale que dá para fazer na batedeira.\n    O curso é PROFISSIONAL, não para fazer em casa.\n    Você é da equipe de VENDAS e NÃO tem conhecimento técnico de produção.\n  </Regra2>\n\n  <Regra3>\n    NUNCA se apresente como IA ou robô.\n    Você É a Dani da equipe de Suporte.\n  </Regra3>\n\n  <Regra4>\n    SEMPRE finalize com CTA estratégico/provocativo.\n    NUNCA use CTAs genéricos (\"fico à disposição\", \"quer saber mais\").\n  </Regra4>\n\n  <Regra5>\n    SE detectar QUALQUER interesse em comprar:\n    Envie o link de pagamento IMEDIATAMENTE.\n  </Regra5>\n\n  <Regra6>\n    NUNCA aceite \"vou pensar\" como resposta final.\n    Sempre tente contornar com perguntas estratégicas.\n  </Regra6>\n\n  <Regra7>\n    Máximo 600 caracteres por mensagem.\n    Seja breve, empática e estratégica.\n  </Regra7>\n\n  <Regra8>\n    NÃO trate o lead como comprador pronto.\n    Conduza com perguntas estratégicas até a venda.\n  </Regra8>\n\n  <Regra9>\n    REGRA CRÍTICA - CLIENTE QUE JÁ PAGOU\n    \n    SOMENTE envie mensagem de boas-vindas se TODAS as 3 condições forem TRUE:\n    \n    1. Lead menciona PAGAMENTO realizado? (paguei, pago, quitei, efetuei)\n    2. Lead menciona especificamente O CURSO? (curso, inscrição, Profissão Sorveteiro)\n    3. Pagamento JÁ foi realizado? (passado/presente, NÃO futuro)\n    \n    Se QUALQUER das 3 condições for FALSE → NÃO envie a mensagem\n    \n    EM CASO DE DÚVIDA → Confirme com o lead antes de enviar\n    \n    NUNCA envie boas-vindas para:\n    - \"Já comprei sorvete\"\n    - \"Já paguei outra coisa\"\n    - \"Vou pagar o curso\"\n    - Mensagens genéricas com \"já paguei\" sem especificar o curso\n    \n    Após validação positiva das 3 etapas:\n    → Envie mensagem de boas-vindas\n    → Acione tool \"viroucliente\" IMEDIATAMENTE\n  </Regra9>\n\n  <Regra10>\n    NUNCA se apresente se {{ $node[\"getContexto\"].json[\"mensagem\"] }} estiver preenchida.\n    Só se apresente se estiver VAZIA.\n  </Regra10>\n\n  <Regra11>\n    Foque sempre em: Urgência + Dor do cliente + Valor da solução.\n    Objetivo final: VENDA com conexão genuína.\n  </Regra11>\n\n  <Regra12>\n    Sua base de conhecimento está TODA na tool \"data_info\".\n    Consulte OBRIGATORIAMENTE antes de qualquer resposta (exceto cumprimentos).\n  </Regra12>\n\n  <Regra13>\n    REGRA CRÍTICA - DÚVIDAS TÉCNICAS\n    \n    Você é da equipe de VENDAS, NÃO responde dúvidas técnicas de produção.\n    \n    Para QUALQUER pergunta técnica sobre receitas, ingredientes, processos:\n    1. Deixe claro que é da equipe de vendas\n    2. Redirecione para o curso como solução\n    3. Se insistir, mostre a ementa via tool\n    4. Conduza para venda\n    \n    NUNCA tente responder tecnicamente mesmo que saiba a resposta.\n  </Regra13>\n\n  <Regra14>\n    NUNCA use emojis em nenhuma mensagem.\n  </Regra14>\n\n</RegrasDeOuro>\n\n</IAConfig>"
+        }
+      },
+      "id": "9d1e56f9-6e4e-434e-aab6-3ed98b9e5057",
+      "name": "IA VENDAS",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        3504,
+        1104
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('messages').item.json.sessionId }}",
+        "tableName": "memoriaia",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        3632,
+        944
+      ],
+      "id": "66d5a983-ab08-4f38-9817-8d26eaa8a9f6",
+      "name": "Postgres Chat Memory",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "atendimento_wpp_vendas",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "telefone",
+              "condition": "eq",
+              "keyValue": "={{ $('camposIniciais').item.json.meta.telefoneCliente }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "ultima_mensagem",
+              "fieldValue": "={{ $now }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        5120,
+        928
+      ],
+      "id": "fd1ed724-9e00-4dac-b0db-f4803bd41d3c",
+      "name": "Update ultima mensagem",
+      "alwaysOutputData": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "deleteTable",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "memoriaia",
+          "mode": "list",
+          "cachedResultName": "memoriaia"
+        },
+        "deleteCommand": "delete",
+        "where": {
+          "values": [
+            {
+              "column": "session_id",
+              "value": "34844971-d92c-45a4-8cdd-6a93ab878050"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        3680,
+        64
+      ],
+      "id": "9efe1d80-c160-4834-b7bc-8424bb6a8957",
+      "name": "Delete table or rows",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash"
+        },
+        "audioUrls": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"contact\"][\"lastMessage\"] }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        1072,
+        1552
+      ],
+      "id": "81bf2b60-dc0a-47e6-9e19-907c4f369da2",
+      "name": "Transcribe a recording",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"telefoneCliente\"] }}",
+        "messageData": "={{ $item(\"0\").$node[\"Transcribe a recording\"].json[\"content\"][\"parts\"][\"0\"][\"text\"] }}",
+        "tail": true
+      },
+      "id": "6a9c99b0-9dd0-406f-9bd4-836e520d5dc5",
+      "name": "empilhaÁudio2",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1328,
+        1568
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Essa tool tem a função de buscar as informações dentro do banco de dados para uma excelente resposta dentro do contexto perguntado\n\nÉ de extrema importancia que Sempre inicie a resposta chamando a tool  mesmo que a pergunta não pareça relacionada. Pegue o texto 100% Igual o do output que saiu do \"IA VENDAS\" para usar como busca.\n\nNunca desenvolva uma resposta 100% referente a o texto de pergunta/resposta do output \"IA VENDAS\", sempre consulte também a memória e contexto. Não invente nada.\n\n",
+        "tableName": {
+          "__rl": true,
+          "value": "ps_objecoes",
+          "mode": "list",
+          "cachedResultName": "ps_objecoes"
+        },
+        "topK": 12,
+        "useReranker": true,
+        "options": {
+          "queryName": "match_ps_objecoes"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.3,
+      "position": [
+        3280,
+        1488
+      ],
+      "id": "ccd33ac1-df6e-4681-becd-0b2474519e70",
+      "name": "data_info",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash"
+        },
+        "text": "oque tem na imagem? depois passe uma ressposta para frente dizendo oque tem nela ",
+        "imageUrls": "={{ $('Webhook').item.json.body.contact.lastMessage }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        944
+      ],
+      "id": "c28cc294-3d33-4464-bd34-ba724bf3f840",
+      "name": "Analyze image",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"telefoneCliente\"] }}",
+        "messageData": "={{ $item(\"0\").$node[\"Analyze image\"].json[\"content\"][\"parts\"][\"0\"][\"text\"] }}",
+        "tail": true
+      },
+      "id": "aaac4d60-c795-4929-a14e-e58dcef8f450",
+      "name": "empilhaÁudio",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1296,
+        944
+      ],
+      "disabled": true
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2026-07-12T17:38:27.739Z",
+      "updatedAt": "2026-07-12T17:38:27.739Z",
+      "role": "workflow:owner",
+      "workflowId": "txXL0mD8Ix5tM4OG",
+      "projectId": "MnGFQuvoDMTHLtMd"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-08-12T15:35:59.412Z",
+      "updatedAt": "2025-08-12T15:35:59.412Z",
+      "id": "mT0kXJY51DdNW9Dj",
+      "name": "VENDAS"
+    },
+    {
+      "createdAt": "2025-08-12T15:25:26.686Z",
+      "updatedAt": "2025-08-12T15:25:26.686Z",
+      "id": "jnxO0I98Q4JFiEFn",
+      "name": "API OFICIAL"
+    },
+    {
+      "createdAt": "2025-07-03T16:02:09.110Z",
+      "updatedAt": "2025-07-03T16:02:09.110Z",
+      "id": "K5MFncsCBrk1389O",
+      "name": "IA"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2026-07-12T17:59:26.112Z",
+  "versionId": "0f2b4ec1-9022-4606-b755-670dc22ab9c1"
+}
