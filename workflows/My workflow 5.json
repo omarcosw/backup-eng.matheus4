@@ -1,11 +1,14 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {},
   "createdAt": "2025-12-02T00:58:56.951Z",
   "id": "kshoq1ZMXvBnRADO",
   "isArchived": true,
   "meta": null,
   "name": "My workflow 5",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -33,11 +36,11 @@
   },
   "shared": [
     {
-      "createdAt": "2025-12-02T00:58:56.951Z",
-      "updatedAt": "2025-12-02T00:58:56.951Z",
       "role": "workflow:owner",
       "workflowId": "kshoq1ZMXvBnRADO",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2025-12-02T00:58:56.951Z",
+      "updatedAt": "2025-12-02T00:58:56.951Z"
     }
   ],
   "staticData": null,
