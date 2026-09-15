@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "60 min": {
       "main": [
@@ -283,6 +285,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "[IA] Follow up",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -1144,11 +1147,11 @@
   },
   "shared": [
     {
-      "createdAt": "2025-07-11T05:53:50.547Z",
-      "updatedAt": "2025-07-11T05:53:50.547Z",
       "role": "workflow:owner",
       "workflowId": "mJqeMfEiGWMKlAXB",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2025-07-11T05:53:50.547Z",
+      "updatedAt": "2025-07-11T05:53:50.547Z"
     }
   ],
   "staticData": {
@@ -1161,10 +1164,10 @@
   },
   "tags": [
     {
-      "createdAt": "2025-08-12T15:25:19.774Z",
-      "updatedAt": "2025-08-12T15:25:19.774Z",
       "id": "WUqjtcCYycM8nth1",
-      "name": "API NÃO OFICIAL"
+      "name": "API NÃO OFICIAL",
+      "createdAt": "2025-08-12T15:25:19.774Z",
+      "updatedAt": "2025-08-12T15:25:19.774Z"
     }
   ],
   "triggerCount": 1,
