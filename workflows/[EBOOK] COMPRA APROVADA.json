@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "trata_dados": {
       "main": [
@@ -207,6 +209,7 @@
   "isArchived": false,
   "meta": null,
   "name": "[EBOOK] COMPRA APROVADA",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -1064,20 +1067,20 @@
   },
   "shared": [
     {
-      "createdAt": "2025-08-14T20:28:40.090Z",
-      "updatedAt": "2025-08-14T20:28:40.090Z",
       "role": "workflow:owner",
       "workflowId": "eimgOvSLHW8wW6VX",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2025-08-14T20:28:40.090Z",
+      "updatedAt": "2025-08-14T20:28:40.090Z"
     }
   ],
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-08-14T20:39:11.270Z",
-      "updatedAt": "2025-08-14T20:39:11.270Z",
       "id": "jBVz4JcVOCtIXeeF",
-      "name": "EBOOK"
+      "name": "EBOOK",
+      "createdAt": "2025-08-14T20:39:11.270Z",
+      "updatedAt": "2025-08-14T20:39:11.270Z"
     }
   ],
   "triggerCount": 1,
