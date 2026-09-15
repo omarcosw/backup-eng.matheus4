@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Webhook": {
       "main": [
@@ -421,6 +423,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "[IA] VENDAS",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -1655,32 +1658,32 @@
   },
   "shared": [
     {
-      "createdAt": "2025-08-12T15:36:02.172Z",
-      "updatedAt": "2025-08-12T15:36:02.172Z",
       "role": "workflow:owner",
       "workflowId": "tvXbCp5gi5RVGkqP",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2025-08-12T15:36:02.172Z",
+      "updatedAt": "2025-08-12T15:36:02.172Z"
     }
   ],
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-08-12T15:35:59.412Z",
-      "updatedAt": "2025-08-12T15:35:59.412Z",
-      "id": "mT0kXJY51DdNW9Dj",
-      "name": "VENDAS"
-    },
-    {
-      "createdAt": "2025-08-12T15:25:26.686Z",
-      "updatedAt": "2025-08-12T15:25:26.686Z",
-      "id": "jnxO0I98Q4JFiEFn",
-      "name": "API OFICIAL"
-    },
-    {
-      "createdAt": "2025-07-03T16:02:09.110Z",
-      "updatedAt": "2025-07-03T16:02:09.110Z",
       "id": "K5MFncsCBrk1389O",
-      "name": "IA"
+      "name": "IA",
+      "createdAt": "2025-07-03T16:02:09.110Z",
+      "updatedAt": "2025-07-03T16:02:09.110Z"
+    },
+    {
+      "id": "jnxO0I98Q4JFiEFn",
+      "name": "API OFICIAL",
+      "createdAt": "2025-08-12T15:25:26.686Z",
+      "updatedAt": "2025-08-12T15:25:26.686Z"
+    },
+    {
+      "id": "mT0kXJY51DdNW9Dj",
+      "name": "VENDAS",
+      "createdAt": "2025-08-12T15:35:59.412Z",
+      "updatedAt": "2025-08-12T15:35:59.412Z"
     }
   ],
   "triggerCount": 1,
