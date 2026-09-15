@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Google Sheets": {
       "main": [
@@ -271,6 +273,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "DISPARO | [AI 1]",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -881,11 +884,11 @@
   },
   "shared": [
     {
-      "createdAt": "2025-06-13T02:21:32.210Z",
-      "updatedAt": "2025-06-13T02:21:32.210Z",
       "role": "workflow:owner",
       "workflowId": "LdEDgLDUT4myGf46",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2025-06-13T02:21:32.210Z",
+      "updatedAt": "2025-06-13T02:21:32.210Z"
     }
   ],
   "staticData": {
