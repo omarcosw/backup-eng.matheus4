@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "If1": {
       "main": [
@@ -122,6 +124,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "Verifica se e aluno",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -383,20 +386,20 @@
   },
   "shared": [
     {
-      "createdAt": "2025-07-07T13:18:42.958Z",
-      "updatedAt": "2025-07-07T13:18:42.958Z",
       "role": "workflow:owner",
       "workflowId": "mr6wNxEzvTYw0VJE",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2025-07-07T13:18:42.958Z",
+      "updatedAt": "2025-07-07T13:18:42.958Z"
     }
   ],
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-07-07T13:19:13.772Z",
-      "updatedAt": "2025-07-07T13:19:13.772Z",
       "id": "APWtlgA2UKcKzIN6",
-      "name": "Suporte"
+      "name": "Suporte",
+      "createdAt": "2025-07-07T13:19:13.772Z",
+      "updatedAt": "2025-07-07T13:19:13.772Z"
     }
   ],
   "triggerCount": 1,
