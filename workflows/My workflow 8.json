@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Webhook": {
       "main": [
@@ -87,6 +89,7 @@
   "isArchived": true,
   "meta": null,
   "name": "My workflow 8",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -535,11 +538,11 @@
   },
   "shared": [
     {
-      "createdAt": "2026-04-21T23:30:34.346Z",
-      "updatedAt": "2026-04-21T23:30:34.346Z",
       "role": "workflow:owner",
       "workflowId": "6QpXV1K02KoFHyR8",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2026-04-21T23:30:34.346Z",
+      "updatedAt": "2026-04-21T23:30:34.346Z"
     }
   ],
   "staticData": null,
