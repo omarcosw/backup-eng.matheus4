@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "When chat message received": {
       "main": [
@@ -31,6 +33,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "My workflow 10",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -94,11 +97,11 @@
   },
   "shared": [
     {
-      "createdAt": "2026-04-22T01:39:17.434Z",
-      "updatedAt": "2026-04-22T01:39:17.434Z",
       "role": "workflow:owner",
       "workflowId": "9hFixFRmt5yrQmxu",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2026-04-22T01:39:17.434Z",
+      "updatedAt": "2026-04-22T01:39:17.434Z"
     }
   ],
   "staticData": null,
