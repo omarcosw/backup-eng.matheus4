@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Webhook": {
       "main": [
@@ -14,6 +16,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "My workflow 7",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -191,11 +194,11 @@
   },
   "shared": [
     {
-      "createdAt": "2026-02-09T09:29:15.632Z",
-      "updatedAt": "2026-02-09T09:29:15.632Z",
       "role": "workflow:owner",
       "workflowId": "tuZ0SjIu0kk7rfQS",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2026-02-09T09:29:15.632Z",
+      "updatedAt": "2026-02-09T09:29:15.632Z"
     }
   ],
   "staticData": null,
