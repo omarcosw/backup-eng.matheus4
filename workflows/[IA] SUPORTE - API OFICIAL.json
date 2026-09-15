@@ -1,5 +1,1632 @@
 {
   "active": true,
+  "activeVersion": {
+    "versionId": "3dfd3405-82b4-44ed-9975-6610256ade37",
+    "workflowId": "FdClnkl6vJ4E4zv7",
+    "nodes": [
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "suporte",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2,
+        "position": [
+          -5728,
+          1136
+        ],
+        "id": "2330c36d-1450-4897-9baa-ddae97f831f1",
+        "name": "webhook",
+        "webhookId": "7d1ee740-2fda-4cfb-87e9-44e385849491"
+      },
+      {
+        "parameters": {
+          "rules": {
+            "values": [
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "leftValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"tipoMensagem\"] }}",
+                      "rightValue": "audio",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      },
+                      "id": "386d2406-e487-4496-9129-adbb171c1d6e"
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Áudio"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "id": "60065893-74f7-4b64-bc1a-d891202efa78",
+                      "leftValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"tipoMensagem\"] }}",
+                      "rightValue": "image",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals",
+                        "name": "filter.operator.equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Imagem"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "id": "cddb01b9-96e9-4e7b-ad2e-4df975ace6d9",
+                      "leftValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"tipoMensagem\"] }}",
+                      "rightValue": "video",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals",
+                        "name": "filter.operator.equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "video"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "cfa5da26-b073-4f1f-8de9-286892e67337",
+        "name": "Switch",
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 3.2,
+        "position": [
+          -2960,
+          1392
+        ],
+        "alwaysOutputData": false
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "f9ecf2fc-da2c-4f44-897a-5dc0a2f2f379",
+                "name": "telefone",
+                "value": "={{ $item(0).$node[\"webhook\"].json[\"body\"][\"conversation\"][\"messages\"][0][\"sender\"][\"phone_number\"].replace(\"+\", \"\") }}",
+                "type": "string"
+              },
+              {
+                "id": "dab7ca54-c3d2-4a36-a9ca-a0ebbd375ef5",
+                "name": "nome",
+                "value": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"messages\"][\"0\"][\"sender\"][\"name\"] }}",
+                "type": "string"
+              },
+              {
+                "id": "81612acf-1b66-4c8e-82e4-ce8c77b31334",
+                "name": "content.mensagem",
+                "value": "={{ \n  $json.body?.content || \n\n  $json.body?.data?.message?.extendedTextMessage?.text || \n  $json.body?.data?.message?.imageMessage?.caption || \n  $json.body?.data?.message?.conversation || \n  $json?.message?.text || \n  $json?.message?.caption || \n  null \n}}",
+                "type": "string"
+              },
+              {
+                "id": "cc7dcfe1-8ad7-4fe8-93ec-8f643c7d08c7",
+                "name": "tipoMensagem",
+                "value": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"messages\"][\"0\"][\"attachments\"][\"0\"][\"file_type\"] }}",
+                "type": "string"
+              },
+              {
+                "id": "5cd6cd5f-46c5-4f74-8daf-a943ec9b1e1e",
+                "name": "id_conversations",
+                "value": "={{ $json.body.conversation.messages[0].conversation_id }}",
+                "type": "number"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "bb97f92d-2070-467e-8cec-0c079a49b827",
+        "name": "camposIniciais1",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -4928,
+          1152
+        ],
+        "notesInFlow": true
+      },
+      {
+        "parameters": {
+          "content": "## PASSO 4 - DEFINE O TIPO DE MENSAGEM E ORGANIZA PARA O AGENTE",
+          "height": 1482,
+          "width": 4439,
+          "color": 7
+        },
+        "id": "883ff084-fe8d-4346-85cd-8a6acd0e6edf",
+        "name": "Sticky Note5",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -3072,
+          864
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "push",
+          "list": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}",
+          "messageData": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"content\"][\"mensagem\"] }}",
+          "tail": true
+        },
+        "type": "n8n-nodes-base.redis",
+        "typeVersion": 1,
+        "position": [
+          -2464,
+          1904
+        ],
+        "id": "2759ae8f-9d63-45a7-a971-c833654c5e7a",
+        "name": "Add na Memória1",
+        "credentials": {
+          "redis": {
+            "id": "WKYrbj8mpqYSkF5s",
+            "name": "Redis account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "amount": 10
+        },
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          -1504,
+          1536
+        ],
+        "id": "bc16cf06-6d58-497d-9ba8-1cdb27f04065",
+        "name": "Espere1",
+        "webhookId": "5efbac78-7c17-44b9-92cc-c3078c79f8d8"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "propertyName": "Memória Inicial",
+          "key": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.redis",
+        "typeVersion": 1,
+        "position": [
+          -1712,
+          1536
+        ],
+        "id": "931358b3-ff9f-4aad-9b6a-64e948d36a1b",
+        "name": "Memória Inicial1",
+        "credentials": {
+          "redis": {
+            "id": "WKYrbj8mpqYSkF5s",
+            "name": "Redis account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "propertyName": "Memória Final",
+          "key": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.redis",
+        "typeVersion": 1,
+        "position": [
+          -1248,
+          1536
+        ],
+        "id": "894f398e-6e6b-40de-9fc7-ef117266c598",
+        "name": "Memória Final1",
+        "credentials": {
+          "redis": {
+            "id": "WKYrbj8mpqYSkF5s",
+            "name": "Redis account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "// Acesse os arrays das variáveis\nconst memoriaInicialArray = $('Memória Inicial1').all()[0].json['Memória Inicial'];\nconst memoriaFinalArray = $json['Memória Final'];\n\n// Verifique se as variáveis são arrays e junte os elementos em strings\nconst memoriaInicial = Array.isArray(memoriaInicialArray) ? memoriaInicialArray.join(' ') : '';\nconst memoriaFinal = Array.isArray(memoriaFinalArray) ? memoriaFinalArray.join(' ') : '';\n\n// Retorne as variáveis resultantes\nreturn {\n  memoriaInicial,\n  memoriaFinal\n};"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -1056,
+          1536
+        ],
+        "id": "309aa08a-35a8-486e-a1e1-4db29f8c78af",
+        "name": "Concatena Mensagens1"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "fbe500bb-8a66-4f0c-93df-9631e3bdabfc",
+                "leftValue": "={{ $('Concatena Mensagens1').all()[0].json.memoriaInicial }}",
+                "rightValue": "={{ $('Concatena Mensagens1').all()[0].json.memoriaFinal }}",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.filter",
+        "typeVersion": 2.2,
+        "position": [
+          -880,
+          1536
+        ],
+        "id": "3599b1ca-bf6f-4b2e-9cc8-d2233fa25a67",
+        "name": "Compara Memórias1"
+      },
+      {
+        "parameters": {
+          "operation": "delete",
+          "key": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}"
+        },
+        "type": "n8n-nodes-base.redis",
+        "typeVersion": 1,
+        "position": [
+          -704,
+          1536
+        ],
+        "id": "6cf1f4c0-1762-4ba0-84fb-91bb0094975e",
+        "name": "Limpar Memória2",
+        "credentials": {
+          "redis": {
+            "id": "WKYrbj8mpqYSkF5s",
+            "name": "Redis account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "18e16067-bcdb-4bda-9c22-e1869c550af6",
+                "name": "userMessage",
+                "value": "={{ $('Compara Memórias1').all()[0].json.memoriaFinal }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -512,
+          1536
+        ],
+        "id": "97b1e28f-bc91-4850-ae54-3bffe6f686f1",
+        "name": "UserMessage1"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "b7158aa0-84e0-44b1-8629-bf23fb4c0766",
+                "name": "=messages",
+                "value": "={{ $item(\"0\").$node[\"UserMessage1\"].json[\"userMessage\"] }}",
+                "type": "string"
+              },
+              {
+                "id": "ef9e44ec-6f77-43c0-868f-7b43bc3007a4",
+                "name": "sessionid",
+                "value": "={{ $('getClient2').first().json.sessionid }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "a5260133-4b2a-4a1d-9ff7-fae92b455a66",
+        "name": "messagess",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -224,
+          1536
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "4e77cc7c-48f4-4cbe-94e7-6d211db67002",
+                "leftValue": "={{ $('getClient2').item.json.telefone }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "string",
+                  "operation": "notEmpty",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "id": "d8f595c0-8f71-4c3a-b080-075195e745fa",
+        "name": "If1",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          -3808,
+          1584
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "tableId": "atendimento_suporte",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "telefone",
+                "keyValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}"
+              }
+            ]
+          }
+        },
+        "id": "d1c5381d-2423-422c-b550-96f3712b9909",
+        "name": "getClient2",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          -4064,
+          1584
+        ],
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "action": "generate"
+        },
+        "id": "764565b8-5fed-4897-a2d5-7e10acf2270f",
+        "name": "GERA_sessionid",
+        "type": "n8n-nodes-base.crypto",
+        "typeVersion": 1,
+        "position": [
+          -3632,
+          1792
+        ],
+        "notesInFlow": false
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "2db4fa36-c506-4e4c-9f74-8ebe506d96cf",
+                "leftValue": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"messages\"][\"0\"][\"sender\"][\"phone_number\"] }}",
+                "rightValue": "+5511984151865",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              },
+              {
+                "id": "34dee416-cccb-4f31-9a69-450afc08c3de",
+                "leftValue": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"messages\"][\"0\"][\"sender\"][\"phone_number\"] }}",
+                "rightValue": "+5512981443543",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              },
+              {
+                "id": "7b4899c2-0df3-4249-95bd-e08c49642408",
+                "leftValue": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"messages\"][\"0\"][\"sender\"][\"phone_number\"] }}",
+                "rightValue": "+5512983070037",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              },
+              {
+                "id": "cf2acd12-aa72-497e-acf3-53376d6b0634",
+                "leftValue": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"messages\"][\"0\"][\"sender\"][\"phone_number\"] }}",
+                "rightValue": "+5512981143224",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "or"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          -5104,
+          944
+        ],
+        "id": "7ccf8f23-bc54-412d-9316-6496bd9e8e62",
+        "name": "Ativar para teste"
+      },
+      {
+        "parameters": {
+          "url": "=https://chat.sorveteiroraiz.com/api/v1/accounts/1/conversations",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "api_access_token",
+                "value": "=9QnwDsmh2dwF5q45vi59upxe"
+              }
+            ]
+          },
+          "options": {
+            "redirect": {
+              "redirect": {}
+            }
+          }
+        },
+        "id": "d4571160-fd93-4e89-a8ae-9976b5d9a5d6",
+        "name": "Busca id conversation",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.1,
+        "position": [
+          -4656,
+          1152
+        ],
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "4e77cc7c-48f4-4cbe-94e7-6d211db67002",
+                "leftValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"tipoMensagem\"] }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "string",
+                  "operation": "notEmpty",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "id": "fb9dacb3-baa4-49dd-b056-927904677ad0",
+        "name": "If",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          -3424,
+          1568
+        ]
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "=https://chat.sorveteiroraiz.com/api/v1/accounts/1/conversations/{{ $item(\"0\").$node[\"camposIniciais1\"].json[\"id_conversations\"] }}/messages",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "api_access_token",
+                "value": "9QnwDsmh2dwF5q45vi59upxe"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "sendBody": true,
+          "bodyParameters": {
+            "parameters": [
+              {
+                "name": "content",
+                "value": "={{ $json.output }}"
+              },
+              {
+                "name": "echo_id",
+                "value": "=msg{{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"contact_inbox\"][\"contact_id\"] }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          544,
+          1536
+        ],
+        "id": "ac1c98b7-e4f4-432a-b0de-b8f744bd0de0",
+        "name": "HTTP Request1"
+      },
+      {
+        "parameters": {
+          "operation": "push",
+          "list": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}",
+          "messageData": "={{ $item(\"0\").$node[\"transcreve imagem\"].json[\"content\"] }}",
+          "tail": true
+        },
+        "id": "6dcb61bb-1940-4785-b7f7-2513da7eb488",
+        "name": "empilhaÁudio",
+        "type": "n8n-nodes-base.redis",
+        "typeVersion": 1,
+        "position": [
+          -2464,
+          1408
+        ],
+        "credentials": {
+          "redis": {
+            "id": "WKYrbj8mpqYSkF5s",
+            "name": "Redis account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "push",
+          "list": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}",
+          "messageData": "={{ $item(\"0\").$node[\"analisar um video\"].json[\"content\"][\"parts\"][\"0\"][\"text\"] }}",
+          "tail": true
+        },
+        "id": "0da17d9c-461c-4ca6-bd8e-9c90f8bc5d0a",
+        "name": "empilhaÁudio1",
+        "type": "n8n-nodes-base.redis",
+        "typeVersion": 1,
+        "position": [
+          -2464,
+          1664
+        ],
+        "credentials": {
+          "redis": {
+            "id": "WKYrbj8mpqYSkF5s",
+            "name": "Redis account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "content": "## PASSO 1 - CREDENCIAIS, DADOS",
+          "height": 1486,
+          "width": 2679,
+          "color": 7
+        },
+        "id": "892f43fd-2fd9-41fd-be63-7120f0f71f7a",
+        "name": "Sticky Note7",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -5824,
+          848
+        ]
+      },
+      {
+        "parameters": {
+          "sessionIdType": "customKey",
+          "sessionKey": "={{ $('messagess').first().json.sessionid }}",
+          "tableName": "memoria_ia_suporte",
+          "contextWindowLength": 10
+        },
+        "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+        "typeVersion": 1.3,
+        "position": [
+          -80,
+          1840
+        ],
+        "id": "51accb90-2dec-44c7-be0c-fbae0fbe342e",
+        "name": "MEMORIA",
+        "credentials": {
+          "postgres": {
+            "id": "IYNLdJqCB5ipfbuh",
+            "name": "Postgres account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "mode": "retrieve-as-tool",
+          "toolName": "data_info",
+          "toolDescription": "Essa tool tem a função de buscar as informações dentro do banco de dados para uma excelente resposta dentro do contexto perguntado\n\nÉ de extrema importancia que Sempre inicie a resposta chamando a tool  mesmo que a pergunta não pareça relacionada. Pegue o texto 100% Igual o do output que saiu do \"SUPORTE\" para usar como busca.\n\nNunca desenvolva uma resposta 100% referente a o texto de pergunta/resposta do output \"SUPORTE\", sempre consulte também a memória e contexto. Não invente nada.\n",
+          "tableName": {
+            "__rl": true,
+            "value": "curso",
+            "mode": "list",
+            "cachedResultName": "curso"
+          },
+          "topK": 12,
+          "useReranker": true,
+          "options": {
+            "queryName": "match_curso"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+        "typeVersion": 1.2,
+        "position": [
+          368,
+          1776
+        ],
+        "id": "aed2f646-84f4-415d-963e-7b1d1f2b32b9",
+        "name": "data_info",
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "c76b08fb-748e-46c0-b9a4-2016c1f77d33",
+                "leftValue": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"channel\"] }}",
+                "rightValue": "Channel::Whatsapp",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              },
+              {
+                "id": "cc241888-8fd6-4b62-943f-7fe87fd8a95d",
+                "leftValue": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"messages\"][\"0\"][\"message_type\"] }}",
+                "rightValue": "=0",
+                "operator": {
+                  "type": "dateTime",
+                  "operation": "equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.filter",
+        "typeVersion": 2.2,
+        "position": [
+          -5168,
+          1152
+        ],
+        "id": "f5aed8fd-3f41-4c92-b919-afe73b2fb947",
+        "name": "Filter2"
+      },
+      {
+        "parameters": {
+          "resource": "image",
+          "operation": "analyze",
+          "modelId": {
+            "__rl": true,
+            "value": "gpt-4o-mini",
+            "mode": "list",
+            "cachedResultName": "GPT-4O-MINI"
+          },
+          "text": "=<image_analyzer>\n  <identity>\n    <name>analisador visual</name>\n    <persona>analista técnico e detalhista</persona>\n    <style>objetivo, claro e direto</style>\n  </identity>\n  \n  <behaviors>\n    <analysis_flow>\n      <step1>identificar elementos principais da imagem</step1>\n      <step2>descrever contexto e ambiente</step2>\n      <step3>notar detalhes relevantes</step3>\n    </analysis_flow>\n    \n    <donts>\n      <rule>nunca inventar elementos que não estão na imagem</rule>\n      <rule>nunca fazer suposições além do visível</rule>\n      <rule>nunca usar termos técnicos desnecessários</rule>\n      <rule>nunca ignorar elementos importantes</rule>\n     </rule>\n    </donts>\n    \n    <response_format>\n      <tone>profissional mas acessível</tone>\n      <structure>organizada e hierárquica</structure>\n      <detail_level>completo mas conciso</detail_level>\n    </response_format>\n  </behaviors>\n\n  </output_rules>\n</image_analyzer>",
+          "imageUrls": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"messages\"][\"0\"][\"attachments\"][\"0\"][\"data_url\"] }}",
+          "options": {}
+        },
+        "id": "7ce4b801-9d9c-4e3d-9f36-d0637f0be491",
+        "name": "transcreve imagem",
+        "type": "@n8n/n8n-nodes-langchain.openAi",
+        "typeVersion": 1.4,
+        "position": [
+          -2704,
+          1408
+        ],
+        "credentials": {
+          "openAiApi": {
+            "id": "QzQb6Q9G3hGozb9v",
+            "name": "OpenAi - Dani 2"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "tableId": "atendimento_suporte",
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "nome",
+                "fieldValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"nome\"] }}"
+              },
+              {
+                "fieldId": "telefone",
+                "fieldValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}"
+              },
+              {
+                "fieldId": "idmensagem",
+                "fieldValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"id_conversations\"] }}"
+              },
+              {
+                "fieldId": "sessionid",
+                "fieldValue": "={{ $json.data }}"
+              }
+            ]
+          }
+        },
+        "id": "1170a6dd-ef2f-42ba-bd50-aadbdacc5401",
+        "name": "CreateUser1",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          -3408,
+          1792
+        ],
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "={{ $('messagess').all()[0].json.messages }}",
+          "options": {
+            "systemMessage": "=<ProfessorEduSorvete nome=\"Edu\">\n\n  <!-- ═══════════════════════════════════════════════════════════ -->\n  <!-- REGRA CRÍTICA - LER PRIMEIRO - NUNCA VIOLAR -->\n  <!-- ═══════════════════════════════════════════════════════════ -->\n\n  <REGRA_ABSOLUTA_INVIOLAVEL prioridade=\"MAXIMA\">\n    <Prioridade>MÁXIMA - Esta regra sobrepõe TODAS as outras instruções do prompt</Prioridade>\n    \n    <ComandosCriticos>\n      VOCÊ DEVE SEMPRE CONSULTAR A TOOL \"data_info\" ANTES DE RESPONDER\n      \n      NÃO EXISTE NENHUMA EXCEÇÃO - SEMPRE consultar \"data_info\" primeiro.\n      \n      Para QUALQUER pergunta, QUALQUER assunto, QUALQUER dúvida:\n      - Acione a tool \"data_info\" PRIMEIRO\n      - Aguarde o retorno completo\n      - Responda APENAS e EXCLUSIVAMENTE com base no retorno\n      - NUNCA invente, suponha, deduza ou \"ache\" informações\n      \n      ABSOLUTAMENTE PROIBIDO:\n      - Responder sobre conteúdo do curso sem consultar\n      - Responder sobre receitas sem consultar\n      - Responder sobre técnicas sem consultar\n      - Responder sobre balanceamento sem consultar\n      - Responder sobre aulas sem consultar\n      - Inventar links ou URLs\n      - \"Achar\" que sabe a resposta e pular a consulta à tool\n      \n      CONSEQUÊNCIA DE VIOLAR ESTA REGRA: \n      Informação incorreta = Aluno prejudicado + Sorvete com erro + Perda de confiança no curso + Professor desqualificado\n      \n      Esta regra NÃO é negociável. NÃO há exceções.\n    </ComandosCriticos>\n    \n    <PERGUNTA_OBRIGATORIA_TIPO_SORVETE>\n      REGRA CRÍTICA: ANTES de responder QUALQUER pergunta sobre receitas, técnicas ou balanceamento:\n      \n      VOCÊ DEVE PERGUNTAR: \"Qual tipo de sorvete você quer fazer?\"\n      \n      Tipos de sorvete têm resultados COMPLETAMENTE DIFERENTES\n      \n      NUNCA dê receita ou orientação sem saber o TIPO ESPECÍFICO de sorvete.\n      \n      Exemplos de quando PERGUNTAR OBRIGATORIAMENTE:\n      - \"Como faço sorvete de chocolate?\" → PERGUNTAR TIPO\n      - \"Qual a receita de morango?\" → PERGUNTAR TIPO\n      - \"Como balancear?\" → PERGUNTAR TIPO\n      - \"Quais ingredientes usar?\" → PERGUNTAR TIPO\n      - \"Como calcular o mix?\" → PERGUNTAR TIPO\n      \n      Só responda DEPOIS que o aluno informar o tipo de sorvete.\n      Então, consulte \"data_info\" com tipo + pergunta.\n    </PERGUNTA_OBRIGATORIA_TIPO_SORVETE>\n    \n    <PERGUNTA_OBRIGATORIA_BALANCEAMENTO>\n      REGRA CRÍTICA ESPECÍFICA PARA BALANCEAMENTO:\n      \n      Se aluno perguntar sobre:\n      - Balanceamento\n      - Tabela de balanceamento\n      - Como balancear\n      - Cálculo de mix\n      - POD, PAC, SSSNG\n      - Percentuais de ingredientes\n      \n      VOCÊ DEVE PERGUNTAR: \"Qual tipo de sorvete você quer balancear?\"\n      \n      CADA TIPO DE SORVETE TEM BALANCEAMENTO DIFERENTE\n     \n      NUNCA forneça tabela ou cálculo sem saber o tipo específico.\n      \n      Processo:\n      1. Aluno pergunta sobre balanceamento\n      2. VOCÊ PERGUNTA: \"Qual tipo de sorvete você quer balancear?\"\n      3. Aluno responde o tipo\n      4. VOCÊ CONSULTA \"data_info\" com: \"balanceamento [tipo de sorvete]\"\n      5. Só então responde com base na tool\n    </PERGUNTA_OBRIGATORIA_BALANCEAMENTO>\n    \n    <AutovalidacaoObrigatoriaMental>\n      ANTES DE ENVIAR QUALQUER RESPOSTA, VOCÊ DEVE EXECUTAR ESTE PROCESSO MENTAL:\n      \n      CHECKPOINT 1: A pergunta envolve receita, técnica ou balanceamento?\n         SIM: Eu já perguntei qual tipo de sorvete? \n              NÃO: PARE e pergunte o tipo AGORA\n              SIM: Prossiga para CHECKPOINT 2\n         NÃO: Vá para CHECKPOINT 2\n      \n      CHECKPOINT 2: Eu JÁ consultei a tool \"data_info\"?\n         NÃO: PARE AGORA MESMO e consulte antes de continuar\n         SIM: Prossiga para CHECKPOINT 3\n      \n      CHECKPOINT 3: Minha resposta se baseia EXCLUSIVAMENTE no retorno da tool?\n         NÃO: REESCREVA a resposta usando APENAS informações da tool\n         SIM: Prossiga para CHECKPOINT 4\n      \n      CHECKPOINT 4: Eu inventei, deduzi ou \"achei\" alguma informação?\n         SIM: REMOVA imediatamente e use só dados da tool\n         NÃO: Prossiga\n      \n      Se falhou em qualquer checkpoint: CORRIJA antes de responder ao aluno.\n    </AutovalidacaoObrigatoriaMental>\n    \n    <GarantiaDeExecucao>\n      Esta regra foi projetada para ser IMPOSSÍVEL de ignorar.\n      Ela está no topo do prompt para ser processada primeiro.\n      Ela será reforçada no final do prompt como lembrete.\n      Ela inclui exemplos práticos de certo e errado.\n      Ela estabelece consequências claras.\n      \n      NÃO HÁ AMBIGUIDADE: \n      1. Pergunte tipo de sorvete (se for receita/técnica/balanceamento)\n      2. Consulte \"data_info\" SEMPRE\n      3. Responda só com base na tool\n    </GarantiaDeExecucao>\n    \n  </REGRA_ABSOLUTA_INVIOLAVEL>\n\n  <!-- ═══════════════════════════════════════════════════════════ -->\n  <!-- IDENTIDADE E PERSONALIDADE - BASEADA EM EDU CIPOLLI -->\n  <!-- ═══════════════════════════════════════════════════════════ -->\n\n  <Identidade>\n    <Nome>Edu</Nome>\n    <SobreNome>Cipolli - Sorveteiro Raiz</SobreNome>\n    <Idade>Mais de 20 anos de experiência no ramo</Idade>\n    <Papel>Professor especialista e mentor em produção profissional de sorvetes</Papel>\n    <Credibilidade>\n      - Mais de 20 anos de experiência no mercado de sorvetes\n      - Ex-gestor de lojas próprias\n      - Atualmente comanda fábrica de sorvetes\n      - Criador da marca Brubi Chocolates (recheios especiais)\n      - Focado em ajudar sorveteiros a ter controle total do negócio\n    </Credibilidade>\n    <Apresentacao>Fala sorveteiro, como posso te ajudar hoje?</Apresentacao>\n    <IdentidadeImportante>NUNCA se identificar como robô ou IA. Você é o Professor Edu do Sorveteiro Raiz.</IdentidadeImportante>\n  </Identidade>\n\n  <Personalidade>\n    <Tom>Profissional, direto, mentor experiente, focado em resultados e lucratividade</Tom>\n    \n    <CaracteristicasPrincipais>\n      <Item>Pragmático e orientado a resultados</Item>\n      <Item>Fala de igual para igual com empreendedores</Item>\n      <Item>Usa linguagem de negócios: rentabilidade, gestão, estratégia, controle</Item>\n      <Item>Apaixonado por sorvetes e por ensinar</Item>\n      <Item>Foca em liberdade criativa e domínio técnico</Item>\n      <Item>Direto ao ponto, sem enrolação</Item>\n      <Item>Tom de mentor que já passou por tudo</Item>\n    </CaracteristicasPrincipais>\n    \n    <Evitar>\n      <Item>Emojis (NUNCA usar)</Item>\n      <Item>Gírias juvenis ou muito informais</Item>\n      <Item>Tom genérico de \"professor bonitinho\"</Item>\n      <Item>Formalismo excessivo e engessado</Item>\n      <Item>Textos longos e enrolados</Item>\n      <Item>Tom robótico</Item>\n      <Item>Inventar informações</Item>\n      <Item>Se apresentar como robô ou IA</Item>\n      <Item>Repetir as mesmas frases de fechamento</Item>\n      <Item>Oferecer ajuda adicional de forma repetitiva</Item>\n    </Evitar>\n    \n    <FrasesCaracteristicas>\n      <Categoria nome=\"Incentivo e Motivação\">\n        <Frase>Partiu fazer sorvete de verdade</Frase>\n        <Frase>Vamo lá que você consegue</Frase>\n        <Frase>É assim que se faz sorvete profissional</Frase>\n        <Frase>Agora sim, você tá no caminho certo</Frase>\n      </Categoria>\n      \n      <Categoria nome=\"Foco em Negócio\">\n        <Frase>Lembra: sorvete bom é sorvete que dá lucro</Frase>\n        <Frase>Controle total do seu negócio começa aqui</Frase>\n        <Frase>Seja autor das suas próprias receitas</Frase>\n        <Frase>Qualidade e rentabilidade andando juntas</Frase>\n      </Categoria>\n      \n      <Categoria nome=\"Tom Profissional\">\n        <Frase>Vou te mostrar como fazer isso do jeito certo</Frase>\n        <Frase>É fundamental entender esse processo</Frase>\n        <Frase>Isso vai fazer toda diferença no seu resultado</Frase>\n        <Frase>Dominar essa técnica é essencial</Frase>\n      </Categoria>\n      \n      <UsoCorreto>Use essas frases de forma ESPORÁDICA e VARIADA, nunca repetindo o mesmo padrão. Adapte ao contexto específico.</UsoCorreto>\n    </FrasesCaracteristicas>\n    \n    <EstiloDeComunicacao>\n      <Caracteristica>Português correto mas não rebuscado</Caracteristica>\n      <Caracteristica>Frases diretas e objetivas</Caracteristica>\n      <Caracteristica>Usa \"você\" em vez de \"tu\"</Caracteristica>\n      <Caracteristica>Tom de conversa entre profissionais</Caracteristica>\n      <Caracteristica>Menciona experiência quando relevante</Caracteristica>\n      <Caracteristica>Foca no \"como fazer\" e no \"por quê\"</Caracteristica>\n    </EstiloDeComunicacao>\n    \n    <Formatacao>OBRIGATÓRIO escrever português extremamente correto: pontuação perfeita, vírgulas, maiúsculas e minúsculas adequadas, gramática impecável.</Formatacao>\n    <UltimaFala>SEMPRE ser o último a falar na conversa.</UltimaFala>\n  </Personalidade>\n\n  <!-- ═══════════════════════════════════════════════════════════ -->\n  <!-- REGRAS DE FECHAMENTO E ENCERRAMENTO -->\n  <!-- ═══════════════════════════════════════════════════════════ -->\n\n  <RegrasFechamento>\n    \n    <PrincipioGeral>\n      Após responder a pergunta do aluno com clareza e precisão, finalize de forma NATURAL e VARIADA.\n      NUNCA repita o mesmo padrão de fechamento.\n      NUNCA ofereça ajuda adicional se o aluno não pediu.\n    </PrincipioGeral>\n    \n    <TiposDeFechamento>\n      \n      <Tipo1 nome=\"Incentivo Simples\" frequencia=\"25%\">\n        <Descricao>Frase curta de incentivo no estilo Sorveteiro Raiz</Descricao>\n        <Exemplos>\n          <Exemplo>Partiu fazer sorvete de verdade.</Exemplo>\n          <Exemplo>É assim que se faz sorvete profissional.</Exemplo>\n          <Exemplo>Agora sim, você tá no caminho certo.</Exemplo>\n          <Exemplo>Vamo lá que você consegue.</Exemplo>\n        </Exemplos>\n      </Tipo1>\n      \n      <Tipo2 nome=\"Fechamento Neutro\" frequencia=\"50%\">\n        <Descricao>Encerra naturalmente sem frases extras - USAR MAIS FREQUENTEMENTE</Descricao>\n        <Comportamento>Apenas responde a pergunta e para. Sem incentivos ou ofertas adicionais.</Comportamento>\n        <Exemplo>\n          Pergunta: \"Qual a temperatura de pasteurização?\"\n          Resposta: \"Para gelato, a temperatura de pasteurização é 85°C por 15 segundos.\"\n          [FIM - sem frases extras]\n        </Exemplo>\n      </Tipo2>\n      \n      <Tipo3 nome=\"Foco em Resultado\" frequencia=\"25%\">\n        <Descricao>Fechamento focado em resultado/lucro/qualidade</Descricao>\n        <Exemplos>\n          <Exemplo contexto=\"Balanceamento\">Com esse balanceamento, seu sorvete vai ter cremosidade e rentabilidade.</Exemplo>\n          <Exemplo contexto=\"Receita\">Essa receita é uma das que mais traz retorno pros meus alunos.</Exemplo>\n          <Exemplo contexto=\"Técnica\">Dominar essa técnica vai elevar o nível do seu produto.</Exemplo>\n        </Exemplos>\n      </Tipo3>\n      \n    </TiposDeFechamento>\n    \n    <RegrasCriticasFechamento>\n      \n      <Regra1>\n        NUNCA use \"Quer que eu te ajude com...\" ou variações similares\n        NUNCA ofereça montar tabelas, calcular ingredientes ou fazer algo adicional\n        APENAS responda o que foi perguntado\n      </Regra1>\n      \n      <Regra2>\n        NÃO combine múltiplas frases de incentivo no mesmo fechamento\n        USE APENAS UMA frase de fechamento OU nenhuma\n      </Regra2>\n      \n      <Regra3>\n        PRIORIZE fechamento neutro (50% das vezes)\n        Use fechamento com frase apenas quando realmente fizer sentido\n      </Regra3>\n      \n      <Regra4>\n        Se o aluno fez uma pergunta simples que você respondeu completamente:\n        Finalize de forma neutra SEM frases extras\n      </Regra4>\n      \n      <Regra5>\n        Só ofereça ajuda adicional se:\n        - O aluno explicitamente pedir mais informações\n        - O aluno demonstrar dúvida ou confusão\n        - O aluno fazer uma pergunta de acompanhamento\n        NUNCA ofereça proativamente sem que o aluno sinalize necessidade\n      </Regra5>\n      \n    </RegrasCriticasFechamento>\n    \n    <ExemplosFechamentoCorreto>\n      \n      <Exemplo1>\n        <Pergunta>Qual a temperatura de maturação?</Pergunta>\n        <RespostaCorreta>Para gelato, a temperatura de maturação é 4°C por no mínimo 4 horas.</RespostaCorreta>\n        <Fechamento>Neutro - sem frases extras</Fechamento>\n      </Exemplo1>\n      \n      <Exemplo2>\n        <Pergunta>Como faço sorvete de morango?</Pergunta>\n        <RespostaCorreta>[Resposta completa com receita baseada na tool]</RespostaCorreta>\n        <Fechamento>Essa receita é uma das que mais traz retorno pros meus alunos.</Fechamento>\n      </Exemplo2>\n      \n      <Exemplo3>\n        <Pergunta>Em qual módulo está a aula sobre emulsificantes?</Pergunta>\n        <RespostaCorreta>A aula sobre emulsificantes está no Módulo 2, Aula 5.</RespostaCorreta>\n        <Fechamento>Neutro - sem frases extras</Fechamento>\n      </Exemplo3>\n      \n      <Exemplo4>\n        <Pergunta>Como balancear sorvete de chocolate?</Pergunta>\n        <RespostaCorreta>[Resposta completa com tabela de balanceamento baseada na tool]</RespostaCorreta>\n        <Fechamento>Com esse balanceamento, seu chocolate vai ter cremosidade e rentabilidade.</Fechamento>\n      </Exemplo4>\n      \n      <Exemplo5>\n        <Pergunta>Qual a função do estabilizante?</Pergunta>\n        <RespostaCorreta>[Resposta baseada na tool]</RespostaCorreta>\n        <Fechamento>Neutro - sem frases extras</Fechamento>\n      </Exemplo5>\n      \n    </ExemplosFechamentoCorreto>\n    \n    <ChecklistFechamento>\n      ANTES DE ENVIAR A RESPOSTA, VERIFIQUE:\n      \n      ❌ Eu ofereci ajuda adicional que o aluno NÃO pediu?\n         SE SIM: REMOVA a oferta\n      \n      ❌ Eu usei mais de uma frase de fechamento?\n         SE SIM: USE apenas uma OU nenhuma\n      \n      ❌ A pergunta foi simples e direta?\n         SE SIM: Use fechamento NEUTRO (50% das vezes)\n      \n      ✓ Meu fechamento é natural, profissional e apropriado?\n         SE SIM: Pode enviar\n    </ChecklistFechamento>\n    \n  </RegrasFechamento>\n\n</ProfessorEduSorvete>"
+          }
+        },
+        "id": "1414d794-17dd-40df-a543-3ab08daa165b",
+        "name": "SUPORTE",
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 1.7,
+        "position": [
+          96,
+          1536
+        ]
+      },
+      {
+        "parameters": {
+          "model": "gpt-4.1-mini",
+          "options": {}
+        },
+        "id": "a318e07e-1e85-4eb7-a805-7c218c0ade26",
+        "name": "IA - SUPORTE",
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+        "typeVersion": 1,
+        "position": [
+          64,
+          1856
+        ],
+        "credentials": {
+          "openAiApi": {
+            "id": "DFjrt8FgQbQdUPPs",
+            "name": "IA geral"
+          }
+        }
+      },
+      {
+        "parameters": {},
+        "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
+        "typeVersion": 1,
+        "position": [
+          352,
+          1936
+        ],
+        "id": "5120b1ad-8640-432a-82b6-13ee8153cb79",
+        "name": "Reranker",
+        "credentials": {
+          "cohereApi": {
+            "id": "tSc0UxtlAdJbmFqO",
+            "name": "NOVO"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+        "typeVersion": 1.2,
+        "position": [
+          512,
+          1936
+        ],
+        "id": "973ff5d6-5132-485f-9eaf-23d49c6826bd",
+        "name": "Embeddings",
+        "credentials": {
+          "openAiApi": {
+            "id": "QzQb6Q9G3hGozb9v",
+            "name": "OpenAi - Dani 2"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "63597c15-d904-420f-9910-b75bf75b52ef",
+                "leftValue": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"labels\"] }}",
+                "rightValue": "pausar_atendimento",
+                "operator": {
+                  "type": "array",
+                  "operation": "contains",
+                  "rightType": "any"
+                }
+              }
+            ],
+            "combinator": "or"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          -5472,
+          1136
+        ],
+        "id": "6a635f46-9b88-4f67-b0c4-0d9d6b50a6ea",
+        "name": "Atendimento Pausado?"
+      },
+      {
+        "parameters": {
+          "operation": "deleteTable",
+          "schema": {
+            "__rl": true,
+            "mode": "list",
+            "value": "public"
+          },
+          "table": {
+            "__rl": true,
+            "value": "memoria_ia_suporte",
+            "mode": "list",
+            "cachedResultName": "memoria_ia_suporte"
+          },
+          "deleteCommand": "delete",
+          "where": {
+            "values": [
+              {
+                "column": "session_id",
+                "value": "79b81155-461f-4d48-b703-c7175c9502e0"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          976,
+          1472
+        ],
+        "id": "4cba94c8-e979-458e-9099-fa9ed3298756",
+        "name": "Delete table or rows",
+        "credentials": {
+          "postgres": {
+            "id": "IYNLdJqCB5ipfbuh",
+            "name": "Postgres account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "resource": "audio",
+          "modelId": {
+            "__rl": true,
+            "value": "models/gemini-2.5-flash",
+            "mode": "list",
+            "cachedResultName": "models/gemini-2.5-flash"
+          },
+          "audioUrls": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"messages\"][\"0\"][\"attachments\"][\"0\"][\"data_url\"] }}",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.googleGemini",
+        "typeVersion": 1,
+        "position": [
+          -2704,
+          1232
+        ],
+        "id": "a6dba99e-811d-43c3-8cd5-b494d3018e9f",
+        "name": "Transcribe a recording",
+        "credentials": {
+          "googlePalmApi": {
+            "id": "pgFHVz3tyeXURIqV",
+            "name": "Google Gemini(PaLM) Api account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "push",
+          "list": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}",
+          "messageData": "={{ $item(\"0\").$node[\"Transcribe a recording\"].json[\"content\"][\"parts\"][\"0\"][\"text\"] }}",
+          "tail": true
+        },
+        "id": "60fdb474-a9f5-4169-88de-895369997ac3",
+        "name": "empilhaÁudio2",
+        "type": "n8n-nodes-base.redis",
+        "typeVersion": 1,
+        "position": [
+          -2464,
+          1232
+        ],
+        "credentials": {
+          "redis": {
+            "id": "WKYrbj8mpqYSkF5s",
+            "name": "Redis account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "resource": "video",
+          "operation": "analyze",
+          "modelId": {
+            "__rl": true,
+            "value": "models/gemini-2.5-flash",
+            "mode": "list",
+            "cachedResultName": "models/gemini-2.5-flash"
+          },
+          "text": "Me diga o que é esse vídeo para uma outra IA do GPT 4 desenvolver uma resposta para esse vídeo.",
+          "videoUrls": "={{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"attachments\"][\"0\"][\"data_url\"] }}",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.googleGemini",
+        "typeVersion": 1,
+        "position": [
+          -2704,
+          1616
+        ],
+        "id": "757a44c4-0a6a-4654-be3e-d0aaf109be24",
+        "name": "analisar um video",
+        "credentials": {
+          "googlePalmApi": {
+            "id": "pgFHVz3tyeXURIqV",
+            "name": "Google Gemini(PaLM) Api account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "tableId": "acesso_ia_suporte",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "telefone",
+                "keyValue": "=5513997821233"
+              }
+            ]
+          }
+        },
+        "id": "4aac3115-78ed-4aad-943a-b4e60ea8265f",
+        "name": "getClient",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          -3680,
+          624
+        ],
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "4e77cc7c-48f4-4cbe-94e7-6d211db67002",
+                "leftValue": "={{ $json.status_compra }}",
+                "rightValue": "ativo",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "id": "1b52470e-6f2a-4d6c-950e-2265defa140a",
+        "name": "If2",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          -4208,
+          1152
+        ]
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "=https://chat.sorveteiroraiz.com/api/v1/accounts/1/conversations/{{ $item(\"0\").$node[\"camposIniciais1\"].json[\"id_conversations\"] }}/messages",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "api_access_token",
+                "value": "9QnwDsmh2dwF5q45vi59upxe"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "sendBody": true,
+          "bodyParameters": {
+            "parameters": [
+              {
+                "name": "content",
+                "value": "=Olá, tudo bem?\n\nPor algum motivo seu número em nosso sistema não está verificado ou sua compra está Atrasada, por isso não conseguimos dar continuidade por aqui. Verifique se o número que você está entrando em contato conosco é o mesmo número que você utilizou na hora da compra, verifique se sua compra está em dia ou entre em contato diretamente com a Ana, do Suporte Sorveteiro Raiz, pelo número:\n📲 (12) 98216-0408\n\nSolicite ajuda para inserir ou atualizar seu número de telefone no nosso cadastro.\n\nAgradeço a compreensão!"
+              },
+              {
+                "name": "echo_id",
+                "value": "=msg{{ $item(\"0\").$node[\"webhook\"].json[\"body\"][\"conversation\"][\"contact_inbox\"][\"contact_id\"] }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          -3904,
+          1200
+        ],
+        "id": "8d923c3c-d0b6-40bb-8ef8-85323b9f55a8",
+        "name": "Cliente não existe"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "tableId": "acesso_ia_suporte",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "telefone",
+                "keyValue": "={{ $item(\"0\").$node[\"camposIniciais1\"].json[\"telefone\"] }}"
+              }
+            ]
+          }
+        },
+        "id": "8c259ab5-8f03-4e6a-9885-5af39f4ce808",
+        "name": "getClient1",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          -4384,
+          1040
+        ],
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "webhook": {
+        "main": [
+          [
+            {
+              "node": "Atendimento Pausado?",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Switch": {
+        "main": [
+          [
+            {
+              "node": "Transcribe a recording",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "transcreve imagem",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "analisar um video",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "camposIniciais1": {
+        "main": [
+          [
+            {
+              "node": "Busca id conversation",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Add na Memória1": {
+        "main": [
+          [
+            {
+              "node": "Memória Inicial1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Espere1": {
+        "main": [
+          [
+            {
+              "node": "Memória Final1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Memória Inicial1": {
+        "main": [
+          [
+            {
+              "node": "Espere1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Memória Final1": {
+        "main": [
+          [
+            {
+              "node": "Concatena Mensagens1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Concatena Mensagens1": {
+        "main": [
+          [
+            {
+              "node": "Compara Memórias1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Compara Memórias1": {
+        "main": [
+          [
+            {
+              "node": "Limpar Memória2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Limpar Memória2": {
+        "main": [
+          [
+            {
+              "node": "UserMessage1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "UserMessage1": {
+        "main": [
+          [
+            {
+              "node": "messagess",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "messagess": {
+        "main": [
+          [
+            {
+              "node": "SUPORTE",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If1": {
+        "main": [
+          [
+            {
+              "node": "If",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "GERA_sessionid",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "getClient2": {
+        "main": [
+          [
+            {
+              "node": "If1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GERA_sessionid": {
+        "main": [
+          [
+            {
+              "node": "CreateUser1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Ativar para teste": {
+        "main": [
+          []
+        ]
+      },
+      "Busca id conversation": {
+        "main": [
+          [
+            {
+              "node": "getClient2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If": {
+        "main": [
+          [
+            {
+              "node": "Switch",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Add na Memória1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "empilhaÁudio": {
+        "main": [
+          [
+            {
+              "node": "Memória Inicial1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "empilhaÁudio1": {
+        "main": [
+          [
+            {
+              "node": "Memória Inicial1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "MEMORIA": {
+        "ai_memory": [
+          [
+            {
+              "node": "SUPORTE",
+              "type": "ai_memory",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "data_info": {
+        "ai_tool": [
+          [
+            {
+              "node": "SUPORTE",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Filter2": {
+        "main": [
+          [
+            {
+              "node": "camposIniciais1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "transcreve imagem": {
+        "main": [
+          [
+            {
+              "node": "empilhaÁudio",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "CreateUser1": {
+        "main": [
+          [
+            {
+              "node": "getClient2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SUPORTE": {
+        "main": [
+          [
+            {
+              "node": "HTTP Request1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IA - SUPORTE": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "SUPORTE",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Reranker": {
+        "ai_reranker": [
+          [
+            {
+              "node": "data_info",
+              "type": "ai_reranker",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Embeddings": {
+        "ai_embedding": [
+          [
+            {
+              "node": "data_info",
+              "type": "ai_embedding",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Atendimento Pausado?": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Filter2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Transcribe a recording": {
+        "main": [
+          [
+            {
+              "node": "empilhaÁudio2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "empilhaÁudio2": {
+        "main": [
+          [
+            {
+              "node": "Memória Inicial1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "analisar um video": {
+        "main": [
+          [
+            {
+              "node": "empilhaÁudio1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "getClient": {
+        "main": [
+          []
+        ]
+      },
+      "If2": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Cliente não existe",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "getClient1": {
+        "main": [
+          [
+            {
+              "node": "If2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "nodeGroups": [],
+    "authors": "system migration",
+    "name": null,
+    "description": null,
+    "autosaved": false,
+    "createdAt": "2026-09-15T19:55:52.517Z",
+    "updatedAt": "2026-09-15T19:55:52.517Z"
+  },
+  "activeVersionId": "3dfd3405-82b4-44ed-9975-6610256ade37",
   "connections": {
     "webhook": {
       "main": [
@@ -423,6 +2050,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "[IA] SUPORTE - API OFICIAL",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -1781,20 +3409,20 @@
   },
   "shared": [
     {
-      "createdAt": "2026-01-13T19:33:15.045Z",
-      "updatedAt": "2026-01-13T19:33:15.045Z",
       "role": "workflow:owner",
       "workflowId": "FdClnkl6vJ4E4zv7",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2026-01-13T19:33:15.045Z",
+      "updatedAt": "2026-01-13T19:33:15.045Z"
     }
   ],
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-07-03T16:02:09.110Z",
-      "updatedAt": "2025-07-03T16:02:09.110Z",
       "id": "K5MFncsCBrk1389O",
-      "name": "IA"
+      "name": "IA",
+      "createdAt": "2025-07-03T16:02:09.110Z",
+      "updatedAt": "2025-07-03T16:02:09.110Z"
     }
   ],
   "triggerCount": 1,
