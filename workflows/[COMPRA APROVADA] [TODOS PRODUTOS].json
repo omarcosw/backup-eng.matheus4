@@ -1,5 +1,1082 @@
 {
   "active": true,
+  "activeVersion": {
+    "versionId": "5df07bfe-20e8-443e-9586-e976aa9a3eda",
+    "workflowId": "pcWTeAx2W5TnxPPb",
+    "nodes": [
+      {
+        "parameters": {
+          "jsCode": "// Pegando os dados do body do webhook\nconst data = $json[\"body\"][\"data\"];\n\n// Função para formatar o email em letras minúsculas\nconst email = data.buyer.email.toLowerCase();\n\n// Função para separar o nome e sobrenome\nconst nomeCompleto = data.buyer.name.split(\" \");\nconst nome = nomeCompleto[0]; // Primeiro nome\nconst sobrenome = nomeCompleto.slice(1).join(\" \"); // O restante é o sobrenome\n\n// Função para remover espaços e caracteres do número de telefone, deixando apenas os números\nlet phoneNumber = data.buyer.checkout_phone.replace(/\\D/g, '');\n\n// Adicionando \"55\" na frente do telefone, caso não tenha\nif (!phoneNumber.startsWith(\"55\")) {\n    phoneNumber = \"55\" + phoneNumber;\n}\n\n// Dados da compra\nconst produtoNome = data.product.name;\nconst produtoId = data.product.id;\nconst produtoUcode = data.product.ucode;\nconst preçoTotal = parseFloat(data.purchase.price.value);\nconst statusCompra = data.purchase.status;\nconst transactionId = data.purchase.transaction;\n\n// Dados do pagamento\nconst metodoPagamento = data.purchase.payment.type;\nconst numeroParcelas = data.purchase.payment.installments_number;\n\n// Dados do endereço do comprador\nconst endereco = data.buyer.address;\nconst enderecoCompleto = `${endereco.address}, ${endereco.number} - ${endereco.neighborhood}, ${endereco.city} - ${endereco.state}, ${endereco.zipcode}`;\n\n// Dados das comissões\nconst comissoes = data.commissions.map(commission => ({\n    fonte: commission.source,\n    valor: commission.value,\n    moeda: commission.currency_value\n}));\n\n// Comissão do produtor (preço total - primeira comissão)\nconst primeiraComissao = data.commissions[0]?.value ? parseFloat(data.commissions[0].value) : 0;\nconst comissaoProdutor = preçoTotal - primeiraComissao;\n\n// Dados do produtor\nconst produtorNome = data.producer.name;\n\n// UTM's\nconst utm_source = data.utm_source || '';\nconst utm_campaign = data.utm_campaign || '';\nconst utm_medium = data.utm_medium || '';\nconst utm_content = data.utm_content || '';\nconst utm_term = data.utm_term || '';\n\n// Retornando todos os dados organizados\nreturn {\n  email: email,\n  nome: nome,\n  sobrenome: sobrenome,\n  telefone: phoneNumber,\n  produto: {\n    nome: produtoNome,\n    id: produtoId,\n    ucode: produtoUcode\n  },\n  compra: {\n    preco_total: preçoTotal,\n    status: statusCompra,\n    transaction_id: transactionId\n  },\n  pagamento: {\n    metodo: metodoPagamento,\n    parcelas: numeroParcelas\n  },\n  endereco: enderecoCompleto,\n  comissoes: comissoes,\n  comissao_produtor: comissaoProdutor,\n  produtor: produtorNome,\n  utm_source: utm_source,\n  utm_campaign: utm_campaign,\n  utm_medium: utm_medium,\n  utm_content: utm_content,\n  utm_term: utm_term\n};\n"
+        },
+        "id": "ffef1f5e-c281-45eb-b9bc-c19bcee45093",
+        "name": "trata_dados",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 1,
+        "position": [
+          2112,
+          192
+        ]
+      },
+      {
+        "parameters": {
+          "keepOnlySet": true,
+          "values": {
+            "string": [
+              {
+                "name": "nome",
+                "value": "={{ $json[\"nome\"] }}"
+              },
+              {
+                "name": "email",
+                "value": "={{ $json[\"email\"] }}"
+              },
+              {
+                "name": "cpf/cnpj",
+                "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"buyer\"][\"document\"] }}"
+              },
+              {
+                "name": "nome_produto",
+                "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"product\"][\"name\"] }}"
+              },
+              {
+                "name": "transaction_id",
+                "value": "={{ $item(\"0\").$node[\"trata_dados\"].json[\"compra\"][\"transaction_id\"] }}"
+              },
+              {
+                "name": "product_id",
+                "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"product\"][\"id\"] }}"
+              },
+              {
+                "name": "preco",
+                "value": "={{ $item(\"0\").$node[\"trata_dados\"].json[\"compra\"][\"preco_total\"] }}"
+              },
+              {
+                "name": "payment_method",
+                "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"purchase\"][\"payment\"][\"type\"] }}"
+              },
+              {
+                "name": "trans_status",
+                "value": "={{ $item(\"0\").$node[\"trata_dados\"].json[\"compra\"][\"status\"] }}"
+              },
+              {
+                "name": "data_compra",
+                "value": "={{ $now.format('yyyy-MM-dd HH:mm') }}"
+              },
+              {
+                "name": "utm_source",
+                "value": "={{ $item(\"0\").$node[\"trata_dados\"].json[\"utm_source\"] }}"
+              },
+              {
+                "name": "utm_medium",
+                "value": "={{ $item(\"0\").$node[\"trata_dados\"].json[\"utm_medium\"] }}"
+              },
+              {
+                "name": "utm_term",
+                "value": "={{ $item(\"0\").$node[\"trata_dados\"].json[\"utm_term\"] }}"
+              },
+              {
+                "name": "utm_content",
+                "value": "={{ $item(\"0\").$node[\"trata_dados\"].json[\"utm_content\"] }}"
+              },
+              {
+                "name": "utm_campaign",
+                "value": "={{ $item(\"0\").$node[\"trata_dados\"].json[\"utm_campaign\"] }}"
+              },
+              {
+                "name": "telefone",
+                "value": "={{ $json[\"telefone\"] }}"
+              },
+              {
+                "name": "sobrenome",
+                "value": "={{ $json[\"sobrenome\"] }}"
+              },
+              {
+                "name": "comissao_produtor",
+                "value": "={{ $item(\"0\").$node[\"trata_dados\"].json[\"comissoes\"][\"0\"][\"valor\"] }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "23eeefca-c1d5-47ff-9b93-3f741e121624",
+        "name": "dados_da_compra",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          2352,
+          192
+        ]
+      },
+      {
+        "parameters": {
+          "content": "# PARTE 1",
+          "height": 347,
+          "width": 1133,
+          "color": 3
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          1712,
+          64
+        ],
+        "typeVersion": 1,
+        "id": "d9a52e2d-95d4-42de-9c0c-2f449f0466d7",
+        "name": "Sticky Note6"
+      },
+      {
+        "parameters": {
+          "url": "=https://{{ $node[\"Set\"].json[\"url_api_activecampaign\"] }}.api-us1.com/api/3/tags?limit=1000&search={{ $node[\"Set\"].json[\"tag_procurada\"] }}",
+          "options": {},
+          "headerParametersUi": {
+            "parameter": [
+              {
+                "name": "Api-Token",
+                "value": "={{ $node[\"Set\"].json[\"Api-Token\"] }}"
+              },
+              {
+                "name": "accept",
+                "value": "application/json"
+              },
+              {
+                "name": "content-type",
+                "value": "application/json"
+              }
+            ]
+          }
+        },
+        "name": "Listar Tags da Conta",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 2,
+        "position": [
+          2208,
+          608
+        ],
+        "id": "0afde697-00df-46ea-9e12-11905056d8ef"
+      },
+      {
+        "parameters": {
+          "content": "## Para consulta\n \nUtilize os Nodes Abaixo para consultar os IDs dos Campos e Tags no ActiveCampaign",
+          "height": 407.6377565498652,
+          "width": 747.0856205721786
+        },
+        "id": "dc73bc7b-6dc0-425e-9192-dc878c5de61f",
+        "name": "Sticky Note",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          1712,
+          448
+        ]
+      },
+      {
+        "parameters": {
+          "url": "=https://{{ $json[\"url_api_activecampaign\"] }}.api-us1.com/api/3/fields?limit=1000",
+          "options": {},
+          "headerParametersUi": {
+            "parameter": [
+              {
+                "name": "Api-Token",
+                "value": "={{ $node[\"Set\"].json[\"Api-Token\"] }}"
+              },
+              {
+                "name": "content-type",
+                "value": "application/json"
+              },
+              {
+                "name": "accept",
+                "value": "application/json"
+              }
+            ]
+          }
+        },
+        "name": "Listar Campos Personalizados de Contatos da Conta",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 2,
+        "position": [
+          2000,
+          608
+        ],
+        "id": "a529bc41-677b-469a-9320-73c0eb8dad97"
+      },
+      {
+        "parameters": {
+          "values": {
+            "string": [
+              {
+                "name": "Api-Token",
+                "value": "3696e725bdca0e3ce53536c4ba23c8ecee77def78a7a229c5a44780b59bc088e2be9edb5"
+              },
+              {
+                "name": "url_api_activecampaign",
+                "value": "infomakers98413"
+              },
+              {
+                "name": "tag_procurada",
+                "value": "compra aprovada"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "2666c2f7-b5cc-4d7b-a872-b8b37f507747",
+        "name": "Set",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          1808,
+          608
+        ]
+      },
+      {
+        "parameters": {
+          "content": "# PARTE 2",
+          "height": 829,
+          "width": 2754
+        },
+        "id": "badcc8f2-2cde-442b-843c-71a2142dfcd6",
+        "name": "Sticky Note1",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          1712,
+          880
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 1
+            },
+            "conditions": [
+              {
+                "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+                "leftValue": "={{ $node[\"pesquisa_user\"].json[\"id\"] }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "number",
+                  "operation": "exists",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "id": "14fc178d-045e-4e3f-adf9-722ba7c9278d",
+        "name": "encontrou_user1",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2,
+        "position": [
+          2000,
+          1168
+        ]
+      },
+      {
+        "parameters": {
+          "tableId": "users",
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "nome",
+                "fieldValue": "={{ $node[\"dados_da_compra\"].json[\"nome\"] }}"
+              },
+              {
+                "fieldId": "sobrenome",
+                "fieldValue": "={{ $node[\"dados_da_compra\"].json[\"sobrenome\"] }}"
+              },
+              {
+                "fieldId": "email",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"email\"] }}"
+              },
+              {
+                "fieldId": "telefone",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"telefone\"] }}"
+              }
+            ]
+          }
+        },
+        "id": "62fd2cc2-4514-4105-9419-cfe3f8a86bf6",
+        "name": "Supabase",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          2224,
+          1328
+        ],
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 1
+            },
+            "conditions": [
+              {
+                "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+                "leftValue": "={{ $node[\"pesquisa_user\"].json[\"email\"] }}",
+                "rightValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"email\"] }}",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "id": "bcf00e58-0d2b-4729-8954-eac25ee749c9",
+        "name": "email_igual1",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2,
+        "position": [
+          2240,
+          960
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 1
+            },
+            "conditions": [
+              {
+                "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+                "leftValue": "={{ $node[\"pesquisa_user\"].json[\"telefone\"] }}",
+                "rightValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"telefone\"] }}",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "id": "15e54f71-bda4-4972-afdd-1ae3c175ae99",
+        "name": "telefone_igual1",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2,
+        "position": [
+          2800,
+          944
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "tableId": "users",
+          "matchType": "allFilters",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "id",
+                "condition": "eq",
+                "keyValue": "={{ $item(\"0\").$node[\"pesquisa_user\"].json[\"id\"] }}"
+              }
+            ]
+          },
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "nome",
+                "fieldValue": "={{ $node[\"dados_da_compra\"].json[\"nome\"] }}"
+              },
+              {
+                "fieldId": "sobrenome",
+                "fieldValue": "={{ $node[\"dados_da_compra\"].json[\"sobrenome\"] }}"
+              },
+              {
+                "fieldId": "email",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"email\"] }}"
+              },
+              {
+                "fieldId": "telefone",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"telefone\"] }}"
+              }
+            ]
+          }
+        },
+        "id": "377010e4-1652-4ecb-938a-d300c23382bb",
+        "name": "atualiza_email",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          2592,
+          1040
+        ],
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "tableId": "users",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "id",
+                "condition": "eq",
+                "keyValue": "={{ $item(\"0\").$node[\"pesquisa_user\"].json[\"id\"] }}"
+              }
+            ]
+          },
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "nome",
+                "fieldValue": "={{ $node[\"dados_da_compra\"].json[\"nome\"] }}"
+              },
+              {
+                "fieldId": "sobrenome",
+                "fieldValue": "={{ $node[\"dados_da_compra\"].json[\"sobrenome\"] }}"
+              },
+              {
+                "fieldId": "email",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"email\"] }}"
+              },
+              {
+                "fieldId": "telefone",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"telefone\"] }}"
+              }
+            ]
+          }
+        },
+        "id": "c66a7d25-5188-4ba2-ae49-09cfa90e6ebb",
+        "name": "atualiza_telefone",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          3088,
+          1008
+        ],
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "getAll",
+          "tableId": "produtos",
+          "limit": 1,
+          "matchType": "allFilters",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "nome",
+                "condition": "eq",
+                "keyValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"nome_produto\"] }}"
+              },
+              {
+                "keyName": "id_checkout",
+                "condition": "eq",
+                "keyValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"product_id\"] }}"
+              }
+            ]
+          }
+        },
+        "id": "ba42d21a-f350-4668-9ba7-d6f9b4d3da80",
+        "name": "pesquisa_produto",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          2864,
+          1360
+        ],
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 1
+            },
+            "conditions": [
+              {
+                "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+                "leftValue": "={{ $node[\"pesquisa_produto\"].json[\"id\"] }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "number",
+                  "operation": "exists",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "id": "92453c4d-e95b-439b-b3a3-9d9a3a3593de",
+        "name": "encontrou_produto",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2,
+        "position": [
+          3088,
+          1360
+        ]
+      },
+      {
+        "parameters": {
+          "tableId": "produtos",
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "nome",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"nome_produto\"] }}"
+              },
+              {
+                "fieldId": "id_checkout",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"product_id\"] }}"
+              }
+            ]
+          }
+        },
+        "id": "24552a64-edda-485e-a4fc-da7642d703bf",
+        "name": "cria_produto",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          3328,
+          1440
+        ],
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 1
+            },
+            "conditions": [
+              {
+                "id": "dd359e72-da78-43bb-84a7-1b0911d82aa5",
+                "leftValue": "={{ $node[\"pesquisa_conversao\"].json[\"id\"] }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "number",
+                  "operation": "exists",
+                  "singleValue": true
+                }
+              },
+              {
+                "id": "a7c39671-fc0f-4767-a529-f0f2767fc1b9",
+                "leftValue": "={{ $json[\"id_transacao\"] }}",
+                "rightValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"transaction_id\"] }}",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "id": "fd62c4f2-e68c-4447-a326-125502b367ff",
+        "name": "encontrou_conversao",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2,
+        "position": [
+          3728,
+          1344
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "getAll",
+          "tableId": "conversoes",
+          "limit": 1,
+          "matchType": "allFilters",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "id_transacao",
+                "condition": "eq",
+                "keyValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"transaction_id\"] }}"
+              },
+              {
+                "keyName": "produto",
+                "condition": "eq",
+                "keyValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"nome_produto\"] }}"
+              }
+            ]
+          }
+        },
+        "id": "37070c79-2f11-4446-a403-33f126c43c49",
+        "name": "pesquisa_conversao",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          3504,
+          1344
+        ],
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {},
+        "id": "46a9cdf6-4176-4e3d-adc5-17227a4e3798",
+        "name": "No Operation, do nothing1",
+        "type": "n8n-nodes-base.noOp",
+        "typeVersion": 1,
+        "position": [
+          4048,
+          1248
+        ]
+      },
+      {
+        "parameters": {
+          "tableId": "conversoes",
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "id_user",
+                "fieldValue": "={{ $item(\"0\").$node[\"pesquisa_user\"].json[\"id\"] }}"
+              },
+              {
+                "fieldId": "nome",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"nome\"] }}"
+              },
+              {
+                "fieldId": "sobrenome",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"sobrenome\"] }}"
+              },
+              {
+                "fieldId": "email",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"email\"] }}"
+              },
+              {
+                "fieldId": "telefone",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"telefone\"] }}"
+              },
+              {
+                "fieldId": "data_conversao",
+                "fieldValue": "={{ $now }}"
+              },
+              {
+                "fieldId": "produto",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"nome_produto\"] }}"
+              },
+              {
+                "fieldId": "id_produto",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"product_id\"] }}"
+              },
+              {
+                "fieldId": "preco",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"preco\"] }}"
+              },
+              {
+                "fieldId": "parcelas",
+                "fieldValue": "={{ $item(\"0\").$node[\"trata_dados\"].json[\"pagamento\"][\"parcelas\"] }}"
+              },
+              {
+                "fieldId": "oferta",
+                "fieldValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"purchase\"][\"offer\"][\"code\"] }}"
+              },
+              {
+                "fieldId": "id_transacao",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"transaction_id\"] }}"
+              },
+              {
+                "fieldId": "comissao_gateway",
+                "fieldValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"commissions\"][\"0\"][\"value\"] }}"
+              },
+              {
+                "fieldId": "comissao_produtor",
+                "fieldValue": "={{ $item(\"0\").$node[\"trata_dados\"].json[\"comissao_produtor\"] }}"
+              },
+              {
+                "fieldId": "moeda",
+                "fieldValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"purchase\"][\"original_offer_price\"][\"currency_value\"] }}"
+              },
+              {
+                "fieldId": "forma_de_pagamento",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"payment_method\"] }}"
+              },
+              {
+                "fieldId": "status",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"trans_status\"] }}"
+              },
+              {
+                "fieldId": "utm_source",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"utm_source\"] }}"
+              },
+              {
+                "fieldId": "utm_campaign",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"utm_campaign\"] }}"
+              },
+              {
+                "fieldId": "utm_term",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"utm_term\"] }}"
+              },
+              {
+                "fieldId": "utm_medium",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"utm_medium\"] }}"
+              },
+              {
+                "fieldId": "utm_content",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"utm_content\"] }}"
+              },
+              {
+                "fieldId": "documento",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"cpf/cnpj\"] }}"
+              }
+            ]
+          }
+        },
+        "id": "6205d0e8-c973-4f64-ba8a-bf613c78221b",
+        "name": "insere_conversao",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          4048,
+          1472
+        ],
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "getAll",
+          "tableId": "users",
+          "limit": 1,
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "telefone",
+                "condition": "eq",
+                "keyValue": "={{ $item(\"0\").$node[\"dados_da_compra\"].json[\"telefone\"] }}"
+              }
+            ]
+          }
+        },
+        "id": "b5173c22-f7b6-4bea-9de7-d677cec4e5ce",
+        "name": "pesquisa_user",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          1808,
+          1168
+        ],
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "compraaprovada-todosprodutos",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2,
+        "position": [
+          1840,
+          192
+        ],
+        "id": "6e5fbdc7-be0f-4343-8d6f-d06154f153f5",
+        "name": "Webhook",
+        "webhookId": "5de4cf48-6e3c-4019-aa4a-dd4108efd43a"
+      }
+    ],
+    "connections": {
+      "trata_dados": {
+        "main": [
+          [
+            {
+              "node": "dados_da_compra",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "dados_da_compra": {
+        "main": [
+          [
+            {
+              "node": "pesquisa_user",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Listar Campos Personalizados de Contatos da Conta": {
+        "main": [
+          [
+            {
+              "node": "Listar Tags da Conta",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set": {
+        "main": [
+          [
+            {
+              "node": "Listar Campos Personalizados de Contatos da Conta",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "encontrou_user1": {
+        "main": [
+          [
+            {
+              "node": "email_igual1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Supabase",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Supabase": {
+        "main": [
+          [
+            {
+              "node": "pesquisa_user",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "email_igual1": {
+        "main": [
+          [
+            {
+              "node": "telefone_igual1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "atualiza_email",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "telefone_igual1": {
+        "main": [
+          [
+            {
+              "node": "pesquisa_produto",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "atualiza_telefone",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "atualiza_email": {
+        "main": [
+          [
+            {
+              "node": "telefone_igual1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "atualiza_telefone": {
+        "main": [
+          [
+            {
+              "node": "pesquisa_produto",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "pesquisa_produto": {
+        "main": [
+          [
+            {
+              "node": "encontrou_produto",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "encontrou_produto": {
+        "main": [
+          [
+            {
+              "node": "pesquisa_conversao",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "cria_produto",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "cria_produto": {
+        "main": [
+          [
+            {
+              "node": "pesquisa_produto",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "pesquisa_conversao": {
+        "main": [
+          [
+            {
+              "node": "encontrou_conversao",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "encontrou_conversao": {
+        "main": [
+          [
+            {
+              "node": "No Operation, do nothing1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "insere_conversao",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "pesquisa_user": {
+        "main": [
+          [
+            {
+              "node": "encontrou_user1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "insere_conversao": {
+        "main": [
+          []
+        ]
+      },
+      "Webhook": {
+        "main": [
+          [
+            {
+              "node": "trata_dados",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "nodeGroups": [],
+    "authors": "system migration",
+    "name": null,
+    "description": null,
+    "autosaved": false,
+    "createdAt": "2026-09-15T19:55:52.517Z",
+    "updatedAt": "2026-09-15T19:55:52.517Z"
+  },
+  "activeVersionId": "5df07bfe-20e8-443e-9586-e976aa9a3eda",
   "connections": {
     "trata_dados": {
       "main": [
@@ -236,6 +1313,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "[COMPRA APROVADA] [TODOS PRODUTOS]",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -1191,20 +2269,20 @@
   },
   "shared": [
     {
-      "createdAt": "2025-06-12T16:07:48.968Z",
-      "updatedAt": "2025-06-12T16:07:48.968Z",
       "role": "workflow:owner",
       "workflowId": "pcWTeAx2W5TnxPPb",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2025-06-12T16:07:48.968Z",
+      "updatedAt": "2025-06-12T16:07:48.968Z"
     }
   ],
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-06-12T16:05:28.046Z",
-      "updatedAt": "2025-06-12T16:05:28.046Z",
       "id": "OB2UaleMa73YaLJe",
-      "name": "Imersão Agosto"
+      "name": "Imersão Agosto",
+      "createdAt": "2025-06-12T16:05:28.046Z",
+      "updatedAt": "2025-06-12T16:05:28.046Z"
     }
   ],
   "triggerCount": 1,
