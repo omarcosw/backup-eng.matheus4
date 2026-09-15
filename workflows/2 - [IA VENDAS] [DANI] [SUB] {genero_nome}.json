@@ -1,5 +1,53 @@
 {
-  "active": false,
+  "active": true,
+  "activeVersion": {
+    "versionId": "ef906da4-742c-4966-90da-546c241c5f44",
+    "workflowId": "uBdmohxWVtX5O22e",
+    "nodes": [
+      {
+        "parameters": {},
+        "id": "c055762a-8fe7-4141-a639-df2372f30060",
+        "typeVersion": 1.1,
+        "name": "When Executed by Another Workflow",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "position": [
+          260,
+          340
+        ]
+      },
+      {
+        "parameters": {},
+        "id": "b5942df6-0160-4ef7-965d-57583acdc8aa",
+        "name": "Replace me with your logic",
+        "type": "n8n-nodes-base.noOp",
+        "position": [
+          520,
+          340
+        ]
+      }
+    ],
+    "connections": {
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "node": "Replace me with your logic",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "nodeGroups": [],
+    "authors": "system migration",
+    "name": null,
+    "description": null,
+    "autosaved": false,
+    "createdAt": "2026-09-15T19:55:52.517Z",
+    "updatedAt": "2026-09-15T19:55:52.517Z"
+  },
+  "activeVersionId": "ef906da4-742c-4966-90da-546c241c5f44",
   "connections": {
     "When Executed by Another Workflow": {
       "main": [
@@ -18,6 +66,7 @@
   "isArchived": false,
   "meta": null,
   "name": "2 - [IA VENDAS] [DANI] [SUB] {genero_nome}",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {},
@@ -47,20 +96,20 @@
   },
   "shared": [
     {
-      "createdAt": "2025-06-12T04:30:43.126Z",
-      "updatedAt": "2025-06-12T04:30:43.126Z",
       "role": "workflow:owner",
       "workflowId": "uBdmohxWVtX5O22e",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2025-06-12T04:30:43.126Z",
+      "updatedAt": "2025-06-12T04:30:43.126Z"
     }
   ],
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-06-12T04:31:09.302Z",
-      "updatedAt": "2025-06-12T04:31:09.302Z",
       "id": "LNS3WObTA5Xk35NO",
-      "name": "[IA VENDAS] [DANI]"
+      "name": "[IA VENDAS] [DANI]",
+      "createdAt": "2025-06-12T04:31:09.302Z",
+      "updatedAt": "2025-06-12T04:31:09.302Z"
     }
   ],
   "triggerCount": 0,
