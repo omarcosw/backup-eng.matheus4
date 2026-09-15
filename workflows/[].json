@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "When clicking ‘Execute workflow’": {
       "main": [
@@ -103,6 +105,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "[]",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {},
@@ -398,11 +401,11 @@
   },
   "shared": [
     {
-      "createdAt": "2026-04-22T00:07:54.863Z",
-      "updatedAt": "2026-04-22T00:07:54.863Z",
       "role": "workflow:owner",
       "workflowId": "ZyFQPAbG4hOBXL64",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2026-04-22T00:07:54.863Z",
+      "updatedAt": "2026-04-22T00:07:54.863Z"
     }
   ],
   "staticData": null,
