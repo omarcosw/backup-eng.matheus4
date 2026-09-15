@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Switch2": {
       "main": [
@@ -523,6 +525,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "1 - [IA VENDAS] [DANI] [TESTE MARCOS 1]",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -2181,11 +2184,11 @@
   },
   "shared": [
     {
-      "createdAt": "2025-07-08T17:26:58.092Z",
-      "updatedAt": "2025-07-08T17:26:58.092Z",
       "role": "workflow:owner",
       "workflowId": "aGQL0n3uwUrmYBaP",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2025-07-08T17:26:58.092Z",
+      "updatedAt": "2025-07-08T17:26:58.092Z"
     }
   ],
   "staticData": null,
