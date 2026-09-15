@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Switch2": {
       "main": [
@@ -452,6 +454,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "1️⃣ [IA] Suporte",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -1593,26 +1596,26 @@
   },
   "shared": [
     {
-      "createdAt": "2025-07-07T12:56:56.389Z",
-      "updatedAt": "2025-07-07T12:56:56.389Z",
       "role": "workflow:owner",
       "workflowId": "087ixBHzBvtGq2z3",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2025-07-07T12:56:56.389Z",
+      "updatedAt": "2025-07-07T12:56:56.389Z"
     }
   ],
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-07-07T13:19:13.772Z",
-      "updatedAt": "2025-07-07T13:19:13.772Z",
-      "id": "APWtlgA2UKcKzIN6",
-      "name": "Suporte"
+      "id": "K5MFncsCBrk1389O",
+      "name": "IA",
+      "createdAt": "2025-07-03T16:02:09.110Z",
+      "updatedAt": "2025-07-03T16:02:09.110Z"
     },
     {
-      "createdAt": "2025-07-03T16:02:09.110Z",
-      "updatedAt": "2025-07-03T16:02:09.110Z",
-      "id": "K5MFncsCBrk1389O",
-      "name": "IA"
+      "id": "APWtlgA2UKcKzIN6",
+      "name": "Suporte",
+      "createdAt": "2025-07-07T13:19:13.772Z",
+      "updatedAt": "2025-07-07T13:19:13.772Z"
     }
   ],
   "triggerCount": 1,
