@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Loop Over Items": {
       "main": [
@@ -195,6 +197,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "DISPARO | [AI 2]",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -661,11 +664,11 @@
   },
   "shared": [
     {
-      "createdAt": "2025-06-14T18:18:46.413Z",
-      "updatedAt": "2025-06-14T18:18:46.413Z",
       "role": "workflow:owner",
       "workflowId": "2V5BgNdqNlH1MXxX",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2025-06-14T18:18:46.413Z",
+      "updatedAt": "2025-06-14T18:18:46.413Z"
     }
   ],
   "staticData": {
@@ -678,10 +681,10 @@
   },
   "tags": [
     {
-      "createdAt": "2025-08-12T15:25:19.774Z",
-      "updatedAt": "2025-08-12T15:25:19.774Z",
       "id": "WUqjtcCYycM8nth1",
-      "name": "API NÃO OFICIAL"
+      "name": "API NÃO OFICIAL",
+      "createdAt": "2025-08-12T15:25:19.774Z",
+      "updatedAt": "2025-08-12T15:25:19.774Z"
     }
   ],
   "triggerCount": 1,
