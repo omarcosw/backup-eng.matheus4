@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {},
   "createdAt": "2025-10-17T19:58:24.470Z",
   "id": "m5yYpkIkbNbLR321",
@@ -8,6 +10,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "My workflow 2",
+  "nodeGroups": [],
   "nodes": [],
   "pinData": {},
   "settings": {
@@ -15,11 +18,11 @@
   },
   "shared": [
     {
-      "createdAt": "2025-10-17T19:58:24.470Z",
-      "updatedAt": "2025-10-17T19:58:24.470Z",
       "role": "workflow:owner",
       "workflowId": "m5yYpkIkbNbLR321",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2025-10-17T19:58:24.470Z",
+      "updatedAt": "2025-10-17T19:58:24.470Z"
     }
   ],
   "staticData": null,
