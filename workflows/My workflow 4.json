@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {},
   "createdAt": "2025-12-02T00:56:38.567Z",
   "id": "hLX8EDKW8Tswxyen",
@@ -8,6 +10,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "My workflow 4",
+  "nodeGroups": [],
   "nodes": [],
   "pinData": {},
   "settings": {
@@ -15,26 +18,26 @@
   },
   "shared": [
     {
-      "createdAt": "2025-12-02T00:56:38.567Z",
-      "updatedAt": "2025-12-02T00:56:38.567Z",
       "role": "workflow:owner",
       "workflowId": "hLX8EDKW8Tswxyen",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2025-12-02T00:56:38.567Z",
+      "updatedAt": "2025-12-02T00:56:38.567Z"
     }
   ],
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-12-02T00:45:46.690Z",
-      "updatedAt": "2025-12-02T00:45:46.690Z",
       "id": "RopRqTNW9RqBdKtK",
-      "name": "formularios"
+      "name": "formularios",
+      "createdAt": "2025-12-02T00:45:46.690Z",
+      "updatedAt": "2025-12-02T00:45:46.690Z"
     },
     {
-      "createdAt": "2025-12-02T00:45:46.654Z",
-      "updatedAt": "2025-12-02T00:45:46.654Z",
       "id": "dsdaD9H9gdSPawof",
-      "name": "inteligência de dados"
+      "name": "inteligência de dados",
+      "createdAt": "2025-12-02T00:45:46.654Z",
+      "updatedAt": "2025-12-02T00:45:46.654Z"
     }
   ],
   "triggerCount": 0,
