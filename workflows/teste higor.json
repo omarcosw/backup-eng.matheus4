@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Webhook": {
       "main": [
@@ -20,6 +22,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "teste higor",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -113,11 +116,11 @@
   },
   "shared": [
     {
-      "createdAt": "2026-05-04T22:58:02.404Z",
-      "updatedAt": "2026-05-04T22:58:02.404Z",
       "role": "workflow:owner",
       "workflowId": "wcGmgIjnTSCgGQiV",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2026-05-04T22:58:02.404Z",
+      "updatedAt": "2026-05-04T22:58:02.404Z"
     }
   ],
   "staticData": null,
