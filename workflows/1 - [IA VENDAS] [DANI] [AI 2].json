@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Switch2": {
       "main": [
@@ -661,6 +663,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "1 - [IA VENDAS] [DANI] [AI 2]",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -2334,32 +2337,32 @@
   },
   "shared": [
     {
-      "createdAt": "2025-06-14T17:42:51.743Z",
-      "updatedAt": "2025-06-14T17:42:51.743Z",
       "role": "workflow:owner",
       "workflowId": "B5pfDl16X8v0pxhq",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2025-06-14T17:42:51.743Z",
+      "updatedAt": "2025-06-14T17:42:51.743Z"
     }
   ],
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-08-12T15:25:19.774Z",
-      "updatedAt": "2025-08-12T15:25:19.774Z",
-      "id": "WUqjtcCYycM8nth1",
-      "name": "API NÃO OFICIAL"
-    },
-    {
-      "createdAt": "2025-06-14T17:42:47.387Z",
-      "updatedAt": "2025-06-14T17:42:47.387Z",
       "id": "BUA0OcsQ75FU3GHE",
-      "name": "[IA VENDAS] [DANI] [2]"
+      "name": "[IA VENDAS] [DANI] [2]",
+      "createdAt": "2025-06-14T17:42:47.387Z",
+      "updatedAt": "2025-06-14T17:42:47.387Z"
     },
     {
-      "createdAt": "2025-06-12T04:31:09.302Z",
-      "updatedAt": "2025-06-12T04:31:09.302Z",
       "id": "LNS3WObTA5Xk35NO",
-      "name": "[IA VENDAS] [DANI]"
+      "name": "[IA VENDAS] [DANI]",
+      "createdAt": "2025-06-12T04:31:09.302Z",
+      "updatedAt": "2025-06-12T04:31:09.302Z"
+    },
+    {
+      "id": "WUqjtcCYycM8nth1",
+      "name": "API NÃO OFICIAL",
+      "createdAt": "2025-08-12T15:25:19.774Z",
+      "updatedAt": "2025-08-12T15:25:19.774Z"
     }
   ],
   "triggerCount": 1,
