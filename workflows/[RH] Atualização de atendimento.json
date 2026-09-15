@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "When clicking ‘Execute workflow’": {
       "main": [
@@ -29,6 +31,7 @@
   "isArchived": true,
   "meta": null,
   "name": "[RH] Atualização de atendimento",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {},
@@ -74,20 +77,20 @@
   },
   "shared": [
     {
-      "createdAt": "2026-04-21T23:47:31.158Z",
-      "updatedAt": "2026-04-21T23:47:31.158Z",
       "role": "workflow:owner",
       "workflowId": "qCkxylZublKNNdc9",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2026-04-21T23:47:31.158Z",
+      "updatedAt": "2026-04-21T23:47:31.158Z"
     }
   ],
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2026-04-21T23:48:10.328Z",
-      "updatedAt": "2026-04-21T23:48:10.328Z",
       "id": "2XxS3LNT0IoP4QfA",
-      "name": "Bruno"
+      "name": "Bruno",
+      "createdAt": "2026-04-21T23:48:10.328Z",
+      "updatedAt": "2026-04-21T23:48:10.328Z"
     }
   ],
   "triggerCount": 1,
