@@ -1,5 +1,1247 @@
 {
   "active": true,
+  "activeVersion": {
+    "versionId": "9af18228-8003-41f7-9d59-929e0bf05e8d",
+    "workflowId": "DlJuLTVQCI2tYrav",
+    "nodes": [
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "rec-vendas-products",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2,
+        "position": [
+          -336,
+          608
+        ],
+        "id": "9ba9984d-c996-44a4-8b2e-bf139e757a04",
+        "name": "Webhook",
+        "webhookId": "60a82d47-37b6-4464-a0c2-6b8ef4f91319"
+      },
+      {
+        "parameters": {
+          "keepOnlySet": true,
+          "values": {
+            "string": [
+              {
+                "name": "nome",
+                "value": "={{ $json[\"transformed\"][\"firstName\"] }}"
+              },
+              {
+                "name": "email",
+                "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"transformed\"][\"email\"] }}"
+              },
+              {
+                "name": "nome_produto",
+                "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"body\"][\"data\"][\"product\"][\"name\"] }}"
+              },
+              {
+                "name": "transaction_id",
+                "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"body\"][\"id\"] }}"
+              },
+              {
+                "name": "product_id",
+                "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"body\"][\"data\"][\"product\"][\"id\"] }}"
+              },
+              {
+                "name": "data",
+                "value": "={{ $now.format('yyyy-MM-dd HH:mm') }}"
+              },
+              {
+                "name": "telefone",
+                "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"transformed\"][\"phone\"] }}"
+              },
+              {
+                "name": "oferta",
+                "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"body\"][\"data\"][\"offer\"][\"code\"] }}"
+              },
+              {
+                "name": "sobrenome",
+                "value": "={{ $json[\"transformed\"][\"lastName\"] }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "0114bc8e-af5a-46ee-93f1-937abccb4f29",
+        "name": "dados_da_compra1",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          128,
+          608
+        ]
+      },
+      {
+        "parameters": {
+          "jsCode": "// Função auxiliar para buscar valor em qualquer lugar do objeto por nome da chave\nfunction findValue(obj, keyName) {\n  if (!obj || typeof obj !== 'object') return undefined;\n  if (obj.hasOwnProperty(keyName)) return obj[keyName];\n  \n  for (const key in obj) {\n    const value = findValue(obj[key], keyName);\n    if (value !== undefined) return value;\n  }\n  return undefined;\n}\n\n// Função para extrair dados do formato contact[...]\nfunction extractFromContactFormat(data) {\n  const result = {};\n  \n  // Procurar no body primeiro (novo formato ActiveCampaign)\n  if (data.body) {\n    result.phone = data.body['contact[phone]'] || '';\n    result.email = data.body['contact[email]'] || '';\n    result.firstName = data.body['contact[first_name]'] || '';\n    result.lastName = data.body['contact[last_name]'] || '';\n    \n    // Se encontrou algum dado no formato contact, retornar\n    if (result.phone || result.email || result.firstName || result.lastName) {\n      return result;\n    }\n  }\n  \n  return null;\n}\n\n// Função para capitalizar apenas a primeira letra da primeira palavra\nfunction capitalizeFirstOnly(str) {\n  if (!str) return '';\n  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();\n}\n\n// Processamento dinâmico\nreturn items.map(item => {\n  const data = item.json;\n  \n  let phoneRaw = '';\n  let emailRaw = '';\n  let firstName = '';\n  let lastName = '';\n  \n  // Primeiro tentar extrair do formato contact[...] (ActiveCampaign)\n  const contactData = extractFromContactFormat(data);\n  \n  if (contactData) {\n    // Formato ActiveCampaign\n    phoneRaw = contactData.phone;\n    emailRaw = contactData.email;\n    firstName = contactData.firstName;\n    lastName = contactData.lastName;\n  } else {\n    // Formato Hotmart - buscar dentro de body.data.buyer\n    if (data.body && data.body.data && data.body.data.buyer) {\n      const buyer = data.body.data.buyer;\n      phoneRaw = buyer.phone || '';\n      emailRaw = buyer.email || '';\n      const nameRaw = buyer.name || '';\n      \n      // Separar nome e sobrenome\n      if (nameRaw) {\n        const [first, ...rest] = nameRaw.trim().split(' ');\n        firstName = first || '';\n        lastName = rest.join(' ') || '';\n      }\n    } else {\n      // Fallback - buscar em qualquer lugar (caso o formato mude ligeiramente)\n      phoneRaw = findValue(data, 'phone') || findValue(data, 'checkout_phone') || '';\n      emailRaw = findValue(data, 'email') || '';\n      const nameRaw = findValue(data, 'name') || '';\n      \n      if (nameRaw) {\n        const [first, ...rest] = nameRaw.trim().split(' ');\n        firstName = first || '';\n        lastName = rest.join(' ') || '';\n      }\n    }\n  }\n  \n  // Limpar e formatar o telefone\n  let phone = phoneRaw.toString();\n  \n  // Remover caracteres não numéricos (incluindo +, -, espaços, parênteses)\n  phone = phone.replace(/\\D/g, '');\n  \n  // Se não começa com 55, adicionar\n  if (phone.length > 0 && !phone.startsWith('55')) {\n    phone = '55' + phone;\n  }\n  \n  // Email em minúsculo\n  const email = emailRaw.toString().toLowerCase();\n  \n  // Padronizar os nomes: primeira letra maiúscula, resto minúsculo\n  firstName = capitalizeFirstOnly(firstName.trim());\n  lastName = lastName.trim().toLowerCase(); // sobrenome todo em minúsculo\n  \n  return {\n    json: {\n      ...item.json,\n      transformed: {\n        phone,\n        email,\n        firstName,\n        lastName\n      }\n    }\n  };\n});"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -96,
+          608
+        ],
+        "id": "648a9971-21de-4713-a778-b3478ea04cdf",
+        "name": "Code1"
+      },
+      {
+        "parameters": {
+          "action": "generate"
+        },
+        "id": "92a63349-d8b4-4afb-b821-24f8ec90ba5a",
+        "name": "GeraUUID",
+        "type": "n8n-nodes-base.crypto",
+        "typeVersion": 1,
+        "position": [
+          2016,
+          1104
+        ],
+        "notesInFlow": false
+      },
+      {
+        "parameters": {
+          "tableId": "disparo_mensagem_ia_vendas",
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "nome",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"nome\"] }}"
+              },
+              {
+                "fieldId": "telefone",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"telefone\"] }}"
+              },
+              {
+                "fieldId": "sobrenome",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"sobrenome\"] }}"
+              },
+              {
+                "fieldId": "created_at",
+                "fieldValue": "={{ $now }}"
+              },
+              {
+                "fieldId": "email",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"email\"] }}"
+              },
+              {
+                "fieldId": "evento",
+                "fieldValue": "={{ $('Webhook').item.json.body.event }}"
+              },
+              {
+                "fieldId": "produto",
+                "fieldValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"product\"][\"name\"] }}"
+              },
+              {
+                "fieldId": "id_produto",
+                "fieldValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"product\"][\"id\"] }}"
+              },
+              {
+                "fieldId": "mensagem",
+                "fieldValue": "=Olá, tudo bem? Aqui é a Dani da Equipe Sorveteiro Raiz!\n\nEstou entrando em contato com você porque você estava quase comprando o curso Profissão Sorveteiro, mas por algum motivo não concluiu a compra. \nEstou aqui para te ajudar. Por que não fechou a compra? O que houve?"
+              },
+              {
+                "fieldId": "oferta",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"oferta\"] }}"
+              }
+            ]
+          }
+        },
+        "id": "a6b39e07-81af-4286-b5cd-ca4ec06cd01c",
+        "name": "CreateUser",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          2192,
+          1104
+        ],
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "4e77cc7c-48f4-4cbe-94e7-6d211db67002",
+                "leftValue": "={{ $('get.conversa').item.json.telefone }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "string",
+                  "operation": "notEmpty",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "id": "2dc7cb95-bd67-4355-9a20-88268f761014",
+        "name": "If1",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          1808,
+          1008
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "tableId": "disparo_mensagem_ia_vendas",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "telefone",
+                "keyValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"telefone\"] }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          1392,
+          1008
+        ],
+        "id": "ac6b34e3-17af-4d47-964d-9f2f6f62b079",
+        "name": "get.conversa",
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "=<CONTATO>{{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"telefone\"] }}</CONTATO>\n<LEAD>{{ $node[\"dados_da_compra1\"].json[\"nome\"].split(\" \")[0] }}</LEAD>\n<PRODUTO>Profissão Sorveteiro</PRODUTO>\n\n\n<ULTIMAMENSAGEM>{{ $json.ultima_mensagem_ia }}</ULTIMAMENSAGEM>\n",
+          "hasOutputParser": true,
+          "options": {
+            "systemMessage": "=<PROMPT>\n  <IDENTIDADE>\n    <PERSONAGEM>Você é a Dani — vendedora de alta performance com conversão acima de 80%, extremamente persuasiva e focada em resultados.</PERSONAGEM>\n    <MISSAO>Recuperar vendas abandonadas através de continuidade conversacional natural e persuasão assertiva, mantendo sempre o fluxo orgânico da conversa.</MISSAO>\n    <PRINCIPIO_CORE>Toda recuperação deve parecer uma continuação orgânica da conversa anterior, NUNCA uma nova abordagem ou reinício de atendimento.</PRINCIPIO_CORE>\n  </IDENTIDADE>\n\n  <RESTRICOES>\n    <NAO_FAZER>\n      <REGRA_1 prioridade=\"CRÍTICA\">JAMAIS mencionar \"Da Sorveteiro Raiz\" ou qualquer variação desta marca.</REGRA_1>\n      <REGRA_2 prioridade=\"CRÍTICA\">JAMAIS iniciar com saudações genéricas como \"Oi\", \"Olá\", \"Tudo bem?\", \"Como vai?\" ou similares.</REGRA_2>\n      <REGRA_3 prioridade=\"CRÍTICA\">JAMAIS quebrar o fluxo natural da conversa — continue como se nada tivesse interrompido a interação anterior.</REGRA_3>\n      <REGRA_4 prioridade=\"CRÍTICA\">JAMAIS deixar de personalizar com as variáveis <LEAD> e <PRODUTO> em TODAS as mensagens.</REGRA_4>\n      <REGRA_5 prioridade=\"CRÍTICA\">JAMAIS continuar escrevendo após a pergunta final — termine a mensagem imediatamente e aguarde resposta.</REGRA_5>\n      <REGRA_6 prioridade=\"CRÍTICA\">JAMAIS usar frases vagas, hesitantes ou genéricas como \"Será que...\", \"Talvez...\", \"Caso queira...\", \"Se tiver interesse...\".</REGRA_6>\n      <REGRA_7 prioridade=\"CRÍTICA\">JAMAIS seja insistente, repetitiva ou robotizada — cada mensagem deve ser única e contextualizada ao momento da conversa.</REGRA_7>\n      <REGRA_8 prioridade=\"CRÍTICA\">JAMAIS mencione explicitamente que houve \"abandono de carrinho\" logo no início — integre isso naturalmente no contexto.</REGRA_8>\n      <REGRA_9 prioridade=\"CRÍTICA\">JAMAIS crie nova abordagem de venda — você está CONTINUANDO uma conversa que já estava em andamento.</REGRA_9>\n      <REGRA_10 prioridade=\"CRÍTICA\">JAMAIS invente ou assuma contextos que não existam em {{ $json.ultima_mensagem_ia }} — use APENAS o que está disponível.</REGRA_10>\n    </NAO_FAZER>\n\n    <CONDICOES_BINARIAS>\n      <SE nome_cliente_vazio=\"true\">PARE imediatamente e solicite o nome do cliente antes de prosseguir com qualquer ação.</SE>\n      <SE produto_vazio=\"true\">PARE imediatamente e solicite o nome do produto antes de prosseguir com qualquer ação.</SE>\n      <SE ultima_mensagem_disponivel=\"true\">Analise profundamente {{ $json.ultima_mensagem_ia }} e utilize como base obrigatória para retomada contextual.</SE>\n      <SE ultima_mensagem_disponivel=\"false\">Crie retomada natural de conversa simulando continuidade orgânica, como se a pausa tivesse sido momentânea.</SE>\n    </CONDICOES_BINARIAS>\n\n    <OBRIGATORIO>\n      <TOM>Confiante, direta, empática, persuasiva e comercialmente agressiva (sem ser invasiva).</TOM>\n      <EXTENSAO>Máximo absoluto de 2-3 linhas. Mensagens curtas têm taxa de resposta e conversão significativamente maiores.</EXTENSAO>\n      <PERSONALIZACAO>100% dos elementos devem usar dados reais do cliente. Zero mensagens genéricas ou robotizadas.</PERSONALIZACAO>\n      <NATURALIDADE>A mensagem DEVE soar como uma continuação de conversa de 5 minutos atrás, nunca como um novo atendimento.</NATURALIDADE>\n      <FORMATO>Texto corrido natural, sem bullet points, sem listas, sem formatações excessivas — conversação humana real.</FORMATO>\n    </OBRIGATORIO>\n  </RESTRICOES>\n\n  <REPETICOES_IMPORTANTES>\n    <INSTRUCAO>Repita mentalmente: NUNCA mencionar \"Da Sorveteiro Raiz\" em hipótese alguma.</INSTRUCAO>\n    <INSTRUCAO>Repita mentalmente: NUNCA usar saudações genéricas que quebrem a continuidade conversacional.</INSTRUCAO>\n    <INSTRUCAO>Repita mentalmente: SEMPRE finalizar com pergunta aberta de diagnóstico para descobrir a objeção real.</INSTRUCAO>\n    <INSTRUCAO>Repita mentalmente: SEMPRE analisar {{ $json.ultima_mensagem_ia }} antes de formular qualquer resposta.</INSTRUCAO>\n    <INSTRUCAO>Repita mentalmente: NUNCA inventar contextos — usar SOMENTE informações disponíveis e verificáveis.</INSTRUCAO>\n  </REPETICOES_IMPORTANTES>\n\n  <ESTRATEGIA>\n    <PERSUASAO>\n      Seja direta, comercialmente agressiva (no bom sentido), assertiva e empática ao mesmo tempo.\n      \n      EXEMPLO NEGATIVO (fraco, jamais use):\n      \"Oi <LEAD>! Tudo bem? Será que você ainda quer comprar o <PRODUTO>?\"\n      \n      EXEMPLO POSITIVO (forte, use este padrão):\n      \"<LEAD>, sobre aquela garantia de 7 dias que mencionei... notei que você não finalizou o <PRODUTO>. O que te fez pausar?\"\n    </PERSUASAO>\n\n    <ENCADEAMENTO_CONTEXTUAL>\n      FLUXO OBRIGATÓRIO DE ANÁLISE:\n      \n      1. VERIFICAÇÃO DE CONTEXTO DISPONÍVEL:\n         - {{ $json.ultima_mensagem_ia }} está disponível? → ANALISE PROFUNDAMENTE\n         - Não está disponível? → Crie retomada natural genérica\n      \n      2. ANÁLISE PROFUNDA DA ÚLTIMA MENSAGEM (quando disponível):\n         \n         SE última mensagem foi sobre BENEFÍCIOS do produto:\n         → Retome perguntando se surgiu alguma dúvida específica sobre aquele benefício mencionado\n         Exemplo: \"<LEAD>, sobre aqueles benefícios que te mostrei do <PRODUTO>... ficou alguma dúvida que te fez pausar?\"\n         \n         SE última mensagem foi sobre PREÇO/PAGAMENTO:\n         → Retome oferecendo facilitar o processo ou esclarecer condições\n         Exemplo: \"<LEAD>, vi que você pausou depois que falamos do parcelamento. Ficou alguma dúvida sobre as condições do <PRODUTO>?\"\n         \n         SE última mensagem foi sobre DÚVIDAS TÉCNICAS:\n         → Retome verificando se conseguiu esclarecer aquele ponto específico\n         Exemplo: \"<LEAD>, sobre aquela dúvida técnica que você tinha do <PRODUTO>... consegui esclarecer ou ficou algo pendente?\"\n         \n         SE última mensagem foi sobre URGÊNCIA/ESCASSEZ:\n         → Retome reforçando a oportunidade de forma natural, sem pressão artificial\n         Exemplo: \"<LEAD>, aquele bônus exclusivo que comentei ainda está disponível, mas notei que você não finalizou o <PRODUTO>. O que te impediu?\"\n         \n         SE última mensagem foi sobre GARANTIAS/SEGURANÇA:\n         → Retome conectando com a segurança que foi oferecida\n         Exemplo: \"<LEAD>, sobre aquela garantia de satisfação que mencionei... isso não te deixou mais tranquilo pro <PRODUTO>? O que aconteceu?\"\n         \n         SE última mensagem foi sobre DEPOIMENTOS/PROVA SOCIAL:\n         → Retome conectando com a validação social apresentada\n         Exemplo: \"<LEAD>, depois de ver aqueles resultados que te mostrei, notei que você não finalizou o <PRODUTO>. Surgiu alguma insegurança?\"\n      \n      3. IDENTIFICAÇÃO DO \"GANCHO PERFEITO\":\n         - Qual foi o ÚLTIMO ASSUNTO específico discutido?\n         - Qual foi o TOM emocional daquela mensagem?\n         - Houve alguma OBJEÇÃO implícita ou explícita?\n         - O cliente demonstrou INTERESSE ou HESITAÇÃO?\n         \n      4. CONSTRUÇÃO DA PONTE CONTEXTUAL:\n         - Use o gancho identificado como PRIMEIRA FRASE\n         - Conecte organicamente com a observação do carrinho\n         - Finalize com pergunta de diagnóstico aberta\n    </ENCADEAMENTO_CONTEXTUAL>\n\n    <FORMULA_CONVERSAO>\n      ESTRUTURA UNIVERSAL OBRIGATÓRIA:\n      \n      [GANCHO_CONTEXTUAL] + [OBSERVAÇÃO_CARRINHO_SUTIL] + [PERGUNTA_DIAGNÓSTICO_ABERTA]\n      \n      TEMPLATE REPLICÁVEL:\n      \"<LEAD>, [referência_específica_última_mensagem]... [observação_natural_carrinho]. [pergunta_aberta_descobrir_objeção]?\"\n      \n      DETALHAMENTO DOS COMPONENTES:\n      \n      [GANCHO_CONTEXTUAL] = Referência específica ao último assunto discutido\n      Exemplos:\n      - \"sobre aquela garantia de 7 dias que mencionei\"\n      - \"depois de ver aqueles resultados\"\n      - \"sobre as condições de parcelamento\"\n      - \"aquele bônus exclusivo que comentei\"\n      \n      [OBSERVAÇÃO_CARRINHO_SUTIL] = Menção natural de que a compra não foi finalizada\n      Exemplos:\n      - \"notei que você não finalizou o <PRODUTO>\"\n      - \"vi que você pausou na finalização\"\n      - \"percebi que o <PRODUTO> ficou no carrinho\"\n      - \"você acabou não concluindo o <PRODUTO>\"\n      \n      [PERGUNTA_DIAGNÓSTICO_ABERTA] = Pergunta que revela a objeção real\n      Exemplos:\n      - \"O que te fez pausar?\"\n      - \"Surgiu alguma dúvida que não esclareci?\"\n      - \"O que aconteceu?\"\n      - \"Ficou alguma insegurança?\"\n      - \"O que te impediu de garantir?\"\n    </FORMULA_CONVERSAO>\n  </ESTRATEGIA>\n\n  <EXEMPLOS_PRATICOS>\n    <CENARIO_1>\n      <CONTEXTO>Última mensagem da IA falou sobre garantia de 7 dias do produto</CONTEXTO>\n      <VARIAVEL_LEAD>Marina</VARIAVEL_LEAD>\n      <VARIAVEL_PRODUTO>Curso Profissão Sorveteiro</VARIAVEL_PRODUTO>\n      \n      <RECUPERACAO_CORRETA>\n        \"Marina, sobre aquela garantia de 7 dias que mencionei... notei que você não finalizou o Curso Profissão Sorveteiro. O que te fez pausar?\"\n      </RECUPERACAO_CORRETA>\n      \n      <RECUPERACAO_ERRADA>\n        \"Oi Marina! Tudo bem? Vi que você deixou o Curso Profissão Sorveteiro no carrinho. Quer finalizar a compra?\"\n      </RECUPERACAO_ERRADA>\n      \n      <ANALISE_ERRO>\n        ERRO: Usou \"Oi\" (saudação genérica proibida)\n        ERRO: Usou \"Tudo bem?\" (quebra continuidade)\n        ERRO: Não conectou com contexto da última mensagem\n        ERRO: Pergunta fechada e fraca (\"Quer finalizar?\")\n        ERRO: Não parece continuação natural\n      </ANALISE_ERRO>\n    </CENARIO_1>\n\n    <CENARIO_2>\n      <CONTEXTO>Última mensagem da IA explicou as condições de parcelamento em até 12x sem juros</CONTEXTO>\n      <VARIAVEL_LEAD>Carlos</VARIAVEL_LEAD>\n      <VARIAVEL_PRODUTO>Máquina de Sorvete Profissional</VARIAVEL_PRODUTO>\n      \n      <RECUPERACAO_CORRETA>\n        \"Carlos, vi que você pausou logo após falarmos do parcelamento em 12x. Ficou alguma dúvida sobre as condições da Máquina de Sorvete Profissional?\"\n      </RECUPERACAO_CORRETA>\n      \n      <RECUPERACAO_ERRADA>\n        \"Olá Carlos! Notei que você abandonou o carrinho. Posso te ajudar com algo?\"\n      </RECUPERACAO_ERRADA>\n      \n      <ANALISE_ERRO>\n        ERRO: Usou \"Olá\" (saudação genérica)\n        ERRO: Mencionou \"abandonou o carrinho\" (termo explícito proibido)\n        ERRO: Não conectou com contexto de parcelamento\n        ERRO: Pergunta genérica e vaga\n        ERRO: Quebra naturalidade conversacional\n      </ANALISE_ERRO>\n    </CENARIO_2>\n\n    <CENARIO_3>\n      <CONTEXTO>Sem última mensagem disponível ({{ $json.ultima_mensagem_ia }} vazio)</CONTEXTO>\n      <VARIAVEL_LEAD>Juliana</VARIAVEL_LEAD>\n      <VARIAVEL_PRODUTO>Kit Iniciante Sorveteiro</VARIAVEL_PRODUTO>\n      \n      <RECUPERACAO_CORRETA>\n        \"Juliana, percebi que o Kit Iniciante Sorveteiro ficou no seu carrinho. O que aconteceu para você não concluir?\"\n      </RECUPERACAO_CORRETA>\n      \n      <RECUPERACAO_ERRADA>\n        \"Oi Juliana! Vi seu carrinho abandonado com o Kit Iniciante Sorveteiro. Vamos finalizar juntos?\"\n      </RECUPERACAO_ERRADA>\n      \n      <ANALISE_ERRO>\n        ERRO: Usou \"Oi\" (proibido)\n        ERRO: Termo \"carrinho abandonado\" (muito explícito)\n        ERRO: \"Vamos finalizar juntos?\" (fraco e genérico)\n        ERRO: Não cria sensação de continuidade\n      </ANALISE_ERRO>\n    </CENARIO_3>\n\n    <CENARIO_4>\n      <CONTEXTO>Última mensagem mostrou depoimentos e resultados de outros alunos</CONTEXTO>\n      <VARIAVEL_LEAD>Roberto</VARIAVEL_LEAD>\n      <VARIAVEL_PRODUTO>Consultoria Personalizada de Sorvetes</VARIAVEL_PRODUTO>\n      \n      <RECUPERACAO_CORRETA>\n        \"Roberto, depois de ver aqueles resultados que te mostrei de outros alunos, notei que você não finalizou a Consultoria Personalizada de Sorvetes. Surgiu alguma insegurança?\"\n      </RECUPERACAO_CORRETA>\n      \n      <RECUPERACAO_ERRADA>\n        \"E aí Roberto, ainda está interessado? Posso tirar alguma dúvida?\"\n      </RECUPERACAO_ERRADA>\n      \n      <ANALISE_ERRO>\n        ERRO: \"E aí\" (informal demais, quebra padrão)\n        ERRO: \"ainda está interessado?\" (fraco e hesitante)\n        ERRO: Não conectou com depoimentos mostrados\n        ERRO: Zero personalização com contexto\n      </ANALISE_ERRO>\n    </CENARIO_4>\n\n    <CENARIO_5>\n      <CONTEXTO>Última mensagem falou sobre bônus exclusivo com prazo limitado</CONTEXTO>\n      <VARIAVEL_LEAD>Fernanda</VARIAVEL_LEAD>\n      <VARIAVEL_PRODUTO>Curso Avançado de Sorvetes Gourmet</VARIAVEL_PRODUTO>\n      \n      <RECUPERACAO_CORRETA>\n        \"Fernanda, aquele bônus exclusivo que comentei ainda está disponível, mas notei que você não finalizou o Curso Avançado de Sorvetes Gourmet. O que te impediu?\"\n      </RECUPERACAO_CORRETA>\n      \n      <RECUPERACAO_ERRADA>\n        \"Oi Fernanda! O bônus está acabando! Não vai perder essa oportunidade, vai?\"\n      </RECUPERACAO_ERRADA>\n      \n      <ANALISE_ERRO>\n        ERRO: \"Oi\" (proibido)\n        ERRO: Tom de pressão artificial (\"está acabando!\")\n        ERRO: Pergunta fechada e manipulativa\n        ERRO: Não mantém naturalidade conversacional\n      </ANALISE_ERRO>\n    </CENARIO_5>\n  </EXEMPLOS_PRATICOS>\n\n  <CHECKLIST_PRE_ENVIO>\n    <VERIFICACAO_OBRIGATORIA>\n      <CHECK prioridade=\"CRÍTICA\">Consultei e analisei {{ $json.ultima_mensagem_ia }} antes de formular resposta?</CHECK>\n      <CHECK prioridade=\"CRÍTICA\">A transição está COMPLETAMENTE natural e orgânica como continuação de conversa?</CHECK>\n      <CHECK prioridade=\"CRÍTICA\">Personalizei com <LEAD> e <PRODUTO> corretamente?</CHECK>\n      <CHECK prioridade=\"CRÍTICA\">EVITEI completamente saudações genéricas (Oi, Olá, Tudo bem)?</CHECK>\n      <CHECK prioridade=\"CRÍTICA\">Finalizei com pergunta de diagnóstico aberta e estratégica?</CHECK>\n      <CHECK prioridade=\"CRÍTICA\">Mantive mensagem em máximo 2-3 linhas curtas?</CHECK>\n      <CHECK prioridade=\"CRÍTICA\">O tom está confiante, direto e comercialmente persuasivo?</CHECK>\n      <CHECK prioridade=\"CRÍTICA\">Parece genuinamente uma continuação de conversa de minutos atrás?</CHECK>\n      <CHECK prioridade=\"CRÍTICA\">NÃO mencionei \"Da Sorveteiro Raiz\" em nenhum momento?</CHECK>\n      <CHECK prioridade=\"CRÍTICA\">Terminei IMEDIATAMENTE após a pergunta sem continuar escrevendo?</CHECK>\n      <CHECK prioridade=\"ALTA\">Usei gancho contextual específico da última mensagem (quando disponível)?</CHECK>\n      <CHECK prioridade=\"ALTA\">A observação sobre o carrinho foi sutil e natural?</CHECK>\n      <CHECK prioridade=\"ALTA\">Evitei frases vagas, hesitantes ou genéricas?</CHECK>\n      <CHECK prioridade=\"ALTA\">Não usei termos explícitos como \"abandono de carrinho\"?</CHECK>\n      <CHECK prioridade=\"MÉDIA\">O texto está em formato de conversa natural, sem listas ou bullet points?</CHECK>\n    </VERIFICACAO_OBRIGATORIA>\n  </CHECKLIST_PRE_ENVIO>\n\n  <REFORCO_FINAL>\n    <PRINCIPIOS_INEGOCIAVEIS>\n      Você é CONTINUAÇÃO, nunca uma nova abordagem\n      Contexto de {{ $json.ultima_mensagem_ia }} é OURO — use sempre que disponível\n      Perguntas abertas > Afirmações (sempre termine descobrindo a objeção)\n      Naturalidade conversacional > Script robotizado ou formatado\n      Mensagens curtas (2-3 linhas) > Textos longos e cansativos\n      Empatia comercial + Assertividade direta = Conversão máxima\n      ZERO saudações genéricas, SEMPRE continuidade orgânica\n      Gancho contextual + Observação sutil + Pergunta diagnóstico = Fórmula vencedora\n    </PRINCIPIOS_INEGOCIAVEIS>\n\n    <MENTALIDADE_DANI>\n      \"Eu não estou INICIANDO uma venda.\n      Eu estou CONTINUANDO uma conversa que já estava fluindo.\n      Eu conheço o contexto, sei onde paramos, e vou retomar naturalmente.\n      Meu objetivo é descobrir a objeção real com empatia e assertividade.\n      Cada palavra importa. Cada detalhe conta. Conversão é ciência + arte.\"\n    </MENTALIDADE_DANI>\n  </REFORCO_FINAL>\n</PROMPT>"
+          }
+        },
+        "id": "cd141801-63c8-4977-9bad-123f90ea74b5",
+        "name": "Vendedor IA",
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 1.7,
+        "position": [
+          1280,
+          368
+        ]
+      },
+      {
+        "parameters": {
+          "model": {
+            "__rl": true,
+            "value": "gpt-4.1-mini",
+            "mode": "list",
+            "cachedResultName": "gpt-4.1-mini"
+          },
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+        "typeVersion": 1.2,
+        "position": [
+          1280,
+          544
+        ],
+        "id": "736c2921-e8ad-408a-a48d-9e601408bc6d",
+        "name": "OpenAI Chat Model",
+        "credentials": {
+          "openAiApi": {
+            "id": "PwsgEoPwyqAPcsYQ",
+            "name": "AI Vendas | Dani - n8n\t"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsonSchemaExample": "{\n\t\"name\": \"nome do lead aqui\",\n\t\"numero\": \"numero de telefone aqui\",\n  \"text\": \"mensagem enviada aqui\"\n}"
+        },
+        "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+        "typeVersion": 1.2,
+        "position": [
+          1472,
+          544
+        ],
+        "id": "dac93b0d-2693-4db0-8ad0-61cb28056afd",
+        "name": "Structured Output Parser"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "025e6878-612d-4c76-94d7-19f6a9e74418",
+                "name": "output.numero",
+                "value": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"telefone\"] }}",
+                "type": "string"
+              },
+              {
+                "id": "4786db0a-53f1-4e4e-87ac-c9cedc8e62ab",
+                "name": "output.nam",
+                "value": "={{ $item(\"0\").$node[\"Code1\"].json[\"body\"][\"data\"][\"buyer\"][\"name\"] }}",
+                "type": "string"
+              },
+              {
+                "id": "a9925528-1b2c-4c6e-85fa-499ee4b90881",
+                "name": "linkPreview",
+                "value": false,
+                "type": "boolean"
+              },
+              {
+                "id": "2b2b6094-b11d-482f-9022-27ce0f643b7c",
+                "name": "delay",
+                "value": "1200",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          352,
+          608
+        ],
+        "id": "935dfb87-92bf-4a0a-85d8-db81067f4c20",
+        "name": "Edit Fields"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "tableId": "disparo_mensagem_ia_vendas",
+          "matchType": "allFilters",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "telefone",
+                "condition": "eq",
+                "keyValue": "={{ $item(\"0\").$node[\"Edit Fields\"].json[\"output\"][\"numero\"] }}"
+              },
+              {
+                "keyName": "id",
+                "condition": "eq",
+                "keyValue": "={{ $item(\"0\").$node[\"If1\"].json[\"id\"] }}"
+              }
+            ]
+          },
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "mensagem",
+                "fieldValue": "=Olá, tudo bem? Aqui é a Dani da Equipe Sorveteiro Raiz!\n\nEstou entrando em contato com você porque você estava quase comprando o curso Profissão Sorveteiro, mas por algum motivo não concluiu a compra. \nEstou aqui para te ajudar. Por que não fechou a compra? O que houve?"
+              },
+              {
+                "fieldId": "produto",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"nome_produto\"] }}"
+              },
+              {
+                "fieldId": "id_produto",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"product_id\"] }}"
+              },
+              {
+                "fieldId": "evento",
+                "fieldValue": "={{ $('Webhook').item.json.body.event }}"
+              },
+              {
+                "fieldId": "oferta",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"oferta\"] }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          2016,
+          928
+        ],
+        "id": "d910a32e-1752-4629-b7e8-950343f13ee1",
+        "name": "update_mensagem/evento",
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://unnichat.com.br/a/start/7VKumMOoV3cJCIVwq3I1",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n  \"nome\": \"{{ $item(\"0\").$node[\"Edit Fields\"].json[\"output\"][\"nam\"] }}\",\n  \"telefone\": \"{{ $item(\"0\").$node[\"Edit Fields\"].json[\"output\"][\"numero\"] }}\",\n  \"type\": \"message\",\n  \"text\": {\n    \"body\": \"recuperacao\"\n  }\n} ",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          2208,
+          928
+        ],
+        "id": "42e3fb72-d11a-4b41-8192-630b8f8fb3ed",
+        "name": "HTTP Request"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "tableId": "atendimento_wpp_vendas",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "telefone",
+                "keyValue": "={{ $node[\"dados_da_compra1\"].json[\"telefone\"] }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          560,
+          608
+        ],
+        "id": "e96046b1-a308-410a-b88e-3f6bfe1fadf4",
+        "name": "getcliente",
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "b8282cdc-b5e8-4299-b3a9-85f390544c87",
+                "leftValue": "={{ $json.ultima_mensagem_ia }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "string",
+                  "operation": "notEmpty",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          992,
+          608
+        ],
+        "id": "b8454cec-f6cd-4391-8dc0-dd0925337562",
+        "name": "If"
+      },
+      {
+        "parameters": {
+          "action": "generate"
+        },
+        "id": "9cdea3db-bf7e-4a40-ac2f-232626b4ab8f",
+        "name": "GeraUUID1",
+        "type": "n8n-nodes-base.crypto",
+        "typeVersion": 1,
+        "position": [
+          2224,
+          464
+        ],
+        "notesInFlow": false
+      },
+      {
+        "parameters": {
+          "tableId": "disparo_mensagem_ia_vendas",
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "nome",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"nome\"] }}"
+              },
+              {
+                "fieldId": "telefone",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"telefone\"] }}"
+              },
+              {
+                "fieldId": "sobrenome",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"sobrenome\"] }}"
+              },
+              {
+                "fieldId": "created_at",
+                "fieldValue": "={{ $now }}"
+              },
+              {
+                "fieldId": "email",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"email\"] }}"
+              },
+              {
+                "fieldId": "evento",
+                "fieldValue": "={{ $('Webhook').item.json.body.event }}"
+              },
+              {
+                "fieldId": "produto",
+                "fieldValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"product\"][\"name\"] }}"
+              },
+              {
+                "fieldId": "id_produto",
+                "fieldValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"product\"][\"id\"] }}"
+              },
+              {
+                "fieldId": "mensagem",
+                "fieldValue": "={{ $('Vendedor IA').item.json.output.text }}"
+              },
+              {
+                "fieldId": "oferta",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"oferta\"] }}"
+              }
+            ]
+          }
+        },
+        "id": "6356c248-2766-41e9-80af-d8d66c75833d",
+        "name": "CreateUser1",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          2400,
+          448
+        ],
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "4e77cc7c-48f4-4cbe-94e7-6d211db67002",
+                "leftValue": "={{ $('get.conversa1').item.json.telefone }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "string",
+                  "operation": "notEmpty",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "id": "b7c21f02-d0ea-4193-94fb-b84aca0390de",
+        "name": "If2",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          2032,
+          352
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "tableId": "disparo_mensagem_ia_vendas",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "telefone",
+                "keyValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"telefone\"] }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          1648,
+          368
+        ],
+        "id": "a3a9153e-45d8-4fdc-beb7-2b1b19a51a38",
+        "name": "get.conversa1",
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "tableId": "disparo_mensagem_ia_vendas",
+          "matchType": "allFilters",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "telefone",
+                "condition": "eq",
+                "keyValue": "={{ $item(\"0\").$node[\"Edit Fields\"].json[\"output\"][\"numero\"] }}"
+              },
+              {
+                "keyName": "id",
+                "condition": "eq",
+                "keyValue": "={{ $item(\"0\").$node[\"If2\"].json[\"id\"] }}"
+              }
+            ]
+          },
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "mensagem",
+                "fieldValue": "={{ $('Vendedor IA').item.json.output.text }}"
+              },
+              {
+                "fieldId": "produto",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"nome_produto\"] }}"
+              },
+              {
+                "fieldId": "id_produto",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"product_id\"] }}"
+              },
+              {
+                "fieldId": "evento",
+                "fieldValue": "={{ $('Webhook').item.json.body.event }}"
+              },
+              {
+                "fieldId": "oferta",
+                "fieldValue": "={{ $item(\"0\").$node[\"dados_da_compra1\"].json[\"oferta\"] }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          2224,
+          272
+        ],
+        "id": "3cd42e4a-90d9-4c28-94ed-217ca2a026ec",
+        "name": "update_mensagem/evento1",
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://unnichat.com.br/a/start/OcEUR1yJ1poIrFsOZWW1",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n  \"nome\": \"{{ $item(\"0\").$node[\"Edit Fields\"].json[\"output\"][\"nam\"] }}\",\n  \"telefone\": \"{{ $item(\"0\").$node[\"Edit Fields\"].json[\"output\"][\"numero\"] }}\",\n  \"type\": \"message\",\n  \"text\": {\n    \"body\": \"{{ $json.mensagem }}\"\n  }\n} ",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          2432,
+          272
+        ],
+        "id": "6803b59f-db8e-4b82-8d03-c9e5e61d90f5",
+        "name": "HTTP Request1"
+      },
+      {
+        "parameters": {
+          "content": "# TEMPLATE FORA JANELA 24H",
+          "height": 580,
+          "width": 1320,
+          "color": 3
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          1232,
+          768
+        ],
+        "typeVersion": 1,
+        "id": "f5c2706a-fa50-4a34-8e2a-cd973de8c84c",
+        "name": "Sticky Note"
+      },
+      {
+        "parameters": {
+          "content": "# MENSAGEM DENTRO JANELA 24H",
+          "height": 500,
+          "width": 1580,
+          "color": 4
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          1232,
+          208
+        ],
+        "typeVersion": 1,
+        "id": "80c301a8-ada8-4ec1-8894-8cfa62cc5f81",
+        "name": "Sticky Note1"
+      },
+      {
+        "parameters": {
+          "amount": 2
+        },
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          2368,
+          1104
+        ],
+        "id": "b14f6a19-f4dc-48fc-bce9-d9c22a6e806f",
+        "name": "Wait",
+        "webhookId": "8fa158af-ca8d-4f10-a869-ad28ee152610"
+      },
+      {
+        "parameters": {
+          "amount": 2
+        },
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          2624,
+          448
+        ],
+        "id": "26c4d293-2422-4dec-959d-7fbc231f7c4f",
+        "name": "Wait1",
+        "webhookId": "8fa158af-ca8d-4f10-a869-ad28ee152610"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "59dfd646-caa8-4068-a290-b6dff4449892",
+                "leftValue": "={{ $('dados_da_compra1').item.json.telefone }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "string",
+                  "operation": "notEmpty",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          1568,
+          1008
+        ],
+        "id": "c45dc8e5-df6f-4982-8c3f-6e4538eb798d",
+        "name": "If3"
+      },
+      {
+        "parameters": {},
+        "id": "ed239247-c1c0-4ca0-935b-1b2f52ee27c4",
+        "name": "no.op2",
+        "type": "n8n-nodes-base.noOp",
+        "typeVersion": 1,
+        "position": [
+          1728,
+          1120
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "59dfd646-caa8-4068-a290-b6dff4449892",
+                "leftValue": "={{ $('dados_da_compra1').item.json.telefone }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "string",
+                  "operation": "notEmpty",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          1824,
+          368
+        ],
+        "id": "bd04562a-8bc8-4242-921b-aee78cb0055d",
+        "name": "If4"
+      },
+      {
+        "parameters": {},
+        "id": "d00ce4f6-8271-45ce-bb8c-4727673bf7f4",
+        "name": "no.op",
+        "type": "n8n-nodes-base.noOp",
+        "typeVersion": 1,
+        "position": [
+          1984,
+          512
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "fdd10924-1adb-4db9-b10e-edd820e78c66",
+                "leftValue": "={{ $json.body[\"contact[phone]\"] }}",
+                "rightValue": "+5511984151865",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          -144,
+          304
+        ],
+        "id": "1e40837a-d8b0-48a5-a89e-68c373a2327a",
+        "name": "If5"
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SELECT message->>'content' as ultima_mensagem_ia\nFROM memoriaia \nWHERE session_id = '{{ $json.sessionid }}'\n  AND message->>'type' = 'ai'\nORDER BY id DESC\nLIMIT 1;",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          768,
+          608
+        ],
+        "id": "687e4e99-b178-41b7-a251-298b320927b4",
+        "name": "Execute a SQL query",
+        "alwaysOutputData": true,
+        "credentials": {
+          "postgres": {
+            "id": "IYNLdJqCB5ipfbuh",
+            "name": "Postgres account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://dash.unnichat.com.br/contact/search",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "Bearer fbe15e04-5670-4b83-aaad-d97dcdd3eb57"
+              }
+            ]
+          },
+          "sendBody": true,
+          "bodyParameters": {
+            "parameters": [
+              {
+                "name": "phone",
+                "value": "5511984151865"
+              }
+            ]
+          },
+          "options": {
+            "response": {
+              "response": {
+                "responseFormat": "json"
+              }
+            }
+          }
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          -96,
+          64
+        ],
+        "id": "e07be58e-3532-467b-807d-629473319ff7",
+        "name": "HTTP Request2"
+      }
+    ],
+    "connections": {
+      "Webhook": {
+        "main": [
+          [
+            {
+              "node": "Code1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code1": {
+        "main": [
+          [
+            {
+              "node": "dados_da_compra1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "dados_da_compra1": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GeraUUID": {
+        "main": [
+          [
+            {
+              "node": "CreateUser",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "CreateUser": {
+        "main": [
+          [
+            {
+              "node": "Wait",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If1": {
+        "main": [
+          [
+            {
+              "node": "update_mensagem/evento",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "GeraUUID",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "get.conversa": {
+        "main": [
+          [
+            {
+              "node": "If3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OpenAI Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "Vendedor IA",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Structured Output Parser": {
+        "ai_outputParser": [
+          [
+            {
+              "node": "Vendedor IA",
+              "type": "ai_outputParser",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Vendedor IA": {
+        "main": [
+          [
+            {
+              "node": "get.conversa1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields": {
+        "main": [
+          [
+            {
+              "node": "getcliente",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "update_mensagem/evento": {
+        "main": [
+          [
+            {
+              "node": "HTTP Request",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "getcliente": {
+        "main": [
+          [
+            {
+              "node": "Execute a SQL query",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If": {
+        "main": [
+          [
+            {
+              "node": "Vendedor IA",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "get.conversa",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GeraUUID1": {
+        "main": [
+          [
+            {
+              "node": "CreateUser1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "CreateUser1": {
+        "main": [
+          [
+            {
+              "node": "Wait1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If2": {
+        "main": [
+          [
+            {
+              "node": "update_mensagem/evento1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "GeraUUID1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "get.conversa1": {
+        "main": [
+          [
+            {
+              "node": "If4",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "update_mensagem/evento1": {
+        "main": [
+          [
+            {
+              "node": "HTTP Request1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Wait": {
+        "main": [
+          [
+            {
+              "node": "get.conversa",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Wait1": {
+        "main": [
+          [
+            {
+              "node": "get.conversa1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If3": {
+        "main": [
+          [
+            {
+              "node": "If1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "no.op2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If4": {
+        "main": [
+          [
+            {
+              "node": "If2",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "no.op",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If5": {
+        "main": [
+          []
+        ]
+      },
+      "Execute a SQL query": {
+        "main": [
+          [
+            {
+              "node": "If",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "nodeGroups": [],
+    "authors": "system migration",
+    "name": null,
+    "description": null,
+    "autosaved": false,
+    "createdAt": "2026-09-15T19:55:52.517Z",
+    "updatedAt": "2026-09-15T19:55:52.517Z"
+  },
+  "activeVersionId": "9af18228-8003-41f7-9d59-929e0bf05e8d",
   "connections": {
     "Webhook": {
       "main": [
@@ -313,6 +1555,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "[Recuperação de Vendas] [Todos Produtos]",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -1280,20 +2523,20 @@
   },
   "shared": [
     {
-      "createdAt": "2025-07-08T18:32:01.104Z",
-      "updatedAt": "2025-07-08T18:32:01.104Z",
       "role": "workflow:owner",
       "workflowId": "DlJuLTVQCI2tYrav",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2025-07-08T18:32:01.104Z",
+      "updatedAt": "2025-07-08T18:32:01.104Z"
     }
   ],
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-08-12T15:25:26.686Z",
-      "updatedAt": "2025-08-12T15:25:26.686Z",
       "id": "jnxO0I98Q4JFiEFn",
-      "name": "API OFICIAL"
+      "name": "API OFICIAL",
+      "createdAt": "2025-08-12T15:25:26.686Z",
+      "updatedAt": "2025-08-12T15:25:26.686Z"
     }
   ],
   "triggerCount": 1,
