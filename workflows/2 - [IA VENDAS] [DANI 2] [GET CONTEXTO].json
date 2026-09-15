@@ -1,11 +1,14 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {},
   "createdAt": "2025-07-10T04:38:59.376Z",
   "id": "JUVoPW6KzHmpZX69",
   "isArchived": true,
   "meta": null,
   "name": "2 - [IA VENDAS] [DANI 2] [GET CONTEXTO]",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -30,11 +33,11 @@
   },
   "shared": [
     {
-      "createdAt": "2025-07-10T04:38:59.376Z",
-      "updatedAt": "2025-07-10T04:38:59.376Z",
       "role": "workflow:owner",
       "workflowId": "JUVoPW6KzHmpZX69",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2025-07-10T04:38:59.376Z",
+      "updatedAt": "2025-07-10T04:38:59.376Z"
     }
   ],
   "staticData": null,
