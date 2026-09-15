@@ -1,5 +1,394 @@
 {
   "active": true,
+  "activeVersion": {
+    "versionId": "99a9e909-6518-46cf-a58f-a1b86b9c446c",
+    "workflowId": "q77AiPSZYKOVI49m",
+    "nodes": [
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "compraatrasada",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2.1,
+        "position": [
+          -464,
+          -240
+        ],
+        "id": "1a24228c-8005-4d70-8cd4-c3d939b7583e",
+        "name": "Webhook",
+        "webhookId": "56c351cb-772d-4c67-8080-3c6f74070850"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "cca66a8a-33b0-4107-8423-c1b835621ccc",
+                "name": "Nome",
+                "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"buyer\"][\"name\"] }}",
+                "type": "string"
+              },
+              {
+                "id": "ac0c2313-215d-47b6-b215-eff17671d92b",
+                "name": "Telefone",
+                "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"buyer\"][\"checkout_phone\"] }}",
+                "type": "string"
+              },
+              {
+                "id": "39a6e323-b3c1-4061-9ef2-6481fd5ec4ca",
+                "name": "Email",
+                "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"data\"][\"buyer\"][\"email\"] }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -256,
+          -240
+        ],
+        "id": "5e9576c7-9e58-47d8-b0b2-0e33c2517c57",
+        "name": "Edit Fields"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "tableId": "acesso_ia_suporte",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "email",
+                "keyValue": "={{ $item(\"0\").$node[\"Edit Fields\"].json[\"Email\"] }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          -48,
+          -240
+        ],
+        "id": "2b0eacdc-6665-427a-98f7-fbf58d924ca9",
+        "name": "pesquisa email",
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "tableId": "acesso_ia_suporte",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "telefone",
+                "keyValue": "={{ $item(\"0\").$node[\"Edit Fields\"].json[\"Telefone\"] }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          400,
+          -160
+        ],
+        "id": "af70e11d-60a0-48ca-b677-4bb048d7eab4",
+        "name": "pesquisa telefone",
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "tableId": "acesso_ia_suporte",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "email",
+                "condition": "eq",
+                "keyValue": "={{ $item(\"0\").$node[\"email existe?\"].json[\"email\"] }}"
+              }
+            ]
+          },
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "status_compra",
+                "fieldValue": "inativo"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          400,
+          -352
+        ],
+        "id": "4016867b-663f-49ad-b3e2-bed541c23d7b",
+        "name": "atualiza status",
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "tableId": "acesso_ia_suporte",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "telefone",
+                "condition": "eq",
+                "keyValue": "={{ $item(\"0\").$node[\"telefone existe?\"].json[\"telefone\"] }}"
+              }
+            ]
+          },
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "status_compra",
+                "fieldValue": "inativo"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          912,
+          -240
+        ],
+        "id": "f78e3972-6ea3-4d4d-beb3-5a7374bf487b",
+        "name": "atualiza status1",
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "f0cafca6-d690-4bc5-b170-fc3bf05c4396",
+                "leftValue": "={{ $json.email }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "string",
+                  "operation": "exists",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          160,
+          -240
+        ],
+        "id": "e37f2032-ee8f-41f2-8b16-de6b9a695447",
+        "name": "email existe?"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "f0cafca6-d690-4bc5-b170-fc3bf05c4396",
+                "leftValue": "={{ $json.telefone }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "string",
+                  "operation": "exists",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          672,
+          -144
+        ],
+        "id": "111129cc-99c5-4715-8ee7-93d19f07bfa5",
+        "name": "telefone existe?"
+      },
+      {
+        "parameters": {
+          "tableId": "acesso_ia_suporte",
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "nome",
+                "fieldValue": "={{ $item(\"0\").$node[\"Edit Fields\"].json[\"Nome\"] }}"
+              },
+              {
+                "fieldId": "email",
+                "fieldValue": "={{ $item(\"0\").$node[\"Edit Fields\"].json[\"Email\"] }}"
+              },
+              {
+                "fieldId": "telefone",
+                "fieldValue": "={{ $item(\"0\").$node[\"Edit Fields\"].json[\"Telefone\"] }}"
+              },
+              {
+                "fieldId": "status_compra",
+                "fieldValue": "inativo"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          880,
+          -32
+        ],
+        "id": "0f774a47-659a-4e5b-969d-838fb8e9be7e",
+        "name": "cria usuario",
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Webhook": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields": {
+        "main": [
+          [
+            {
+              "node": "pesquisa email",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "pesquisa email": {
+        "main": [
+          [
+            {
+              "node": "email existe?",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "pesquisa telefone": {
+        "main": [
+          [
+            {
+              "node": "telefone existe?",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "email existe?": {
+        "main": [
+          [
+            {
+              "node": "atualiza status",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "pesquisa telefone",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "telefone existe?": {
+        "main": [
+          [
+            {
+              "node": "atualiza status1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "cria usuario",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "nodeGroups": [],
+    "authors": "system migration",
+    "name": null,
+    "description": null,
+    "autosaved": false,
+    "createdAt": "2026-09-15T19:55:52.517Z",
+    "updatedAt": "2026-09-15T19:55:52.517Z"
+  },
+  "activeVersionId": "99a9e909-6518-46cf-a58f-a1b86b9c446c",
   "connections": {
     "Webhook": {
       "main": [
@@ -89,6 +478,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "[Compra Atrasada] Produto IA",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -524,11 +914,11 @@
   },
   "shared": [
     {
-      "createdAt": "2026-04-13T23:27:43.586Z",
-      "updatedAt": "2026-04-13T23:27:43.586Z",
       "role": "workflow:owner",
       "workflowId": "q77AiPSZYKOVI49m",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2026-04-13T23:27:43.586Z",
+      "updatedAt": "2026-04-13T23:27:43.586Z"
     }
   ],
   "staticData": null,
