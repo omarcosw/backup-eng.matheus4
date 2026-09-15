@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Upload your file here": {
       "main": [
@@ -80,6 +82,7 @@
     "templateId": "rag-starter-template"
   },
   "name": "Demo: RAG in n8n",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -300,11 +303,11 @@
   },
   "shared": [
     {
-      "createdAt": "2025-10-23T01:39:09.737Z",
-      "updatedAt": "2025-10-23T01:39:09.737Z",
       "role": "workflow:owner",
       "workflowId": "QKYjfB8qBoNmcjjl",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2025-10-23T01:39:09.737Z",
+      "updatedAt": "2025-10-23T01:39:09.737Z"
     }
   ],
   "staticData": null,
