@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "webhook": {
       "main": [
@@ -417,6 +419,7 @@
   "isArchived": true,
   "meta": null,
   "name": "My workflow 9",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -1775,20 +1778,20 @@
   },
   "shared": [
     {
-      "createdAt": "2026-04-21T23:31:57.474Z",
-      "updatedAt": "2026-04-21T23:31:57.474Z",
       "role": "workflow:owner",
       "workflowId": "xDhmY3BZzzJ3XAp2",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2026-04-21T23:31:57.474Z",
+      "updatedAt": "2026-04-21T23:31:57.474Z"
     }
   ],
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-07-03T16:02:09.110Z",
-      "updatedAt": "2025-07-03T16:02:09.110Z",
       "id": "K5MFncsCBrk1389O",
-      "name": "IA"
+      "name": "IA",
+      "createdAt": "2025-07-03T16:02:09.110Z",
+      "updatedAt": "2025-07-03T16:02:09.110Z"
     }
   ],
   "triggerCount": 0,
