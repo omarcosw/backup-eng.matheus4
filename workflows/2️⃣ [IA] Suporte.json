@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Webhook": {
       "main": [
@@ -97,6 +99,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "2️⃣ [IA] Suporte",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -281,20 +284,20 @@
   },
   "shared": [
     {
-      "createdAt": "2025-07-07T13:00:18.332Z",
-      "updatedAt": "2025-07-07T13:00:18.332Z",
       "role": "workflow:owner",
       "workflowId": "mmeCBxR507Pd3eSO",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2025-07-07T13:00:18.332Z",
+      "updatedAt": "2025-07-07T13:00:18.332Z"
     }
   ],
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-07-03T16:02:09.110Z",
-      "updatedAt": "2025-07-03T16:02:09.110Z",
       "id": "K5MFncsCBrk1389O",
-      "name": "IA"
+      "name": "IA",
+      "createdAt": "2025-07-03T16:02:09.110Z",
+      "updatedAt": "2025-07-03T16:02:09.110Z"
     }
   ],
   "triggerCount": 1,
