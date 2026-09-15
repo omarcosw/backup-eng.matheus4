@@ -1,11 +1,1887 @@
 {
-  "active": false,
+  "active": true,
+  "activeVersion": {
+    "versionId": "07a35ccf-031a-43a3-9a21-b25135554935",
+    "workflowId": "txXL0mD8Ix5tM4OG",
+    "nodes": [
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "vendasclint",
+          "options": {}
+        },
+        "id": "443f0168-57ec-49e5-a5aa-57e5bf18a480",
+        "name": "Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2,
+        "position": [
+          -3552,
+          1408
+        ],
+        "webhookId": "31c8b5d9-2071-4463-aa69-e4cf5b432e29"
+      },
+      {
+        "parameters": {
+          "content": "## PASSO 5 - ORGANIZA E ENVIA AS MENSAGENS PARA O CLIENTE",
+          "height": 418,
+          "width": 1028,
+          "color": 6
+        },
+        "id": "912ee6f6-230c-4593-9133-f10c94fb8203",
+        "name": "Sticky Note11",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          5088,
+          2128
+        ],
+        "disabled": true
+      },
+      {
+        "parameters": {
+          "content": "## PASSO 4 - AGENTE DE IA COM INTELIGÊNCIA E TOOLS",
+          "height": 414,
+          "width": 1039,
+          "color": 6
+        },
+        "id": "5ce90d76-90e0-40a5-b9ef-49ae65ad2851",
+        "name": "Sticky Note9",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          3152,
+          2128
+        ],
+        "disabled": true
+      },
+      {
+        "parameters": {
+          "content": "## PASSO 2 - CRIA USUÁRIO NO BANCO DE DADOS SUPABASE",
+          "height": 830,
+          "width": 1099,
+          "color": 6
+        },
+        "id": "e2de8693-c1ac-48d7-9079-7788c70c3ed7",
+        "name": "Sticky Note8",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -368,
+          880
+        ]
+      },
+      {
+        "parameters": {
+          "content": "## PASSO 1 - CREDENCIAIS, DADOS, E PROMPT AGENTE",
+          "height": 634,
+          "width": 1879,
+          "color": 6
+        },
+        "id": "b15bfa08-d539-44f2-a07d-1b286ab0ce2f",
+        "name": "Sticky Note6",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -2352,
+          592
+        ]
+      },
+      {
+        "parameters": {
+          "tableId": "atendimento_wpp_vendas",
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "nome",
+                "fieldValue": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_name\"] }}"
+              },
+              {
+                "fieldId": "telefone",
+                "fieldValue": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_phone\"] }}"
+              },
+              {
+                "fieldId": "sessionid",
+                "fieldValue": "={{ $json.data }}"
+              }
+            ]
+          }
+        },
+        "id": "e28cbcab-f42b-4700-822c-fd34a8e250ec",
+        "name": "CreateUser",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          240,
+          1328
+        ],
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "tableId": "atendimento_wpp_vendas",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "telefone",
+                "keyValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"contact_phone\"] }}"
+              }
+            ]
+          }
+        },
+        "id": "d194accb-be2b-4ecc-8951-f22a320bd965",
+        "name": "getClient",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          -288,
+          1168
+        ],
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "cb6db1d3-9948-444c-a34e-834f6ef9ccde",
+                "name": "contact_name",
+                "value": "={{ $json.body.contact_name }}",
+                "type": "string"
+              },
+              {
+                "id": "889b77a8-3035-4a60-8162-e2420cc7c4e5",
+                "name": "contact_email",
+                "value": "={{ $json.body.contact_email }}",
+                "type": "string"
+              },
+              {
+                "id": "8ad39a96-96bf-4af8-ab5b-ff03ef46487c",
+                "name": "contact_phone",
+                "value": "={{ $json.body.contact_phone }}",
+                "type": "string"
+              },
+              {
+                "id": "6305506e-c1bf-4165-8369-f7deccdac4cd",
+                "name": "contact_id",
+                "value": "={{ $json.body.contact_id }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "df570e0e-b19a-41f4-bdc8-f86a7bf5bc3f",
+        "name": "camposIniciais",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -2912,
+          1408
+        ],
+        "notesInFlow": true
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "b7158aa0-84e0-44b1-8629-bf23fb4c0766",
+                "name": "=messages",
+                "value": "={{ $('HTTP- Buscar Last Message').item.json.data[0].content }}",
+                "type": "string"
+              },
+              {
+                "id": "c1fac0d7-0063-4fa3-abea-463b16d5975c",
+                "name": "session_id",
+                "value": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_id\"] }}",
+                "type": "string"
+              },
+              {
+                "id": "fef16c97-1fc7-4541-8312-b0f48706f5ce",
+                "name": "channel_id",
+                "value": "={{ $item(\"0\").$node[\"HTTP - Obter Channel\"].json[\"data\"][\"3\"][\"id\"] }}",
+                "type": "string"
+              },
+              {
+                "id": "14450ec7-0c3b-4337-a13c-1ef81d547b62",
+                "name": "chat_id",
+                "value": "={{ $item(\"0\").$node[\"HTTP Request - Buscar ChatID\"].json[\"data\"][\"0\"][\"id\"] }}",
+                "type": "string"
+              },
+              {
+                "id": "c580a7d3-f5cc-4b46-83ab-20c68bdf6890",
+                "name": "contact_id",
+                "value": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_id\"] }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "1433b6e8-0374-49a1-96e1-30bfac05733d",
+        "name": "messages",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          2992,
+          2688
+        ]
+      },
+      {
+        "parameters": {
+          "content": "## PASSO 3 - DEFINE O TIPO DE MENSAGEM E ORGANIZA PARA O AGENTE",
+          "height": 954,
+          "width": 2067,
+          "color": 6
+        },
+        "id": "d57cd23f-b2de-4ada-847c-101f421afb41",
+        "name": "Sticky Note4",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          784,
+          848
+        ]
+      },
+      {
+        "parameters": {
+          "content": "\n\n## SISTEMA RAG REANKER",
+          "height": 484,
+          "width": 1040,
+          "color": 7
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          3392,
+          2992
+        ],
+        "typeVersion": 1,
+        "id": "be1003ea-60f5-4a10-a435-dafbfb38afac",
+        "name": "Sticky Note24",
+        "disabled": true
+      },
+      {
+        "parameters": {
+          "content": "### - Verifica se já existe um cliente cadastrado\n\n### - Se sim, prossegue o fluxo\n\n### - Se não, cria um cliente e um id do chat e prossegue o fluxo",
+          "width": 660,
+          "color": 7
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          -368,
+          944
+        ],
+        "typeVersion": 1,
+        "id": "2cb12e2b-c9fe-462b-a96b-5e458205420e",
+        "name": "Sticky Note27"
+      },
+      {
+        "parameters": {
+          "jsCode": "// Extrai os números dos campos telefoneCliente e telefoneEmpresa removendo \"@s.whatsapp.net\"\nreturn items.map(item => {\n  const clienteRaw = item.json.meta?.telefoneCliente || '';\n  const empresaRaw = item.json.meta?.telefoneEmpresa || '';\n\n  const telefoneCliente = clienteRaw.split('@')[0];\n  const telefoneEmpresa = empresaRaw.split('@')[0];\n\n  return {\n    json: {\n      telefoneCliente,\n      telefoneEmpresa\n    }\n  };\n});"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -1488,
+          1088
+        ],
+        "id": "afffe719-dd96-4349-9bd9-6867c7460f55",
+        "name": "Code"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "tableId": "disparo_mensagem_ia_vendas",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "telefone",
+                "keyValue": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_phone\"] }}"
+              }
+            ]
+          }
+        },
+        "id": "178abcff-d791-4feb-b35d-98aed7f06972",
+        "name": "getContexto",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          -1136,
+          1312
+        ],
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "delete",
+          "tableId": "disparo_mensagem_ia_vendas",
+          "matchType": "allFilters",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "telefone",
+                "condition": "eq",
+                "keyValue": "={{ $item(\"0\").$node[\"Code\"].json[\"telefoneCliente\"] }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          5280,
+          2224
+        ],
+        "id": "b5ae440e-9d7a-4689-b873-dffe7e7506ca",
+        "name": "Supabase",
+        "alwaysOutputData": true,
+        "disabled": true
+      },
+      {
+        "parameters": {
+          "action": "generate"
+        },
+        "id": "8c16aeb6-8cc3-4995-87f7-76cbaf06ae89",
+        "name": "GeraUUID",
+        "type": "n8n-nodes-base.crypto",
+        "typeVersion": 1,
+        "position": [
+          80,
+          1328
+        ],
+        "notesInFlow": false
+      },
+      {
+        "parameters": {
+          "amount": 10
+        },
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          1520,
+          1264
+        ],
+        "id": "870e1008-bb60-4a78-82bf-10f32e37da9a",
+        "name": "Espere",
+        "webhookId": "416ce403-e2ff-4375-bbf5-3f6fcff59ec9"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "propertyName": "Memória Inicial",
+          "key": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_phone\"] }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.redis",
+        "typeVersion": 1,
+        "position": [
+          1328,
+          1264
+        ],
+        "id": "5d4f1e80-e66d-44d3-9280-55be8adcb02d",
+        "name": "Memória Inicial",
+        "credentials": {
+          "redis": {
+            "id": "WKYrbj8mpqYSkF5s",
+            "name": "Redis account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "propertyName": "Memória Final",
+          "key": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_phone\"] }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.redis",
+        "typeVersion": 1,
+        "position": [
+          1712,
+          1264
+        ],
+        "id": "858a28fe-6077-48f2-bf69-84a8b6ec1016",
+        "name": "Memória Final",
+        "credentials": {
+          "redis": {
+            "id": "WKYrbj8mpqYSkF5s",
+            "name": "Redis account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "// Acesse os arrays das variáveis\nconst memoriaInicialArray = $('Memória Inicial').all()[0].json['Memória Inicial'];\nconst memoriaFinalArray = $json['Memória Final'];\n\n// Verifique se as variáveis são arrays e junte os elementos em strings\nconst memoriaInicial = Array.isArray(memoriaInicialArray) ? memoriaInicialArray.join(' ') : '';\nconst memoriaFinal = Array.isArray(memoriaFinalArray) ? memoriaFinalArray.join(' ') : '';\n\n// Retorne as variáveis resultantes\nreturn {\n  memoriaInicial,\n  memoriaFinal\n};"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          1904,
+          1264
+        ],
+        "id": "468c4d5c-4b9a-4fb7-a7e9-6c398e49fc89",
+        "name": "Concatena Mensagens"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "fbe500bb-8a66-4f0c-93df-9631e3bdabfc",
+                "leftValue": "={{ $('Concatena Mensagens').all()[0].json.memoriaInicial }}",
+                "rightValue": "={{ $('Concatena Mensagens').all()[0].json.memoriaFinal }}",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.filter",
+        "typeVersion": 2.2,
+        "position": [
+          2112,
+          1264
+        ],
+        "id": "8232c5e8-4480-4eb2-b308-2f6302904d26",
+        "name": "Compara Memórias"
+      },
+      {
+        "parameters": {
+          "operation": "delete",
+          "key": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_phone\"] }}"
+        },
+        "type": "n8n-nodes-base.redis",
+        "typeVersion": 1,
+        "position": [
+          2304,
+          1264
+        ],
+        "id": "7d5051ce-1ead-45de-b463-5abf7d8493be",
+        "name": "Limpar Memória",
+        "credentials": {
+          "redis": {
+            "id": "WKYrbj8mpqYSkF5s",
+            "name": "Redis account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "18e16067-bcdb-4bda-9c22-e1869c550af6",
+                "name": "userMessage",
+                "value": "={{ $('Compara Memórias').all()[0].json.memoriaFinal }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          2416,
+          2352
+        ],
+        "id": "abe686c5-1d93-4378-88ed-f6d1f52129fa",
+        "name": "UserMessage",
+        "disabled": true
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "id": "2110a560-b4de-4a66-a4f3-26291c0e1464",
+        "name": "Modelo IA",
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+        "typeVersion": 1,
+        "position": [
+          3952,
+          2720
+        ],
+        "credentials": {
+          "openAiApi": {
+            "id": "QzQb6Q9G3hGozb9v",
+            "name": "OpenAi - Dani 2"
+          }
+        },
+        "disabled": true
+      },
+      {
+        "parameters": {
+          "amount": 3
+        },
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          432,
+          1328
+        ],
+        "id": "23c860c8-2172-41e2-a26f-fa7fac462f32",
+        "name": "Wait1",
+        "webhookId": "eec1d57a-3681-4f3f-8ca1-d82187a3250d"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.clint.digital/v2/messages/text",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "accept",
+                "value": "application/json"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n  \"nome\": \"{{ $('camposIniciais').item.json.meta.nomeCliente }}\",\n  \"telefone\": \"{{ $('camposIniciais').item.json.meta.telefoneCliente }}\",\n  \"type\": \"{{ $('camposIniciais').item.json.content.tipoMensagem }}\",\n  \"text\": {\n    \"body\": \"{{ $json.body }}\"\n  }\n} ",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          5008,
+          2736
+        ],
+        "id": "c5f511c7-e8ce-48b8-b860-90d0f870198b",
+        "name": "HTTP Request"
+      },
+      {
+        "parameters": {
+          "jsCode": "// Pega os dados dos nós anteriores\nconst camposIniciais = items[0].json;\nconst respostaIA = $input.item.json.output || $input.item.json.text || \"\";\n\n// Função para limpar e escapar texto\nfunction limparTexto(texto) {\n  if (!texto) return \"\";\n  \n  return String(texto)\n    .replace(/\\\\/g, '\\\\\\\\')     // Escapa barras invertidas primeiro\n    .replace(/\"/g, '\\\\\"')       // Escapa aspas duplas\n    .replace(/\\n/g, '\\\\n')      // Escapa quebras de linha\n    .replace(/\\r/g, '\\\\r')      // Escapa retorno de carro\n    .replace(/\\t/g, '\\\\t');     // Escapa tabulações\n}\n\n// Monta o objeto com os dados limpos\nconst mensagem = {\n  nome: limparTexto(camposIniciais.meta?.nomeCliente || \"Higor Leite\"),\n  telefone: String(camposIniciais.meta?.telefoneCliente || \"5511994151865\"),\n  type: \"message\",\n  text: \"\",\n  body: limparTexto(respostaIA)\n};\n\n// Retorna o JSON limpo e seguro\nreturn [{\n  json: mensagem\n}];"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          4560,
+          2208
+        ],
+        "id": "a55e13fa-97d8-4d18-916b-8ad7d9ceaeec",
+        "name": "Code1"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "990aa030-a2c7-40c0-8ed6-fefa0c21af0b",
+                "leftValue": "={{ $json.body.contact.phoneNumber }}",
+                "rightValue": "5511984151865",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              },
+              {
+                "id": "db83f378-1064-492e-b06c-54ffc34b07fd",
+                "leftValue": "={{ $json.body.contact.phoneNumber }}",
+                "rightValue": "5512981143224",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "or"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          -2192,
+          1120
+        ],
+        "id": "aecaa2e9-16cb-47e5-973e-1c6e49dc731a",
+        "name": "Ativar para teste"
+      },
+      {
+        "parameters": {
+          "model": "text-embedding-3-large",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+        "typeVersion": 1.2,
+        "position": [
+          3456,
+          3296
+        ],
+        "id": "57dcb29a-beff-4fd7-bed5-1733a5cc8cda",
+        "name": "Embeddings OpenAI2",
+        "credentials": {
+          "openAiApi": {
+            "id": "QzQb6Q9G3hGozb9v",
+            "name": "OpenAi - Dani 2"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "0ad262f3-a7f6-4a86-a840-1dff931a959a",
+                "name": "Preço",
+                "value": "O valor normal é R$ 3.097,00, mas liberamos um grande desconto para você de R$ 600,000\n\nPor apenas: 12 X DE R$ 258,25 Ou R$ 2.497,00 à vista no cartão, boleto a vista, pix ou Boleto parcelado em 12X DE R$ 304,12 ",
+                "type": "string"
+              },
+              {
+                "id": "1178fd11-4d1d-4ff2-9ae2-431edfc5a409",
+                "name": "Forma de Pagamento",
+                "value": "Pix, Cartão de Crédito, Boleto avista ou Boleto parcelado",
+                "type": "string"
+              },
+              {
+                "id": "41b8d959-6639-463e-9c15-0a374a87cd2f",
+                "name": "Pix, Cartão de Crédito, Boleto avista e Boleto parcelado",
+                "value": "=https://lp.sorveteiroraiz.com/pag-vnd-pg-ia/",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -960,
+          1312
+        ],
+        "id": "130ea1be-bcc7-4c48-acff-9134d4ad7da5",
+        "name": "Oferta"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "4e77cc7c-48f4-4cbe-94e7-6d211db67002",
+                "leftValue": "={{ $('getClient').item.json.telefone }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "string",
+                  "operation": "notEmpty",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "id": "36a2f880-3016-4cce-a403-fd25d0a3ecd1",
+        "name": "If",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          -96,
+          1168
+        ]
+      },
+      {
+        "parameters": {
+          "rules": {
+            "values": [
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "id": "0cb14635-2673-408e-86db-ce9e0373674b",
+                      "leftValue": "={{ $item(\"0\").$node[\"HTTP- Buscar Last Message\"].json[\"data\"][\"0\"][\"content_type\"] }}",
+                      "rightValue": "TEXT",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals",
+                        "name": "filter.operator.equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Texto"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "id": "485658e2-b60e-46bf-afb7-250cc1b5bb8b",
+                      "leftValue": "={{ $item(\"0\").$node[\"HTTP- Buscar Last Message\"].json[\"data\"][\"0\"][\"content_type\"] }}",
+                      "rightValue": "image",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals",
+                        "name": "filter.operator.equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "imagem"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 2
+                  },
+                  "conditions": [
+                    {
+                      "id": "35ed5c99-4c5f-4d98-9a23-12882f27d1a4",
+                      "leftValue": "={{ $item(\"0\").$node[\"HTTP- Buscar Last Message\"].json[\"data\"][\"0\"][\"content_type\"] }}",
+                      "rightValue": "AUDIO",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals",
+                        "name": "filter.operator.equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "audio"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "3932a0b9-b1e6-49df-a274-51dabbd4077e",
+        "name": "Switch2",
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 3.2,
+        "position": [
+          848,
+          1264
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "push",
+          "list": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_phone\"] }}",
+          "messageData": "={{ $item(\"0\").$node[\"Switch2\"].json[\"sessionid\"] }}",
+          "tail": true
+        },
+        "type": "n8n-nodes-base.redis",
+        "typeVersion": 1,
+        "position": [
+          1104,
+          1264
+        ],
+        "id": "dbe8fa8f-a5f6-41ca-8a54-e7fb488358c1",
+        "name": "Add na Memória",
+        "credentials": {
+          "redis": {
+            "id": "WKYrbj8mpqYSkF5s",
+            "name": "Redis account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "b82c2f1e-c68b-456a-81e9-11a8ac3bfaae",
+                "leftValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"contact_tag\"][\"1\"][\"name\"] }}",
+                "rightValue": "pausar_atendimento",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          -3248,
+          1360
+        ],
+        "id": "738732f6-0fe5-4609-a925-eea231eb1391",
+        "name": "pausar atendimento"
+      },
+      {
+        "parameters": {
+          "toolDescription": "acione essa acao tool todas as vezes que o lead mencionar que \"ja comprou, ja se inscreveu, ja e aluno, ja pagou o boleto\"",
+          "method": "POST",
+          "url": "https://unnichat.com.br/a/start/NgScgjICMxkiq48o1lgf",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n  \"nome\": \"{{ $('camposIniciais').item.json.meta.nomeCliente }}\",\n  \"telefone\": \"{{ $('camposIniciais').item.json.meta.telefoneCliente }}\",\n  \"type\": \"{{ $('camposIniciais').item.json.content.tipoMensagem }}\",\n  \"text\": {\n    \"body\": \"adicionar tag\"\n  }\n} ",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequestTool",
+        "typeVersion": 4.2,
+        "position": [
+          3760,
+          3152
+        ],
+        "id": "c0e01e13-7dd3-47d7-aba3-6a7b3b094fca",
+        "name": "viroucliente",
+        "disabled": true
+      },
+      {
+        "parameters": {},
+        "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
+        "typeVersion": 1,
+        "position": [
+          3600,
+          3312
+        ],
+        "id": "03f4dc45-136b-4d7f-a291-523e96fc9d6d",
+        "name": "Reranker Cohere",
+        "credentials": {
+          "cohereApi": {
+            "id": "tSc0UxtlAdJbmFqO",
+            "name": "NOVO"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "={{ $json.messages }}",
+          "options": {
+            "systemMessage": "=<papel>\nVocê é a Dani, do time do Sorveteiro Raiz. Você conversa com leads pelo WhatsApp,\ntira dúvidas sobre o curso Profissão Sorveteiro, contorna objeções e conduz a\nconversa até a matrícula.\n</papel>\n\n<contexto>\nO Profissão Sorveteiro é um curso de produção PROFISSIONAL de sorvete, não é\ncurso caseiro. Nada de receita de batedeira ou dica de cozinha de casa.\n\nQuem chega até você costuma querer abrir o próprio negócio, ter uma nova fonte\nde renda, profissionalizar uma produção que já existe ou conquistar\nindependência financeira. As dores mais comuns são: não saber por onde começar,\nmedo de investir e não dar certo, falta de experiência com sorvete, falta de\nequipamento, falta de tempo e o valor do investimento.\n\nVocê cuida da parte comercial. Não domina a técnica de produção, e isso não é\nproblema nenhum: quem ensina técnica é o curso.\n\nSeu jeito de falar é direto, caloroso e humano. Você é mulher, tem 40 anos, é\neducada e experiente. Conduz a conversa com perguntas em vez de despejar\ninformação, entende a dor antes de oferecer solução, e provoca sem ser agressiva.\n</contexto>\n\n<dados>\nPrimeiro nome do lead: {{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_name\"].split(\" \")[0] }}\nHistórico da conversa: {{ $item(\"0\").$node[\"getContexto\"].json[\"contact_name\"] }}\nData e hora agora: {{ new Date($now).toLocaleString(\"pt-BR\", { timeZone: \"America/Sao_Paulo\" }) }}\nPreço: {{ $node[\"Oferta\"].json[\"Preço\"] }}\nFormas de pagamento: {{ $node[\"Oferta\"].json[\"Forma de Pagamento\"] }}\nLink de pagamento: {{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito, Boleto avista e Boleto parcelado\"] }}\n\nPreço, formas de pagamento e link saem daqui, copiados exatamente como estão.\nSe algum vier vazio, diga que vai confirmar e retornar, em vez de arriscar um\nnúmero errado.\n</dados>\n\n<ferramentas>\ndata_info — é onde está toda a sua base de conhecimento sobre o curso: conteúdo,\nementa, equipamentos, prazo de acesso, pagamento, argumentos de objeção.\n\nConsulte a data_info antes de responder qualquer mensagem que traga pergunta,\ndúvida ou objeção. A query é o texto do lead copiado igual, sem resumir nem\nreescrever. Na dúvida sobre consultar, consulte.\n\nResponda só a partir do que a tool devolveu, e só a parte que responde à\npergunta. A tool pode voltar com texto longo; seu trabalho é extrair o trecho\nútil e reescrever curto e natural.\n\nSe a tool não trouxer nada que sirva, diga que vai verificar e já retorna, e\npuxe a conversa de volta para o que você consegue ajudar agora.\n\nResponda sem consultar a tool apenas em cumprimento, agradecimento, confirmação\ncurta e despedida.\n\nviroucliente — action tool. Acione imediatamente depois de enviar a mensagem de\nboas-vindas para quem confirmou o pagamento do curso.\n</ferramentas>\n\n<regras>\n1. Trate o lead pelo primeiro nome que está em dados.\n\n2. Apresente-se só quando o histórico da conversa estiver vazio. Se já houver\n   conversa, entre direto no assunto.\n\n3. Pergunta técnica de produção você devolve com honestidade: diga que cuida do\n   comercial e não tem o conhecimento técnico, e leve para o conteúdo do curso.\n   Vale para receita, sabor, ingrediente, proporção, textura, processo de\n   fabricação e qualquer \"como faço para\". Se o lead insistir, consulte a\n   data_info com \"ementa do curso\", mostre o que ele vai aprender e conduza para\n   a matrícula.\n\n4. Fale que o curso é de produção profissional. Nunca diga que dá para fazer\n   na batedeira ou em casa.\n\n5. Número de faturamento, ganho mensal e resultado de aluno só entram na conversa\n   se vierem da data_info. Sem isso, fale de transformação e de caminho, não de\n   valor ganho.\n\n6. Mande o link de pagamento assim que o lead demonstrar interesse em comprar.\n   Serve como sinal: quero comprar, vou fechar, me manda o link, como faço para\n   pagar, quero garantir minha vaga, vamos lá, pode mandar. Fora isso, não mande\n   link sem o lead pedir.\n\n7. Link vai em texto puro, sozinho em uma linha, sem asterisco, aspas, colchete\n   ou qualquer formatação em volta. Formatação quebra o clique.\n\n8. Pergunta de preço: se você ainda não apresentou o curso nessa conversa,\n   apresente primeiro e depois dê o valor. Se já apresentou, responda o valor\n   direto, com as formas de pagamento e o link.\n\n9. \"Vou pensar\" não encerra a conversa. Pergunte o que falta para decidir e o que\n   está segurando. Duas tentativas de contorno, no máximo. Se o lead mantiver,\n   respeite e deixe a porta aberta.\n\n10. Mensagem de boas-vindas de novo aluno só sai com três confirmações ao mesmo\n    tempo: o lead falou em pagamento feito, falou que o pagamento foi DO CURSO, e\n    usou o verbo no passado ou presente. Faltando qualquer uma, pergunte antes:\n    \"[nome], só para confirmar: você já realizou o pagamento do curso Profissão\n    Sorveteiro?\" Depois de enviar as boas-vindas, acione a viroucliente.\n\n11. O bônus de acesso à IA de Suporte é só para quem comprar o curso na\n    segunda-feira, entre 7h e 9h da manhã.\n\n12. Lead agressivo: mantenha a calma e volte para a solução. Se continuar,\n    encerre com educação e deixe o canal aberto.\n\n13. Nunca diga que é uma IA, robô ou assistente virtual. Você é a Dani.\n</regras>\n\n<estilo>\nEscreva como gente falando no WhatsApp. Frase curta, palavra simples, nada de\nformalidade e nada de fala robótica.\n\nMáximo de 600 caracteres por mensagem, e o ponto ideal fica entre 300 e 500.\n\nTexto puro, sem emoji e sem exagero de pontuação.\n\nToda mensagem termina com uma pergunta estratégica, uma provocação curiosa ou um\npróximo passo claro. Termine com algo que o lead consiga responder.\n\nEstas fechadas não servem, porque não pedem nada e matam a conversa:\n\"quer saber mais\", \"fico à disposição\", \"tem alguma dúvida\", \"qualquer coisa me\nchama\", \"estou aqui para ajudar\", \"pode contar comigo\".\n\nFechadas que funcionam, adaptando ao contexto: \"te mando o link para garantir sua\nvaga agora?\", \"o que está te segurando, é o valor ou o conteúdo?\", \"qual dessas\npartes mais te chamou atenção?\", \"quanto tempo mais você quer esperar para ter o\nseu próprio negócio?\".\n</estilo>\n\n<exemplos>\n<exemplo>\n<entrada>qual a receita pra deixar o sorvete bem cremoso?</entrada>\n<saida>Maria, eu cuido da parte comercial aqui do Sorveteiro Raiz, então não tenho esse conhecimento técnico de produção para te passar. O que eu sei é que cremosidade é justamente um dos pontos que o Profissão Sorveteiro trabalha, com técnica de sorveteiro profissional. Te mostro o que tem dentro do curso?</saida>\n</exemplo>\n\n<exemplo>\n<entrada>quanto custa?</entrada>\n<saida>Te falo sim, Maria. Antes disso, deixa eu te mostrar rapidinho o que o curso entrega, porque é isso que explica o investimento. [conteúdo vindo da data_info, curto]. Faz sentido para o que você quer montar?</saida>\n</exemplo>\n\n<exemplo>\n<entrada>vou pensar e te falo</entrada>\n<saida>Entendo, Maria. Só me conta uma coisa: o que te faria decidir hoje? É o valor, o conteúdo ou outra coisa? Pergunto porque quase sempre dá para resolver na conversa, e aí você decide com tudo na mão.</saida>\n</exemplo>\n\n<exemplo>\n<entrada>me manda o link</entrada>\n<saida>Perfeito, Maria! Segue o link para a sua inscrição:\n\n[link de pagamento]\n\nVocê paga por [formas de pagamento]. Se travar em alguma etapa do checkout, me chama aqui que eu destravo com você.</saida>\n</exemplo>\n\n<exemplo>\n<entrada>acabei de fazer o pix do curso</entrada>\n<saida>Que maravilha, Maria! Seja muito bem-vinda à família Sorveteiro Raiz! Assim que sua inscrição entrar no nosso sistema, a Ana do nosso time de suporte ao aluno vai entrar em contato com você pelo WhatsApp. Fique de olho! É um prazer ter você com a gente.</saida>\n</exemplo>\n</exemplos>\n\n<lembrete>\nConsulte a data_info antes de responder pergunta, dúvida ou objeção, com a query\nigual ao texto do lead, e responda só com o que ela trouxe.\n\nNão dê receita, proporção nem processo de produção. Você cuida do comercial e leva\na conversa para o curso.\n\nBoas-vindas de aluno novo só com as três confirmações: pagamento feito, do curso,\nno passado. Depois de enviar, acione a viroucliente.\n</lembrete>"
+          }
+        },
+        "id": "9d1e56f9-6e4e-434e-aab6-3ed98b9e5057",
+        "name": "IA VENDAS",
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 1.7,
+        "position": [
+          3680,
+          2384
+        ]
+      },
+      {
+        "parameters": {
+          "sessionIdType": "customKey",
+          "sessionKey": "={{ $('messages').item.json.contact_id }}",
+          "tableName": "memoriaia",
+          "contextWindowLength": 10
+        },
+        "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+        "typeVersion": 1.3,
+        "position": [
+          3760,
+          2624
+        ],
+        "id": "66d5a983-ab08-4f38-9817-8d26eaa8a9f6",
+        "name": "Postgres Chat Memory",
+        "credentials": {
+          "postgres": {
+            "id": "IYNLdJqCB5ipfbuh",
+            "name": "Postgres account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "tableId": "atendimento_wpp_vendas",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "telefone",
+                "condition": "eq",
+                "keyValue": "={{ $('camposIniciais').item.json.meta.telefoneCliente }}"
+              }
+            ]
+          },
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "ultima_mensagem",
+                "fieldValue": "={{ $now }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          5472,
+          2224
+        ],
+        "id": "fd1ed724-9e00-4dac-b0db-f4803bd41d3c",
+        "name": "Update ultima mensagem",
+        "alwaysOutputData": true,
+        "disabled": true
+      },
+      {
+        "parameters": {
+          "operation": "deleteTable",
+          "schema": {
+            "__rl": true,
+            "mode": "list",
+            "value": "public"
+          },
+          "table": {
+            "__rl": true,
+            "value": "memoriaia",
+            "mode": "list",
+            "cachedResultName": "memoriaia"
+          },
+          "deleteCommand": "delete",
+          "where": {
+            "values": [
+              {
+                "column": "session_id",
+                "value": "34844971-d92c-45a4-8cdd-6a93ab878050"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.6,
+        "position": [
+          3680,
+          64
+        ],
+        "id": "9efe1d80-c160-4834-b7bc-8424bb6a8957",
+        "name": "Delete table or rows",
+        "disabled": true
+      },
+      {
+        "parameters": {
+          "resource": "audio",
+          "modelId": {
+            "__rl": true,
+            "value": "models/gemini-2.5-flash",
+            "mode": "list",
+            "cachedResultName": "models/gemini-2.5-flash"
+          },
+          "audioUrls": "={{ $item(\"0\").$node[\"HTTP- Buscar Last Message\"].json[\"data\"][\"1\"][\"content_type\"] }}",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.googleGemini",
+        "typeVersion": 1,
+        "position": [
+          1072,
+          1552
+        ],
+        "id": "81bf2b60-dc0a-47e6-9e19-907c4f369da2",
+        "name": "Transcribe a recording",
+        "credentials": {
+          "googlePalmApi": {
+            "id": "pgFHVz3tyeXURIqV",
+            "name": "Google Gemini(PaLM) Api account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "push",
+          "list": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_phone\"] }}",
+          "messageData": "={{ $item(\"0\").$node[\"Transcribe a recording\"].json[\"content\"][\"parts\"][\"0\"][\"text\"] }}",
+          "tail": true
+        },
+        "id": "6a9c99b0-9dd0-406f-9bd4-836e520d5dc5",
+        "name": "empilhaÁudio2",
+        "type": "n8n-nodes-base.redis",
+        "typeVersion": 1,
+        "position": [
+          1328,
+          1568
+        ],
+        "credentials": {
+          "redis": {
+            "id": "WKYrbj8mpqYSkF5s",
+            "name": "Redis account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "mode": "retrieve-as-tool",
+          "toolDescription": "Essa tool tem a função de buscar as informações dentro do banco de dados para uma excelente resposta dentro do contexto perguntado\n\nÉ de extrema importancia que Sempre inicie a resposta chamando a tool  mesmo que a pergunta não pareça relacionada. Pegue o texto 100% Igual o do output que saiu do \"IA VENDAS\" para usar como busca.\n\nNunca desenvolva uma resposta 100% referente a o texto de pergunta/resposta do output \"IA VENDAS\", sempre consulte também a memória e contexto. Não invente nada.\n\n",
+          "tableName": {
+            "__rl": true,
+            "value": "ps_objecoes",
+            "mode": "list",
+            "cachedResultName": "ps_objecoes"
+          },
+          "topK": 12,
+          "useReranker": true,
+          "options": {
+            "queryName": "match_ps_objecoes"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+        "typeVersion": 1.3,
+        "position": [
+          3456,
+          3136
+        ],
+        "id": "ccd33ac1-df6e-4681-becd-0b2474519e70",
+        "name": "data_info",
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "resource": "image",
+          "operation": "analyze",
+          "modelId": {
+            "__rl": true,
+            "value": "models/gemini-2.5-flash",
+            "mode": "list",
+            "cachedResultName": "models/gemini-2.5-flash"
+          },
+          "text": "oque tem na imagem? depois passe uma ressposta para frente dizendo oque tem nela ",
+          "imageUrls": "={{ $item(\"0\").$node[\"HTTP- Buscar Last Message\"].json[\"data\"][\"1\"][\"content_type\"] }}",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.googleGemini",
+        "typeVersion": 1,
+        "position": [
+          1040,
+          944
+        ],
+        "id": "c28cc294-3d33-4464-bd34-ba724bf3f840",
+        "name": "Analyze image",
+        "credentials": {
+          "googlePalmApi": {
+            "id": "pgFHVz3tyeXURIqV",
+            "name": "Google Gemini(PaLM) Api account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "push",
+          "list": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_phone\"] }}",
+          "messageData": "={{ $item(\"0\").$node[\"Analyze image\"].json[\"content\"][\"parts\"][\"0\"][\"text\"] }}",
+          "tail": true
+        },
+        "id": "aaac4d60-c795-4929-a14e-e58dcef8f450",
+        "name": "empilhaÁudio",
+        "type": "n8n-nodes-base.redis",
+        "typeVersion": 1,
+        "position": [
+          1296,
+          944
+        ],
+        "credentials": {
+          "redis": {
+            "id": "WKYrbj8mpqYSkF5s",
+            "name": "Redis account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "url": "=https://api.clint.digital/v2/chats/contact/{{ $json.contact_id }}",
+          "sendQuery": true,
+          "queryParameters": {
+            "parameters": [
+              {
+                "name": "limit",
+                "value": "200"
+              },
+              {
+                "name": "offset",
+                "value": "0"
+              },
+              {
+                "name": "page",
+                "value": "1"
+              }
+            ]
+          },
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "accept",
+                "value": "application/json"
+              },
+              {
+                "name": "api-token",
+                "value": "clint_live_B2-nsXDsWIG6LX1KwKLKDDka1912Cx15c-HRyVm5ml4"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          -2592,
+          1424
+        ],
+        "id": "4244455b-4b35-43bd-8eb4-41f7091e5d89",
+        "name": "HTTP Request - Buscar ChatID"
+      },
+      {
+        "parameters": {
+          "url": "=https://api.clint.digital/v2/messages/chat/{{ $item(\"0\").$node[\"HTTP Request - Buscar ChatID\"].json[\"data\"][\"0\"][\"id\"] }}",
+          "sendQuery": true,
+          "queryParameters": {
+            "parameters": [
+              {
+                "name": "limit",
+                "value": "200"
+              },
+              {
+                "name": "offset",
+                "value": "0"
+              },
+              {
+                "name": "page",
+                "value": "1"
+              }
+            ]
+          },
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "accept",
+                "value": "application/json"
+              },
+              {
+                "name": "api-token",
+                "value": "clint_live_B2-nsXDsWIG6LX1KwKLKDDka1912Cx15c-HRyVm5ml4"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          -2016,
+          1440
+        ],
+        "id": "6f498be9-27cf-4a79-9973-4cffdf1d5de0",
+        "name": "HTTP- Buscar Last Message"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "b7158aa0-84e0-44b1-8629-bf23fb4c0766",
+                "name": "=messages",
+                "value": "={{ $('HTTP- Buscar Last Message').item.json.data[0].content }}",
+                "type": "string"
+              },
+              {
+                "id": "0c4c3b74-297a-4cf2-b2b8-0feefad328ec",
+                "name": "sessionId",
+                "value": "={{ $item(\"0\").$node[\"getClient\"].json[\"sessionid\"] }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "7346a889-72aa-4295-a882-aa9547d94fbd",
+        "name": "messages1",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          2336,
+          2944
+        ]
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.clint.digital/v2/messages/text",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "accept",
+                "value": "application/json"
+              },
+              {
+                "name": "api-token",
+                "value": "clint_live_B2-nsXDsWIG6LX1KwKLKDDka1912Cx15c-HRyVm5ml4"
+              }
+            ]
+          },
+          "sendBody": true,
+          "bodyParameters": {
+            "parameters": [
+              {
+                "name": "channel_account_id",
+                "value": "={{ $item(\"0\").$node[\"messages\"].json[\"channel_id\"] }}"
+              },
+              {
+                "name": "contact_id",
+                "value": "={{ $item(\"0\").$node[\"messages\"].json[\"contact_id\"] }}"
+              },
+              {
+                "name": "message",
+                "value": "={{ $('IA VENDAS').item.json.output }}"
+              },
+              {
+                "name": "chat_id",
+                "value": "={{ $item(\"0\").$node[\"messages\"].json[\"chat_id\"] }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          4800,
+          2208
+        ],
+        "id": "6f536756-acc3-49df-a04f-9dd85f3d7f64",
+        "name": "HTTP - Send Message"
+      },
+      {
+        "parameters": {
+          "url": "https://api.clint.digital/v2/channel-accounts",
+          "sendQuery": true,
+          "queryParameters": {
+            "parameters": [
+              {
+                "name": "limit",
+                "value": "100"
+              },
+              {
+                "name": "offset",
+                "value": "0"
+              },
+              {
+                "name": "page",
+                "value": "1"
+              }
+            ]
+          },
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "accept",
+                "value": "application/json"
+              },
+              {
+                "name": "api-token",
+                "value": "clint_live_B2-nsXDsWIG6LX1KwKLKDDka1912Cx15c-HRyVm5ml4"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          -2304,
+          1408
+        ],
+        "id": "b46fa8e5-b867-42ed-9bea-ee1d49db00a5",
+        "name": "HTTP - Obter Channel"
+      },
+      {
+        "parameters": {
+          "model": {
+            "__rl": true,
+            "value": "claude-haiku-4-5-20251001",
+            "mode": "list",
+            "cachedResultName": "Claude Haiku 4.5"
+          },
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+        "typeVersion": 1.3,
+        "position": [
+          3488,
+          2688
+        ],
+        "id": "3673d69b-862f-448c-8689-4286726afe7d",
+        "name": "Anthropic Chat Model",
+        "credentials": {
+          "anthropicApi": {
+            "id": "k4S8P7xRSOAsH8mI",
+            "name": "Anthropic account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "2b6b37a8-d1c6-45b5-bd2a-e57295cfaeed",
+                "leftValue": "={{ $item(\"0\").$node[\"HTTP- Buscar Last Message\"].json[\"data\"][\"0\"][\"type\"] }}",
+                "rightValue": "CUSTOMER",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          -1696,
+          1424
+        ],
+        "id": "7c257d6e-964e-4f3f-acab-b19b2c464b5a",
+        "name": "pausar atendimento1"
+      }
+    ],
+    "connections": {
+      "Webhook": {
+        "main": [
+          [
+            {
+              "node": "pausar atendimento",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "CreateUser": {
+        "main": [
+          [
+            {
+              "node": "Wait1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "getClient": {
+        "main": [
+          [
+            {
+              "node": "If",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "camposIniciais": {
+        "main": [
+          [
+            {
+              "node": "HTTP Request - Buscar ChatID",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "messages": {
+        "main": [
+          [
+            {
+              "node": "IA VENDAS",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code": {
+        "main": [
+          []
+        ]
+      },
+      "getContexto": {
+        "main": [
+          [
+            {
+              "node": "Oferta",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GeraUUID": {
+        "main": [
+          [
+            {
+              "node": "CreateUser",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Supabase": {
+        "main": [
+          [
+            {
+              "node": "Update ultima mensagem",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Espere": {
+        "main": [
+          [
+            {
+              "node": "Memória Final",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Memória Inicial": {
+        "main": [
+          [
+            {
+              "node": "Espere",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Memória Final": {
+        "main": [
+          [
+            {
+              "node": "Concatena Mensagens",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Concatena Mensagens": {
+        "main": [
+          [
+            {
+              "node": "Compara Memórias",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Compara Memórias": {
+        "main": [
+          [
+            {
+              "node": "Limpar Memória",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Limpar Memória": {
+        "main": [
+          [
+            {
+              "node": "UserMessage",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "UserMessage": {
+        "main": [
+          [
+            {
+              "node": "messages",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Modelo IA": {
+        "ai_languageModel": [
+          []
+        ]
+      },
+      "Wait1": {
+        "main": [
+          [
+            {
+              "node": "getClient",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "HTTP Request": {
+        "main": [
+          []
+        ]
+      },
+      "Code1": {
+        "main": [
+          [
+            {
+              "node": "HTTP - Send Message",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Ativar para teste": {
+        "main": [
+          []
+        ]
+      },
+      "Embeddings OpenAI2": {
+        "ai_embedding": [
+          [
+            {
+              "node": "data_info",
+              "type": "ai_embedding",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Oferta": {
+        "main": [
+          [
+            {
+              "node": "getClient",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If": {
+        "main": [
+          [
+            {
+              "node": "Switch2",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "GeraUUID",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Switch2": {
+        "main": [
+          [
+            {
+              "node": "Add na Memória",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Analyze image",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Transcribe a recording",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Add na Memória": {
+        "main": [
+          [
+            {
+              "node": "Memória Inicial",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "pausar atendimento": {
+        "main": [
+          [],
+          [
+            {
+              "node": "camposIniciais",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "viroucliente": {
+        "ai_tool": [
+          []
+        ]
+      },
+      "Reranker Cohere": {
+        "ai_reranker": [
+          [
+            {
+              "node": "data_info",
+              "type": "ai_reranker",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IA VENDAS": {
+        "main": [
+          [
+            {
+              "node": "Code1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Postgres Chat Memory": {
+        "ai_memory": [
+          [
+            {
+              "node": "IA VENDAS",
+              "type": "ai_memory",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Transcribe a recording": {
+        "main": [
+          [
+            {
+              "node": "empilhaÁudio2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "empilhaÁudio2": {
+        "main": [
+          [
+            {
+              "node": "Memória Inicial",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "data_info": {
+        "ai_tool": [
+          [
+            {
+              "node": "IA VENDAS",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Analyze image": {
+        "main": [
+          [
+            {
+              "node": "empilhaÁudio",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "empilhaÁudio": {
+        "main": [
+          [
+            {
+              "node": "Memória Inicial",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "HTTP Request - Buscar ChatID": {
+        "main": [
+          [
+            {
+              "node": "HTTP - Obter Channel",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "HTTP- Buscar Last Message": {
+        "main": [
+          [
+            {
+              "node": "pausar atendimento1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "HTTP - Send Message": {
+        "main": [
+          []
+        ]
+      },
+      "HTTP - Obter Channel": {
+        "main": [
+          [
+            {
+              "node": "HTTP- Buscar Last Message",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Anthropic Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "IA VENDAS",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "pausar atendimento1": {
+        "main": [
+          [
+            {
+              "node": "getContexto",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "nodeGroups": [],
+    "authors": "Sorveteiro Raiz",
+    "name": "Version 07a35ccf",
+    "description": "",
+    "autosaved": false,
+    "createdAt": "2026-09-15T20:12:36.706Z",
+    "updatedAt": "2026-09-15T20:12:38.316Z"
+  },
+  "activeVersionId": "07a35ccf-031a-43a3-9a21-b25135554935",
   "connections": {
     "Webhook": {
       "main": [
         [
           {
-            "node": "camposIniciais",
+            "node": "pausar atendimento",
             "type": "main",
             "index": 0
           }
@@ -58,13 +1934,7 @@
     },
     "Code": {
       "main": [
-        [
-          {
-            "node": "getContexto",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "getContexto": {
@@ -179,13 +2049,7 @@
     },
     "Modelo IA": {
       "ai_languageModel": [
-        [
-          {
-            "node": "IA VENDAS",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Wait1": {
@@ -298,14 +2162,14 @@
     },
     "pausar atendimento": {
       "main": [
+        [],
         [
           {
-            "node": "Code",
+            "node": "camposIniciais",
             "type": "main",
             "index": 0
           }
-        ],
-        []
+        ]
       ]
     },
     "viroucliente": {
@@ -370,7 +2234,13 @@
     },
     "data_info": {
       "ai_tool": [
-        []
+        [
+          {
+            "node": "IA VENDAS",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
       ]
     },
     "Analyze image": {
@@ -410,7 +2280,7 @@
       "main": [
         [
           {
-            "node": "pausar atendimento",
+            "node": "pausar atendimento1",
             "type": "main",
             "index": 0
           }
@@ -432,6 +2302,28 @@
           }
         ]
       ]
+    },
+    "Anthropic Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "IA VENDAS",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pausar atendimento1": {
+      "main": [
+        [
+          {
+            "node": "getContexto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-07-12T17:38:27.739Z",
@@ -441,6 +2333,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "[IA] VENDAS clint",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -453,7 +2346,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -3152,
+        -3552,
         1408
       ],
       "webhookId": "31c8b5d9-2071-4463-aa69-e4cf5b432e29"
@@ -531,15 +2424,11 @@
           "fieldValues": [
             {
               "fieldId": "nome",
-              "fieldValue": "={{ $('camposIniciais').item.json.meta.nomeCliente }}"
+              "fieldValue": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_name\"] }}"
             },
             {
               "fieldId": "telefone",
-              "fieldValue": "={{ $item(\"0\").$node[\"Code\"].json[\"telefoneCliente\"] }}"
-            },
-            {
-              "fieldId": "idmensagem",
-              "fieldValue": "={{ $('camposIniciais').item.json.content.idMensagem }}"
+              "fieldValue": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_phone\"] }}"
             },
             {
               "fieldId": "sessionid",
@@ -736,8 +2625,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -1328,
-        1312
+        -1488,
+        1088
       ],
       "id": "afffe719-dd96-4349-9bd9-6867c7460f55",
       "name": "Code"
@@ -750,7 +2639,7 @@
           "conditions": [
             {
               "keyName": "telefone",
-              "keyValue": "={{ $node[\"Webhook\"].json[\"body\"][\"contact\"][\"phoneNumber\"] }}"
+              "keyValue": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_phone\"] }}"
             }
           ]
         }
@@ -829,7 +2718,7 @@
       "parameters": {
         "operation": "get",
         "propertyName": "Memória Inicial",
-        "key": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"telefoneCliente\"] }}",
+        "key": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_phone\"] }}",
         "options": {}
       },
       "type": "n8n-nodes-base.redis",
@@ -851,7 +2740,7 @@
       "parameters": {
         "operation": "get",
         "propertyName": "Memória Final",
-        "key": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"telefoneCliente\"] }}",
+        "key": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_phone\"] }}",
         "options": {}
       },
       "type": "n8n-nodes-base.redis",
@@ -919,7 +2808,7 @@
     {
       "parameters": {
         "operation": "delete",
-        "key": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"telefoneCliente\"] }}"
+        "key": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_phone\"] }}"
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
@@ -969,15 +2858,16 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        3584,
-        2624
+        3952,
+        2720
       ],
       "credentials": {
         "openAiApi": {
           "id": "QzQb6Q9G3hGozb9v",
           "name": "OpenAi - Dani 2"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -1090,7 +2980,12 @@
       ],
       "id": "57dcb29a-beff-4fd7-bed5-1733a5cc8cda",
       "name": "Embeddings OpenAI2",
-      "disabled": true
+      "credentials": {
+        "openAiApi": {
+          "id": "QzQb6Q9G3hGozb9v",
+          "name": "OpenAi - Dani 2"
+        }
+      }
     },
     {
       "parameters": {
@@ -1176,8 +3071,8 @@
                 "conditions": [
                   {
                     "id": "0cb14635-2673-408e-86db-ce9e0373674b",
-                    "leftValue": "={{ $('camposIniciais').item.json.content.tipoMensagem }}",
-                    "rightValue": "message",
+                    "leftValue": "={{ $item(\"0\").$node[\"HTTP- Buscar Last Message\"].json[\"data\"][\"0\"][\"content_type\"] }}",
+                    "rightValue": "TEXT",
                     "operator": {
                       "type": "string",
                       "operation": "equals",
@@ -1201,7 +3096,7 @@
                 "conditions": [
                   {
                     "id": "485658e2-b60e-46bf-afb7-250cc1b5bb8b",
-                    "leftValue": "={{ $('Webhook').item.json.body.contact.lastMessageData.messageType }}",
+                    "leftValue": "={{ $item(\"0\").$node[\"HTTP- Buscar Last Message\"].json[\"data\"][\"0\"][\"content_type\"] }}",
                     "rightValue": "image",
                     "operator": {
                       "type": "string",
@@ -1226,8 +3121,8 @@
                 "conditions": [
                   {
                     "id": "35ed5c99-4c5f-4d98-9a23-12882f27d1a4",
-                    "leftValue": "={{ $('Webhook').item.json.body.contact.lastMessageData.messageType }}",
-                    "rightValue": "audio",
+                    "leftValue": "={{ $item(\"0\").$node[\"HTTP- Buscar Last Message\"].json[\"data\"][\"0\"][\"content_type\"] }}",
+                    "rightValue": "AUDIO",
                     "operator": {
                       "type": "string",
                       "operation": "equals",
@@ -1256,8 +3151,8 @@
     {
       "parameters": {
         "operation": "push",
-        "list": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"telefoneCliente\"] }}",
-        "messageData": "={{ $('camposIniciais').item.json.content.quoted }}",
+        "list": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_phone\"] }}",
+        "messageData": "={{ $item(\"0\").$node[\"Switch2\"].json[\"sessionid\"] }}",
         "tail": true
       },
       "type": "n8n-nodes-base.redis",
@@ -1287,21 +3182,11 @@
           "conditions": [
             {
               "id": "b82c2f1e-c68b-456a-81e9-11a8ac3bfaae",
-              "leftValue": "={{ $item(\"0\").$node[\"HTTP- Buscar Last Message\"].json[\"data\"][\"0\"][\"content\"] }}",
-              "rightValue": "PRECISO DE AJUDA",
+              "leftValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"contact_tag\"][\"1\"][\"name\"] }}",
+              "rightValue": "pausar_atendimento",
               "operator": {
                 "type": "string",
                 "operation": "equals"
-              }
-            },
-            {
-              "id": "2b6b37a8-d1c6-45b5-bd2a-e57295cfaeed",
-              "leftValue": "={{ $item(\"0\").$node[\"HTTP- Buscar Last Message\"].json[\"data\"][\"0\"][\"type\"] }}",
-              "rightValue": "CUSTOMER",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
               }
             }
           ],
@@ -1312,8 +3197,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1600,
-        1504
+        -3248,
+        1360
       ],
       "id": "738732f6-0fe5-4609-a925-eea231eb1391",
       "name": "pausar atendimento"
@@ -1348,14 +3233,19 @@
       ],
       "id": "03f4dc45-136b-4d7f-a291-523e96fc9d6d",
       "name": "Reranker Cohere",
-      "disabled": true
+      "credentials": {
+        "cohereApi": {
+          "id": "tSc0UxtlAdJbmFqO",
+          "name": "NOVO"
+        }
+      }
     },
     {
       "parameters": {
         "promptType": "define",
         "text": "={{ $json.messages }}",
         "options": {
-          "systemMessage": "=<papel>\nVocê é a Dani, do time do Sorveteiro Raiz. Você conversa com leads pelo WhatsApp,\ntira dúvidas sobre o curso Profissão Sorveteiro, contorna objeções e conduz a\nconversa até a matrícula.\n</papel>\n\n<contexto>\nO Profissão Sorveteiro é um curso de produção PROFISSIONAL de sorvete, não é\ncurso caseiro. Nada de receita de batedeira ou dica de cozinha de casa.\n\nQuem chega até você costuma querer abrir o próprio negócio, ter uma nova fonte\nde renda, profissionalizar uma produção que já existe ou conquistar\nindependência financeira. As dores mais comuns são: não saber por onde começar,\nmedo de investir e não dar certo, falta de experiência com sorvete, falta de\nequipamento, falta de tempo e o valor do investimento.\n\nVocê cuida da parte comercial. Não domina a técnica de produção, e isso não é\nproblema nenhum: quem ensina técnica é o curso.\n\nSeu jeito de falar é direto, caloroso e humano. Você é mulher, tem 40 anos, é\neducada e experiente. Conduz a conversa com perguntas em vez de despejar\ninformação, entende a dor antes de oferecer solução, e provoca sem ser agressiva.\n</contexto>\n\n<dados>\nPrimeiro nome do lead: {{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"nomeCliente\"].split(\" \")[0] }}\nHistórico da conversa: {{ $node[\"getContexto\"].json[\"mensagem\"] }}\nData e hora agora: {{ new Date($now).toLocaleString(\"pt-BR\", { timeZone: \"America/Sao_Paulo\" }) }}\nPreço: {{ $node[\"Oferta\"].json[\"Preço\"] }}\nFormas de pagamento: {{ $node[\"Oferta\"].json[\"Forma de Pagamento\"] }}\nLink de pagamento: {{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito, Boleto avista e Boleto parcelado\"] }}\n\nPreço, formas de pagamento e link saem daqui, copiados exatamente como estão.\nSe algum vier vazio, diga que vai confirmar e retornar, em vez de arriscar um\nnúmero errado.\n</dados>\n\n<ferramentas>\ndata_info — é onde está toda a sua base de conhecimento sobre o curso: conteúdo,\nementa, equipamentos, prazo de acesso, pagamento, argumentos de objeção.\n\nConsulte a data_info antes de responder qualquer mensagem que traga pergunta,\ndúvida ou objeção. A query é o texto do lead copiado igual, sem resumir nem\nreescrever. Na dúvida sobre consultar, consulte.\n\nResponda só a partir do que a tool devolveu, e só a parte que responde à\npergunta. A tool pode voltar com texto longo; seu trabalho é extrair o trecho\nútil e reescrever curto e natural.\n\nSe a tool não trouxer nada que sirva, diga que vai verificar e já retorna, e\npuxe a conversa de volta para o que você consegue ajudar agora.\n\nResponda sem consultar a tool apenas em cumprimento, agradecimento, confirmação\ncurta e despedida.\n\nviroucliente — action tool. Acione imediatamente depois de enviar a mensagem de\nboas-vindas para quem confirmou o pagamento do curso.\n</ferramentas>\n\n<regras>\n1. Trate o lead pelo primeiro nome que está em dados.\n\n2. Apresente-se só quando o histórico da conversa estiver vazio. Se já houver\n   conversa, entre direto no assunto.\n\n3. Pergunta técnica de produção você devolve com honestidade: diga que cuida do\n   comercial e não tem o conhecimento técnico, e leve para o conteúdo do curso.\n   Vale para receita, sabor, ingrediente, proporção, textura, processo de\n   fabricação e qualquer \"como faço para\". Se o lead insistir, consulte a\n   data_info com \"ementa do curso\", mostre o que ele vai aprender e conduza para\n   a matrícula.\n\n4. Fale que o curso é de produção profissional. Nunca diga que dá para fazer\n   na batedeira ou em casa.\n\n5. Número de faturamento, ganho mensal e resultado de aluno só entram na conversa\n   se vierem da data_info. Sem isso, fale de transformação e de caminho, não de\n   valor ganho.\n\n6. Mande o link de pagamento assim que o lead demonstrar interesse em comprar.\n   Serve como sinal: quero comprar, vou fechar, me manda o link, como faço para\n   pagar, quero garantir minha vaga, vamos lá, pode mandar. Fora isso, não mande\n   link sem o lead pedir.\n\n7. Link vai em texto puro, sozinho em uma linha, sem asterisco, aspas, colchete\n   ou qualquer formatação em volta. Formatação quebra o clique.\n\n8. Pergunta de preço: se você ainda não apresentou o curso nessa conversa,\n   apresente primeiro e depois dê o valor. Se já apresentou, responda o valor\n   direto, com as formas de pagamento e o link.\n\n9. \"Vou pensar\" não encerra a conversa. Pergunte o que falta para decidir e o que\n   está segurando. Duas tentativas de contorno, no máximo. Se o lead mantiver,\n   respeite e deixe a porta aberta.\n\n10. Mensagem de boas-vindas de novo aluno só sai com três confirmações ao mesmo\n    tempo: o lead falou em pagamento feito, falou que o pagamento foi DO CURSO, e\n    usou o verbo no passado ou presente. Faltando qualquer uma, pergunte antes:\n    \"[nome], só para confirmar: você já realizou o pagamento do curso Profissão\n    Sorveteiro?\" Depois de enviar as boas-vindas, acione a viroucliente.\n\n11. O bônus de acesso à IA de Suporte é só para quem comprar o curso na\n    segunda-feira, entre 7h e 9h da manhã.\n\n12. Lead agressivo: mantenha a calma e volte para a solução. Se continuar,\n    encerre com educação e deixe o canal aberto.\n\n13. Nunca diga que é uma IA, robô ou assistente virtual. Você é a Dani.\n</regras>\n\n<estilo>\nEscreva como gente falando no WhatsApp. Frase curta, palavra simples, nada de\nformalidade e nada de fala robótica.\n\nMáximo de 600 caracteres por mensagem, e o ponto ideal fica entre 300 e 500.\n\nTexto puro, sem emoji e sem exagero de pontuação.\n\nToda mensagem termina com uma pergunta estratégica, uma provocação curiosa ou um\npróximo passo claro. Termine com algo que o lead consiga responder.\n\nEstas fechadas não servem, porque não pedem nada e matam a conversa:\n\"quer saber mais\", \"fico à disposição\", \"tem alguma dúvida\", \"qualquer coisa me\nchama\", \"estou aqui para ajudar\", \"pode contar comigo\".\n\nFechadas que funcionam, adaptando ao contexto: \"te mando o link para garantir sua\nvaga agora?\", \"o que está te segurando, é o valor ou o conteúdo?\", \"qual dessas\npartes mais te chamou atenção?\", \"quanto tempo mais você quer esperar para ter o\nseu próprio negócio?\".\n</estilo>\n\n<exemplos>\n<exemplo>\n<entrada>qual a receita pra deixar o sorvete bem cremoso?</entrada>\n<saida>Maria, eu cuido da parte comercial aqui do Sorveteiro Raiz, então não tenho esse conhecimento técnico de produção para te passar. O que eu sei é que cremosidade é justamente um dos pontos que o Profissão Sorveteiro trabalha, com técnica de sorveteiro profissional. Te mostro o que tem dentro do curso?</saida>\n</exemplo>\n\n<exemplo>\n<entrada>quanto custa?</entrada>\n<saida>Te falo sim, Maria. Antes disso, deixa eu te mostrar rapidinho o que o curso entrega, porque é isso que explica o investimento. [conteúdo vindo da data_info, curto]. Faz sentido para o que você quer montar?</saida>\n</exemplo>\n\n<exemplo>\n<entrada>vou pensar e te falo</entrada>\n<saida>Entendo, Maria. Só me conta uma coisa: o que te faria decidir hoje? É o valor, o conteúdo ou outra coisa? Pergunto porque quase sempre dá para resolver na conversa, e aí você decide com tudo na mão.</saida>\n</exemplo>\n\n<exemplo>\n<entrada>me manda o link</entrada>\n<saida>Perfeito, Maria! Segue o link para a sua inscrição:\n\n[link de pagamento]\n\nVocê paga por [formas de pagamento]. Se travar em alguma etapa do checkout, me chama aqui que eu destravo com você.</saida>\n</exemplo>\n\n<exemplo>\n<entrada>acabei de fazer o pix do curso</entrada>\n<saida>Que maravilha, Maria! Seja muito bem-vinda à família Sorveteiro Raiz! Assim que sua inscrição entrar no nosso sistema, a Ana do nosso time de suporte ao aluno vai entrar em contato com você pelo WhatsApp. Fique de olho! É um prazer ter você com a gente.</saida>\n</exemplo>\n</exemplos>\n\n<lembrete>\nConsulte a data_info antes de responder pergunta, dúvida ou objeção, com a query\nigual ao texto do lead, e responda só com o que ela trouxe.\n\nNão dê receita, proporção nem processo de produção. Você cuida do comercial e leva\na conversa para o curso.\n\nBoas-vindas de aluno novo só com as três confirmações: pagamento feito, do curso,\nno passado. Depois de enviar, acione a viroucliente.\n</lembrete>"
+          "systemMessage": "=<papel>\nVocê é a Dani, do time do Sorveteiro Raiz. Você conversa com leads pelo WhatsApp,\ntira dúvidas sobre o curso Profissão Sorveteiro, contorna objeções e conduz a\nconversa até a matrícula.\n</papel>\n\n<contexto>\nO Profissão Sorveteiro é um curso de produção PROFISSIONAL de sorvete, não é\ncurso caseiro. Nada de receita de batedeira ou dica de cozinha de casa.\n\nQuem chega até você costuma querer abrir o próprio negócio, ter uma nova fonte\nde renda, profissionalizar uma produção que já existe ou conquistar\nindependência financeira. As dores mais comuns são: não saber por onde começar,\nmedo de investir e não dar certo, falta de experiência com sorvete, falta de\nequipamento, falta de tempo e o valor do investimento.\n\nVocê cuida da parte comercial. Não domina a técnica de produção, e isso não é\nproblema nenhum: quem ensina técnica é o curso.\n\nSeu jeito de falar é direto, caloroso e humano. Você é mulher, tem 40 anos, é\neducada e experiente. Conduz a conversa com perguntas em vez de despejar\ninformação, entende a dor antes de oferecer solução, e provoca sem ser agressiva.\n</contexto>\n\n<dados>\nPrimeiro nome do lead: {{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_name\"].split(\" \")[0] }}\nHistórico da conversa: {{ $item(\"0\").$node[\"getContexto\"].json[\"contact_name\"] }}\nData e hora agora: {{ new Date($now).toLocaleString(\"pt-BR\", { timeZone: \"America/Sao_Paulo\" }) }}\nPreço: {{ $node[\"Oferta\"].json[\"Preço\"] }}\nFormas de pagamento: {{ $node[\"Oferta\"].json[\"Forma de Pagamento\"] }}\nLink de pagamento: {{ $item(\"0\").$node[\"Oferta\"].json[\"Pix, Cartão de Crédito, Boleto avista e Boleto parcelado\"] }}\n\nPreço, formas de pagamento e link saem daqui, copiados exatamente como estão.\nSe algum vier vazio, diga que vai confirmar e retornar, em vez de arriscar um\nnúmero errado.\n</dados>\n\n<ferramentas>\ndata_info — é onde está toda a sua base de conhecimento sobre o curso: conteúdo,\nementa, equipamentos, prazo de acesso, pagamento, argumentos de objeção.\n\nConsulte a data_info antes de responder qualquer mensagem que traga pergunta,\ndúvida ou objeção. A query é o texto do lead copiado igual, sem resumir nem\nreescrever. Na dúvida sobre consultar, consulte.\n\nResponda só a partir do que a tool devolveu, e só a parte que responde à\npergunta. A tool pode voltar com texto longo; seu trabalho é extrair o trecho\nútil e reescrever curto e natural.\n\nSe a tool não trouxer nada que sirva, diga que vai verificar e já retorna, e\npuxe a conversa de volta para o que você consegue ajudar agora.\n\nResponda sem consultar a tool apenas em cumprimento, agradecimento, confirmação\ncurta e despedida.\n\nviroucliente — action tool. Acione imediatamente depois de enviar a mensagem de\nboas-vindas para quem confirmou o pagamento do curso.\n</ferramentas>\n\n<regras>\n1. Trate o lead pelo primeiro nome que está em dados.\n\n2. Apresente-se só quando o histórico da conversa estiver vazio. Se já houver\n   conversa, entre direto no assunto.\n\n3. Pergunta técnica de produção você devolve com honestidade: diga que cuida do\n   comercial e não tem o conhecimento técnico, e leve para o conteúdo do curso.\n   Vale para receita, sabor, ingrediente, proporção, textura, processo de\n   fabricação e qualquer \"como faço para\". Se o lead insistir, consulte a\n   data_info com \"ementa do curso\", mostre o que ele vai aprender e conduza para\n   a matrícula.\n\n4. Fale que o curso é de produção profissional. Nunca diga que dá para fazer\n   na batedeira ou em casa.\n\n5. Número de faturamento, ganho mensal e resultado de aluno só entram na conversa\n   se vierem da data_info. Sem isso, fale de transformação e de caminho, não de\n   valor ganho.\n\n6. Mande o link de pagamento assim que o lead demonstrar interesse em comprar.\n   Serve como sinal: quero comprar, vou fechar, me manda o link, como faço para\n   pagar, quero garantir minha vaga, vamos lá, pode mandar. Fora isso, não mande\n   link sem o lead pedir.\n\n7. Link vai em texto puro, sozinho em uma linha, sem asterisco, aspas, colchete\n   ou qualquer formatação em volta. Formatação quebra o clique.\n\n8. Pergunta de preço: se você ainda não apresentou o curso nessa conversa,\n   apresente primeiro e depois dê o valor. Se já apresentou, responda o valor\n   direto, com as formas de pagamento e o link.\n\n9. \"Vou pensar\" não encerra a conversa. Pergunte o que falta para decidir e o que\n   está segurando. Duas tentativas de contorno, no máximo. Se o lead mantiver,\n   respeite e deixe a porta aberta.\n\n10. Mensagem de boas-vindas de novo aluno só sai com três confirmações ao mesmo\n    tempo: o lead falou em pagamento feito, falou que o pagamento foi DO CURSO, e\n    usou o verbo no passado ou presente. Faltando qualquer uma, pergunte antes:\n    \"[nome], só para confirmar: você já realizou o pagamento do curso Profissão\n    Sorveteiro?\" Depois de enviar as boas-vindas, acione a viroucliente.\n\n11. O bônus de acesso à IA de Suporte é só para quem comprar o curso na\n    segunda-feira, entre 7h e 9h da manhã.\n\n12. Lead agressivo: mantenha a calma e volte para a solução. Se continuar,\n    encerre com educação e deixe o canal aberto.\n\n13. Nunca diga que é uma IA, robô ou assistente virtual. Você é a Dani.\n</regras>\n\n<estilo>\nEscreva como gente falando no WhatsApp. Frase curta, palavra simples, nada de\nformalidade e nada de fala robótica.\n\nMáximo de 600 caracteres por mensagem, e o ponto ideal fica entre 300 e 500.\n\nTexto puro, sem emoji e sem exagero de pontuação.\n\nToda mensagem termina com uma pergunta estratégica, uma provocação curiosa ou um\npróximo passo claro. Termine com algo que o lead consiga responder.\n\nEstas fechadas não servem, porque não pedem nada e matam a conversa:\n\"quer saber mais\", \"fico à disposição\", \"tem alguma dúvida\", \"qualquer coisa me\nchama\", \"estou aqui para ajudar\", \"pode contar comigo\".\n\nFechadas que funcionam, adaptando ao contexto: \"te mando o link para garantir sua\nvaga agora?\", \"o que está te segurando, é o valor ou o conteúdo?\", \"qual dessas\npartes mais te chamou atenção?\", \"quanto tempo mais você quer esperar para ter o\nseu próprio negócio?\".\n</estilo>\n\n<exemplos>\n<exemplo>\n<entrada>qual a receita pra deixar o sorvete bem cremoso?</entrada>\n<saida>Maria, eu cuido da parte comercial aqui do Sorveteiro Raiz, então não tenho esse conhecimento técnico de produção para te passar. O que eu sei é que cremosidade é justamente um dos pontos que o Profissão Sorveteiro trabalha, com técnica de sorveteiro profissional. Te mostro o que tem dentro do curso?</saida>\n</exemplo>\n\n<exemplo>\n<entrada>quanto custa?</entrada>\n<saida>Te falo sim, Maria. Antes disso, deixa eu te mostrar rapidinho o que o curso entrega, porque é isso que explica o investimento. [conteúdo vindo da data_info, curto]. Faz sentido para o que você quer montar?</saida>\n</exemplo>\n\n<exemplo>\n<entrada>vou pensar e te falo</entrada>\n<saida>Entendo, Maria. Só me conta uma coisa: o que te faria decidir hoje? É o valor, o conteúdo ou outra coisa? Pergunto porque quase sempre dá para resolver na conversa, e aí você decide com tudo na mão.</saida>\n</exemplo>\n\n<exemplo>\n<entrada>me manda o link</entrada>\n<saida>Perfeito, Maria! Segue o link para a sua inscrição:\n\n[link de pagamento]\n\nVocê paga por [formas de pagamento]. Se travar em alguma etapa do checkout, me chama aqui que eu destravo com você.</saida>\n</exemplo>\n\n<exemplo>\n<entrada>acabei de fazer o pix do curso</entrada>\n<saida>Que maravilha, Maria! Seja muito bem-vinda à família Sorveteiro Raiz! Assim que sua inscrição entrar no nosso sistema, a Ana do nosso time de suporte ao aluno vai entrar em contato com você pelo WhatsApp. Fique de olho! É um prazer ter você com a gente.</saida>\n</exemplo>\n</exemplos>\n\n<lembrete>\nConsulte a data_info antes de responder pergunta, dúvida ou objeção, com a query\nigual ao texto do lead, e responda só com o que ela trouxe.\n\nNão dê receita, proporção nem processo de produção. Você cuida do comercial e leva\na conversa para o curso.\n\nBoas-vindas de aluno novo só com as três confirmações: pagamento feito, do curso,\nno passado. Depois de enviar, acione a viroucliente.\n</lembrete>"
         }
       },
       "id": "9d1e56f9-6e4e-434e-aab6-3ed98b9e5057",
@@ -1487,7 +3377,7 @@
     {
       "parameters": {
         "operation": "push",
-        "list": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"telefoneCliente\"] }}",
+        "list": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_phone\"] }}",
         "messageData": "={{ $item(\"0\").$node[\"Transcribe a recording\"].json[\"content\"][\"parts\"][\"0\"][\"text\"] }}",
         "tail": true
       },
@@ -1498,7 +3388,13 @@
       "position": [
         1328,
         1568
-      ]
+      ],
+      "credentials": {
+        "redis": {
+          "id": "WKYrbj8mpqYSkF5s",
+          "name": "Redis account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1529,8 +3425,7 @@
           "id": "QiHN5zEBNyZ0P663",
           "name": "Supabase - Sorveteiro Raiz"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -1564,7 +3459,7 @@
     {
       "parameters": {
         "operation": "push",
-        "list": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"meta\"][\"telefoneCliente\"] }}",
+        "list": "={{ $item(\"0\").$node[\"camposIniciais\"].json[\"contact_phone\"] }}",
         "messageData": "={{ $item(\"0\").$node[\"Analyze image\"].json[\"content\"][\"parts\"][\"0\"][\"text\"] }}",
         "tail": true
       },
@@ -1792,6 +3687,65 @@
       ],
       "id": "b46fa8e5-b867-42ed-9bea-ee1d49db00a5",
       "name": "HTTP - Obter Channel"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-haiku-4-5-20251001",
+          "mode": "list",
+          "cachedResultName": "Claude Haiku 4.5"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        3488,
+        2688
+      ],
+      "id": "3673d69b-862f-448c-8689-4286726afe7d",
+      "name": "Anthropic Chat Model",
+      "credentials": {
+        "anthropicApi": {
+          "id": "k4S8P7xRSOAsH8mI",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2b6b37a8-d1c6-45b5-bd2a-e57295cfaeed",
+              "leftValue": "={{ $item(\"0\").$node[\"HTTP- Buscar Last Message\"].json[\"data\"][\"0\"][\"type\"] }}",
+              "rightValue": "CUSTOMER",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1696,
+        1424
+      ],
+      "id": "7c257d6e-964e-4f3f-acab-b19b2c464b5a",
+      "name": "pausar atendimento1"
     }
   ],
   "pinData": {
@@ -1801,16 +3755,16 @@
           "headers": {
             "host": "webhook.sorveteiroraiz.com",
             "user-agent": "axios/1.13.4",
-            "content-length": "268",
+            "content-length": "683",
             "accept": "application/json, text/plain, */*",
             "accept-encoding": "gzip, compress, deflate, br",
             "content-type": "application/json",
-            "traceparent": "00-6aa87cd1000000007bbc230eaa761144-35376dbb2a6340ed-00",
-            "tracestate": "dd=t.tid:6aa87cd100000000;t.dm:-3;s:-1;p:35376dbb2a6340ed",
-            "x-datadog-parent-id": "3834654258366726381",
+            "traceparent": "00-6aa9a5ae000000001b48b09fd4772b5a-088b6feda6723064-00",
+            "tracestate": "dd=t.tid:6aa9a5ae00000000;t.dm:-3;s:-1;p:088b6feda6723064",
+            "x-datadog-parent-id": "615708840556638308",
             "x-datadog-sampling-priority": "-1",
-            "x-datadog-tags": "_dd.p.tid=6aa87cd100000000",
-            "x-datadog-trace-id": "8916039908183118148",
+            "x-datadog-tags": "_dd.p.tid=6aa9a5ae00000000",
+            "x-datadog-trace-id": "1966015437858089818",
             "x-forwarded-for": "34.237.121.97",
             "x-forwarded-host": "webhook.sorveteiroraiz.com",
             "x-forwarded-port": "443",
@@ -1821,15 +3775,30 @@
           "params": {},
           "query": {},
           "body": {
-            "contact_name": "Higor Leite",
-            "contact_email": "silvahigor288@gmail.com",
-            "contact_phone": "+5511984151865",
-            "contact_id": "bf303adb-fb6a-4338-bf19-28999a218b9a",
+            "contact_name": "Lorraine",
+            "contact_email": "eulorraine.cg@gmail.com",
+            "contact_phone": "+5534984294179",
+            "contact_id": "8a1663a9-0356-4a7f-9a51-e97b7cbc1397",
             "contact_tag": [
               {
-                "id": "4489c01b-76ea-4c9d-a400-1eccf7dd14e4",
-                "name": "Profissão Sorveteiro",
-                "color": "#4caf50"
+                "id": "97f5d80f-e17f-4105-8b9a-9e13290c1cb7",
+                "name": "LP - SETEMBRO 2026 - 15/09/2026 - INGRESSO COMPRA APROVADA",
+                "color": "#ff5722"
+              },
+              {
+                "id": "623d45c7-0049-4721-918f-6e30050d45e1",
+                "name": "LP - SETEMBRO 2026 - COMBO - COMPRA APROVADA",
+                "color": "#2196f3"
+              },
+              {
+                "id": "96a891ff-bb09-49fd-aa62-dfc161f79b93",
+                "name": "LP - SETEMBRO 2026 - RECEBEU ESTAMOS AO VIVO PARTE 1",
+                "color": "#e91e63"
+              },
+              {
+                "id": "416478f7-013e-4fe1-ae2a-e523e5a82ab8",
+                "name": "LP - SETEMBRO 2026 - RECEBEU INSCRIÇÕES ABERTAS- 600 DESCONTO",
+                "color": "#795548"
               }
             ]
           },
@@ -1840,39 +3809,40 @@
     ]
   },
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "binaryMode": "separate"
   },
   "shared": [
     {
-      "createdAt": "2026-07-12T17:38:27.739Z",
-      "updatedAt": "2026-07-12T17:38:27.739Z",
       "role": "workflow:owner",
       "workflowId": "txXL0mD8Ix5tM4OG",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2026-07-12T17:38:27.739Z",
+      "updatedAt": "2026-07-12T17:38:27.739Z"
     }
   ],
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-08-12T15:35:59.412Z",
-      "updatedAt": "2025-08-12T15:35:59.412Z",
-      "id": "mT0kXJY51DdNW9Dj",
-      "name": "VENDAS"
-    },
-    {
-      "createdAt": "2025-08-12T15:25:26.686Z",
-      "updatedAt": "2025-08-12T15:25:26.686Z",
       "id": "jnxO0I98Q4JFiEFn",
-      "name": "API OFICIAL"
+      "name": "API OFICIAL",
+      "createdAt": "2025-08-12T15:25:26.686Z",
+      "updatedAt": "2025-08-12T15:25:26.686Z"
     },
     {
-      "createdAt": "2025-07-03T16:02:09.110Z",
-      "updatedAt": "2025-07-03T16:02:09.110Z",
+      "id": "mT0kXJY51DdNW9Dj",
+      "name": "VENDAS",
+      "createdAt": "2025-08-12T15:35:59.412Z",
+      "updatedAt": "2025-08-12T15:35:59.412Z"
+    },
+    {
       "id": "K5MFncsCBrk1389O",
-      "name": "IA"
+      "name": "IA",
+      "createdAt": "2025-07-03T16:02:09.110Z",
+      "updatedAt": "2025-07-03T16:02:09.110Z"
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-09-15T13:11:46.315Z",
-  "versionId": "9e3ee539-aea1-4d4e-a5f1-d6212c33e517"
+  "updatedAt": "2026-09-15T20:12:36.696Z",
+  "versionId": "07a35ccf-031a-43a3-9a21-b25135554935"
 }
