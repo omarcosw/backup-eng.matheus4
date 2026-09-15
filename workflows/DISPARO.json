@@ -1,5 +1,408 @@
 {
   "active": true,
+  "activeVersion": {
+    "versionId": "63e241e4-04a9-48f0-904e-e00dad006698",
+    "workflowId": "sLyhpQ5KxXWSBwLU",
+    "nodes": [
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "disparo",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2.1,
+        "position": [
+          -256,
+          112
+        ],
+        "id": "241689fd-518e-4502-99ed-6dd3ed83a24c",
+        "name": "Webhook",
+        "webhookId": "ca8e57c8-fb8b-41b7-bff7-8b6e6a6a5819"
+      },
+      {
+        "parameters": {
+          "action": "generate"
+        },
+        "id": "8fb9a2d7-1ee1-4494-815f-7faeb122976f",
+        "name": "GeraUUID",
+        "type": "n8n-nodes-base.crypto",
+        "typeVersion": 1,
+        "position": [
+          1312,
+          208
+        ],
+        "notesInFlow": false
+      },
+      {
+        "parameters": {
+          "tableId": "disparo_mensagem_ia_vendas",
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "nome",
+                "fieldValue": "={{ $item(\"0\").$node[\"Edit Fields\"].json[\"nome\"] }}"
+              },
+              {
+                "fieldId": "telefone",
+                "fieldValue": "={{ $item(\"0\").$node[\"Edit Fields\"].json[\"telefone\"] }}"
+              },
+              {
+                "fieldId": "created_at",
+                "fieldValue": "={{ $now }}"
+              },
+              {
+                "fieldId": "mensagem",
+                "fieldValue": "=*UAU! Que alegria falar com você!*👋 \nAqui é a Dani da Equipe Sorveteiro Raiz! 🍨\n\nO Edu liberou as vagas para o *Curso Completo Profissão Sorveteiro* com um desconto inacreditável para você:\n\n➡️ O valor normal é de R$ 3.097, mas com o desconto de *R$ 900* 🎁, o seu investimento será de apenas R$ 2.197 á vista ou em até 12x no cartão de crédito ou boleto parcelado.\n\n🚨Eu não quero de jeito nenhum deixar você de fora! \n\nEntão me diga, qual é a sua dúvida em relação ao curso *Profissão Sorveteiro*? Ou como eu posso te ajudar a se tornar aluno(a)?"
+              }
+            ]
+          }
+        },
+        "id": "c6276026-6cd9-423e-a658-fe7916406d71",
+        "name": "CreateUser",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          1488,
+          208
+        ],
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "4e77cc7c-48f4-4cbe-94e7-6d211db67002",
+                "leftValue": "={{ $('get.conversa').item.json.telefone }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "string",
+                  "operation": "notEmpty",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "id": "10775dbf-fd47-4144-b8a0-95ee6b66bb98",
+        "name": "If1",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          1104,
+          112
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "tableId": "disparo_mensagem_ia_vendas",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "telefone",
+                "keyValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"contact\"][\"phoneNumber\"] }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          688,
+          112
+        ],
+        "id": "95ff7f09-451e-46dc-bdcf-f326f88c3d34",
+        "name": "get.conversa",
+        "alwaysOutputData": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "tableId": "disparo_mensagem_ia_vendas",
+          "matchType": "allFilters",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "telefone",
+                "condition": "eq",
+                "keyValue": "={{ $item(\"0\").$node[\"Edit Fields\"].json[\"telefone\"] }}"
+              }
+            ]
+          },
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "mensagem",
+                "fieldValue": "=*UAU! Que alegria falar com você!*👋 \nAqui é a Dani da Equipe Sorveteiro Raiz! 🍨\n\nO Edu liberou as vagas para o *Curso Completo Profissão Sorveteiro* com um desconto inacreditável para você:\n\n➡️ O valor normal é de R$ 3.097, mas com o desconto de *R$ 900* 🎁, o seu investimento será de apenas R$ 2.197 á vista ou em até 12x no cartão de crédito ou boleto parcelado.\n\n🚨Eu não quero de jeito nenhum deixar você de fora! \n\nEntão me diga, qual é a sua dúvida em relação ao curso *Profissão Sorveteiro*? Ou como eu posso te ajudar a se tornar aluno(a)?"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          1328,
+          -96
+        ],
+        "id": "ff0c8030-83f9-4e10-9729-93ed69d1584e",
+        "name": "update_mensagem/evento",
+        "credentials": {
+          "supabaseApi": {
+            "id": "QiHN5zEBNyZ0P663",
+            "name": "Supabase - Sorveteiro Raiz"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "content": "# TEMPLATE FORA JANELA 24H",
+          "height": 612,
+          "width": 1320,
+          "color": 3
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          528,
+          -160
+        ],
+        "typeVersion": 1,
+        "id": "1cc04d9c-5e8e-4dc0-8372-2a3f1931ca80",
+        "name": "Sticky Note"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "59dfd646-caa8-4068-a290-b6dff4449892",
+                "leftValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"contact\"][\"phoneNumber\"] }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "string",
+                  "operation": "notEmpty",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          864,
+          112
+        ],
+        "id": "4ef91bc2-d424-40dc-9249-52b7970a04ac",
+        "name": "If3"
+      },
+      {
+        "parameters": {},
+        "id": "18ba57a7-aa52-4210-90ce-a497230950c5",
+        "name": "no.op2",
+        "type": "n8n-nodes-base.noOp",
+        "typeVersion": 1,
+        "position": [
+          1024,
+          224
+        ]
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "f702fdbe-bb64-4bd4-9769-a384a9f3c740",
+                "name": "nome",
+                "value": "={{ $json.body.contact.name }}",
+                "type": "string"
+              },
+              {
+                "id": "313c2da7-b2e4-4d8d-89c3-8b3f448d81c3",
+                "name": "telefone",
+                "value": "={{ $item(\"0\").$node[\"Webhook\"].json[\"body\"][\"contact\"][\"phoneNumber\"] }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          16,
+          112
+        ],
+        "id": "55c80806-a367-4f0f-9a86-5817e55f94c0",
+        "name": "Edit Fields"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          240,
+          112
+        ],
+        "id": "79b382b5-62e7-4b37-abab-8f1df00963d3",
+        "name": "Loop Over Items"
+      }
+    ],
+    "connections": {
+      "GeraUUID": {
+        "main": [
+          [
+            {
+              "node": "CreateUser",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "CreateUser": {
+        "main": [
+          [
+            {
+              "node": "get.conversa",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If1": {
+        "main": [
+          [
+            {
+              "node": "update_mensagem/evento",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "GeraUUID",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "get.conversa": {
+        "main": [
+          [
+            {
+              "node": "If3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "update_mensagem/evento": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If3": {
+        "main": [
+          [
+            {
+              "node": "If1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "no.op2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Webhook": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items": {
+        "main": [
+          [],
+          [
+            {
+              "node": "get.conversa",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "nodeGroups": [],
+    "authors": "system migration",
+    "name": null,
+    "description": null,
+    "autosaved": false,
+    "createdAt": "2026-09-15T19:55:52.517Z",
+    "updatedAt": "2026-09-15T19:55:52.517Z"
+  },
+  "activeVersionId": "63e241e4-04a9-48f0-904e-e00dad006698",
   "connections": {
     "GeraUUID": {
       "main": [
@@ -121,6 +524,7 @@
   "isArchived": false,
   "meta": null,
   "name": "DISPARO",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
@@ -449,11 +853,11 @@
   },
   "shared": [
     {
-      "createdAt": "2025-10-13T12:37:59.782Z",
-      "updatedAt": "2025-10-13T12:37:59.782Z",
       "role": "workflow:owner",
       "workflowId": "sLyhpQ5KxXWSBwLU",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2025-10-13T12:37:59.782Z",
+      "updatedAt": "2025-10-13T12:37:59.782Z"
     }
   ],
   "staticData": null,
