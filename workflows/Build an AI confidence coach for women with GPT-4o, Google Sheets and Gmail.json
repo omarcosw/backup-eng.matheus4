@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Chat Trigger": {
       "main": [
@@ -236,6 +238,7 @@
     "templateId": "14020"
   },
   "name": "Build an AI confidence coach for women with GPT-4o, Google Sheets and Gmail",
+  "nodeGroups": [],
   "nodes": [
     {
       "id": "7c861863-1621-4b15-be8c-7391a8741e94",
@@ -1086,11 +1089,11 @@
   "settings": null,
   "shared": [
     {
-      "createdAt": "2026-04-21T23:35:58.942Z",
-      "updatedAt": "2026-04-21T23:35:58.942Z",
       "role": "workflow:owner",
       "workflowId": "WuYg1FSJI3Vovy5U",
-      "projectId": "MnGFQuvoDMTHLtMd"
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2026-04-21T23:35:58.942Z",
+      "updatedAt": "2026-04-21T23:35:58.942Z"
     }
   ],
   "staticData": null,
