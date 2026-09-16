@@ -2141,6 +2141,12 @@
   "staticData": null,
   "tags": [
     {
+      "id": "APWtlgA2UKcKzIN6",
+      "name": "Suporte",
+      "createdAt": "2025-07-07T13:19:13.772Z",
+      "updatedAt": "2025-07-07T13:19:13.772Z"
+    },
+    {
       "id": "WUqjtcCYycM8nth1",
       "name": "API NÃO OFICIAL",
       "createdAt": "2025-08-12T15:25:19.774Z",
@@ -2151,12 +2157,6 @@
       "name": "IA",
       "createdAt": "2025-07-03T16:02:09.110Z",
       "updatedAt": "2025-07-03T16:02:09.110Z"
-    },
-    {
-      "id": "APWtlgA2UKcKzIN6",
-      "name": "Suporte",
-      "createdAt": "2025-07-07T13:19:13.772Z",
-      "updatedAt": "2025-07-07T13:19:13.772Z"
     }
   ],
   "triggerCount": 1,
