@@ -2347,10 +2347,10 @@
   "staticData": null,
   "tags": [
     {
-      "id": "BUA0OcsQ75FU3GHE",
-      "name": "[IA VENDAS] [DANI] [2]",
-      "createdAt": "2025-06-14T17:42:47.387Z",
-      "updatedAt": "2025-06-14T17:42:47.387Z"
+      "id": "WUqjtcCYycM8nth1",
+      "name": "API NÃO OFICIAL",
+      "createdAt": "2025-08-12T15:25:19.774Z",
+      "updatedAt": "2025-08-12T15:25:19.774Z"
     },
     {
       "id": "LNS3WObTA5Xk35NO",
@@ -2359,10 +2359,10 @@
       "updatedAt": "2025-06-12T04:31:09.302Z"
     },
     {
-      "id": "WUqjtcCYycM8nth1",
-      "name": "API NÃO OFICIAL",
-      "createdAt": "2025-08-12T15:25:19.774Z",
-      "updatedAt": "2025-08-12T15:25:19.774Z"
+      "id": "BUA0OcsQ75FU3GHE",
+      "name": "[IA VENDAS] [DANI] [2]",
+      "createdAt": "2025-06-14T17:42:47.387Z",
+      "updatedAt": "2025-06-14T17:42:47.387Z"
     }
   ],
   "triggerCount": 1,
