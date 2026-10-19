@@ -2273,16 +2273,16 @@
   "staticData": null,
   "tags": [
     {
-      "id": "K5MFncsCBrk1389O",
-      "name": "IA",
-      "createdAt": "2025-07-03T16:02:09.110Z",
-      "updatedAt": "2025-07-03T16:02:09.110Z"
-    },
-    {
       "id": "xgSq7NTgHIKRyWgV",
       "name": "SUPORTE",
       "createdAt": "2025-08-29T15:22:39.646Z",
       "updatedAt": "2025-08-29T15:22:39.646Z"
+    },
+    {
+      "id": "K5MFncsCBrk1389O",
+      "name": "IA",
+      "createdAt": "2025-07-03T16:02:09.110Z",
+      "updatedAt": "2025-07-03T16:02:09.110Z"
     }
   ],
   "triggerCount": 1,
