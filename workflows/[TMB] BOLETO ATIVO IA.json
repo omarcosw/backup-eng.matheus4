@@ -1,0 +1,78 @@
+{
+  "active": true,
+  "activeVersion": {
+    "versionId": "9de23b86-63b6-40eb-907f-240e5e9fd091",
+    "workflowId": "vS48eiAuMYSdhbes",
+    "nodes": [
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "boleto-ia",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2.1,
+        "position": [
+          0,
+          0
+        ],
+        "id": "1b51bc49-4c15-420e-bea7-bf4ab474c300",
+        "name": "Webhook",
+        "webhookId": "1f4963e4-056e-4480-9368-1496129c1abe"
+      }
+    ],
+    "connections": {},
+    "nodeGroups": [],
+    "authors": "Sorveteiro Raiz",
+    "name": "Version 9de23b86",
+    "description": "",
+    "autosaved": true,
+    "createdAt": "2026-10-21T20:38:30.309Z",
+    "updatedAt": "2026-10-21T20:38:37.249Z"
+  },
+  "activeVersionId": "9de23b86-63b6-40eb-907f-240e5e9fd091",
+  "connections": {},
+  "createdAt": "2026-10-21T16:27:40.429Z",
+  "id": "vS48eiAuMYSdhbes",
+  "isArchived": false,
+  "meta": null,
+  "name": "[TMB] BOLETO ATIVO IA",
+  "nodeGroups": [],
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "boleto-ia",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "1b51bc49-4c15-420e-bea7-bf4ab474c300",
+      "name": "Webhook",
+      "webhookId": "1f4963e4-056e-4480-9368-1496129c1abe"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "role": "workflow:owner",
+      "workflowId": "vS48eiAuMYSdhbes",
+      "projectId": "MnGFQuvoDMTHLtMd",
+      "createdAt": "2026-10-21T16:27:40.429Z",
+      "updatedAt": "2026-10-21T16:27:40.429Z"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2026-10-21T20:41:11.630Z",
+  "versionId": "9de23b86-63b6-40eb-907f-240e5e9fd091"
+}
