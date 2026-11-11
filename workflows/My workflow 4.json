@@ -28,16 +28,16 @@
   "staticData": null,
   "tags": [
     {
-      "id": "RopRqTNW9RqBdKtK",
-      "name": "formularios",
-      "createdAt": "2025-12-02T00:45:46.690Z",
-      "updatedAt": "2025-12-02T00:45:46.690Z"
-    },
-    {
       "id": "dsdaD9H9gdSPawof",
       "name": "inteligência de dados",
       "createdAt": "2025-12-02T00:45:46.654Z",
       "updatedAt": "2025-12-02T00:45:46.654Z"
+    },
+    {
+      "id": "RopRqTNW9RqBdKtK",
+      "name": "formularios",
+      "createdAt": "2025-12-02T00:45:46.690Z",
+      "updatedAt": "2025-12-02T00:45:46.690Z"
     }
   ],
   "triggerCount": 0,
